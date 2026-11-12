@@ -9,4 +9,3 @@ body.paper { --bg: var(--paper); --ink: var(--ink-p); --ink-2: #6B5148; }
 .teal { --g: #1E4D5C; } .ochre { --g: #84520C; } .tomato { --g: #AD321C; } .olive { --g: #4D581C; } .aubergine { --g: #5E2A4F; }
 .cap h1 { font-family: var(--font-display); font-weight: 400; font-size: calc(var(--u) * 12.5); letter-spacing: -0.025em; line-height: 0.95; }
 .cap p { font-size: calc(var(--u) * 4.6); color: var(--ink-2); }
-.draft { position: absolute; right: calc(var(--u) * 4); bottom: calc(var(--u) * 4); z-index: 50; background: #FFD400; color: #111; font: 700 calc(var(--u) * 3.2) var(--font-text); padding: calc(var(--u) * 1.2) calc(var(--u) * 2.4); border-radius: calc(var(--u) * 1.5); }
