@@ -92,8 +92,7 @@ struct KitchenView: View {
     /// What this week's list would cost if nothing were ticked, minus what it costs now.
     private func savings() -> Double {
         guard let plan = model.plan else { return 0 }
-        let r = model.recipes(of: plan)
-        let none = Pricer(catalog: model.catalog, settings: model.settings, inKitchen: [], leftovers: plan.leftovers ?? [], adjust: model.storeAdjust).price(r).total
+        let none = model.cost(of: plan, ignoringKitchen: true).total
         let now = model.cost(of: plan).total
         return max(0, none - now)
     }

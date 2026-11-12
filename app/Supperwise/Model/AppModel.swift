@@ -129,8 +129,9 @@ final class AppModel {
 
     /// Each week is priced with its own leftover nights and the store adjustment learned from receipts.
     /// Packed lunches (Family) go on the same list, so packs are shared with dinners.
-    func cost(of plan: WeekPlan) -> WeekCost {
-        var pricer = Pricer(catalog: catalog, settings: state.settings, inKitchen: state.inKitchen,
+    /// `ignoringKitchen` prices the same week as if nothing were ticked in the kitchen (for the pantry saving).
+    func cost(of plan: WeekPlan, ignoringKitchen: Bool = false) -> WeekCost {
+        var pricer = Pricer(catalog: catalog, settings: state.settings, inKitchen: ignoringKitchen ? [] : state.inKitchen,
                             leftovers: plan.leftovers ?? [], adjust: storeAdjust)
         if let lp = lunchPlanner, let lunches = plan.lunches { pricer.lunchUsage = lp.usage(lunches, leftovers: plan.leftovers ?? []) }
         return pricer.price(recipes(of: plan))

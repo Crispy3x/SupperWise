@@ -16,8 +16,7 @@ struct RecapView: View {
                     let cooked = plan.dinners.filter(\.cooked).count
                     let receipt = model.receipts.first { $0.weekStart == plan.weekStart }
                     let spent = receipt?.paid ?? cost.total
-                    let none = Pricer(catalog: model.catalog, settings: model.settings, inKitchen: [], leftovers: plan.leftovers ?? [], adjust: model.storeAdjust)
-                        .price(model.recipes(of: plan)).total
+                    let none = model.cost(of: plan, ignoringKitchen: true).total
                     VStack(alignment: .leading, spacing: 0) {
                         Text("\(cooked) of \(plan.dinners.count)").font(.serif(80)).foregroundStyle(Color(hex: 0xAD321C))
                         Text("dinners cooked at home this week.").font(.subheadline).foregroundStyle(Paper.ink2).padding(.bottom, 12)

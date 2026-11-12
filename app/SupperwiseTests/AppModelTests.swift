@@ -89,6 +89,8 @@ final class AppModelTests: XCTestCase {
             XCTAssertTrue(r.spice == 0 || r.mildNote != nil, r.name)
         }
         XCTAssertGreaterThan(m.cost(of: plan).lunches, 0)
+        // The pantry saving counts lunches on both sides, so ticking things in the kitchen always shows a saving.
+        XCTAssertGreaterThan(m.cost(of: plan, ignoringKitchen: true).total, m.cost(of: plan).total)
         XCTAssertEqual(m.baby?.months(), 8)
         XCTAssertEqual(m.triedFoods.count, 9)
         XCTAssertFalse(m.plan?.bought.isEmpty ?? true)
