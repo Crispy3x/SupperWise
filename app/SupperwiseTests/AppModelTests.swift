@@ -89,5 +89,8 @@ final class AppModelTests: XCTestCase {
             XCTAssertTrue(r.spice == 0 || r.mildNote != nil, r.name)
         }
         XCTAssertGreaterThan(m.cost(of: plan).lunches, 0)
+        XCTAssertEqual(m.baby?.months(), 8)
+        XCTAssertEqual(m.triedFoods.count, 9)
+        XCTAssertFalse(m.plan?.bought.isEmpty ?? true)
     }
 }

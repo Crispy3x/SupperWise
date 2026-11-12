@@ -95,30 +95,6 @@ struct FirstWeekOffer: View {
     }
 }
 
-/// RevenueCat's paywall (designed in the RevenueCat dashboard; a default template shows until one is published).
-/// It shows the current offering's packages (monthly and yearly), prices from the store, trial terms, restore and legal links.
-struct PlansSheet: View {
-    @Environment(\.dismiss) private var dismiss
-    @Environment(Subscriptions.self) private var subs
-    var need: Tier? = nil
-    var onDone: (() -> Void)? = nil
-
-    var body: some View {
-        PaywallView(displayCloseButton: true)
-            .onPurchaseCompleted { info in finish(info) }
-            .onRestoreCompleted { info in
-                finish(info)
-            }
-    }
-
-    private func finish(_ info: CustomerInfo) {
-        subs.apply(info)
-        guard subs.isSubscribed else { return }
-        onDone?()
-        dismiss()
-    }
-}
-
 /// Opens a feature if the plan includes it; otherwise shows the plans with the needed one selected.
 struct GatedButton<Label: View>: View {
     @Environment(Subscriptions.self) private var subs

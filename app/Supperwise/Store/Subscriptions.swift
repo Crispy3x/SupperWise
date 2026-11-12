@@ -105,7 +105,7 @@ final class Subscriptions {
     func apply(_ info: CustomerInfo) {
         customerInfo = info
         tier = Self.tier(for: Set(info.entitlements.active.keys))
-        if Demo.isOn { tier = .family }   // debug screenshots only
+        if Demo.isOn { tier = Demo.screen == "plans" ? .free : .family }   // debug screenshots only
     }
 
     func restore() async {
