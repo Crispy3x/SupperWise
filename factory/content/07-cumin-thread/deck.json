@@ -1,0 +1,57 @@
+{
+  "id": "07-cumin-thread",
+  "angle": "story",
+  "accent": "#FFD9A8",
+  "slides": [
+    {
+      "style": "chat",
+      "name": "sam",
+      "lines": [
+        {
+          "them": "three jars of cumin. why"
+        },
+        {
+          "me": "each recipe said 1 tsp"
+        }
+      ]
+    },
+    {
+      "style": "chat",
+      "name": "sam",
+      "lines": [
+        {
+          "them": "so you bought it three times"
+        },
+        {
+          "me": "in my defense the list told me to"
+        },
+        {
+          "them": "the list was *wrong*"
+        }
+      ]
+    },
+    {
+      "style": "bold",
+      "ground": "dark",
+      "text": "a list should know what's *already in your cupboard*"
+    },
+    {
+      "style": "bold",
+      "ground": "#5E2A4F",
+      "text": "an app that plans the week *and* prices the list"
+    },
+    {
+      "style": "bold",
+      "ground": "light",
+      "text": "it's called *Supperwise*",
+      "sub": "coming soon to iPhone"
+    }
+  ],
+  "caption": "we now own a lifetime supply of cumin",
+  "hashtags": [
+    "groceryshopping",
+    "relatable",
+    "mealplanning",
+    "pantry"
+  ]
+}

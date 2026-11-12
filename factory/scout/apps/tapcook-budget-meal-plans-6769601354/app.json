@@ -1,0 +1,47 @@
+{
+  "rank": null,
+  "id": 6769601354,
+  "name": "TapCook: Budget Meal Plans",
+  "seller": "testmaxx LLC",
+  "artistId": 1848498396,
+  "genre": "Food & Drink",
+  "price": "Free",
+  "rating": 4.8,
+  "ratings": 7312,
+  "released": "2026-07-17",
+  "ageMonths": 3,
+  "ratingsPerMonth": 2437,
+  "updated": "2026-11-07",
+  "daysSinceUpdate": 4,
+  "alsoTopFree": null,
+  "url": "https://apps.apple.com/us/app/tapcook-budget-meal-plans/id6769601354",
+  "summary": "1. Enter your ZIP or postal code and pick the grocery store you actually shop at 2. Tell us how many you're feeding, which nights you cook, and what you want to spend 3. Get a week of dinners and one grocery list, totall",
+  "sellerAppCount": 1,
+  "subtitleNote": "Apple's lookup doesn't return the subtitle; read it on the listing.",
+  "version": "2.2.1",
+  "releaseNotes": "• Shop your list at Walmart, as well as Instacart and DoorDash.\n• More accurate grocery lists\n• Bigger recipe text: pick your size next to Directions.\n• Your dinner reminder now shows tonight's dish with its photo.\n• Clearer salt amounts, a smoother app and bug fixes.",
+  "description": "1. Enter your ZIP or postal code and pick the grocery store you actually shop at\n\n2. Tell us how many you're feeding, which nights you cook, and what you want to spend\n\n3. Get a week of dinners and one grocery list, totalled at your store\n\nTapCook plans your dinners for the week and tells you what the groceries will cost before you leave the house.\n\nInstead of deciding at 6pm, scrolling for ideas, and finding out the damage at the register, TapCook builds the week and the shopping list together — and keeps the total under the budget you set. Tick off the staples already in your cupboard and they come off the bill, this week and every week after. Don't like a dinner? Swap it and the list updates.\n\nTapCook works with grocery stores in the US and Canada.\n\nTapCook subscriptions are $9.99/month, or $29.99/year with a 7-day free trial on the yearly plan. Prices are in US dollars; in Canada, you'll see your price in Canadian dollars before you subscribe.\n\n*Grocery Prices in TapCook are estimates, not live prices from any retailer. They start from a national reference price for each ingredient and are adjusted for the chain and region you choose. Real prices change often and vary by branch, so your checkout total will differ. TapCook is not affiliated with, endorsed by, or connected to any grocery store, and store names are used only to show which one a plan was priced against.\n\n*Always review ingredients, measurements, cooking instructions, food-safety guidance, and allergy information before cooking. Dietary and \"won't eat\" settings are a convenience, not an allergen control.\n\nHave an idea, question, or issue? Email us at: support@tapcook.co\n\n*BUILDING AND VIEWING YOUR WEEKLY MEAL PLANS REQUIRES A SUBSCRIPTION\n\nTERMS: https://tapcook.co/terms",
+  "languages": 3,
+  "minimumOs": "18.0",
+  "sizeMb": 145,
+  "screenshots": [
+    "factory/scout/apps/tapcook-budget-meal-plans-6769601354/screens/01.jpg",
+    "factory/scout/apps/tapcook-budget-meal-plans-6769601354/screens/02.jpg",
+    "factory/scout/apps/tapcook-budget-meal-plans-6769601354/screens/03.jpg",
+    "factory/scout/apps/tapcook-budget-meal-plans-6769601354/screens/04.jpg",
+    "factory/scout/apps/tapcook-budget-meal-plans-6769601354/screens/05.jpg"
+  ],
+  "reviewsRead": 0,
+  "recentStars1to5": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "reviews": [],
+  "revenueLinks": [
+    "https://app.sensortower.com/overview/6769601354?country=US",
+    "https://appmagic.rocks/top-charts/apps?search=TapCook%3A%20Budget%20Meal%20Plans"
+  ]
+}

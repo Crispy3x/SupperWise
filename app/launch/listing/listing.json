@@ -1,0 +1,35 @@
+{
+  "primaryLocale": "en-US",
+  "subscriptions": true,
+  "competitors": [
+    "TapCook",
+    "Whipp",
+    "Potto",
+    "eMeals",
+    "NeatEat",
+    "mise",
+    "MealPrepPro",
+    "HelloFresh",
+    "Supper Tab",
+    "Mealime"
+  ],
+  "category": {
+    "primary": "Food & Drink",
+    "secondary": "Lifestyle"
+  },
+  "urls": {
+    "support": "https://YOUR-SITE/support",
+    "marketing": "https://YOUR-SITE/",
+    "privacy": "https://YOUR-SITE/privacy",
+    "terms": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+  },
+  "locales": {
+    "en-US": {
+      "name": "Supperwise: Meal Planner",
+      "subtitle": "Weekly budget dinners, priced",
+      "keywords": "grocery,list,family,recipe,cheap,vegetarian,allergy,pantry,shopping,cooking,menu,kid,food,cost,prep",
+      "promotionalText": "New: plan a week of family dinners that fits your grocery budget, priced by the pack you actually buy. Your first week is free to keep.",
+      "description": "Plan a week of dinners for your family and see what the groceries will cost before you leave the house.\n\nSupperwise builds the week and the shopping list together, for the kind of store you use, and keeps the total under the budget you set. It prices the pack you actually buy, not the spoonful you use.\n\nHOW IT WORKS\n• Enter your ZIP code and the kind of store you shop at.\n• Tell it who's eating, which nights you cook and what you want to spend.\n• Get a week of dinners and one grocery list with a total.\n\nEVERYONE AT THE TABLE\n• Set each person's diet, allergies and spice level. Dishes with an allergen someone avoids are left out.\n• When a dish has meat, there's a written vegetarian plate for whoever needs one.\n• Tell it what's in your kitchen: no air fryer, no grill, no problem.\n\nA LIST THAT MATCHES THE CHECKOUT\n• Priced by the whole pack: one jar of garam masala, two cans of chickpeas.\n• Ingredients shared across the week are bought once.\n• Notes tell you what's left over and how long it keeps.\n• Tick what you already have and it comes off the bill, this week and every week after.\n\nDINNERS WORTH COOKING\n• Written recipes with real prep steps, from chickpea tikka masala to skillet lemon chicken.\n• Swap any night with one tap; the list reprices.\n• A reminder at 4:30 with tonight's dish, if you want one.\n\nPRIVATE BY DESIGN\nNo account. Your household and plans stay on your iPhone.\n\nPRICES\nGrocery prices are estimates for your type of store and region, not live prices from any retailer. Supperwise isn't affiliated with any grocery store.\n\nYOUR FIRST WEEK IS FREE\nPlan your first week and keep it, list and all. To plan every week after, subscribe yearly (with a 7-day free trial) or monthly. Payment is charged to your Apple ID. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period. Manage or cancel in your App Store account settings.\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://YOUR-SITE/privacy"
+    }
+  }
+}

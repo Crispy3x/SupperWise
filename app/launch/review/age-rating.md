@@ -1,0 +1,11 @@
+# Age rating questionnaire (2026 version)
+- **Answers:** none of the content categories apply.
+  - No violence, sexual content, profanity, horror, gambling or contests.
+  - No alcohol, tobacco or drugs. Recipes use no alcohol.
+  - No medical or treatment information. Diet and allergy settings are preferences, with a disclaimer to check labels.
+- **In-app controls:** none needed.
+- **User-generated content:** none.
+- **Messaging or social features:** none.
+- **Unrestricted web access:** no. Links out are the privacy policy, terms and mail only.
+- **Advertising:** none.
+- **Expected rating: 4+.**

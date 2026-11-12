@@ -1,0 +1,509 @@
+{
+ "id": "thanksgiving",
+ "name": "Thanksgiving",
+ "defaultDate": "2026-11-26T16:00:00",
+ "main": {
+  "kind": "turkey",
+  "ingredient": "turkey_whole",
+  "lbPerPerson": 1.25,
+  "minLb": 8
+ },
+ "dishes": [
+  {
+   "id": "tg_turkey",
+   "name": "Roast turkey",
+   "course": "main",
+   "vegetarian": false,
+   "servings": 8,
+   "allergens": [
+    "dairy"
+   ],
+   "ingredients": [
+    {
+     "ingredient": "turkey_whole",
+     "amount": 4540,
+     "text": "1 turkey, about 10 lb for 8",
+     "note": "thawed, giblets removed"
+    },
+    {
+     "ingredient": "butter",
+     "amount": 113,
+     "text": "½ cup",
+     "note": "softened"
+    },
+    {
+     "ingredient": "sage",
+     "amount": 2,
+     "text": "1 tbsp",
+     "note": ""
+    },
+    {
+     "ingredient": "thyme",
+     "amount": 2,
+     "text": "1 tbsp",
+     "note": ""
+    },
+    {
+     "ingredient": "lemon",
+     "amount": 1,
+     "text": "1",
+     "note": ""
+    },
+    {
+     "ingredient": "onion_yellow",
+     "amount": 220,
+     "text": "1",
+     "note": "quartered"
+    },
+    {
+     "ingredient": "salt",
+     "amount": 18,
+     "text": "1 tbsp",
+     "note": ""
+    }
+   ],
+   "steps": [
+    "Pat the turkey dry. Mix the butter, sage, thyme and lemon zest; rub it under and over the skin. Salt it all over.",
+    "Put the lemon halves and onion in the cavity. Set the bird on a rack in a roasting pan, breast up.",
+    "Roast at 325°F. Start checking an hour before the time on the plan.",
+    "It's done when a thermometer reads 165°F in the thickest part of the thigh, the wing and the breast (USDA).",
+    "Rest it, loosely covered, for 30 minutes before carving. Keep the pan juices for the gravy."
+   ],
+   "schedule": [],
+   "forVegetarians": false
+  },
+  {
+   "id": "tg_gravy",
+   "name": "Pan gravy",
+   "course": "side",
+   "vegetarian": false,
+   "servings": 8,
+   "allergens": [
+    "gluten",
+    "dairy"
+   ],
+   "ingredients": [
+    {
+     "ingredient": "butter",
+     "amount": 56,
+     "text": "4 tbsp",
+     "note": ""
+    },
+    {
+     "ingredient": "flour",
+     "amount": 32,
+     "text": "¼ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "chicken_broth",
+     "amount": 946,
+     "text": "4 cups",
+     "note": "plus the pan juices"
+    }
+   ],
+   "steps": [
+    "Pour the pan juices into a jug and skim off the fat.",
+    "Melt the butter in a saucepan, whisk in the flour and cook 2 minutes until golden.",
+    "Whisk in the broth and juices a little at a time. Simmer 8 minutes until it coats a spoon. Season."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 25,
+     "task": "Make the gravy while the turkey rests."
+    }
+   ],
+   "forVegetarians": false
+  },
+  {
+   "id": "tg_stuffing",
+   "name": "Herb stuffing",
+   "course": "side",
+   "vegetarian": true,
+   "servings": 8,
+   "allergens": [
+    "gluten",
+    "dairy"
+   ],
+   "ingredients": [
+    {
+     "ingredient": "stuffing_cubes",
+     "amount": 680,
+     "text": "2 bags",
+     "note": "12 oz each"
+    },
+    {
+     "ingredient": "celery",
+     "amount": 200,
+     "text": "4 stalks",
+     "note": "diced"
+    },
+    {
+     "ingredient": "onion_yellow",
+     "amount": 220,
+     "text": "1",
+     "note": "diced"
+    },
+    {
+     "ingredient": "butter",
+     "amount": 113,
+     "text": "½ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 710,
+     "text": "3 cups",
+     "note": "vegetable, so it's vegetarian"
+    },
+    {
+     "ingredient": "sage",
+     "amount": 2,
+     "text": "1 tbsp",
+     "note": ""
+    },
+    {
+     "ingredient": "thyme",
+     "amount": 1,
+     "text": "2 tsp",
+     "note": ""
+    }
+   ],
+   "steps": [
+    "Soften the onion and celery in the butter, 8 minutes. Stir in the herbs.",
+    "Toss with the bread cubes and broth in a buttered 9×13 dish.",
+    "Bake covered at 350°F for 25 minutes, then uncovered 20 minutes until crisp on top."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 75,
+     "task": "Assemble the stuffing."
+    },
+    {
+     "minutesBefore": 55,
+     "task": "Stuffing into the oven (it shares the oven when the turkey comes out)."
+    }
+   ],
+   "forVegetarians": false
+  },
+  {
+   "id": "tg_mash",
+   "name": "Mashed potatoes",
+   "course": "side",
+   "vegetarian": true,
+   "servings": 8,
+   "allergens": [
+    "dairy"
+   ],
+   "ingredients": [
+    {
+     "ingredient": "potatoes",
+     "amount": 2270,
+     "text": "5 lb",
+     "note": "peeled, in chunks"
+    },
+    {
+     "ingredient": "butter",
+     "amount": 113,
+     "text": "½ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "milk",
+     "amount": 240,
+     "text": "1 cup",
+     "note": "warm"
+    },
+    {
+     "ingredient": "salt",
+     "amount": 12,
+     "text": "2 tsp",
+     "note": ""
+    }
+   ],
+   "steps": [
+    "Cover the potatoes with cold salted water, bring to a boil and simmer 15–20 minutes until a knife slides in.",
+    "Drain well. Mash with the butter, then beat in the warm milk. Season."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 60,
+     "task": "Peel the potatoes into cold water."
+    },
+    {
+     "minutesBefore": 40,
+     "task": "Potatoes on to boil."
+    },
+    {
+     "minutesBefore": 10,
+     "task": "Mash the potatoes."
+    }
+   ],
+   "forVegetarians": false
+  },
+  {
+   "id": "tg_beans",
+   "name": "Garlic green beans",
+   "course": "side",
+   "vegetarian": true,
+   "servings": 8,
+   "allergens": [],
+   "ingredients": [
+    {
+     "ingredient": "green_beans",
+     "amount": 908,
+     "text": "2 lb",
+     "note": "trimmed"
+    },
+    {
+     "ingredient": "garlic",
+     "amount": 4,
+     "text": "4 cloves",
+     "note": "sliced"
+    },
+    {
+     "ingredient": "olive_oil",
+     "amount": 30,
+     "text": "2 tbsp",
+     "note": ""
+    },
+    {
+     "ingredient": "lemon",
+     "amount": 1,
+     "text": "1",
+     "note": ""
+    }
+   ],
+   "steps": [
+    "Blanch the beans in boiling salted water for 4 minutes, then drain.",
+    "Fry the garlic in the oil for 1 minute, toss in the beans, finish with lemon."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 20,
+     "task": "Blanch the green beans."
+    },
+    {
+     "minutesBefore": 5,
+     "task": "Toss the beans with garlic."
+    }
+   ],
+   "forVegetarians": false
+  },
+  {
+   "id": "tg_cranberry",
+   "name": "Cranberry orange sauce",
+   "course": "side",
+   "vegetarian": true,
+   "servings": 8,
+   "allergens": [],
+   "ingredients": [
+    {
+     "ingredient": "cranberries",
+     "amount": 340,
+     "text": "1 bag",
+     "note": "12 oz"
+    },
+    {
+     "ingredient": "sugar",
+     "amount": 200,
+     "text": "1 cup",
+     "note": ""
+    },
+    {
+     "ingredient": "orange",
+     "amount": 1,
+     "text": "1",
+     "note": "zest and juice"
+    }
+   ],
+   "steps": [
+    "Simmer everything with ½ cup water for 10 minutes, until most berries pop.",
+    "Cool. It sets as it chills, and keeps 5 days in the fridge."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 2880,
+     "task": "Make the cranberry sauce; it keeps in the fridge."
+    }
+   ],
+   "forVegetarians": false
+  },
+  {
+   "id": "tg_sweetpot",
+   "name": "Honey roasted sweet potatoes",
+   "course": "side",
+   "vegetarian": true,
+   "servings": 8,
+   "allergens": [],
+   "ingredients": [
+    {
+     "ingredient": "sweet_potato",
+     "amount": 1360,
+     "text": "3 lb",
+     "note": "in 1 in cubes"
+    },
+    {
+     "ingredient": "olive_oil",
+     "amount": 30,
+     "text": "2 tbsp",
+     "note": ""
+    },
+    {
+     "ingredient": "honey",
+     "amount": 30,
+     "text": "2 tbsp",
+     "note": ""
+    },
+    {
+     "ingredient": "salt",
+     "amount": 6,
+     "text": "1 tsp",
+     "note": ""
+    }
+   ],
+   "steps": [
+    "Toss with the oil and salt on two sheet pans.",
+    "Roast at 425°F for 30 minutes, turning once. Drizzle with honey for the last 5 minutes."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 50,
+     "task": "Cube the sweet potatoes."
+    },
+    {
+     "minutesBefore": 35,
+     "task": "Sweet potatoes in the oven at 425°F (after the turkey comes out)."
+    }
+   ],
+   "forVegetarians": false
+  },
+  {
+   "id": "tg_squash",
+   "name": "Roast squash with chickpeas and feta",
+   "course": "main",
+   "vegetarian": true,
+   "servings": 4,
+   "allergens": [
+    "dairy"
+   ],
+   "ingredients": [
+    {
+     "ingredient": "butternut_squash",
+     "amount": 1,
+     "text": "1",
+     "note": "about 2 lb, in wedges"
+    },
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    },
+    {
+     "ingredient": "feta",
+     "amount": 100,
+     "text": "⅔ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "spinach",
+     "amount": 142,
+     "text": "1 box",
+     "note": ""
+    },
+    {
+     "ingredient": "honey",
+     "amount": 15,
+     "text": "1 tbsp",
+     "note": ""
+    },
+    {
+     "ingredient": "olive_oil",
+     "amount": 30,
+     "text": "2 tbsp",
+     "note": ""
+    }
+   ],
+   "steps": [
+    "Roast the squash wedges and chickpeas with oil and salt at 425°F for 35 minutes.",
+    "Wilt the spinach underneath, top with feta and a drizzle of honey."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 45,
+     "task": "Vegetarian main: squash and chickpeas into the oven."
+    }
+   ],
+   "forVegetarians": true
+  },
+  {
+   "id": "tg_pie",
+   "name": "Pumpkin pie",
+   "course": "dessert",
+   "vegetarian": true,
+   "servings": 8,
+   "allergens": [
+    "gluten",
+    "dairy",
+    "egg"
+   ],
+   "ingredients": [
+    {
+     "ingredient": "pie_crust",
+     "amount": 1,
+     "text": "1 crust",
+     "note": "of a 2-pack"
+    },
+    {
+     "ingredient": "pumpkin_puree",
+     "amount": 425,
+     "text": "1 can",
+     "note": ""
+    },
+    {
+     "ingredient": "evaporated_milk",
+     "amount": 354,
+     "text": "1 can",
+     "note": ""
+    },
+    {
+     "ingredient": "eggs",
+     "amount": 2,
+     "text": "2",
+     "note": ""
+    },
+    {
+     "ingredient": "sugar",
+     "amount": 150,
+     "text": "¾ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "pumpkin_spice",
+     "amount": 6,
+     "text": "2 tsp",
+     "note": ""
+    },
+    {
+     "ingredient": "heavy_cream",
+     "amount": 240,
+     "text": "1 cup",
+     "note": "whipped, to serve"
+    }
+   ],
+   "steps": [
+    "Whisk the pumpkin, milk, eggs, sugar and spice.",
+    "Pour into the crust and bake at 425°F for 15 minutes, then 350°F for 40–50 minutes until just set in the middle.",
+    "Cool at least 2 hours. Whip the cream to serve."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 1440,
+     "task": "Bake the pie (it's best made the day before)."
+    }
+   ],
+   "forVegetarians": false
+  }
+ ]
+}

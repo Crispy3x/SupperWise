@@ -1,0 +1,56 @@
+{
+ "id": "05-shared-ingredients",
+ "angle": "list",
+ "accent": "#FFD9A8",
+ "slides": [
+  {
+   "style": "bold",
+   "ground": "#1E4D5C",
+   "text": "5 weeknight dinners that share *half their ingredients*"
+  },
+  {
+   "style": "note",
+   "text": "the week",
+   "lines": [
+    "mon · shakshuka",
+    "tue · penne arrabbiata",
+    "wed · chickpea tikka masala",
+    "thu · red lentil soup",
+    "fri · lemon-thyme skillet chicken"
+   ]
+  },
+  {
+   "style": "note",
+   "text": "what they share",
+   "lines": [
+    "crushed tomatoes: mon, tue, wed",
+    "garlic: all five",
+    "lemons: thu, fri",
+    "cumin: mon, wed, thu"
+   ]
+  },
+  {
+   "style": "bold",
+   "ground": "dark",
+   "text": "fewer half-used things *rotting in the fridge*"
+  },
+  {
+   "style": "bold",
+   "ground": "#84520C",
+   "text": "an app that plans the week *and* prices the list"
+  },
+  {
+   "style": "bold",
+   "ground": "light",
+   "text": "it's called *Supperwise*",
+   "sub": "coming soon to iPhone"
+  }
+ ],
+ "caption": "save this for your next shop",
+ "hashtags": [
+  "weeknightdinner",
+  "mealplan",
+  "budgetmeals",
+  "dinnerideas"
+ ]
+}

@@ -1,0 +1,50 @@
+{
+  "facts": {
+    "scanned": "2026-11-11T20:56:45.778Z",
+    "root": "/home/user/mrr-app/app",
+    "stack": [
+      "native"
+    ],
+    "name": "Supperwise",
+    "bundleId": "com.supperwise.app",
+    "version": "1.0",
+    "build": "1",
+    "deploymentTarget": "17.0",
+    "devices": "iPhone",
+    "languages": [],
+    "sdks": [],
+    "permissions": {},
+    "accounts": false,
+    "purchases": true,
+    "entitlements": [],
+    "privacyManifests": [
+      "Supperwise/Resources/PrivacyInfo.xcprivacy"
+    ],
+    "sdkPrivacyManifests": [],
+    "icons": [
+      "Supperwise/Assets.xcassets/AppIcon.appiconset/AppIcon.png"
+    ],
+    "sourceFiles": 17,
+    "notes": []
+  },
+  "counts": {
+    "blocker": 0,
+    "risk": 0,
+    "check": 1
+  },
+  "findings": [
+    {
+      "id": "trial-wording",
+      "severity": "check",
+      "guideline": "3.1.2",
+      "area": "purchases",
+      "title": "The app advertises a free trial",
+      "evidence": [
+        "Supperwise/Views/Onboarding/FirstWeekView.swift:91  \"No trial\"",
+        "Supperwise/Views/Onboarding/FirstWeekView.swift:129  \"Free for 7 days, then \\\\(y.displayPrice) a year, charged to your Apple ID and renewing automatically. Cancel in Settings \""
+      ],
+      "why": "A trial must be shown with what happens after it: the price and period that start when it ends, at least as prominent as the trial itself. The trial must exist as an introductory offer on that exact product in App Store Connect, and only eligible people may be shown it.",
+      "fix": "Read trial length and eligibility from StoreKit (isEligibleForIntroOffer / RevenueCat checkTrialOrIntroDiscountEligibility), show \"then <price>/<period>\" next to it, and never promise a trial the product doesn't have."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+ "id": "03-whole-jar",
+ "angle": "curiosity",
+ "accent": "#FFD9A8",
+ "slides": [
+  {
+   "style": "bold",
+   "ground": "#4D581C",
+   "text": "the recipe needs one teaspoon. the store sells *the whole jar*"
+  },
+  {
+   "style": "bold",
+   "ground": "dark",
+   "text": "so the smart move isn't skipping the jar"
+  },
+  {
+   "style": "bold",
+   "ground": "dark",
+   "text": "it's planning *two more dinners* that use it"
+  },
+  {
+   "style": "note",
+   "text": "one jar of cumin",
+   "lines": [
+    "[x] shakshuka",
+    "[x] chickpea tikka masala",
+    "[x] red lentil soup",
+    "[ ] the rest keeps for months"
+   ]
+  },
+  {
+   "style": "bold",
+   "ground": "#AD321C",
+   "text": "an app that plans the week *and* prices the list"
+  },
+  {
+   "style": "bold",
+   "ground": "light",
+   "text": "it's called *Supperwise*",
+   "sub": "coming soon to iPhone"
+  }
+ ],
+ "caption": "use the whole jar on purpose",
+ "hashtags": [
+  "cookingtips",
+  "budgetcooking",
+  "mealplanning",
+  "pantry"
+ ]
+}

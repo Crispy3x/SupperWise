@@ -1,0 +1,39 @@
+
+/* round 2 */
+.plate img, .rplate img, .strip .o img { transform: scale(1.32); }
+.r-mon .o { border-color:#C88A2E !important; }
+.r-tue .o { border-color:#9C5A8A !important; }
+.r-thu .o { border-color:#8E9A45 !important; }
+.r-fri .o { border-color:#4E8EA0 !important; }
+.strip .o { border-width: 4px; }
+.strip .now .o { border-color: var(--ink) !important; }
+.plates { gap: 8px; justify-content: space-between; }
+.pl { margin-right: 0; }
+.pl img { width: 62px; height: 62px; border-width: 5px; border-style: solid; }
+.pl.r-mon img { border-color:#84520C; } .pl.r-tue img { border-color:#5E2A4F; } .pl.r-wed img { border-color:#AD321C; }
+.pl.r-thu img { border-color:#4D581C; } .pl.r-fri img { border-color:#1E4D5C; }
+.days b.g-mon { background:#84520C; color:#FFF5EC; }
+.days b.g-tue { background:#5E2A4F; color:#FFF5EC; }
+.days b.g-wed { background:#AD321C; color:#FFF5EC; }
+.days b.g-thu { background:#4D581C; color:#FFF5EC; }
+.days b.g-fri { background:#1E4D5C; color:#FFF5EC; }
+.nextep { margin: 24px 22px 0; display:flex; align-items:center; gap: 10px; font-size: 15px; color: var(--ink-2); }
+.chip-thu { background:#4D581C; color:#FFF5EC; font: 600 13px var(--sf); padding: 6px 10px; border-radius: 13px; flex:none; }
+.bigrow { display:flex; align-items:flex-end; justify-content:space-between; }
+.mini-cut { width: 90px; height: 60px; margin-bottom: 10px; }
+.total p { margin-top: 14px; }
+.glist { padding-bottom: 110px; }
+.roll { font-style: normal; display:inline-block; transform: translateY(-35%); opacity:.45; }
+.mid .ep p { opacity: 1; }
+.mid .ep h1 { opacity: .25; }
+.paywall .pw-top { padding-top: calc(var(--safe-top) + 40px); }
+.paywall .plates { padding-top: 28px; }
+.paywall .keep { margin-top: 22px; }
+.paywall .offer { padding-top: 26px; }
+.paywall .btn.wide.dark { margin-top: 24px; }
+.plan .budget { padding-top: 12px; }
+.plan .nights { padding-top: 16px; }
+.plan .people { padding-top: 14px; }
+.plan .equip { padding-top: 14px; }
+.plan .planbtn { padding-top: 16px; }
+.plan .rule-note { margin-top: 8px; }

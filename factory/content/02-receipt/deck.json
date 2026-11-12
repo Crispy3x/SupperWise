@@ -1,0 +1,50 @@
+{
+  "id": "02-receipt",
+  "angle": "pain",
+  "accent": "#FFD9A8",
+  "slides": [
+    {
+      "style": "bold",
+      "ground": "dark",
+      "text": "the meal plan said $80. *the receipt* said otherwise"
+    },
+    {
+      "style": "bold",
+      "ground": "#84520C",
+      "text": "most plans price what the recipe *uses*"
+    },
+    {
+      "style": "bold",
+      "ground": "#84520C",
+      "text": "you pay for what the store *sells*"
+    },
+    {
+      "style": "note",
+      "text": "where the gap comes from",
+      "lines": [
+        "1 tbsp salsa → the whole jar",
+        "3 scallions → the bunch",
+        "¼ cup cream → the carton",
+        "1 tsp spice → the whole jar"
+      ]
+    },
+    {
+      "style": "bold",
+      "ground": "#4D581C",
+      "text": "an app that plans the week *and* prices the list"
+    },
+    {
+      "style": "bold",
+      "ground": "light",
+      "text": "it's called *Supperwise*",
+      "sub": "coming soon to iPhone"
+    }
+  ],
+  "caption": "the jar costs the same whether you use a spoon or all of it",
+  "hashtags": [
+    "grocerybudget",
+    "budgetmeals",
+    "mealprep",
+    "groceryhaul"
+  ]
+}

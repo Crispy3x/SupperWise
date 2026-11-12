@@ -1,0 +1,44 @@
+{
+  "id": "06-not-spicy",
+  "angle": "list",
+  "accent": "#FFD9A8",
+  "slides": [
+    {
+      "style": "bold",
+      "ground": "#84520C",
+      "text": "dinners that work when one kid *won't eat spicy*"
+    },
+    {
+      "style": "note",
+      "text": "make one pot, then split",
+      "lines": [
+        "[x] penne arrabbiata: pinch of chili in the pot, the rest at the table",
+        "[x] red curry soup: 1 tbsp paste in the pot",
+        "[x] turkey chili: hot sauce on the side"
+      ]
+    },
+    {
+      "style": "bold",
+      "ground": "dark",
+      "text": "the heat goes on the plate, *not in the pan*"
+    },
+    {
+      "style": "bold",
+      "ground": "#4D581C",
+      "text": "an app that plans the week *and* prices the list"
+    },
+    {
+      "style": "bold",
+      "ground": "light",
+      "text": "it's called *Supperwise*",
+      "sub": "coming soon to iPhone"
+    }
+  ],
+  "caption": "one pot, everyone fed",
+  "hashtags": [
+    "kidfriendly",
+    "familydinner",
+    "pickyeaters",
+    "dinnerideas"
+  ]
+}

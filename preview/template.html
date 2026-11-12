@@ -1,0 +1,947 @@
+<title>Supperwise Prototype</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a quiet page with notes on the left and the working app in a phone on the right; stacks on phones. */
+:root {
+  --page: #EFE7DE; --page-ink: #2B1611; --page-ink2: #6B5148; --page-rule: #DCCCBE; --frame: #1B1210;
+  --paper: #FBF3EA; --raised: #FFFFFF; --ink: #2B1611; --ink2: #6B5148; --ink3: #8C7369; --rule: #E7D8CC; --chip: #F3E5D8;
+  --cream: #FFF5EC; --cream2: #FFE3D6; --good: #2F6B3A; --bad: #B3261E;
+  --display: "Instrument Serif", "New York", Georgia, serif;
+  --ui: -apple-system, "SF Pro Text", Inter, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --page: #151010; --page-ink: #F6E9DF; --page-ink2: #C9B2A7; --page-rule: #33252100; --frame: #000;
+  --paper: #1D1311; --raised: #2A1C19; --ink: #F6E9DF; --ink2: #C9B2A7; --ink3: #A08A80; --rule: #3B2A25; --chip: #33231F; --good: #7FC48C; --bad: #FF8A80; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --page: #151010; --page-ink: #F6E9DF; --page-ink2: #C9B2A7; --page-rule: #33252100; --frame: #000;
+  --paper: #1D1311; --raised: #2A1C19; --ink: #F6E9DF; --ink2: #C9B2A7; --ink3: #A08A80; --rule: #3B2A25; --chip: #33231F; --good: #7FC48C; --bad: #FF8A80; color-scheme: dark }
+* { box-sizing: border-box; }
+body { background: var(--page); color: var(--page-ink); font-family: var(--ui); margin: 0; }
+.wrap { max-width: 1060px; margin: 0 auto; padding-block: 32px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; }
+@media (max-width: 860px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 24px; } .notes { order: 2; } }
+.notes h1 { font-family: var(--display); font-weight: 400; font-size: 56px; line-height: 1; margin: 0 0 12px; letter-spacing: -0.02em; text-wrap: balance; }
+.notes p, .notes li { font-size: 15px; line-height: 1.55; color: var(--page-ink2); max-width: 60ch; }
+.notes h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; margin: 28px 0 8px; color: var(--page-ink); }
+.notes ol { padding-left: 20px; margin: 0; }
+.notes .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 12px; background: var(--chip); color: var(--ink); }
+.notes button.reset { margin-top: 18px; font: 600 14px var(--ui); color: var(--page-ink); background: transparent; border: 1.5px solid var(--page-rule); border-radius: 20px; padding: 8px 16px; cursor: pointer; }
+
+/* The phone */
+.phone { width: 100%; max-width: 400px; aspect-ratio: 400 / 860; max-height: 860px; margin: 0 auto; border-radius: 54px; padding: 12px; background: var(--frame); box-shadow: 0 30px 60px -20px rgba(40,20,10,.45); position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); }
+@media (max-width: 860px) { .phone { position: relative; top: 0; } }
+.screen { position: relative; width: 100%; height: 100%; border-radius: 42px; overflow: hidden; background: var(--paper); color: var(--ink); container-type: inline-size; }
+.island { position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 31%; height: 30px; border-radius: 20px; background: #000; z-index: 30; }
+.status { position: absolute; top: 0; left: 0; right: 0; height: 52px; display: flex; justify-content: space-between; align-items: center; padding: 6px 30px 0 34px; font: 600 15px var(--ui); z-index: 29; pointer-events: none; }
+.status.light { color: var(--cream); } .status.dark { color: var(--ink); }
+.status i { display: inline-block; width: 24px; height: 11px; border: 1.5px solid currentColor; border-radius: 3px; position: relative; opacity: .9; }
+.status i::after { content: ""; position: absolute; inset: 1.5px 4px 1.5px 1.5px; background: currentColor; border-radius: 1px; }
+.view { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; padding-bottom: 110px; }
+.view::-webkit-scrollbar { display: none; }
+.pad { padding: 0 20px; }
+.serif { font-family: var(--display); font-weight: 400; }
+.homebar { position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%); width: 36%; height: 5px; border-radius: 3px; background: currentColor; opacity: .85; z-index: 31; pointer-events: none; }
+
+/* Buttons */
+.btn { appearance: none; border: 0; cursor: pointer; height: 48px; padding: 0 22px; border-radius: 24px; font: 700 16px var(--ui); display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.btn:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid #FFB547; outline-offset: 2px; }
+.btn.cream { background: var(--cream); color: var(--day); }
+.btn.ghost { background: transparent; color: var(--cream); box-shadow: inset 0 0 0 1.5px rgba(255,245,236,.55); font-weight: 600; }
+.btn.accent { background: var(--day); color: var(--cream); width: 100%; }
+.btn.wide { width: 100%; }
+.btn:disabled { opacity: .45; cursor: default; }
+.link { background: none; border: 0; padding: 0; font: 600 14px var(--ui); color: var(--day); cursor: pointer; }
+
+/* Tab bar (glass) */
+.tabs { position: absolute; left: 50%; transform: translateX(-50%); bottom: 22px; display: flex; gap: 2px; padding: 4px; border-radius: 30px; z-index: 20;
+  backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); }
+.tabs.onday { background: rgba(0,0,0,.24); color: var(--cream); }
+.tabs.onpaper { background: color-mix(in srgb, var(--paper) 70%, transparent); color: var(--ink); box-shadow: 0 6px 20px rgba(0,0,0,.12), inset 0 0 0 .5px var(--rule); }
+.tabs button { appearance: none; border: 0; background: transparent; color: inherit; width: 88px; height: 52px; border-radius: 26px; font: 500 11px var(--ui); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; cursor: pointer; }
+.tabs button.on { background: rgba(255,255,255,.2); font-weight: 700; }
+.tabs.onpaper button.on { background: color-mix(in srgb, var(--day) 12%, transparent); color: var(--day); }
+.tabs svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Today */
+.today { background: var(--day); color: var(--cream); }
+.today .top { display: flex; justify-content: space-between; padding: 64px 20px 0; font-size: 14px; color: var(--cream2); }
+.today .top button { background: none; border: 0; color: var(--cream); font: 600 14px var(--ui); cursor: pointer; padding: 0; }
+.dayname { font-family: var(--display); font-size: 84px; line-height: .92; letter-spacing: -0.03em; padding: 0 20px; white-space: nowrap; }
+.stage { position: relative; height: 236px; margin-top: 2px; }
+.stage svg.cut { position: absolute; inset: 0; width: 100%; height: 100%; transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+.plate { position: absolute; left: 50%; top: 6px; width: 222px; height: 222px; margin-left: -96px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 8px var(--cream); background: var(--deep); }
+.plate img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.5); display: block; }
+.ini { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-size: 28px; color: var(--cream); background: var(--deep, #741A0E); }
+.plate .ini { font-size: 96px; }
+.band .o, .rp { position: relative; }
+.rp .ini { font-size: 80px; }
+.plate.out { animation: spinout .26s cubic-bezier(.4,0,1,1) forwards; }
+.plate.in { animation: spinin .32s cubic-bezier(.2,.8,.2,1); }
+@keyframes spinout { to { transform: translateX(-150px) rotate(-160deg); opacity: 0; } }
+@keyframes spinin { from { transform: translateX(150px) rotate(120deg); opacity: 0; } to { transform: none; opacity: 1; } }
+.ep { padding: 2px 20px 0; }
+.ep .k { font-size: 13px; font-weight: 600; color: var(--cream2); }
+.ep h2 { font-family: var(--display); font-weight: 400; font-size: 42px; line-height: .98; letter-spacing: -0.02em; margin: 2px 0 6px; text-wrap: balance; }
+.ep p { margin: 0; font-size: 14px; line-height: 1.35; color: var(--cream2); }
+.ep p b { color: var(--cream); font-variant-numeric: tabular-nums; }
+.row2 { display: flex; gap: 10px; padding: 14px 20px 0; }
+.strip { display: flex; justify-content: space-between; padding: 20px 20px 0; }
+.strip button { appearance: none; background: none; border: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--cream2); font: 600 13px var(--ui); padding: 0; }
+.strip .o { width: 46px; height: 46px; border-radius: 50%; overflow: hidden; border: 3px solid rgba(255,245,236,.35); position: relative; background: var(--deep); }
+.strip .o img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.4); display: block; }
+.strip .done .o img { filter: grayscale(.6) brightness(.5); }
+.strip .done .o::after { content: "✓"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--cream); font-weight: 700; font-size: 18px; }
+.strip .now { color: var(--cream); } .strip .now .o { border-color: var(--cream); }
+.nextep { display: flex; gap: 10px; align-items: center; padding: 20px 20px 0; font-size: 14px; }
+.nextep span:first-child { background: rgba(0,0,0,.24); padding: 5px 10px; border-radius: 12px; font-weight: 600; font-size: 12px; flex: none; }
+.nextep span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+
+/* Paper screens */
+.phead { display: flex; justify-content: space-between; align-items: flex-end; padding: 62px 20px 0; }
+.phead h1 { font-family: var(--display); font-weight: 400; font-size: 42px; margin: 0; line-height: 1; letter-spacing: -0.02em; }
+.big { font-family: var(--display); font-size: 78px; line-height: .9; letter-spacing: -0.035em; color: var(--day); font-variant-numeric: tabular-nums; }
+.sub { font-size: 14px; color: var(--ink2); line-height: 1.4; margin: 10px 0 0; }
+.lbl { font: 700 12px var(--ui); color: var(--ink2); margin: 18px 0 8px; }
+.aisle { display: flex; justify-content: space-between; align-items: flex-end; margin: 22px 0 2px; }
+.aisle h3 { font-family: var(--display); font-weight: 400; font-size: 26px; margin: 0; }
+.aisle span { font: 700 12px var(--ui); color: var(--ink2); font-variant-numeric: tabular-nums; }
+.gi { width: 100%; appearance: none; background: none; border: 0; border-bottom: 1px solid var(--rule); text-align: left; color: inherit; display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; cursor: pointer; font: inherit; }
+.gi .box { width: 22px; height: 22px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--ink3); flex: none; margin-top: 1px; display: flex; align-items: center; justify-content: center; color: var(--cream); font-size: 13px; font-weight: 700; }
+.gi.on .box { background: var(--day); box-shadow: none; }
+.gi .t { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.gi .n { font-size: 16px; } .gi.on .n { text-decoration: line-through; color: var(--ink2); }
+.gi .m { font-size: 12px; color: var(--ink2); }
+.gi .note { font-size: 12px; background: var(--chip); border-radius: 8px; padding: 5px 8px; margin-top: 4px; line-height: 1.3; }
+.gi .p { font-size: 16px; font-variant-numeric: tabular-nums; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { appearance: none; border: 0; cursor: pointer; font: 500 14px var(--ui); padding: 7px 12px; border-radius: 16px; background: var(--chip); color: var(--ink); }
+.chip.on { background: var(--ink); color: var(--paper); }
+.chip.off { background: transparent; box-shadow: inset 0 0 0 1.5px var(--rule); color: var(--ink2); text-decoration: line-through; }
+.days { display: flex; gap: 6px; }
+.days button { appearance: none; border: 0; cursor: pointer; width: 40px; height: 40px; border-radius: 50%; font: 600 14px var(--ui); background: transparent; color: var(--ink2); box-shadow: inset 0 0 0 1.5px var(--rule); }
+.days button.on { color: var(--cream); box-shadow: none; }
+input[type=range] { width: 100%; accent-color: var(--day); }
+.field { width: 100%; font: 16px var(--ui); padding: 13px 14px; border-radius: 14px; border: 0; background: var(--raised); color: var(--ink); box-shadow: inset 0 0 0 1px var(--rule); }
+.seg { display: flex; background: var(--chip); border-radius: 10px; padding: 3px; }
+.seg button { flex: 1; appearance: none; border: 0; background: transparent; color: var(--ink); font: 500 13px var(--ui); padding: 8px 4px; border-radius: 8px; cursor: pointer; }
+.seg button.on { background: var(--raised); box-shadow: 0 1px 3px rgba(0,0,0,.12); font-weight: 600; }
+.person { border-bottom: 1px solid var(--rule); padding: 10px 0; }
+.person .pn { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.person .pn input { font: 600 16px var(--ui); border: 0; background: transparent; color: var(--ink); width: 50%; padding: 4px 0; }
+.person .pc { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.person .pc .chip { font-size: 12px; padding: 5px 10px; }
+.x { appearance: none; border: 0; background: none; color: var(--ink3); font-size: 20px; cursor: pointer; line-height: 1; }
+
+/* Recipe */
+.rhead { background: var(--day); color: var(--cream); padding: 58px 20px 26px; position: relative; overflow: hidden; min-height: 290px; }
+.rhead .back { appearance: none; border: 0; width: 40px; height: 40px; border-radius: 50%; background: rgba(0,0,0,.22); color: var(--cream); font-size: 20px; cursor: pointer; }
+.rhead .rp { position: absolute; right: -54px; top: 70px; width: 196px; height: 196px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 7px var(--cream); background: var(--deep); }
+.rhead .rp img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.5); }
+.rhead h1 { font-family: var(--display); font-weight: 400; font-size: 42px; line-height: .98; margin: 28px 0 8px; width: 58%; letter-spacing: -0.02em; text-wrap: balance; }
+.rhead p { margin: 0; font-size: 14px; color: var(--cream2); width: 55%; line-height: 1.35; }
+.rsheet { color: var(--ink); background: var(--paper); border-radius: 26px 26px 0 0; margin-top: -20px; position: relative; padding: 16px 20px 0; }
+.stepper { display: flex; align-items: center; gap: 14px; border-radius: 18px; box-shadow: inset 0 0 0 1.5px var(--rule); height: 36px; padding: 0 12px; }
+.stepper button { appearance: none; border: 0; background: none; color: var(--day); font: 600 20px var(--ui); cursor: pointer; width: 20px; }
+.ing { display: flex; gap: 12px; font-size: 14px; padding: 4px 0; line-height: 1.3; }
+.ing b { width: 74px; flex: none; }
+.step { display: flex; gap: 12px; padding: 9px 0; font-size: 15px; line-height: 1.4; }
+.step .num { font-family: var(--display); font-size: 26px; color: var(--day); width: 22px; flex: none; line-height: 1; }
+.callout { background: var(--chip); border-radius: 12px; padding: 10px 12px; font-size: 13px; line-height: 1.4; }
+
+/* Onboarding / paywall */
+.ob { padding: 70px 20px 30px; display: flex; flex-direction: column; gap: 16px; }
+.ob h1 { font-family: var(--display); font-weight: 400; font-size: 42px; line-height: 1; margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+.band { background: #AD321C; display: flex; justify-content: space-between; padding: 14px 14px 12px; margin: 4px -20px 0; }
+.band div { display: flex; flex-direction: column; align-items: center; gap: 5px; color: var(--cream); font: 600 12px var(--ui); }
+.band .o { width: 54px; height: 54px; border-radius: 50%; overflow: hidden; border: 5px solid var(--cream); background: #741A0E; }
+.band .o img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.4); }
+.opt { appearance: none; width: 100%; text-align: left; border: 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 16px; background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--rule); font: inherit; }
+.opt.on { box-shadow: inset 0 0 0 2px var(--ink); background: var(--raised); }
+.opt b { display: block; font-size: 16px; } .opt span { font-size: 13px; color: var(--ink2); }
+.bul { display: flex; gap: 10px; font-size: 14px; line-height: 1.35; color: var(--ink2); }
+.bul::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #AD321C; margin-top: 6px; flex: none; }
+.bul b { color: var(--ink); }
+.fine { font-size: 12px; color: var(--ink2); line-height: 1.4; }
+.toast { position: absolute; left: 16px; right: 16px; bottom: 96px; background: var(--ink); color: var(--paper); padding: 12px 14px; border-radius: 14px; font-size: 13px; line-height: 1.35; z-index: 40; }
+.card { background: var(--raised); border-radius: 18px; padding: 14px; box-shadow: inset 0 0 0 1px var(--rule); display: flex; flex-direction: column; gap: 8px; }
+.card h4 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 24px; line-height: 1.05; }
+.card p { margin: 0; font-size: 13px; color: var(--ink2); line-height: 1.4; }
+.card .btn { height: 42px; font-size: 15px; }
+.new { font: 700 10px var(--ui); letter-spacing: .08em; text-transform: uppercase; color: var(--day); }
+.lunch { appearance: none; border: 0; cursor: pointer; margin: 12px 20px 0; padding: 8px 12px; border-radius: 16px; font: 600 13px var(--ui); background: rgba(0,0,0,.2); color: var(--cream); }
+.lunch.on { background: var(--cream); color: var(--day); }
+.scan { position: relative; height: 150px; border-radius: 18px; overflow: hidden; background: #22302e; margin-top: 12px; }
+.scan .shelf { position: absolute; left: 10%; right: 10%; height: 3px; background: rgba(255,255,255,.25); }
+.scan .item { position: absolute; border-radius: 10px; }
+.scan .beam { position: absolute; left: 0; right: 0; height: 40px; background: linear-gradient(transparent, rgba(255,214,140,.45), transparent); animation: beam 1.6s ease-in-out infinite; }
+@keyframes beam { from { top: -40px; } to { top: 150px; } }
+.scan .lab { position: absolute; left: 12px; bottom: 10px; font: 600 12px var(--ui); color: #fff; background: rgba(0,0,0,.45); padding: 4px 8px; border-radius: 8px; }
+.match { border-bottom: 1px solid var(--rule); padding: 12px 0; display: flex; gap: 12px; align-items: center; }
+.match .th { width: 56px; height: 56px; border-radius: 50%; overflow: hidden; position: relative; flex: none; background: var(--deep, #741A0E); }
+.match .th img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.4); }
+.match .t { flex: 1; min-width: 0; } .match .t b { display: block; font-size: 15px; } .match .t span { font-size: 12px; color: var(--ink2); }
+.match .btn { height: 36px; padding: 0 12px; font-size: 13px; }
+.meter { height: 6px; border-radius: 3px; background: var(--rule); margin-top: 6px; overflow: hidden; } .meter i { display: block; height: 100%; background: var(--day); }
+.rc { display: grid; grid-template-columns: minmax(0,1fr) auto auto; gap: 4px 12px; font-size: 13px; font-variant-numeric: tabular-nums; align-items: baseline; }
+.rc .h { font-weight: 700; color: var(--ink2); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
+.rc .up { color: var(--bad); } .rc .down { color: var(--good); }
+.receipt { background: var(--raised); border-radius: 4px; padding: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.08); font-family: ui-monospace, Menlo, monospace; font-size: 12px; line-height: 1.6; }
+.cookv { background: var(--day); color: var(--cream); display: flex; flex-direction: column; }
+.cookv .stepnum { font: 600 13px var(--ui); color: var(--cream2); padding: 64px 22px 0; display: flex; justify-content: space-between; }
+.cookv .stepnum button { background: none; border: 0; color: var(--cream); font: 600 14px var(--ui); cursor: pointer; }
+.cookv .bigstep { font-family: var(--display); font-size: 34px; line-height: 1.12; padding: 18px 22px 0; letter-spacing: -0.01em; }
+.cookv .uses { padding: 14px 22px 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.cookv .uses span { font-size: 12px; background: rgba(0,0,0,.2); padding: 4px 9px; border-radius: 10px; }
+.timer { margin: 18px 22px 0; appearance: none; border: 0; cursor: pointer; border-radius: 20px; padding: 14px 16px; background: rgba(0,0,0,.22); color: var(--cream); font: 600 16px var(--ui); display: flex; justify-content: space-between; align-items: center; font-variant-numeric: tabular-nums; }
+.timer b { font-size: 28px; font-weight: 600; }
+.cookv .nav { display: flex; gap: 10px; padding: 22px 22px 0; }
+.cookv .nav .btn { flex: 1; }
+.dots { display: flex; gap: 5px; padding: 0 22px; margin-top: 10px; } .dots i { flex: 1; height: 4px; border-radius: 2px; background: rgba(255,245,236,.3); } .dots i.on { background: var(--cream); }
+.stat { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 15px; }
+.stat b { font-family: var(--display); font-weight: 400; font-size: 30px; font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: reduce) { .plate.out, .plate.in { animation: none; } .stage svg.cut { transition: none; } }
+</style>
+
+<div class="wrap">
+  <section class="notes">
+    <span class="tag">Interactive prototype</span>
+    <h1>Supperwise</h1>
+    <p>A clickable preview of the iPhone app, running the real recipe catalog and the same rules as the Swift code: each person's diet and allergies, the kitchen you have, and grocery prices worked out by the whole pack you buy.</p>
+    <h2>Try this</h2>
+    <ol>
+      <li>Enter a ZIP code, add people (try a vegetarian and "No shellfish"), and build your first week.</li>
+      <li>On the first week, tap <b>Keep my free week</b>.</li>
+      <li>On <b>Week</b>, tap <b>Swap</b>: the plate spins and the price changes.</li>
+      <li>Tap <b>Start cooking</b>, then <b>I cooked it</b>. The next night takes its own colour.</li>
+      <li>In <b>Groceries</b>, tick items off. In <b>Kitchen</b>, tick what you have and watch the total drop.</li>
+      <li>Tap <b>Next week</b> to change the budget, nights or household, and plan again.</li>
+      <li>In <b>Kitchen</b>, tap <b>Plan lunches</b> (Family): a nut-free lunch for each school day, on the same grocery list. Turn on <b>Make extra for lunch tomorrow</b> and the next day's lunch uses the leftovers.</li>
+    </ol>
+    <h2>Plans</h2>
+    <p><b>Free</b>: first week, kept. <b>Plus</b> $5.99/mo or $29.99/yr: every week, swaps, pack prices, cook mode, holiday menus, 10 saved recipes a month. <b>Family</b> $9.99/mo or $49.99/yr: adds school lunches, first foods, the product scanner and 1–100 health scores for products and restaurant dishes, leftovers for lunch, receipt check, weekly recap, unlimited saves, a shared list. <b>Pro</b> $14.99/mo or $79.99/yr: adds the fridge scan. Locked features show which plan they need; tap one to see the plans.</p>
+    <h2>What's different from the real app</h2>
+    <p>Purchases are simulated here, and the fridge scan, product scanner, restaurant menus, receipt and saved recipe use samples. Prices are the app's estimates for a supermarket in your region, not live store prices. Food photos are stand-ins until the app has its own photography. Nothing you enter leaves this page.</p>
+    <button class="reset" id="reset" type="button">Start over</button>
+  </section>
+  <div class="phone"><div class="screen" id="screen"></div></div>
+</div>
+
+<script>
+const DATA = __DATA__;
+const IMG = __IMAGES__;
+const ING = Object.fromEntries(DATA.ingredients.map(i => [i.id, i]));
+const RECIPES = DATA.recipes;
+const R = id => RECIPES.find(r => r.id === id);
+const DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const AB = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+const SH = ["M","T","W","T","F","S","S"];
+const PAL = [["#84520C","#553406"],["#5E2A4F","#3D1A33"],["#AD321C","#741A0E"],["#4D581C","#323A10"],["#1E4D5C","#12323C"],["#6B3A1C","#472510"],["#2E4A36","#1D3022"]];
+const AISLES = [["produce","Produce"],["meat","Meat"],["seafood","Fish and seafood"],["dairy","Dairy and eggs"],["cans","Cans and jars"],["dry","Pasta, rice and dry goods"],["bakery","Bakery"],["frozen","Frozen"],["spices","Spices"],["staples","Oils and staples"]];
+const EQUIP = [["oven","Oven"],["stovetop","Stovetop"],["sheet_pan","Sheet pan"],["air_fryer","Air fryer"],["grill","Grill"],["slow_cooker","Slow cooker"]];
+const ALLERGENS = [["dairy","No dairy"],["egg","No eggs"],["gluten","No gluten"],["fish","No fish"],["shellfish","No shellfish"],["nuts","No nuts"]];
+const KINDS = [["discount","Discount",0.86],["supermarket","Supermarket",1.0],["premium","Premium",1.24]];
+const $ = s => document.querySelector(s);
+const money = v => "$" + v.toFixed(2);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function fresh() {
+  return {
+    step: "store", tab: "week", view: null, subscribed: false, tier: "free", pick: "family", saved: [], imports: 0, scanning: false, timer: null, seenOffer: false, toast: null,
+    settings: { budget: 95, cheapest: false, nights: [0,1,2,3,4], people: [], equipment: ["oven","stovetop","sheet_pan"], zip: "", store: "", kind: "supermarket" },
+    plan: null, leftovers: [], fridge: [], receipt: null, storeAdjust: 1, cook: null, bought: [], inKitchen: DATA.ingredients.filter(i => i.staple).map(i => i.id), focusDay: null, servings: null, yearly: true,
+  };
+}
+let S = fresh();
+function restoreSaved() { if ((S.saved || []).includes("saved_orzo") || (S.plan && S.plan.dinners.some(d => d.id === "saved_orzo"))) { if (!RECIPES.find(r => r.id === "saved_orzo")) RECIPES.push(SAMPLE_IMPORT); } }
+try { const saved = JSON.parse(localStorage.getItem("supperwise-proto") || "null"); if (saved && saved.settings) S = Object.assign(fresh(), saved, { toast: null }); } catch (e) {}
+function save() { try { localStorage.setItem("supperwise-proto", JSON.stringify(S)); } catch (e) {} }
+
+// ---------- Engine (mirrors Catalog.swift, Pricing.swift, Planner.swift) ----------
+function region(zip) {
+  const c = (zip || "").trim().toUpperCase()[0];
+  if (!c) return 1;
+  if ("01".includes(c)) return 1.10; if (c === "2") return 1.03; if (c === "3") return 0.97;
+  if ("45".includes(c)) return 0.96; if ("67".includes(c)) return 0.97; if (c === "8") return 1.02; if (c === "9") return 1.14;
+  return /[A-Z]/.test(c) ? 1.12 : 1;
+}
+const mult = () => (KINDS.find(k => k[0] === S.settings.kind) || KINDS[1])[2] * region(S.settings.zip) * (S.storeAdjust || 1);
+const hh = () => Math.max(S.settings.people.length, 1);
+const vegCount = () => S.settings.people.filter(p => p.diet === "vegetarian").length;
+const pescCount = () => S.settings.people.filter(p => p.diet === "pescatarian").length;
+function eligible() {
+  const st = S.settings, avoid = new Set(st.people.flatMap(p => p.avoids)), notSpicy = st.people.some(p => p.notSpicy);
+  return RECIPES.filter(r => r.equipment.every(e => st.equipment.includes(e))
+    && !r.allergens.some(a => avoid.has(a))
+    && !(vegCount() > 0 && !r.vegetarian && !r.vegetarianSwap)
+    && !(pescCount() > 0 && !r.pescatarian && !r.vegetarianSwap)
+    && !(notSpicy && r.spice > 0 && !r.mildNote));
+}
+function usage(r, day) {
+  const extra = day !== undefined && (S.leftovers || []).includes(day) ? 2 : 0;
+  const out = {}, s = (hh() + extra) / r.servings;
+  for (const ri of r.ingredients) { const a = ri.amount * s; out[ri.ingredient] = (out[ri.ingredient] || 0) + (ING[ri.ingredient].unit === "count" ? Math.ceil(a) : a); }
+  const swaps = r.vegetarianSwap && !r.vegetarian ? vegCount() + (r.pescatarian ? 0 : pescCount()) : 0;
+  if (swaps > 0) for (const ri of r.vegetarianSwap.ingredients) out[ri.ingredient] = (out[ri.ingredient] || 0) + ri.amount;
+  return out;
+}
+function price(dinners, kitchen = S.inKitchen) {
+  const used = {}, days = {}, dish = {};
+  for (const [d, r] of dinners) { const u = usage(r, d); dish[d] = u; for (const k in u) { used[k] = (used[k] || 0) + u[k]; (days[k] = days[k] || []).push(d); } }
+  const lu = lunchUsage();
+  for (const k in lu) used[k] = (used[k] || 0) + (ING[k].unit === "count" ? Math.ceil(lu[k]) : lu[k]);
+  const lines = [];
+  for (const id in used) {
+    const i = ING[id], have = kitchen.includes(id);
+    const packs = have ? 0 : Math.ceil(used[id] / i.packSize - 1e-9);
+    lines.push({ id, i, used: used[id], packs, cost: packs * i.refPrice * mult(), days: (days[id] || []).sort((a,b)=>a-b), have, lunch: id in lu });
+  }
+  const share = {};
+  for (const l of lines) if (l.cost > 0) for (const d of l.days) share[d] = (share[d] || 0) + l.cost * (dish[d][l.id] / l.used);
+  let lunches = 0;
+  for (const l of lines) if (l.cost > 0 && l.lunch) { const din = l.days.reduce((a, d) => a + (dish[d][l.id] || 0), 0); lunches += l.cost * Math.max(0, l.used - din) / l.used; }
+  return { lines, share, lunches, total: lines.reduce((a, l) => a + l.cost, 0) };
+}
+// ---------- Lunchbox (Family): nut-free packed lunches on the same list ----------
+const LUNCH = id => DATA.lunches.find(l => l.id === id);
+function lunchEligible() {
+  const st = S.settings, avoided = new Set(st.people.flatMap(p => p.avoids)), meatFree = st.people.some(p => p.diet !== "everything");
+  return DATA.lunches.filter(l => l.allergens.every(a => !avoided.has(a)) && (!meatFree || l.vegetarian) && (S.lunch.thermos || !l.thermos));
+}
+const leftoverNight = d => d > 0 && (S.leftovers || []).includes(d - 1) ? d - 1 : null;
+const lunchBoxes = p => Math.max(0, S.lunch.perDay - (leftoverNight(p.day) === null ? 0 : 2));
+function planLunches() {
+  const pool = shuffle(lunchEligible(), rng(Math.floor(Math.random() * 1e9)));
+  S.lunch.plan = pool.length ? S.lunch.days.slice().sort((a, b) => a - b).map((day, n) => ({ day, id: pool[n % pool.length].id })) : [];
+}
+function lunchUsage() {
+  const out = {};
+  if (!S.lunch || !S.lunch.on || !has("family")) return out;
+  for (const p of S.lunch.plan || []) { const l = LUNCH(p.id), n = lunchBoxes(p); if (l && n) for (const it of l.ingredients) out[it.ingredient] = (out[it.ingredient] || 0) + it.amount * n; }
+  return out;
+}
+function leftoverNote(l) {
+  if (!l.packs) return null;
+  const frac = Math.max(0, l.packs * l.i.packSize - l.used) / (l.packs * l.i.packSize);
+  if (frac < 0.3) return null;
+  if (l.i.aisle === "spices") { const per = l.used / Math.max(l.days.length, 1); const more = Math.floor((l.packs * l.i.packSize - l.used) / Math.max(per, .1)); return more > 1 ? `The rest of the jar covers about ${more} more dinners.` : null; }
+  const share = frac >= 0.6 ? "Most of it is left over." : `About ${Math.round(frac * 10) * 10}% is left over.`;
+  if (l.i.keepsDays >= 60) return share + " It keeps for months.";
+  if (l.i.keepsDays >= 14) return share + ` It keeps about ${Math.floor(l.i.keepsDays / 7)} weeks.`;
+  return share + ` Use it within ${l.i.keepsDays} days.`;
+}
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const shuffle = (a, r) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const clash = rs => rs.some((r, i) => i && r.protein === rs[i-1].protein && r.protein !== "none");
+function makePlan(avoid = []) {
+  const nights = S.settings.nights.slice().sort((a,b)=>a-b), el = eligible();
+  if (el.length < nights.length) return { error: `Only ${el.length} recipes work for everyone with this kitchen, and you cook ${nights.length} nights. Turn on more equipment or cook fewer nights.` };
+  const freshPool = el.filter(r => !avoid.includes(r.id)), pool = freshPool.length >= nights.length ? freshPool : el;
+  const r = rng(Math.floor(Math.random() * 1e9)); let best = null;
+  for (let n = 0; n < 400; n++) {
+    let rem = shuffle(pool, r), pick = [];
+    while (pick.length < nights.length && rem.length) { const last = pick[pick.length - 1]; let i = rem.findIndex(x => !last || x.protein !== last.protein || x.protein === "none"); if (i < 0) i = 0; pick.push(rem.splice(i, 1)[0]); }
+    const total = price(nights.map((d, i) => [d, pick[i]])).total;
+    let s = S.settings.cheapest ? total : (total > S.settings.budget ? (total - S.settings.budget) * 10 + 100 : 0) + total * .05;
+    if (clash(pick)) s += 40; s -= new Set(pick.map(x => x.cuisine)).size * 1.5;
+    const long = pick.filter(x => x.minutes > 50).length; if (long > 2) s += (long - 2) * 6;
+    if (!best || s < best.s) best = { pick, s };
+  }
+  return { dinners: nights.map((d, i) => ({ day: d, id: best.pick[i].id, cooked: false })) };
+}
+const dinnersOf = () => S.plan.dinners.map(d => [d.day, R(d.id)]);
+function swapDay(day) {
+  const idx = S.plan.dinners.findIndex(d => d.day === day), inWeek = S.plan.dinners.map(d => d.id), before = price(dinnersOf()).total;
+  let best = null;
+  for (const c of shuffle(eligible().filter(r => !inWeek.includes(r.id)), rng(Date.now() % 1e9))) {
+    const trial = S.plan.dinners.map((d, i) => i === idx ? { ...d, id: c.id, cooked: false } : d);
+    const rs = trial.map(d => R(d.id)), total = price(trial.map(d => [d.day, R(d.id)])).total;
+    let s = Math.abs(total - before); if (total > S.settings.budget) s += (total - S.settings.budget) * 4; if (clash(rs)) s += 50;
+    if (!best || s < best.s) best = { trial, s };
+  }
+  if (best) S.plan.dinners = best.trial;
+}
+function tonight() {
+  if (!S.plan) return null;
+  if (S.focusDay !== null) { const f = S.plan.dinners.find(d => d.day === S.focusDay); if (f) return f; }
+  return S.plan.dinners.find(d => !d.cooked) || null;
+}
+
+// ---------- Rendering ----------
+const ICON = {
+  week: '<svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>',
+  groc: '<svg viewBox="0 0 24 24"><path d="M4 6h2l2 10h10l2-7H7.5"/><circle cx="10" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg>',
+  kit: '<svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M5 10h14M9 6.5v1.5M9 13v3"/></svg>',
+};
+const photo = (r) => r && r.photo && IMG[r.photo] ? `<img src="${IMG[r.photo]}" alt="">` : `<span class="ini">${esc((r?.name || "?")[0])}</span>`;
+function cuts(deep, ground) {
+  return `<svg class="cut" id="cuts" viewBox="0 0 402 270" aria-hidden="true">
+  <path d="M8 190 C 0 136, 26 82, 78 60 C 60 98, 50 146, 62 196 C 46 208, 18 208, 8 190 Z" fill="${deep}"/>
+  <path d="M76 56 c 4 -12 14 -18 26 -16" fill="none" stroke="#E07A5C" stroke-width="7" stroke-linecap="round" opacity=".8"/>
+  <path d="M322 24 a 70 70 0 0 1 70 70 l -70 0 z" fill="${deep}"/>
+  <path d="M322 46 a 48 48 0 0 1 48 48" fill="none" stroke="${ground}" stroke-width="4"/><path d="M322 68 a 26 26 0 0 1 26 26" fill="none" stroke="${ground}" stroke-width="4"/>
+  <circle cx="54" cy="246" r="13" fill="#E07A5C" opacity=".8"/><circle cx="80" cy="254" r="11" fill="#E07A5C" opacity=".8"/><circle cx="66" cy="226" r="10" fill="#E07A5C" opacity=".8"/><circle cx="370" cy="236" r="12" fill="#E07A5C" opacity=".8"/>
+  <g transform="translate(354 176) rotate(-20)" fill="${deep}"><circle r="16"/><circle cx="22" cy="-8" r="14"/><circle cx="18" cy="16" r="13"/><path d="M10 6 L -16 44" stroke="${deep}" stroke-width="4" stroke-linecap="round"/></g></svg>`;
+}
+function tabs(onDay) {
+  const b = (k, l) => `<button type="button" data-act="tab" data-v="${k}" class="${S.tab === k ? "on" : ""}">${ICON[k]}${l}</button>`;
+  return `<nav class="tabs ${onDay ? "onday" : "onpaper"}">${b("week","Week")}${b("groc","Groceries")}${b("kit","Kitchen")}</nav>`;
+}
+function status(light) { return `<div class="island"></div><div class="status ${light ? "light" : "dark"}"><span>5:42</span><span><i></i></span></div>`; }
+
+function viewToday() {
+  const t = tonight();
+  if (!t) return `<div class="view" style="--day:#AD321C"><div class="ob"><h1>That's the season.</h1><p class="sub">All ${S.plan.dinners.length} dinners this week are cooked. Plan next week and it will be ready on Monday.</p><button class="btn accent" data-act="open" data-v="plan">Plan next week</button></div></div>${tabs(false)}`;
+  const r = R(t.id), [g, deep] = PAL[t.day], cost = price(dinnersOf()), share = cost.share[t.day] || 0;
+  const idx = S.plan.dinners.findIndex(d => d.day === t.day) + 1, diff = S.settings.budget - cost.total;
+  const nx = S.plan.dinners.find(d => d.day > t.day && !d.cooked);
+  return `<div class="view today" style="--day:${g};--deep:${deep}">
+    <div class="top"><span>Episode ${idx} of ${S.plan.dinners.length}</span><span style="font-variant-numeric:tabular-nums">${money(Math.abs(diff))} ${diff >= 0 ? "under" : "over"} budget</span></div>
+    <div class="dayname">${DAYS[t.day]}</div>
+    <div class="stage">${cuts(deep, g)}<div class="plate" id="plate">${photo(r)}</div></div>
+    <div class="ep"><div class="k">Tonight · ${r.minutes} minutes</div><h2>${esc(r.name)}</h2>
+      <p><b>${money(share)}</b> feeds all ${hh()}, ${money(share / hh())} a plate. ${esc(r.side)}</p></div>
+    <div class="row2"><button class="btn cream" data-act="cook">Start cooking</button><button class="btn ghost" data-act="swap">↻ Swap</button></div>
+    <button type="button" class="lunch ${(S.leftovers || []).includes(t.day) ? "on" : ""}" data-act="lunch">${(S.leftovers || []).includes(t.day) ? "✓ Making 2 extra portions for lunch" : "+ Make extra for lunch tomorrow"}${lock("lunch")}</button>
+    <div class="strip">${S.plan.dinners.map(d => `<button type="button" data-act="focus" data-v="${d.day}" class="${d.cooked ? "done" : ""} ${d.day === t.day ? "now" : ""}" aria-label="${DAYS[d.day]}: ${esc(R(d.id).name)}"><span class="o">${photo(R(d.id))}</span>${SH[d.day]}</button>`).join("")}</div>
+    ${nx ? `<div class="nextep"><span>Next episode</span><span>${AB[nx.day]} · ${esc(R(nx.id).name)}, ${R(nx.id).minutes} min</span></div>` : ""}
+    <div class="pad" style="margin-top:18px;display:flex;gap:18px"><button class="link" style="color:var(--cream)" data-act="open" data-v="plan">Next week →</button><button class="link" style="color:var(--cream)" data-act="feature" data-v="recap">Your week${lock("recap")}</button><button class="link" style="color:var(--cream)" data-act="feature" data-v="eatout">Eating out${lock("eatout")}</button><button class="link" style="color:var(--cream2)" data-act="open" data-v="settings">Settings</button></div>
+  </div>${tabs(true)}`;
+}
+function scaleText(text, f) {
+  if (Math.abs(f - 1) < .01) return text;
+  const fr = {"½":.5,"¼":.25,"¾":.75,"⅓":1/3,"⅔":2/3}, [first, ...rest] = text.split(" ");
+  let digits = "", frac = 0;
+  for (const c of first) { if (/\d/.test(c)) digits += c; else if (fr[c]) frac = fr[c]; else return text + " ×" + f.toFixed(2).replace(/\.?0+$/, ""); }
+  const v = (digits ? +digits : 0) + frac; if (!v) return text;
+  const n = v * f, w = Math.floor(n), rem = n - w, nice = [[0,""],[.25,"¼"],[1/3,"⅓"],[.5,"½"],[2/3,"⅔"],[.75,"¾"],[1,""]];
+  const near = nice.reduce((a, b) => Math.abs(b[0] - rem) < Math.abs(a[0] - rem) ? b : a), ww = near[0] === 1 ? w + 1 : w;
+  return (ww === 0 ? (near[1] || "1") : ww + near[1]) + (rest.length ? " " + rest.join(" ") : "");
+}
+function viewRecipe() {
+  const d = S.plan.dinners.find(x => x.day === S.view.day), r = R(d.id), [g, deep] = PAL[d.day], sv = S.servings || hh(), f = sv / r.servings;
+  const ingRow = ri => `<div class="ing"><b>${esc(scaleText(ri.text, f))}</b><span>${esc(ING[ri.ingredient].name.toLowerCase())}${ri.note ? ", " + esc(ri.note) : ""}</span></div>`;
+  const vegNeeded = r.vegetarianSwap && !r.vegetarian && vegCount() + pescCount() > 0;
+  return `<div class="view" style="--day:${g};--deep:${deep}">
+    <div class="rhead"><button class="back" data-act="back" aria-label="Back">‹</button><div class="rp">${photo(r)}</div>
+      <h1>${esc(r.name)}</h1><p>${r.minutes} min · serves ${sv}<br>${r.difficulty}${r.vegetarian ? " · vegetarian" : ""}</p></div>
+    <div class="rsheet">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--rule)"><b>Servings</b>
+        <div class="stepper"><button data-act="serv" data-v="-1" aria-label="Fewer">–</button><span style="font-variant-numeric:tabular-nums">${sv}</span><button data-act="serv" data-v="1" aria-label="More">+</button></div></div>
+      <div class="lbl">You'll need</div>${r.ingredients.map(ingRow).join("")}
+      ${vegNeeded ? `<div class="lbl">Vegetarian plate</div><div class="callout">${esc(r.vegetarianSwap.note)}</div>${r.vegetarianSwap.ingredients.map(ingRow).join("")}` : ""}
+      ${r.mildNote && S.settings.people.some(p => p.notSpicy) ? `<div class="lbl">Milder</div><div class="callout">${esc(r.mildNote)}</div>` : ""}
+      <div style="display:flex;justify-content:space-between;align-items:center"><div class="lbl">Directions</div><button class="link" style="margin-top:10px" data-act="feature" data-v="cookmode">Cook step by step${lock("cookmode")}</button></div>
+      ${sv !== r.servings ? `<p class="fine" style="margin:0 0 6px">Amounts above are for ${sv}. The steps are written for ${r.servings}; use the amounts above.</p>` : ""}
+      ${r.steps.map((s, i) => `<div class="step"><span class="num">${i + 1}</span><span>${esc(s)}</span></div>`).join("")}
+      <div style="padding:18px 0 10px"><button class="btn accent" data-act="cooked">I cooked it</button></div>
+    </div></div>`;
+}
+function viewGroceries() {
+  const cost = price(dinnersOf()), buy = cost.lines.filter(l => !l.have), have = cost.lines.filter(l => l.have);
+  const left = buy.filter(l => !S.bought.includes(l.id)).length, t = tonight(), [g] = PAL[t ? t.day : 2];
+  const storeLine = S.settings.store || (KINDS.find(k => k[0] === S.settings.kind)[1].toLowerCase());
+  return `<div class="view" style="--day:${g}"><div class="phead"><h1>Groceries</h1></div><div class="pad">
+    <div class="big" style="margin-top:10px">${money(cost.total)}</div>
+    <p class="sub">of ${money(S.settings.budget)} at ${esc(storeLine)}. Priced by the pack you buy, not the spoonful you use. Prices are estimates.</p>
+    <p class="fine" style="margin:8px 0 0">${left === 0 ? "Everything's in the cart." : `${left} of ${buy.length} items left to buy.`}</p>
+    <div class="card" style="margin-top:14px"><span class="new">Family plan</span><h4>Scan as you shop</h4><p>Barcode in the aisle: calories, added sugar, sodium, and anything someone at your table can't have.</p><button class="btn accent" data-act="feature" data-v="scanner">Scan a product${lock("scanner")}</button></div>
+    <div class="card" style="margin-top:10px"><span class="new">Family plan</span><h4>Back from the shop?</h4><p>Photograph your receipt. See what you really spent against the plan, and future estimates learn your store.</p><button class="btn accent" data-act="feature" data-v="receipt">Check my receipt${lock("receipt")}</button></div>
+    <div class="card" style="margin-top:10px"><h4>Shop together</h4><p>${S.shared ? "Shared with your household. Ticks show up on everyone's phone." : "One list for up to 6 people. Whoever's at the store ticks it off."}</p><button class="btn" style="background:var(--chip);color:var(--ink)" data-act="feature" data-v="share">${S.shared ? "Shared ✓" : "Share this list"}${lock("share")}</button></div>
+    ${AISLES.map(([a, title]) => { const ls = buy.filter(l => l.i.aisle === a).sort((x, y) => x.i.name.localeCompare(y.i.name)); if (!ls.length) return "";
+      return `<div class="aisle"><h3>${title}</h3><span>${money(ls.reduce((s, l) => s + l.cost, 0))}</span></div>` + ls.map(l => { const on = S.bought.includes(l.id), note = !on && leftoverNote(l);
+        return `<button type="button" class="gi ${on ? "on" : ""}" data-act="buy" data-v="${l.id}"><span class="box">${on ? "✓" : ""}</span><span class="t"><span class="n">${esc(l.i.name)}</span><span class="m">${l.packs > 1 ? l.packs + " × " : ""}${esc(l.i.packLabel)} · ${[...l.days.map(d => AB[d]), ...(l.lunch ? ["lunches"] : [])].join(", ")}</span>${note ? `<span class="note">${note}</span>` : ""}</span><span class="p">${money(l.cost)}</span></button>`; }).join(""); }).join("")}
+    ${have.length ? `<div class="aisle"><h3>Already in your kitchen</h3></div>${have.map(l => `<div class="gi" style="cursor:default"><span class="t"><span class="n">${esc(l.i.name)}</span></span><span class="m">You have it</span></div>`).join("")}` : ""}
+  </div></div>${tabs(false)}`;
+}
+function viewKitchen() {
+  const t = tonight(), [g] = PAL[t ? t.day : 2], d = dinnersOf(), saved = Math.max(0, price(d, []).total - price(d).total);
+  const order = ["staples","spices","cans","dry","dairy","produce","frozen","bakery"];
+  return `<div class="view" style="--day:${g}"><div class="phead"><h1>Kitchen</h1></div><div class="pad">
+    <div class="card" style="margin-top:12px"><span class="new">Pro plan</span><h4>What can I cook tonight?</h4><p>Scan your fridge and pantry. Get dinners ranked by what you already have, and what you'd need to buy.</p><button class="btn accent" data-act="feature" data-v="fridge">Scan my fridge${lock("fridge")}</button></div>
+    <div class="card" style="margin-top:10px"><span class="new">Family plan</span><h4>School lunches, sorted</h4><p>A nut-free packed lunch for every school day, on the same grocery list. Last night's leftovers become tomorrow's lunch.</p><button class="btn accent" data-act="feature" data-v="lunchbox">Plan lunches${lock("lunchbox")}</button></div>
+    <div class="card" style="margin-top:10px"><span class="new">Family plan</span><h4>Eating out tonight?</h4><p>Every dish on the menu scored from 1 to 100, with anything your family can't have marked.</p><button class="btn accent" data-act="feature" data-v="eatout">See restaurant scores${lock("eatout")}</button></div>
+    <div class="card" style="margin-top:10px"><h4>What's in that snack?</h4><p>Scan anything in your pantry for calories and ingredients, checked against everyone's rules.</p><button class="btn" style="background:var(--chip);color:var(--ink)" data-act="feature" data-v="scanner">Scan a product${lock("scanner")}</button></div>
+    <div class="card" style="margin-top:10px"><h4>Saw a recipe you like?</h4><p>Save it from TikTok, Instagram or any website, priced by the pack and ready for your week.</p><button class="btn" style="background:var(--chip);color:var(--ink)" data-act="feature" data-v="importx">Save from a link${lock("importx")}</button></div>
+    <div class="big" style="font-size:60px;margin-top:18px">${money(saved)}</div><p class="sub">off this week's list, from what you already have. Tick anything in your cupboard.</p>
+    ${order.map(a => { const items = DATA.ingredients.filter(i => i.aisle === a).sort((x, y) => x.name.localeCompare(y.name)); const title = AISLES.find(x => x[0] === a)[1];
+      return `<div class="aisle"><h3>${title}</h3></div>` + items.map(i => { const on = S.inKitchen.includes(i.id);
+        return `<button type="button" class="gi ${on ? "on" : ""}" data-act="have" data-v="${i.id}"><span class="box">${on ? "✓" : ""}</span><span class="t"><span class="n" style="text-decoration:none;color:var(--ink)">${esc(i.name)}</span><span class="m">${esc(i.packLabel)}</span></span></button>`; }).join(""); }).join("")}
+  </div></div>${tabs(false)}`;
+}
+function household(accent) {
+  const st = S.settings;
+  return `<div class="lbl">Grocery budget</div><div class="big">$${st.budget}</div>
+    <input type="range" id="budget" min="40" max="300" step="5" value="${st.budget}" data-act="budget" aria-label="Grocery budget">
+    <label style="display:flex;justify-content:space-between;align-items:center;font-size:14px;margin-top:6px">Just build the cheapest week <input type="checkbox" id="cheapest" data-act="cheapest" ${st.cheapest ? "checked" : ""}></label>
+    <div class="lbl">Cook nights</div><div class="days">${SH.map((s, i) => `<button type="button" data-act="night" data-v="${i}" class="${st.nights.includes(i) ? "on" : ""}" style="${st.nights.includes(i) ? `background:${PAL[i][0]}` : ""}" aria-label="${DAYS[i]}">${s}</button>`).join("")}</div>
+    <p class="fine" style="margin:6px 0 0">${st.nights.length} dinners a week</p>
+    <div class="lbl">Who's eating</div>
+    ${st.people.map((p, i) => `<div class="person"><div class="pn"><input id="pname${i}" data-act="pname" data-v="${i}" value="${esc(p.name)}" aria-label="Name"><button class="x" data-act="pdel" data-v="${i}" aria-label="Remove">×</button></div>
+      <div class="pc">${[["vegetarian","Vegetarian"],["pescatarian","Pescatarian"]].map(([k, l]) => `<button type="button" class="chip ${p.diet === k ? "on" : ""}" data-act="pdiet" data-v="${i}" data-k="${k}">${l}</button>`).join("")}
+      ${ALLERGENS.map(([k, l]) => `<button type="button" class="chip ${p.avoids.includes(k) ? "on" : ""}" data-act="pavoid" data-v="${i}" data-k="${k}">${l}</button>`).join("")}
+      <button type="button" class="chip ${p.notSpicy ? "on" : ""}" data-act="pspicy" data-v="${i}">Not spicy</button></div></div>`).join("")}
+    <button class="link" style="margin-top:10px;color:${accent}" data-act="padd">+ Add someone</button>
+    <p class="fine">Every dinner works for everyone. Vegetarians get a written vegetarian plate when a dish has meat. Dishes with an allergen someone avoids are left out. Always check labels.</p>
+    <div class="lbl">Your kitchen</div><div class="chips">${EQUIP.map(([k, l]) => `<button type="button" class="chip ${st.equipment.includes(k) ? "on" : "off"}" data-act="equip" data-v="${k}">${l}</button>`).join("")}</div>
+    <p class="fine" style="margin-top:12px">${eligible().length} of ${RECIPES.length} recipes work for this household.</p>`;
+}
+function viewPlan() {
+  const t = tonight(), [g] = PAL[t ? t.day : 2];
+  return `<div class="view" style="--day:${g}"><div class="phead"><h1>Next week</h1><button class="link" data-act="back">Done</button></div><div class="pad">${household(g)}
+    <div style="padding:18px 0"><button class="btn accent" data-act="nextweek">Plan next week</button></div></div></div>`;
+}
+function viewSettings() {
+  const st = S.settings;
+  return `<div class="view" style="--day:#AD321C"><div class="phead"><h1>Settings</h1><button class="link" data-act="back">Done</button></div><div class="pad">
+    <div class="lbl">Your plan</div><p class="sub" style="margin:0">${S.tier && S.tier !== "free" ? `<b>${tierName(S.tier)}</b> (simulated in this preview).` : "Free. Your first week is yours to keep."}</p>
+    <button class="link" style="margin-top:8px" data-act="open" data-v="plans">${S.tier && S.tier !== "free" ? "Change plan" : "See plans"}</button>
+    <div class="lbl">Where you shop</div><input class="field" id="zip2" data-act="zip" value="${esc(st.zip)}" placeholder="ZIP code" aria-label="ZIP code">
+    <div class="seg" style="margin-top:10px">${KINDS.map(k => `<button type="button" class="${st.kind === k[0] ? "on" : ""}" data-act="kind" data-v="${k[0]}">${k[1]}</button>`).join("")}</div>
+    <div class="lbl">About</div><p class="fine">Recipes are a guide. Check ingredients, allergens and food-safety temperatures before cooking. Diet and allergy settings are a convenience, not a medical guarantee.</p>
+    <p class="fine">Everything you enter lives only on your iPhone. There's no account.</p>
+  </div></div>`;
+}
+function paywallBody(keepFree) {
+  return `<div class="bul"><span><b>A new week every Sunday</b>, priced at your store before you shop.</span></div>
+    <div class="bul"><span><b>Swap any night</b> and the list reprices by the pack.</span></div>
+    <div class="bul"><span><b>Everyone's rules on every plate</b>: diets, allergies and spice, per person.</span></div>
+    <button type="button" class="opt ${S.yearly ? "on" : ""}" data-act="yearly" data-v="1"><span><b>Yearly</b><span>7 days free, then billed yearly · about $2.50/mo</span></span><b style="font-size:15px">$29.99/yr</b></button>
+    <button type="button" class="opt ${!S.yearly ? "on" : ""}" data-act="yearly" data-v="0"><span><b>Monthly</b><span>No trial</span></span><b style="font-size:15px">$7.99/mo</b></button>
+    <button class="btn wide" style="background:#AD321C;color:var(--cream)" data-act="buy-sub">${S.yearly ? "Try 7 days free" : "Subscribe"}</button>
+    <p class="fine" style="margin:0">${S.yearly ? "Free for 7 days, then $29.99 a year, charged to your Apple ID and renewing automatically. Cancel in Settings at least 24 hours before the trial ends and you won't be charged." : "$7.99 a month, charged to your Apple ID and renewing automatically until you cancel in Settings."} Prices shown are placeholders.</p>
+    <div style="display:flex;gap:18px;font-size:13px">${keepFree ? `<button class="link" style="color:#AD321C" data-act="keepfree">Keep my free week</button>` : ""}<span style="color:var(--ink2)">Restore</span><span style="color:var(--ink2)">Terms</span><span style="color:var(--ink2)">Privacy</span></div>`;
+}
+function viewFirstWeek() {
+  const cost = price(dinnersOf()), store = S.settings.store || "your " + KINDS.find(k => k[0] === S.settings.kind)[1].toLowerCase();
+  return `<div class="view"><div class="ob" style="gap:12px"><div class="lbl" style="margin:0">Season one · ${S.plan.dinners.length} episodes · ready</div>
+    <h1>${S.plan.dinners.length} dinners for ${money(cost.total)},<br>at ${esc(store)}.</h1>
+    <div class="band">${S.plan.dinners.map(d => `<div><span class="o">${photo(R(d.id))}</span>${AB[d.day]}</div>`).join("")}</div>
+    <p class="sub" style="color:var(--ink);margin:4px 0 0">This week's plan and list are yours to keep, whether you subscribe or not.</p>
+    ${plansBody(true)}</div></div>`;
+}
+function viewPaywall() {
+  return `<div class="view"><div class="ob" style="gap:12px"><div style="display:flex;justify-content:space-between;align-items:center"><span></span><button class="link" style="color:var(--ink2)" data-act="back">Not now</button></div><h1>Plan every week</h1>${paywallBody(false)}</div></div>`;
+}
+function viewStore() {
+  const st = S.settings;
+  return `<div class="view" style="--day:#AD321C"><div class="ob"><div class="lbl" style="margin:0">Step 1 of 2</div><h1>Where do you shop?</h1>
+    <p class="sub" style="margin:0">Supperwise plans a week of dinners and prices the grocery list before you leave the house. Prices are estimates for your kind of store and region.</p>
+    <div><div class="lbl">ZIP or postal code</div><input class="field" id="zip" data-act="zip" inputmode="text" value="${esc(st.zip)}" placeholder="45206"></div>
+    <div><div class="lbl">Store name (optional)</div><input class="field" id="store" data-act="store" value="${esc(st.store)}" placeholder="The store you usually go to"></div>
+    <div><div class="lbl">Kind of store</div><div class="seg">${KINDS.map(k => `<button type="button" class="${st.kind === k[0] ? "on" : ""}" data-act="kind" data-v="${k[0]}">${k[1]}</button>`).join("")}</div></div>
+    <button class="btn accent" data-act="to-household" ${st.zip.trim().length < 3 ? "disabled" : ""} id="nextbtn">Next</button></div></div>`;
+}
+function viewHousehold() {
+  return `<div class="view" style="--day:#AD321C"><div class="ob" style="padding-bottom:0"><div class="lbl" style="margin:0">Step 2 of 2</div><h1>Who's eating, and what do you spend?</h1>
+    <p class="sub" style="margin:0">Supperwise is free for your first week. After that it's a subscription, and you'll see the price before you pay anything.</p></div>
+    <div class="pad">${household("#AD321C")}<div style="padding:18px 0"><button class="btn accent" data-act="build" ${S.settings.nights.length ? "" : "disabled"}>Build my first week</button></div></div></div>`;
+}
+
+// ---------- Plans and new features ----------
+const TIERS = [
+  { id: "plus", name: "Plus", m: 5.99, y: 29.99, blurb: "Every week, planned and priced", feats: ["A new week every Sunday", "Swap any night; the list reprices", "Whole-pack prices, pantry, per-person rules", "Cook mode with timers", "Holiday menus with a one-oven timeline", "Save 10 recipes a month from links"] },
+  { id: "family", name: "Family", m: 9.99, y: 49.99, blurb: "For the whole household", feats: ["Everything in Plus", "School lunches planned, on the same list", "Leftovers planned into lunch", "First foods for babies", "Product scanner and eating-out scores (1 to 100), checked for your household", "Receipt check and weekly recap", "Unlimited saved recipes", "One list shared with up to 6 people"] },
+  { id: "pro", name: "Pro", m: 14.99, y: 79.99, blurb: "Cook from what you already have", feats: ["Everything in Family", "Fridge scan: what can I cook tonight?", "Up to 60 scans a month"] },
+];
+const RANK = { free: 0, plus: 1, family: 2, pro: 3 };
+const has = t => RANK[S.tier || "free"] >= RANK[t];
+const NEED = { lunchbox: "family", eatout: "family", scanner: "family", lunch: "family", receipt: "family", recap: "family", share: "family", fridge: "pro", importx: "plus", cookmode: "plus", nextweek: "plus" };
+const tierName = t => TIERS.find(x => x.id === t).name;
+function gate(f) { if (has(NEED[f])) return true; S.pick = NEED[f]; S.view = { name: "plans", need: NEED[f] }; render(); return false; }
+const lock = f => has(NEED[f]) ? "" : `<span style="opacity:.75;font-weight:600"> · ${tierName(NEED[f])}</span>`;
+
+function plansBody(keepFree) {
+  const need = S.view?.need, pick = S.pick || need || "family", tp = TIERS.find(t => t.id === pick);
+  const priceOf = t => S.yearly ? `${money(t.y)}/yr` : `${money(t.m)}/mo`;
+  return `${need ? `<p class="sub" style="margin:0;color:var(--ink)">That's part of <b>${tierName(need)}</b>${need !== "pro" ? " and above" : ""}.</p>` : ""}
+    <div class="seg"><button type="button" class="${S.yearly ? "on" : ""}" data-act="yearly" data-v="1">Yearly · 7 days free</button><button type="button" class="${!S.yearly ? "on" : ""}" data-act="yearly" data-v="0">Monthly</button></div>
+    ${TIERS.map(t => `<button type="button" class="opt ${pick === t.id ? "on" : ""}" data-act="pick" data-v="${t.id}" style="flex-direction:column;align-items:stretch;gap:6px">
+      <span style="display:flex;justify-content:space-between;align-items:baseline"><span><b style="display:inline">${t.name}</b>${t.id === "family" ? ` <span style="font:700 10px var(--ui);letter-spacing:.06em;text-transform:uppercase;color:#AD321C">Most households</span>` : ""}</span><b style="font-size:15px;display:inline">${priceOf(t)}</b></span>
+      <span>${t.blurb}${S.yearly ? ` · about ${money(t.y / 12)}/mo` : ""}</span>
+      ${pick === t.id ? `<span style="display:flex;flex-direction:column;gap:3px;margin-top:4px">${t.feats.map(f => `<span style="color:var(--ink)">✓ ${f}</span>`).join("")}</span>` : ""}</button>`).join("")}
+    <button class="btn wide" style="background:#AD321C;color:var(--cream)" data-act="buy-sub">${S.yearly ? `Try ${tp.name} free for 7 days` : `Subscribe to ${tp.name}`}</button>
+    <p class="fine" style="margin:0">${S.yearly ? `Free for 7 days, then ${money(tp.y)} a year` : `${money(tp.m)} a month`}, charged to your Apple ID and renewing automatically. Cancel in Settings at least 24 hours before ${S.yearly ? "the trial ends" : "the period ends"} and you won't be charged. Switch plans any time. Prices shown are placeholders.</p>
+    <div style="display:flex;gap:18px;font-size:13px">${keepFree ? `<button class="link" style="color:#AD321C" data-act="keepfree">Keep my free week</button>` : ""}<span style="color:var(--ink2)">Restore</span><span style="color:var(--ink2)">Terms</span><span style="color:var(--ink2)">Privacy</span></div>`;
+}
+function viewPlans() {
+  return `<div class="view"><div class="ob" style="gap:12px"><div style="display:flex;justify-content:space-between"><span class="lbl" style="margin:0">Supperwise plans</span><button class="link" style="color:var(--ink2)" data-act="back">Not now</button></div><h1>${S.tier && S.tier !== "free" ? "Change your plan" : "Plan every week"}</h1>${plansBody(false)}</div></div>`;
+}
+
+// Fridge scan (Pro)
+const SAMPLE_FRIDGE = ["eggs", "bell_pepper", "onion_yellow", "spinach", "feta", "tomatoes_crushed", "garlic", "lemon", "potatoes", "cheddar", "white_beans", "spaghetti"];
+function fridgeMatches() {
+  const have = new Set([...S.fridge, ...S.inKitchen]);
+  return eligible().map(r => {
+    const need = r.ingredients.filter(ri => !ING[ri.ingredient].staple);
+    const missing = need.filter(ri => !have.has(ri.ingredient));
+    const cost = missing.reduce((s, ri) => s + Math.ceil(ri.amount * hh() / r.servings / ING[ri.ingredient].packSize - 1e-9) * ING[ri.ingredient].refPrice * mult(), 0);
+    return { r, have: need.length - missing.length, total: need.length, missing, cost };
+  }).sort((a, b) => a.missing.length - b.missing.length || a.cost - b.cost).slice(0, 5);
+}
+function viewFridge() {
+  const t = tonight(), [g, deep] = PAL[t ? t.day : 2];
+  if (S.scanning) return `<div class="view" style="--day:${g}"><div class="phead"><h1>What can I cook?</h1><button class="link" data-act="back">Done</button></div><div class="pad">
+    <div class="scan">${[30, 70, 110].map(y => `<div class="shelf" style="top:${y}px"></div>`).join("")}
+      ${[[30,8,46,22,"#E9A23B"],[90,10,30,20,"#7FA650"],[140,6,40,24,"#C94A3A"],[200,48,52,22,"#F2E6C9"],[270,46,28,24,"#5E9AAA"],[60,88,44,22,"#D9C27E"],[150,90,34,20,"#9C5A8A"],[230,86,50,24,"#E07A5C"]].map(([x,y,w,h,c]) => `<div class="item" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background:${c}"></div>`).join("")}
+      <div class="beam"></div><span class="lab">Looking at your shelves…</span></div>
+    <p class="fine" style="margin-top:10px">Sample scan. In the app you point the camera at your fridge or pantry.</p></div></div>`;
+  const ms = fridgeMatches();
+  return `<div class="view" style="--day:${g};--deep:${deep}"><div class="phead"><h1>What can I cook?</h1><button class="link" data-act="back">Done</button></div><div class="pad">
+    <div class="lbl">Found ${S.fridge.length} things · tap one to remove it</div>
+    <div class="chips">${S.fridge.map(id => `<button type="button" class="chip on" data-act="unfridge" data-v="${id}">${esc(ING[id].name)} ×</button>`).join("")}</div>
+    <button class="link" style="margin-top:10px" data-act="rescan">Scan again</button>
+    <div class="lbl">Best matches for tonight</div>
+    ${ms.map(m => `<div class="match"><span class="th">${photo(m.r)}</span><span class="t"><b>${esc(m.r.name)}</b>
+      <span>${m.missing.length ? `Buy ${m.missing.map(ri => ING[ri.ingredient].name.toLowerCase()).join(", ")} · about ${money(m.cost)}` : "You have everything"}</span>
+      <span class="meter"><i style="width:${Math.round(100 * m.have / Math.max(m.total, 1))}%"></i></span></span>
+      <button class="btn" style="background:var(--day);color:var(--cream)" data-act="cookthis" data-v="${m.r.id}">Tonight</button></div>`).join("")}
+    <p class="fine" style="margin-top:12px">Matches use your pantry ticks too, and everyone's diet and allergy rules.</p></div></div>`;
+}
+
+// Receipt check (Family)
+function hashf(s) { let h = 2166136261; for (const c of s) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return ((h >>> 0) % 1000) / 1000; }
+function makeReceipt() {
+  const lines = price(dinnersOf()).lines.filter(l => !l.have && l.cost > 0).map(l => {
+    const bias = ["meat", "seafood"].includes(l.i.aisle) ? 0.12 : 0.02, paid = l.cost * (1 + bias + (hashf(l.id) - 0.5) * 0.24);
+    return { id: l.id, name: l.i.name, est: l.cost, paid: Math.round(paid * 100) / 100 };
+  });
+  return { lines, est: lines.reduce((s, l) => s + l.est, 0), paid: lines.reduce((s, l) => s + l.paid, 0) };
+}
+function viewReceipt() {
+  const t = tonight(), [g] = PAL[t ? t.day : 2], r = S.receipt, diff = r.paid - r.est, pct = (diff / r.est) * 100;
+  const big = r.lines.map(l => ({ ...l, d: l.paid - l.est })).sort((a, b) => Math.abs(b.d) - Math.abs(a.d)).slice(0, 6);
+  return `<div class="view" style="--day:${g}"><div class="phead"><h1>Receipt check</h1><button class="link" data-act="back">Done</button></div><div class="pad">
+    <p class="fine" style="margin:8px 0 0">Sample receipt. In the app you photograph your receipt after the shop.</p>
+    <div class="stat"><span>Planned</span><b>${money(r.est)}</b></div><div class="stat"><span>You paid</span><b>${money(r.paid)}</b></div>
+    <div class="stat"><span>Difference</span><b style="color:${diff > 0 ? "var(--bad)" : "var(--good)"}">${diff > 0 ? "+" : "−"}${money(Math.abs(diff))}</b></div>
+    <div class="lbl">Biggest differences</div>
+    <div class="rc"><span class="h">Item</span><span class="h">Plan</span><span class="h">Paid</span>
+      ${big.map(l => `<span>${esc(l.name)}</span><span>${money(l.est)}</span><span class="${l.d > 0 ? "up" : "down"}">${money(l.paid)}</span>`).join("")}</div>
+    <div class="card" style="margin-top:18px"><h4>Teach it your store</h4><p>Your store ran ${Math.abs(pct).toFixed(1)}% ${pct > 0 ? "above" : "below"} our estimates this week${big[0] && big[0].d > 0 && ["Boneless chicken thighs","Chicken drumsticks","Ground turkey, 93% lean","Ground beef, 85% lean","Italian sausage","Salmon fillets"].includes(big[0].name) ? ", mostly on meat" : ""}. Use it to adjust future plans?</p>
+      <button class="btn accent" data-act="learn">Adjust my estimates</button></div></div></div>`;
+}
+
+// Cook mode (Plus)
+function viewCook() {
+  const d = S.plan.dinners.find(x => x.day === S.cook.day), r = R(d.id), [g, deep] = PAL[d.day], i = S.cook.i, step = r.steps[i];
+  const m = step.match(/(\d+)(?:\s*(?:to|-|–)\s*(\d+))?\s*(minutes?|min)\b/i), mins = m ? +(m[2] || m[1]) : 0;
+  const uses = r.ingredients.filter(ri => step.toLowerCase().includes(ING[ri.ingredient].name.toLowerCase().split(/[ ,]/)[0].replace(/s$/, "")));
+  const running = S.timer && S.timer.step === i && S.timer.day === d.day;
+  return `<div class="view cookv" style="--day:${g};--deep:${deep}">
+    <div class="stepnum"><span>${esc(r.name)} · step ${i + 1} of ${r.steps.length}</span><button data-act="endcook">Close</button></div>
+    <div class="dots">${r.steps.map((_, j) => `<i class="${j <= i ? "on" : ""}"></i>`).join("")}</div>
+    <div class="bigstep">${esc(step)}</div>
+    ${uses.length ? `<div class="uses">${uses.map(ri => `<span>${esc(ri.text)} ${esc(ING[ri.ingredient].name.toLowerCase())}</span>`).join("")}</div>` : ""}
+    ${mins ? `<button class="timer" data-act="timer" data-v="${mins}"><span>${running ? "Timer running" : `Start a ${mins}-minute timer`}</span><b id="tleft">${running ? "" : mins + ":00"}</b></button>` : ""}
+    <div class="nav"><button class="btn ghost" data-act="cstep" data-v="-1" ${i === 0 ? "disabled" : ""}>Back</button>
+      ${i < r.steps.length - 1 ? `<button class="btn cream" data-act="cstep" data-v="1">Next step</button>` : `<button class="btn cream" data-act="cookdone">I cooked it</button>`}</div>
+    <p style="padding:18px 22px 0;font-size:13px;color:var(--cream2)">In the app the screen stays on and you can say "next" with messy hands.</p></div>`;
+}
+setInterval(() => {
+  const el = document.getElementById("tleft"); if (!el || !S.timer) return;
+  const left = Math.max(0, Math.round((S.timer.end - Date.now()) / 1000));
+  el.textContent = `${Math.floor(left / 60)}:${String(left % 60).padStart(2, "0")}`;
+  if (left === 0) { S.timer = null; toast("Timer done."); }
+}, 500);
+
+// Weekly recap (Family)
+function viewLunch() {
+  const t = tonight(), [g] = PAL[t ? t.day : 2], L = S.lunch, cost = price(dinnersOf()), din = Object.fromEntries(dinnersOf().map(([d, r]) => [d, r]));
+  const head = `<div class="phead"><h1>Lunchbox</h1><button class="link" data-act="back">Done</button></div>`;
+  if (!L.on) return `<div class="view" style="--day:${g}">${head}<div class="pad">
+    <p class="sub" style="margin-top:10px">A packed lunch for each school or work day. Every lunch is nut-free, and everyone's allergies and diets are followed.</p>
+    <div class="lbl">Lunches a day</div><div class="seg">${[1,2,3,4].map(n => `<button type="button" class="${L.perDay === n ? "on" : ""}" data-act="lper" data-v="${n}">${n}</button>`).join("")}</div>
+    <div class="lbl">Packing days</div><div class="days">${SH.map((s, i) => `<button type="button" data-act="lday" data-v="${i}" class="${L.days.includes(i) ? "on" : ""}" style="${L.days.includes(i) ? `background:${PAL[i][0]}` : ""}" aria-label="${DAYS[i]}">${s}</button>`).join("")}</div>
+    <label style="display:flex;justify-content:space-between;align-items:center;font-size:14px;margin-top:14px">We have a thermos (hot lunches) <input type="checkbox" data-act="lthermos" ${L.thermos ? "checked" : ""}></label>
+    <div style="padding:18px 0"><button class="btn accent" data-act="lstart" ${L.days.length ? "" : "disabled"}>Plan this week's lunches</button></div></div></div>`;
+  return `<div class="view" style="--day:${g}">${head}<div class="pad">
+    <div class="big" style="margin-top:10px">${money(cost.lunches)}</div><p class="sub">for ${L.perDay * L.days.length} lunches this week, on your grocery list with dinner.</p>
+    ${L.plan.length ? "" : `<p class="sub">No lunch ideas fit everyone's allergies and diets yet. Try turning on the thermos.</p>`}
+    ${L.plan.map(p => { const l = LUNCH(p.id), n = lunchBoxes(p), ln = leftoverNight(p.day);
+      return `<div class="aisle"><h3>${DAYS[p.day]}</h3></div><div class="card" style="margin-top:6px">
+        ${ln !== null && din[ln] ? `<p style="margin:0 0 6px">🥡 <b>${Math.min(2, L.perDay)} from last night:</b> ${esc(din[ln].name)}</p>` : ""}
+        ${n ? `<h4 style="display:flex;justify-content:space-between">${esc(l.name)}${l.thermos ? " 🔥" : ""}<span style="color:var(--ink2);font-weight:500">× ${n}</span></h4>
+        <p>${l.ingredients.map(i => esc(i.text)).join(" · ")}</p><p class="fine" style="margin:4px 0 8px">${esc(l.note)}</p>
+        <button class="link" style="color:${g}" data-act="lswap" data-v="${p.day}">Swap</button>` : ""}</div>`; }).join("")}
+    <div class="lbl">Keeping lunches safe</div>${DATA.lunchNotes.map(n => `<p class="fine" style="margin:4px 0">${esc(n)}</p>`).join("")}
+    <div style="display:flex;gap:18px;padding:16px 0"><button class="link" style="color:${g}" data-act="lreplan">Plan new lunches</button><button class="link" style="color:var(--ink2)" data-act="lstop">Stop planning lunches</button></div>
+  </div></div>`;
+}
+function viewRecap() {
+  const t = tonight(), [g] = PAL[t ? t.day : 2], cost = price(dinnersOf()), cooked = S.plan.dinners.filter(d => d.cooked).length;
+  const shared = cost.lines.filter(l => l.days.length > 1 && !l.have).length, d = dinnersOf(), pantry = Math.max(0, price(d, []).total - cost.total);
+  return `<div class="view" style="--day:${g}"><div class="phead"><h1>Your week</h1><button class="link" data-act="back">Done</button></div><div class="pad">
+    <div class="big" style="margin-top:10px">${cooked} of ${S.plan.dinners.length}</div><p class="sub">dinners cooked at home this week.</p>
+    <div class="stat"><span>Planned grocery bill</span><b>${money(cost.total)}</b></div>
+    ${S.receipt ? `<div class="stat"><span>What you paid</span><b>${money(S.receipt.paid)}</b></div>` : ""}
+    <div class="stat"><span>Against your budget</span><b style="color:${cost.total <= S.settings.budget ? "var(--good)" : "var(--bad)"}">${money(Math.abs(S.settings.budget - (S.receipt ? S.receipt.paid : cost.total)))} ${S.settings.budget - (S.receipt ? S.receipt.paid : cost.total) >= 0 ? "under" : "over"}</b></div>
+    <div class="stat"><span>Packs shared across dinners</span><b>${shared}</b></div>
+    <div class="stat"><span>Lunches from leftovers</span><b>${(S.leftovers || []).length}</b></div>
+    <div class="stat"><span>Off the bill from your pantry</span><b>${money(pantry)}</b></div>
+    <p class="fine" style="margin-top:12px">Every number here comes from your own plan${S.receipt ? " and receipt" : ""}.</p></div></div>`;
+}
+
+// Save a recipe from a link (Plus: 10 a month)
+const SAMPLE_IMPORT = { id: "saved_orzo", name: "Lemony orzo with spinach and feta", side: "Saved from a link.", cuisine: "Greek", minutes: 25, difficulty: "Easy", protein: "none", allergens: ["gluten", "dairy"], equipment: ["stovetop"], spice: 0, photo: null, vegetarian: true, pescatarian: true, mildNote: null, vegetarianSwap: null, servings: 4,
+  ingredients: [{ ingredient: "orzo", amount: 340, text: "2 cups", note: "" }, { ingredient: "veg_broth", amount: 830, text: "3½ cups", note: "" }, { ingredient: "spinach", amount: 142, text: "1 box", note: "5 oz" }, { ingredient: "feta", amount: 120, text: "¾ cup", note: "crumbled" }, { ingredient: "lemon", amount: 1, text: "1", note: "zest and juice" }, { ingredient: "garlic", amount: 3, text: "3 cloves", note: "grated" }, { ingredient: "olive_oil", amount: 30, text: "2 tbsp", note: "" }],
+  steps: ["Warm the oil in a wide pan over medium heat and fry the garlic for 30 seconds.", "Add the orzo and toast it, stirring, for 2 minutes until it smells nutty.", "Pour in the broth, bring to a simmer and cook 10 minutes, stirring often, until the orzo is tender and creamy.", "Stir in the spinach a handful at a time until it wilts.", "Off the heat, add the lemon zest and juice and most of the feta. Top with the rest."] };
+function viewImport() {
+  const t = tonight(), [g] = PAL[t ? t.day : 2], saved = S.saved || [];
+  return `<div class="view" style="--day:${g}"><div class="phead"><h1>Save a recipe</h1><button class="link" data-act="back">Done</button></div><div class="pad">
+    <p class="sub">Paste a TikTok, Instagram or website link. Supperwise pulls out the ingredients and steps, prices them by the pack, and lets you put it in your week.</p>
+    <input class="field" id="importurl" style="margin-top:12px" placeholder="https://…" aria-label="Recipe link">
+    <button class="btn accent" style="margin-top:10px" data-act="doimport">Save recipe</button>
+    <p class="fine">${S.tier === "plus" ? `${10 - (S.imports || 0)} of 10 saves left this month on Plus. Family and Pro are unlimited.` : "Unlimited on your plan."} This preview always saves the same sample recipe.</p>
+    ${saved.length ? `<div class="lbl">Saved</div>${saved.map(id => { const r = R(id); return `<div class="match"><span class="th">${photo(r)}</span><span class="t"><b>${esc(r.name)}</b><span>${r.minutes} min · ${r.ingredients.length} ingredients</span></span><button class="btn" style="background:var(--day);color:var(--cream)" data-act="cookthis" data-v="${id}">Tonight</button></div>`; }).join("")}` : ""}
+  </div></div>`;
+}
+
+// Health score, 1 to 100 (the same formula for products and restaurant dishes).
+function healthScore(n) {
+  // Nutrient density: each nutrient's share of its daily value, compared with the serving's share of a 2,000-calorie day.
+  const cal = Math.max(n.kcal, 40) / 2000, r = (v, dv) => ((v || 0) / dv) / cal;
+  const pen = x => Math.min(45, Math.max(0, 15 * (x - 1)));
+  let s = 85 - pen(r(n.addedSugar, 50)) - pen(r(n.sodium, 2300)) - pen(r(n.satFat, 20))
+        + Math.min(10, 3 * r(n.protein, 50)) + Math.min(8, 3 * r(n.fiber, 28))
+        - Math.max(0, 10 * (1 - r(n.protein, 50))) - Math.max(0, 8 * (1 - r(n.fiber, 28)))
+        - ((n.flags || []).includes("artificial color") ? 5 : 0) - ((n.flags || []).includes("fried") ? 20 : 0)
+        - ((n.flags || []).includes("ultra-processed") ? 12 : 0) - ((n.flags || []).includes("refined") ? 10 : 0)
+        - Math.max(0, (n.kcal - 600) / 15);
+  return Math.max(1, Math.min(100, Math.round(s)));
+}
+const scoreColor = s => s >= 70 ? "var(--good)" : s >= 40 ? "#B26B00" : "var(--bad)";
+const scoreWord = s => s >= 70 ? "Good" : s >= 40 ? "OK" : "Poor";
+function scoreBadge(n, size = 44) {
+  const s = healthScore(n);
+  return `<span style="display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:${size}px;height:${size}px;border-radius:50%;border:3px solid ${scoreColor(s)};color:${scoreColor(s)};font:700 ${Math.round(size * 0.36)}px var(--ui);line-height:1;flex:none" aria-label="Health score ${s} out of 100">${s}</span>`;
+}
+const RESTAURANTS = [
+  { id: "burger", name: "Burger place", dishes: [
+    { name: "Double cheeseburger", kcal: 740, sodium: 1450, addedSugar: 9, satFat: 17, protein: 42, fiber: 2, allergens: ["gluten", "dairy"], meat: true , flags: ["refined"] },
+    { name: "Grilled chicken sandwich", kcal: 480, sodium: 1120, addedSugar: 8, satFat: 3, protein: 36, fiber: 3, allergens: ["gluten"], meat: true },
+    { name: "Side salad, light vinaigrette", kcal: 120, sodium: 260, addedSugar: 4, satFat: 1, protein: 3, fiber: 3, allergens: [], meat: false },
+    { name: "Medium fries", kcal: 380, sodium: 290, addedSugar: 0, satFat: 2, protein: 5, fiber: 4, allergens: [], meat: false , flags: ["fried"] },
+    { name: "Chocolate shake, medium", kcal: 630, sodium: 380, addedSugar: 80, satFat: 13, protein: 14, fiber: 1, allergens: ["dairy"], meat: false } ] },
+  { id: "mexican", name: "Mexican grill", dishes: [
+    { name: "Chicken burrito bowl, rice, beans, salsa", kcal: 620, sodium: 1650, addedSugar: 1, satFat: 4, protein: 46, fiber: 13, allergens: [], meat: true },
+    { name: "Veggie bowl with guacamole", kcal: 590, sodium: 1210, addedSugar: 1, satFat: 5, protein: 16, fiber: 17, allergens: [], meat: false },
+    { name: "Steak burrito with cheese and sour cream", kcal: 1120, sodium: 2370, addedSugar: 2, satFat: 19, protein: 55, fiber: 13, allergens: ["gluten", "dairy"], meat: true },
+    { name: "Chips and queso", kcal: 780, sodium: 1050, addedSugar: 1, satFat: 14, protein: 16, fiber: 7, allergens: ["dairy"], meat: false , flags: ["fried"] } ] },
+  { id: "pizza", name: "Pizza chain", dishes: [
+    { name: "Pepperoni pizza, 2 slices (14 in)", kcal: 600, sodium: 1380, addedSugar: 4, satFat: 11, protein: 24, fiber: 3, allergens: ["gluten", "dairy"], meat: true },
+    { name: "Veggie pizza, 2 slices (14 in)", kcal: 500, sodium: 1060, addedSugar: 4, satFat: 7, protein: 20, fiber: 4, allergens: ["gluten", "dairy"], meat: false },
+    { name: "Garden salad, no dressing", kcal: 90, sodium: 140, addedSugar: 2, satFat: 1, protein: 4, fiber: 3, allergens: [], meat: false },
+    { name: "Garlic knots, 4 pieces", kcal: 520, sodium: 980, addedSugar: 5, satFat: 6, protein: 14, fiber: 2, allergens: ["gluten", "dairy"], meat: false , flags: ["refined"] } ] },
+  { id: "asian", name: "Asian kitchen", dishes: [
+    { name: "Teriyaki chicken with brown rice", kcal: 640, sodium: 1690, addedSugar: 22, satFat: 3, protein: 38, fiber: 5, allergens: ["soy", "gluten"], meat: true },
+    { name: "Shrimp fried rice", kcal: 720, sodium: 1520, addedSugar: 6, satFat: 4, protein: 26, fiber: 3, allergens: ["shellfish", "egg", "soy"], meat: true , flags: ["fried"] },
+    { name: "Steamed vegetables with tofu", kcal: 320, sodium: 690, addedSugar: 6, satFat: 2, protein: 20, fiber: 7, allergens: ["soy"], meat: false },
+    { name: "Orange chicken", kcal: 890, sodium: 1240, addedSugar: 42, satFat: 7, protein: 33, fiber: 1, allergens: ["gluten", "egg", "soy"], meat: true , flags: ["fried"] } ] },
+];
+function dishConflicts(d) {
+  const out = [];
+  for (const p of S.settings.people) {
+    const hit = d.allergens.filter(a => p.avoids.includes(a));
+    if (hit.length) out.push(`${p.name}: contains ${hit.join(", ")}`);
+    if ((p.diet === "vegetarian" || p.diet === "pescatarian") && d.meat && !(p.diet === "pescatarian" && d.allergens.includes("shellfish"))) out.push(`${p.name}: has meat`);
+  }
+  return out;
+}
+function viewEatOut() {
+  const t = tonight(), [g] = PAL[t ? t.day : 2], rest = RESTAURANTS.find(r => r.id === (S.restaurant || "burger"));
+  const dishes = rest.dishes.map(d => ({ ...d, s: healthScore(d), c: dishConflicts(d) })).sort((a, b) => (a.c.length > 0) - (b.c.length > 0) || b.s - a.s);
+  return `<div class="view" style="--day:${g}"><div class="phead"><h1>Eating out</h1><button class="link" data-act="back">Done</button></div><div class="pad">
+    <p class="sub">Every dish gets a health score from 1 to 100, checked against everyone at your table. Best picks first.</p>
+    <div class="chips" style="margin-top:12px">${RESTAURANTS.map(r => `<button type="button" class="chip ${rest.id === r.id ? "on" : ""}" data-act="rest" data-v="${r.id}">${r.name}</button>`).join("")}</div>
+    <p class="fine" style="margin-top:8px">Sample menus for this preview. In the app, search a restaurant near you; chains with 20+ locations publish calories by law.</p>
+    ${dishes.map(d => `<div class="match">${scoreBadge(d)}<span class="t"><b>${esc(d.name)}</b>
+      <span>${d.kcal} cal · ${d.sodium} mg sodium · ${d.addedSugar} g added sugar · ${d.protein} g protein</span>
+      ${d.c.length ? `<span style="color:var(--bad);font-weight:600">Not for ${esc(d.c.join("; "))}</span>` : `<span style="color:${scoreColor(d.s)};font-weight:600">${scoreWord(d.s)}${d.s >= 70 ? " pick" : ""}</span>`}</span></div>`).join("")}
+    <div class="card" style="margin-top:16px"><h4>How the score works</h4><p>It judges food by what you get per calorie. Added sugar, sodium and saturated fat lose points when a dish carries more of the FDA daily value than its share of a 2,000-calorie day. Protein and fibre add points. Fried, refined and ultra-processed foods lose points, as do artificial colours and meals over 600 calories. 70 and up is a good pick; under 40 is poor. It's a guide, not medical advice.</p></div>
+  </div></div>`;
+}
+
+// Product scanner (Family): sample products for the preview. In the app: barcode → Open Food Facts.
+const PRODUCTS = [
+  { id: "yog_straw", fiber: 0, name: "Strawberry yogurt cup", size: "5.3 oz cup", kcal: 140, addedSugar: 13, sodium: 65, satFat: 1.5, protein: 5, ingredients: "Cultured milk, sugar, strawberries, modified corn starch, natural flavor, carmine (for color), pectin", allergens: ["dairy"], flags: ["carmine"] },
+  { id: "yog_plain", fiber: 0, name: "Plain Greek yogurt cup", size: "5.3 oz cup", kcal: 90, addedSugar: 0, sodium: 55, satFat: 0, protein: 16, ingredients: "Cultured nonfat milk", allergens: ["dairy"], flags: [] },
+  { id: "fruit_snack", fiber: 0, name: "Fruit snacks pouch", size: "0.8 oz pouch", kcal: 80, addedSugar: 11, sodium: 20, satFat: 0, protein: 0, ingredients: "Corn syrup, sugar, apple juice concentrate, gelatin, citric acid, natural flavor, Red 40, Yellow 5, Blue 1", allergens: [], flags: ["gelatin", "artificial color", "ultra-processed"] },
+  { id: "granola_bar", fiber: 1, name: "Chewy granola bar", size: "1.2 oz bar", kcal: 190, addedSugar: 12, sodium: 95, satFat: 1.5, protein: 4, ingredients: "Rolled oats, brown rice syrup, almonds, sugar, canola oil, soy lecithin, salt", allergens: ["nuts", "soy", "gluten"], flags: [] },
+  { id: "instant_noodle", fiber: 2, name: "Instant ramen, chicken flavor", size: "3 oz package", kcal: 380, addedSugar: 1, sodium: 1580, satFat: 7, protein: 8, ingredients: "Enriched wheat flour, palm oil, salt, monosodium glutamate, dehydrated chicken, TBHQ", allergens: ["gluten", "soy"], flags: ["meat", "fried", "ultra-processed"] },
+];
+const DV = { addedSugar: 50, sodium: 2300, satFat: 20 }; // FDA Daily Values (g, mg, g)
+function productReport(p) {
+  const st = S.settings, out = [];
+  for (const person of st.people) {
+    const hit = p.allergens.filter(a => person.avoids.includes(a));
+    if (hit.length) out.push({ sev: "bad", text: `Contains ${hit.join(", ")}. ${person.name} avoids it.` });
+    if (person.diet === "vegetarian" && (p.flags.includes("gelatin") || p.flags.includes("meat") || p.flags.includes("carmine"))) out.push({ sev: "bad", text: `Not vegetarian (${p.flags.filter(f => ["gelatin", "meat", "carmine"].includes(f)).join(", ")}). ${person.name} is vegetarian.` });
+  }
+  const pct = (k) => Math.round(100 * p[k] / DV[k]);
+  for (const [k, label] of [["addedSugar", "added sugar"], ["sodium", "sodium"], ["satFat", "saturated fat"]]) {
+    const v = pct(k);
+    if (v >= 20) out.push({ sev: "warn", text: `High in ${label}: ${v}% of the daily value in one serving.` });
+  }
+  if (p.flags.includes("artificial color")) out.push({ sev: "info", text: "Has artificial colours (Red 40, Yellow 5, Blue 1). Some families choose to avoid them." });
+  if (!out.length) out.push({ sev: "good", text: "Nothing your household avoids, and low in added sugar, sodium and saturated fat." });
+  return out;
+}
+function betterPick(p) {
+  const rep = q => productReport(q).filter(x => x.sev !== "good" && x.sev !== "info").length;
+  const same = { yog_straw: "yog_plain" }[p.id];
+  const q = same && PRODUCTS.find(x => x.id === same);
+  return q && rep(q) < rep(p) ? q : null;
+}
+function viewScanner() {
+  const t = tonight(), [g] = PAL[t ? t.day : 2], p = PRODUCTS.find(x => x.id === S.scanned);
+  const color = { bad: "var(--bad)", warn: "#B26B00", info: "var(--ink2)", good: "var(--good)" };
+  const icon = { bad: "✕", warn: "!", info: "i", good: "✓" };
+  return `<div class="view" style="--day:${g}"><div class="phead"><h1>Scan a product</h1><button class="link" data-act="back">Done</button></div><div class="pad">
+    <p class="sub">Point the camera at a barcode in the aisle or your pantry. See calories and what's inside, checked against everyone at your table.</p>
+    <div class="lbl">Sample products for this preview</div>
+    <div class="chips">${PRODUCTS.map(x => `<button type="button" class="chip ${S.scanned === x.id ? "on" : ""}" data-act="scanp" data-v="${x.id}">${esc(x.name)}</button>`).join("")}</div>
+    ${p ? `<div class="card" style="margin-top:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span><h4>${esc(p.name)}</h4><p>${esc(p.size)} · sample data</p></span><span style="display:flex;flex-direction:column;align-items:center;gap:2px">${scoreBadge(p, 56)}<span class="fine">health score</span></span></div>
+      <div style="display:flex;gap:16px;margin-top:4px;font-variant-numeric:tabular-nums">
+        <div><div class="big" style="font-size:44px">${p.kcal}</div><span class="fine">calories</span></div>
+        <div style="display:grid;grid-template-columns:auto auto;gap:2px 10px;font-size:13px;align-content:center">
+          <span>Added sugar</span><b>${p.addedSugar} g · ${Math.round(100 * p.addedSugar / DV.addedSugar)}%</b>
+          <span>Sodium</span><b>${p.sodium} mg · ${Math.round(100 * p.sodium / DV.sodium)}%</b>
+          <span>Saturated fat</span><b>${p.satFat} g · ${Math.round(100 * p.satFat / DV.satFat)}%</b>
+          <span>Protein</span><b>${p.protein} g</b></div></div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">${productReport(p).map(x => `<div style="display:flex;gap:10px;font-size:13px;line-height:1.35"><span style="width:20px;height:20px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--paper);background:${color[x.sev]}">${icon[x.sev]}</span><span>${esc(x.text)}</span></div>`).join("")}</div>
+      ${betterPick(p) ? `<div class="callout" style="margin-top:6px"><b>Better pick:</b> ${esc(betterPick(p).name)} · score ${healthScore(betterPick(p))}, ${betterPick(p).kcal} cal, ${betterPick(p).addedSugar} g added sugar.</div>` : ""}
+      <p style="font-size:12px"><b>Ingredients:</b> ${esc(p.ingredients)}</p>
+      <button class="btn" style="background:var(--chip);color:var(--ink)" data-act="addpantry" data-v="${p.id}">Add to pantry list</button>
+    </div>` : `<p class="fine" style="margin-top:14px">Tap a sample product to see what a scan shows.</p>`}
+    <p class="fine" style="margin-top:14px">% is of the FDA daily value; 20% or more in a serving is high. Always read the label: product data can be out of date.</p>
+  </div></div>`;
+}
+
+function render() {
+  const sc = $("#screen");
+  const scroll = sc.querySelector(".view")?.scrollTop || 0;
+  const keepScroll = render.keep; render.keep = false;
+  let html, light = false;
+  if (!S.plan || S.step !== "app") html = S.step === "household" ? viewHousehold() : S.step === "first" && S.plan ? viewFirstWeek() : viewStore();
+  else if (S.view?.name === "recipe") { html = viewRecipe(); light = true; }
+  else if (S.view?.name === "plan") html = viewPlan();
+  else if (S.view?.name === "settings") html = viewSettings();
+  else if (S.view?.name === "paywall" || S.view?.name === "plans") html = viewPlans();
+  else if (S.view?.name === "fridge") html = viewFridge();
+  else if (S.view?.name === "scanner") html = viewScanner();
+  else if (S.view?.name === "eatout") html = viewEatOut();
+  else if (S.view?.name === "receipt") html = viewReceipt();
+  else if (S.view?.name === "recap") html = viewRecap();
+  else if (S.view?.name === "lunchbox") html = viewLunch();
+  else if (S.view?.name === "import") html = viewImport();
+  else if (S.view?.name === "cookmode") { html = viewCook(); light = true; }
+  else if (S.tab === "groc") html = viewGroceries();
+  else if (S.tab === "kit") html = viewKitchen();
+  else { html = viewToday(); light = !!tonight(); }
+  sc.style.color = light ? "var(--cream)" : "var(--ink)";
+  sc.innerHTML = status(light) + html + (S.toast ? `<div class="toast" role="status">${esc(S.toast)}</div>` : "") + `<div class="homebar"></div>`;
+  if (keepScroll) { const v = sc.querySelector(".view"); if (v) v.scrollTop = scroll; }
+  save();
+}
+function toast(msg) { S.toast = msg; render.keep = true; render(); clearTimeout(toast.t); toast.t = setTimeout(() => { S.toast = null; render.keep = true; render(); }, 3200); }
+
+document.addEventListener("click", e => {
+  const el = e.target.closest("[data-act]"); if (!el || el.tagName === "INPUT") return;
+  const a = el.dataset.act, v = el.dataset.v, st = S.settings; let keep = true;
+  switch (a) {
+    case "kind": st.kind = v; break;
+    case "to-household": S.step = "household"; keep = false; break;
+    case "night": { const i = +v; st.nights = st.nights.includes(i) ? st.nights.filter(x => x !== i) : [...st.nights, i]; break; }
+    case "padd": st.people.push({ name: ["Dana","Marcus","Ari","June","Sam"][st.people.length] || "Someone", diet: "everything", avoids: [], notSpicy: false }); break;
+    case "pdel": st.people.splice(+v, 1); break;
+    case "pdiet": { const p = st.people[+v]; p.diet = p.diet === el.dataset.k ? "everything" : el.dataset.k; break; }
+    case "pavoid": { const p = st.people[+v], k = el.dataset.k; p.avoids = p.avoids.includes(k) ? p.avoids.filter(x => x !== k) : [...p.avoids, k]; break; }
+    case "pspicy": st.people[+v].notSpicy = !st.people[+v].notSpicy; break;
+    case "equip": st.equipment = st.equipment.includes(v) ? st.equipment.filter(x => x !== v) : [...st.equipment, v]; break;
+    case "build": {
+      if (!st.people.length) st.people.push({ name: "Me", diet: "everything", avoids: [], notSpicy: false });
+      const p = makePlan(); if (p.error) { toast(p.error); return; }
+      S.plan = p; S.bought = []; S.focusDay = null; S.step = "first"; keep = false; break; }
+    case "keepfree": S.seenOffer = true; S.step = "app"; S.tab = "week"; S.view = null; keep = false; break;
+    case "yearly": S.yearly = v === "1"; break;
+    case "pick": S.pick = v; break;
+    case "buy-sub": { const wasNeed = S.view?.need; S.tier = S.pick || "family"; S.subscribed = true; S.seenOffer = true; S.step = "app"; S.view = null;
+      toast(`Preview: ${tierName(S.tier)} purchase simulated. In the app this is Apple's purchase sheet.`); return; }
+    case "feature": {
+      if (!gate(v)) return;
+      if (v === "fridge") { S.view = { name: "fridge" }; if (!S.fridge.length) { S.scanning = true; setTimeout(() => { S.fridge = SAMPLE_FRIDGE.slice(); S.scanning = false; render(); }, 1700); } }
+      else if (v === "receipt") { if (!S.receipt) S.receipt = makeReceipt(); S.view = { name: "receipt" }; }
+      else if (v === "recap") S.view = { name: "recap" };
+      else if (v === "lunchbox") { if (!S.lunch) S.lunch = { on: false, perDay: 2, days: [0, 1, 2, 3, 4], thermos: false, plan: [] }; S.view = { name: "lunchbox" }; }
+      else if (v === "scanner") S.view = { name: "scanner" };
+      else if (v === "eatout") S.view = { name: "eatout" };
+      else if (v === "importx") S.view = { name: "import" };
+      else if (v === "cookmode") { S.cook = { day: S.view.day, i: 0 }; S.view = { name: "cookmode" }; }
+      else if (v === "share") { S.shared = !S.shared; if (S.shared) toast("Preview: in the app this shares through Family Sharing."); else break; return; }
+      keep = false; break; }
+    case "lunch": { if (!gate("lunch")) return; const d = tonight().day; S.leftovers = (S.leftovers || []).includes(d) ? S.leftovers.filter(x => x !== d) : [...(S.leftovers || []), d]; break; }
+    case "lper": S.lunch.perDay = +v; break;
+    case "lday": { const i = +v; S.lunch.days = S.lunch.days.includes(i) ? S.lunch.days.filter(x => x !== i) : [...S.lunch.days, i]; break; }
+    case "lthermos": S.lunch.thermos = !S.lunch.thermos; break;
+    case "lstart": case "lreplan": S.lunch.on = true; planLunches(); keep = false; break;
+    case "lstop": S.lunch.on = false; S.lunch.plan = []; keep = false; break;
+    case "lswap": { const d = +v, i = S.lunch.plan.findIndex(p => p.day === d), used = new Set(S.lunch.plan.map(p => p.id)), el = lunchEligible();
+      const fresh = el.filter(l => !used.has(l.id)), others = el.filter(l => l.id !== S.lunch.plan[i].id), pick = (fresh.length ? fresh : others);
+      if (pick.length) S.lunch.plan[i].id = pick[Math.floor(Math.random() * pick.length)].id; break; }
+    case "scanp": S.scanned = v; break;
+    case "rest": S.restaurant = v; break;
+    case "addpantry": toast("Preview: in the app this adds it to your pantry so plans can use it."); return;
+    case "unfridge": S.fridge = S.fridge.filter(x => x !== v); break;
+    case "rescan": S.fridge = []; S.scanning = true; setTimeout(() => { S.fridge = SAMPLE_FRIDGE.slice(); S.scanning = false; render(); }, 1700); break;
+    case "cookthis": { const t = tonight(); if (!t) return; const i = S.plan.dinners.findIndex(d => d.day === t.day); S.plan.dinners[i] = { ...S.plan.dinners[i], id: v, cooked: false }; S.view = null; S.tab = "week"; render(); toast(`${R(v).name} is tonight's dinner. The list repriced.`); return; }
+    case "learn": S.storeAdjust = Math.min(1.25, Math.max(0.8, (S.storeAdjust || 1) * S.receipt.paid / S.receipt.est)); S.receipt = null; S.view = null; render(); toast("Estimates for your store adjusted. Next week's plan uses them."); return;
+    case "cstep": S.cook.i = Math.max(0, S.cook.i + +v); S.timer = null; break;
+    case "timer": S.timer = { end: Date.now() + +v * 60000, step: S.cook.i, day: S.cook.day }; break;
+    case "endcook": S.view = { name: "recipe", day: S.cook.day }; S.timer = null; keep = false; break;
+    case "cookdone": { const d = S.plan.dinners.find(x => x.day === S.cook.day); d.cooked = true; S.view = null; S.timer = null; S.focusDay = null; keep = false; break; }
+    case "doimport": {
+      if (S.tier === "plus" && (S.imports || 0) >= 10) { toast("That's 10 saves this month on Plus. Family and Pro are unlimited."); return; }
+      if (!RECIPES.find(r => r.id === SAMPLE_IMPORT.id)) RECIPES.push(SAMPLE_IMPORT);
+      S.saved = [...new Set([...(S.saved || []), SAMPLE_IMPORT.id])]; S.imports = (S.imports || 0) + 1; render.keep = true; render(); toast("Saved. It's priced by the pack and ready to add to your week."); return; }
+    case "tab": S.tab = v; S.view = null; keep = false; break;
+    case "focus": S.focusDay = +v; break;
+    case "cook": S.servings = null; S.view = { name: "recipe", day: tonight().day }; keep = false; break;
+    case "back": S.view = null; keep = false; break;
+    case "serv": S.servings = Math.max(1, Math.min(12, (S.servings || hh()) + +v)); break;
+    case "cooked": { const d = S.plan.dinners.find(x => x.day === S.view.day); d.cooked = true; S.view = null; S.focusDay = null; keep = false; break; }
+    case "swap": {
+      const plate = $("#plate"), c = $("#cuts"); const t = tonight();
+      if (plate && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        plate.classList.add("out"); if (c) c.style.transform = "rotate(25deg)";
+        setTimeout(() => { swapDay(t.day); render(); const np = $("#plate"); if (np) np.classList.add("in"); }, 260);
+      } else { swapDay(t.day); render(); }
+      return; }
+    case "buy": S.bought = S.bought.includes(v) ? S.bought.filter(x => x !== v) : [...S.bought, v]; break;
+    case "have": S.inKitchen = S.inKitchen.includes(v) ? S.inKitchen.filter(x => x !== v) : [...S.inKitchen, v]; break;
+    case "open": S.view = { name: v }; keep = false; break;
+    case "nextweek": {
+      if (!gate("nextweek")) return;
+      const p = makePlan(S.plan.dinners.map(d => d.id)); if (p.error) { toast(p.error); return; }
+      S.plan = p; S.bought = []; S.leftovers = []; if (S.lunch?.on) planLunches(); S.focusDay = null; S.view = null; S.tab = "week"; render(); toast("Next week is planned. In the app it starts on Monday."); return; }
+    default: return;
+  }
+  render.keep = keep; render();
+});
+document.addEventListener("input", e => {
+  const el = e.target, a = el.dataset.act, st = S.settings; if (!a) return;
+  if (a === "zip") { st.zip = el.value; const b = $("#nextbtn"); if (b) b.disabled = st.zip.trim().length < 3; save(); return; }
+  if (a === "store") { st.store = el.value; save(); return; }
+  if (a === "pname") { st.people[+el.dataset.v].name = el.value; save(); return; }
+  if (a === "budget") { st.budget = +el.value; const big = el.previousElementSibling; if (big) big.textContent = "$" + st.budget; save(); return; }
+});
+document.addEventListener("change", e => {
+  const el = e.target; if (el.dataset.act === "cheapest") { S.settings.cheapest = el.checked; save(); }
+  if (el.dataset.act === "budget") { render.keep = true; render(); }
+});
+restoreSaved();
+$("#reset").addEventListener("click", () => { S = fresh(); try { localStorage.removeItem("supperwise-proto"); } catch (e) {} render(); });
+render();
+</script>

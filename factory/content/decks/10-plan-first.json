@@ -1,0 +1,45 @@
+{
+ "id": "10-plan-first",
+ "angle": "demo",
+ "accent": "#FFD9A8",
+ "slides": [
+  {
+   "style": "bold",
+   "ground": "dark",
+   "text": "when the \"free trial\" charges you *before you see a recipe*"
+  },
+  {
+   "style": "bold",
+   "ground": "#4D581C",
+   "text": "you should see the whole week *first*"
+  },
+  {
+   "style": "note",
+   "text": "how it should work",
+   "lines": [
+    "[x] plan your first week",
+    "[x] see every dinner and the total",
+    "[x] keep it, list and all",
+    "[ ] decide later if you want more weeks"
+   ]
+  },
+  {
+   "style": "bold",
+   "ground": "#84520C",
+   "text": "an app that plans the week *and* prices the list"
+  },
+  {
+   "style": "bold",
+   "ground": "light",
+   "text": "it's called *Supperwise*",
+   "sub": "coming soon to iPhone"
+  }
+ ],
+ "caption": "see it before you pay for it",
+ "hashtags": [
+  "appreview",
+  "mealplanning",
+  "budgetmeals",
+  "subscriptions"
+ ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "04-veg-at-table",
+  "angle": "curiosity",
+  "accent": "#FFD9A8",
+  "slides": [
+    {
+      "style": "bold",
+      "ground": "#5E2A4F",
+      "text": "one vegetarian at the table changes *the whole list*"
+    },
+    {
+      "style": "bold",
+      "ground": "dark",
+      "text": "cooking two dinners every night isn't the answer"
+    },
+    {
+      "style": "bold",
+      "ground": "dark",
+      "text": "one dinner, with *a vegetarian plate* written in"
+    },
+    {
+      "style": "note",
+      "text": "same pan, two plates",
+      "lines": [
+        "chicken + potatoes for three",
+        "chickpeas roasted on the same tray for one",
+        "one oven, one cleanup"
+      ]
+    },
+    {
+      "style": "bold",
+      "ground": "#1E4D5C",
+      "text": "an app that plans the week *and* prices the list"
+    },
+    {
+      "style": "bold",
+      "ground": "light",
+      "text": "it's called *Supperwise*",
+      "sub": "coming soon to iPhone"
+    }
+  ],
+  "caption": "for the house with one vegetarian and three who aren't",
+  "hashtags": [
+    "vegetarian",
+    "familydinner",
+    "flexitarian",
+    "mealplanning"
+  ]
+}

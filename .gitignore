@@ -1,0 +1,10 @@
+design/node_modules/
+design/shots/explore/
+design/shots/r1*/
+design/shots/r2*/
+design/shots/r3*/
+**/xcuserdata/
+**/.DS_Store
+DerivedData/
+app/.linux-check/
+Supperwise-project.zip

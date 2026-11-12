@@ -1,0 +1,28 @@
+{
+  "scanned": "2026-11-11T20:56:45.778Z",
+  "root": "/home/user/mrr-app/app",
+  "stack": [
+    "native"
+  ],
+  "name": "Supperwise",
+  "bundleId": "com.supperwise.app",
+  "version": "1.0",
+  "build": "1",
+  "deploymentTarget": "17.0",
+  "devices": "iPhone",
+  "languages": [],
+  "sdks": [],
+  "permissions": {},
+  "accounts": false,
+  "purchases": true,
+  "entitlements": [],
+  "privacyManifests": [
+    "Supperwise/Resources/PrivacyInfo.xcprivacy"
+  ],
+  "sdkPrivacyManifests": [],
+  "icons": [
+    "Supperwise/Assets.xcassets/AppIcon.appiconset/AppIcon.png"
+  ],
+  "sourceFiles": 17,
+  "notes": []
+}

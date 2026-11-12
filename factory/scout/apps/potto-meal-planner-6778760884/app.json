@@ -1,0 +1,45 @@
+{
+  "rank": null,
+  "id": 6778760884,
+  "name": "Potto - meal planner",
+  "seller": "Anete Ziedina",
+  "artistId": 6791134514,
+  "genre": "Food & Drink",
+  "price": "Free",
+  "rating": 4.7,
+  "ratings": 2380,
+  "released": "2026-06-12",
+  "ageMonths": 4,
+  "ratingsPerMonth": 595,
+  "updated": "2026-10-20",
+  "daysSinceUpdate": 22,
+  "alsoTopFree": null,
+  "url": "https://apps.apple.com/us/app/potto-meal-planner/id6778760884",
+  "summary": "Potto turns a few simple choices into a full week of meals — built around your supermarket, your budget, and the way you like to eat. No account, no fuss. Tell Potto your store, your weekly budget, your dietary needs and",
+  "sellerAppCount": 1,
+  "subtitleNote": "Apple's lookup doesn't return the subtitle; read it on the listing.",
+  "version": "1.2.3",
+  "releaseNotes": "Updated app performance and fixed critical bugs.\n\nThank you for using Potto!",
+  "description": "Potto turns a few simple choices into a full week of meals — built around your supermarket, your budget, and the way you like to eat. No account, no fuss.\n\nTell Potto your store, your weekly budget, your dietary needs and the gadgets in your kitchen, and it instantly creates a meal plan with recipes, cook times, cost estimates and a ready-to-shop grocery list.\n\nWHAT YOU CAN DO\n• Weekly meal plans built around your budget and preferences\n• Smart shopping lists, sorted and ready for your supermarket\n• Fridge Chef — snap a photo of your ingredients and get recipes you can make right now\n• Calorie Snap — photograph a meal to log calories and macros in seconds\n• Swap any meal you don't fancy and save your favourites\n• Vegetarian, vegan, gluten-free, dairy-free and more\n\nWhether you want to eat better, waste less, or simply stop asking \"what's for dinner?\", Potto has you covered.\n\nSUBSCRIPTION\nPotto is free to download. Some premium features require a subscription, which can be purchased inside the app. Your subscription unlocks the full experience and renews automatically unless cancelled. You can manage or cancel anytime in your Apple account settings.\n\nPrivacy Policy: https://pottoapp.com/privacy\nTerms of Use: https://pottoapp.com/terms",
+  "languages": 1,
+  "minimumOs": "17.6",
+  "sizeMb": 25,
+  "screenshots": [
+    "factory/scout/apps/potto-meal-planner-6778760884/screens/01.jpg",
+    "factory/scout/apps/potto-meal-planner-6778760884/screens/02.jpg",
+    "factory/scout/apps/potto-meal-planner-6778760884/screens/03.jpg"
+  ],
+  "reviewsRead": 0,
+  "recentStars1to5": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "reviews": [],
+  "revenueLinks": [
+    "https://app.sensortower.com/overview/6778760884?country=US",
+    "https://appmagic.rocks/top-charts/apps?search=Potto%20-%20meal%20planner"
+  ]
+}

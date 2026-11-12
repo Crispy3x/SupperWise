@@ -1,0 +1,200 @@
+[
+  {
+    "name": "today",
+    "fails": [],
+    "warns": [
+      "Text inside the system's safe areas: \"Start cooking\" (home indicator); \"Swap\" (home indicator)"
+    ],
+    "facts": {
+      "fonts": {
+        "SF Pro": 11,
+        "Instrument Serif": 2
+      },
+      "sizes": [
+        92,
+        46,
+        17,
+        15,
+        13,
+        11
+      ],
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "leftEdges": 2,
+      "accentHues": [
+        0,
+        24
+      ],
+      "cards": 2
+    }
+  },
+  {
+    "name": "recipe",
+    "fails": [],
+    "warns": [
+      "Text inside the system's safe areas: \"Step 1 of 6\" (home indicator)"
+    ],
+    "facts": {
+      "fonts": {
+        "Instrument Serif": 1,
+        "SF Pro": 22
+      },
+      "sizes": [
+        46,
+        20,
+        17,
+        15,
+        13
+      ],
+      "weights": [
+        "400",
+        "600",
+        "700"
+      ],
+      "leftEdges": 2,
+      "accentHues": [
+        0
+      ],
+      "cards": 2
+    }
+  },
+  {
+    "name": "groceries",
+    "fails": [],
+    "warns": [
+      "Text inside the system's safe areas: \"Garam masala\" (home indicator); \"$3.49\" (home indicator)"
+    ],
+    "facts": {
+      "fonts": {
+        "Instrument Serif": 4,
+        "SF Pro": 19
+      },
+      "sizes": [
+        92,
+        46,
+        28,
+        17,
+        15,
+        13,
+        11
+      ],
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "leftEdges": 3,
+      "accentHues": [
+        0,
+        24
+      ],
+      "cards": 1
+    }
+  },
+  {
+    "name": "plan",
+    "fails": [
+      "5 saturated hue families (0°, 24°, 312°, 72°, 192°). One accent, maybe one semantic colour. This is confetti.",
+      "The home indicator is lost on what sits under it (1.21:1). Use data-chrome=\"light\" / data-home, or change the art under it."
+    ],
+    "warns": [
+      "Text inside the system's safe areas: \"Oven\" (home indicator); \"Stovetop\" (home indicator); \"Sheet pan\" (home indicator)"
+    ],
+    "facts": {
+      "fonts": {
+        "Instrument Serif": 2,
+        "SF Pro": 30
+      },
+      "sizes": [
+        92,
+        46,
+        17,
+        15,
+        13,
+        11
+      ],
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "leftEdges": 3,
+      "accentHues": [
+        0,
+        24,
+        312,
+        72,
+        192
+      ],
+      "cards": 1
+    }
+  },
+  {
+    "name": "today-dark",
+    "fails": [],
+    "warns": [
+      "Text inside the system's safe areas: \"Start cooking\" (home indicator); \"Swap\" (home indicator)"
+    ],
+    "facts": {
+      "fonts": {
+        "SF Pro": 11,
+        "Instrument Serif": 2
+      },
+      "sizes": [
+        92,
+        46,
+        17,
+        15,
+        13,
+        11
+      ],
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "leftEdges": 2,
+      "accentHues": [
+        0
+      ],
+      "cards": 2
+    }
+  },
+  {
+    "name": "first-week",
+    "fails": [],
+    "warns": [
+      "Text inside the system's safe areas: \"Try 7 days free\" (home indicator)"
+    ],
+    "facts": {
+      "fonts": {
+        "SF Pro": 19,
+        "Instrument Serif": 2
+      },
+      "sizes": [
+        40,
+        17,
+        15,
+        13
+      ],
+      "weights": [
+        "400",
+        "600",
+        "700"
+      ],
+      "leftEdges": 4,
+      "accentHues": [
+        0,
+        24
+      ],
+      "cards": 2
+    }
+  }
+]

@@ -1,0 +1,312 @@
+[
+  {
+    "id": 6769601354,
+    "name": "TapCook: Budget Meal Plans",
+    "seller": "testmaxx LLC",
+    "bundleId": "com.testmaxx.reelchef",
+    "rating": 4.76,
+    "ratings": 7430,
+    "price": "Free",
+    "genre": "Food & Drink",
+    "genres": [
+      "Food & Drink"
+    ],
+    "released": "2026-07-17",
+    "updated": "2026-11-07",
+    "version": "2.2.1",
+    "ageRating": "12+",
+    "size": "145 MB",
+    "languages": 3,
+    "ipad": false,
+    "screenshots": [
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ce/b3/19/ceb3193a-fd0e-cc55-9ced-316d2acaf494/iPhone_17_Pro_Max_-_1.jpg/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/d6/25/d7/d625d7b9-3b2f-82ee-d098-e5752fbf37d6/iPhone_17_Pro_Max_-_2.jpg/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/42/1b/f7/421bf791-26cf-8487-4a7e-829c7cd38518/iPhone_17_Pro_Max_-_3.jpg/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/cd/61/86/cd6186b3-46af-176a-1f9f-482f3815d167/iPhone_17_Pro_Max_-_4.jpg/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/36/88/7c/36887cab-cc21-0193-992a-8e9a7525e227/iPhone_17_Pro_Max_-_5.jpg/320x480bb.jpg"
+    ],
+    "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4f/3a/2f/4f3a2fc9-f540-4938-2708-d4c4c06c17be/AppIcon-0-0-1x_U007ephone-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+    "url": "https://apps.apple.com/us/app/tapcook-budget-meal-plans/id6769601354?uo=4",
+    "subtitle": "Dinners priced at your store",
+    "shots": [
+      "01-1.jpg",
+      "01-2.jpg",
+      "01-3.jpg"
+    ],
+    "iconFile": "01-icon.jpg"
+  },
+  {
+    "id": 6778126199,
+    "name": "Whipp: Meal Planner & Recipes",
+    "seller": "EVOY LTD",
+    "bundleId": "app.whipp",
+    "rating": 4.66,
+    "ratings": 758,
+    "price": "Free",
+    "genre": "Food & Drink",
+    "genres": [
+      "Food & Drink"
+    ],
+    "released": "2026-06-12",
+    "updated": "2026-11-09",
+    "version": "2.0.1",
+    "ageRating": "4+",
+    "size": "775 MB",
+    "languages": 4,
+    "ipad": true,
+    "screenshots": [
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/a6/5b/8f/a65b8fa7-285d-33ae-87b4-ebbabe059f74/Whipp-01.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/af/f7/15/aff7159c-149e-e7a7-159e-389a07153a5a/Whipp-02.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/0f/55/15/0f5515a0-6b6d-9095-a1cf-7c18e326c6c2/Whipp-03.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/84/1b/fc/841bfc49-2cd9-2bb1-d6d8-2954118dbfce/Whipp-04.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/83/bf/99/83bf995d-aa74-1b65-f820-130297ec57c6/Whipp-05.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/75/e8/48/75e84853-590f-d5f9-9df8-ec3b1383d38d/Whipp-06.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/f5/ae/9b/f5ae9b6e-4de4-e924-1a23-52034e9704d4/Whipp-07.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/e8/6c/25/e86c2583-b2d3-19b0-4c38-b36178da3804/Whipp-08.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/21/09/de/2109dee3-edb7-a8fb-48f3-5f2c5c370e57/Whipp-09.png/320x480bb.jpg"
+    ],
+    "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/38/1c/1e/381c1e52-b0e0-1b47-b4c6-b07a5c6dc4ff/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/512x512bb.jpg",
+    "url": "https://apps.apple.com/us/app/whipp-meal-planner-recipes/id6778126199?uo=4",
+    "subtitle": "Budget Dinners & Grocery Lists",
+    "shots": [
+      "02-1.jpg",
+      "02-2.jpg",
+      "02-3.jpg"
+    ],
+    "iconFile": "02-icon.jpg"
+  },
+  {
+    "id": 6778760884,
+    "name": "Potto - meal planner",
+    "seller": "Anete Ziedina",
+    "bundleId": "com.potto.mealplanner.app",
+    "rating": 4.65,
+    "ratings": 2381,
+    "price": "Free",
+    "genre": "Food & Drink",
+    "genres": [
+      "Food & Drink",
+      "Health & Fitness"
+    ],
+    "released": "2026-06-12",
+    "updated": "2026-10-20",
+    "version": "1.2.3",
+    "ageRating": "4+",
+    "size": "25 MB",
+    "languages": 1,
+    "ipad": false,
+    "screenshots": [
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/57/c0/2d/57c02db8-771f-f4f7-7cbe-f4c3f5f062d4/Frame_37529.jpg/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/c1/cd/92/c1cd924c-a2d4-d2ae-257d-6cb30c7acddd/Frame_37530.jpg/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/3b/7b/7e/3b7b7e16-0cdf-c5dc-a2cc-5a42b545fa95/Frame_37531.jpg/320x480bb.jpg"
+    ],
+    "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0b/f7/93/0bf79393-999c-6c77-80ee-0e99bf9a82f0/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.jpeg/512x512bb.jpg",
+    "url": "https://apps.apple.com/us/app/potto-meal-planner/id6778760884?uo=4",
+    "subtitle": "Meal Prep, Grocery, Recipes",
+    "shots": [
+      "03-1.jpg",
+      "03-2.jpg",
+      "03-3.jpg"
+    ],
+    "iconFile": "03-icon.jpg"
+  },
+  {
+    "id": 575756462,
+    "name": "eMeals - Healthy Meal Plans",
+    "seller": "eMeals, Inc.",
+    "bundleId": "com.emeals",
+    "rating": 4.61,
+    "ratings": 52810,
+    "price": "Free",
+    "genre": "Food & Drink",
+    "genres": [
+      "Food & Drink",
+      "Health & Fitness"
+    ],
+    "released": "2013-04-16",
+    "updated": "2026-10-29",
+    "version": "7.1.1",
+    "ageRating": "12+",
+    "size": "218 MB",
+    "languages": 1,
+    "ipad": false,
+    "screenshots": [
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/4c/56/75/4c5675ad-97ba-992e-16cc-1049817d9f38/2026_eMeals-6.5-iOS-screenshot-1.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/0b/95/c6/0b95c650-bede-4a6d-025d-7769ebaeeded/2026_eMeals-6.5-iOS-screenshot-2.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/64/bc/05/64bc0513-1f37-22b4-7f3b-dfe7dff32115/2026_eMeals-6.5-iOS-screenshot-3.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/78/41/12/7841124a-f98f-bed3-4e62-ea3b25f13695/2026_eMeals-6.5-iOS-screenshot-4.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/3b/25/61/3b2561ac-4715-6b00-26c5-b66d3e9668c2/2026_eMeals-6.5-iOS-screenshot-5.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/72/b3/0a/72b30af7-053f-5cce-ff21-99b473653e0f/2026_eMeals-6.5-iOS-screenshot-6.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/e1/df/38/e1df3803-e67f-a23e-dde7-1b012b2ad3d5/2026_eMeals-6.5-iOS-screenshot-7.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/23/49/f9/2349f9a0-0108-dd47-9840-675fcdba4686/2026_eMeals-6.5-iOS-screenshot-8.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d1/35/ae/d135aece-33fb-fc6f-c00b-90bd2770c783/2026_eMeals-6.5-iOS-screenshot-9.png/320x480bb.jpg"
+    ],
+    "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/bf/30/4a/bf304a2f-f8f9-6fff-3049-e82ad3a1be3e/AppIconGlass-0-0-1x_U007ephone-0-1-0-85-220.png/512x512bb.jpg",
+    "url": "https://apps.apple.com/us/app/emeals-healthy-meal-plans/id575756462?uo=4",
+    "subtitle": "Meal Planner & Grocery List",
+    "shots": [
+      "04-1.jpg",
+      "04-2.jpg",
+      "04-3.jpg"
+    ],
+    "iconFile": "04-icon.jpg"
+  },
+  {
+    "id": 6783742855,
+    "name": "NeatEat - Meal Planner",
+    "seller": "Streamline Merch LLC",
+    "bundleId": "com.forkcast890.app",
+    "rating": 4.71,
+    "ratings": 1460,
+    "price": "Free",
+    "genre": "Food & Drink",
+    "genres": [
+      "Food & Drink",
+      "Lifestyle"
+    ],
+    "released": "2026-07-17",
+    "updated": "2026-11-04",
+    "version": "4",
+    "ageRating": "12+",
+    "size": "98 MB",
+    "languages": 4,
+    "ipad": true,
+    "screenshots": [
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/32/57/ca/3257caa7-0736-4cba-de36-d6cc58895519/Frame_35.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/bc/de/f1/bcdef1b1-2994-c9a4-8625-1045dc27f7b8/02-Frame-34.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ce/33/dc/ce33dcfe-1abd-6229-e67b-b37d81b87554/03-1000plus-recipes.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d5/a0/59/d5a059f6-f61c-204d-9306-9ac3b734cdb2/Frame_37.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ff/d5/ed/ffd5ed8f-c006-be3c-d68b-48d7671a8f49/Frame_36.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/5a/8c/dc/5a8cdc93-c4f9-7a8f-8315-378bf582f7c3/04-1378.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ee/db/e6/eedbe6c2-d597-b277-3b76-b75a558eca2a/Frame_32.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/6b/6f/ba/6b6fbab6-f8bd-b842-cf72-660fdbeec1d7/Frame_38.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/57/17/10/571710e3-3873-96b2-a047-0f51d1653737/Frame_33.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/78/cf/a4/78cfa4e0-dd2c-f08c-19c1-a33ec9e8c7e1/1377.png/320x480bb.jpg"
+    ],
+    "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/06/43/1b/06431b38-b65f-e962-5b42-4d4b845fdd3b/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+    "url": "https://apps.apple.com/us/app/neateat-meal-planner/id6783742855?uo=4",
+    "subtitle": "Recipes and Grocery Planner",
+    "shots": [
+      "05-1.jpg",
+      "05-2.jpg",
+      "05-3.jpg"
+    ],
+    "iconFile": "05-icon.jpg"
+  },
+  {
+    "id": 6777471316,
+    "name": "mise - meal planner",
+    "seller": "TEGS LABS LTD",
+    "bundleId": "com.gregorytaylor.shopping",
+    "rating": 4.73,
+    "ratings": 4879,
+    "price": "Free",
+    "genre": "Food & Drink",
+    "genres": [
+      "Food & Drink",
+      "Health & Fitness"
+    ],
+    "released": "2026-06-10",
+    "updated": "2026-11-11",
+    "version": "1.1.40",
+    "ageRating": "4+",
+    "size": "187 MB",
+    "languages": 1,
+    "ipad": true,
+    "screenshots": [
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/12/bc/b9/12bcb9de-aa1f-545e-205e-8caca361f30d/1.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/79/87/37/798737b8-f5da-63f5-c02b-e1ec94bbd3a2/2.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/3c/75/4a/3c754ad9-7a04-4b8e-b986-b0d3d3df12ac/3.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/b6/40/ba/b640ba71-0654-302f-253f-a59fd26d2110/4.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/bf/b4/fc/bfb4fc41-efaf-248f-df44-2340fcc2cb38/5.png/320x480bb.jpg"
+    ],
+    "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d6/ed/9b/d6ed9bf7-9a2a-4fba-203f-bb3bfd4b704e/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+    "url": "https://apps.apple.com/us/app/mise-meal-planner/id6777471316?uo=4",
+    "subtitle": "Meal Prep & Grocery Lists",
+    "shots": [
+      "06-1.jpg",
+      "06-2.jpg",
+      "06-3.jpg"
+    ],
+    "iconFile": "06-icon.jpg"
+  },
+  {
+    "id": 6776258774,
+    "name": "Scoffy - Meal Planner",
+    "seller": "Sahal Adan",
+    "bundleId": "com.sahaladan.rilofood",
+    "rating": null,
+    "ratings": 0,
+    "price": "Free",
+    "genre": "Food & Drink",
+    "genres": [
+      "Food & Drink",
+      "Health & Fitness"
+    ],
+    "released": "2026-09-22",
+    "updated": "2026-11-05",
+    "version": "1.0.6",
+    "ageRating": "4+",
+    "size": "168 MB",
+    "languages": 1,
+    "ipad": false,
+    "screenshots": [
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/32/d0/49/32d04930-8857-919a-422b-946f861d0d59/01-dinner-dread-gone.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/98/88/88/98888841-4d75-cc29-fd0f-22b2e070b095/02-your-shop-your-prices.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/1a/ab/f8/1aabf88b-b8d2-9e97-0bf8-f197cdfd4b62/03-stick-to-your-budget.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/9b/20/4f/9b204f7f-4b3d-2db7-ef43-8b8fb3639a00/04-one-list-sorted-by-aisle.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/16/b3/b0/16b3b0ef-8b03-7c50-0016-6f640f785a2a/05-know-whats-for-dinner.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/2b/d6/d8/2bd6d848-2a45-ef03-1537-a38b37829529/06-just-ask-scoffy-ai.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/2c/42/50/2c4250fd-0005-9263-d3b5-4372913e8e2f/07-photo-in-meal-out.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/28/6c/2b/286c2b72-3c0d-d6de-417f-1d6d9cebf820/08-halal-vegan-fussy-sorted.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/68/02/bc/6802bc34-0d39-77b4-4f68-3066c0930b14/09-everything-dinner-needs.png/320x480bb.jpg"
+    ],
+    "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/e6/db/cd/e6dbcddd-af07-df33-8d6c-41b01f7ee782/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/512x512bb.jpg",
+    "url": "https://apps.apple.com/us/app/scoffy-meal-planner/id6776258774?uo=4",
+    "subtitle": "Weekly Recipes & Shopping List",
+    "shots": [
+      "07-1.jpg",
+      "07-2.jpg",
+      "07-3.jpg"
+    ],
+    "iconFile": "07-icon.jpg"
+  },
+  {
+    "id": 6819123656,
+    "name": "Supper Tab: Meal Planner",
+    "seller": "Mohd Ibrahim",
+    "bundleId": "com.ibrahim1774.costcook",
+    "rating": null,
+    "ratings": 0,
+    "price": "Free",
+    "genre": "Food & Drink",
+    "genres": [
+      "Food & Drink",
+      "Lifestyle"
+    ],
+    "released": "2026-10-26",
+    "updated": "2026-11-04",
+    "version": "1.1.1",
+    "ageRating": "4+",
+    "size": "108 MB",
+    "languages": 2,
+    "ipad": false,
+    "screenshots": [
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f1/c4/50/f1c450f3-3b36-3735-29c7-5c1b3183846e/iphone_1.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/e4/29/e1/e429e170-9289-5ff2-0317-1d2f8ff9eae5/iphone_2.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/5f/85/51/5f8551ce-5e31-c649-7155-1264beeafa9e/iphone_3.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/5d/03/3e/5d033e32-a56e-9b8c-8061-851aae62cc9b/iphone_4.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/24/be/9e/24be9e64-44e8-8d3e-19c4-a4bf522d1de2/iphone_5.png/320x480bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/32/e4/9a/32e49a36-bde0-bd8b-07a2-234ea16ff820/iphone_6.png/320x480bb.jpg"
+    ],
+    "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ad/39/f4/ad39f4a7-bb0a-18c4-1e3d-21e0d48ef442/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+    "url": "https://apps.apple.com/us/app/supper-tab-meal-planner/id6819123656?uo=4",
+    "subtitle": "Cheap dinners & grocery list",
+    "shots": [
+      "08-1.jpg",
+      "08-2.jpg",
+      "08-3.jpg"
+    ],
+    "iconFile": "08-icon.jpg"
+  }
+]

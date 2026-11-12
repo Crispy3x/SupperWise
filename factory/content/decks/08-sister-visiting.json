@@ -1,0 +1,57 @@
+{
+ "id": "08-sister-visiting",
+ "angle": "story",
+ "accent": "#FFD9A8",
+ "slides": [
+  {
+   "style": "chat",
+   "name": "mom",
+   "lines": [
+    {
+     "them": "your sister's staying all week"
+    },
+    {
+     "me": "the vegetarian one?"
+    }
+   ]
+  },
+  {
+   "style": "chat",
+   "name": "mom",
+   "lines": [
+    {
+     "them": "and the kids still won't eat spicy"
+    },
+    {
+     "me": "so i'm cooking four dinners a night"
+    },
+    {
+     "them": "or one dinner that works for *everyone*"
+    }
+   ]
+  },
+  {
+   "style": "bold",
+   "ground": "#5E2A4F",
+   "text": "one dinner, every rule at the table *written in*"
+  },
+  {
+   "style": "bold",
+   "ground": "#AD321C",
+   "text": "an app that plans the week *and* prices the list"
+  },
+  {
+   "style": "bold",
+   "ground": "light",
+   "text": "it's called *Supperwise*",
+   "sub": "coming soon to iPhone"
+  }
+ ],
+ "caption": "the week my sister visited",
+ "hashtags": [
+  "familydinner",
+  "vegetarian",
+  "relatable",
+  "mealplanning"
+ ]
+}

@@ -1,0 +1,576 @@
+{
+ "lunches": [
+  {
+   "id": "turkey_cheddar",
+   "name": "Turkey and cheddar sandwich",
+   "note": "Apple slices on the side; a squeeze of lemon keeps them from browning.",
+   "ingredients": [
+    {
+     "ingredient": "sandwich_bread",
+     "amount": 2,
+     "text": "2 slices bread"
+    },
+    {
+     "ingredient": "deli_turkey",
+     "amount": 60,
+     "text": "2 oz sliced turkey"
+    },
+    {
+     "ingredient": "cheddar",
+     "amount": 20,
+     "text": "2 thin slices cheddar"
+    },
+    {
+     "ingredient": "apples",
+     "amount": 1,
+     "text": "1 apple"
+    }
+   ],
+   "allergens": [
+    "gluten",
+    "dairy"
+   ],
+   "vegetarian": false,
+   "thermos": false
+  },
+  {
+   "id": "sunbutter_jam",
+   "name": "Sunflower butter and jam sandwich",
+   "note": "Nut-free for school. Banana and carrot sticks alongside.",
+   "ingredients": [
+    {
+     "ingredient": "sandwich_bread",
+     "amount": 2,
+     "text": "2 slices bread"
+    },
+    {
+     "ingredient": "sunbutter",
+     "amount": 32,
+     "text": "2 tbsp sunflower butter"
+    },
+    {
+     "ingredient": "jam",
+     "amount": 20,
+     "text": "1 tbsp jam"
+    },
+    {
+     "ingredient": "bananas",
+     "amount": 1,
+     "text": "1 banana"
+    },
+    {
+     "ingredient": "carrots",
+     "amount": 60,
+     "text": "a handful of carrot sticks"
+    }
+   ],
+   "allergens": [
+    "gluten"
+   ],
+   "vegetarian": true,
+   "thermos": false
+  },
+  {
+   "id": "hummus_box",
+   "name": "Hummus snack box",
+   "note": "Pita triangles, cucumber, cherry tomatoes and a little cheese to dip.",
+   "ingredients": [
+    {
+     "ingredient": "pita",
+     "amount": 1,
+     "text": "1 pita"
+    },
+    {
+     "ingredient": "hummus",
+     "amount": 60,
+     "text": "1/4 cup hummus"
+    },
+    {
+     "ingredient": "cucumber",
+     "amount": 0.5,
+     "text": "half a cucumber"
+    },
+    {
+     "ingredient": "tomatoes_cherry",
+     "amount": 60,
+     "text": "a handful of cherry tomatoes"
+    },
+    {
+     "ingredient": "string_cheese",
+     "amount": 1,
+     "text": "1 string cheese"
+    }
+   ],
+   "allergens": [
+    "gluten",
+    "dairy"
+   ],
+   "vegetarian": true,
+   "thermos": false
+  },
+  {
+   "id": "cheese_crackers",
+   "name": "Cheese, crackers and grapes",
+   "note": "Cut grapes in quarters lengthwise for children under 4.",
+   "ingredients": [
+    {
+     "ingredient": "crackers",
+     "amount": 40,
+     "text": "a handful of crackers"
+    },
+    {
+     "ingredient": "string_cheese",
+     "amount": 1,
+     "text": "1 string cheese"
+    },
+    {
+     "ingredient": "grapes",
+     "amount": 90,
+     "text": "a handful of grapes"
+    },
+    {
+     "ingredient": "carrots",
+     "amount": 60,
+     "text": "carrot sticks"
+    }
+   ],
+   "allergens": [
+    "gluten",
+    "dairy"
+   ],
+   "vegetarian": true,
+   "thermos": false
+  },
+  {
+   "id": "turkey_pinwheels",
+   "name": "Turkey and spinach pinwheels",
+   "note": "Roll tight, slice into rounds. An orange on the side.",
+   "ingredients": [
+    {
+     "ingredient": "tortillas",
+     "amount": 1,
+     "text": "1 tortilla"
+    },
+    {
+     "ingredient": "deli_turkey",
+     "amount": 50,
+     "text": "2 slices turkey"
+    },
+    {
+     "ingredient": "cheddar",
+     "amount": 15,
+     "text": "a little grated cheddar"
+    },
+    {
+     "ingredient": "spinach",
+     "amount": 10,
+     "text": "a few spinach leaves"
+    },
+    {
+     "ingredient": "orange",
+     "amount": 1,
+     "text": "1 orange"
+    }
+   ],
+   "allergens": [
+    "gluten",
+    "dairy"
+   ],
+   "vegetarian": false,
+   "thermos": false
+  },
+  {
+   "id": "bean_quesadilla",
+   "name": "Bean and cheese quesadilla wedges",
+   "note": "Cook the night before; good cold. Grapes on the side.",
+   "ingredients": [
+    {
+     "ingredient": "tortillas",
+     "amount": 1,
+     "text": "1 tortilla"
+    },
+    {
+     "ingredient": "black_beans",
+     "amount": 0.25,
+     "text": "1/4 can black beans"
+    },
+    {
+     "ingredient": "cheddar",
+     "amount": 30,
+     "text": "1/4 cup grated cheddar"
+    },
+    {
+     "ingredient": "grapes",
+     "amount": 90,
+     "text": "a handful of grapes"
+    }
+   ],
+   "allergens": [
+    "gluten",
+    "dairy"
+   ],
+   "vegetarian": true,
+   "thermos": false
+  },
+  {
+   "id": "egg_box",
+   "name": "Hard-boiled egg box",
+   "note": "Boil a batch on Sunday; they keep 7 days in the fridge, in the shell.",
+   "ingredients": [
+    {
+     "ingredient": "eggs",
+     "amount": 2,
+     "text": "2 eggs"
+    },
+    {
+     "ingredient": "crackers",
+     "amount": 30,
+     "text": "a few crackers"
+    },
+    {
+     "ingredient": "cucumber",
+     "amount": 0.5,
+     "text": "cucumber rounds"
+    },
+    {
+     "ingredient": "grapes",
+     "amount": 90,
+     "text": "a handful of grapes"
+    }
+   ],
+   "allergens": [
+    "egg",
+    "gluten"
+   ],
+   "vegetarian": true,
+   "thermos": false
+  },
+  {
+   "id": "yogurt_parfait",
+   "name": "Yogurt and oat parfait",
+   "note": "Pack the oats separately so they stay crunchy. Pack with an ice pack.",
+   "ingredients": [
+    {
+     "ingredient": "yogurt",
+     "amount": 170,
+     "text": "3/4 cup plain yogurt"
+    },
+    {
+     "ingredient": "honey",
+     "amount": 10,
+     "text": "a drizzle of honey"
+    },
+    {
+     "ingredient": "oats",
+     "amount": 25,
+     "text": "1/4 cup toasted oats"
+    },
+    {
+     "ingredient": "bananas",
+     "amount": 1,
+     "text": "1 banana"
+    }
+   ],
+   "allergens": [
+    "dairy"
+   ],
+   "vegetarian": true,
+   "thermos": false
+  },
+  {
+   "id": "pasta_salad",
+   "name": "Pasta salad",
+   "note": "Make on Sunday for two days. Tomatoes, cucumber and feta.",
+   "ingredients": [
+    {
+     "ingredient": "penne",
+     "amount": 60,
+     "text": "1 cup cooked penne"
+    },
+    {
+     "ingredient": "tomatoes_cherry",
+     "amount": 60,
+     "text": "cherry tomatoes"
+    },
+    {
+     "ingredient": "cucumber",
+     "amount": 0.5,
+     "text": "diced cucumber"
+    },
+    {
+     "ingredient": "feta",
+     "amount": 20,
+     "text": "crumbled feta"
+    },
+    {
+     "ingredient": "olive_oil",
+     "amount": 10,
+     "text": "2 tsp olive oil"
+    }
+   ],
+   "allergens": [
+    "gluten",
+    "dairy"
+   ],
+   "vegetarian": true,
+   "thermos": false
+  },
+  {
+   "id": "chickpea_wrap",
+   "name": "Smashed chickpea wrap",
+   "note": "Chickpeas mashed with lemon and olive oil, carrot and spinach. Dairy-free.",
+   "ingredients": [
+    {
+     "ingredient": "tortillas",
+     "amount": 1,
+     "text": "1 tortilla"
+    },
+    {
+     "ingredient": "chickpeas",
+     "amount": 0.33,
+     "text": "1/3 can chickpeas"
+    },
+    {
+     "ingredient": "lemon",
+     "amount": 0.25,
+     "text": "a squeeze of lemon"
+    },
+    {
+     "ingredient": "carrots",
+     "amount": 40,
+     "text": "grated carrot"
+    },
+    {
+     "ingredient": "spinach",
+     "amount": 10,
+     "text": "spinach"
+    }
+   ],
+   "allergens": [
+    "gluten"
+   ],
+   "vegetarian": true,
+   "thermos": false
+  },
+  {
+   "id": "thermos_mac",
+   "name": "Thermos mac and cheese",
+   "note": "Fill the thermos with boiling water for 5 minutes first, then pack it piping hot.",
+   "ingredients": [
+    {
+     "ingredient": "elbow_pasta",
+     "amount": 70,
+     "text": "2/3 cup elbows"
+    },
+    {
+     "ingredient": "cheddar",
+     "amount": 40,
+     "text": "1/3 cup grated cheddar"
+    },
+    {
+     "ingredient": "milk",
+     "amount": 60,
+     "text": "1/4 cup milk"
+    },
+    {
+     "ingredient": "butter",
+     "amount": 10,
+     "text": "2 tsp butter"
+    },
+    {
+     "ingredient": "bananas",
+     "amount": 1,
+     "text": "1 banana"
+    }
+   ],
+   "allergens": [
+    "gluten",
+    "dairy"
+   ],
+   "vegetarian": true,
+   "thermos": true
+  },
+  {
+   "id": "thermos_fried_rice",
+   "name": "Thermos egg fried rice",
+   "note": "Use day-old rice. Pack piping hot in a preheated thermos.",
+   "ingredients": [
+    {
+     "ingredient": "jasmine",
+     "amount": 70,
+     "text": "1/3 cup rice"
+    },
+    {
+     "ingredient": "eggs",
+     "amount": 1,
+     "text": "1 egg"
+    },
+    {
+     "ingredient": "frozen_peas",
+     "amount": 40,
+     "text": "peas"
+    },
+    {
+     "ingredient": "carrots",
+     "amount": 30,
+     "text": "diced carrot"
+    },
+    {
+     "ingredient": "soy_sauce",
+     "amount": 10,
+     "text": "2 tsp soy sauce"
+    }
+   ],
+   "allergens": [
+    "egg",
+    "soy",
+    "gluten"
+   ],
+   "vegetarian": true,
+   "thermos": true
+  },
+  {
+   "id": "chicken_rice_bowl",
+   "name": "Chicken, rice and broccoli bowl",
+   "note": "Pack piping hot in a preheated thermos.",
+   "ingredients": [
+    {
+     "ingredient": "chicken_thighs",
+     "amount": 90,
+     "text": "3 oz chicken"
+    },
+    {
+     "ingredient": "jasmine",
+     "amount": 60,
+     "text": "1/3 cup rice"
+    },
+    {
+     "ingredient": "broccoli",
+     "amount": 70,
+     "text": "broccoli florets"
+    },
+    {
+     "ingredient": "olive_oil",
+     "amount": 5,
+     "text": "1 tsp olive oil"
+    }
+   ],
+   "allergens": [],
+   "vegetarian": false,
+   "thermos": true
+  },
+  {
+   "id": "bean_rice_bowl",
+   "name": "Black bean and rice bowl",
+   "note": "Warm in a preheated thermos, or eat cold as a salad.",
+   "ingredients": [
+    {
+     "ingredient": "jasmine",
+     "amount": 60,
+     "text": "1/3 cup rice"
+    },
+    {
+     "ingredient": "black_beans",
+     "amount": 0.33,
+     "text": "1/3 can black beans"
+    },
+    {
+     "ingredient": "cheddar",
+     "amount": 20,
+     "text": "grated cheddar"
+    },
+    {
+     "ingredient": "tomatoes_cherry",
+     "amount": 50,
+     "text": "cherry tomatoes"
+    }
+   ],
+   "allergens": [
+    "dairy"
+   ],
+   "vegetarian": true,
+   "thermos": true
+  },
+  {
+   "id": "turkey_cracker_stack",
+   "name": "Build-your-own cracker stacks",
+   "note": "Turkey, cheese and crackers to stack. Apple slices on the side.",
+   "ingredients": [
+    {
+     "ingredient": "crackers",
+     "amount": 35,
+     "text": "a handful of crackers"
+    },
+    {
+     "ingredient": "deli_turkey",
+     "amount": 50,
+     "text": "2 slices turkey"
+    },
+    {
+     "ingredient": "string_cheese",
+     "amount": 1,
+     "text": "1 string cheese"
+    },
+    {
+     "ingredient": "apples",
+     "amount": 1,
+     "text": "1 apple"
+    }
+   ],
+   "allergens": [
+    "gluten",
+    "dairy"
+   ],
+   "vegetarian": false,
+   "thermos": false
+  },
+  {
+   "id": "veggie_pita",
+   "name": "Hummus and veggie pita pocket",
+   "note": "Spread hummus inside, then stuff with cucumber, carrot and spinach.",
+   "ingredients": [
+    {
+     "ingredient": "pita",
+     "amount": 1,
+     "text": "1 pita"
+    },
+    {
+     "ingredient": "hummus",
+     "amount": 50,
+     "text": "3 tbsp hummus"
+    },
+    {
+     "ingredient": "cucumber",
+     "amount": 0.5,
+     "text": "sliced cucumber"
+    },
+    {
+     "ingredient": "carrots",
+     "amount": 40,
+     "text": "grated carrot"
+    },
+    {
+     "ingredient": "spinach",
+     "amount": 10,
+     "text": "spinach"
+    },
+    {
+     "ingredient": "orange",
+     "amount": 1,
+     "text": "1 orange"
+    }
+   ],
+   "allergens": [
+    "gluten"
+   ],
+   "vegetarian": true,
+   "thermos": false
+  }
+ ],
+ "notes": [
+  "Every lunch here is nut-free; sunflower seed butter stands in for peanut butter.",
+  "Keep cold lunches cold: an ice pack, or a frozen water bottle, in an insulated bag. Perishable food shouldn't sit above 40°F for more than 2 hours.",
+  "Hot lunches: fill the thermos with boiling water for 5 minutes, empty it, then add food piping hot.",
+  "Hummus contains sesame. Check every label if someone has an allergy."
+ ]
+}

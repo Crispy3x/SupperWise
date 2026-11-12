@@ -1,0 +1,242 @@
+[
+  {
+    "name": "today",
+    "fails": [],
+    "warns": [],
+    "facts": {
+      "fonts": {
+        "SF Pro": 18,
+        "Instrument Serif": 2
+      },
+      "sizes": [
+        92,
+        46,
+        17,
+        15,
+        13,
+        11
+      ],
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "leftEdges": 3,
+      "accentHues": [
+        0,
+        24
+      ],
+      "cards": 2
+    }
+  },
+  {
+    "name": "recipe",
+    "fails": [],
+    "warns": [],
+    "facts": {
+      "fonts": {
+        "Instrument Serif": 1,
+        "SF Pro": 23
+      },
+      "sizes": [
+        46,
+        20,
+        17,
+        15,
+        13
+      ],
+      "weights": [
+        "400",
+        "600",
+        "700"
+      ],
+      "leftEdges": 2,
+      "accentHues": [
+        0
+      ],
+      "cards": 2
+    }
+  },
+  {
+    "name": "groceries",
+    "fails": [],
+    "warns": [],
+    "facts": {
+      "fonts": {
+        "Instrument Serif": 4,
+        "SF Pro": 24
+      },
+      "sizes": [
+        92,
+        46,
+        28,
+        17,
+        15,
+        13,
+        11
+      ],
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "leftEdges": 3,
+      "accentHues": [
+        0,
+        24
+      ],
+      "cards": 1
+    }
+  },
+  {
+    "name": "plan",
+    "fails": [
+      "5 saturated hue families (0°, 24°, 312°, 72°, 192°). One accent, maybe one semantic colour. This is confetti."
+    ],
+    "warns": [],
+    "facts": {
+      "fonts": {
+        "Instrument Serif": 2,
+        "SF Pro": 33
+      },
+      "sizes": [
+        92,
+        46,
+        17,
+        15,
+        13,
+        11
+      ],
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "leftEdges": 3,
+      "accentHues": [
+        0,
+        24,
+        312,
+        72,
+        192
+      ],
+      "cards": 1
+    }
+  },
+  {
+    "name": "signature-spin",
+    "fails": [],
+    "warns": [
+      "Only 3 text sizes across 9 text elements. Hierarchy is flat."
+    ],
+    "facts": {
+      "fonts": {
+        "SF Pro": 8,
+        "Instrument Serif": 1
+      },
+      "sizes": [
+        46,
+        15,
+        13
+      ],
+      "weights": [
+        "400",
+        "700"
+      ],
+      "leftEdges": 1,
+      "accentHues": [],
+      "cards": 0
+    }
+  },
+  {
+    "name": "today-dark",
+    "fails": [],
+    "warns": [],
+    "facts": {
+      "fonts": {
+        "SF Pro": 18,
+        "Instrument Serif": 2
+      },
+      "sizes": [
+        92,
+        46,
+        17,
+        15,
+        13,
+        11
+      ],
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "leftEdges": 3,
+      "accentHues": [
+        0
+      ],
+      "cards": 2
+    }
+  },
+  {
+    "name": "today-fri",
+    "fails": [],
+    "warns": [],
+    "facts": {
+      "fonts": {
+        "SF Pro": 16,
+        "Instrument Serif": 2
+      },
+      "sizes": [
+        92,
+        46,
+        17,
+        15,
+        13,
+        11
+      ],
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "leftEdges": 2,
+      "accentHues": [
+        192
+      ],
+      "cards": 2
+    }
+  },
+  {
+    "name": "first-week",
+    "fails": [],
+    "warns": [],
+    "facts": {
+      "fonts": {
+        "SF Pro": 23,
+        "Instrument Serif": 2
+      },
+      "sizes": [
+        40,
+        17,
+        15,
+        13
+      ],
+      "weights": [
+        "400",
+        "600",
+        "700"
+      ],
+      "leftEdges": 4,
+      "accentHues": [
+        0,
+        24
+      ],
+      "cards": 2
+    }
+  }
+]

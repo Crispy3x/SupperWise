@@ -1,0 +1,95 @@
+# Compiles Supperwise and runs its tests on GitHub's macOS machines (no signing, iPhone simulator).
+name: iOS build and tests
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  logic-tests:
+    # The app's logic (planner, pricing, scores, parsers, holidays, first foods) on Linux: fast feedback.
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: swift-actions/setup-swift@v2
+        with:
+          swift-version: "6.0"
+      - run: python3 app/tools/linux-check.py "$(dirname "$(which swift)")"
+
+  build:
+    runs-on: macos-15
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use the newest Xcode on the machine
+        run: |
+          XC=$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1)
+          [ -z "$XC" ] && XC=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
+          echo "Using $XC"
+          sudo xcode-select -s "$XC"
+          xcodebuild -version
+
+      - name: Pick an iPhone simulator
+        id: sim
+        run: |
+          UDID=$(xcrun simctl list devices available -j | python3 -c "import json,sys; d=json.load(sys.stdin)['devices']; print(next(x['udid'] for k,v in sorted(d.items(), reverse=True) if 'iOS' in k for x in v if x['name'].startswith('iPhone')))")
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+
+      - name: Build and test
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project app/Supperwise.xcodeproj \
+            -scheme Supperwise \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            CODE_SIGNING_ALLOWED=NO \
+            | tee build.log | grep -E "error:|warning: .*Supperwise|Test Case .*(passed|failed)|\*\* (BUILD|TEST) (SUCCEEDED|FAILED) \*\*"
+
+      - name: Keep the full log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
+
+  screenshots:
+    # Store screenshots from the real app in demo mode (debug build, simulated purchases, a sample family).
+    needs: build
+    runs-on: macos-15
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use the newest Xcode on the machine
+        run: |
+          XC=$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1)
+          [ -z "$XC" ] && XC=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
+          sudo xcode-select -s "$XC"
+      - name: Build, boot the largest iPhone, capture each screen
+        run: |
+          set -eo pipefail
+          UDID=$(xcrun simctl list devices available -j | python3 -c "import json,sys; d=json.load(sys.stdin)['devices']; xs=[x for k,v in sorted(d.items(), reverse=True) if 'iOS' in k for x in v if x['name'].startswith('iPhone')]; print(next((x['udid'] for x in xs if 'Pro Max' in x['name']), xs[0]['udid']))")
+          xcodebuild build -project app/Supperwise.xcodeproj -scheme Supperwise -configuration Debug \
+            -destination "id=$UDID" -derivedDataPath dd CODE_SIGNING_ALLOWED=NO | grep -E "error:|\*\* BUILD" || true
+          APP=$(ls -d dd/Build/Products/Debug-iphonesimulator/*.app | head -1)
+          xcrun simctl boot "$UDID" || true
+          xcrun simctl bootstatus "$UDID" -b
+          xcrun simctl status_bar "$UDID" override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3
+          xcrun simctl install "$UDID" "$APP"
+          BID=$(/usr/libexec/PlistBuddy -c "Print CFBundleIdentifier" "$APP/Info.plist")
+          mkdir -p shots
+          for s in today groceries kitchen lunchbox firstfoods plans; do
+            xcrun simctl launch --terminate-running-process "$UDID" "$BID" -demo -screen "$s"
+            sleep 8
+            xcrun simctl io "$UDID" screenshot "shots/$s.png"
+          done
+          for s in today groceries; do
+            xcrun simctl ui "$UDID" appearance dark
+            xcrun simctl launch --terminate-running-process "$UDID" "$BID" -demo -screen "$s"
+            sleep 8
+            xcrun simctl io "$UDID" screenshot "shots/$s-dark.png"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: shots

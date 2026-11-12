@@ -1,0 +1,1922 @@
+[
+ {
+  "id": "chickpea_tikka",
+  "name": "Chickpea tikka masala",
+  "side": "Basmati and charred red onion on the side.",
+  "cuisine": "Indian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "allergens": [
+   "dairy"
+  ],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "ingredients": [
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "15 oz, drained and rinsed"
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can",
+    "note": "28 oz"
+   },
+   {
+    "ingredient": "yogurt",
+    "amount": 180,
+    "text": "¾ cup",
+    "note": "plain, whole milk"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1",
+    "note": "halved"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 15,
+    "text": "1 in piece",
+    "note": "peeled, finely grated"
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 6,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 280,
+    "text": "1½ cups",
+    "note": "rinsed twice"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 20,
+    "text": "a handful",
+    "note": "leaves and thin stems"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Cut one onion half into 8 thin wedges for charring. Finely dice the other half. Keep them apart.",
+   "Rinse the rice twice, then simmer it in 2¼ cups salted water, covered, for 12 minutes. Turn off the heat and leave the lid on.",
+   "Heat 1 tbsp oil in a wide pan over high heat. Char the onion wedges 3 minutes a side until blackened at the edges. Set them aside.",
+   "Lower the heat to medium. Add the rest of the oil and the diced onion and cook 5 minutes until soft. Stir in the garlic, ginger, garam masala, cumin and chili flakes for 1 minute.",
+   "Add the crushed tomatoes and chickpeas. Simmer 12 minutes, stirring now and then, until thick enough to hold a line when you drag a spoon through.",
+   "Take the pan off the heat and stir in the yogurt a spoonful at a time so it doesn't split. Taste for salt. Serve over rice with the charred onion and cilantro."
+  ],
+  "photo": "dish_tikka",
+  "vegetarian": true,
+  "pescatarian": true,
+  "mildNote": "Leave out the chili flakes and put them on the table for the adults.",
+  "vegetarianSwap": null,
+  "servings": 4
+ },
+ {
+  "id": "penne_arrabbiata",
+  "name": "Penne arrabbiata",
+  "side": "With garlic broccoli.",
+  "cuisine": "Italian",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "none",
+  "allergens": [
+   "gluten",
+   "dairy"
+  ],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "ingredients": [
+   {
+    "ingredient": "penne",
+    "amount": 454,
+    "text": "1 box",
+    "note": "1 lb"
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can",
+    "note": "28 oz"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 6,
+    "text": "6 cloves",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 2,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 450,
+    "text": "1 lb",
+    "note": "cut into small florets, stems peeled and sliced"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 40,
+    "text": "½ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "a small handful",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to the boil and salt it well.",
+   "Warm 2 tbsp oil and two-thirds of the garlic in a cold pan, then set it over medium heat. When the garlic sizzles and turns pale gold, about 2 minutes, add the chili flakes.",
+   "Add the crushed tomatoes and a pinch of salt. Simmer 10 minutes while the pasta cooks.",
+   "Cook the penne 2 minutes less than the box says. Add the broccoli to the same pot for the last 3 minutes.",
+   "Meanwhile fry the rest of the garlic in 1 tbsp oil in a small pan until golden, about 1 minute.",
+   "Drain, keeping a mug of pasta water. Toss the pasta and broccoli into the sauce with a splash of the water until glossy. Top with the fried garlic, parmesan and parsley."
+  ],
+  "photo": "dish_penne",
+  "vegetarian": true,
+  "pescatarian": true,
+  "mildNote": "Cook the sauce with a pinch of chili flakes only. Adults add more at the table.",
+  "vegetarianSwap": null,
+  "servings": 4
+ },
+ {
+  "id": "shakshuka",
+  "name": "Shakshuka with crusty bread",
+  "side": "Feta and parsley on top.",
+  "cuisine": "Middle Eastern",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "allergens": [
+   "egg",
+   "gluten",
+   "dairy"
+  ],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "ingredients": [
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can",
+    "note": "28 oz"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "seeded, sliced into thin strips"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "feta",
+    "amount": 100,
+    "text": "⅔ cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "a small handful",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a 12 in pan with a lid over medium heat. Cook the onion and peppers 8 minutes until soft and starting to brown.",
+   "Add the garlic, cumin and paprika and stir for 1 minute.",
+   "Pour in the tomatoes with the salt and simmer 8 minutes until thick.",
+   "Make 8 hollows with the back of a spoon and crack an egg into each. Cover and cook on low for 6 to 8 minutes, until the whites are set and the yolks still move.",
+   "Scatter the feta and parsley over the top. Serve straight from the pan with torn bread."
+  ],
+  "photo": "dish_shakshuka",
+  "vegetarian": true,
+  "pescatarian": true,
+  "mildNote": "Leave out the paprika's heat by using sweet paprika, or simply skip it.",
+  "vegetarianSwap": null,
+  "servings": 4
+ },
+ {
+  "id": "turkey_meatballs_orzo",
+  "name": "Turkey meatballs, orzo and arugula",
+  "side": "Lemon and parmesan to finish.",
+  "cuisine": "Italian",
+  "minutes": 35,
+  "difficulty": "Medium",
+  "protein": "turkey",
+  "allergens": [
+   "gluten",
+   "egg",
+   "dairy"
+  ],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "ingredients": [
+   {
+    "ingredient": "ground_turkey",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "breadcrumbs",
+    "amount": 40,
+    "text": "½ cup",
+    "note": "panko"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 40,
+    "text": "½ cup",
+    "note": "finely grated, divided"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "orzo",
+    "amount": 340,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 700,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "arugula",
+    "amount": 142,
+    "text": "1 box",
+    "note": "5 oz"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zest and juice"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Mix the turkey, breadcrumbs, egg, half the parmesan, garlic and salt with your hands until just combined. Roll into 20 walnut-sized balls.",
+   "Brown the meatballs in the oil in a wide pan over medium-high heat, turning, about 6 minutes. They don't need to be cooked through yet.",
+   "Add the orzo and stir to coat. Pour in the broth and bring to a simmer.",
+   "Cover and cook on low for 12 minutes, stirring twice, until the orzo is tender and the meatballs are cooked through (165°F inside).",
+   "Turn off the heat. Stir in the lemon zest and juice and the rest of the parmesan.",
+   "Fold in the arugula just before serving so it wilts but stays green."
+  ],
+  "photo": "dish_meatballs",
+  "vegetarian": false,
+  "pescatarian": false,
+  "mildNote": null,
+  "vegetarianSwap": {
+   "note": "Dana's plate: mash a can of white beans with a little panko and parmesan, roll into small balls and brown them in a separate pan. Cook her orzo in vegetable broth.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": ""
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 240,
+     "text": "1 cup",
+     "note": ""
+    }
+   ]
+  },
+  "servings": 4
+ },
+ {
+  "id": "lemon_chicken",
+  "name": "Lemon-thyme skillet chicken",
+  "side": "With crispy potatoes.",
+  "cuisine": "American",
+  "minutes": 55,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "allergens": [
+   "dairy"
+  ],
+  "equipment": [
+   "oven",
+   "stovetop"
+  ],
+  "spice": 0,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "boneless, patted dry"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 900,
+    "text": "2 lb",
+    "note": "cut into 1 in chunks"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 2,
+    "text": "2",
+    "note": "1 sliced, 1 juiced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 6,
+    "text": "6 cloves",
+    "note": "smashed, skins on"
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 2,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 8,
+    "text": "1½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Toss the potatoes with 2 tbsp oil, half the salt and the pepper in a large oven-safe skillet or sheet pan. Roast 20 minutes.",
+   "Season the chicken all over with the thyme and the rest of the salt.",
+   "Push the potatoes to the edges. Lay the chicken in the middle with the garlic and lemon slices, and drizzle with the last of the oil.",
+   "Roast 20 to 25 minutes, until the chicken reaches 165°F inside and the potatoes are deep golden.",
+   "Move the chicken to a board. Stir the butter and lemon juice into the hot pan juices and spoon them over everything."
+  ],
+  "photo": "dish_chicken",
+  "vegetarian": false,
+  "pescatarian": false,
+  "mildNote": null,
+  "vegetarianSwap": {
+   "note": "Dana's plate: roast a drained can of chickpeas on a corner of the same pan with lemon and thyme for the last 20 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": ""
+    }
+   ]
+  },
+  "servings": 4
+ },
+ {
+  "id": "red_curry_noodles",
+  "name": "Red curry noodle soup",
+  "side": "Mushrooms, soft eggs, lime and basil.",
+  "cuisine": "Thai",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "allergens": [
+   "egg",
+   "soy"
+  ],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "ingredients": [
+   {
+    "ingredient": "rice_noodles",
+    "amount": 280,
+    "text": "10 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "13.5 oz"
+   },
+   {
+    "ingredient": "red_curry_paste",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "check the label: some brands contain shrimp"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 946,
+    "text": "1 carton",
+    "note": "32 oz"
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": "1 juiced, 1 in wedges"
+   },
+   {
+    "ingredient": "basil",
+    "amount": 21,
+    "text": "1 pack",
+    "note": "leaves picked"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 6,
+    "text": "1 bunch",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Lower the eggs into boiling water and cook 6½ minutes. Move them to cold water, then peel and halve.",
+   "Soak the noodles in just-boiled water for 8 minutes until tender, then drain.",
+   "Fry the curry paste in the oil in a large pot over medium heat for 1 minute until it smells toasty.",
+   "Whisk in the coconut milk and broth. Add the mushrooms and simmer 8 minutes.",
+   "Stir in the soy sauce and lime juice. Taste: it should be salty, sour and rich.",
+   "Divide the noodles between bowls and ladle the soup over. Top with eggs, scallions, basil and lime wedges."
+  ],
+  "photo": "dish_noodles",
+  "vegetarian": true,
+  "pescatarian": true,
+  "mildNote": "Use 1 tbsp paste in the pot and stir a little extra into the adults' bowls.",
+  "vegetarianSwap": null,
+  "servings": 4
+ },
+ {
+  "id": "salmon_potatoes",
+  "name": "Sheet-pan salmon",
+  "side": "Crushed potatoes and blistered tomatoes.",
+  "cuisine": "American",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "allergens": [
+   "fish",
+   "dairy"
+  ],
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "ingredients": [
+   {
+    "ingredient": "salmon",
+    "amount": 600,
+    "text": "1⅓ lb",
+    "note": "4 fillets, skin on"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 900,
+    "text": "2 lb",
+    "note": "small ones, halved"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 283,
+    "text": "1 pack",
+    "note": "10 oz"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into wedges"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "melted"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "a small handful",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Boil the potatoes in salted water 12 minutes until a knife slides in.",
+   "Drain the potatoes, tip them onto an oiled sheet pan and press each one flat with the bottom of a glass. Drizzle with oil and salt and roast 15 minutes.",
+   "Add the salmon, skin side down, and the tomatoes to the pan. Brush the salmon with the melted butter and season.",
+   "Roast 10 to 12 minutes, until the salmon flakes at the thickest point.",
+   "Scatter with parsley and serve with the lemon wedges."
+  ],
+  "photo": "dish_salmon",
+  "vegetarian": false,
+  "pescatarian": true,
+  "mildNote": null,
+  "vegetarianSwap": {
+   "note": "Dana's plate: roast a drained can of chickpeas where the salmon would go, with the same butter and lemon.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": ""
+    }
+   ]
+  },
+  "servings": 4
+ },
+ {
+  "id": "black_bean_tacos",
+  "name": "Black bean tacos",
+  "side": "Lime slaw, avocado and cheddar.",
+  "cuisine": "Mexican",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "allergens": [
+   "gluten",
+   "dairy"
+  ],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "ingredients": [
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained, liquid kept"
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 300,
+    "text": "¼ head",
+    "note": "very thinly sliced"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 4,
+    "text": "1½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 20,
+    "text": "a handful",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Toss the cabbage with half the lime juice and a pinch of salt. Leave it while you cook so it softens.",
+   "Cook the onion in the oil over medium heat for 4 minutes. Add the cumin and chili powder for 30 seconds.",
+   "Add the beans and 3 tbsp of their liquid. Mash about half of them with a fork and cook 5 minutes until thick. Stir in the rest of the lime juice.",
+   "Warm the tortillas one at a time in a dry pan, 20 seconds a side, and stack them in a clean towel.",
+   "Fill each tortilla with beans, slaw, avocado, cheddar, sour cream and cilantro."
+  ],
+  "photo": null,
+  "vegetarian": true,
+  "pescatarian": true,
+  "mildNote": "Halve the chili powder. It's mild enough for most kids.",
+  "vegetarianSwap": null,
+  "servings": 4
+ },
+ {
+  "id": "lentil_soup",
+  "name": "Red lentil and tomato soup",
+  "side": "With toasted crusty bread.",
+  "cuisine": "Middle Eastern",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "allergens": [
+   "gluten"
+  ],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "ingredients": [
+   {
+    "ingredient": "lentils_red",
+    "amount": 340,
+    "text": "1¾ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can",
+    "note": "14.5 oz"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 200,
+    "text": "2",
+    "note": "peeled, diced small"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 1500,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Cook the onion and carrots in the oil in a large pot over medium heat for 7 minutes until soft.",
+   "Add the garlic, cumin and paprika and stir for 1 minute.",
+   "Add the lentils, tomatoes and broth. Simmer 20 minutes, stirring now and then, until the lentils have collapsed.",
+   "Blend half the soup with a stick blender for a creamy body with some texture left.",
+   "Stir in the lemon juice and taste for salt. Serve with toasted bread."
+  ],
+  "photo": null,
+  "vegetarian": true,
+  "pescatarian": true,
+  "mildNote": null,
+  "vegetarianSwap": null,
+  "servings": 4
+ },
+ {
+  "id": "beef_ragu",
+  "name": "Beef and mushroom ragù",
+  "side": "With spaghetti and parmesan.",
+  "cuisine": "Italian",
+  "minutes": 50,
+  "difficulty": "Medium",
+  "protein": "beef",
+  "allergens": [
+   "gluten",
+   "dairy"
+  ],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "ingredients": [
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 100,
+    "text": "1",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 100,
+    "text": "2 stalks",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 40,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can",
+    "note": "28 oz"
+   },
+   {
+    "ingredient": "milk",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "spaghetti",
+    "amount": 454,
+    "text": "1 box",
+    "note": "1 lb"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 30,
+    "text": "⅓ cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 8,
+    "text": "1½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Cook the onion, carrot and celery in the oil over medium heat for 8 minutes until soft and sweet.",
+   "Turn the heat up, add the beef and mushrooms, and cook 8 minutes, breaking up the meat, until browned and the liquid has gone.",
+   "Stir in the garlic and tomato paste for 2 minutes until the paste darkens.",
+   "Add the milk and let it bubble away, then the crushed tomatoes and salt. Simmer 25 minutes, partly covered.",
+   "Cook the spaghetti in salted water. Drain, keeping a mug of the water, and toss with the sauce and a splash of the water. Serve with parmesan."
+  ],
+  "photo": "dish_ragu",
+  "vegetarian": false,
+  "pescatarian": false,
+  "mildNote": null,
+  "vegetarianSwap": {
+   "note": "Dana's plate: before the beef goes in, simmer red lentils in a ladle of the tomato sauce in a small pan until soft, about 15 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "lentils_red",
+     "amount": 80,
+     "text": "⅓ cup",
+     "note": ""
+    }
+   ]
+  },
+  "servings": 4
+ },
+ {
+  "id": "crispy_drumsticks",
+  "name": "Oven-crisp drumsticks",
+  "side": "With honey-lime slaw.",
+  "cuisine": "American",
+  "minutes": 55,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "allergens": [
+   "gluten",
+   "egg",
+   "dairy"
+  ],
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "ingredients": [
+   {
+    "ingredient": "chicken_drumsticks",
+    "amount": 1360,
+    "text": "8 drumsticks",
+    "note": "about 3 lb"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 60,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 2,
+    "text": "2",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "breadcrumbs",
+    "amount": 120,
+    "text": "1½ cups",
+    "note": "panko"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 450,
+    "text": "½ head",
+    "note": "very thinly sliced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 150,
+    "text": "2",
+    "note": "grated"
+   },
+   {
+    "ingredient": "yogurt",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 15,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 8,
+    "text": "1½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F and set a rack on a sheet pan. Pat the drumsticks dry and season with the paprika and half the salt.",
+   "Put the flour, eggs and panko mixed with the oil in three shallow bowls. Coat each drumstick in flour, then egg, then panko, pressing it on.",
+   "Bake on the rack for 40 to 45 minutes, until deep golden and 175°F inside.",
+   "Whisk the yogurt, vinegar, honey and the rest of the salt. Toss with the cabbage and carrots.",
+   "Serve the drumsticks hot with the slaw."
+  ],
+  "photo": "dish_drumsticks",
+  "vegetarian": false,
+  "pescatarian": false,
+  "mildNote": null,
+  "vegetarianSwap": {
+   "note": "Dana's plate: coat a drained can of chickpeas in the same egg and panko and bake on a separate tray for 25 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": ""
+    }
+   ]
+  },
+  "servings": 4
+ },
+ {
+  "id": "egg_fried_rice",
+  "name": "Egg fried rice",
+  "side": "Peas, carrots and scallions.",
+  "cuisine": "Chinese",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "allergens": [
+   "egg",
+   "soy"
+  ],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 400,
+    "text": "2 cups",
+    "note": "cooked the day before if you can"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 6,
+    "text": "6",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 300,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 150,
+    "text": "2",
+    "note": "diced small"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 6,
+    "text": "1 bunch",
+    "note": "whites and greens sliced separately"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "½ in piece",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Cook the rice if it isn't left over: 2 cups rice in 3 cups water, covered, 15 minutes. Spread it on a tray to steam dry while you prep.",
+   "Heat 1 tbsp oil in your widest pan over high heat. Scramble the eggs in big soft curds, about 1 minute, and tip them out.",
+   "Add the rest of the oil. Fry the carrots and scallion whites 3 minutes, then the garlic and ginger for 30 seconds.",
+   "Add the rice and press it flat. Leave it 1 minute to crisp, then toss. Repeat twice.",
+   "Add the peas, soy sauce and eggs and toss until hot. Finish with the scallion greens."
+  ],
+  "photo": null,
+  "vegetarian": true,
+  "pescatarian": true,
+  "mildNote": null,
+  "vegetarianSwap": null,
+  "servings": 4
+ },
+ {
+  "id": "coconut_dal",
+  "name": "Coconut red lentil dal",
+  "side": "Spinach, lemon and basmati.",
+  "cuisine": "Indian",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "allergens": [],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "ingredients": [
+   {
+    "ingredient": "lentils_red",
+    "amount": 340,
+    "text": "1¾ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 1,
+    "text": "1 can",
+    "note": "13.5 oz"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 15,
+    "text": "1 in piece",
+    "note": "grated"
+   },
+   {
+    "ingredient": "curry_powder",
+    "amount": 8,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can",
+    "note": "14.5 oz"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box",
+    "note": "5 oz"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 280,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Start the rice: 1½ cups in 2¼ cups salted water, covered, 12 minutes, then rest off the heat.",
+   "Cook the onion in the oil over medium heat for 6 minutes. Add the garlic, ginger and curry powder for 1 minute.",
+   "Add the lentils, tomatoes, coconut milk and 2 cups water. Simmer 18 minutes, stirring often so it doesn't catch, until creamy.",
+   "Stir in the spinach a handful at a time until wilted.",
+   "Add the lemon juice and salt to taste. Serve over the rice."
+  ],
+  "photo": "dish_dal",
+  "vegetarian": true,
+  "pescatarian": true,
+  "mildNote": "Most curry powders are mild. If yours says hot, use 2 tsp.",
+  "vegetarianSwap": null,
+  "servings": 4
+ },
+ {
+  "id": "turkey_chili",
+  "name": "Turkey and black bean chili",
+  "side": "Cheddar, sour cream and scallions.",
+  "cuisine": "Tex-Mex",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "turkey",
+  "allergens": [
+   "dairy"
+  ],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "ingredients": [
+   {
+    "ingredient": "ground_turkey",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 822,
+    "text": "2 cans",
+    "note": "14.5 oz each"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 10,
+    "text": "1½ tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 4,
+    "text": "1½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Cook the onion and pepper in the oil in a large pot over medium heat for 6 minutes.",
+   "Add the turkey and cook, breaking it up, until no pink remains, about 6 minutes.",
+   "Stir in the garlic, chili powder and cumin for 1 minute.",
+   "Add the tomatoes, beans, salt and 1 cup water. Simmer 25 minutes, partly covered, until thick.",
+   "Serve topped with cheddar, sour cream and scallions."
+  ],
+  "photo": null,
+  "vegetarian": false,
+  "pescatarian": false,
+  "mildNote": "Use 2 tsp chili powder. Hot sauce goes on the table.",
+  "vegetarianSwap": {
+   "note": "Dana's bowl: before the turkey goes in, scoop out a portion of the softened onion and pepper and simmer it in a small pan with an extra can of beans and some of the tomatoes and spices.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": ""
+    }
+   ]
+  },
+  "servings": 4
+ },
+ {
+  "id": "loaded_potatoes",
+  "name": "Baked potatoes with broccoli and cheddar",
+  "side": "Sour cream and scallions.",
+  "cuisine": "American",
+  "minutes": 65,
+  "difficulty": "Easy",
+  "protein": "none",
+  "allergens": [
+   "dairy"
+  ],
+  "equipment": [
+   "oven"
+  ],
+  "spice": 0,
+  "ingredients": [
+   {
+    "ingredient": "potatoes",
+    "amount": 1360,
+    "text": "4 large",
+    "note": "scrubbed"
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 450,
+    "text": "1 lb",
+    "note": "small florets"
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 227,
+    "text": "2 cups",
+    "note": "grated"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 6,
+    "text": "1 bunch",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Prick the potatoes, rub with oil and salt, and bake directly on the rack for 55 to 60 minutes until a knife slides in.",
+   "Steam the broccoli for 4 minutes until bright green and just tender.",
+   "Split each potato and fluff the inside with a fork and the butter.",
+   "Pile on the broccoli and cheddar, then return to the oven for 3 minutes to melt.",
+   "Top with sour cream and scallions."
+  ],
+  "photo": null,
+  "vegetarian": true,
+  "pescatarian": true,
+  "mildNote": null,
+  "vegetarianSwap": null,
+  "servings": 4
+ },
+ {
+  "id": "garlic_shrimp",
+  "name": "Garlic butter shrimp",
+  "side": "With jasmine rice and broccoli.",
+  "cuisine": "American",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "allergens": [
+   "shellfish",
+   "dairy"
+  ],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "ingredients": [
+   {
+    "ingredient": "shrimp",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "thawed, patted dry"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 6,
+    "text": "6 cloves",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "a small handful",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 360,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 450,
+    "text": "1 lb",
+    "note": "florets"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Cook the rice: 2 cups in 3 cups water, covered, 15 minutes.",
+   "Steam the broccoli for 4 minutes.",
+   "Melt 2 tbsp butter in a wide pan over medium-high heat. Add the shrimp in one layer and cook 1½ minutes a side until pink.",
+   "Lower the heat, add the garlic and the last of the butter, and stir 1 minute.",
+   "Add the lemon juice and parsley and serve over rice with the broccoli."
+  ],
+  "photo": null,
+  "vegetarian": false,
+  "pescatarian": true,
+  "mildNote": null,
+  "vegetarianSwap": {
+   "note": "Dana's plate: sauté a drained can of white beans in garlic butter in a separate pan.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": ""
+    }
+   ]
+  },
+  "servings": 4
+ },
+ {
+  "id": "sausage_peppers",
+  "name": "Sausage and peppers",
+  "side": "With oregano rice.",
+  "cuisine": "Italian-American",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "allergens": [],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "ingredients": [
+   {
+    "ingredient": "pork_sausage",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "Italian, sliced into coins"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced into strips"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can",
+    "note": "14.5 oz"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 360,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Cook the rice: 2 cups in 3 cups water with the oregano, covered, 15 minutes.",
+   "Brown the sausage coins in the oil in a wide pan over medium-high heat, about 6 minutes. Lift them out.",
+   "Add the peppers and onion to the fat and cook 8 minutes until soft with some colour.",
+   "Add the garlic, tomatoes and salt, return the sausage, and simmer 8 minutes.",
+   "Serve over the rice."
+  ],
+  "photo": null,
+  "vegetarian": false,
+  "pescatarian": false,
+  "mildNote": null,
+  "vegetarianSwap": {
+   "note": "Dana's plate: warm a drained can of white beans in some of the pepper sauce in a small pan.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": ""
+    }
+   ]
+  },
+  "servings": 4
+ },
+ {
+  "id": "aglio_olio_beans",
+  "name": "Spaghetti with garlic, white beans and spinach",
+  "side": "Lemon and parmesan.",
+  "cuisine": "Italian",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "allergens": [
+   "gluten",
+   "dairy"
+  ],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "ingredients": [
+   {
+    "ingredient": "spaghetti",
+    "amount": 454,
+    "text": "1 box",
+    "note": "1 lb"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 8,
+    "text": "8 cloves",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "white_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box",
+    "note": "5 oz"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zest and juice"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 30,
+    "text": "⅓ cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Cook the spaghetti in well-salted water until 1 minute short of the box time.",
+   "Meanwhile warm the oil and garlic in a wide pan over medium-low heat until the garlic is pale gold, about 4 minutes. Add the chili flakes.",
+   "Add the beans and a ladle of pasta water and simmer 3 minutes, crushing a few beans to thicken.",
+   "Drain the pasta, keeping a mug of the water. Toss it into the pan with the spinach and lemon zest until the spinach wilts, adding water until glossy.",
+   "Finish with the lemon juice and parmesan."
+  ],
+  "photo": null,
+  "vegetarian": true,
+  "pescatarian": true,
+  "mildNote": "Leave out the chili flakes and add them to adult plates.",
+  "vegetarianSwap": null,
+  "servings": 4
+ },
+ {
+  "id": "chicken_curry_rice",
+  "name": "Chicken and spinach curry",
+  "side": "Over basmati with yogurt.",
+  "cuisine": "Indian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "allergens": [
+   "dairy"
+  ],
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "boneless, cut into bite-size pieces"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 15,
+    "text": "1 in piece",
+    "note": "grated"
+   },
+   {
+    "ingredient": "curry_powder",
+    "amount": 12,
+    "text": "1½ tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can",
+    "note": "14.5 oz"
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 1,
+    "text": "1 can",
+    "note": "13.5 oz"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box",
+    "note": "5 oz"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 280,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "yogurt",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "to serve"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Start the rice: 1½ cups in 2¼ cups salted water, covered, 12 minutes, then rest.",
+   "Brown the chicken in the oil over medium-high heat, 5 minutes. Lift it out.",
+   "Cook the onion in the same pan for 5 minutes, then the garlic, ginger and curry powder for 1 minute.",
+   "Add the tomatoes, coconut milk and chicken. Simmer 15 minutes until the chicken is cooked through.",
+   "Stir in the spinach until wilted. Season and serve over rice with a spoon of yogurt."
+  ],
+  "photo": "dish_curry",
+  "vegetarian": false,
+  "pescatarian": false,
+  "mildNote": "Most curry powders are mild. If yours says hot, use 2 tsp.",
+  "vegetarianSwap": {
+   "note": "Dana's plate: simmer a drained can of chickpeas in a ladle of the sauce in a small pan, taken out before the chicken goes back in.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": ""
+    }
+   ]
+  },
+  "servings": 4
+ }
+]

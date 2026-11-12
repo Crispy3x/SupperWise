@@ -1,0 +1,549 @@
+<title>Supperwise Prototype</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a quiet page with notes on the left and the working app in a phone on the right; stacks on phones. */
+:root {
+  --page: #EFE7DE; --page-ink: #2B1611; --page-ink2: #6B5148; --page-rule: #DCCCBE; --frame: #1B1210;
+  --paper: #FBF3EA; --raised: #FFFFFF; --ink: #2B1611; --ink2: #6B5148; --ink3: #8C7369; --rule: #E7D8CC; --chip: #F3E5D8;
+  --cream: #FFF5EC; --cream2: #FFE3D6;
+  --display: "Instrument Serif", "New York", Georgia, serif;
+  --ui: -apple-system, "SF Pro Text", Inter, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --page: #151010; --page-ink: #F6E9DF; --page-ink2: #C9B2A7; --page-rule: #33252100; --frame: #000;
+  --paper: #1D1311; --raised: #2A1C19; --ink: #F6E9DF; --ink2: #C9B2A7; --ink3: #A08A80; --rule: #3B2A25; --chip: #33231F; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --page: #151010; --page-ink: #F6E9DF; --page-ink2: #C9B2A7; --page-rule: #33252100; --frame: #000;
+  --paper: #1D1311; --raised: #2A1C19; --ink: #F6E9DF; --ink2: #C9B2A7; --ink3: #A08A80; --rule: #3B2A25; --chip: #33231F; color-scheme: dark }
+* { box-sizing: border-box; }
+body { background: var(--page); color: var(--page-ink); font-family: var(--ui); margin: 0; }
+.wrap { max-width: 1060px; margin: 0 auto; padding-block: 32px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; }
+@media (max-width: 860px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 24px; } .notes { order: 2; } }
+.notes h1 { font-family: var(--display); font-weight: 400; font-size: 56px; line-height: 1; margin: 0 0 12px; letter-spacing: -0.02em; text-wrap: balance; }
+.notes p, .notes li { font-size: 15px; line-height: 1.55; color: var(--page-ink2); max-width: 60ch; }
+.notes h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; margin: 28px 0 8px; color: var(--page-ink); }
+.notes ol { padding-left: 20px; margin: 0; }
+.notes .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 12px; background: var(--chip); color: var(--ink); }
+.notes button.reset { margin-top: 18px; font: 600 14px var(--ui); color: var(--page-ink); background: transparent; border: 1.5px solid var(--page-rule); border-radius: 20px; padding: 8px 16px; cursor: pointer; }
+
+/* The phone */
+.phone { width: 100%; max-width: 400px; aspect-ratio: 400 / 860; max-height: 860px; margin: 0 auto; border-radius: 54px; padding: 12px; background: var(--frame); box-shadow: 0 30px 60px -20px rgba(40,20,10,.45); position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); }
+@media (max-width: 860px) { .phone { position: relative; top: 0; } }
+.screen { position: relative; width: 100%; height: 100%; border-radius: 42px; overflow: hidden; background: var(--paper); color: var(--ink); container-type: inline-size; }
+.island { position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 31%; height: 30px; border-radius: 20px; background: #000; z-index: 30; }
+.status { position: absolute; top: 0; left: 0; right: 0; height: 52px; display: flex; justify-content: space-between; align-items: center; padding: 6px 30px 0 34px; font: 600 15px var(--ui); z-index: 29; pointer-events: none; }
+.status.light { color: var(--cream); } .status.dark { color: var(--ink); }
+.status i { display: inline-block; width: 24px; height: 11px; border: 1.5px solid currentColor; border-radius: 3px; position: relative; opacity: .9; }
+.status i::after { content: ""; position: absolute; inset: 1.5px 4px 1.5px 1.5px; background: currentColor; border-radius: 1px; }
+.view { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; padding-bottom: 110px; }
+.view::-webkit-scrollbar { display: none; }
+.pad { padding: 0 20px; }
+.serif { font-family: var(--display); font-weight: 400; }
+.homebar { position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%); width: 36%; height: 5px; border-radius: 3px; background: currentColor; opacity: .85; z-index: 31; pointer-events: none; }
+
+/* Buttons */
+.btn { appearance: none; border: 0; cursor: pointer; height: 48px; padding: 0 22px; border-radius: 24px; font: 700 16px var(--ui); display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.btn:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid #FFB547; outline-offset: 2px; }
+.btn.cream { background: var(--cream); color: var(--day); }
+.btn.ghost { background: transparent; color: var(--cream); box-shadow: inset 0 0 0 1.5px rgba(255,245,236,.55); font-weight: 600; }
+.btn.accent { background: var(--day); color: var(--cream); width: 100%; }
+.btn.wide { width: 100%; }
+.btn:disabled { opacity: .45; cursor: default; }
+.link { background: none; border: 0; padding: 0; font: 600 14px var(--ui); color: var(--day); cursor: pointer; }
+
+/* Tab bar (glass) */
+.tabs { position: absolute; left: 50%; transform: translateX(-50%); bottom: 22px; display: flex; gap: 2px; padding: 4px; border-radius: 30px; z-index: 20;
+  backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); }
+.tabs.onday { background: rgba(0,0,0,.24); color: var(--cream); }
+.tabs.onpaper { background: color-mix(in srgb, var(--paper) 70%, transparent); color: var(--ink); box-shadow: 0 6px 20px rgba(0,0,0,.12), inset 0 0 0 .5px var(--rule); }
+.tabs button { appearance: none; border: 0; background: transparent; color: inherit; width: 88px; height: 52px; border-radius: 26px; font: 500 11px var(--ui); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; cursor: pointer; }
+.tabs button.on { background: rgba(255,255,255,.2); font-weight: 700; }
+.tabs.onpaper button.on { background: color-mix(in srgb, var(--day) 12%, transparent); color: var(--day); }
+.tabs svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Today */
+.today { background: var(--day); color: var(--cream); }
+.today .top { display: flex; justify-content: space-between; padding: 64px 20px 0; font-size: 14px; color: var(--cream2); }
+.today .top button { background: none; border: 0; color: var(--cream); font: 600 14px var(--ui); cursor: pointer; padding: 0; }
+.dayname { font-family: var(--display); font-size: 84px; line-height: .92; letter-spacing: -0.03em; padding: 0 20px; white-space: nowrap; }
+.stage { position: relative; height: 236px; margin-top: 2px; }
+.stage svg.cut { position: absolute; inset: 0; width: 100%; height: 100%; transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+.plate { position: absolute; left: 50%; top: 6px; width: 222px; height: 222px; margin-left: -96px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 8px var(--cream); background: var(--deep); }
+.plate img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.5); display: block; }
+.ini { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-size: 28px; color: var(--cream); background: var(--deep, #741A0E); }
+.plate .ini { font-size: 96px; }
+.band .o, .rp { position: relative; }
+.rp .ini { font-size: 80px; }
+.plate.out { animation: spinout .26s cubic-bezier(.4,0,1,1) forwards; }
+.plate.in { animation: spinin .32s cubic-bezier(.2,.8,.2,1); }
+@keyframes spinout { to { transform: translateX(-150px) rotate(-160deg); opacity: 0; } }
+@keyframes spinin { from { transform: translateX(150px) rotate(120deg); opacity: 0; } to { transform: none; opacity: 1; } }
+.ep { padding: 2px 20px 0; }
+.ep .k { font-size: 13px; font-weight: 600; color: var(--cream2); }
+.ep h2 { font-family: var(--display); font-weight: 400; font-size: 42px; line-height: .98; letter-spacing: -0.02em; margin: 2px 0 6px; text-wrap: balance; }
+.ep p { margin: 0; font-size: 14px; line-height: 1.35; color: var(--cream2); }
+.ep p b { color: var(--cream); font-variant-numeric: tabular-nums; }
+.row2 { display: flex; gap: 10px; padding: 14px 20px 0; }
+.strip { display: flex; justify-content: space-between; padding: 20px 20px 0; }
+.strip button { appearance: none; background: none; border: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--cream2); font: 600 13px var(--ui); padding: 0; }
+.strip .o { width: 46px; height: 46px; border-radius: 50%; overflow: hidden; border: 3px solid rgba(255,245,236,.35); position: relative; background: var(--deep); }
+.strip .o img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.4); display: block; }
+.strip .done .o img { filter: grayscale(.6) brightness(.5); }
+.strip .done .o::after { content: "✓"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--cream); font-weight: 700; font-size: 18px; }
+.strip .now { color: var(--cream); } .strip .now .o { border-color: var(--cream); }
+.nextep { display: flex; gap: 10px; align-items: center; padding: 20px 20px 0; font-size: 14px; }
+.nextep span:first-child { background: rgba(0,0,0,.24); padding: 5px 10px; border-radius: 12px; font-weight: 600; font-size: 12px; flex: none; }
+.nextep span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+
+/* Paper screens */
+.phead { display: flex; justify-content: space-between; align-items: flex-end; padding: 62px 20px 0; }
+.phead h1 { font-family: var(--display); font-weight: 400; font-size: 42px; margin: 0; line-height: 1; letter-spacing: -0.02em; }
+.big { font-family: var(--display); font-size: 78px; line-height: .9; letter-spacing: -0.035em; color: var(--day); font-variant-numeric: tabular-nums; }
+.sub { font-size: 14px; color: var(--ink2); line-height: 1.4; margin: 10px 0 0; }
+.lbl { font: 700 12px var(--ui); color: var(--ink2); margin: 18px 0 8px; }
+.aisle { display: flex; justify-content: space-between; align-items: flex-end; margin: 22px 0 2px; }
+.aisle h3 { font-family: var(--display); font-weight: 400; font-size: 26px; margin: 0; }
+.aisle span { font: 700 12px var(--ui); color: var(--ink2); font-variant-numeric: tabular-nums; }
+.gi { width: 100%; appearance: none; background: none; border: 0; border-bottom: 1px solid var(--rule); text-align: left; color: inherit; display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; cursor: pointer; font: inherit; }
+.gi .box { width: 22px; height: 22px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--ink3); flex: none; margin-top: 1px; display: flex; align-items: center; justify-content: center; color: var(--cream); font-size: 13px; font-weight: 700; }
+.gi.on .box { background: var(--day); box-shadow: none; }
+.gi .t { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.gi .n { font-size: 16px; } .gi.on .n { text-decoration: line-through; color: var(--ink2); }
+.gi .m { font-size: 12px; color: var(--ink2); }
+.gi .note { font-size: 12px; background: var(--chip); border-radius: 8px; padding: 5px 8px; margin-top: 4px; line-height: 1.3; }
+.gi .p { font-size: 16px; font-variant-numeric: tabular-nums; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { appearance: none; border: 0; cursor: pointer; font: 500 14px var(--ui); padding: 7px 12px; border-radius: 16px; background: var(--chip); color: var(--ink); }
+.chip.on { background: var(--ink); color: var(--paper); }
+.chip.off { background: transparent; box-shadow: inset 0 0 0 1.5px var(--rule); color: var(--ink2); text-decoration: line-through; }
+.days { display: flex; gap: 6px; }
+.days button { appearance: none; border: 0; cursor: pointer; width: 40px; height: 40px; border-radius: 50%; font: 600 14px var(--ui); background: transparent; color: var(--ink2); box-shadow: inset 0 0 0 1.5px var(--rule); }
+.days button.on { color: var(--cream); box-shadow: none; }
+input[type=range] { width: 100%; accent-color: var(--day); }
+.field { width: 100%; font: 16px var(--ui); padding: 13px 14px; border-radius: 14px; border: 0; background: var(--raised); color: var(--ink); box-shadow: inset 0 0 0 1px var(--rule); }
+.seg { display: flex; background: var(--chip); border-radius: 10px; padding: 3px; }
+.seg button { flex: 1; appearance: none; border: 0; background: transparent; color: var(--ink); font: 500 13px var(--ui); padding: 8px 4px; border-radius: 8px; cursor: pointer; }
+.seg button.on { background: var(--raised); box-shadow: 0 1px 3px rgba(0,0,0,.12); font-weight: 600; }
+.person { border-bottom: 1px solid var(--rule); padding: 10px 0; }
+.person .pn { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.person .pn input { font: 600 16px var(--ui); border: 0; background: transparent; color: var(--ink); width: 50%; padding: 4px 0; }
+.person .pc { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.person .pc .chip { font-size: 12px; padding: 5px 10px; }
+.x { appearance: none; border: 0; background: none; color: var(--ink3); font-size: 20px; cursor: pointer; line-height: 1; }
+
+/* Recipe */
+.rhead { background: var(--day); color: var(--cream); padding: 58px 20px 26px; position: relative; overflow: hidden; min-height: 290px; }
+.rhead .back { appearance: none; border: 0; width: 40px; height: 40px; border-radius: 50%; background: rgba(0,0,0,.22); color: var(--cream); font-size: 20px; cursor: pointer; }
+.rhead .rp { position: absolute; right: -54px; top: 70px; width: 196px; height: 196px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 7px var(--cream); background: var(--deep); }
+.rhead .rp img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.5); }
+.rhead h1 { font-family: var(--display); font-weight: 400; font-size: 42px; line-height: .98; margin: 28px 0 8px; width: 58%; letter-spacing: -0.02em; text-wrap: balance; }
+.rhead p { margin: 0; font-size: 14px; color: var(--cream2); width: 55%; line-height: 1.35; }
+.rsheet { color: var(--ink); background: var(--paper); border-radius: 26px 26px 0 0; margin-top: -20px; position: relative; padding: 16px 20px 0; }
+.stepper { display: flex; align-items: center; gap: 14px; border-radius: 18px; box-shadow: inset 0 0 0 1.5px var(--rule); height: 36px; padding: 0 12px; }
+.stepper button { appearance: none; border: 0; background: none; color: var(--day); font: 600 20px var(--ui); cursor: pointer; width: 20px; }
+.ing { display: flex; gap: 12px; font-size: 14px; padding: 4px 0; line-height: 1.3; }
+.ing b { width: 74px; flex: none; }
+.step { display: flex; gap: 12px; padding: 9px 0; font-size: 15px; line-height: 1.4; }
+.step .num { font-family: var(--display); font-size: 26px; color: var(--day); width: 22px; flex: none; line-height: 1; }
+.callout { background: var(--chip); border-radius: 12px; padding: 10px 12px; font-size: 13px; line-height: 1.4; }
+
+/* Onboarding / paywall */
+.ob { padding: 70px 20px 30px; display: flex; flex-direction: column; gap: 16px; }
+.ob h1 { font-family: var(--display); font-weight: 400; font-size: 42px; line-height: 1; margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+.band { background: #AD321C; display: flex; justify-content: space-between; padding: 14px 14px 12px; margin: 4px -20px 0; }
+.band div { display: flex; flex-direction: column; align-items: center; gap: 5px; color: var(--cream); font: 600 12px var(--ui); }
+.band .o { width: 54px; height: 54px; border-radius: 50%; overflow: hidden; border: 5px solid var(--cream); background: #741A0E; }
+.band .o img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.4); }
+.opt { appearance: none; width: 100%; text-align: left; border: 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 16px; background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--rule); font: inherit; }
+.opt.on { box-shadow: inset 0 0 0 2px var(--ink); background: var(--raised); }
+.opt b { display: block; font-size: 16px; } .opt span { font-size: 13px; color: var(--ink2); }
+.bul { display: flex; gap: 10px; font-size: 14px; line-height: 1.35; color: var(--ink2); }
+.bul::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #AD321C; margin-top: 6px; flex: none; }
+.bul b { color: var(--ink); }
+.fine { font-size: 12px; color: var(--ink2); line-height: 1.4; }
+.toast { position: absolute; left: 16px; right: 16px; bottom: 96px; background: var(--ink); color: var(--paper); padding: 12px 14px; border-radius: 14px; font-size: 13px; line-height: 1.35; z-index: 40; }
+@media (prefers-reduced-motion: reduce) { .plate.out, .plate.in { animation: none; } .stage svg.cut { transition: none; } }
+</style>
+
+<div class="wrap">
+  <section class="notes">
+    <span class="tag">Interactive prototype</span>
+    <h1>Supperwise</h1>
+    <p>A clickable preview of the iPhone app, running the real recipe catalog and the same rules as the Swift code: each person's diet and allergies, the kitchen you have, and grocery prices worked out by the whole pack you buy.</p>
+    <h2>Try this</h2>
+    <ol>
+      <li>Enter a ZIP code, add people (try a vegetarian and "No shellfish"), and build your first week.</li>
+      <li>On the first week, tap <b>Keep my free week</b>.</li>
+      <li>On <b>Week</b>, tap <b>Swap</b>: the plate spins and the price changes.</li>
+      <li>Tap <b>Start cooking</b>, then <b>I cooked it</b>. The next night takes its own colour.</li>
+      <li>In <b>Groceries</b>, tick items off. In <b>Kitchen</b>, tick what you have and watch the total drop.</li>
+      <li>Tap <b>Next week</b> to change the budget, nights or household, and plan again.</li>
+    </ol>
+    <h2>What's different from the real app</h2>
+    <p>Purchases are simulated here. Prices are the app's estimates for a supermarket in your region, not live store prices. Food photos are stand-ins until the app has its own photography. Nothing you enter leaves this page.</p>
+    <button class="reset" id="reset" type="button">Start over</button>
+  </section>
+  <div class="phone"><div class="screen" id="screen"></div></div>
+</div>
+
+<script>
+const DATA = __DATA__;
+const IMG = __IMAGES__;
+const ING = Object.fromEntries(DATA.ingredients.map(i => [i.id, i]));
+const RECIPES = DATA.recipes;
+const R = id => RECIPES.find(r => r.id === id);
+const DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const AB = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+const SH = ["M","T","W","T","F","S","S"];
+const PAL = [["#84520C","#553406"],["#5E2A4F","#3D1A33"],["#AD321C","#741A0E"],["#4D581C","#323A10"],["#1E4D5C","#12323C"],["#6B3A1C","#472510"],["#2E4A36","#1D3022"]];
+const AISLES = [["produce","Produce"],["meat","Meat"],["seafood","Fish and seafood"],["dairy","Dairy and eggs"],["cans","Cans and jars"],["dry","Pasta, rice and dry goods"],["bakery","Bakery"],["frozen","Frozen"],["spices","Spices"],["staples","Oils and staples"]];
+const EQUIP = [["oven","Oven"],["stovetop","Stovetop"],["sheet_pan","Sheet pan"],["air_fryer","Air fryer"],["grill","Grill"],["slow_cooker","Slow cooker"]];
+const ALLERGENS = [["dairy","No dairy"],["egg","No eggs"],["gluten","No gluten"],["fish","No fish"],["shellfish","No shellfish"],["nuts","No nuts"]];
+const KINDS = [["discount","Discount",0.86],["supermarket","Supermarket",1.0],["premium","Premium",1.24]];
+const $ = s => document.querySelector(s);
+const money = v => "$" + v.toFixed(2);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function fresh() {
+  return {
+    step: "store", tab: "week", view: null, subscribed: false, seenOffer: false, toast: null,
+    settings: { budget: 95, cheapest: false, nights: [0,1,2,3,4], people: [], equipment: ["oven","stovetop","sheet_pan"], zip: "", store: "", kind: "supermarket" },
+    plan: null, bought: [], inKitchen: DATA.ingredients.filter(i => i.staple).map(i => i.id), focusDay: null, servings: null, yearly: true,
+  };
+}
+let S = fresh();
+try { const saved = JSON.parse(localStorage.getItem("supperwise-proto") || "null"); if (saved && saved.settings) S = Object.assign(fresh(), saved, { toast: null }); } catch (e) {}
+function save() { try { localStorage.setItem("supperwise-proto", JSON.stringify(S)); } catch (e) {} }
+
+// ---------- Engine (mirrors Catalog.swift, Pricing.swift, Planner.swift) ----------
+function region(zip) {
+  const c = (zip || "").trim().toUpperCase()[0];
+  if (!c) return 1;
+  if ("01".includes(c)) return 1.10; if (c === "2") return 1.03; if (c === "3") return 0.97;
+  if ("45".includes(c)) return 0.96; if ("67".includes(c)) return 0.97; if (c === "8") return 1.02; if (c === "9") return 1.14;
+  return /[A-Z]/.test(c) ? 1.12 : 1;
+}
+const mult = () => (KINDS.find(k => k[0] === S.settings.kind) || KINDS[1])[2] * region(S.settings.zip);
+const hh = () => Math.max(S.settings.people.length, 1);
+const vegCount = () => S.settings.people.filter(p => p.diet === "vegetarian").length;
+const pescCount = () => S.settings.people.filter(p => p.diet === "pescatarian").length;
+function eligible() {
+  const st = S.settings, avoid = new Set(st.people.flatMap(p => p.avoids)), notSpicy = st.people.some(p => p.notSpicy);
+  return RECIPES.filter(r => r.equipment.every(e => st.equipment.includes(e))
+    && !r.allergens.some(a => avoid.has(a))
+    && !(vegCount() > 0 && !r.vegetarian && !r.vegetarianSwap)
+    && !(pescCount() > 0 && !r.pescatarian && !r.vegetarianSwap)
+    && !(notSpicy && r.spice > 0 && !r.mildNote));
+}
+function usage(r) {
+  const out = {}, s = hh() / r.servings;
+  for (const ri of r.ingredients) { const a = ri.amount * s; out[ri.ingredient] = (out[ri.ingredient] || 0) + (ING[ri.ingredient].unit === "count" ? Math.ceil(a) : a); }
+  const swaps = r.vegetarianSwap && !r.vegetarian ? vegCount() + (r.pescatarian ? 0 : pescCount()) : 0;
+  if (swaps > 0) for (const ri of r.vegetarianSwap.ingredients) out[ri.ingredient] = (out[ri.ingredient] || 0) + ri.amount;
+  return out;
+}
+function price(dinners, kitchen = S.inKitchen) {
+  const used = {}, days = {}, dish = {};
+  for (const [d, r] of dinners) { const u = usage(r); dish[d] = u; for (const k in u) { used[k] = (used[k] || 0) + u[k]; (days[k] = days[k] || []).push(d); } }
+  const lines = [];
+  for (const id in used) {
+    const i = ING[id], have = kitchen.includes(id);
+    const packs = have ? 0 : Math.ceil(used[id] / i.packSize - 1e-9);
+    lines.push({ id, i, used: used[id], packs, cost: packs * i.refPrice * mult(), days: days[id].sort((a,b)=>a-b), have });
+  }
+  const share = {};
+  for (const l of lines) if (l.cost > 0) for (const d of l.days) share[d] = (share[d] || 0) + l.cost * (dish[d][l.id] / l.used);
+  return { lines, share, total: lines.reduce((a, l) => a + l.cost, 0) };
+}
+function leftoverNote(l) {
+  if (!l.packs) return null;
+  const frac = Math.max(0, l.packs * l.i.packSize - l.used) / (l.packs * l.i.packSize);
+  if (frac < 0.3) return null;
+  if (l.i.aisle === "spices") { const per = l.used / Math.max(l.days.length, 1); const more = Math.floor((l.packs * l.i.packSize - l.used) / Math.max(per, .1)); return more > 1 ? `The rest of the jar covers about ${more} more dinners.` : null; }
+  const share = frac >= 0.6 ? "Most of it is left over." : `About ${Math.round(frac * 10) * 10}% is left over.`;
+  if (l.i.keepsDays >= 60) return share + " It keeps for months.";
+  if (l.i.keepsDays >= 14) return share + ` It keeps about ${Math.floor(l.i.keepsDays / 7)} weeks.`;
+  return share + ` Use it within ${l.i.keepsDays} days.`;
+}
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const shuffle = (a, r) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const clash = rs => rs.some((r, i) => i && r.protein === rs[i-1].protein && r.protein !== "none");
+function makePlan(avoid = []) {
+  const nights = S.settings.nights.slice().sort((a,b)=>a-b), el = eligible();
+  if (el.length < nights.length) return { error: `Only ${el.length} recipes work for everyone with this kitchen, and you cook ${nights.length} nights. Turn on more equipment or cook fewer nights.` };
+  const freshPool = el.filter(r => !avoid.includes(r.id)), pool = freshPool.length >= nights.length ? freshPool : el;
+  const r = rng(Math.floor(Math.random() * 1e9)); let best = null;
+  for (let n = 0; n < 400; n++) {
+    let rem = shuffle(pool, r), pick = [];
+    while (pick.length < nights.length && rem.length) { const last = pick[pick.length - 1]; let i = rem.findIndex(x => !last || x.protein !== last.protein || x.protein === "none"); if (i < 0) i = 0; pick.push(rem.splice(i, 1)[0]); }
+    const total = price(nights.map((d, i) => [d, pick[i]])).total;
+    let s = S.settings.cheapest ? total : (total > S.settings.budget ? (total - S.settings.budget) * 10 + 100 : 0) + total * .05;
+    if (clash(pick)) s += 40; s -= new Set(pick.map(x => x.cuisine)).size * 1.5;
+    const long = pick.filter(x => x.minutes > 50).length; if (long > 2) s += (long - 2) * 6;
+    if (!best || s < best.s) best = { pick, s };
+  }
+  return { dinners: nights.map((d, i) => ({ day: d, id: best.pick[i].id, cooked: false })) };
+}
+const dinnersOf = () => S.plan.dinners.map(d => [d.day, R(d.id)]);
+function swapDay(day) {
+  const idx = S.plan.dinners.findIndex(d => d.day === day), inWeek = S.plan.dinners.map(d => d.id), before = price(dinnersOf()).total;
+  let best = null;
+  for (const c of shuffle(eligible().filter(r => !inWeek.includes(r.id)), rng(Date.now() % 1e9))) {
+    const trial = S.plan.dinners.map((d, i) => i === idx ? { ...d, id: c.id, cooked: false } : d);
+    const rs = trial.map(d => R(d.id)), total = price(trial.map(d => [d.day, R(d.id)])).total;
+    let s = Math.abs(total - before); if (total > S.settings.budget) s += (total - S.settings.budget) * 4; if (clash(rs)) s += 50;
+    if (!best || s < best.s) best = { trial, s };
+  }
+  if (best) S.plan.dinners = best.trial;
+}
+function tonight() {
+  if (!S.plan) return null;
+  if (S.focusDay !== null) { const f = S.plan.dinners.find(d => d.day === S.focusDay); if (f) return f; }
+  return S.plan.dinners.find(d => !d.cooked) || null;
+}
+
+// ---------- Rendering ----------
+const ICON = {
+  week: '<svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>',
+  groc: '<svg viewBox="0 0 24 24"><path d="M4 6h2l2 10h10l2-7H7.5"/><circle cx="10" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg>',
+  kit: '<svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M5 10h14M9 6.5v1.5M9 13v3"/></svg>',
+};
+const photo = (r) => r && r.photo && IMG[r.photo] ? `<img src="${IMG[r.photo]}" alt="">` : `<span class="ini">${esc((r?.name || "?")[0])}</span>`;
+function cuts(deep, ground) {
+  return `<svg class="cut" id="cuts" viewBox="0 0 402 270" aria-hidden="true">
+  <path d="M8 190 C 0 136, 26 82, 78 60 C 60 98, 50 146, 62 196 C 46 208, 18 208, 8 190 Z" fill="${deep}"/>
+  <path d="M76 56 c 4 -12 14 -18 26 -16" fill="none" stroke="#E07A5C" stroke-width="7" stroke-linecap="round" opacity=".8"/>
+  <path d="M322 24 a 70 70 0 0 1 70 70 l -70 0 z" fill="${deep}"/>
+  <path d="M322 46 a 48 48 0 0 1 48 48" fill="none" stroke="${ground}" stroke-width="4"/><path d="M322 68 a 26 26 0 0 1 26 26" fill="none" stroke="${ground}" stroke-width="4"/>
+  <circle cx="54" cy="246" r="13" fill="#E07A5C" opacity=".8"/><circle cx="80" cy="254" r="11" fill="#E07A5C" opacity=".8"/><circle cx="66" cy="226" r="10" fill="#E07A5C" opacity=".8"/><circle cx="370" cy="236" r="12" fill="#E07A5C" opacity=".8"/>
+  <g transform="translate(354 176) rotate(-20)" fill="${deep}"><circle r="16"/><circle cx="22" cy="-8" r="14"/><circle cx="18" cy="16" r="13"/><path d="M10 6 L -16 44" stroke="${deep}" stroke-width="4" stroke-linecap="round"/></g></svg>`;
+}
+function tabs(onDay) {
+  const b = (k, l) => `<button type="button" data-act="tab" data-v="${k}" class="${S.tab === k ? "on" : ""}">${ICON[k]}${l}</button>`;
+  return `<nav class="tabs ${onDay ? "onday" : "onpaper"}">${b("week","Week")}${b("groc","Groceries")}${b("kit","Kitchen")}</nav>`;
+}
+function status(light) { return `<div class="island"></div><div class="status ${light ? "light" : "dark"}"><span>5:42</span><span><i></i></span></div>`; }
+
+function viewToday() {
+  const t = tonight();
+  if (!t) return `<div class="view" style="--day:#AD321C"><div class="ob"><h1>That's the season.</h1><p class="sub">All ${S.plan.dinners.length} dinners this week are cooked. Plan next week and it will be ready on Monday.</p><button class="btn accent" data-act="open" data-v="plan">Plan next week</button></div></div>${tabs(false)}`;
+  const r = R(t.id), [g, deep] = PAL[t.day], cost = price(dinnersOf()), share = cost.share[t.day] || 0;
+  const idx = S.plan.dinners.findIndex(d => d.day === t.day) + 1, diff = S.settings.budget - cost.total;
+  const nx = S.plan.dinners.find(d => d.day > t.day && !d.cooked);
+  return `<div class="view today" style="--day:${g};--deep:${deep}">
+    <div class="top"><span>Episode ${idx} of ${S.plan.dinners.length}</span><span style="font-variant-numeric:tabular-nums">${money(Math.abs(diff))} ${diff >= 0 ? "under" : "over"} budget</span></div>
+    <div class="dayname">${DAYS[t.day]}</div>
+    <div class="stage">${cuts(deep, g)}<div class="plate" id="plate">${photo(r)}</div></div>
+    <div class="ep"><div class="k">Tonight · ${r.minutes} minutes</div><h2>${esc(r.name)}</h2>
+      <p><b>${money(share)}</b> feeds all ${hh()}, ${money(share / hh())} a plate. ${esc(r.side)}</p></div>
+    <div class="row2"><button class="btn cream" data-act="cook">Start cooking</button><button class="btn ghost" data-act="swap">↻ Swap</button></div>
+    <div class="strip">${S.plan.dinners.map(d => `<button type="button" data-act="focus" data-v="${d.day}" class="${d.cooked ? "done" : ""} ${d.day === t.day ? "now" : ""}" aria-label="${DAYS[d.day]}: ${esc(R(d.id).name)}"><span class="o">${photo(R(d.id))}</span>${SH[d.day]}</button>`).join("")}</div>
+    ${nx ? `<div class="nextep"><span>Next episode</span><span>${AB[nx.day]} · ${esc(R(nx.id).name)}, ${R(nx.id).minutes} min</span></div>` : ""}
+    <div class="pad" style="margin-top:18px;display:flex;gap:18px"><button class="link" style="color:var(--cream)" data-act="open" data-v="plan">Next week →</button><button class="link" style="color:var(--cream2)" data-act="open" data-v="settings">Settings</button></div>
+  </div>${tabs(true)}`;
+}
+function scaleText(text, f) {
+  if (Math.abs(f - 1) < .01) return text;
+  const fr = {"½":.5,"¼":.25,"¾":.75,"⅓":1/3,"⅔":2/3}, [first, ...rest] = text.split(" ");
+  let digits = "", frac = 0;
+  for (const c of first) { if (/\d/.test(c)) digits += c; else if (fr[c]) frac = fr[c]; else return text + " ×" + f.toFixed(2).replace(/\.?0+$/, ""); }
+  const v = (digits ? +digits : 0) + frac; if (!v) return text;
+  const n = v * f, w = Math.floor(n), rem = n - w, nice = [[0,""],[.25,"¼"],[1/3,"⅓"],[.5,"½"],[2/3,"⅔"],[.75,"¾"],[1,""]];
+  const near = nice.reduce((a, b) => Math.abs(b[0] - rem) < Math.abs(a[0] - rem) ? b : a), ww = near[0] === 1 ? w + 1 : w;
+  return (ww === 0 ? (near[1] || "1") : ww + near[1]) + (rest.length ? " " + rest.join(" ") : "");
+}
+function viewRecipe() {
+  const d = S.plan.dinners.find(x => x.day === S.view.day), r = R(d.id), [g, deep] = PAL[d.day], sv = S.servings || hh(), f = sv / r.servings;
+  const ingRow = ri => `<div class="ing"><b>${esc(scaleText(ri.text, f))}</b><span>${esc(ING[ri.ingredient].name.toLowerCase())}${ri.note ? ", " + esc(ri.note) : ""}</span></div>`;
+  const vegNeeded = r.vegetarianSwap && !r.vegetarian && vegCount() + pescCount() > 0;
+  return `<div class="view" style="--day:${g};--deep:${deep}">
+    <div class="rhead"><button class="back" data-act="back" aria-label="Back">‹</button><div class="rp">${photo(r)}</div>
+      <h1>${esc(r.name)}</h1><p>${r.minutes} min · serves ${sv}<br>${r.difficulty}${r.vegetarian ? " · vegetarian" : ""}</p></div>
+    <div class="rsheet">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--rule)"><b>Servings</b>
+        <div class="stepper"><button data-act="serv" data-v="-1" aria-label="Fewer">–</button><span style="font-variant-numeric:tabular-nums">${sv}</span><button data-act="serv" data-v="1" aria-label="More">+</button></div></div>
+      <div class="lbl">You'll need</div>${r.ingredients.map(ingRow).join("")}
+      ${vegNeeded ? `<div class="lbl">Vegetarian plate</div><div class="callout">${esc(r.vegetarianSwap.note)}</div>${r.vegetarianSwap.ingredients.map(ingRow).join("")}` : ""}
+      ${r.mildNote && S.settings.people.some(p => p.notSpicy) ? `<div class="lbl">Milder</div><div class="callout">${esc(r.mildNote)}</div>` : ""}
+      <div class="lbl">Directions</div>
+      ${sv !== r.servings ? `<p class="fine" style="margin:0 0 6px">Amounts above are for ${sv}. The steps are written for ${r.servings}; use the amounts above.</p>` : ""}
+      ${r.steps.map((s, i) => `<div class="step"><span class="num">${i + 1}</span><span>${esc(s)}</span></div>`).join("")}
+      <div style="padding:18px 0 10px"><button class="btn accent" data-act="cooked">I cooked it</button></div>
+    </div></div>`;
+}
+function viewGroceries() {
+  const cost = price(dinnersOf()), buy = cost.lines.filter(l => !l.have), have = cost.lines.filter(l => l.have);
+  const left = buy.filter(l => !S.bought.includes(l.id)).length, t = tonight(), [g] = PAL[t ? t.day : 2];
+  const storeLine = S.settings.store || (KINDS.find(k => k[0] === S.settings.kind)[1].toLowerCase());
+  return `<div class="view" style="--day:${g}"><div class="phead"><h1>Groceries</h1></div><div class="pad">
+    <div class="big" style="margin-top:10px">${money(cost.total)}</div>
+    <p class="sub">of ${money(S.settings.budget)} at ${esc(storeLine)}. Priced by the pack you buy, not the spoonful you use. Prices are estimates.</p>
+    <p class="fine" style="margin:8px 0 0">${left === 0 ? "Everything's in the cart." : `${left} of ${buy.length} items left to buy.`}</p>
+    ${AISLES.map(([a, title]) => { const ls = buy.filter(l => l.i.aisle === a).sort((x, y) => x.i.name.localeCompare(y.i.name)); if (!ls.length) return "";
+      return `<div class="aisle"><h3>${title}</h3><span>${money(ls.reduce((s, l) => s + l.cost, 0))}</span></div>` + ls.map(l => { const on = S.bought.includes(l.id), note = !on && leftoverNote(l);
+        return `<button type="button" class="gi ${on ? "on" : ""}" data-act="buy" data-v="${l.id}"><span class="box">${on ? "✓" : ""}</span><span class="t"><span class="n">${esc(l.i.name)}</span><span class="m">${l.packs > 1 ? l.packs + " × " : ""}${esc(l.i.packLabel)} · ${l.days.map(d => AB[d]).join(", ")}</span>${note ? `<span class="note">${note}</span>` : ""}</span><span class="p">${money(l.cost)}</span></button>`; }).join(""); }).join("")}
+    ${have.length ? `<div class="aisle"><h3>Already in your kitchen</h3></div>${have.map(l => `<div class="gi" style="cursor:default"><span class="t"><span class="n">${esc(l.i.name)}</span></span><span class="m">You have it</span></div>`).join("")}` : ""}
+  </div></div>${tabs(false)}`;
+}
+function viewKitchen() {
+  const t = tonight(), [g] = PAL[t ? t.day : 2], d = dinnersOf(), saved = Math.max(0, price(d, []).total - price(d).total);
+  const order = ["staples","spices","cans","dry","dairy","produce","frozen","bakery"];
+  return `<div class="view" style="--day:${g}"><div class="phead"><h1>Kitchen</h1></div><div class="pad">
+    <div class="big" style="font-size:60px;margin-top:10px">${money(saved)}</div><p class="sub">off this week's list, from what you already have. Tick anything in your cupboard.</p>
+    ${order.map(a => { const items = DATA.ingredients.filter(i => i.aisle === a).sort((x, y) => x.name.localeCompare(y.name)); const title = AISLES.find(x => x[0] === a)[1];
+      return `<div class="aisle"><h3>${title}</h3></div>` + items.map(i => { const on = S.inKitchen.includes(i.id);
+        return `<button type="button" class="gi ${on ? "on" : ""}" data-act="have" data-v="${i.id}"><span class="box">${on ? "✓" : ""}</span><span class="t"><span class="n" style="text-decoration:none;color:var(--ink)">${esc(i.name)}</span><span class="m">${esc(i.packLabel)}</span></span></button>`; }).join(""); }).join("")}
+  </div></div>${tabs(false)}`;
+}
+function household(accent) {
+  const st = S.settings;
+  return `<div class="lbl">Grocery budget</div><div class="big">$${st.budget}</div>
+    <input type="range" id="budget" min="40" max="300" step="5" value="${st.budget}" data-act="budget" aria-label="Grocery budget">
+    <label style="display:flex;justify-content:space-between;align-items:center;font-size:14px;margin-top:6px">Just build the cheapest week <input type="checkbox" id="cheapest" data-act="cheapest" ${st.cheapest ? "checked" : ""}></label>
+    <div class="lbl">Cook nights</div><div class="days">${SH.map((s, i) => `<button type="button" data-act="night" data-v="${i}" class="${st.nights.includes(i) ? "on" : ""}" style="${st.nights.includes(i) ? `background:${PAL[i][0]}` : ""}" aria-label="${DAYS[i]}">${s}</button>`).join("")}</div>
+    <p class="fine" style="margin:6px 0 0">${st.nights.length} dinners a week</p>
+    <div class="lbl">Who's eating</div>
+    ${st.people.map((p, i) => `<div class="person"><div class="pn"><input id="pname${i}" data-act="pname" data-v="${i}" value="${esc(p.name)}" aria-label="Name"><button class="x" data-act="pdel" data-v="${i}" aria-label="Remove">×</button></div>
+      <div class="pc">${[["vegetarian","Vegetarian"],["pescatarian","Pescatarian"]].map(([k, l]) => `<button type="button" class="chip ${p.diet === k ? "on" : ""}" data-act="pdiet" data-v="${i}" data-k="${k}">${l}</button>`).join("")}
+      ${ALLERGENS.map(([k, l]) => `<button type="button" class="chip ${p.avoids.includes(k) ? "on" : ""}" data-act="pavoid" data-v="${i}" data-k="${k}">${l}</button>`).join("")}
+      <button type="button" class="chip ${p.notSpicy ? "on" : ""}" data-act="pspicy" data-v="${i}">Not spicy</button></div></div>`).join("")}
+    <button class="link" style="margin-top:10px;color:${accent}" data-act="padd">+ Add someone</button>
+    <p class="fine">Every dinner works for everyone. Vegetarians get a written vegetarian plate when a dish has meat. Dishes with an allergen someone avoids are left out. Always check labels.</p>
+    <div class="lbl">Your kitchen</div><div class="chips">${EQUIP.map(([k, l]) => `<button type="button" class="chip ${st.equipment.includes(k) ? "on" : "off"}" data-act="equip" data-v="${k}">${l}</button>`).join("")}</div>
+    <p class="fine" style="margin-top:12px">${eligible().length} of ${RECIPES.length} recipes work for this household.</p>`;
+}
+function viewPlan() {
+  const t = tonight(), [g] = PAL[t ? t.day : 2];
+  return `<div class="view" style="--day:${g}"><div class="phead"><h1>Next week</h1><button class="link" data-act="back">Done</button></div><div class="pad">${household(g)}
+    <div style="padding:18px 0"><button class="btn accent" data-act="nextweek">Plan next week</button></div></div></div>`;
+}
+function viewSettings() {
+  const st = S.settings;
+  return `<div class="view" style="--day:#AD321C"><div class="phead"><h1>Settings</h1><button class="link" data-act="back">Done</button></div><div class="pad">
+    <div class="lbl">Subscription</div><p class="sub" style="margin:0">${S.subscribed ? "Subscribed (simulated in this preview)." : "Your free week is yours to keep. Subscribe to plan every week."}</p>
+    ${S.subscribed ? "" : `<button class="link" style="margin-top:8px" data-act="open" data-v="paywall">See plans</button>`}
+    <div class="lbl">Where you shop</div><input class="field" id="zip2" data-act="zip" value="${esc(st.zip)}" placeholder="ZIP code" aria-label="ZIP code">
+    <div class="seg" style="margin-top:10px">${KINDS.map(k => `<button type="button" class="${st.kind === k[0] ? "on" : ""}" data-act="kind" data-v="${k[0]}">${k[1]}</button>`).join("")}</div>
+    <div class="lbl">About</div><p class="fine">Recipes are a guide. Check ingredients, allergens and food-safety temperatures before cooking. Diet and allergy settings are a convenience, not a medical guarantee.</p>
+    <p class="fine">Everything you enter lives only on your iPhone. There's no account.</p>
+  </div></div>`;
+}
+function paywallBody(keepFree) {
+  return `<div class="bul"><span><b>A new week every Sunday</b>, priced at your store before you shop.</span></div>
+    <div class="bul"><span><b>Swap any night</b> and the list reprices by the pack.</span></div>
+    <div class="bul"><span><b>Everyone's rules on every plate</b>: diets, allergies and spice, per person.</span></div>
+    <button type="button" class="opt ${S.yearly ? "on" : ""}" data-act="yearly" data-v="1"><span><b>Yearly</b><span>7 days free, then billed yearly · about $2.50/mo</span></span><b style="font-size:15px">$29.99/yr</b></button>
+    <button type="button" class="opt ${!S.yearly ? "on" : ""}" data-act="yearly" data-v="0"><span><b>Monthly</b><span>No trial</span></span><b style="font-size:15px">$7.99/mo</b></button>
+    <button class="btn wide" style="background:#AD321C;color:var(--cream)" data-act="buy-sub">${S.yearly ? "Try 7 days free" : "Subscribe"}</button>
+    <p class="fine" style="margin:0">${S.yearly ? "Free for 7 days, then $29.99 a year, charged to your Apple ID and renewing automatically. Cancel in Settings at least 24 hours before the trial ends and you won't be charged." : "$7.99 a month, charged to your Apple ID and renewing automatically until you cancel in Settings."} Prices shown are placeholders.</p>
+    <div style="display:flex;gap:18px;font-size:13px">${keepFree ? `<button class="link" style="color:#AD321C" data-act="keepfree">Keep my free week</button>` : ""}<span style="color:var(--ink2)">Restore</span><span style="color:var(--ink2)">Terms</span><span style="color:var(--ink2)">Privacy</span></div>`;
+}
+function viewFirstWeek() {
+  const cost = price(dinnersOf()), store = S.settings.store || "your " + KINDS.find(k => k[0] === S.settings.kind)[1].toLowerCase();
+  return `<div class="view"><div class="ob" style="gap:12px"><div class="lbl" style="margin:0">Season one · ${S.plan.dinners.length} episodes · ready</div>
+    <h1>${S.plan.dinners.length} dinners for ${money(cost.total)},<br>at ${esc(store)}.</h1>
+    <div class="band">${S.plan.dinners.map(d => `<div><span class="o">${photo(R(d.id))}</span>${AB[d.day]}</div>`).join("")}</div>
+    <p class="sub" style="color:var(--ink);margin:4px 0 0">This week's plan and list are yours to keep, whether you subscribe or not.</p>
+    ${paywallBody(true)}</div></div>`;
+}
+function viewPaywall() {
+  return `<div class="view"><div class="ob" style="gap:12px"><div style="display:flex;justify-content:space-between;align-items:center"><span></span><button class="link" style="color:var(--ink2)" data-act="back">Not now</button></div><h1>Plan every week</h1>${paywallBody(false)}</div></div>`;
+}
+function viewStore() {
+  const st = S.settings;
+  return `<div class="view" style="--day:#AD321C"><div class="ob"><div class="lbl" style="margin:0">Step 1 of 2</div><h1>Where do you shop?</h1>
+    <p class="sub" style="margin:0">Supperwise plans a week of dinners and prices the grocery list before you leave the house. Prices are estimates for your kind of store and region.</p>
+    <div><div class="lbl">ZIP or postal code</div><input class="field" id="zip" data-act="zip" inputmode="text" value="${esc(st.zip)}" placeholder="45206"></div>
+    <div><div class="lbl">Store name (optional)</div><input class="field" id="store" data-act="store" value="${esc(st.store)}" placeholder="The store you usually go to"></div>
+    <div><div class="lbl">Kind of store</div><div class="seg">${KINDS.map(k => `<button type="button" class="${st.kind === k[0] ? "on" : ""}" data-act="kind" data-v="${k[0]}">${k[1]}</button>`).join("")}</div></div>
+    <button class="btn accent" data-act="to-household" ${st.zip.trim().length < 3 ? "disabled" : ""} id="nextbtn">Next</button></div></div>`;
+}
+function viewHousehold() {
+  return `<div class="view" style="--day:#AD321C"><div class="ob" style="padding-bottom:0"><div class="lbl" style="margin:0">Step 2 of 2</div><h1>Who's eating, and what do you spend?</h1>
+    <p class="sub" style="margin:0">Supperwise is free for your first week. After that it's a subscription, and you'll see the price before you pay anything.</p></div>
+    <div class="pad">${household("#AD321C")}<div style="padding:18px 0"><button class="btn accent" data-act="build" ${S.settings.nights.length ? "" : "disabled"}>Build my first week</button></div></div></div>`;
+}
+
+function render() {
+  const sc = $("#screen");
+  const scroll = sc.querySelector(".view")?.scrollTop || 0;
+  const keepScroll = render.keep; render.keep = false;
+  let html, light = false;
+  if (!S.plan || S.step !== "app") html = S.step === "household" ? viewHousehold() : S.step === "first" && S.plan ? viewFirstWeek() : viewStore();
+  else if (S.view?.name === "recipe") { html = viewRecipe(); light = true; }
+  else if (S.view?.name === "plan") html = viewPlan();
+  else if (S.view?.name === "settings") html = viewSettings();
+  else if (S.view?.name === "paywall") html = viewPaywall();
+  else if (S.tab === "groc") html = viewGroceries();
+  else if (S.tab === "kit") html = viewKitchen();
+  else { html = viewToday(); light = !!tonight(); }
+  sc.style.color = light ? "var(--cream)" : "var(--ink)";
+  sc.innerHTML = status(light) + html + (S.toast ? `<div class="toast" role="status">${esc(S.toast)}</div>` : "") + `<div class="homebar"></div>`;
+  if (keepScroll) { const v = sc.querySelector(".view"); if (v) v.scrollTop = scroll; }
+  save();
+}
+function toast(msg) { S.toast = msg; render.keep = true; render(); clearTimeout(toast.t); toast.t = setTimeout(() => { S.toast = null; render.keep = true; render(); }, 3200); }
+
+document.addEventListener("click", e => {
+  const el = e.target.closest("[data-act]"); if (!el || el.tagName === "INPUT") return;
+  const a = el.dataset.act, v = el.dataset.v, st = S.settings; let keep = true;
+  switch (a) {
+    case "kind": st.kind = v; break;
+    case "to-household": S.step = "household"; keep = false; break;
+    case "night": { const i = +v; st.nights = st.nights.includes(i) ? st.nights.filter(x => x !== i) : [...st.nights, i]; break; }
+    case "padd": st.people.push({ name: ["Dana","Marcus","Ari","June","Sam"][st.people.length] || "Someone", diet: "everything", avoids: [], notSpicy: false }); break;
+    case "pdel": st.people.splice(+v, 1); break;
+    case "pdiet": { const p = st.people[+v]; p.diet = p.diet === el.dataset.k ? "everything" : el.dataset.k; break; }
+    case "pavoid": { const p = st.people[+v], k = el.dataset.k; p.avoids = p.avoids.includes(k) ? p.avoids.filter(x => x !== k) : [...p.avoids, k]; break; }
+    case "pspicy": st.people[+v].notSpicy = !st.people[+v].notSpicy; break;
+    case "equip": st.equipment = st.equipment.includes(v) ? st.equipment.filter(x => x !== v) : [...st.equipment, v]; break;
+    case "build": {
+      if (!st.people.length) st.people.push({ name: "Me", diet: "everything", avoids: [], notSpicy: false });
+      const p = makePlan(); if (p.error) { toast(p.error); return; }
+      S.plan = p; S.bought = []; S.focusDay = null; S.step = "first"; keep = false; break; }
+    case "keepfree": S.seenOffer = true; S.step = "app"; S.tab = "week"; S.view = null; keep = false; break;
+    case "yearly": S.yearly = v === "1"; break;
+    case "buy-sub": S.subscribed = true; S.seenOffer = true; S.step = "app";
+      if (S.view?.name === "paywall") { S.view = { name: "plan" }; }
+      toast("Preview: purchase simulated. In the app this is Apple's purchase sheet."); return;
+    case "tab": S.tab = v; S.view = null; keep = false; break;
+    case "focus": S.focusDay = +v; break;
+    case "cook": S.servings = null; S.view = { name: "recipe", day: tonight().day }; keep = false; break;
+    case "back": S.view = null; keep = false; break;
+    case "serv": S.servings = Math.max(1, Math.min(12, (S.servings || hh()) + +v)); break;
+    case "cooked": { const d = S.plan.dinners.find(x => x.day === S.view.day); d.cooked = true; S.view = null; S.focusDay = null; keep = false; break; }
+    case "swap": {
+      const plate = $("#plate"), c = $("#cuts"); const t = tonight();
+      if (plate && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        plate.classList.add("out"); if (c) c.style.transform = "rotate(25deg)";
+        setTimeout(() => { swapDay(t.day); render(); const np = $("#plate"); if (np) np.classList.add("in"); }, 260);
+      } else { swapDay(t.day); render(); }
+      return; }
+    case "buy": S.bought = S.bought.includes(v) ? S.bought.filter(x => x !== v) : [...S.bought, v]; break;
+    case "have": S.inKitchen = S.inKitchen.includes(v) ? S.inKitchen.filter(x => x !== v) : [...S.inKitchen, v]; break;
+    case "open": S.view = { name: v }; keep = false; break;
+    case "nextweek": {
+      if (!S.subscribed) { S.view = { name: "paywall" }; render(); return; }
+      const p = makePlan(S.plan.dinners.map(d => d.id)); if (p.error) { toast(p.error); return; }
+      S.plan = p; S.bought = []; S.focusDay = null; S.view = null; S.tab = "week"; render(); toast("Next week is planned. In the app it starts on Monday."); return; }
+    default: return;
+  }
+  render.keep = keep; render();
+});
+document.addEventListener("input", e => {
+  const el = e.target, a = el.dataset.act, st = S.settings; if (!a) return;
+  if (a === "zip") { st.zip = el.value; const b = $("#nextbtn"); if (b) b.disabled = st.zip.trim().length < 3; save(); return; }
+  if (a === "store") { st.store = el.value; save(); return; }
+  if (a === "pname") { st.people[+el.dataset.v].name = el.value; save(); return; }
+  if (a === "budget") { st.budget = +el.value; const big = el.previousElementSibling; if (big) big.textContent = "$" + st.budget; save(); return; }
+});
+document.addEventListener("change", e => {
+  const el = e.target; if (el.dataset.act === "cheapest") { S.settings.cheapest = el.checked; save(); }
+  if (el.dataset.act === "budget") { render.keep = true; render(); }
+});
+$("#reset").addEventListener("click", () => { S = fresh(); try { localStorage.removeItem("supperwise-proto"); } catch (e) {} render(); });
+render();
+</script>

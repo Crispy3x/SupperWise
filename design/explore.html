@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Supperwise · three directions</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="device.css">
+<style>
+  /* Shared content (Wed 11 Nov 2026, 17:42, family of four, Hillside Market) */
+  .screen { display: flex; flex-direction: column; overflow: hidden; }
+  .icon { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ---------------- A · Market stall at 7am (place) ---------------- */
+  .a { --ground:#F3F4F1; --ink:#15171A; --ink-2:#555B62; --ink-3:#7C828A; --rule:#D9DCD6; --accent:#1F3FC4; --on-accent:#FFFFFF;
+       background: var(--ground); color: var(--ink); font-family: "Bricolage Grotesque", var(--sf); }
+  .a .top { padding: calc(var(--safe-top) + 6px) 20px 0; display:flex; justify-content:space-between; align-items:baseline; }
+  .a .top .d { font-size: 15px; color: var(--ink-2); font-family: var(--sf); }
+  .a .top .d b { color: var(--ink); font-weight: 600; }
+  .a .hero { position: relative; margin: 14px 12px 0; height: 262px; border-radius: 22px; overflow: hidden; flex: none; }
+  .a .hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; display:block; }
+  .a .tag { position:absolute; left: 14px; bottom: 16px; background: var(--accent); color: var(--on-accent);
+            padding: 8px 12px 9px; border-radius: 6px; transform: rotate(-3deg); font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .a .tag .big { font-size: 30px; }
+  .a .tag .small { font-size: 13px; font-weight: 500; letter-spacing: 0; display:block; margin-top: 4px; font-family: var(--sf); }
+  .a .tag::before { content:""; position:absolute; right: 9px; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: var(--ground); }
+  .a .dish { padding: 16px 20px 0; }
+  .a .dish .when { font-size: 13px; color: var(--accent); font-weight: 700; font-family: var(--sf); }
+  .a .dish h1 { font-size: 34px; line-height: 1.02; letter-spacing: -0.035em; font-weight: 800; margin: 4px 0 6px; }
+  .a .dish p { margin: 0; font-size: 15px; color: var(--ink-2); font-family: var(--sf); }
+  .a .actions { display:flex; gap: 10px; padding: 14px 20px 0; }
+  .a .btn { height: 44px; padding: 0 20px; border-radius: 22px; display:flex; align-items:center; font: 600 16px var(--sf); }
+  .a .btn.main { background: var(--ink); color: var(--ground); }
+  .a .btn.ghost { border: 1.5px solid var(--rule); color: var(--ink); }
+  .a .week { margin: 22px 20px 0; border-top: 1px solid var(--rule); }
+  .a .row { display:flex; align-items:center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+  .a .row img { width: 46px; height: 46px; border-radius: 10px; object-fit: cover; }
+  .a .row .day { width: 30px; font: 600 13px var(--sf); color: var(--ink-2); }
+  .a .row .n { flex:1; font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+  .a .row .p { font: 15px var(--sf); color: var(--ink-2); }
+  .a .row.done .n { color: var(--ink-3); text-decoration: line-through; text-decoration-thickness: 1px; }
+  .a .bill { padding: 12px 20px 0; font: 15px var(--sf); color: var(--ink-2); }
+  .a .bill b { color: var(--ink); }
+  .a .tabbar { position:absolute; left: 50%; transform: translateX(-50%); bottom: 26px; height: 58px; border-radius: 29px; display:flex; padding: 4px; gap: 2px; }
+  .tabbar .t { width: 92px; border-radius: 25px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 2px; font: 500 11px var(--sf); color: var(--ink); }
+  .tabbar .t .icon { width: 22px; height: 22px; }
+
+  /* ---------------- B · A seasoned cast-iron pan (object) ---------------- */
+  .b { --ground:#14110E; --raised:#221D18; --ink:#F4EEE5; --ink-2:#ACA296; --ink-3:#7E756B; --rule:#38312A; --accent:#F2B23A; --on-accent:#1C1406;
+       --glass-dark: rgba(46,39,32,.62);
+       background: var(--ground); color: var(--ink); font-family: var(--sf); }
+  .b .cond { font-family: "Barlow Condensed", var(--sf); }
+  .b .top { padding: calc(var(--safe-top) + 10px) 20px 0; font-size: 15px; color: var(--ink-2); }
+  .b .money { display:flex; align-items:flex-end; gap: 12px; padding: 0 20px; margin-top: 2px; }
+  .b .money .n { font-family:"Barlow Condensed"; font-weight: 800; font-size: 92px; line-height: .86; letter-spacing: -0.02em; }
+  .b .money .n small { font-size: 46px; font-weight: 700; color: var(--ink-2); }
+  .b .money .s { font-size: 15px; color: var(--ink-2); line-height: 1.3; padding-bottom: 6px; }
+  .b .money .s b { color: var(--ink); font-weight: 600; }
+  .b .pan { position: relative; margin: 26px 0 0; height: 300px; flex: none; }
+  .b .pan .disc { position:absolute; right: -96px; top: 0; width: 300px; height: 300px; border-radius: 50%;
+                  background: #0B0907; box-shadow: inset 0 0 0 10px #2A241E, inset 0 0 0 13px #0B0907; overflow:hidden; }
+  .b .pan .disc img { position:absolute; inset: 22px; width: calc(100% - 44px); height: calc(100% - 44px); border-radius: 50%; object-fit: cover; }
+  .b .pan .handle { position:absolute; right: 236px; top: 138px; width: 120px; height: 26px; border-radius: 13px; background: #2A241E; }
+  .b .pan .txt { position:absolute; left: 20px; top: 54px; width: 180px; }
+  .b .pan .txt .k { color: var(--accent); font-family:"Barlow Condensed"; font-weight: 700; font-size: 17px; letter-spacing: .06em; text-transform: uppercase; }
+  .b .pan .txt h1 { font-family:"Barlow Condensed"; font-weight: 700; font-size: 44px; line-height: .95; margin: 6px 0 10px; letter-spacing: -0.005em; }
+  .b .pan .txt p { margin:0; font-size: 15px; color: var(--ink-2); line-height: 1.35; }
+  .b .strip { display:flex; justify-content:space-between; padding: 0 20px; margin-top: 30px; }
+  .b .strip .dd { display:flex; flex-direction:column; align-items:center; gap: 6px; font: 600 13px var(--sf); color: var(--ink-2); }
+  .b .strip .dd .o { width: 60px; height: 60px; border-radius: 50%; overflow:hidden; box-shadow: 0 0 0 3px #2A241E; position: relative; }
+  .b .strip .dd .o img { width:100%; height:100%; object-fit: cover; }
+  .b .strip .dd.done .o img { opacity: .38; }
+  .b .strip .dd.done .o::after { content:""; position:absolute; left: 20px; top: 16px; width: 12px; height: 20px; border: solid var(--ink); border-width: 0 3px 3px 0; transform: rotate(45deg); }
+  .b .strip .dd.now { color: var(--accent); }
+  .b .strip .dd.now .o { box-shadow: 0 0 0 3px var(--accent); }
+  .b .cta { margin: 34px 20px 0; height: 54px; border-radius: 27px; background: var(--accent); color: var(--on-accent);
+            display:flex; align-items:center; justify-content:center; font: 700 17px var(--sf); }
+  .b .tabbar { position:absolute; left: 50%; transform: translateX(-50%); bottom: 26px; height: 58px; border-radius: 29px; display:flex; padding: 4px; gap: 2px; }
+  .b .tabbar .t { color: var(--ink); }
+
+  /* ---------------- C · A Saturday cooking-show title card (media) ---------------- */
+  .c { --ground:#AD321C; --ink:#FFF5EC; --ink-2:#FFE3D6; --rule:rgba(255,245,236,.3); --deep:#741A0E; --button:#FFF5EC; --on-button:#952512;
+       --glass: rgba(70,14,6,.34);
+       background: var(--ground); color: var(--ink); font-family: var(--sf); }
+  .c .serif { font-family: "Instrument Serif", var(--ny); font-weight: 400; }
+  .c .top { padding: calc(var(--safe-top) + 10px) 22px 0; display:flex; justify-content:space-between; font-size: 15px; color: var(--ink-2); }
+  .c .day { padding: 4px 22px 0; font-size: 92px; line-height: .9; letter-spacing: -0.03em; }
+  .c .day i { font-style: italic; }
+  .c .stage { position: relative; height: 290px; margin-top: 8px; flex: none; }
+  .c .stage svg.cut { position:absolute; inset: 0; width: 100%; height: 100%; }
+  .c .stage .plate { position:absolute; left: 92px; top: 14px; width: 252px; height: 252px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 8px var(--ink); }
+  .c .stage .plate img { width: 100%; height: 100%; object-fit: cover; }
+  .c .ep { padding: 6px 22px 0; }
+  .c .ep .k { font-size: 13px; color: var(--ink-2); font-weight: 600; }
+  .c .ep h1 { font-size: 46px; line-height: .98; letter-spacing: -0.02em; margin: 2px 0 8px; }
+  .c .ep p { margin: 0; font-size: 17px; color: var(--ink-2); line-height: 1.3; }
+  .c .ep p b { color: var(--ink); font-weight: 600; }
+  .c .row2 { display:flex; align-items:center; gap: 12px; padding: 18px 22px 0; }
+  .c .btn { height: 50px; padding: 0 24px; border-radius: 25px; background: var(--button); color: var(--on-button); display:flex; align-items:center; font: 700 17px var(--sf); }
+  .c .next { font-size: 15px; color: var(--ink-2); line-height: 1.25; }
+  .c .next b { color: var(--ink); font-weight: 600; }
+  .c .tabbar { position:absolute; left: 50%; transform: translateX(-50%); bottom: 26px; height: 58px; border-radius: 29px; display:flex; padding: 4px; gap: 2px; }
+  .c .tabbar .t { color: var(--ink); }
+  .tabbar .t.on { background: rgba(0,0,0,.07); font-weight: 700; }
+  .b .tabbar .t.on { background: rgba(255,255,255,.1); }
+  .c .tabbar .t.on { background: rgba(255,255,255,.2); }
+</style>
+</head>
+<body>
+
+<!-- A ===================================================== -->
+<section class="screen a" data-name="a-market" data-time="17:42">
+  <div class="top">
+    <div class="d"><b>Wednesday</b> · Hillside Market, Cincinnati</div>
+  </div>
+  <div class="hero">
+    <img src="img/1588166524941-3bf61a9c41db.jpg" alt="Chickpea tikka masala over rice">
+    <div class="tag"><span class="big">$1.96</span><span class="small">a plate, four plates</span></div>
+  </div>
+  <div class="dish">
+    <div class="when">Tonight · 40 min</div>
+    <h1>Chickpea tikka masala</h1>
+    <p>With basmati rice and charred red onion.</p>
+  </div>
+  <div class="actions">
+    <div class="btn main">Start cooking</div>
+    <div class="btn ghost">Swap</div>
+  </div>
+  <div class="week">
+    <div class="row"><span class="day">Thu</span><img src="img/1621996346565-e3dbc646d9a9.jpg" alt=""><span class="n">Penne arrabbiata</span><span class="p tnum">$1.52</span></div>
+    <div class="row"><span class="day">Fri</span><img src="img/1598103442097-8b74394b95c6.jpg" alt=""><span class="n">Skillet lemon chicken</span><span class="p tnum">$2.88</span></div>
+  </div>
+  <div class="bill"><b class="tnum">$83.40</b> of your $95 this week. Mon and Tue cooked.</div>
+  <nav class="tabbar glass" data-float>
+    <div class="t on"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Week</div>
+    <div class="t"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h2l2 10h10l2-7H7.5"/><circle cx="10" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg>Groceries</div>
+    <div class="t"><svg class="icon" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M5 10h14M9 6.5v1.5M9 13v3"/></svg>Kitchen</div>
+  </nav>
+</section>
+
+<!-- B ===================================================== -->
+<section class="screen b" data-name="b-castiron" data-theme="dark" data-time="17:42">
+  <div class="top">Week of Nov 9 · 5 dinners · 4 people</div>
+  <div class="money">
+    <div class="n tnum">$83<small>.40</small></div>
+    <div class="s">of <b>$95</b> at Hillside<br><b>$11.60</b> to spare</div>
+  </div>
+  <div class="pan">
+    <div class="disc"><img src="img/1588166524941-3bf61a9c41db.jpg" alt="Chickpea tikka masala"></div>
+    <div class="txt">
+      <div class="k">Tonight, Wed</div>
+      <h1>Chickpea tikka masala</h1>
+      <p>40 min · $1.96 a plate<br>Basmati, charred red onion</p>
+    </div>
+  </div>
+  <div class="strip">
+    <div class="dd done"><div class="o"><img src="img/1590412200988-a436970781fa.jpg" alt=""></div>Mon</div>
+    <div class="dd done"><div class="o"><img src="img/1529042410759-befb1204b468.jpg" alt=""></div>Tue</div>
+    <div class="dd now"><div class="o"><img src="img/1588166524941-3bf61a9c41db.jpg" alt=""></div>Wed</div>
+    <div class="dd"><div class="o"><img src="img/1621996346565-e3dbc646d9a9.jpg" alt=""></div>Thu</div>
+    <div class="dd"><div class="o"><img src="img/1598103442097-8b74394b95c6.jpg" alt=""></div>Fri</div>
+  </div>
+  <div class="cta">Start cooking</div>
+  <nav class="tabbar glass" data-float>
+    <div class="t on"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Week</div>
+    <div class="t"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h2l2 10h10l2-7H7.5"/><circle cx="10" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg>Groceries</div>
+    <div class="t"><svg class="icon" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M5 10h14M9 6.5v1.5M9 13v3"/></svg>Kitchen</div>
+  </nav>
+</section>
+
+<!-- C ===================================================== -->
+<section class="screen c" data-name="c-titlecard" data-chrome="light" data-time="17:42">
+  <div class="top"><span>Episode 3 of 5</span><span class="tnum">$11.60 under</span></div>
+  <div class="day serif">Wednesday</div>
+  <div class="stage">
+    <svg class="cut" viewBox="0 0 402 290" aria-hidden="true">
+      <!-- cut-paper shapes: a chilli, a lime wedge, two leaves, in the deep ground tone -->
+      <path d="M40 210 C 30 150, 60 90, 120 70 C 96 110, 84 160, 96 214 C 82 226, 52 228, 40 210 Z" style="fill: var(--deep)"/>
+      <path d="M118 64 c 6 -14 18 -20 30 -18" style="fill:none; stroke: var(--deep); stroke-width: 8; stroke-linecap: round"/>
+      <path d="M330 40 a 58 58 0 0 1 58 58 l -58 0 z" style="fill: var(--deep)"/>
+      <path d="M340 230 C 370 200, 392 214, 396 250 C 366 262, 346 256, 340 230 Z" style="fill: var(--deep)"/>
+      <path d="M302 262 C 318 236, 338 240, 346 268 C 326 280, 310 278, 302 262 Z" style="fill: var(--deep)"/>
+    </svg>
+    <div class="plate"><img src="img/1588166524941-3bf61a9c41db.jpg" alt="Chickpea tikka masala"></div>
+  </div>
+  <div class="ep">
+    <div class="k">Tonight · 40 minutes</div>
+    <h1 class="serif">Chickpea tikka masala</h1>
+    <p><b class="tnum">$7.84</b> feeds all four. Basmati and charred red onion on the side.</p>
+  </div>
+  <div class="row2">
+    <div class="btn">Start cooking</div>
+    <div class="next">Tomorrow<br><b>Penne arrabbiata</b></div>
+  </div>
+  <nav class="tabbar glass" data-float>
+    <div class="t on"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Week</div>
+    <div class="t"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h2l2 10h10l2-7H7.5"/><circle cx="10" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg>Groceries</div>
+    <div class="t"><svg class="icon" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M5 10h14M9 6.5v1.5M9 13v3"/></svg>Kitchen</div>
+  </nav>
+</section>
+
+<script src="device.js"></script>
+</body>
+</html>

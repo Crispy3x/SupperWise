@@ -1,0 +1,975 @@
+{
+ "foods": [
+  {
+   "id": "sweet_potato",
+   "name": "Sweet potato",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam until soft enough to squash between your fingers. Mash, or offer finger-length strips.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "carrot",
+   "name": "Carrot",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam or roast until very soft. Raw carrot is a choking hazard.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "broccoli",
+   "name": "Broccoli",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam whole florets until soft; the stalk makes a handle.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "zucchini",
+   "name": "Zucchini",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam until soft enough to squash between your fingers. Mash, or offer finger-length strips.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "butternut_squash",
+   "name": "Butternut squash",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam until soft enough to squash between your fingers. Mash, or offer finger-length strips.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "peas",
+   "name": "Peas",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Mash or flatten each pea. Whole peas can be a choking risk.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "green_beans",
+   "name": "Green beans",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam until very soft; offer whole for holding.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "cauliflower",
+   "name": "Cauliflower",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam until soft enough to squash between your fingers. Mash, or offer finger-length strips.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "spinach",
+   "name": "Spinach",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Finely chop and mix into other food.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "potato",
+   "name": "Potato",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam until soft enough to squash between your fingers. Mash, or offer finger-length strips.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "pumpkin",
+   "name": "Pumpkin",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam until soft enough to squash between your fingers. Mash, or offer finger-length strips.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "parsnip",
+   "name": "Parsnip",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam until soft enough to squash between your fingers. Mash, or offer finger-length strips.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "beet",
+   "name": "Beet",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam until soft enough to squash between your fingers. Mash, or offer finger-length strips.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "bell_pepper",
+   "name": "Bell pepper",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Roast until soft, skin removed, in strips.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "asparagus",
+   "name": "Asparagus",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam spears until very soft.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "corn",
+   "name": "Corn",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Offer on the cob to gnaw, or mash kernels. Loose whole kernels can be a choking risk.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "kale",
+   "name": "Kale",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Finely chop and cook into other food.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "cucumber",
+   "name": "Cucumber",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Peeled, in long thick spears, for gnawing under supervision.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "tomato",
+   "name": "Tomato",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Ripe, skin removed, in soft wedges. Quarter cherry tomatoes.",
+   "serve9": "Cherry tomatoes: quarter them."
+  },
+  {
+   "id": "mushroom",
+   "name": "Mushroom",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Cooked until soft, finely chopped.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "eggplant",
+   "name": "Eggplant",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam until soft enough to squash between your fingers. Mash, or offer finger-length strips.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "cabbage",
+   "name": "Cabbage",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam until soft enough to squash between your fingers. Mash, or offer finger-length strips.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "leek",
+   "name": "Leek",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Cooked until very soft, finely chopped.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "turnip",
+   "name": "Turnip",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Steam until soft enough to squash between your fingers. Mash, or offer finger-length strips.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "celery",
+   "name": "Celery",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 9,
+   "serve6": "Cooked until soft and finely chopped; raw celery is stringy.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "banana",
+   "name": "Banana",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Half a peeled banana, or mashed.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "avocado",
+   "name": "Avocado",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Ripe spears, or mashed.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "apple",
+   "name": "Apple",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Cooked until soft, or finely grated. Raw apple pieces are a choking hazard.",
+   "serve9": "Raw apple: thin slices only once chewing is strong."
+  },
+  {
+   "id": "pear",
+   "name": "Pear",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Ripe and soft, or cooked.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "mango",
+   "name": "Mango",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Ripe spears, or the pit with some flesh to gnaw.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "peach",
+   "name": "Peach",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Ripe, skin off, in soft slices.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "plum",
+   "name": "Plum",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Ripe, skin off, pit removed, in soft slices.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "blueberries",
+   "name": "Blueberries",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Flatten or mash each one. Whole berries are a choking hazard.",
+   "serve9": "Cut in half until chewing is strong."
+  },
+  {
+   "id": "strawberries",
+   "name": "Strawberries",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Large whole berries to hold, or mashed.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "raspberries",
+   "name": "Raspberries",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Flattened or mashed.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "grapes",
+   "name": "Grapes",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Quarter lengthwise, every time. Whole grapes are a top choking hazard.",
+   "serve9": "Quarter lengthwise until at least age 4."
+  },
+  {
+   "id": "melon",
+   "name": "Melon",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Ripe, rind off, in thick strips.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "watermelon",
+   "name": "Watermelon",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Seedless, in thick sticks.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "kiwi",
+   "name": "Kiwi",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Ripe, peeled, in halves or mashed.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "orange",
+   "name": "Orange",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Segments with membranes and seeds removed, or flattened.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "papaya",
+   "name": "Papaya",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Ripe and soft: mash, or offer large slices that are easy to hold.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "pineapple",
+   "name": "Pineapple",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Ripe, in thin spears.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "cherries",
+   "name": "Cherries",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Pitted and quartered.",
+   "serve9": "Pitted and quartered."
+  },
+  {
+   "id": "apricot",
+   "name": "Apricot",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Ripe or cooked, skin off.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "dates",
+   "name": "Dates",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 9,
+   "serve6": "Pitted, soaked and finely chopped. Whole dried fruit is a choking hazard.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "prunes",
+   "name": "Prunes",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Pitted and puréed or finely chopped.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "chicken",
+   "name": "Chicken",
+   "category": "protein",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Cook through. Shred very finely, mash, or offer a large strip to hold and suck.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "turkey",
+   "name": "Turkey",
+   "category": "protein",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Cook through. Shred very finely, mash, or offer a large strip to hold and suck.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "beef",
+   "name": "Beef",
+   "category": "protein",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Ground and cooked through, or a large strip to suck.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "pork",
+   "name": "Pork",
+   "category": "protein",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Cook through. Shred very finely, mash, or offer a large strip to hold and suck.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "lamb",
+   "name": "Lamb",
+   "category": "protein",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Cook through. Shred very finely, mash, or offer a large strip to hold and suck.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "lentils",
+   "name": "Lentils",
+   "category": "protein",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Cooked until very soft and mashed.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "black_beans",
+   "name": "Black beans",
+   "category": "protein",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Mashed or flattened.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "chickpeas",
+   "name": "Chickpeas",
+   "category": "protein",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Mashed, or as smooth hummus.",
+   "serve9": "Whole chickpeas: flatten them."
+  },
+  {
+   "id": "tofu",
+   "name": "Tofu",
+   "category": "protein",
+   "allergen": "soy",
+   "fromMonths": 6,
+   "serve6": "Firm tofu in strips, or crumbled.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "kidney_beans",
+   "name": "Kidney beans",
+   "category": "protein",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Well cooked, mashed.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "white_beans",
+   "name": "White beans",
+   "category": "protein",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Mashed or flattened.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "edamame",
+   "name": "Edamame",
+   "category": "protein",
+   "allergen": "soy",
+   "fromMonths": 6,
+   "serve6": "Shelled and mashed. Whole beans are a choking risk.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "egg",
+   "name": "Egg",
+   "category": "protein",
+   "allergen": "egg",
+   "fromMonths": 6,
+   "serve6": "Well-cooked: hard-boiled in quarters, or an omelette in strips.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "peanut",
+   "name": "Peanut",
+   "category": "protein",
+   "allergen": "peanut",
+   "fromMonths": 6,
+   "serve6": "Smooth peanut butter thinned with water or breast milk, or peanut powder stirred into food. Never whole peanuts or thick globs.",
+   "serve9": "Whole nuts stay off the menu until at least age 4."
+  },
+  {
+   "id": "tree_nuts",
+   "name": "Tree nuts",
+   "category": "protein",
+   "allergen": "tree nut",
+   "fromMonths": 6,
+   "serve6": "Smooth nut butter (almond, cashew) thinned, or finely ground into food. Never whole nuts.",
+   "serve9": "Whole nuts stay off the menu until at least age 4."
+  },
+  {
+   "id": "salmon",
+   "name": "Salmon",
+   "category": "protein",
+   "allergen": "fish",
+   "fromMonths": 6,
+   "serve6": "Cooked through, flaked, every bone removed.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "cod",
+   "name": "Cod",
+   "category": "protein",
+   "allergen": "fish",
+   "fromMonths": 6,
+   "serve6": "Cooked through, flaked, every bone removed.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "tuna_canned_light",
+   "name": "Tuna, canned light",
+   "category": "protein",
+   "allergen": "fish",
+   "fromMonths": 6,
+   "serve6": "Flaked into other food. Choose light tuna, which is lower in mercury.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "shrimp",
+   "name": "Shrimp",
+   "category": "protein",
+   "allergen": "shellfish",
+   "fromMonths": 6,
+   "serve6": "Cooked, finely chopped or ground.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "sesame",
+   "name": "Sesame",
+   "category": "protein",
+   "allergen": "sesame",
+   "fromMonths": 6,
+   "serve6": "Smooth tahini thinned, or stirred into hummus or yogurt.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "yogurt",
+   "name": "Yogurt",
+   "category": "dairy",
+   "allergen": "dairy",
+   "fromMonths": 6,
+   "serve6": "Plain whole-milk yogurt on a preloaded spoon.",
+   "serve9": "Small amounts as part of meals."
+  },
+  {
+   "id": "cheese",
+   "name": "Cheese",
+   "category": "dairy",
+   "allergen": "dairy",
+   "fromMonths": 6,
+   "serve6": "Pasteurised, mild: thin slices or grated. Cubes are a choking risk.",
+   "serve9": "Small amounts as part of meals."
+  },
+  {
+   "id": "cottage_cheese",
+   "name": "Cottage cheese",
+   "category": "dairy",
+   "allergen": "dairy",
+   "fromMonths": 6,
+   "serve6": "Plain, whole-milk.",
+   "serve9": "Small amounts as part of meals."
+  },
+  {
+   "id": "butter",
+   "name": "Butter",
+   "category": "dairy",
+   "allergen": "dairy",
+   "fromMonths": 6,
+   "serve6": "A little melted into vegetables.",
+   "serve9": "Small amounts as part of meals."
+  },
+  {
+   "id": "cows_milk_as_a_drink",
+   "name": "Cow's milk (as a drink)",
+   "category": "dairy",
+   "allergen": "dairy",
+   "fromMonths": 12,
+   "serve6": "Not as a drink before 12 months. Small amounts cooked into food are fine.",
+   "serve9": "Small amounts as part of meals."
+  },
+  {
+   "id": "wheat",
+   "name": "Wheat",
+   "category": "grain",
+   "allergen": "wheat",
+   "fromMonths": 6,
+   "serve6": "Soft toast strips, or well-cooked pasta.",
+   "serve9": "Soft pieces or small spoonfuls."
+  },
+  {
+   "id": "oatmeal",
+   "name": "Oatmeal",
+   "category": "grain",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Soft-cooked. Thin with breast milk or formula if needed.",
+   "serve9": "Soft pieces or small spoonfuls."
+  },
+  {
+   "id": "rice",
+   "name": "Rice",
+   "category": "grain",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Soft-cooked; vary grains (rice can contain arsenic, so not every day).",
+   "serve9": "Soft pieces or small spoonfuls."
+  },
+  {
+   "id": "pasta",
+   "name": "Pasta",
+   "category": "grain",
+   "allergen": "wheat",
+   "fromMonths": 6,
+   "serve6": "Well-cooked large shapes to hold.",
+   "serve9": "Soft pieces or small spoonfuls."
+  },
+  {
+   "id": "quinoa",
+   "name": "Quinoa",
+   "category": "grain",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Soft-cooked. Thin with breast milk or formula if needed.",
+   "serve9": "Soft pieces or small spoonfuls."
+  },
+  {
+   "id": "barley",
+   "name": "Barley",
+   "category": "grain",
+   "allergen": "wheat",
+   "fromMonths": 6,
+   "serve6": "Soft-cooked. Thin with breast milk or formula if needed.",
+   "serve9": "Soft pieces or small spoonfuls."
+  },
+  {
+   "id": "toast",
+   "name": "Toast",
+   "category": "grain",
+   "allergen": "wheat",
+   "fromMonths": 6,
+   "serve6": "Lightly toasted, thin strips.",
+   "serve9": "Soft pieces or small spoonfuls."
+  },
+  {
+   "id": "pancakes",
+   "name": "Pancakes",
+   "category": "grain",
+   "allergen": "wheat",
+   "fromMonths": 9,
+   "serve6": "Soft strips, no syrup or honey.",
+   "serve9": "Soft pieces or small spoonfuls."
+  },
+  {
+   "id": "couscous",
+   "name": "Couscous",
+   "category": "grain",
+   "allergen": "wheat",
+   "fromMonths": 6,
+   "serve6": "Soft-cooked. Thin with breast milk or formula if needed.",
+   "serve9": "Soft pieces or small spoonfuls."
+  },
+  {
+   "id": "polenta",
+   "name": "Polenta",
+   "category": "grain",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Soft, or set and cut into fingers.",
+   "serve9": "Soft pieces or small spoonfuls."
+  },
+  {
+   "id": "tortilla",
+   "name": "Tortilla",
+   "category": "grain",
+   "allergen": "wheat",
+   "fromMonths": 9,
+   "serve6": "Soft strips.",
+   "serve9": "Soft pieces or small spoonfuls."
+  },
+  {
+   "id": "millet",
+   "name": "Millet",
+   "category": "grain",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Soft-cooked. Thin with breast milk or formula if needed.",
+   "serve9": "Soft pieces or small spoonfuls."
+  },
+  {
+   "id": "buckwheat",
+   "name": "Buckwheat",
+   "category": "grain",
+   "allergen": null,
+   "fromMonths": 9,
+   "serve6": "Soft-cooked. Thin with breast milk or formula if needed.",
+   "serve9": "Soft pieces or small spoonfuls."
+  },
+  {
+   "id": "cinnamon",
+   "name": "Cinnamon",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "A pinch stirred into fruit or oatmeal.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "garlic",
+   "name": "Garlic",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Cooked into food.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "cumin",
+   "name": "Cumin",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "A pinch cooked into food. No chili heat yet.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "ginger",
+   "name": "Ginger",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "A little cooked into food.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "herbs_parsley_basil_dill",
+   "name": "Herbs (parsley, basil, dill)",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Finely chopped into food.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "lemon",
+   "name": "Lemon",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "A squeeze over food.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "coconut",
+   "name": "Coconut",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Unsweetened, finely grated or as coconut milk in cooking.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "honey",
+   "name": "Honey",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 12,
+   "serve6": "Never before 12 months, even baked in: risk of infant botulism.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "artichoke",
+   "name": "Artichoke",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 9,
+   "serve6": "Soft-cooked hearts, finely chopped.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "okra",
+   "name": "Okra",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Cooked until soft, in whole pods to hold.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "bok_choy",
+   "name": "Bok choy",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Cooked until soft, finely chopped.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "swiss_chard",
+   "name": "Swiss chard",
+   "category": "veg",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Cooked, finely chopped.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "fig",
+   "name": "Fig",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Ripe and soft, halved.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "pomegranate",
+   "name": "Pomegranate",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 9,
+   "serve6": "Arils flattened or mixed into yogurt, seeds can be hard: supervise.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "persimmon",
+   "name": "Persimmon",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Very ripe, peeled, in soft slices.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "nectarine",
+   "name": "Nectarine",
+   "category": "fruit",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Ripe, skin off, in soft slices.",
+   "serve9": "Soft, bite-size pieces."
+  },
+  {
+   "id": "sardines",
+   "name": "Sardines",
+   "category": "protein",
+   "allergen": "fish",
+   "fromMonths": 9,
+   "serve6": "Canned in water, mashed, bones crushed fine.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "duck",
+   "name": "Duck",
+   "category": "protein",
+   "allergen": null,
+   "fromMonths": 9,
+   "serve6": "Cooked through, finely shredded.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "ricotta",
+   "name": "Ricotta",
+   "category": "dairy",
+   "allergen": "dairy",
+   "fromMonths": 6,
+   "serve6": "Plain, whole-milk, on a spoon.",
+   "serve9": "Small amounts as part of meals."
+  },
+  {
+   "id": "hummus",
+   "name": "Hummus",
+   "category": "protein",
+   "allergen": "sesame",
+   "fromMonths": 6,
+   "serve6": "Smooth, on a spoon or toast strip.",
+   "serve9": "Small, tender pieces."
+  },
+  {
+   "id": "brown_rice",
+   "name": "Brown rice",
+   "category": "grain",
+   "allergen": null,
+   "fromMonths": 6,
+   "serve6": "Soft-cooked, mashed lightly.",
+   "serve9": "Soft pieces or small spoonfuls."
+  },
+  {
+   "id": "sweet_corn_polenta_cakes",
+   "name": "Sweet corn polenta cakes",
+   "category": "grain",
+   "allergen": null,
+   "fromMonths": 9,
+   "serve6": "Soft fingers.",
+   "serve9": "Soft pieces or small spoonfuls."
+  }
+ ],
+ "allergens": [
+  "peanut",
+  "egg",
+  "dairy",
+  "wheat",
+  "soy",
+  "fish",
+  "shellfish",
+  "tree nut",
+  "sesame"
+ ],
+ "notes": [
+  "Start solids at about 6 months, when your baby sits with support and shows interest. Your pediatrician can tell you when your baby is ready.",
+  "Introduce common allergens one at a time, and keep offering them a few times a week once tolerated. If your baby has severe eczema or an egg allergy, talk to your pediatrician before introducing peanut.",
+  "Always supervise meals with your baby sitting upright. Gagging is normal while learning; choking is silent. Learn infant first aid.",
+  "Call 911 for trouble breathing, swelling of the lips or face, repeated vomiting or floppiness after a new food."
+ ]
+}

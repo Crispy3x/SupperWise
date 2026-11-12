@@ -1,0 +1,32 @@
+Supperwise plans a week of dinners for a household and prices them as one grocery list, by the whole pack you buy, at the kind of store you use. Everything runs on the device; there are no accounts and no servers.
+
+SIGN-IN
+No account exists in the app. Nothing needs a login.
+
+HOW TO TEST
+1. Launch. Enter any US ZIP code (e.g. 45206) and tap Next.
+2. Add one or two people (tap "Add someone"; try "Vegetarian" or "No shellfish"), keep the budget, tap "Build my first week".
+3. The first week appears in full, with its grocery total. It is free and kept whether or not you subscribe. Tap "Keep my free week".
+4. Week tab: tonight's dinner. Tap "Swap" to replace it (the price updates), "Start cooking" for the recipe, then "I cooked it".
+5. Groceries tab: the list, priced by the whole pack. "How we price this" explains that prices are estimates.
+6. Kitchen tab: tick an item you already have; it comes off the grocery total.
+
+IN-APP PURCHASES
+One subscription group, two auto-renewable subscriptions:
+- com.supperwise.app.yearly, with a 7-day free introductory offer
+- com.supperwise.app.monthly
+A subscription is needed to plan weeks after the first (Week tab > "Next week" > "Plan next week" shows the paywall). Prices load from StoreKit. "Restore" is on the paywall and in Settings (person icon, top right of the Week tab).
+
+PERMISSIONS
+- Camera: requested when the user opens "Scan a product" (Family plan) to read barcodes. Typing the barcode works without it.
+- Photos: the system photo picker (no permission prompt) for receipt and fridge photos, read on the device with Vision.
+- Notifications: requested only when the user turns on "Dinner reminder" in Settings.
+
+PLANS
+Three auto-renewable subscriptions in one group (Plus < Family < Pro), monthly and yearly; yearly has a 7-day free trial. Locked features show a lock and open the plan picker with the needed plan selected. Health scores are informational (FDA daily values; Open Food Facts data, credited in the scanner), not medical advice. First foods (Family) is general information following published US guidance (AAP, CDC, NIAID) with a 'follow your pediatrician' note and emergency guidance; it does not diagnose. Holiday menus (Plus) follow USDA food-safety temperatures.
+
+ACCOUNT DELETION
+Not applicable: the app creates no accounts. Settings > "Erase all my data" deletes everything stored on the device.
+
+NOTES
+Grocery prices are estimates from reference prices adjusted for store type and region, labelled as estimates in the app. Supperwise is not affiliated with any grocery store and shows no store logos.

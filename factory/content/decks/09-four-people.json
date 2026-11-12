@@ -1,0 +1,51 @@
+{
+ "id": "09-four-people",
+ "angle": "demo",
+ "accent": "#FFD9A8",
+ "slides": [
+  {
+   "style": "bold",
+   "ground": "#AD321C",
+   "text": "what happens when you type in *4 people and $95*"
+  },
+  {
+   "style": "note",
+   "text": "you tell it",
+   "lines": [
+    "4 people · one vegetarian",
+    "no shellfish for one",
+    "7-year-old: not spicy",
+    "no air fryer, no grill",
+    "cook mon to fri"
+   ]
+  },
+  {
+   "style": "note",
+   "text": "it gives you",
+   "lines": [
+    "5 dinners that work for all four",
+    "one grocery list",
+    "a total, priced by the pack",
+    "before you leave the house"
+   ]
+  },
+  {
+   "style": "bold",
+   "ground": "#1E4D5C",
+   "text": "an app that plans the week *and* prices the list"
+  },
+  {
+   "style": "bold",
+   "ground": "light",
+   "text": "it's called *Supperwise*",
+   "sub": "coming soon to iPhone"
+  }
+ ],
+ "caption": "the week, decided on sunday",
+ "hashtags": [
+  "mealplanning",
+  "budgetmeals",
+  "familydinner",
+  "grocerybudget"
+ ]
+}

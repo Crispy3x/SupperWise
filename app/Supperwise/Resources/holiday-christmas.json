@@ -1,0 +1,437 @@
+{
+ "id": "christmas",
+ "name": "Christmas",
+ "defaultDate": "2026-12-25T15:00:00",
+ "main": {
+  "kind": "ham",
+  "ingredient": "ham_spiral",
+  "lbPerPerson": 0.75,
+  "minLb": 6
+ },
+ "dishes": [
+  {
+   "id": "xm_ham",
+   "name": "Honey-mustard glazed ham",
+   "course": "main",
+   "vegetarian": false,
+   "servings": 8,
+   "allergens": [],
+   "ingredients": [
+    {
+     "ingredient": "ham_spiral",
+     "amount": 2720,
+     "text": "1 spiral ham, about 6 lb for 8",
+     "note": "fully cooked, bone-in"
+    },
+    {
+     "ingredient": "honey",
+     "amount": 85,
+     "text": "¼ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "brown_sugar",
+     "amount": 55,
+     "text": "¼ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "dijon",
+     "amount": 30,
+     "text": "2 tbsp",
+     "note": ""
+    }
+   ],
+   "steps": [
+    "Heat the oven to 325°F. Unwrap the ham, set it cut side down in a roasting pan, add ½ cup water and cover tightly with foil.",
+    "Heat until it reads 140°F in the thickest part (USDA, for fully cooked ham): about 10–14 minutes per pound.",
+    "Whisk the honey, brown sugar and mustard. For the last 20 minutes, uncover, brush on the glaze and turn the oven to 400°F.",
+    "Keep it covered with foil while the sides roast; it stays hot for about 45 minutes. Slice along the bone."
+   ],
+   "schedule": [],
+   "forVegetarians": false
+  },
+  {
+   "id": "xm_potatoes",
+   "name": "Garlic roast potatoes",
+   "course": "side",
+   "vegetarian": true,
+   "servings": 8,
+   "allergens": [],
+   "ingredients": [
+    {
+     "ingredient": "potatoes",
+     "amount": 1810,
+     "text": "4 lb",
+     "note": "in chunks"
+    },
+    {
+     "ingredient": "olive_oil",
+     "amount": 60,
+     "text": "¼ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "garlic",
+     "amount": 6,
+     "text": "6 cloves",
+     "note": "smashed"
+    },
+    {
+     "ingredient": "thyme",
+     "amount": 2,
+     "text": "1 tsp",
+     "note": ""
+    },
+    {
+     "ingredient": "salt",
+     "amount": 10,
+     "text": "2 tsp",
+     "note": ""
+    }
+   ],
+   "steps": [
+    "Parboil the potatoes 8 minutes; drain and shake to rough the edges.",
+    "Toss with the oil, garlic, thyme and salt. Roast at 425°F for 40–45 minutes, turning once."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 90,
+     "task": "Peel and cut the potatoes."
+    },
+    {
+     "minutesBefore": 65,
+     "task": "Parboil the potatoes."
+    },
+    {
+     "minutesBefore": 44,
+     "task": "Potatoes into the oven at 425°F (the ham is out and resting)."
+    }
+   ],
+   "forVegetarians": false
+  },
+  {
+   "id": "xm_carrots",
+   "name": "Honey roast carrots",
+   "course": "side",
+   "vegetarian": true,
+   "servings": 8,
+   "allergens": [],
+   "ingredients": [
+    {
+     "ingredient": "carrots",
+     "amount": 907,
+     "text": "2 lb",
+     "note": "halved lengthwise"
+    },
+    {
+     "ingredient": "olive_oil",
+     "amount": 30,
+     "text": "2 tbsp",
+     "note": ""
+    },
+    {
+     "ingredient": "honey",
+     "amount": 30,
+     "text": "2 tbsp",
+     "note": ""
+    }
+   ],
+   "steps": [
+    "Toss with the oil and salt and roast at 425°F for 30 minutes.",
+    "Drizzle with honey for the last 5 minutes."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 38,
+     "task": "Carrots into the oven at 425°F."
+    }
+   ],
+   "forVegetarians": false
+  },
+  {
+   "id": "xm_sprouts",
+   "name": "Crispy Brussels sprouts with parmesan",
+   "course": "side",
+   "vegetarian": true,
+   "servings": 8,
+   "allergens": [
+    "dairy"
+   ],
+   "ingredients": [
+    {
+     "ingredient": "brussels_sprouts",
+     "amount": 1360,
+     "text": "3 lb",
+     "note": "trimmed and halved"
+    },
+    {
+     "ingredient": "olive_oil",
+     "amount": 45,
+     "text": "3 tbsp",
+     "note": ""
+    },
+    {
+     "ingredient": "parmesan",
+     "amount": 40,
+     "text": "½ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "lemon",
+     "amount": 1,
+     "text": "1",
+     "note": ""
+    }
+   ],
+   "steps": [
+    "Toss with oil and salt, cut side down on a sheet pan.",
+    "Roast at 425°F for 25 minutes until deeply browned. Finish with parmesan and lemon."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 30,
+     "task": "Brussels sprouts into the oven."
+    }
+   ],
+   "forVegetarians": false
+  },
+  {
+   "id": "xm_mac",
+   "name": "Baked mac and cheese",
+   "course": "side",
+   "vegetarian": true,
+   "servings": 8,
+   "allergens": [
+    "gluten",
+    "dairy"
+   ],
+   "ingredients": [
+    {
+     "ingredient": "elbow_pasta",
+     "amount": 454,
+     "text": "1 box",
+     "note": "1 lb"
+    },
+    {
+     "ingredient": "butter",
+     "amount": 56,
+     "text": "4 tbsp",
+     "note": ""
+    },
+    {
+     "ingredient": "flour",
+     "amount": 32,
+     "text": "¼ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "milk",
+     "amount": 720,
+     "text": "3 cups",
+     "note": ""
+    },
+    {
+     "ingredient": "cheddar",
+     "amount": 340,
+     "text": "3 cups",
+     "note": "grated"
+    },
+    {
+     "ingredient": "salt",
+     "amount": 6,
+     "text": "1 tsp",
+     "note": ""
+    }
+   ],
+   "steps": [
+    "Cook the pasta 2 minutes short of the box time; drain.",
+    "Melt the butter, whisk in the flour for 1 minute, then the milk; simmer until thick. Stir in most of the cheese.",
+    "Fold in the pasta, top with the rest of the cheese and bake at 425°F for 20–25 minutes, until bubbling."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 1440,
+     "task": "Make the mac and cheese and refrigerate it unbaked."
+    },
+    {
+     "minutesBefore": 30,
+     "task": "Mac and cheese into the oven at 425°F with the vegetables."
+    }
+   ],
+   "forVegetarians": false
+  },
+  {
+   "id": "xm_rolls",
+   "name": "Warm dinner rolls",
+   "course": "side",
+   "vegetarian": true,
+   "servings": 8,
+   "allergens": [
+    "gluten",
+    "dairy"
+   ],
+   "ingredients": [
+    {
+     "ingredient": "dinner_rolls",
+     "amount": 12,
+     "text": "12 rolls",
+     "note": ""
+    },
+    {
+     "ingredient": "butter",
+     "amount": 56,
+     "text": "4 tbsp",
+     "note": "to serve"
+    }
+   ],
+   "steps": [
+    "Warm the rolls wrapped in foil for 10 minutes while the ham rests."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 12,
+     "task": "Warm the rolls."
+    }
+   ],
+   "forVegetarians": false
+  },
+  {
+   "id": "xm_pie",
+   "name": "Mushroom and lentil pot pie",
+   "course": "main",
+   "vegetarian": true,
+   "servings": 4,
+   "allergens": [
+    "gluten",
+    "dairy"
+   ],
+   "ingredients": [
+    {
+     "ingredient": "mushrooms",
+     "amount": 454,
+     "text": "1 lb",
+     "note": "sliced"
+    },
+    {
+     "ingredient": "lentils_red",
+     "amount": 100,
+     "text": "½ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "carrots",
+     "amount": 150,
+     "text": "2",
+     "note": "diced"
+    },
+    {
+     "ingredient": "onion_yellow",
+     "amount": 220,
+     "text": "1",
+     "note": "diced"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 475,
+     "text": "2 cups",
+     "note": ""
+    },
+    {
+     "ingredient": "thyme",
+     "amount": 1,
+     "text": "1 tsp",
+     "note": ""
+    },
+    {
+     "ingredient": "puff_pastry",
+     "amount": 1,
+     "text": "1 sheet",
+     "note": "thawed"
+    }
+   ],
+   "steps": [
+    "Brown the mushrooms, then soften the onion and carrot. Add the lentils, broth and thyme and simmer 15 minutes until thick.",
+    "Spoon into a baking dish, top with the pastry, cut a vent and bake at 400°F for 25 minutes until puffed and golden."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 1440,
+     "task": "Make the vegetarian pot pie filling and refrigerate it."
+    },
+    {
+     "minutesBefore": 35,
+     "task": "Vegetarian pot pie into the oven at 425°F; check it at 25 minutes."
+    }
+   ],
+   "forVegetarians": true
+  },
+  {
+   "id": "xm_crisp",
+   "name": "Apple crisp",
+   "course": "dessert",
+   "vegetarian": true,
+   "servings": 8,
+   "allergens": [
+    "gluten",
+    "dairy"
+   ],
+   "ingredients": [
+    {
+     "ingredient": "apples",
+     "amount": 6,
+     "text": "6",
+     "note": "peeled and sliced"
+    },
+    {
+     "ingredient": "sugar",
+     "amount": 50,
+     "text": "¼ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "cinnamon",
+     "amount": 3,
+     "text": "1 tsp",
+     "note": ""
+    },
+    {
+     "ingredient": "oats",
+     "amount": 90,
+     "text": "1 cup",
+     "note": ""
+    },
+    {
+     "ingredient": "flour",
+     "amount": 60,
+     "text": "½ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "brown_sugar",
+     "amount": 110,
+     "text": "½ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "butter",
+     "amount": 113,
+     "text": "½ cup",
+     "note": "cold, cubed"
+    }
+   ],
+   "steps": [
+    "Toss the apples with the sugar and cinnamon in a baking dish.",
+    "Rub the oats, flour, brown sugar and butter into crumbs and scatter over.",
+    "Bake at 350°F for 45 minutes until bubbling. Rewarm it in the cooling oven while you eat."
+   ],
+   "schedule": [
+    {
+     "minutesBefore": 420,
+     "task": "Bake the apple crisp this morning, while the oven is free."
+    }
+   ],
+   "forVegetarians": false
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "01-six-pm",
+  "angle": "pain",
+  "accent": "#FFD9A8",
+  "slides": [
+    {
+      "style": "bold",
+      "ground": "#AD321C",
+      "text": "6pm, fridge open, four people asking *what's for dinner*"
+    },
+    {
+      "style": "bold",
+      "ground": "dark",
+      "text": "you don't need more recipes"
+    },
+    {
+      "style": "bold",
+      "ground": "dark",
+      "text": "you need the decision made *before* 6pm"
+    },
+    {
+      "style": "note",
+      "text": "what actually helps",
+      "lines": [
+        "[x] pick the week on sunday",
+        "[x] one list, one shop",
+        "[x] know the total before you go",
+        "[ ] decide at 6pm"
+      ]
+    },
+    {
+      "style": "bold",
+      "ground": "#1E4D5C",
+      "text": "an app that plans the week *and* prices the list"
+    },
+    {
+      "style": "bold",
+      "ground": "light",
+      "text": "it's called *Supperwise*",
+      "sub": "coming soon to iPhone"
+    }
+  ],
+  "caption": "saving this for every 6pm that's coming",
+  "hashtags": [
+    "mealplanning",
+    "dinnerideas",
+    "familydinner",
+    "budgetmeals"
+  ]
+}
