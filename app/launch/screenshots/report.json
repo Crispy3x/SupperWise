@@ -1,6 +1,6 @@
 {
-  "browser": "/opt/pw-browsers/chromium",
-  "rendered": "2026-11-11T21:50:20.766Z",
+  "browser": "Google Chrome",
+  "rendered": "2026-11-12T22:35:43.466Z",
   "panels": [
     {
       "panel": "01-priced.html",
@@ -9,14 +9,12 @@
         "iphone/01-priced.png"
       ],
       "errors": [],
-      "warnings": [
-        "headline has 8 words; 2 to 6 read at a glance"
-      ],
+      "warnings": [],
       "headline": {
-        "text": "Dinner for the week, priced before you shop",
+        "text": "Dinner for the week, priced",
         "pctOfWidth": 12.5,
-        "words": 8,
-        "lines": 3
+        "words": 5,
+        "lines": 2
       }
     },
     {
@@ -26,163 +24,161 @@
         "iphone-max/01-priced.png"
       ],
       "errors": [],
-      "warnings": [
-        "headline has 8 words; 2 to 6 read at a glance"
-      ],
-      "headline": {
-        "text": "Dinner for the week, priced before you shop",
-        "pctOfWidth": 12.5,
-        "words": 8,
-        "lines": 3
-      }
-    },
-    {
-      "panel": "02-everyone.html",
-      "size": "iphone",
-      "files": [
-        "iphone/02-everyone.png"
-      ],
-      "errors": [],
       "warnings": [],
       "headline": {
-        "text": "One dinner for everyone at the table",
-        "pctOfWidth": 12.5,
-        "words": 7,
-        "lines": 2
-      }
-    },
-    {
-      "panel": "02-everyone.html",
-      "size": "iphone-max",
-      "files": [
-        "iphone-max/02-everyone.png"
-      ],
-      "errors": [],
-      "warnings": [],
-      "headline": {
-        "text": "One dinner for everyone at the table",
-        "pctOfWidth": 12.5,
-        "words": 7,
-        "lines": 2
-      }
-    },
-    {
-      "panel": "03-pack.html",
-      "size": "iphone",
-      "files": [
-        "iphone/03-pack.png"
-      ],
-      "errors": [],
-      "warnings": [],
-      "headline": {
-        "text": "Pay for the jar, not the spoonful",
-        "pctOfWidth": 12.5,
-        "words": 7,
-        "lines": 2
-      }
-    },
-    {
-      "panel": "03-pack.html",
-      "size": "iphone-max",
-      "files": [
-        "iphone-max/03-pack.png"
-      ],
-      "errors": [],
-      "warnings": [],
-      "headline": {
-        "text": "Pay for the jar, not the spoonful",
-        "pctOfWidth": 12.5,
-        "words": 7,
-        "lines": 2
-      }
-    },
-    {
-      "panel": "04-swap.html",
-      "size": "iphone",
-      "files": [
-        "iphone/04-swap.png"
-      ],
-      "errors": [],
-      "warnings": [],
-      "headline": {
-        "text": "Swap any night",
-        "pctOfWidth": 12.5,
-        "words": 3,
-        "lines": 1
-      }
-    },
-    {
-      "panel": "04-swap.html",
-      "size": "iphone-max",
-      "files": [
-        "iphone-max/04-swap.png"
-      ],
-      "errors": [],
-      "warnings": [],
-      "headline": {
-        "text": "Swap any night",
-        "pctOfWidth": 12.5,
-        "words": 3,
-        "lines": 1
-      }
-    },
-    {
-      "panel": "05-recipes.html",
-      "size": "iphone",
-      "files": [
-        "iphone/05-recipes.png"
-      ],
-      "errors": [],
-      "warnings": [],
-      "headline": {
-        "text": "Recipes with real prep steps",
+        "text": "Dinner for the week, priced",
         "pctOfWidth": 12.5,
         "words": 5,
         "lines": 2
       }
     },
     {
-      "panel": "05-recipes.html",
-      "size": "iphone-max",
-      "files": [
-        "iphone-max/05-recipes.png"
-      ],
-      "errors": [],
-      "warnings": [],
-      "headline": {
-        "text": "Recipes with real prep steps",
-        "pctOfWidth": 12.5,
-        "words": 5,
-        "lines": 2
-      }
-    },
-    {
-      "panel": "06-free.html",
+      "panel": "02-pack.html",
       "size": "iphone",
       "files": [
-        "iphone/06-free.png"
+        "iphone/02-pack.png"
       ],
       "errors": [],
       "warnings": [],
       "headline": {
-        "text": "Your first week is free to keep",
+        "text": "Pay for the pack, not the spoonful",
         "pctOfWidth": 12.5,
         "words": 7,
         "lines": 2
       }
     },
     {
-      "panel": "06-free.html",
+      "panel": "02-pack.html",
       "size": "iphone-max",
       "files": [
-        "iphone-max/06-free.png"
+        "iphone-max/02-pack.png"
       ],
       "errors": [],
       "warnings": [],
       "headline": {
-        "text": "Your first week is free to keep",
+        "text": "Pay for the pack, not the spoonful",
         "pctOfWidth": 12.5,
         "words": 7,
+        "lines": 2
+      }
+    },
+    {
+      "panel": "03-lunch.html",
+      "size": "iphone",
+      "files": [
+        "iphone/03-lunch.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "headline": {
+        "text": "School lunches, sorted",
+        "pctOfWidth": 12.5,
+        "words": 3,
+        "lines": 2
+      }
+    },
+    {
+      "panel": "03-lunch.html",
+      "size": "iphone-max",
+      "files": [
+        "iphone-max/03-lunch.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "headline": {
+        "text": "School lunches, sorted",
+        "pctOfWidth": 12.5,
+        "words": 3,
+        "lines": 2
+      }
+    },
+    {
+      "panel": "04-everyone.html",
+      "size": "iphone",
+      "files": [
+        "iphone/04-everyone.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "headline": {
+        "text": "One dinner for everyone",
+        "pctOfWidth": 12.5,
+        "words": 4,
+        "lines": 2
+      }
+    },
+    {
+      "panel": "04-everyone.html",
+      "size": "iphone-max",
+      "files": [
+        "iphone-max/04-everyone.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "headline": {
+        "text": "One dinner for everyone",
+        "pctOfWidth": 12.5,
+        "words": 4,
+        "lines": 2
+      }
+    },
+    {
+      "panel": "05-baby.html",
+      "size": "iphone",
+      "files": [
+        "iphone/05-baby.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "headline": {
+        "text": "First foods, made simple",
+        "pctOfWidth": 12.5,
+        "words": 4,
+        "lines": 2
+      }
+    },
+    {
+      "panel": "05-baby.html",
+      "size": "iphone-max",
+      "files": [
+        "iphone-max/05-baby.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "headline": {
+        "text": "First foods, made simple",
+        "pctOfWidth": 12.5,
+        "words": 4,
+        "lines": 2
+      }
+    },
+    {
+      "panel": "06-kitchen.html",
+      "size": "iphone",
+      "files": [
+        "iphone/06-kitchen.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "headline": {
+        "text": "Scan it. Score it. Cook it.",
+        "pctOfWidth": 12.5,
+        "words": 6,
+        "lines": 2
+      }
+    },
+    {
+      "panel": "06-kitchen.html",
+      "size": "iphone-max",
+      "files": [
+        "iphone-max/06-kitchen.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "headline": {
+        "text": "Scan it. Score it. Cook it.",
+        "pctOfWidth": 12.5,
+        "words": 6,
         "lines": 2
       }
     }
