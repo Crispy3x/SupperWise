@@ -53,9 +53,14 @@ def commons(q):
 recipes = json.load(open(os.path.join(RES, "recipes.json")))
 done = json.load(open(OUT)) if os.path.exists(OUT) else {}
 used_openverse = sum(1 for v in done.values() if v.get("via") == "openverse")
+def broader(q):
+    words = [w for w in q.split() if len(w) > 3]
+    return " ".join(words[-2:]) if len(words) > 2 else q
+
 for r in recipes:
-    if r["id"] in done: continue
-    q = query_for(r["name"])
+    prev = done.get(r["id"])
+    if prev and (prev["candidates"] or prev.get("retried")): continue
+    q = query_for(r["name"]) if not prev else broader(prev["query"])
     try:
         if used_openverse < OPENVERSE_BUDGET:
             c, via = openverse(q), "openverse"; used_openverse += 1; time.sleep(3.3)
@@ -64,7 +69,7 @@ for r in recipes:
             c, via = commons(q), "commons"; time.sleep(0.7)
     except Exception as e:
         print("error", r["id"], e, file=sys.stderr); time.sleep(10); continue
-    done[r["id"]] = {"name": r["name"], "query": q, "via": via, "candidates": c[:8]}
+    done[r["id"]] = {"name": r["name"], "query": q, "via": via, "candidates": c[:8], "retried": bool(prev)}
     json.dump(done, open(OUT, "w"), indent=1, ensure_ascii=False)
     print(len(done), r["id"], q, len(c), flush=True)
 print("finished", len(done), "recipes;", sum(1 for v in done.values() if not v["candidates"]), "with no candidates")

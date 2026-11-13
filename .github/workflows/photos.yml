@@ -8,6 +8,9 @@ on:
       openverse_budget:
         description: "Openverse searches to use (anonymous limit is 200 a day)"
         default: "180"
+      mode:
+        description: "find (search and contact sheets) or fetch (download the picks in tools/photos/picks.json)"
+        default: "find"
 
 jobs:
   find:
@@ -16,11 +19,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: pip install pillow
+      - name: Fetch the chosen photos
+        if: github.event.inputs.mode == 'fetch'
+        run: |
+          python3 app/tools/photos/fetch_photos.py
+          mkdir -p out && cp -r app/Supperwise/Resources/photos app/Supperwise/Resources/photo-credits.json out/
       - name: Find candidates
+        if: github.event.inputs.mode != 'fetch'
         run: python3 app/tools/photos/find_candidates.py "${{ github.event.inputs.openverse_budget }}"
       - name: Contact sheets
+        if: github.event.inputs.mode != 'fetch'
         run: python3 app/tools/photos/make_sheets.py "$RUNNER_TEMP/thumbs" out/sheets
-      - run: cp app/tools/photos/candidates.json out/
+      - if: github.event.inputs.mode != 'fetch'
+        run: cp app/tools/photos/candidates.json out/
       - uses: actions/upload-artifact@v4
         with:
           name: photo-candidates
