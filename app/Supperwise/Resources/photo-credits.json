@@ -47,6 +47,14 @@
   "page": "https://commons.wikimedia.org/wiki/File:Kheema_Mutter.JPG",
   "title": "Kheema Mutter.JPG"
  },
+ "cajun_tilapia_sheet_pan": {
+  "creator": "Gatorfan252525",
+  "license": "by-sa",
+  "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0",
+  "licenseVersion": "4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Blackened_tilapia_with_Cajun_spices,_lemon_and_lime_juice.jpg",
+  "title": "Blackened tilapia with Cajun spices, lemon and lime juice.jpg"
+ },
  "camarones_a_la_diabla": {
   "creator": "T.Tseng",
   "license": "by",
@@ -143,6 +151,14 @@
   "page": "https://www.flickr.com/photos/27874898@N00/52060244637",
   "title": "Chicken Piccata"
  },
+ "chicken_pot_pie_skillet": {
+  "creator": "Daderot",
+  "license": "cc0",
+  "licenseURL": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "licenseVersion": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Chicken_pot_pie_-_Cambridge,_MA.jpg",
+  "title": "Chicken pot pie - Cambridge, MA.jpg"
+ },
  "chilaquiles_rojos": {
   "creator": "Victorsmb",
   "license": "by-sa",
@@ -166,6 +182,30 @@
   "licenseVersion": "2.0",
   "page": "https://www.flickr.com/photos/7633518@N08/52788444357",
   "title": "Chorizo and potato tacos"
+ },
+ "classic_beef_and_bean_chili": {
+  "creator": "Carstor",
+  "license": "by-sa",
+  "licenseURL": "https://creativecommons.org/licenses/by-sa/2.5",
+  "licenseVersion": "2.5",
+  "page": "https://commons.wikimedia.org/wiki/File:Bowl_of_chili.jpg",
+  "title": "Bowl of chili.jpg"
+ },
+ "classic_chicken_noodle_soup": {
+  "creator": "Eli Hodapp from Naperville, United States",
+  "license": "by",
+  "licenseURL": "https://creativecommons.org/licenses/by/2.0",
+  "licenseVersion": "2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Chicken_noodle_soup_(cropped).jpg",
+  "title": "Chicken noodle soup (cropped).jpg"
+ },
+ "creamy_corn_chowder": {
+  "creator": "tomatoes and friends",
+  "license": "by",
+  "licenseURL": "https://creativecommons.org/licenses/by/2.0",
+  "licenseVersion": "2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Vegan_Garden_Corn_Chowder_with_Chives_(cropped).jpg",
+  "title": "Vegan Garden Corn Chowder with Chives (cropped).jpg"
  },
  "cuban_black_beans_rice": {
   "creator": "brettro",
@@ -271,6 +311,14 @@
   "page": "https://www.flickr.com/photos/53013126@N07/5317589202",
   "title": "Giraffe review Islington Essex Road huevos rancheros"
  },
+ "japanese_vegetable_curry_eggs": {
+  "creator": "Ruth and Dave",
+  "license": "by",
+  "licenseURL": "https://creativecommons.org/licenses/by/2.0/",
+  "licenseVersion": "2.0",
+  "page": "https://www.flickr.com/photos/95142644@N00/15700024614",
+  "title": "Chicken curry bowl and berry ice tea at Shishinori"
+ },
  "lamb_kofta_herbed_couscous": {
   "creator": "CharmaineZoe's Marvelous Melange",
   "license": "by",
@@ -319,6 +367,14 @@
   "page": "https://www.flickr.com/photos/68147320@N02/23930098591",
   "title": "Vegetarian mapo tofu: Organic Tofu, Trumpet Mushrooms, Sichuan Peppercorns"
  },
+ "oven_crisp_beef_burritos": {
+  "creator": "Famartin",
+  "license": "by-sa",
+  "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0",
+  "licenseVersion": "4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:2021-10-02_15_57_28_A_bean_and_cheese_burrito_in_front_of_the_Empire_State_Building_in_Manhattan,_New_York_City,_New_York.jpg",
+  "title": "2021-10-02 15 57 28 A bean and cheese burrito in front of the Empire State Building in Manhattan, New York City, New Yor"
+ },
  "palak_paneer_rice": {
   "creator": "goblinbox_(queen_of_ad_hoc_bento)",
   "license": "by",
@@ -326,6 +382,14 @@
   "licenseVersion": "2.0",
   "page": "https://www.flickr.com/photos/25977089@N00/16141628688",
   "title": "My first-ever palak paneer"
+ },
+ "pancit_bihon_pork": {
+  "creator": "Joost Nusselder",
+  "license": "by",
+  "licenseURL": "https://creativecommons.org/licenses/by/2.0/",
+  "licenseVersion": "2.0",
+  "page": "https://commons.wikimedia.org/w/index.php?curid=107371880",
+  "title": "Pancit Bihon Guisado Recipe"
  },
  "pasta_alla_norma": {
   "creator": "Paoletta S.",
@@ -342,6 +406,22 @@
   "licenseVersion": "2.0",
   "page": "https://www.flickr.com/photos/63324741@N04/49671162847",
   "title": "Pasta e ceci"
+ },
+ "patty_melts_caramelized_onions": {
+  "creator": "Missvain",
+  "license": "by",
+  "licenseURL": "https://creativecommons.org/licenses/by/4.0",
+  "licenseVersion": "4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cafe_77_-_August_2018_-_Sarah_Stierch_01.jpg",
+  "title": "Cafe 77 - August 2018 - Sarah Stierch 01.jpg"
+ },
+ "philly_style_cheesesteaks": {
+  "creator": "jeffreyw",
+  "license": "by",
+  "licenseURL": "https://creativecommons.org/licenses/by/2.0",
+  "licenseVersion": "2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cheesesteak_(19386149993).jpg",
+  "title": "Cheesesteak (19386149993).jpg"
  },
  "pork_al_pastor_tacos": {
   "creator": "jlastras",
@@ -367,6 +447,14 @@
   "page": "https://www.flickr.com/photos/7927684@N03/4872538626",
   "title": "roll yer own grilled chicken fajita"
  },
+ "sheet_pan_margherita_pizza": {
+  "creator": "jeffreyw",
+  "license": "by",
+  "licenseURL": "https://creativecommons.org/licenses/by/2.0/",
+  "licenseVersion": "2.0",
+  "page": "https://www.flickr.com/photos/7927684@N03/14703152728",
+  "title": "Mmm... Margherita Pizza"
+ },
  "shrimp_fra_diavolo": {
   "creator": "jeffreyw",
   "license": "by",
@@ -383,6 +471,14 @@
   "page": "https://commons.wikimedia.org/wiki/File:Phat_Thai_kung_Chang_Khien_street_stall.jpg",
   "title": "Phat Thai kung Chang Khien street stall.jpg"
  },
+ "shrimp_pineapple_fried_rice": {
+  "creator": "Bigul Malayi",
+  "license": "cc0",
+  "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "licenseVersion": "1.0",
+  "page": "https://wordpress.org/photos/photo/46967d48ea/",
+  "title": "A plate of pineapple fried rice with shrimp. The rice is mixed with vegetables and topped with chunks of pineapple and s"
+ },
  "sichuan_green_beans_pork": {
   "creator": "snowpea&bokchoi",
   "license": "by",
@@ -390,6 +486,14 @@
   "licenseVersion": "2.0",
   "page": "https://www.flickr.com/photos/28531775@N06/4276870656",
   "title": "Sichuan Green Beans"
+ },
+ "skillet_tuna_melts": {
+  "creator": "kweez mcG from London, UK",
+  "license": "by",
+  "licenseURL": "https://creativecommons.org/licenses/by/2.0",
+  "licenseVersion": "2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tuna_melt_sandwich_with_fries.jpg",
+  "title": "Tuna melt sandwich with fries.jpg"
  },
  "slow_cooker_aloo_chicken": {
   "creator": "Kawdiol Chium",
@@ -422,6 +526,14 @@
   "licenseVersion": "2.0",
   "page": "https://www.flickr.com/photos/60258967@N00/6936775232",
   "title": "Zapatista - pork carnitas"
+ },
+ "slow_cooker_moroccan_beef_carrots": {
+  "creator": "Daderot",
+  "license": "cc0",
+  "licenseURL": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "licenseVersion": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Beef_stew_with_carrots_and_celery_-_Massachusetts.jpg",
+  "title": "Beef stew with carrots and celery - Massachusetts.jpg"
  },
  "slow_cooker_pulled_pork_sandwiches": {
   "creator": "Marshall Astor",
@@ -502,6 +614,30 @@
   "licenseVersion": "2.0",
   "page": "https://www.flickr.com/photos/90155432@N02/11392242076",
   "title": "Tortellini Soup"
+ },
+ "tuna_nicoise_salad": {
+  "creator": "Geoff Peters from Vancouver, BC, Canada",
+  "license": "by",
+  "licenseURL": "https://creativecommons.org/licenses/by/2.0",
+  "licenseVersion": "2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:La_Petite_Salad_Ni%C3%A7oise_(3384266478).jpg",
+  "title": "La Petite Salad Niçoise (3384266478).jpg"
+ },
+ "tuna_noodle_casserole": {
+  "creator": "Stuart Spivack",
+  "license": "by-sa",
+  "licenseURL": "https://creativecommons.org/licenses/by-sa/2.0",
+  "licenseVersion": "2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Kugel.jpg",
+  "title": "Kugel.jpg"
+ },
+ "turkey_kofta_curry": {
+  "creator": "Monali.mishra",
+  "license": "by-sa",
+  "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0",
+  "licenseVersion": "4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:MalaiKofta.jpg",
+  "title": "MalaiKofta.jpg"
  },
  "turmeric_dill_fish_noodles": {
   "creator": "avlxyz",
