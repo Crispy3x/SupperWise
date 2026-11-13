@@ -1,9 +1,115 @@
 {
  "chickpea_tikka": {
   "name": "Chickpea tikka masala",
-  "query": "Chickpea tikka masala",
-  "via": "openverse",
-  "candidates": []
+  "query": "tikka masala",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Chicken_Tikka_Masala_%40_Indian%27s_Food_%40_Annecy_%2827825645419%29.jpg/1280px-Chicken_Tikka_Masala_%40_Indian%27s_Food_%40_Annecy_%2827825645419%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chicken Tikka Masala @ Indian's Food @ Annecy (27825645419).jpg",
+    "creator": "Guilhem Vellut from Annecy, France",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_Tikka_Masala_@_Indian%27s_Food_@_Annecy_(27825645419).jpg",
+    "w": 5472,
+    "h": 3648
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Chicken_Tikka_Masala_%40_Indian%27s_Food_%40_Annecy_%2838894403364%29.jpg/1280px-Chicken_Tikka_Masala_%40_Indian%27s_Food_%40_Annecy_%2838894403364%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chicken Tikka Masala @ Indian's Food @ Annecy (38894403364).jpg",
+    "creator": "Guilhem Vellut from Annecy, France",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_Tikka_Masala_@_Indian%27s_Food_@_Annecy_(38894403364).jpg",
+    "w": 5472,
+    "h": 3648
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Chicken_tikka_masala.jpg/1280px-Chicken_tikka_masala.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chicken tikka masala.jpg",
+    "creator": "Michael Hays",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_tikka_masala.jpg",
+    "w": 2592,
+    "h": 3888
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Chicken_tikka_masala_%28cropped%29.jpg/1280px-Chicken_tikka_masala_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chicken tikka masala (cropped).jpg",
+    "creator": "Michael Hays",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_tikka_masala_(cropped).jpg",
+    "w": 2592,
+    "h": 2684
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Chicken_tikka_masala_at_Yeti_in_Glen_Ellen_2015_-_Sarah_Stierch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Chicken tikka masala at Yeti in Glen Ellen 2015 - Sarah Stierch.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_tikka_masala_at_Yeti_in_Glen_Ellen_2015_-_Sarah_Stierch.jpg",
+    "w": 960,
+    "h": 960
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Chicken_tikka_masala_at_the_office.jpg/1280px-Chicken_tikka_masala_at_the_office.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chicken tikka masala at the office.jpg",
+    "creator": "JIP",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_tikka_masala_at_the_office.jpg",
+    "w": 4608,
+    "h": 3456
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Corn_and_vegetable_tikka_masala_on_rotini%2C_with_red_chili_peppers_-_Massachusetts.jpg/1280px-Corn_and_vegetable_tikka_masala_on_rotini%2C_with_red_chili_peppers_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Corn and vegetable tikka masala on rotini, with red chili peppers - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Corn_and_vegetable_tikka_masala_on_rotini,_with_red_chili_peppers_-_Massachusetts.jpg",
+    "w": 2772,
+    "h": 2772
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Dal_%40_Chicken_Tikka_Masala_%40_Indian%27s_Food_%40_Annecy_%2827825644769%29.jpg/1280px-Dal_%40_Chicken_Tikka_Masala_%40_Indian%27s_Food_%40_Annecy_%2827825644769%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Dal @ Chicken Tikka Masala @ Indian's Food @ Annecy (27825644769).jpg",
+    "creator": "Guilhem Vellut from Annecy, France",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Dal_@_Chicken_Tikka_Masala_@_Indian%27s_Food_@_Annecy_(27825644769).jpg",
+    "w": 5472,
+    "h": 3648
+   }
+  ],
+  "retried": true
  },
  "penne_arrabbiata": {
   "name": "Penne arrabbiata",
@@ -882,9 +988,10 @@
  },
  "beef_ragu": {
   "name": "Beef and mushroom ragù",
-  "query": "Beef and mushroom ragù",
-  "via": "openverse",
-  "candidates": []
+  "query": "mushroom ragù",
+  "via": "commons",
+  "candidates": [],
+  "retried": true
  },
  "crispy_drumsticks": {
   "name": "Oven-crisp drumsticks",
@@ -2870,9 +2977,24 @@
  },
  "lemon_ricotta_rigatoni_broccoli": {
   "name": "Lemon ricotta rigatoni with roasted broccoli",
-  "query": "Lemon ricotta rigatoni",
-  "via": "openverse",
-  "candidates": []
+  "query": "ricotta rigatoni",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Wit_%26_Wisdom_-_November_2023_-_Sarah_Stierch.jpg/1280px-Wit_%26_Wisdom_-_November_2023_-_Sarah_Stierch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Wit & Wisdom - November 2023 - Sarah Stierch.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Wit_%26_Wisdom_-_November_2023_-_Sarah_Stierch.jpg",
+    "w": 3581,
+    "h": 2686
+   }
+  ],
+  "retried": true
  },
  "spanish_potato_tortilla": {
   "name": "Spanish potato and onion tortilla",
@@ -3085,9 +3207,10 @@
  },
  "mediterranean_quinoa_bowls": {
   "name": "Mediterranean quinoa bowls with crispy chickpeas",
-  "query": "Mediterranean quinoa bowls",
-  "via": "openverse",
-  "candidates": []
+  "query": "quinoa bowls",
+  "via": "commons",
+  "candidates": [],
+  "retried": true
  },
  "chicken_souvlaki_pitas": {
   "name": "Chicken souvlaki pitas with tzatziki",
@@ -3483,9 +3606,89 @@
  },
  "chicken_avgolemono_soup": {
   "name": "Greek lemon chicken and orzo soup (avgolemono)",
-  "query": "Greek lemon chicken and orzo soup",
-  "via": "openverse",
-  "candidates": []
+  "query": "orzo soup",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Arpa_%C5%9Fehriye_soup.jpg/1280px-Arpa_%C5%9Fehriye_soup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Arpa şehriye soup.jpg",
+    "creator": "E4024",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Arpa_%C5%9Fehriye_soup.jpg",
+    "w": 2560,
+    "h": 1920
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Chicken_and_orzo_soup.jpg/1280px-Chicken_and_orzo_soup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chicken and orzo soup.jpg",
+    "creator": "E4024",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_and_orzo_soup.jpg",
+    "w": 2560,
+    "h": 1920
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Chicken_and_sehriye_soup.jpg/1280px-Chicken_and_sehriye_soup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chicken and sehriye soup.jpg",
+    "creator": "E4024",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_and_sehriye_soup.jpg",
+    "w": 2560,
+    "h": 1920
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Soup_details.jpg/1280px-Soup_details.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Soup details.jpg",
+    "creator": "E4024",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Soup_details.jpg",
+    "w": 2560,
+    "h": 1920
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Tavuklu_%C5%9Fehriye_%C3%A7orbas%C4%B1.jpg/1280px-Tavuklu_%C5%9Fehriye_%C3%A7orbas%C4%B1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Tavuklu şehriye çorbası.jpg",
+    "creator": "E4024",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Tavuklu_%C5%9Fehriye_%C3%A7orbas%C4%B1.jpg",
+    "w": 2560,
+    "h": 1920
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/%C5%9Eehriye_soup_%28with_chicken%29.jpg/1280px-%C5%9Eehriye_soup_%28with_chicken%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Şehriye soup (with chicken).jpg",
+    "creator": "E4024",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:%C5%9Eehriye_soup_(with_chicken).jpg",
+    "w": 2560,
+    "h": 1920
+   }
+  ],
+  "retried": true
  },
  "creamy_tuscan_chicken_fettuccine": {
   "name": "Creamy Tuscan chicken with fettuccine",
@@ -3894,9 +4097,10 @@
  },
  "pork_chops_pizzaiola": {
   "name": "Pork chops pizzaiola",
-  "query": "Pork chops pizzaiola",
-  "via": "openverse",
-  "candidates": []
+  "query": "chops pizzaiola",
+  "via": "commons",
+  "candidates": [],
+  "retried": true
  },
  "sausage_potato_kale_soup": {
   "name": "Sausage, potato and kale soup",
@@ -5214,9 +5418,115 @@
  },
  "spanish_cod_chickpea_stew": {
   "name": "Smoky Spanish cod and chickpea stew",
-  "query": "Smoky Spanish cod and chickpea stew",
-  "via": "openverse",
-  "candidates": []
+  "query": "chickpea stew",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Chorizo_stew_with_salad.jpg/1280px-Chorizo_stew_with_salad.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chorizo stew with salad.jpg",
+    "creator": "Iijjccoo",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chorizo_stew_with_salad.jpg",
+    "w": 2592,
+    "h": 1944
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Curried_cauliflower_and_chickpea_stew.jpg/1280px-Curried_cauliflower_and_chickpea_stew.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Curried cauliflower and chickpea stew.jpg",
+    "creator": "Jim Reynolds from Cleveland, USA",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Curried_cauliflower_and_chickpea_stew.jpg",
+    "w": 3648,
+    "h": 2736
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/53/Garbanzos_con_gambas.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Garbanzos con gambas.jpeg",
+    "creator": "Xemenendura",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Garbanzos_con_gambas.jpeg",
+    "w": 1194,
+    "h": 1070
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Highlander_stew.jpg/1280px-Highlander_stew.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Highlander stew.jpg",
+    "creator": "Jorge Sanz",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Highlander_stew.jpg",
+    "w": 1536,
+    "h": 1536
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Liat_Portal_for_Foodie_Disorder_-_Hamin_%28Cholent%29_cooked_overnight_for_Shabbat.jpg/1280px-Liat_Portal_for_Foodie_Disorder_-_Hamin_%28Cholent%29_cooked_overnight_for_Shabbat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Liat Portal for Foodie Disorder - Hamin (Cholent) cooked overnight for Shabbat.jpg",
+    "creator": "HaJunkiyada",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Hamin_(Cholent)_cooked_overnight_for_Shabbat.jpg",
+    "w": 3024,
+    "h": 4032
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Moroccan_Chickpea_and_Vegetable_Stew_%286750034613%29.jpg/1280px-Moroccan_Chickpea_and_Vegetable_Stew_%286750034613%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Moroccan Chickpea and Vegetable Stew (6750034613).jpg",
+    "creator": "Jennifer from Vancouver, Canada",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Moroccan_Chickpea_and_Vegetable_Stew_(6750034613).jpg",
+    "w": 1800,
+    "h": 1200
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Nohut_yahni_and_bulgur.jpg/1280px-Nohut_yahni_and_bulgur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Nohut yahni and bulgur.jpg",
+    "creator": "E4024",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Nohut_yahni_and_bulgur.jpg",
+    "w": 2560,
+    "h": 1920
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Olla_gitana.jpg/1280px-Olla_gitana.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Olla gitana.jpg",
+    "creator": "Retama",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "page": "https://commons.wikimedia.org/wiki/File:Olla_gitana.jpg",
+    "w": 2592,
+    "h": 1944
+   }
+  ],
+  "retried": true
  },
  "creamy_chicken_gnocchi_soup": {
   "name": "Creamy chicken gnocchi soup",
@@ -5619,9 +5929,115 @@
  },
  "calabacitas_quesadillas": {
   "name": "Zucchini and corn quesadillas",
-  "query": "Zucchini and corn quesadillas",
-  "via": "openverse",
-  "candidates": []
+  "query": "corn quesadillas",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/01_Blue_Corn_Quesadillas.jpg/1280px-01_Blue_Corn_Quesadillas.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "01 Blue Corn Quesadillas.jpg",
+    "creator": "William Neuheisel",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:01_Blue_Corn_Quesadillas.jpg",
+    "w": 3888,
+    "h": 2592
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/BlueGorditasMetepec.JPG/1280px-BlueGorditasMetepec.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "BlueGorditasMetepec.JPG",
+    "creator": "Thelmadatter",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:BlueGorditasMetepec.JPG",
+    "w": 3287,
+    "h": 2120
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Cheese_quesadilla.jpg/1280px-Cheese_quesadilla.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Cheese quesadilla.jpg",
+    "creator": "Corn cheese",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Cheese_quesadilla.jpg",
+    "w": 3264,
+    "h": 2448
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Mulitas_al_pastor.JPG/1280px-Mulitas_al_pastor.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Mulitas al pastor.JPG",
+    "creator": "Jeffrey Beall",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Mulitas_al_pastor.JPG",
+    "w": 2912,
+    "h": 2857
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/ParicutinMichoacan041.JPG/1280px-ParicutinMichoacan041.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "ParicutinMichoacan041.JPG",
+    "creator": "AlejandroLinaresGarcia",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:ParicutinMichoacan041.JPG",
+    "w": 2406,
+    "h": 1600
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Quesadilla_poblana_de_champi%C3%B1ones_con_masa_azul_04.jpg/1280px-Quesadilla_poblana_de_champi%C3%B1ones_con_masa_azul_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Quesadilla poblana de champiñones con masa azul 04.jpg",
+    "creator": "Luis Alvaz",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Quesadilla_poblana_de_champi%C3%B1ones_con_masa_azul_04.jpg",
+    "w": 4000,
+    "h": 3000
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Quesadillas_of_Coyoac%C3%A1n.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Quesadillas of Coyoacán.jpg",
+    "creator": "SincoHR",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Quesadillas_of_Coyoac%C3%A1n.jpg",
+    "w": 1280,
+    "h": 960
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Tequila_Jalapeno_Quesadillas_with_Ocean_Trout_and_Corn_-_Bluecorn_Mexican_Restaurant.jpg/1280px-Tequila_Jalapeno_Quesadillas_with_Ocean_Trout_and_Corn_-_Bluecorn_Mexican_Restaurant.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Tequila Jalapeno Quesadillas with Ocean Trout and Corn - Bluecorn Mexican Restaurant.jpg",
+    "creator": "avlxyz",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Tequila_Jalapeno_Quesadillas_with_Ocean_Trout_and_Corn_-_Bluecorn_Mexican_Restaurant.jpg",
+    "w": 2048,
+    "h": 1536
+   }
+  ],
+  "retried": true
  },
  "huevos_rancheros": {
   "name": "Huevos rancheros",
@@ -6050,9 +6466,10 @@
  },
  "tofu_sofritas_tacos": {
   "name": "Smoky tofu sofritas tacos",
-  "query": "Smoky tofu sofritas tacos",
-  "via": "openverse",
-  "candidates": []
+  "query": "sofritas tacos",
+  "via": "commons",
+  "candidates": [],
+  "retried": true
  },
  "roasted_cauliflower_tacos": {
   "name": "Roasted cauliflower tacos with chipotle crema",
@@ -6141,9 +6558,115 @@
  },
  "rajas_con_crema_tacos": {
   "name": "Rajas con crema tacos",
-  "query": "Rajas con crema tacos",
-  "via": "openverse",
-  "candidates": []
+  "query": "crema tacos",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Beef_tacos_-_Cambridge%2C_MA.jpg/1280px-Beef_tacos_-_Cambridge%2C_MA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Beef tacos - Cambridge, MA.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Beef_tacos_-_Cambridge,_MA.jpg",
+    "w": 3877,
+    "h": 2619
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Chapulines_Tacos_-_Tulum_QR_2020.jpg/1280px-Chapulines_Tacos_-_Tulum_QR_2020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chapulines Tacos - Tulum QR 2020.jpg",
+    "creator": "Bernard DUPONT",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chapulines_Tacos_-_Tulum_QR_2020.jpg",
+    "w": 4724,
+    "h": 2383
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Mahi_Mahi_Tacos_%283891753501%29.jpg/1280px-Mahi_Mahi_Tacos_%283891753501%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Mahi Mahi Tacos (3891753501).jpg",
+    "creator": "Geoff Peters from Vancouver, BC, Canada",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Mahi_Mahi_Tacos_(3891753501).jpg",
+    "w": 3456,
+    "h": 2298
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Mahi_Mahi_Tacos_%283891758161%29.jpg/1280px-Mahi_Mahi_Tacos_%283891758161%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Mahi Mahi Tacos (3891758161).jpg",
+    "creator": "Geoff Peters from Vancouver, BC, Canada",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Mahi_Mahi_Tacos_(3891758161).jpg",
+    "w": 3456,
+    "h": 2298
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Mahi_Mahi_Tacos_%283891761495%29.jpg/1280px-Mahi_Mahi_Tacos_%283891761495%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Mahi Mahi Tacos (3891761495).jpg",
+    "creator": "Geoff Peters from Vancouver, BC, Canada",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Mahi_Mahi_Tacos_(3891761495).jpg",
+    "w": 3456,
+    "h": 2298
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Pezcow_Food_Truck_-_February_2024_-_Sarah_Stierch_01.jpg/1280px-Pezcow_Food_Truck_-_February_2024_-_Sarah_Stierch_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Pezcow Food Truck - February 2024 - Sarah Stierch 01.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pezcow_Food_Truck_-_February_2024_-_Sarah_Stierch_01.jpg",
+    "w": 2409,
+    "h": 2409
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Pezcow_Food_Truck_-_February_2024_-_Sarah_Stierch_02.jpg/1280px-Pezcow_Food_Truck_-_February_2024_-_Sarah_Stierch_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Pezcow Food Truck - February 2024 - Sarah Stierch 02.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pezcow_Food_Truck_-_February_2024_-_Sarah_Stierch_02.jpg",
+    "w": 4032,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Roasted_sweet_potato_%2B_black_bean_tacos_%287784822910%29.jpg/1280px-Roasted_sweet_potato_%2B_black_bean_tacos_%287784822910%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Roasted sweet potato + black bean tacos (7784822910).jpg",
+    "creator": "Karen and Brad Emerson",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Roasted_sweet_potato_%2B_black_bean_tacos_(7784822910).jpg",
+    "w": 3339,
+    "h": 2650
+   }
+  ],
+  "retried": true
  },
  "mexican_stuffed_peppers": {
   "name": "Rice and black bean stuffed peppers",
@@ -7268,9 +7791,115 @@
  },
  "oven_crisp_beef_burritos": {
   "name": "Oven-crisp beef and bean burritos",
-  "query": "Oven-crisp beef and bean burritos",
-  "via": "openverse",
-  "candidates": []
+  "query": "bean burritos",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/2019-05-04_20_10_55_A_burrito_bowl_from_Chipotle_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/1280px-2019-05-04_20_10_55_A_burrito_bowl_from_Chipotle_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "2019-05-04 20 10 55 A burrito bowl from Chipotle in the Franklin Farm section of Oak Hill, Fairfax County, Virginia.jpg",
+    "creator": "Famartin",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2019-05-04_20_10_55_A_burrito_bowl_from_Chipotle_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg",
+    "w": 4032,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/2019-05-04_20_17_54_A_partially_eaten_burrito_bowl_from_Chipotle_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/1280px-2019-05-04_20_17_54_A_partially_eaten_burrito_bowl_from_Chipotle_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "2019-05-04 20 17 54 A partially eaten burrito bowl from Chipotle in the Franklin Farm section of Oak Hill, Fairfax County, Virginia.jpg",
+    "creator": "Famartin",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2019-05-04_20_17_54_A_partially_eaten_burrito_bowl_from_Chipotle_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg",
+    "w": 4032,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/2019-05-04_20_20_34_A_partially_eaten_burrito_bowl_from_Chipotle_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/1280px-2019-05-04_20_20_34_A_partially_eaten_burrito_bowl_from_Chipotle_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "2019-05-04 20 20 34 A partially eaten burrito bowl from Chipotle in the Franklin Farm section of Oak Hill, Fairfax County, Virginia.jpg",
+    "creator": "Famartin",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2019-05-04_20_20_34_A_partially_eaten_burrito_bowl_from_Chipotle_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg",
+    "w": 4032,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/2021-10-02_15_57_28_A_bean_and_cheese_burrito_in_front_of_the_Empire_State_Building_in_Manhattan%2C_New_York_City%2C_New_York.jpg/1280px-2021-10-02_15_57_28_A_bean_and_cheese_burrito_in_front_of_the_Empire_State_Building_in_Manhattan%2C_New_York_City%2C_New_York.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "2021-10-02 15 57 28 A bean and cheese burrito in front of the Empire State Building in Manhattan, New York City, New York.jpg",
+    "creator": "Famartin",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2021-10-02_15_57_28_A_bean_and_cheese_burrito_in_front_of_the_Empire_State_Building_in_Manhattan,_New_York_City,_New_York.jpg",
+    "w": 4032,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Indian_Food_Images_%2889%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Indian Food Images (89).jpg",
+    "creator": "AmanAgrahari01",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Indian_Food_Images_(89).jpg",
+    "w": 720,
+    "h": 1280
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/La_Casa_Restaurant_-_2021-07-31_-_Sarah_Stierch.jpg/1280px-La_Casa_Restaurant_-_2021-07-31_-_Sarah_Stierch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "La Casa Restaurant - 2021-07-31 - Sarah Stierch.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:La_Casa_Restaurant_-_2021-07-31_-_Sarah_Stierch.jpg",
+    "w": 4032,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/MagazineBreakfastBurrito11Sept2008.jpg/1280px-MagazineBreakfastBurrito11Sept2008.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "MagazineBreakfastBurrito11Sept2008.jpg",
+    "creator": "Infrogmation of New Orleans",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:MagazineBreakfastBurrito11Sept2008.jpg",
+    "w": 2816,
+    "h": 2112
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Pinto_Bean_and_Spinach_Burrito_%285034780791%29.jpg/1280px-Pinto_Bean_and_Spinach_Burrito_%285034780791%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Pinto Bean and Spinach Burrito (5034780791).jpg",
+    "creator": "Vegan Feast Catering",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pinto_Bean_and_Spinach_Burrito_(5034780791).jpg",
+    "w": 2592,
+    "h": 3456
+   }
+  ],
+  "retried": true
  },
  "cuban_picadillo": {
   "name": "Cuban picadillo with rice",
@@ -7385,9 +8014,115 @@
  },
  "cuban_mojo_pork_tenderloin": {
   "name": "Cuban mojo pork tenderloin",
-  "query": "Cuban mojo pork tenderloin",
-  "via": "openverse",
-  "candidates": []
+  "query": "pork tenderloin",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/2022_Indianapolis_500_-_Sarah_Stierch_01.jpg/1280px-2022_Indianapolis_500_-_Sarah_Stierch_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "2022 Indianapolis 500 - Sarah Stierch 01.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2022_Indianapolis_500_-_Sarah_Stierch_01.jpg",
+    "w": 1414,
+    "h": 1531
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/2024_Indianapolis_500_-_Sarah_Stierch_18.jpg/1280px-2024_Indianapolis_500_-_Sarah_Stierch_18.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "2024 Indianapolis 500 - Sarah Stierch 18.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:2024_Indianapolis_500_-_Sarah_Stierch_18.jpg",
+    "w": 2375,
+    "h": 3167
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Braised_pork_tenderloin_medallions.jpg/1280px-Braised_pork_tenderloin_medallions.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Braised pork tenderloin medallions.jpg",
+    "creator": "CNEcija12345",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Braised_pork_tenderloin_medallions.jpg",
+    "w": 3309,
+    "h": 2779
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Breaded_pork_tenderloin_%2818282835023%29.jpg/1280px-Breaded_pork_tenderloin_%2818282835023%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Breaded pork tenderloin (18282835023).jpg",
+    "creator": "jeffreyw",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Breaded_pork_tenderloin_(18282835023).jpg",
+    "w": 4320,
+    "h": 2861
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Pork_tenderloin_%2833508850093%29.jpg/1280px-Pork_tenderloin_%2833508850093%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Pork tenderloin (33508850093).jpg",
+    "creator": "Jim  Lukach",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pork_tenderloin_(33508850093).jpg",
+    "w": 6000,
+    "h": 3376
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Pork_tenderloin_dish.png/1280px-Pork_tenderloin_dish.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Pork tenderloin dish.png",
+    "creator": "User:Ɱ",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pork_tenderloin_dish.png",
+    "w": 4008,
+    "h": 2551
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Pork_tenderloin_with_brandy_and_mirto_%2832330684303%29.jpg/1280px-Pork_tenderloin_with_brandy_and_mirto_%2832330684303%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Pork tenderloin with brandy and mirto (32330684303).jpg",
+    "creator": "Luca Nebuloni",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pork_tenderloin_with_brandy_and_mirto_(32330684303).jpg",
+    "w": 5184,
+    "h": 3456
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Roast_pork_tenderloin%2C_steamed_broccolini%2C_and_macaroni_with_Pomodoro_sauce_%E8%B1%9A%E3%83%86%E3%83%B3%E3%83%80%E3%83%BC%E3%83%AD%E3%82%A4%E3%83%B3%E3%81%AE%E3%83%AD%E3%83%BC%E3%82%B9%E3%83%88%E3%80%81%E3%83%96%E3%83%AD%E3%83%83%E3%82%B3%E3%83%AA%E3%83%BC%E3%83%8B%E3%80%81%E3%83%9E%E3%82%AB%E3%83%AD%E3%83%8B%E3%81%AE%E3%83%9D%E3%83%A2%E3%83%89%E3%83%BC%E3%83%AD%E3%82%BD%E3%83%BC%E3%82%B9.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Roast pork tenderloin, steamed broccolini, and macaroni with Pomodoro sauce 豚テンダーロインのロースト、ブロッコリーニ、マカロニのポモドーロソース.jpg",
+    "creator": "naotakem",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Roast_pork_tenderloin,_steamed_broccolini,_and_macaroni_with_Pomodoro_sauce_%E8%B1%9A%E3%83%86%E3%83%B3%E3%83%80%E3%83%BC%E3%83%AD%E3%82%A4%E3%83%B3%E3%81%AE%E3%83%AD%E3%83%BC%E3%82%B9%E3%83%88%E3%80%81%E3%83%96%E3%83%AD%E3%83%83%E3%82%B3%E3%83%AA%E3%83%BC%E3%83%8B%E3%80%81%E3%83%9E%E3%82%AB%E3%83%AD%E3%83%8B%E3%81%AE%E3%83%9D%E3%83%A2%E3%83%89%E3%83%BC%E3%83%AD%E3%82%BD%E3%83%BC%E3%82%B9.jpg",
+    "w": 1080,
+    "h": 1080
+   }
+  ],
+  "retried": true
  },
  "slow_cooker_ropa_vieja": {
   "name": "Slow-cooker ropa vieja",
@@ -7502,9 +8237,115 @@
  },
  "peruvian_drumsticks_green_sauce": {
   "name": "Peruvian-style roast drumsticks with green sauce",
-  "query": "Peruvian roast drumsticks",
-  "via": "openverse",
-  "candidates": []
+  "query": "roast drumsticks",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/%27Taste_of_Soul%27_kicks-off_African-American-Black_History_Month_events_140203-F-FE537-0068.jpg/1280px-%27Taste_of_Soul%27_kicks-off_African-American-Black_History_Month_events_140203-F-FE537-0068.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "'Taste of Soul' kicks-off African-American-Black History Month events 140203-F-FE537-0068.jpg",
+    "creator": "Gina Randall",
+    "creator_url": null,
+    "license": "pdm",
+    "license_version": "",
+    "license_url": null,
+    "page": "https://commons.wikimedia.org/wiki/File:%27Taste_of_Soul%27_kicks-off_African-American-Black_History_Month_events_140203-F-FE537-0068.jpg",
+    "w": 3000,
+    "h": 2400
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Entire_roasted_chicken.jpg/1280px-Entire_roasted_chicken.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Entire roasted chicken.jpg",
+    "creator": "E4024",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Entire_roasted_chicken.jpg",
+    "w": 2560,
+    "h": 1920
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Liat_Portal_for_Foodie_Disorder_-_Chicken_Drumstick_with_Jalape%C3%B1o.jpg/1280px-Liat_Portal_for_Foodie_Disorder_-_Chicken_Drumstick_with_Jalape%C3%B1o.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Liat Portal for Foodie Disorder - Chicken Drumstick with Jalapeño.jpg",
+    "creator": "HaJunkiyada",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Chicken_Drumstick_with_Jalape%C3%B1o.jpg",
+    "w": 3024,
+    "h": 4032
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Liat_Portal_for_Foodie_Disorder_-_Healthy_low-fat_chicken%2C_rice%2C_broccoli%2C_and_sweet_potato_plate.jpg/1280px-Liat_Portal_for_Foodie_Disorder_-_Healthy_low-fat_chicken%2C_rice%2C_broccoli%2C_and_sweet_potato_plate.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Liat Portal for Foodie Disorder - Healthy low-fat chicken, rice, broccoli, and sweet potato plate.jpg",
+    "creator": "HaJunkiyada",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Healthy_low-fat_chicken,_rice,_broccoli,_and_sweet_potato_plate.jpg",
+    "w": 3024,
+    "h": 4032
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Liat_Portal_for_Foodie_Disorder_-_Home-Cooked_Chicken%2C_Mujadara%2C_and_Israeli_Salad.jpg/1280px-Liat_Portal_for_Foodie_Disorder_-_Home-Cooked_Chicken%2C_Mujadara%2C_and_Israeli_Salad.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Liat Portal for Foodie Disorder - Home-Cooked Chicken, Mujadara, and Israeli Salad.jpg",
+    "creator": "HaJunkiyada",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Home-Cooked_Chicken,_Mujadara,_and_Israeli_Salad.jpg",
+    "w": 3024,
+    "h": 4032
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Tandoori_Chicken_01.jpg/1280px-Tandoori_Chicken_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Tandoori Chicken 01.jpg",
+    "creator": "andrusdevelopment",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Tandoori_Chicken_01.jpg",
+    "w": 3888,
+    "h": 2592
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Turkey_drumstick_dish.jpg/1280px-Turkey_drumstick_dish.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Turkey drumstick dish.jpg",
+    "creator": "U.S. Air Force photo/Airman 1st Class Katrina Heikkinen",
+    "creator_url": null,
+    "license": "pdm",
+    "license_version": "",
+    "license_url": null,
+    "page": "https://commons.wikimedia.org/wiki/File:Turkey_drumstick_dish.jpg",
+    "w": 2100,
+    "h": 1406
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/%D0%9F%D0%B5%D1%87%D0%B5%D0%BD%D0%B8_%D0%BF%D0%B8%D0%BB%D0%B5%D1%88%D0%BA%D0%B8_%D0%BA%D0%BE%D0%BF%D0%B0%D0%BD%D0%B8.jpg/1280px-%D0%9F%D0%B5%D1%87%D0%B5%D0%BD%D0%B8_%D0%BF%D0%B8%D0%BB%D0%B5%D1%88%D0%BA%D0%B8_%D0%BA%D0%BE%D0%BF%D0%B0%D0%BD%D0%B8.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Печени пилешки копани.jpg",
+    "creator": "Lili Arsova",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:%D0%9F%D0%B5%D1%87%D0%B5%D0%BD%D0%B8_%D0%BF%D0%B8%D0%BB%D0%B5%D1%88%D0%BA%D0%B8_%D0%BA%D0%BE%D0%BF%D0%B0%D0%BD%D0%B8.jpg",
+    "w": 2592,
+    "h": 4608
+   }
+  ],
+  "retried": true
  },
  "lomo_saltado": {
   "name": "Lomo saltado",
@@ -7619,9 +8460,115 @@
  },
  "jerk_chicken_mango_salsa": {
   "name": "Jerk chicken thighs with mango salsa",
-  "query": "Jerk chicken thighs",
-  "via": "openverse",
-  "candidates": []
+  "query": "chicken thighs",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Bryan%27s_Grocery_BBQ_Chicken_Legs_and_Thighs_%2815776388019%29.jpg/1280px-Bryan%27s_Grocery_BBQ_Chicken_Legs_and_Thighs_%2815776388019%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Bryan's Grocery BBQ Chicken Legs and Thighs (15776388019).jpg",
+    "creator": "Willis Lam",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Bryan%27s_Grocery_BBQ_Chicken_Legs_and_Thighs_(15776388019).jpg",
+    "w": 1600,
+    "h": 1200
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Chicken_thighs_-_the_girl_and_the_fig_-_May_2023_-_Sarah_Stierch_01.jpg/1280px-Chicken_thighs_-_the_girl_and_the_fig_-_May_2023_-_Sarah_Stierch_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chicken thighs - the girl and the fig - May 2023 - Sarah Stierch 01.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_thighs_-_the_girl_and_the_fig_-_May_2023_-_Sarah_Stierch_01.jpg",
+    "w": 4032,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Chicken_thighs_at_the_girl_and_the_fig_-_August_2022_-_Sarah_Stierch.jpg/1280px-Chicken_thighs_at_the_girl_and_the_fig_-_August_2022_-_Sarah_Stierch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chicken thighs at the girl and the fig - August 2022 - Sarah Stierch.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_thighs_at_the_girl_and_the_fig_-_August_2022_-_Sarah_Stierch.jpg",
+    "w": 4032,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Fried-Chicken-Set.jpg/1280px-Fried-Chicken-Set.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Fried-Chicken-Set.jpg",
+    "creator": "Evan-Amos",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Fried-Chicken-Set.jpg",
+    "w": 5440,
+    "h": 3760
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Liat_Portal_for_Foodie_Disorder_-_Chicken_thighs_with_onions_before_roasting.jpg/1280px-Liat_Portal_for_Foodie_Disorder_-_Chicken_thighs_with_onions_before_roasting.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Liat Portal for Foodie Disorder - Chicken thighs with onions before roasting.jpg",
+    "creator": "HaJunkiyada",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Chicken_thighs_with_onions_before_roasting.jpg",
+    "w": 3024,
+    "h": 4032
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Liat_Portal_for_Foodie_Disorder_-_Grilled_chicken_thighs_with_ptitim_and_Israeli_salad.jpg/1280px-Liat_Portal_for_Foodie_Disorder_-_Grilled_chicken_thighs_with_ptitim_and_Israeli_salad.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Liat Portal for Foodie Disorder - Grilled chicken thighs with ptitim and Israeli salad.jpg",
+    "creator": "HaJunkiyada",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Grilled_chicken_thighs_with_ptitim_and_Israeli_salad.jpg",
+    "w": 3024,
+    "h": 4032
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Liat_Portal_for_Foodie_Disorder_-_Homemade_chicken_thighs_with_majadra_and_broccoli.jpg/1280px-Liat_Portal_for_Foodie_Disorder_-_Homemade_chicken_thighs_with_majadra_and_broccoli.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Liat Portal for Foodie Disorder - Homemade chicken thighs with majadra and broccoli.jpg",
+    "creator": "HaJunkiyada",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Homemade_chicken_thighs_with_majadra_and_broccoli.jpg",
+    "w": 3024,
+    "h": 4032
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Liat_Portal_for_Foodie_Disorder_-_Homemade_chicken_thighs_with_vegetables_and_rice.jpg/1280px-Liat_Portal_for_Foodie_Disorder_-_Homemade_chicken_thighs_with_vegetables_and_rice.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Liat Portal for Foodie Disorder - Homemade chicken thighs with vegetables and rice.jpg",
+    "creator": "HaJunkiyada",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Homemade_chicken_thighs_with_vegetables_and_rice.jpg",
+    "w": 3024,
+    "h": 4032
+   }
+  ],
+  "retried": true
  },
  "pork_al_pastor_tacos": {
   "name": "Pork al pastor-style tacos with pineapple",
@@ -7736,15 +8683,31 @@
  },
  "spiced_tilapia_tacos": {
   "name": "Spiced tilapia tacos with lime slaw",
-  "query": "Spiced tilapia tacos",
-  "via": "openverse",
-  "candidates": []
+  "query": "tilapia tacos",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/81/Red_Lobster_meal_%286928178772%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Red Lobster meal (6928178772).jpg",
+    "creator": "David Blaikie from Hampshire, UK",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Red_Lobster_meal_(6928178772).jpg",
+    "w": 1024,
+    "h": 768
+   }
+  ],
+  "retried": true
  },
  "veracruz_cod": {
   "name": "Veracruz-style cod with tomatoes and olives",
   "query": "Veracruz cod",
-  "via": "openverse",
-  "candidates": []
+  "via": "commons",
+  "candidates": [],
+  "retried": true
  },
  "moqueca_shrimp_stew": {
   "name": "Brazilian-style shrimp and coconut stew",
@@ -9899,9 +10862,10 @@
  },
  "tortang_talong": {
   "name": "Filipino eggplant omelets (tortang talong)",
-  "query": "Filipino eggplant omelets",
-  "via": "openverse",
-  "candidates": []
+  "query": "eggplant omelets",
+  "via": "commons",
+  "candidates": [],
+  "retried": true
  },
  "gado_gado_peanut": {
   "name": "Gado-gado with peanut sauce",
@@ -10238,9 +11202,115 @@
  },
  "miso_eggplant_edamame_bowls": {
   "name": "Miso-glazed eggplant and edamame rice bowls",
-  "query": "Miso-glazed eggplant and edamame rice bowls",
-  "via": "openverse",
-  "candidates": []
+  "query": "rice bowls",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Burritos_%26_Rice_Bowls_food_cart_by_the_University_of_Oregon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Burritos & Rice Bowls food cart by the University of Oregon.jpg",
+    "creator": "Rick Obst",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Burritos_%26_Rice_Bowls_food_cart_by_the_University_of_Oregon.jpg",
+    "w": 1066,
+    "h": 1600
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/HK_Sheung_Wan_Jervois_Street_Fast_Food_restaurant_Curry_Rice_Desh_tablespoon_Chinese_soup_31-Aug-2012.JPG/1280px-HK_Sheung_Wan_Jervois_Street_Fast_Food_restaurant_Curry_Rice_Desh_tablespoon_Chinese_soup_31-Aug-2012.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "HK Sheung Wan Jervois Street Fast Food restaurant Curry Rice Desh tablespoon Chinese soup 31-Aug-2012.JPG",
+    "creator": "Sso0222Wcafes",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_Sheung_Wan_Jervois_Street_Fast_Food_restaurant_Curry_Rice_Desh_tablespoon_Chinese_soup_31-Aug-2012.JPG",
+    "w": 2592,
+    "h": 1944
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_03.jpg/1280px-HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "HK 北角 North Point 長康街 Cheung Hong Street 明星海鮮酒家 Star Seafood Restaurant food white rice night March 2019 SSG 03.jpg",
+    "creator": "KM francois Georges Pierre",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_03.jpg",
+    "w": 2448,
+    "h": 3264
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_chicken.jpg/1280px-HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_chicken.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "HK 北角 North Point 長康街 Cheung Hong Street 明星海鮮酒家 Star Seafood Restaurant food white rice night March 2019 SSG chicken.jpg",
+    "creator": "KM francois Georges Pierre",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_chicken.jpg",
+    "w": 2448,
+    "h": 3264
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_%E7%99%BD%E9%A3%AF_white_rice_night_March_2019_SSG_01.jpg/1280px-HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_%E7%99%BD%E9%A3%AF_white_rice_night_March_2019_SSG_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "HK 北角 North Point 長康街 Cheung Hong Street 明星海鮮酒家 Star Seafood Restaurant food 白飯 white rice night March 2019 SSG 01.jpg",
+    "creator": "KM francois Georges Pierre",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_%E7%99%BD%E9%A3%AF_white_rice_night_March_2019_SSG_01.jpg",
+    "w": 2448,
+    "h": 3264
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Prawn_fried_rice_shrimp_bowls.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Prawn fried rice shrimp bowls.jpg",
+    "creator": "Jon Sullivan",
+    "creator_url": null,
+    "license": "pdm",
+    "license_version": "",
+    "license_url": null,
+    "page": "https://commons.wikimedia.org/wiki/File:Prawn_fried_rice_shrimp_bowls.jpg",
+    "w": 1000,
+    "h": 750
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/RICE_BOWL.jpg/1280px-RICE_BOWL.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "RICE BOWL.jpg",
+    "creator": "Vradnyaprmth",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:RICE_BOWL.jpg",
+    "w": 5184,
+    "h": 3456
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Rice_9322459894.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Rice 9322459894.jpg",
+    "creator": "Charles Haynes",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Rice_9322459894.jpg",
+    "w": 1024,
+    "h": 683
+   }
+  ],
+  "retried": true
  },
  "cold_sesame_soba_edamame": {
   "name": "Cold sesame soba with edamame",
@@ -12106,9 +13176,115 @@
  },
  "char_siu_pork_tenderloin": {
   "name": "Char siu-style pork tenderloin",
-  "query": "Char siu pork tenderloin",
-  "via": "openverse",
-  "candidates": []
+  "query": "pork tenderloin",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/2022_Indianapolis_500_-_Sarah_Stierch_01.jpg/1280px-2022_Indianapolis_500_-_Sarah_Stierch_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "2022 Indianapolis 500 - Sarah Stierch 01.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2022_Indianapolis_500_-_Sarah_Stierch_01.jpg",
+    "w": 1414,
+    "h": 1531
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/2024_Indianapolis_500_-_Sarah_Stierch_18.jpg/1280px-2024_Indianapolis_500_-_Sarah_Stierch_18.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "2024 Indianapolis 500 - Sarah Stierch 18.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:2024_Indianapolis_500_-_Sarah_Stierch_18.jpg",
+    "w": 2375,
+    "h": 3167
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Braised_pork_tenderloin_medallions.jpg/1280px-Braised_pork_tenderloin_medallions.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Braised pork tenderloin medallions.jpg",
+    "creator": "CNEcija12345",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Braised_pork_tenderloin_medallions.jpg",
+    "w": 3309,
+    "h": 2779
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Breaded_pork_tenderloin_%2818282835023%29.jpg/1280px-Breaded_pork_tenderloin_%2818282835023%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Breaded pork tenderloin (18282835023).jpg",
+    "creator": "jeffreyw",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Breaded_pork_tenderloin_(18282835023).jpg",
+    "w": 4320,
+    "h": 2861
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Pork_tenderloin_%2833508850093%29.jpg/1280px-Pork_tenderloin_%2833508850093%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Pork tenderloin (33508850093).jpg",
+    "creator": "Jim  Lukach",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pork_tenderloin_(33508850093).jpg",
+    "w": 6000,
+    "h": 3376
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Pork_tenderloin_dish.png/1280px-Pork_tenderloin_dish.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Pork tenderloin dish.png",
+    "creator": "User:Ɱ",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pork_tenderloin_dish.png",
+    "w": 4008,
+    "h": 2551
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Pork_tenderloin_with_brandy_and_mirto_%2832330684303%29.jpg/1280px-Pork_tenderloin_with_brandy_and_mirto_%2832330684303%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Pork tenderloin with brandy and mirto (32330684303).jpg",
+    "creator": "Luca Nebuloni",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pork_tenderloin_with_brandy_and_mirto_(32330684303).jpg",
+    "w": 5184,
+    "h": 3456
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Roast_pork_tenderloin%2C_steamed_broccolini%2C_and_macaroni_with_Pomodoro_sauce_%E8%B1%9A%E3%83%86%E3%83%B3%E3%83%80%E3%83%BC%E3%83%AD%E3%82%A4%E3%83%B3%E3%81%AE%E3%83%AD%E3%83%BC%E3%82%B9%E3%83%88%E3%80%81%E3%83%96%E3%83%AD%E3%83%83%E3%82%B3%E3%83%AA%E3%83%BC%E3%83%8B%E3%80%81%E3%83%9E%E3%82%AB%E3%83%AD%E3%83%8B%E3%81%AE%E3%83%9D%E3%83%A2%E3%83%89%E3%83%BC%E3%83%AD%E3%82%BD%E3%83%BC%E3%82%B9.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Roast pork tenderloin, steamed broccolini, and macaroni with Pomodoro sauce 豚テンダーロインのロースト、ブロッコリーニ、マカロニのポモドーロソース.jpg",
+    "creator": "naotakem",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Roast_pork_tenderloin,_steamed_broccolini,_and_macaroni_with_Pomodoro_sauce_%E8%B1%9A%E3%83%86%E3%83%B3%E3%83%80%E3%83%BC%E3%83%AD%E3%82%A4%E3%83%B3%E3%81%AE%E3%83%AD%E3%83%BC%E3%82%B9%E3%83%88%E3%80%81%E3%83%96%E3%83%AD%E3%83%83%E3%82%B3%E3%83%AA%E3%83%BC%E3%83%8B%E3%80%81%E3%83%9E%E3%82%AB%E3%83%AD%E3%83%8B%E3%81%AE%E3%83%9D%E3%83%A2%E3%83%89%E3%83%BC%E3%83%AD%E3%82%BD%E3%83%BC%E3%82%B9.jpg",
+    "w": 1080,
+    "h": 1080
+   }
+  ],
+  "retried": true
  },
  "sichuan_green_beans_pork": {
   "name": "Sichuan-style green beans with pork",
@@ -12223,9 +13399,115 @@
  },
  "vietnamese_caramel_pork_bowls": {
   "name": "Vietnamese caramel pork rice bowls",
-  "query": "Vietnamese caramel pork rice bowls",
-  "via": "openverse",
-  "candidates": []
+  "query": "rice bowls",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Burritos_%26_Rice_Bowls_food_cart_by_the_University_of_Oregon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Burritos & Rice Bowls food cart by the University of Oregon.jpg",
+    "creator": "Rick Obst",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Burritos_%26_Rice_Bowls_food_cart_by_the_University_of_Oregon.jpg",
+    "w": 1066,
+    "h": 1600
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/HK_Sheung_Wan_Jervois_Street_Fast_Food_restaurant_Curry_Rice_Desh_tablespoon_Chinese_soup_31-Aug-2012.JPG/1280px-HK_Sheung_Wan_Jervois_Street_Fast_Food_restaurant_Curry_Rice_Desh_tablespoon_Chinese_soup_31-Aug-2012.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "HK Sheung Wan Jervois Street Fast Food restaurant Curry Rice Desh tablespoon Chinese soup 31-Aug-2012.JPG",
+    "creator": "Sso0222Wcafes",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_Sheung_Wan_Jervois_Street_Fast_Food_restaurant_Curry_Rice_Desh_tablespoon_Chinese_soup_31-Aug-2012.JPG",
+    "w": 2592,
+    "h": 1944
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_03.jpg/1280px-HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "HK 北角 North Point 長康街 Cheung Hong Street 明星海鮮酒家 Star Seafood Restaurant food white rice night March 2019 SSG 03.jpg",
+    "creator": "KM francois Georges Pierre",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_03.jpg",
+    "w": 2448,
+    "h": 3264
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_chicken.jpg/1280px-HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_chicken.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "HK 北角 North Point 長康街 Cheung Hong Street 明星海鮮酒家 Star Seafood Restaurant food white rice night March 2019 SSG chicken.jpg",
+    "creator": "KM francois Georges Pierre",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_chicken.jpg",
+    "w": 2448,
+    "h": 3264
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_%E7%99%BD%E9%A3%AF_white_rice_night_March_2019_SSG_01.jpg/1280px-HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_%E7%99%BD%E9%A3%AF_white_rice_night_March_2019_SSG_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "HK 北角 North Point 長康街 Cheung Hong Street 明星海鮮酒家 Star Seafood Restaurant food 白飯 white rice night March 2019 SSG 01.jpg",
+    "creator": "KM francois Georges Pierre",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_%E7%99%BD%E9%A3%AF_white_rice_night_March_2019_SSG_01.jpg",
+    "w": 2448,
+    "h": 3264
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Prawn_fried_rice_shrimp_bowls.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Prawn fried rice shrimp bowls.jpg",
+    "creator": "Jon Sullivan",
+    "creator_url": null,
+    "license": "pdm",
+    "license_version": "",
+    "license_url": null,
+    "page": "https://commons.wikimedia.org/wiki/File:Prawn_fried_rice_shrimp_bowls.jpg",
+    "w": 1000,
+    "h": 750
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/RICE_BOWL.jpg/1280px-RICE_BOWL.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "RICE BOWL.jpg",
+    "creator": "Vradnyaprmth",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:RICE_BOWL.jpg",
+    "w": 5184,
+    "h": 3456
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Rice_9322459894.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Rice 9322459894.jpg",
+    "creator": "Charles Haynes",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Rice_9322459894.jpg",
+    "w": 1024,
+    "h": 683
+   }
+  ],
+  "retried": true
  },
  "ants_climbing_tree": {
   "name": "Ants climbing a tree (pork and rice noodles)",
@@ -12647,9 +13929,115 @@
  },
  "turkey_larb_lettuce_wraps": {
   "name": "Turkey larb lettuce wraps",
-  "query": "Turkey larb lettuce wraps",
-  "via": "openverse",
-  "candidates": []
+  "query": "lettuce wraps",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Ginger_Soy_Chicken_Lettuce_Wraps_with_WonTon_%284339390199%29.jpg/1280px-Ginger_Soy_Chicken_Lettuce_Wraps_with_WonTon_%284339390199%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Ginger Soy Chicken Lettuce Wraps with WonTon (4339390199).jpg",
+    "creator": "Vegan Feast Catering",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Ginger_Soy_Chicken_Lettuce_Wraps_with_WonTon_(4339390199).jpg",
+    "w": 2592,
+    "h": 3456
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Lettuce_Wraps_%284104199843%29.jpg/1280px-Lettuce_Wraps_%284104199843%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Lettuce Wraps (4104199843).jpg",
+    "creator": "Vegan Feast Catering",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lettuce_Wraps_(4104199843).jpg",
+    "w": 3456,
+    "h": 2592
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Lettuce_Wraps_%284104199851%29.jpg/1280px-Lettuce_Wraps_%284104199851%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Lettuce Wraps (4104199851).jpg",
+    "creator": "Vegan Feast Catering",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lettuce_Wraps_(4104199851).jpg",
+    "w": 3456,
+    "h": 2592
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Lettuce_Wraps_%284104199855%29.jpg/1280px-Lettuce_Wraps_%284104199855%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Lettuce Wraps (4104199855).jpg",
+    "creator": "Vegan Feast Catering",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lettuce_Wraps_(4104199855).jpg",
+    "w": 3456,
+    "h": 2592
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Lettuce_Wraps_%284104199873%29.jpg/1280px-Lettuce_Wraps_%284104199873%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Lettuce Wraps (4104199873).jpg",
+    "creator": "Vegan Feast Catering",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lettuce_Wraps_(4104199873).jpg",
+    "w": 3456,
+    "h": 2592
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Lettuce_wrap_with_roast_pork_and_kimchi_slaw.jpg/1280px-Lettuce_wrap_with_roast_pork_and_kimchi_slaw.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Lettuce wrap with roast pork and kimchi slaw.jpg",
+    "creator": "Jeff Kays",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lettuce_wrap_with_roast_pork_and_kimchi_slaw.jpg",
+    "w": 2057,
+    "h": 1536
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Lettuce_wraps_%288477450648%29.jpg/1280px-Lettuce_wraps_%288477450648%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Lettuce wraps (8477450648).jpg",
+    "creator": "Jen Arrr",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lettuce_wraps_(8477450648).jpg",
+    "w": 3264,
+    "h": 2448
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Liat_Portal_for_Foodie_Disorder_-_Hamburger_lettuce_wrap_with_ptitim.jpg/1280px-Liat_Portal_for_Foodie_Disorder_-_Hamburger_lettuce_wrap_with_ptitim.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Liat Portal for Foodie Disorder - Hamburger lettuce wrap with ptitim.jpg",
+    "creator": "HaJunkiyada",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Hamburger_lettuce_wrap_with_ptitim.jpg",
+    "w": 3024,
+    "h": 4032
+   }
+  ],
+  "retried": true
  },
  "miso_salmon_bok_choy": {
   "name": "Miso-glazed salmon with bok choy",
@@ -12921,9 +14309,115 @@
  },
  "tuna_mayo_rice_bowls": {
   "name": "Japanese tuna mayo rice bowls",
-  "query": "Japanese tuna mayo rice bowls",
-  "via": "openverse",
-  "candidates": []
+  "query": "rice bowls",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Burritos_%26_Rice_Bowls_food_cart_by_the_University_of_Oregon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Burritos & Rice Bowls food cart by the University of Oregon.jpg",
+    "creator": "Rick Obst",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Burritos_%26_Rice_Bowls_food_cart_by_the_University_of_Oregon.jpg",
+    "w": 1066,
+    "h": 1600
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/HK_Sheung_Wan_Jervois_Street_Fast_Food_restaurant_Curry_Rice_Desh_tablespoon_Chinese_soup_31-Aug-2012.JPG/1280px-HK_Sheung_Wan_Jervois_Street_Fast_Food_restaurant_Curry_Rice_Desh_tablespoon_Chinese_soup_31-Aug-2012.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "HK Sheung Wan Jervois Street Fast Food restaurant Curry Rice Desh tablespoon Chinese soup 31-Aug-2012.JPG",
+    "creator": "Sso0222Wcafes",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_Sheung_Wan_Jervois_Street_Fast_Food_restaurant_Curry_Rice_Desh_tablespoon_Chinese_soup_31-Aug-2012.JPG",
+    "w": 2592,
+    "h": 1944
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_03.jpg/1280px-HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "HK 北角 North Point 長康街 Cheung Hong Street 明星海鮮酒家 Star Seafood Restaurant food white rice night March 2019 SSG 03.jpg",
+    "creator": "KM francois Georges Pierre",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_03.jpg",
+    "w": 2448,
+    "h": 3264
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_chicken.jpg/1280px-HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_chicken.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "HK 北角 North Point 長康街 Cheung Hong Street 明星海鮮酒家 Star Seafood Restaurant food white rice night March 2019 SSG chicken.jpg",
+    "creator": "KM francois Georges Pierre",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_white_rice_night_March_2019_SSG_chicken.jpg",
+    "w": 2448,
+    "h": 3264
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_%E7%99%BD%E9%A3%AF_white_rice_night_March_2019_SSG_01.jpg/1280px-HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_%E7%99%BD%E9%A3%AF_white_rice_night_March_2019_SSG_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "HK 北角 North Point 長康街 Cheung Hong Street 明星海鮮酒家 Star Seafood Restaurant food 白飯 white rice night March 2019 SSG 01.jpg",
+    "creator": "KM francois Georges Pierre",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_%E5%8C%97%E8%A7%92_North_Point_%E9%95%B7%E5%BA%B7%E8%A1%97_Cheung_Hong_Street_%E6%98%8E%E6%98%9F%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_Star_Seafood_Restaurant_food_%E7%99%BD%E9%A3%AF_white_rice_night_March_2019_SSG_01.jpg",
+    "w": 2448,
+    "h": 3264
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Prawn_fried_rice_shrimp_bowls.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Prawn fried rice shrimp bowls.jpg",
+    "creator": "Jon Sullivan",
+    "creator_url": null,
+    "license": "pdm",
+    "license_version": "",
+    "license_url": null,
+    "page": "https://commons.wikimedia.org/wiki/File:Prawn_fried_rice_shrimp_bowls.jpg",
+    "w": 1000,
+    "h": 750
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/RICE_BOWL.jpg/1280px-RICE_BOWL.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "RICE BOWL.jpg",
+    "creator": "Vradnyaprmth",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:RICE_BOWL.jpg",
+    "w": 5184,
+    "h": 3456
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Rice_9322459894.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Rice 9322459894.jpg",
+    "creator": "Charles Haynes",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Rice_9322459894.jpg",
+    "w": 1024,
+    "h": 683
+   }
+  ],
+  "retried": true
  },
  "shrimp_pineapple_fried_rice": {
   "name": "Shrimp and pineapple fried rice",
@@ -13836,9 +15330,115 @@
  },
  "eggplant_chickpea_curry": {
   "name": "Roasted eggplant and chickpea curry",
-  "query": "Roasted eggplant and chickpea curry",
-  "via": "openverse",
-  "candidates": []
+  "query": "chickpea curry",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Alu_Chana_%28Potato_%26_Chickpea_Curry%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Alu Chana (Potato & Chickpea Curry).jpg",
+    "creator": "SristiAwasthi21",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Alu_Chana_(Potato_%26_Chickpea_Curry).jpg",
+    "w": 900,
+    "h": 1600
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Bhatura_with_Chickpea_Curry.jpg/1280px-Bhatura_with_Chickpea_Curry.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Bhatura with Chickpea Curry.jpg",
+    "creator": "Vanshiikaa",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Bhatura_with_Chickpea_Curry.jpg",
+    "w": 4608,
+    "h": 1988
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Chapati_with_Chana_Curry.jpg/1280px-Chapati_with_Chana_Curry.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chapati with Chana Curry.jpg",
+    "creator": "Gaurav Dhwaj Khadka",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chapati_with_Chana_Curry.jpg",
+    "w": 3024,
+    "h": 4032
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Chickpea_Curry_%2857189%29.jpg/1280px-Chickpea_Curry_%2857189%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chickpea Curry (57189).jpg",
+    "creator": "Gaurav Dhwaj Khadka",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chickpea_Curry_(57189).jpg",
+    "w": 3072,
+    "h": 4096
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Chickpea_Curry_-_Kolkata_2011-03-05_1910.JPG/1280px-Chickpea_Curry_-_Kolkata_2011-03-05_1910.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chickpea Curry - Kolkata 2011-03-05 1910.JPG",
+    "creator": "Biswarup Ganguly",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chickpea_Curry_-_Kolkata_2011-03-05_1910.JPG",
+    "w": 4288,
+    "h": 2848
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Chickpea_curry.jpg/1280px-Chickpea_curry.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chickpea curry.jpg",
+    "creator": "Gaurav Dhwaj Khadka",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chickpea_curry.jpg",
+    "w": 3024,
+    "h": 4032
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Chickpea_curry_on_rotini%2C_with_corn%2C_hot_mixed_Indian_pickles%2C_peanuts%2C_curry_powder%2C_and_black_pepper_-_Massachusetts.jpg/1280px-Chickpea_curry_on_rotini%2C_with_corn%2C_hot_mixed_Indian_pickles%2C_peanuts%2C_curry_powder%2C_and_black_pepper_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chickpea curry on rotini, with corn, hot mixed Indian pickles, peanuts, curry powder, and black pepper - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Chickpea_curry_on_rotini,_with_corn,_hot_mixed_Indian_pickles,_peanuts,_curry_powder,_and_black_pepper_-_Massachusetts.jpg",
+    "w": 1950,
+    "h": 1951
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Chickpeas_Curry.jpg/1280px-Chickpeas_Curry.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chickpeas Curry.jpg",
+    "creator": "Gaurav Dhwaj Khadka",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chickpeas_Curry.jpg",
+    "w": 3264,
+    "h": 2448
+   }
+  ],
+  "retried": true
  },
  "vegetable_biryani_cashews": {
   "name": "Vegetable biryani-style rice with cashews",
@@ -13959,9 +15559,115 @@
  },
  "moroccan_sweet_potato_chickpea_stew": {
   "name": "Moroccan-spiced sweet potato and chickpea stew",
-  "query": "Moroccan-spiced sweet potato and chickpea stew",
+  "query": "chickpea stew",
   "via": "commons",
-  "candidates": []
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Chorizo_stew_with_salad.jpg/1280px-Chorizo_stew_with_salad.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chorizo stew with salad.jpg",
+    "creator": "Iijjccoo",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chorizo_stew_with_salad.jpg",
+    "w": 2592,
+    "h": 1944
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Curried_cauliflower_and_chickpea_stew.jpg/1280px-Curried_cauliflower_and_chickpea_stew.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Curried cauliflower and chickpea stew.jpg",
+    "creator": "Jim Reynolds from Cleveland, USA",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Curried_cauliflower_and_chickpea_stew.jpg",
+    "w": 3648,
+    "h": 2736
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/53/Garbanzos_con_gambas.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Garbanzos con gambas.jpeg",
+    "creator": "Xemenendura",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Garbanzos_con_gambas.jpeg",
+    "w": 1194,
+    "h": 1070
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Highlander_stew.jpg/1280px-Highlander_stew.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Highlander stew.jpg",
+    "creator": "Jorge Sanz",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Highlander_stew.jpg",
+    "w": 1536,
+    "h": 1536
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Liat_Portal_for_Foodie_Disorder_-_Hamin_%28Cholent%29_cooked_overnight_for_Shabbat.jpg/1280px-Liat_Portal_for_Foodie_Disorder_-_Hamin_%28Cholent%29_cooked_overnight_for_Shabbat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Liat Portal for Foodie Disorder - Hamin (Cholent) cooked overnight for Shabbat.jpg",
+    "creator": "HaJunkiyada",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Hamin_(Cholent)_cooked_overnight_for_Shabbat.jpg",
+    "w": 3024,
+    "h": 4032
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Moroccan_Chickpea_and_Vegetable_Stew_%286750034613%29.jpg/1280px-Moroccan_Chickpea_and_Vegetable_Stew_%286750034613%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Moroccan Chickpea and Vegetable Stew (6750034613).jpg",
+    "creator": "Jennifer from Vancouver, Canada",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Moroccan_Chickpea_and_Vegetable_Stew_(6750034613).jpg",
+    "w": 1800,
+    "h": 1200
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Nohut_yahni_and_bulgur.jpg/1280px-Nohut_yahni_and_bulgur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Nohut yahni and bulgur.jpg",
+    "creator": "E4024",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Nohut_yahni_and_bulgur.jpg",
+    "w": 2560,
+    "h": 1920
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Olla_gitana.jpg/1280px-Olla_gitana.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Olla gitana.jpg",
+    "creator": "Retama",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "page": "https://commons.wikimedia.org/wiki/File:Olla_gitana.jpg",
+    "w": 2592,
+    "h": 1944
+   }
+  ],
+  "retried": true
  },
  "kuku_sabzi_herb_frittata": {
   "name": "Persian-inspired herb frittata (kuku sabzi)",
@@ -14585,21 +16291,339 @@
  },
  "chapli_beef_patties": {
   "name": "Chapli-style spiced beef patties",
-  "query": "Chapli spiced beef patties",
+  "query": "beef patties",
   "via": "commons",
-  "candidates": []
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/2022-03-12_19_16_00_A_heated_Hungry-Man_Grilled_Beef_Patty_meal_%28beef_patties%2C_beer_gravy%2C_mashed_potatoes_and_mixed_vegetables%29_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "2022-03-12 19 16 00 A heated Hungry-Man Grilled Beef Patty meal (beef patties, beer gravy, mashed potatoes and mixed vegetables) in the Franklin Farm section of Oak Hill, Fairfax County, Virginia.jpg",
+    "creator": "Famartin",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2022-03-12_19_16_00_A_heated_Hungry-Man_Grilled_Beef_Patty_meal_(beef_patties,_beer_gravy,_mashed_potatoes_and_mixed_vegetables)_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg",
+    "w": 4032,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/2022-03-12_19_16_45_One_of_the_beef_patties_of_a_heated_Hungry-Man_Grilled_Beef_Patty_meal_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "2022-03-12 19 16 45 One of the beef patties of a heated Hungry-Man Grilled Beef Patty meal in the Franklin Farm section of Oak Hill, Fairfax County, Virginia.jpg",
+    "creator": "Famartin",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2022-03-12_19_16_45_One_of_the_beef_patties_of_a_heated_Hungry-Man_Grilled_Beef_Patty_meal_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg",
+    "w": 4032,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Beef_Burger%2C_Inglewood_Hotel%2C_Western_Australia%2C_2025_%2801%29.jpg/1280px-Beef_Burger%2C_Inglewood_Hotel%2C_Western_Australia%2C_2025_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Beef Burger, Inglewood Hotel, Western Australia, 2025 (01).jpg",
+    "creator": "Bahnfrend",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Beef_Burger,_Inglewood_Hotel,_Western_Australia,_2025_(01).jpg",
+    "w": 3481,
+    "h": 2607
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Burger_King_double_cheeseburger.jpg/1280px-Burger_King_double_cheeseburger.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Burger King double cheeseburger.jpg",
+    "creator": "Luke",
+    "creator_url": null,
+    "license": "pdm",
+    "license_version": "",
+    "license_url": null,
+    "page": "https://commons.wikimedia.org/wiki/File:Burger_King_double_cheeseburger.jpg",
+    "w": 2592,
+    "h": 1944
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Convenience_food_hamburger_opened_up.jpg/1280px-Convenience_food_hamburger_opened_up.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Convenience food hamburger opened up.jpg",
+    "creator": "JIP",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Convenience_food_hamburger_opened_up.jpg",
+    "w": 4608,
+    "h": 3456
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Cultivated_hamburger%2C_2013.jpg/1280px-Cultivated_hamburger%2C_2013.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Cultivated hamburger, 2013.jpg",
+    "creator": "Mosa Meat",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Cultivated_hamburger,_2013.jpg",
+    "w": 3000,
+    "h": 3000
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Filipino_Beef_Burger.jpg/1280px-Filipino_Beef_Burger.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Filipino Beef Burger.jpg",
+    "creator": "Anne Molina",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Filipino_Beef_Burger.jpg",
+    "w": 4000,
+    "h": 3000
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Fisherman%E2%80%99s_Bistro%2C_Hamburger%2C_Finncanopus%2C_20240215_-_38.jpg/1280px-Fisherman%E2%80%99s_Bistro%2C_Hamburger%2C_Finncanopus%2C_20240215_-_38.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Fisherman’s Bistro, Hamburger, Finncanopus, 20240215 - 38.jpg",
+    "creator": "AleWi",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Fisherman%E2%80%99s_Bistro,_Hamburger,_Finncanopus,_20240215_-_38.jpg",
+    "w": 4080,
+    "h": 3072
+   }
+  ],
+  "retried": true
  },
  "turkey_kofta_curry": {
   "name": "Turkey kofta curry",
-  "query": "Turkey kofta curry",
+  "query": "kofta curry",
   "via": "commons",
-  "candidates": []
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/FISH_KOFTA-BARPETA-ASSAM-IMG_20200614_111154%281%29.jpg/1280px-FISH_KOFTA-BARPETA-ASSAM-IMG_20200614_111154%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "FISH KOFTA-BARPETA-ASSAM-IMG 20200614 111154(1).jpg",
+    "creator": "Anindita Hazarika156",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:FISH_KOFTA-BARPETA-ASSAM-IMG_20200614_111154(1).jpg",
+    "w": 4608,
+    "h": 3456
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Hara_chicken_kofta_curry.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Hara chicken kofta curry.jpg",
+    "creator": "Hrishikes",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Hara_chicken_kofta_curry.jpg",
+    "w": 720,
+    "h": 540
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Kofta_Curry_%28Spiced_Dumplings_in_Gravy%29.jpg/1280px-Kofta_Curry_%28Spiced_Dumplings_in_Gravy%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Kofta Curry (Spiced Dumplings in Gravy).jpg",
+    "creator": "SristiAwasthi21",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Kofta_Curry_(Spiced_Dumplings_in_Gravy).jpg",
+    "w": 1600,
+    "h": 900
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Lauki_Kofta.JPG/1280px-Lauki_Kofta.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Lauki Kofta.JPG",
+    "creator": "Ravi Talwar",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lauki_Kofta.JPG",
+    "w": 5184,
+    "h": 3456
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Lauki_Kofta_Curry.JPG/960px-Lauki_Kofta_Curry.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Lauki Kofta Curry.JPG",
+    "creator": "Nithajay",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lauki_Kofta_Curry.JPG",
+    "w": 1080,
+    "h": 1920
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/MalaiKofta.jpg/1280px-MalaiKofta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "MalaiKofta.jpg",
+    "creator": "Monali.mishra",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:MalaiKofta.jpg",
+    "w": 2664,
+    "h": 2664
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Malai_Kofta_Curry.jpg/1280px-Malai_Kofta_Curry.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Malai Kofta Curry.jpg",
+    "creator": "Mrudit161187",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Malai_Kofta_Curry.jpg",
+    "w": 3264,
+    "h": 2448
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Malai_kofta_with_masala_kulcha.jpg/1280px-Malai_kofta_with_masala_kulcha.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Malai kofta with masala kulcha.jpg",
+    "creator": "Zainabtanvi",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Malai_kofta_with_masala_kulcha.jpg",
+    "w": 1408,
+    "h": 1056
+   }
+  ],
+  "retried": true
  },
  "persian_chicken_eggplant_stew": {
   "name": "Persian-inspired chicken and eggplant tomato stew",
-  "query": "Persian-inspired chicken and eggplant tomato stew",
+  "query": "tomato stew",
   "via": "commons",
-  "candidates": []
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/93/800px-Rice_and_beans%2C_Hotel_in_Itatiaia.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "800px-Rice and beans, Hotel in Itatiaia.png",
+    "creator": "Jak",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "page": "https://commons.wikimedia.org/wiki/File:800px-Rice_and_beans,_Hotel_in_Itatiaia.png",
+    "w": 756,
+    "h": 600
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Fish_tomato_stew.jpg/1280px-Fish_tomato_stew.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Fish tomato stew.jpg",
+    "creator": "Bicanski on Pixnio",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Fish_tomato_stew.jpg",
+    "w": 3264,
+    "h": 2448
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Jollof_rice_and_beans_with_spinach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Jollof rice and beans with spinach.jpg",
+    "creator": "Halima Waziri",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Jollof_rice_and_beans_with_spinach.jpg",
+    "w": 1080,
+    "h": 1920
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Mexican_rice_and_beans_rotated.jpg/1280px-Mexican_rice_and_beans_rotated.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Mexican rice and beans rotated.jpg",
+    "creator": "Maryam S.",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Mexican_rice_and_beans_rotated.jpg",
+    "w": 3456,
+    "h": 2304
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Rice_and_Beans.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Rice and Beans.jpg",
+    "creator": "Lorena Galicia",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Rice_and_Beans.jpg",
+    "w": 1000,
+    "h": 448
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Rice_and_Beans_in_a_pot.jpg/1280px-Rice_and_Beans_in_a_pot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Rice and Beans in a pot.jpg",
+    "creator": "Zahraswaty",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Rice_and_Beans_in_a_pot.jpg",
+    "w": 1872,
+    "h": 4160
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Rice_and_Beans_with_Egg.jpg/1280px-Rice_and_Beans_with_Egg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Rice and Beans with Egg.jpg",
+    "creator": "Taoheedah",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Rice_and_Beans_with_Egg.jpg",
+    "w": 3264,
+    "h": 2448
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Rice_and_beans_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Rice and beans 01.jpg",
+    "creator": "Zahraswaty",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Rice_and_beans_01.jpg",
+    "w": 694,
+    "h": 1542
+   }
+  ],
+  "retried": true
  },
  "moroccan_chicken_olives_lemon": {
   "name": "Moroccan-style chicken with olives and lemon",
@@ -14714,15 +16738,227 @@
  },
  "slow_cooker_moroccan_beef_carrots": {
   "name": "Slow-cooker Moroccan-spiced beef and carrots",
-  "query": "Moroccan-spiced beef and carrots",
+  "query": "beef carrots",
   "via": "commons",
-  "candidates": []
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Beef%2C_avocado%2C_carrots%2C_mashed_potatoes%2C_and_sauted_celery_-_Massachusetts.jpg/1280px-Beef%2C_avocado%2C_carrots%2C_mashed_potatoes%2C_and_sauted_celery_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Beef, avocado, carrots, mashed potatoes, and sauted celery - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Beef,_avocado,_carrots,_mashed_potatoes,_and_sauted_celery_-_Massachusetts.jpg",
+    "w": 2914,
+    "h": 2914
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Beef%2C_carrots%2C_and_celery_for_Christmas_-_Massachusetts.jpg/1280px-Beef%2C_carrots%2C_and_celery_for_Christmas_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Beef, carrots, and celery for Christmas - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Beef,_carrots,_and_celery_for_Christmas_-_Massachusetts.jpg",
+    "w": 4032,
+    "h": 2511
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/12/Beef_-stew_with_-carrots%2C_-mushrooms%2C_-peas%2C_and_-potatoes_served_in_a_-sourdough_-bread_bowl.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Beef -stew with -carrots, -mushrooms, -peas, and -potatoes served in a -sourdough -bread bowl.jpg",
+    "creator": "L.A. Foodie",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Beef_-stew_with_-carrots,_-mushrooms,_-peas,_and_-potatoes_served_in_a_-sourdough_-bread_bowl.jpg",
+    "w": 640,
+    "h": 640
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Beef_in_ginger_sauce%2C_chicken%2C_shrimp%2C_bell_peppers%2C_carrots%2C_and_celery%2C_atop_fried_shredded_potato_-_Massachusetts.jpg/1280px-Beef_in_ginger_sauce%2C_chicken%2C_shrimp%2C_bell_peppers%2C_carrots%2C_and_celery%2C_atop_fried_shredded_potato_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Beef in ginger sauce, chicken, shrimp, bell peppers, carrots, and celery, atop fried shredded potato - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Beef_in_ginger_sauce,_chicken,_shrimp,_bell_peppers,_carrots,_and_celery,_atop_fried_shredded_potato_-_Massachusetts.jpg",
+    "w": 3024,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Beef_stew_with_carrots_and_celery_-_Massachusetts.jpg/1280px-Beef_stew_with_carrots_and_celery_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Beef stew with carrots and celery - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Beef_stew_with_carrots_and_celery_-_Massachusetts.jpg",
+    "w": 2939,
+    "h": 2941
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Beef_stew_with_potatoes%2C_carrots%2C_TVP%2C_cheddar_cheese%2C_and_black_pepper%2C_plus_buttered_toast_-_Massachusetts.jpg/1280px-Beef_stew_with_potatoes%2C_carrots%2C_TVP%2C_cheddar_cheese%2C_and_black_pepper%2C_plus_buttered_toast_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Beef stew with potatoes, carrots, TVP, cheddar cheese, and black pepper, plus buttered toast - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Beef_stew_with_potatoes,_carrots,_TVP,_cheddar_cheese,_and_black_pepper,_plus_buttered_toast_-_Massachusetts.jpg",
+    "w": 2756,
+    "h": 2756
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Beef_stew_with_potatoes%2C_carrots%2C_and_peas%2C_plus_German_three-grain_bread_with_butter_and_salt_-_Massachusetts.jpg/1280px-Beef_stew_with_potatoes%2C_carrots%2C_and_peas%2C_plus_German_three-grain_bread_with_butter_and_salt_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Beef stew with potatoes, carrots, and peas, plus German three-grain bread with butter and salt - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Beef_stew_with_potatoes,_carrots,_and_peas,_plus_German_three-grain_bread_with_butter_and_salt_-_Massachusetts.jpg",
+    "w": 3382,
+    "h": 2246
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Beef_stew_with_potatoes%2C_carrots%2C_celery%2C_and_peas_-_Massachusetts.jpg/1280px-Beef_stew_with_potatoes%2C_carrots%2C_celery%2C_and_peas_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Beef stew with potatoes, carrots, celery, and peas - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Beef_stew_with_potatoes,_carrots,_celery,_and_peas_-_Massachusetts.jpg",
+    "w": 2358,
+    "h": 2358
+   }
+  ],
+  "retried": true
  },
  "cod_chraimeh_chickpeas": {
   "name": "North African spiced cod in tomato sauce",
-  "query": "North African spiced cod in tomato sauce",
+  "query": "tomato sauce",
   "via": "commons",
-  "candidates": []
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Ground_beef%2C_baked_tomatoes%2C_and_tomato_sauce_on_Taiwan_noodles_-_Massachusetts.jpg/1280px-Ground_beef%2C_baked_tomatoes%2C_and_tomato_sauce_on_Taiwan_noodles_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Ground beef, baked tomatoes, and tomato sauce on Taiwan noodles - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Ground_beef,_baked_tomatoes,_and_tomato_sauce_on_Taiwan_noodles_-_Massachusetts.jpg",
+    "w": 1993,
+    "h": 1993
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Ground_beef%2C_cherry_tomatoes%2C_tomato_sauce%2C_and_black_pepper_on_rotini_-_Massachusetts.jpg/1280px-Ground_beef%2C_cherry_tomatoes%2C_tomato_sauce%2C_and_black_pepper_on_rotini_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Ground beef, cherry tomatoes, tomato sauce, and black pepper on rotini - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Ground_beef,_cherry_tomatoes,_tomato_sauce,_and_black_pepper_on_rotini_-_Massachusetts.jpg",
+    "w": 2928,
+    "h": 2928
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Liat_Portal_for_Foodie_Disorder_-_Spaghetti_with_Tomato_Sauce.jpg/1280px-Liat_Portal_for_Foodie_Disorder_-_Spaghetti_with_Tomato_Sauce.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Liat Portal for Foodie Disorder - Spaghetti with Tomato Sauce.jpg",
+    "creator": "HaJunkiyada",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Spaghetti_with_Tomato_Sauce.jpg",
+    "w": 3024,
+    "h": 4032
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/LocalFolks_Foods_-_October_2023_-_Sarah_Stierch.jpg/1280px-LocalFolks_Foods_-_October_2023_-_Sarah_Stierch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "LocalFolks Foods - October 2023 - Sarah Stierch.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:LocalFolks_Foods_-_October_2023_-_Sarah_Stierch.jpg",
+    "w": 5712,
+    "h": 4284
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Pasta_sauce_%282997489359%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Pasta sauce (2997489359).jpg",
+    "creator": "Ginny",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pasta_sauce_(2997489359).jpg",
+    "w": 1152,
+    "h": 1728
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Pasta_sauce_ingredients.jpg/1280px-Pasta_sauce_ingredients.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Pasta sauce ingredients.jpg",
+    "creator": "Chad Miller from Orlando, Florida, US of A",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pasta_sauce_ingredients.jpg",
+    "w": 2048,
+    "h": 1536
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Stuffed_peppers_with_tomato_sauce_%28Pozna%C5%84%29.jpg/1280px-Stuffed_peppers_with_tomato_sauce_%28Pozna%C5%84%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Stuffed peppers with tomato sauce (Poznań).jpg",
+    "creator": "MOs810",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Stuffed_peppers_with_tomato_sauce_(Pozna%C5%84).jpg",
+    "w": 3456,
+    "h": 4608
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Tomato_cream_sauce_on_pasta_and_chicken.jpg/1280px-Tomato_cream_sauce_on_pasta_and_chicken.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Tomato cream sauce on pasta and chicken.jpg",
+    "creator": "Ginny from USA",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Tomato_cream_sauce_on_pasta_and_chicken.jpg",
+    "w": 1728,
+    "h": 1152
+   }
+  ],
+  "retried": true
  },
  "goan_coconut_fish_curry": {
   "name": "Goan-style coconut fish curry",
@@ -15025,9 +17261,76 @@
  },
  "hawawshi_beef_pitas": {
   "name": "Egyptian-style spiced beef stuffed pitas (hawawshi)",
-  "query": "Egyptian spiced beef stuffed pitas",
+  "query": "stuffed pitas",
   "via": "commons",
-  "candidates": []
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/ClyHell6943.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "ClyHell6943.JPG",
+    "creator": "ClyHell",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:ClyHell6943.JPG",
+    "w": 999,
+    "h": 749
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Clyhell6948.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Clyhell6948.JPG",
+    "creator": "ClyHell",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Clyhell6948.JPG",
+    "w": 999,
+    "h": 749
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Lamb-Stuffed_Capsicum_with_Rice_-_Oasis_Bakery_AUD13_%284822795277%29.jpg/1280px-Lamb-Stuffed_Capsicum_with_Rice_-_Oasis_Bakery_AUD13_%284822795277%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Lamb-Stuffed Capsicum with Rice - Oasis Bakery AUD13 (4822795277).jpg",
+    "creator": "Alpha from Melbourne, Australia",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lamb-Stuffed_Capsicum_with_Rice_-_Oasis_Bakery_AUD13_(4822795277).jpg",
+    "w": 2048,
+    "h": 1371
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Lamb-Stuffed_Capsicum_with_Rice_-_close-up_Oasis_Bakery_AUD13_%284822795179%29.jpg/1280px-Lamb-Stuffed_Capsicum_with_Rice_-_close-up_Oasis_Bakery_AUD13_%284822795179%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Lamb-Stuffed Capsicum with Rice - close-up Oasis Bakery AUD13 (4822795179).jpg",
+    "creator": "Alpha from Melbourne, Australia",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lamb-Stuffed_Capsicum_with_Rice_-_close-up_Oasis_Bakery_AUD13_(4822795179).jpg",
+    "w": 2048,
+    "h": 1371
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Sabich.jpg/1280px-Sabich.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Sabich.jpg",
+    "creator": "Gilabrand",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Sabich.jpg",
+    "w": 2592,
+    "h": 1944
+   }
+  ],
+  "retried": true
  },
  "slow_cooker_pulled_pork_sandwiches": {
   "name": "Slow cooker pulled pork sandwiches",
@@ -15436,9 +17739,115 @@
  },
  "slow_cooker_lentil_sloppy_joes": {
   "name": "Slow cooker lentil sloppy joes",
-  "query": "lentil sloppy joes",
+  "query": "sloppy joes",
   "via": "commons",
-  "candidates": []
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Bad_Waitress_Vegan_Sloppy_Joe_%2823526271476%29.jpg/1280px-Bad_Waitress_Vegan_Sloppy_Joe_%2823526271476%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Bad Waitress Vegan Sloppy Joe (23526271476).jpg",
+    "creator": "Tony Webster from Portland, Oregon",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Bad_Waitress_Vegan_Sloppy_Joe_(23526271476).jpg",
+    "w": 2410,
+    "h": 3031
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Geoff_Ostling_-_Heavily_Tattooed_Bear_%286861103991%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Geoff Ostling - Heavily Tattooed Bear (6861103991).jpg",
+    "creator": "Eva Rinaldi",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Geoff_Ostling_-_Heavily_Tattooed_Bear_(6861103991).jpg",
+    "w": 1000,
+    "h": 1500
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Geoff_Ostling_-_Heavily_Tattooed_Bear_%286861105873%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Geoff Ostling - Heavily Tattooed Bear (6861105873).jpg",
+    "creator": "Eva Rinaldi",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Geoff_Ostling_-_Heavily_Tattooed_Bear_(6861105873).jpg",
+    "w": 1000,
+    "h": 1500
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Geoff_Ostling_-_Heavily_Tattooed_Bear_%286861108279%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Geoff Ostling - Heavily Tattooed Bear (6861108279).jpg",
+    "creator": "Eva Rinaldi",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Geoff_Ostling_-_Heavily_Tattooed_Bear_(6861108279).jpg",
+    "w": 1000,
+    "h": 1500
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/de/Italian_%22Sloppy_Joe%22_-_meaty_spaghetti_sauce_on_toasted_garlic_bread_hamburger_buns_with_a_sprinkling_of_Pecorino_Romano._-leftovers_-sloppyjoes_%2815797815312%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Italian \"Sloppy Joe\" - meaty spaghetti sauce on toasted garlic bread hamburger buns with a sprinkling of Pecorino Romano. -leftovers -sloppyjoes (15797815312).jpg",
+    "creator": "Arnold Gatilao from Oakland, CA, USA",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Italian_%22Sloppy_Joe%22_-_meaty_spaghetti_sauce_on_toasted_garlic_bread_hamburger_buns_with_a_sprinkling_of_Pecorino_Romano._-leftovers_-sloppyjoes_(15797815312).jpg",
+    "w": 640,
+    "h": 640
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Millburn_Deli_Sloppy_Joes.jpg/1280px-Millburn_Deli_Sloppy_Joes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Millburn Deli Sloppy Joes.jpg",
+    "creator": "Matthewehoffman",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Millburn_Deli_Sloppy_Joes.jpg",
+    "w": 3264,
+    "h": 2448
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Mmm..._sloppy_joe_with_cheese_and_red_ripe_jalapeno_chilies_%287735939558%29.jpg/1280px-Mmm..._sloppy_joe_with_cheese_and_red_ripe_jalapeno_chilies_%287735939558%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Mmm... sloppy joe with cheese and red ripe jalapeno chilies (7735939558).jpg",
+    "creator": "jeffreyw",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Mmm..._sloppy_joe_with_cheese_and_red_ripe_jalapeno_chilies_(7735939558).jpg",
+    "w": 2047,
+    "h": 1356
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Our_Sloppy_Joe_sandwich_at_the_Maplewood_Deli_%26_Grille_in_New_Jersey.JPG/1280px-Our_Sloppy_Joe_sandwich_at_the_Maplewood_Deli_%26_Grille_in_New_Jersey.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Our Sloppy Joe sandwich at the Maplewood Deli & Grille in New Jersey.JPG",
+    "creator": "Tomwsulcer",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Our_Sloppy_Joe_sandwich_at_the_Maplewood_Deli_%26_Grille_in_New_Jersey.JPG",
+    "w": 1707,
+    "h": 1608
+   }
+  ],
+  "retried": true
  },
  "slow_cooker_honey_garlic_chicken": {
   "name": "Slow cooker honey garlic chicken",
@@ -15516,7 +17925,8 @@
   "name": "Slow cooker tortellini minestrone",
   "query": "tortellini minestrone",
   "via": "commons",
-  "candidates": []
+  "candidates": [],
+  "retried": true
  },
  "slow_cooker_red_beans_and_rice": {
   "name": "Slow cooker red beans and rice with kielbasa",
@@ -15899,9 +18309,115 @@
  },
  "grilled_maple_mustard_pork_tenderloin": {
   "name": "Grilled maple mustard pork tenderloin with sweet potatoes",
-  "query": "maple mustard pork tenderloin",
+  "query": "pork tenderloin",
   "via": "commons",
-  "candidates": []
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/2022_Indianapolis_500_-_Sarah_Stierch_01.jpg/1280px-2022_Indianapolis_500_-_Sarah_Stierch_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "2022 Indianapolis 500 - Sarah Stierch 01.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2022_Indianapolis_500_-_Sarah_Stierch_01.jpg",
+    "w": 1414,
+    "h": 1531
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/2024_Indianapolis_500_-_Sarah_Stierch_18.jpg/1280px-2024_Indianapolis_500_-_Sarah_Stierch_18.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "2024 Indianapolis 500 - Sarah Stierch 18.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:2024_Indianapolis_500_-_Sarah_Stierch_18.jpg",
+    "w": 2375,
+    "h": 3167
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Braised_pork_tenderloin_medallions.jpg/1280px-Braised_pork_tenderloin_medallions.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Braised pork tenderloin medallions.jpg",
+    "creator": "CNEcija12345",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Braised_pork_tenderloin_medallions.jpg",
+    "w": 3309,
+    "h": 2779
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Breaded_pork_tenderloin_%2818282835023%29.jpg/1280px-Breaded_pork_tenderloin_%2818282835023%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Breaded pork tenderloin (18282835023).jpg",
+    "creator": "jeffreyw",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Breaded_pork_tenderloin_(18282835023).jpg",
+    "w": 4320,
+    "h": 2861
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Pork_tenderloin_%2833508850093%29.jpg/1280px-Pork_tenderloin_%2833508850093%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Pork tenderloin (33508850093).jpg",
+    "creator": "Jim  Lukach",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pork_tenderloin_(33508850093).jpg",
+    "w": 6000,
+    "h": 3376
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Pork_tenderloin_dish.png/1280px-Pork_tenderloin_dish.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Pork tenderloin dish.png",
+    "creator": "User:Ɱ",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pork_tenderloin_dish.png",
+    "w": 4008,
+    "h": 2551
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Pork_tenderloin_with_brandy_and_mirto_%2832330684303%29.jpg/1280px-Pork_tenderloin_with_brandy_and_mirto_%2832330684303%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Pork tenderloin with brandy and mirto (32330684303).jpg",
+    "creator": "Luca Nebuloni",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pork_tenderloin_with_brandy_and_mirto_(32330684303).jpg",
+    "w": 5184,
+    "h": 3456
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Roast_pork_tenderloin%2C_steamed_broccolini%2C_and_macaroni_with_Pomodoro_sauce_%E8%B1%9A%E3%83%86%E3%83%B3%E3%83%80%E3%83%BC%E3%83%AD%E3%82%A4%E3%83%B3%E3%81%AE%E3%83%AD%E3%83%BC%E3%82%B9%E3%83%88%E3%80%81%E3%83%96%E3%83%AD%E3%83%83%E3%82%B3%E3%83%AA%E3%83%BC%E3%83%8B%E3%80%81%E3%83%9E%E3%82%AB%E3%83%AD%E3%83%8B%E3%81%AE%E3%83%9D%E3%83%A2%E3%83%89%E3%83%BC%E3%83%AD%E3%82%BD%E3%83%BC%E3%82%B9.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Roast pork tenderloin, steamed broccolini, and macaroni with Pomodoro sauce 豚テンダーロインのロースト、ブロッコリーニ、マカロニのポモドーロソース.jpg",
+    "creator": "naotakem",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Roast_pork_tenderloin,_steamed_broccolini,_and_macaroni_with_Pomodoro_sauce_%E8%B1%9A%E3%83%86%E3%83%B3%E3%83%80%E3%83%BC%E3%83%AD%E3%82%A4%E3%83%B3%E3%81%AE%E3%83%AD%E3%83%BC%E3%82%B9%E3%83%88%E3%80%81%E3%83%96%E3%83%AD%E3%83%83%E3%82%B3%E3%83%AA%E3%83%BC%E3%83%8B%E3%80%81%E3%83%9E%E3%82%AB%E3%83%AD%E3%83%8B%E3%81%AE%E3%83%9D%E3%83%A2%E3%83%89%E3%83%BC%E3%83%AD%E3%82%BD%E3%83%BC%E3%82%B9.jpg",
+    "w": 1080,
+    "h": 1080
+   }
+  ],
+  "retried": true
  },
  "grilled_vegetable_mozzarella_hoagies": {
   "name": "Grilled vegetable and mozzarella hoagies",
@@ -16708,9 +19224,37 @@
  },
  "baked_turkey_cheddar_sliders": {
   "name": "Baked turkey and cheddar sliders",
-  "query": "turkey and cheddar sliders",
+  "query": "cheddar sliders",
   "via": "commons",
-  "candidates": []
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Taco_Bell_Fritos_Beefy_Cheddar_Crunch_Wrap_Slider_%2817659155444%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Taco Bell Fritos Beefy Cheddar Crunch Wrap Slider (17659155444).jpg",
+    "creator": "Willis Lam",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Taco_Bell_Fritos_Beefy_Cheddar_Crunch_Wrap_Slider_(17659155444).jpg",
+    "w": 1200,
+    "h": 1600
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Tips_Roadside_-_Nov_2018_-_Stierch_01.jpg/1280px-Tips_Roadside_-_Nov_2018_-_Stierch_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Tips Roadside - Nov 2018 - Stierch 01.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Tips_Roadside_-_Nov_2018_-_Stierch_01.jpg",
+    "w": 3610,
+    "h": 3024
+   }
+  ],
+  "retried": true
  },
  "skillet_tuna_melts": {
   "name": "Skillet tuna melts",
@@ -17291,7 +19835,8 @@
   "name": "Stovetop mac and cheese with spinach and tomatoes",
   "query": "Stovetop mac and cheese",
   "via": "commons",
-  "candidates": []
+  "candidates": [],
+  "retried": true
  },
  "loaded_baked_potato_soup": {
   "name": "Loaded baked potato soup",
@@ -17517,9 +20062,24 @@
  },
  "cheesy_shrimp_and_grits": {
   "name": "Shrimp and cheesy grits",
-  "query": "Shrimp and cheesy grits",
+  "query": "cheesy grits",
   "via": "commons",
-  "candidates": []
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Breads_on_Oak_New_Orleans_Sept_2018_Cheesy_Grits.jpg/1280px-Breads_on_Oak_New_Orleans_Sept_2018_Cheesy_Grits.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Breads on Oak New Orleans Sept 2018 Cheesy Grits.jpg",
+    "creator": "Infrogmation of New Orleans",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Breads_on_Oak_New_Orleans_Sept_2018_Cheesy_Grits.jpg",
+    "w": 5184,
+    "h": 3888
+   }
+  ],
+  "retried": true
  },
  "chicken_and_sausage_jambalaya": {
   "name": "Chicken and sausage jambalaya",
@@ -18064,9 +20624,115 @@
  },
  "shrimp_asparagus_risotto": {
   "name": "Lemon shrimp and asparagus risotto",
-  "query": "Lemon shrimp and asparagus risotto",
+  "query": "asparagus risotto",
   "via": "commons",
-  "candidates": []
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Asparagus_Risotto_001.jpg/1280px-Asparagus_Risotto_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Asparagus Risotto 001.jpg",
+    "creator": "Katrin Morenz",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Asparagus_Risotto_001.jpg",
+    "w": 2816,
+    "h": 1880
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Asparagus_Risotto_002.jpg/1280px-Asparagus_Risotto_002.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Asparagus Risotto 002.jpg",
+    "creator": "Katrin Morenz",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Asparagus_Risotto_002.jpg",
+    "w": 2816,
+    "h": 1880
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/BV_Whiskey_Bar_and_Grill_-_April_2025_-_Sarah_Stierch_04.jpg/1280px-BV_Whiskey_Bar_and_Grill_-_April_2025_-_Sarah_Stierch_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "BV Whiskey Bar and Grill - April 2025 - Sarah Stierch 04.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:BV_Whiskey_Bar_and_Grill_-_April_2025_-_Sarah_Stierch_04.jpg",
+    "w": 4032,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/53/Chicken_Marsala_With_Risotto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Chicken Marsala With Risotto.jpg",
+    "creator": "IReallyLikeYorhshirePuddding",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_Marsala_With_Risotto.jpg",
+    "w": 1210,
+    "h": 883
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Citrus-marinated_Chicken_Breast.jpg/1280px-Citrus-marinated_Chicken_Breast.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Citrus-marinated Chicken Breast.jpg",
+    "creator": "HarshLight",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Citrus-marinated_Chicken_Breast.jpg",
+    "w": 4844,
+    "h": 3229
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Croustillant_de_risotto_aux_asperges.JPG/1280px-Croustillant_de_risotto_aux_asperges.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Croustillant de risotto aux asperges.JPG",
+    "creator": "Marianne Casamance",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Croustillant_de_risotto_aux_asperges.JPG",
+    "w": 4000,
+    "h": 3000
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Grilled_chicken_and_risotto.jpg/1280px-Grilled_chicken_and_risotto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Grilled chicken and risotto.jpg",
+    "creator": "Infrogmation of New Orleans",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Grilled_chicken_and_risotto.jpg",
+    "w": 5184,
+    "h": 3888
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Scallop_Dinner_-_Maddie%27s_Sail_Loft_%2829968907908%29.jpg/1280px-Scallop_Dinner_-_Maddie%27s_Sail_Loft_%2829968907908%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Scallop Dinner - Maddie's Sail Loft (29968907908).jpg",
+    "creator": "Haydn Blackey from Cardiff, Wales",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Scallop_Dinner_-_Maddie%27s_Sail_Loft_(29968907908).jpg",
+    "w": 3072,
+    "h": 4096
+   }
+  ],
+  "retried": true
  },
  "cod_tomato_olive_skillet": {
   "name": "Cod in tomato, olive and caper sauce",
@@ -18168,9 +20834,37 @@
  },
  "tuna_noodle_casserole": {
   "name": "Tuna noodle casserole",
-  "query": "Tuna noodle casserole",
+  "query": "noodle casserole",
   "via": "commons",
-  "candidates": []
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Kugel.jpg/1280px-Kugel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Kugel.jpg",
+    "creator": "Stuart Spivack",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Kugel.jpg",
+    "w": 2308,
+    "h": 1919
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/%D0%9C%D0%B0%D0%BA%D0%B0%D1%80%D0%BE%D0%BD%D0%B8_%D1%81%D0%BE_%D1%81%D0%B8%D1%80%D0%B5%D1%9A%D0%B5_%D0%B2%D0%BE_%D1%84%D1%83%D1%80%D0%BD%D0%B0.jpg/1280px-%D0%9C%D0%B0%D0%BA%D0%B0%D1%80%D0%BE%D0%BD%D0%B8_%D1%81%D0%BE_%D1%81%D0%B8%D1%80%D0%B5%D1%9A%D0%B5_%D0%B2%D0%BE_%D1%84%D1%83%D1%80%D0%BD%D0%B0.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Макарони со сирење во фурна.jpg",
+    "creator": "Gurman chef",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%B0%D0%BA%D0%B0%D1%80%D0%BE%D0%BD%D0%B8_%D1%81%D0%BE_%D1%81%D0%B8%D1%80%D0%B5%D1%9A%D0%B5_%D0%B2%D0%BE_%D1%84%D1%83%D1%80%D0%BD%D0%B0.jpg",
+    "w": 4608,
+    "h": 3336
+   }
+  ],
+  "retried": true
  },
  "shrimp_pad_thai": {
   "name": "Shrimp pad thai",
@@ -18555,7 +21249,8 @@
   "name": "Tilapia piccata",
   "query": "Tilapia piccata",
   "via": "commons",
-  "candidates": []
+  "candidates": [],
+  "retried": true
  },
  "white_bean_minestrone": {
   "name": "White bean minestrone",
@@ -18914,5 +21609,807 @@
   "query": "Cheese tortellini primavera",
   "via": "commons",
   "candidates": []
+ },
+ "cauliflower_chickpea_korma": {
+  "name": "Cauliflower and chickpea korma",
+  "query": "Cauliflower and chickpea korma",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "lamb_rice_stuffed_peppers": {
+  "name": "Spiced lamb and rice stuffed peppers",
+  "query": "Spiced lamb and rice stuffed peppers",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Bread_in_the_Hellenic_Republic.jpg/1280px-Bread_in_the_Hellenic_Republic.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Bread in the Hellenic Republic.jpg",
+    "creator": "Alpha from Melbourne, Australia",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Bread_in_the_Hellenic_Republic.jpg",
+    "w": 2048,
+    "h": 1371
+   }
+  ],
+  "retried": false
+ },
+ "lahmacun_lamb_flatbreads": {
+  "name": "Lahmacun-style lamb flatbreads",
+  "query": "Lahmacun lamb flatbreads",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "persian_chicken_lentil_rice": {
+  "name": "Persian-inspired chicken with lentil rice and raisins",
+  "query": "Persian-inspired chicken",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "persian_herb_beef_stew": {
+  "name": "Persian-inspired herb and beef stew (ghormeh sabzi-style)",
+  "query": "Persian-inspired herb and beef stew",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "moroccan_chicken_chickpea_couscous": {
+  "name": "One-pan Moroccan-spiced chicken and chickpea couscous",
+  "query": "Moroccan-spiced chicken and chickpea couscous",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "chicken_mulligatawny_soup": {
+  "name": "Chicken mulligatawny soup",
+  "query": "Chicken mulligatawny soup",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "harira_lamb_lentil_soup": {
+  "name": "Harira-style lamb, lentil and chickpea soup",
+  "query": "Harira lamb",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "lebanese_beef_rice_almonds": {
+  "name": "Lebanese-style spiced beef rice with almonds (hashweh)",
+  "query": "Lebanese spiced beef rice",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "air_fryer_buffalo_cauliflower_wraps": {
+  "name": "Air fryer buffalo cauliflower and chickpea wraps",
+  "query": "buffalo cauliflower and chickpea wraps",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "air_fryer_parmesan_pork_chops": {
+  "name": "Air fryer parmesan pork chops with green beans",
+  "query": "parmesan pork chops",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "air_fryer_cornmeal_fish_tartar": {
+  "name": "Air fryer cornmeal-crusted fish with tartar sauce",
+  "query": "cornmeal-crusted fish",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/El_Taxi_Campeche05.JPG/1280px-El_Taxi_Campeche05.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "El Taxi Campeche05.JPG",
+    "creator": "AlejandroLinaresGarcia",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:El_Taxi_Campeche05.JPG",
+    "w": 6016,
+    "h": 4000
+   }
+  ],
+  "retried": false
+ },
+ "zucchini_corn_cheddar_rice_bake": {
+  "name": "Zucchini, corn and cheddar rice bake",
+  "query": "Zucchini",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Calabac%C3%ADn%2C_M%C3%BAnich%2C_Alemania%2C_2013-03-30%2C_DD_01.JPG/1280px-Calabac%C3%ADn%2C_M%C3%BAnich%2C_Alemania%2C_2013-03-30%2C_DD_01.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Calabacín, Múnich, Alemania, 2013-03-30, DD 01.JPG",
+    "creator": "Diego Delso",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Calabac%C3%ADn,_M%C3%BAnich,_Alemania,_2013-03-30,_DD_01.JPG",
+    "w": 3557,
+    "h": 2400
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Courgette_Cucurbita_pepo_2.jpg/1280px-Courgette_Cucurbita_pepo_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Courgette Cucurbita pepo 2.jpg",
+    "creator": "Meanos",
+    "creator_url": null,
+    "license": "pdm",
+    "license_version": "",
+    "license_url": null,
+    "page": "https://commons.wikimedia.org/wiki/File:Courgette_Cucurbita_pepo_2.jpg",
+    "w": 2000,
+    "h": 3008
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Female_human_being_holding_a_homegrown_zucchini_in_Quesnel%2C_British_Columbia_%28DSCF5368%29.jpg/1280px-Female_human_being_holding_a_homegrown_zucchini_in_Quesnel%2C_British_Columbia_%28DSCF5368%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Female human being holding a homegrown zucchini in Quesnel, British Columbia (DSCF5368).jpg",
+    "creator": "Trougnouf (Benoit Brummer)",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Female_human_being_holding_a_homegrown_zucchini_in_Quesnel,_British_Columbia_(DSCF5368).jpg",
+    "w": 4906,
+    "h": 3252
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Sliced_Zucchini%2C_air_fried_with_herbs_-_In_basket.jpg/1280px-Sliced_Zucchini%2C_air_fried_with_herbs_-_In_basket.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Sliced Zucchini, air fried with herbs - In basket.jpg",
+    "creator": "Infrogmation of New Orleans",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Sliced_Zucchini,_air_fried_with_herbs_-_In_basket.jpg",
+    "w": 5184,
+    "h": 3888
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Sliced_Zucchini%2C_air_fried_with_herbs_-_On_plate.jpg/1280px-Sliced_Zucchini%2C_air_fried_with_herbs_-_On_plate.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Sliced Zucchini, air fried with herbs - On plate.jpg",
+    "creator": "Infrogmation of New Orleans",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Sliced_Zucchini,_air_fried_with_herbs_-_On_plate.jpg",
+    "w": 3589,
+    "h": 3102
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Zucchini-Whole.jpg/1280px-Zucchini-Whole.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Zucchini-Whole.jpg",
+    "creator": "Evan-Amos",
+    "creator_url": null,
+    "license": "pdm",
+    "license_version": "",
+    "license_url": null,
+    "page": "https://commons.wikimedia.org/wiki/File:Zucchini-Whole.jpg",
+    "w": 4260,
+    "h": 1480
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Zucchini_-_Massachusetts.jpg/1280px-Zucchini_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Zucchini - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Zucchini_-_Massachusetts.jpg",
+    "w": 2810,
+    "h": 2704
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Zucchini_flowers_-_stierch.jpg/1280px-Zucchini_flowers_-_stierch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Zucchini flowers - stierch.jpg",
+    "creator": "Sarah Stierch",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Zucchini_flowers_-_stierch.jpg",
+    "w": 1520,
+    "h": 1520
+   }
+  ],
+  "retried": false
+ },
+ "spinach_cheddar_strata": {
+  "name": "Spinach and cheddar strata",
+  "query": "Spinach and cheddar strata",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "baked_pumpkin_mac_and_cheese": {
+  "name": "Baked pumpkin mac and cheese",
+  "query": "pumpkin mac and cheese",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "ham_and_pea_mac_and_cheese": {
+  "name": "Creamy ham and pea mac and cheese",
+  "query": "ham and pea mac and cheese",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "creamy_corn_chowder": {
+  "name": "Creamy corn chowder",
+  "query": "corn chowder",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Charred_Nebraska_Corn_Chowder.jpg/1280px-Charred_Nebraska_Corn_Chowder.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Charred Nebraska Corn Chowder.jpg",
+    "creator": "HarshLight",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Charred_Nebraska_Corn_Chowder.jpg",
+    "w": 4560,
+    "h": 3040
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Corn_chowder_%2829308010098%29.jpg/1280px-Corn_chowder_%2829308010098%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Corn chowder (29308010098).jpg",
+    "creator": "Joey Doll",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Corn_chowder_(29308010098).jpg",
+    "w": 4752,
+    "h": 3168
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Lobster_chowder_with_corn%2C_potatoes%2C_and_black_pepper_-_Massachusetts.jpg/1280px-Lobster_chowder_with_corn%2C_potatoes%2C_and_black_pepper_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Lobster chowder with corn, potatoes, and black pepper - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lobster_chowder_with_corn,_potatoes,_and_black_pepper_-_Massachusetts.jpg",
+    "w": 2737,
+    "h": 2743
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/RecipeoftheMonth_Dec_SJ_%2811301040564%29.jpg/1280px-RecipeoftheMonth_Dec_SJ_%2811301040564%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "RecipeoftheMonth Dec SJ (11301040564).jpg",
+    "creator": "vastateparksstaff",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:RecipeoftheMonth_Dec_SJ_(11301040564).jpg",
+    "w": 6016,
+    "h": 4000
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Safeway_Signature_Cafe_corn_chowder.jpg/1280px-Safeway_Signature_Cafe_corn_chowder.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Safeway Signature Cafe corn chowder.jpg",
+    "creator": "Elvert Barnes",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Safeway_Signature_Cafe_corn_chowder.jpg",
+    "w": 4272,
+    "h": 2848
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Vegan_Garden_Corn_Chowder_with_Chives_%2814293935184%29.jpg/1280px-Vegan_Garden_Corn_Chowder_with_Chives_%2814293935184%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Vegan Garden Corn Chowder with Chives (14293935184).jpg",
+    "creator": "tomatoes and friends",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegan_Garden_Corn_Chowder_with_Chives_(14293935184).jpg",
+    "w": 2736,
+    "h": 3648
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Vegan_Garden_Corn_Chowder_with_Chives_%28cropped%29.jpg/1280px-Vegan_Garden_Corn_Chowder_with_Chives_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Vegan Garden Corn Chowder with Chives (cropped).jpg",
+    "creator": "tomatoes and friends",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegan_Garden_Corn_Chowder_with_Chives_(cropped).jpg",
+    "w": 2628,
+    "h": 2789
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/%D0%9A%D1%80%D0%B5%D0%BC_%D1%81%D1%83%D0%BF%D0%B0_%D0%BE%D0%B4_%D0%BF%D1%87%D0%B5%D0%BD%D0%BA%D0%B0.jpg/1280px-%D0%9A%D1%80%D0%B5%D0%BC_%D1%81%D1%83%D0%BF%D0%B0_%D0%BE%D0%B4_%D0%BF%D1%87%D0%B5%D0%BD%D0%BA%D0%B0.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Крем супа од пченка.jpg",
+    "creator": "Deodora333",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:%D0%9A%D1%80%D0%B5%D0%BC_%D1%81%D1%83%D0%BF%D0%B0_%D0%BE%D0%B4_%D0%BF%D1%87%D0%B5%D0%BD%D0%BA%D0%B0.jpg",
+    "w": 1537,
+    "h": 2049
+   }
+  ],
+  "retried": false
+ },
+ "classic_chicken_noodle_soup": {
+  "name": "Classic chicken noodle soup",
+  "query": "chicken noodle soup",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Beef_Balls_Noodle_Soup%2C_Blanco_Court_Beef_Noodles%2C_Food_Republic_%40_Suntec_City%2C_2023_%2801%29.jpg/1280px-Beef_Balls_Noodle_Soup%2C_Blanco_Court_Beef_Noodles%2C_Food_Republic_%40_Suntec_City%2C_2023_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Beef Balls Noodle Soup, Blanco Court Beef Noodles, Food Republic @ Suntec City, 2023 (01).jpg",
+    "creator": "Bahnfrend",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Beef_Balls_Noodle_Soup,_Blanco_Court_Beef_Noodles,_Food_Republic_@_Suntec_City,_2023_(01).jpg",
+    "w": 3264,
+    "h": 1836
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Bok_choy_on_rice_simmered_in_chicken_noodle_soup_-_Massachusetts.jpg/1280px-Bok_choy_on_rice_simmered_in_chicken_noodle_soup_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Bok choy on rice simmered in chicken noodle soup - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Bok_choy_on_rice_simmered_in_chicken_noodle_soup_-_Massachusetts.jpg",
+    "w": 2152,
+    "h": 2152
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Chicken_noodle_soup_%28cropped%29.jpg/1280px-Chicken_noodle_soup_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chicken noodle soup (cropped).jpg",
+    "creator": "Eli Hodapp from Naperville, United States",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_noodle_soup_(cropped).jpg",
+    "w": 2351,
+    "h": 2072
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Chicken_noodle_soup_-_Massachusetts_2.jpg/1280px-Chicken_noodle_soup_-_Massachusetts_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chicken noodle soup - Massachusetts 2.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_noodle_soup_-_Massachusetts_2.jpg",
+    "w": 3024,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Chicken_noodle_soup_with_a_little_carrot_and_black_pepper_-_Massachusetts.jpg/1280px-Chicken_noodle_soup_with_a_little_carrot_and_black_pepper_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chicken noodle soup with a little carrot and black pepper - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_noodle_soup_with_a_little_carrot_and_black_pepper_-_Massachusetts.jpg",
+    "w": 2627,
+    "h": 2627
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Chicken_noodle_soup_with_carrots%2C_peas%2C_corn%2C_celery%2C_and_black_pepper_-_Massachusetts.jpg/1280px-Chicken_noodle_soup_with_carrots%2C_peas%2C_corn%2C_celery%2C_and_black_pepper_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chicken noodle soup with carrots, peas, corn, celery, and black pepper - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_noodle_soup_with_carrots,_peas,_corn,_celery,_and_black_pepper_-_Massachusetts.jpg",
+    "w": 2175,
+    "h": 2175
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Chicken_noodle_soup_with_fried_chicken_sausage%2C_TVP%2C_carrots%2C_peas%2C_garlic%2C_and_black_pepper_-_Massachusetts.jpg/1280px-Chicken_noodle_soup_with_fried_chicken_sausage%2C_TVP%2C_carrots%2C_peas%2C_garlic%2C_and_black_pepper_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Chicken noodle soup with fried chicken sausage, TVP, carrots, peas, garlic, and black pepper - Massachusetts.jpg",
+    "creator": "Daderot",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_noodle_soup_with_fried_chicken_sausage,_TVP,_carrots,_peas,_garlic,_and_black_pepper_-_Massachusetts.jpg",
+    "w": 1862,
+    "h": 1862
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/MALA_Beef_Soup_Noodle_with_Chicken_Slices%2C_AirAsia%2C_2025_%2801%29.jpg/1280px-MALA_Beef_Soup_Noodle_with_Chicken_Slices%2C_AirAsia%2C_2025_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "MALA Beef Soup Noodle with Chicken Slices, AirAsia, 2025 (01).jpg",
+    "creator": "Bahnfrend",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:MALA_Beef_Soup_Noodle_with_Chicken_Slices,_AirAsia,_2025_(01).jpg",
+    "w": 3776,
+    "h": 2520
+   }
+  ],
+  "retried": false
+ },
+ "broccoli_cheddar_soup": {
+  "name": "Broccoli cheddar soup",
+  "query": "Broccoli cheddar soup",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Broccoli_and_cheddar_soup_-_Pausa_Cafe%2C_Dunelm_Shoreham_2026-01-13.jpg/1280px-Broccoli_and_cheddar_soup_-_Pausa_Cafe%2C_Dunelm_Shoreham_2026-01-13.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Broccoli and cheddar soup - Pausa Cafe, Dunelm Shoreham 2026-01-13.jpg",
+    "creator": "Andy Li",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Broccoli_and_cheddar_soup_-_Pausa_Cafe,_Dunelm_Shoreham_2026-01-13.jpg",
+    "w": 8160,
+    "h": 6144
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Dont_need_no_steenking_croutons%21_%284975221562%29.jpg/1280px-Dont_need_no_steenking_croutons%21_%284975221562%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Dont need no steenking croutons! (4975221562).jpg",
+    "creator": "jeffreyw",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Dont_need_no_steenking_croutons!_(4975221562).jpg",
+    "w": 1600,
+    "h": 1063
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Mmm..._cheesy_potato_soup_%286846314201%29.jpg/1280px-Mmm..._cheesy_potato_soup_%286846314201%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Mmm... cheesy potato soup (6846314201).jpg",
+    "creator": "jeffreyw",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Mmm..._cheesy_potato_soup_(6846314201).jpg",
+    "w": 2048,
+    "h": 1360
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Stouffer%27s_Corner_Bistro_stuffed_melt_sandwich_and_broccoli_cheddar_soup.jpg/1280px-Stouffer%27s_Corner_Bistro_stuffed_melt_sandwich_and_broccoli_cheddar_soup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Stouffer's Corner Bistro stuffed melt sandwich and broccoli cheddar soup.jpg",
+    "creator": "theimpulsivebuy",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Stouffer%27s_Corner_Bistro_stuffed_melt_sandwich_and_broccoli_cheddar_soup.jpg",
+    "w": 2125,
+    "h": 1254
+   }
+  ],
+  "retried": false
+ },
+ "seared_scallops_lemon_orzo": {
+  "name": "Seared scallops with lemon orzo and peas",
+  "query": "Seared scallops",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/-2014-06-12_Red_mullet_with_Pan_Seared_Scallop%E2%80%99s_and_Bacon%2C_Cromer.JPG/1280px--2014-06-12_Red_mullet_with_Pan_Seared_Scallop%E2%80%99s_and_Bacon%2C_Cromer.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "-2014-06-12 Red mullet with Pan Seared Scallop’s and Bacon, Cromer.JPG",
+    "creator": "Kolforn (Kolforn)\nI'd appreciate if you could mail me (Kolforn@gmail.com) if you",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:-2014-06-12_Red_mullet_with_Pan_Seared_Scallop%E2%80%99s_and_Bacon,_Cromer.JPG",
+    "w": 2967,
+    "h": 3271
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Brigitte_Bistro_-_Feburary_2026_-_Sarah_Stierch_09.jpg/1280px-Brigitte_Bistro_-_Feburary_2026_-_Sarah_Stierch_09.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Brigitte Bistro - Feburary 2026 - Sarah Stierch 09.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Brigitte_Bistro_-_Feburary_2026_-_Sarah_Stierch_09.jpg",
+    "w": 3088,
+    "h": 2316
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Brigitte_Bistro_-_Feburary_2026_-_Sarah_Stierch_10.jpg/1280px-Brigitte_Bistro_-_Feburary_2026_-_Sarah_Stierch_10.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Brigitte Bistro - Feburary 2026 - Sarah Stierch 10.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Brigitte_Bistro_-_Feburary_2026_-_Sarah_Stierch_10.jpg",
+    "w": 5712,
+    "h": 4284
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Dinner_at_21_Steps_-_Marsala_Seared_Scallops_%286350884209%29.jpg/1280px-Dinner_at_21_Steps_-_Marsala_Seared_Scallops_%286350884209%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Dinner at 21 Steps - Marsala Seared Scallops (6350884209).jpg",
+    "creator": "CK Golf from Vancouver, Canada",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Dinner_at_21_Steps_-_Marsala_Seared_Scallops_(6350884209).jpg",
+    "w": 2032,
+    "h": 1520
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/KW_SaltWater_Grill_-_August_2022_-_Sarah_Stierch_04.jpg/1280px-KW_SaltWater_Grill_-_August_2022_-_Sarah_Stierch_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "KW SaltWater Grill - August 2022 - Sarah Stierch 04.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:KW_SaltWater_Grill_-_August_2022_-_Sarah_Stierch_04.jpg",
+    "w": 4032,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/La_Boucherie_-_February_2024_-_Sarah_Stierch_05.jpg/1280px-La_Boucherie_-_February_2024_-_Sarah_Stierch_05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "La Boucherie - February 2024 - Sarah Stierch 05.jpg",
+    "creator": "Missvain",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:La_Boucherie_-_February_2024_-_Sarah_Stierch_05.jpg",
+    "w": 4032,
+    "h": 3024
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/ScallopPassionfruitOnionBrownButter_%288319960414%29.jpg/1280px-ScallopPassionfruitOnionBrownButter_%288319960414%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "ScallopPassionfruitOnionBrownButter (8319960414).jpg",
+    "creator": "H. Alexander Talbot",
+    "creator_url": null,
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:ScallopPassionfruitOnionBrownButter_(8319960414).jpg",
+    "w": 2772,
+    "h": 2048
+   },
+   {
+    "src": "commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Seared_Scallops_%286737779653%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "title": "Seared Scallops (6737779653).jpg",
+    "creator": "Jen Arrr",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Seared_Scallops_(6737779653).jpg",
+    "w": 1024,
+    "h": 765
+   }
+  ],
+  "retried": false
+ },
+ "chipotle_shrimp_burrito_bowls": {
+  "name": "Chipotle shrimp burrito bowls",
+  "query": "Chipotle shrimp burrito bowls",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "cajun_tilapia_sheet_pan": {
+  "name": "Cajun tilapia with corn, zucchini and peppers",
+  "query": "Cajun tilapia",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Blackened_tilapia_with_Cajun_spices%2C_lemon_and_lime_juice.jpg/1280px-Blackened_tilapia_with_Cajun_spices%2C_lemon_and_lime_juice.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Blackened tilapia with Cajun spices, lemon and lime juice.jpg",
+    "creator": "Gatorfan252525",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Blackened_tilapia_with_Cajun_spices,_lemon_and_lime_juice.jpg",
+    "w": 4032,
+    "h": 3024
+   }
+  ],
+  "retried": false
+ },
+ "gochujang_shrimp_rice_bowls": {
+  "name": "Gochujang shrimp rice bowls",
+  "query": "Gochujang shrimp rice bowls",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "potato_pepper_frittata": {
+  "name": "Potato, pepper and cheddar frittata",
+  "query": "Potato",
+  "via": "commons",
+  "candidates": [
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/AALU_%28POTATO%29.jpg/1280px-AALU_%28POTATO%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "AALU (POTATO).jpg",
+    "creator": "Ranjithkumar Murugesan",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:AALU_(POTATO).jpg",
+    "w": 1840,
+    "h": 2453
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Asparagus_with_potatoes.jpg/1280px-Asparagus_with_potatoes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Asparagus with potatoes.jpg",
+    "creator": "Kritzolina",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Asparagus_with_potatoes.jpg",
+    "w": 5472,
+    "h": 3648
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/HK_food_potato_cultivar_with_sprouts_June_2021_SS2.jpg/1280px-HK_food_potato_cultivar_with_sprouts_June_2021_SS2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "HK food potato cultivar with sprouts June 2021 SS2.jpg",
+    "creator": "Stora Losfitxoiu 339",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_food_potato_cultivar_with_sprouts_June_2021_SS2.jpg",
+    "w": 4128,
+    "h": 3096
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Irish_Potato_Kenya.jpg/1280px-Irish_Potato_Kenya.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Irish Potato Kenya.jpg",
+    "creator": "safaritravelplus",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Irish_Potato_Kenya.jpg",
+    "w": 3984,
+    "h": 2656
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Potato_flowers_2016_G1.jpg/1280px-Potato_flowers_2016_G1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Potato flowers 2016 G1.jpg",
+    "creator": "George Chernilevsky",
+    "creator_url": null,
+    "license": "pdm",
+    "license_version": "",
+    "license_url": null,
+    "page": "https://commons.wikimedia.org/wiki/File:Potato_flowers_2016_G1.jpg",
+    "w": 5200,
+    "h": 3700
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Potato_sprout%2C_January_23%2C_2006.jpg/1280px-Potato_sprout%2C_January_23%2C_2006.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Potato sprout, January 23, 2006.jpg",
+    "creator": "Unknown",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Potato_sprout,_January_23,_2006.jpg",
+    "w": 1306,
+    "h": 980
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Potato_tubers_in_pail.jpg/1280px-Potato_tubers_in_pail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Potato tubers in pail.jpg",
+    "creator": "Ruslan V. Albitsky aka pauk",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Potato_tubers_in_pail.jpg",
+    "w": 2560,
+    "h": 1920
+   },
+   {
+    "src": "commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Solanales_-_Solanum_tuberosum_-_3.jpg/1280px-Solanales_-_Solanum_tuberosum_-_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "Solanales - Solanum tuberosum - 3.jpg",
+    "creator": "DenesFeri",
+    "creator_url": null,
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Solanales_-_Solanum_tuberosum_-_3.jpg",
+    "w": 1600,
+    "h": 1200
+   }
+  ],
+  "retried": false
+ },
+ "mediterranean_quinoa_chickpea_salad": {
+  "name": "Mediterranean quinoa and chickpea salad",
+  "query": "Mediterranean quinoa and chickpea salad",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
+ },
+ "crispy_tofu_broccoli": {
+  "name": "Crispy tofu and broccoli in garlic-ginger sauce",
+  "query": "tofu and broccoli in garlic-ginger sauce",
+  "via": "commons",
+  "candidates": [],
+  "retried": false
  }
 }

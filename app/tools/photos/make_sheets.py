@@ -8,6 +8,11 @@ CACHE, SHEETS = sys.argv[1], sys.argv[2]
 os.makedirs(CACHE, exist_ok=True); os.makedirs(SHEETS, exist_ok=True)
 UA = {"User-Agent": "SupperwiseRecipePhotos/1.0 (meal-planner app; photo attribution tool)"}
 cands = json.load(open(os.path.join(HERE, "candidates.json")))
+# Optional: only the recipes still needing a photo (tools/photos/todo.json).
+todo_path = os.path.join(HERE, "todo.json")
+if os.path.exists(todo_path):
+    keep = set(json.load(open(todo_path)))
+    cands = {k: v for k, v in cands.items() if k in keep}
 
 def thumb(rid, i, url):
     path = os.path.join(CACHE, f"{rid}__{i}.jpg")
