@@ -4,7 +4,7 @@
 - [ ] Apple Developer Program membership ($99/yr)
 - [ ] Agreements, Tax and Banking: **Paid Apps Agreement active**, with bank and tax forms done. It's needed for subscriptions.
 - [ ] A bundle id you own. `com.supperwise.app` may be taken; change it in Xcode and in the product ids if so.
-- [ ] A real privacy policy URL and support URL/email. Replace `supperwise.app/privacy` and `support@supperwise.app` in SettingsView.swift and FirstWeekView.swift.
+- [ ] A real privacy policy URL and support URL/email. Replace `supperwise.app/privacy` and `rrizzo574@gmail.com` in SettingsView.swift and FirstWeekView.swift.
 - [ ] A trademark check on "Supperwise" in each country you'll sell in. The store search only showed the name is free on the US store.
 
 ## App information

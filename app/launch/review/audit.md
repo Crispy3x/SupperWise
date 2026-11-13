@@ -45,7 +45,7 @@ Guideline 3.1.2 · purchases · `trial-wording`
 8. **Content:** 19 real recipes, no placeholders, no user-generated content.
    - **Fixed:** the allergy copy no longer promises allergens are "never served". It says dishes with them are left out, and to always check labels.
 9. **Settings:**
-   - **Needs the person:** the privacy policy link (`supperwise.app/privacy`) and support (`support@supperwise.app`) are placeholders.
+   - **Needs the person:** the privacy policy link (`supperwise.app/privacy`) and support (`rrizzo574@gmail.com`) are placeholders.
    - There's no account to delete. "Erase all my data" removes the on-device data and says it doesn't cancel a subscription.
 10. **Third-party AI:** none. No data leaves the device.
 11. **iPad:** iPhone only (TARGETED_DEVICE_FAMILY = 1).

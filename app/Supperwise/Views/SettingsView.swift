@@ -64,7 +64,7 @@ struct SettingsView: View {
                 Section("About") {
                     Link("Privacy policy", destination: URL(string: "https://supperwise.app/privacy")!)
                     Link("Terms of use", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
-                    Link("Contact support", destination: URL(string: "mailto:support@supperwise.app")!)
+                    Link("Contact support", destination: URL(string: "mailto:rrizzo574@gmail.com")!)
                     if !PhotoCredits.bundled.isEmpty {
                         NavigationLink("Photo credits") { PhotoCreditsView() }
                     }
