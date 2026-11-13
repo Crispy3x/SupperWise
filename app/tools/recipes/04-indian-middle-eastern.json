@@ -1,0 +1,5784 @@
+[
+ {
+  "id": "palak_paneer_rice",
+  "name": "Palak paneer",
+  "side": "Basmati rice.",
+  "cuisine": "Indian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne. The garam masala on its own is gentle enough for most kids.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "paneer",
+    "amount": 340,
+    "text": "1 block (12 oz)",
+    "note": "cut into ¾-inch cubes"
+   },
+   {
+    "ingredient": "frozen_spinach",
+    "amount": 566,
+    "text": "2 boxes (10 oz each)",
+    "note": "thawed, most of the water squeezed out"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "heavy_cream",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Rinse the rice until the water runs clearer, then bring it to a boil with 2¼ cups water and a pinch of the salt; cover, cook on low for 15 minutes, then rest it off the heat, covered, for 5 minutes.",
+   "Melt 1 tbsp of the butter in a large nonstick skillet over medium-high heat and brown the paneer for 4 to 5 minutes, turning, until golden on a few sides; move it to a plate.",
+   "Add the rest of the butter and the onion, turn the heat to medium and cook for 6 to 8 minutes until soft and golden. Stir in the garlic, ginger, cumin, turmeric, cayenne and garam masala for 1 minute.",
+   "Add the tomatoes and cook for 5 minutes until thick, then add the spinach, the remaining salt and ½ cup water and simmer for 5 minutes, stirring now and then.",
+   "For a smoother sauce, blend it briefly with an immersion blender, or leave it rustic. Stir in the cream and the paneer and simmer for 2 to 3 minutes until hot, then serve over the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "sheet_pan_paneer_tikka",
+  "name": "Sheet-pan paneer tikka with peppers",
+  "side": "Warm naan and lemon wedges.",
+  "cuisine": "Indian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "It isn't hot as written, but for spice-shy kids use 1 tsp garam masala and 1 tsp paprika.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "paneer",
+    "amount": 340,
+    "text": "1 block (12 oz)",
+    "note": "cut into 1-inch cubes"
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and patted dry"
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 6,
+    "text": "1 tbsp grated",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "halved"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "cut into wedges"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "naan",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 450°F and brush a large sheet pan with 1 tbsp of the oil.",
+   "In a big bowl, whisk the yogurt, the juice of half the lemon, the garlic, ginger, garam masala, paprika, cumin and salt. Add the paneer, chickpeas, peppers and onion and toss gently until everything is coated.",
+   "Spread it all on the pan in a single layer and drizzle with the remaining 1 tbsp oil. Roast for 20 to 25 minutes, turning once halfway, until the peppers are tender and the paneer is browned at the edges.",
+   "For the last 2 to 3 minutes, set the naan directly on the oven rack to warm through.",
+   "Cut the other lemon half into wedges and serve the tikka with the naan, squeezing lemon over the top."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "matar_paneer",
+  "name": "Matar paneer",
+  "side": "Warm naan.",
+  "cuisine": "Indian",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; the sauce is mild and tomatoey without it.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "paneer",
+    "amount": 340,
+    "text": "1 block (12 oz)",
+    "note": "cut into ¾-inch cubes"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 280,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "heavy_cream",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "naan",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat 1 tbsp of the oil in a large skillet over medium-high heat and brown the paneer for 4 to 5 minutes, turning, until golden in spots; move it to a plate.",
+   "Add the remaining oil and the onion, lower the heat to medium and cook for 6 to 8 minutes until soft and lightly browned.",
+   "Stir in the garlic, ginger, garam masala, coriander, turmeric and cayenne and cook for 1 minute until fragrant.",
+   "Pour in the tomato sauce, ½ cup water and the salt and simmer for 8 minutes, stirring now and then, until slightly thickened.",
+   "Add the peas and paneer and simmer for 4 to 5 minutes until the peas are hot, then stir in the cream.",
+   "While it simmers, warm the naan in a dry skillet or directly in a 350°F oven for 2 to 3 minutes and serve alongside."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "chana_masala_rice",
+  "name": "Chana masala",
+  "side": "Basmati rice with lemon.",
+  "cuisine": "Indian",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the jalapeño, or cook it in only the adults' portion at the end.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 300,
+    "text": "1 large",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 1,
+    "text": "1",
+    "note": "seeded and minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 0.5,
+    "text": "½ lemon",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Rinse the rice until the water runs clearer, then bring it to a boil with 2¼ cups water and a pinch of the salt; cover, cook on low for 15 minutes, then rest it off the heat, covered, for 5 minutes.",
+   "Heat the oil in a large pot over medium heat and cook the onion for 8 to 10 minutes, stirring often, until deep golden.",
+   "Add the garlic, ginger and jalapeño and cook for 1 minute, then stir in the cumin, coriander and garam masala for 30 seconds.",
+   "Add the tomatoes and cook for 4 minutes, mashing them a little, then add the chickpeas, the remaining salt and ¾ cup water.",
+   "Simmer for 12 to 15 minutes, mashing a few chickpeas against the side of the pot, until the sauce is thick.",
+   "Stir in the lemon juice and most of the cilantro, then serve over the rice with the rest of the cilantro on top."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "dal_makhani_style",
+  "name": "Creamy brown lentil and kidney bean dal",
+  "side": "Basmati rice.",
+  "cuisine": "Indian",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Skip the cayenne. It's rich and gentle without it.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "lentils_brown",
+    "amount": 190,
+    "text": "1 cup",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "kidney_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "heavy_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Simmer the lentils in 4 cups water with ½ tsp of the salt, partly covered, for 25 to 30 minutes until tender but still holding their shape. Don't drain them.",
+   "Rinse the rice until the water runs clearer, then bring it to a boil with 2¼ cups water and a pinch of the salt; cover, cook on low for 15 minutes, then rest it off the heat, covered, for 5 minutes.",
+   "While the lentils cook, melt 2 tbsp of the butter in a large pot over medium heat and cook the onion for 8 minutes until soft and golden. Add the garlic and ginger for 1 minute, then the garam masala, cumin, paprika and cayenne for 30 seconds.",
+   "Add the tomato sauce and simmer for 5 minutes. Tip in the lentils with their cooking liquid, the kidney beans and the remaining salt.",
+   "Simmer for 10 minutes, mashing some of the beans and lentils against the pot to thicken it; add a splash of water if it gets too thick.",
+   "Stir in the cream and the last 1 tbsp butter, simmer for 2 minutes, and serve over the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "roasted_aloo_gobi_chickpeas",
+  "name": "Roasted aloo gobi with chickpeas",
+  "side": "Naan and yogurt.",
+  "cuisine": "Indian",
+  "minutes": 50,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "potatoes",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "cut into ¾-inch cubes"
+   },
+   {
+    "ingredient": "cauliflower",
+    "amount": 1,
+    "text": "1 head",
+    "note": "cut into bite-size florets"
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and patted dry"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "naan",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. In a small bowl, stir together the oil, cumin, turmeric, coriander, garam masala and salt.",
+   "Toss the potatoes with a third of the spiced oil on a large sheet pan and roast for 15 minutes.",
+   "Toss the cauliflower and chickpeas with the rest of the spiced oil, add them to the pan, stir everything together and roast for 20 minutes more, stirring once, until the potatoes are tender and the cauliflower is browned at the edges.",
+   "Scatter the peas over the pan and roast for 5 minutes until hot. Warm the naan on the oven rack for the last 2 minutes.",
+   "Squeeze half the lemon over the vegetables, sprinkle with cilantro and serve with the naan, yogurt and the rest of the lemon in wedges."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "mujadara_crispy_onions",
+  "name": "Mujadara with crispy onions",
+  "side": "Cucumber-garlic yogurt.",
+  "cuisine": "Middle Eastern",
+  "minutes": 50,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "lentils_brown",
+    "amount": 190,
+    "text": "1 cup",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 190,
+    "text": "1 cup",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 660,
+    "text": "3 medium",
+    "note": "halved and thinly sliced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 80,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "grated and squeezed dry"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 1,
+    "text": "1 clove",
+    "note": "grated"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "½ cup chopped",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the lentils and 3 cups water to a boil in a medium pot, then simmer for 15 minutes until just tender on the outside but still firm.",
+   "Stir in the rice, cumin, cinnamon and 1 tsp of the salt, adding enough water that the liquid sits about ½ inch above the rice (usually about 1 cup). Bring back to a boil, cover and cook on low for 18 minutes, then rest off the heat, covered, for 5 minutes.",
+   "Meanwhile, heat the oil in a large skillet over medium-high heat and cook the onions for 20 to 25 minutes, stirring often, until deep brown and some are crisp; turn the heat down if they start to scorch. Season with a pinch of the salt.",
+   "Stir the cucumber, garlic, juice of half the lemon, the pepper and the remaining salt into the yogurt.",
+   "Fluff the lentils and rice and fold in half the onions. Pile the rest of the onions and the parsley on top and serve with the yogurt and the remaining lemon in wedges."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "baked_falafel_pitas",
+  "name": "Baked falafel pitas with tahini sauce",
+  "side": "Cucumber and tomato.",
+  "cuisine": "Middle Eastern",
+  "minutes": 45,
+  "difficulty": "Medium",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and patted very dry"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ medium",
+    "note": "roughly chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "divided"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 30,
+    "text": "1 cup packed leaves",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 30,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "tahini",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "pita",
+    "amount": 4,
+    "text": "4",
+    "note": "halved"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 225,
+    "text": "2",
+    "note": "diced"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F and brush a large sheet pan with 2 tbsp of the oil.",
+   "Pulse the chickpeas, onion, 2 garlic cloves, parsley, cumin, coriander and ¾ tsp of the salt in a food processor until finely chopped and it holds together when squeezed (or mash well with a potato masher). Mix in the flour.",
+   "Shape into 16 small patties about ½ inch thick, set them on the pan and brush the tops with the remaining 1 tbsp oil.",
+   "Bake for 12 minutes, flip carefully and bake 10 to 12 minutes more until crisp and golden on both sides.",
+   "Whisk the tahini with the lemon juice, the last garlic clove (grated), the remaining salt and 3 to 4 tbsp water until smooth and pourable.",
+   "Warm the pita in the oven for the last 2 minutes, then stuff each half with falafel, cucumber and tomato and drizzle with the tahini sauce."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "egg_curry_anda",
+  "name": "Egg curry",
+  "side": "Basmati rice.",
+  "cuisine": "Indian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; the onion-tomato sauce is mild without it.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "eggs",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Cover the eggs with cold water in a pot, bring to a boil, then simmer for 10 minutes. Move them to a bowl of cold water for 5 minutes, then peel.",
+   "Rinse the rice until the water runs clearer, then bring it to a boil with 2¼ cups water and a pinch of the salt; cover, cook on low for 15 minutes, then rest it off the heat, covered, for 5 minutes.",
+   "Heat the oil in a large skillet over medium heat and cook the onion for 8 minutes until golden. Add the garlic and ginger for 1 minute, then the coriander, cumin, turmeric and cayenne for 30 seconds.",
+   "Add the tomatoes, the remaining salt and ¾ cup water and simmer for 8 minutes until thickened.",
+   "Halve the eggs lengthwise, nestle them yolk-side up in the sauce, sprinkle with the garam masala and simmer gently for 3 minutes, spooning sauce over them.",
+   "Scatter the cilantro on top and serve over the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "eggplant_chickpea_curry",
+  "name": "Roasted eggplant and chickpea curry",
+  "side": "Basmati rice and yogurt.",
+  "cuisine": "Indian",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "eggplant",
+    "amount": 2,
+    "text": "2 medium",
+    "note": "cut into 1-inch cubes"
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "yogurt",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Toss the eggplant with 3 tbsp of the oil and ½ tsp of the salt on a large sheet pan and roast for 25 minutes, stirring once, until soft and browned.",
+   "Rinse the rice until the water runs clearer, then bring it to a boil with 2¼ cups water and a pinch of the salt; cover, cook on low for 15 minutes, then rest it off the heat, covered, for 5 minutes.",
+   "Meanwhile, heat the remaining 1 tbsp oil in a large skillet over medium heat and cook the onion for 8 minutes until soft. Stir in the garlic, ginger, smoked paprika, cumin and garam masala for 1 minute.",
+   "Add the tomatoes, chickpeas, ½ cup water and the remaining salt and simmer for 10 minutes until thickened.",
+   "Fold in the roasted eggplant and simmer for 3 minutes. Serve over the rice with spoonfuls of yogurt and the cilantro."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "vegetable_biryani_cashews",
+  "name": "Vegetable biryani-style rice with cashews",
+  "side": "Plain yogurt on the side.",
+  "cuisine": "Indian",
+  "minutes": 50,
+  "difficulty": "Medium",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "basmati",
+    "amount": 380,
+    "text": "2 cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "cauliflower",
+    "amount": 0.5,
+    "text": "½ head",
+    "note": "cut into small florets"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 440,
+    "text": "2 medium",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 7.5,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "cashews",
+    "amount": 65,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "yogurt",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Melt 1 tbsp of the butter in a large heavy pot over medium heat and toast the cashews for 2 to 3 minutes until golden; scoop them out.",
+   "Add the rest of the butter and the onions and cook for 12 to 15 minutes, stirring often, until deep golden. Scoop out half for the topping.",
+   "Stir the garlic, ginger, garam masala and turmeric into the pot for 1 minute, then add the carrots and cauliflower and cook for 3 minutes.",
+   "Add the rice and stir for 1 minute to coat, then pour in the broth and salt. Bring to a boil, cover and cook on low for 15 minutes.",
+   "Scatter the peas over the rice, cover again and let it sit off the heat for 10 minutes until the rice is tender and the peas are hot.",
+   "Fluff gently, top with the reserved onions and the cashews, and serve with the yogurt."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "masoor_khichdi",
+  "name": "Red lentil and rice khichdi with spinach",
+  "side": "Yogurt and lemon wedges.",
+  "cuisine": "Indian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "basmati",
+    "amount": 190,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lentils_red",
+    "amount": 190,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 225,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": "roughly chopped"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "yogurt",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into wedges"
+   }
+  ],
+  "steps": [
+   "Rinse the rice and lentils together in a sieve until the water runs mostly clear.",
+   "Melt 2 tbsp of the butter in a large pot over medium heat and cook the onion for 6 minutes until soft. Add the garlic, ginger, cumin and turmeric and stir for 1 minute.",
+   "Add the tomatoes and cook for 3 minutes, then add the rice, lentils, salt and 6 cups water. Bring to a boil, then simmer partly covered for 20 to 25 minutes, stirring often near the end, until soft and porridge-like. Add a splash of water if it gets too thick.",
+   "Stir in the spinach until wilted, about 1 minute, then the remaining 1 tbsp butter.",
+   "Serve in bowls with a spoonful of yogurt and a squeeze of lemon."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "moroccan_sweet_potato_chickpea_stew",
+  "name": "Moroccan-spiced sweet potato and chickpea stew",
+  "side": "Couscous.",
+  "cuisine": "North African",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "sweet_potato",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "peeled and cut into ¾-inch cubes"
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "raisins",
+    "amount": 36,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "couscous",
+    "amount": 260,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large pot over medium heat and cook the onion for 6 minutes until soft. Stir in the garlic, cumin, cinnamon and paprika for 1 minute.",
+   "Add the sweet potato, chickpeas, tomatoes, broth, raisins and ½ tsp of the salt. Bring to a boil, then cover and simmer for 18 to 20 minutes until the sweet potato is tender when poked with a fork.",
+   "Meanwhile, put the couscous and the remaining salt in a bowl, pour over 1¾ cups boiling water, cover and let stand for 5 minutes, then fluff with a fork.",
+   "Uncover the stew and simmer for 3 to 5 minutes to thicken slightly, then stir in the juice of half the lemon.",
+   "Spoon the stew over the couscous and serve with the rest of the lemon in wedges."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "kuku_sabzi_herb_frittata",
+  "name": "Persian-inspired herb frittata (kuku sabzi)",
+  "side": "Pita and cucumber yogurt.",
+  "cuisine": "Persian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "eggs",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 60,
+    "text": "1 bunch",
+    "note": "leaves and tender stems, finely chopped"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 30,
+    "text": "1 cup packed",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "dill",
+    "amount": 21,
+    "text": "1 pack (0.75 oz)",
+    "note": "fronds finely chopped"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 6,
+    "text": "6",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 8,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.2,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "pita",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 350°F. In a large bowl, whisk the eggs with the flour, turmeric, ¾ tsp of the salt and the pepper until no lumps of flour remain.",
+   "Stir in the parsley, cilantro, dill and scallions. It should look like more herbs than egg.",
+   "Heat the oil in a 10-inch ovenproof nonstick skillet over medium heat, pour in the egg mixture, smooth the top and cook for 5 minutes until the edges are set.",
+   "Move the skillet to the oven and bake for 15 to 18 minutes until the center is set and no liquid egg shows when you cut a small slit. Rest it for 5 minutes.",
+   "Stir the cucumber and the remaining salt into the yogurt. Warm the pita in the oven for the last 2 minutes and serve wedges of the frittata with the yogurt and pita."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "mushroom_matar_masala",
+  "name": "Mushroom and pea masala",
+  "side": "Basmati rice.",
+  "cuisine": "Indian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; the coconut keeps it gentle.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "mushrooms",
+    "amount": 454,
+    "text": "2 packs (8 oz each)",
+    "note": "quartered"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 280,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 1,
+    "text": "1 can",
+    "note": "shaken"
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Rinse the rice until the water runs clearer, then bring it to a boil with 2¼ cups water and a pinch of the salt; cover, cook on low for 15 minutes, then rest it off the heat, covered, for 5 minutes.",
+   "Heat the oil in a large skillet over medium-high heat and cook the mushrooms for 7 to 8 minutes, without stirring for the first few minutes, until browned and their liquid has cooked off.",
+   "Add the onion, lower the heat to medium and cook for 6 minutes until soft. Stir in the garlic, ginger, garam masala, coriander, cumin and cayenne for 1 minute.",
+   "Add the tomatoes, coconut milk and the remaining salt and simmer for 10 minutes until thickened.",
+   "Stir in the peas and simmer for 3 to 4 minutes until hot, then serve over the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "chickpea_cauliflower_shawarma",
+  "name": "Sheet-pan chickpea and cauliflower shawarma",
+  "side": "Warm pita, hummus and shredded romaine.",
+  "cuisine": "Middle Eastern",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and patted dry"
+   },
+   {
+    "ingredient": "cauliflower",
+    "amount": 0.5,
+    "text": "½ head",
+    "note": "cut into small florets"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "cut into thin wedges"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "pita",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "hummus",
+    "amount": 283,
+    "text": "1 tub (10 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "romaine",
+    "amount": 1,
+    "text": "1 heart",
+    "note": "shredded"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F.",
+   "On a large sheet pan, toss the chickpeas, cauliflower and onion with the oil, cumin, paprika, turmeric, cinnamon, garlic powder and salt, then spread them out in a single layer.",
+   "Roast for 25 minutes, stirring once halfway, until the chickpeas are crisp at the edges and the cauliflower is tender and browned.",
+   "Warm the pita directly on the oven rack for the last 2 minutes. Squeeze half the lemon over the pan and cut the rest into wedges.",
+   "Spread each pita with hummus, top with romaine and the shawarma vegetables, and serve with lemon wedges."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "lentil_spinach_lemon_soup",
+  "name": "Lebanese-style lentil, spinach and lemon soup",
+  "side": "Toasted pita.",
+  "cuisine": "Middle Eastern",
+  "minutes": 50,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "lentils_brown",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "peeled and cut into ½-inch cubes"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 284,
+    "text": "2 boxes (5 oz each)",
+    "note": "roughly chopped"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 6,
+    "text": "6 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "pita",
+    "amount": 4,
+    "text": "4",
+    "note": "cut into wedges"
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large pot over medium heat and cook the onion for 6 minutes until soft. Add the garlic and cumin and stir for 1 minute.",
+   "Add the lentils and broth, bring to a boil, then cover and simmer for 15 minutes.",
+   "Add the potatoes and simmer for 15 to 20 minutes more until both the lentils and potatoes are tender.",
+   "Stir in the spinach a handful at a time until wilted, then the juice of 1½ lemons and the salt; taste and add more salt if needed.",
+   "Toast the pita wedges in a dry skillet or a 400°F oven for 3 to 5 minutes until crisp. Serve the soup topped with cilantro, with the pita and the last half lemon in wedges."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "paneer_egg_kathi_rolls",
+  "name": "Paneer and egg kathi rolls",
+  "side": "Mint yogurt chutney.",
+  "cuisine": "Indian",
+  "minutes": 35,
+  "difficulty": "Medium",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "paneer",
+    "amount": 340,
+    "text": "1 block (12 oz)",
+    "note": "cut into ½-inch sticks"
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "half sliced, half very thinly sliced for serving"
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "mint",
+    "amount": 10,
+    "text": "½ cup leaves",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   }
+  ],
+  "steps": [
+   "Toss the paneer with the garam masala, paprika, cumin, ½ tsp of the salt and 1 tbsp of the oil.",
+   "Heat 1 tbsp of the oil in a large nonstick skillet over medium-high heat and cook the sliced half of the onion and the pepper for 5 minutes until softened. Add the paneer and cook for 4 to 5 minutes, turning, until golden; move to a plate.",
+   "Stir the mint, lime juice and a pinch of the salt into the yogurt. Beat the eggs with the remaining salt.",
+   "Wipe out the skillet, set it over medium heat and brush with a little of the remaining oil. Pour in about 2 tbsp of the egg, swirl, and lay a tortilla on top; cook for 1 minute until the egg sets and sticks, then flip and warm the other side for 30 seconds. Repeat with the rest of the tortillas and egg.",
+   "Fill each tortilla, egg side up, with the paneer and peppers, some of the thinly sliced raw onion and a spoonful of the mint yogurt, then roll up tightly."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "cauliflower_chickpea_korma",
+  "name": "Cauliflower and chickpea korma",
+  "side": "Basmati rice.",
+  "cuisine": "Indian",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "cauliflower",
+    "amount": 1,
+    "text": "1 head",
+    "note": "cut into bite-size florets"
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "cashews",
+    "amount": 65,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "at room temperature"
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Pour 1 cup hot water over the cashews and let them soak while you start the rice.",
+   "Rinse the rice until the water runs clearer, then bring it to a boil with 2¼ cups water and a pinch of the salt; cover, cook on low for 15 minutes, then rest it off the heat, covered, for 5 minutes.",
+   "Heat the oil in a large pot over medium heat and cook the onion for 8 minutes until soft and pale gold. Add the garlic, ginger, garam masala, coriander and turmeric and stir for 1 minute.",
+   "Blend the cashews with their soaking water until very smooth and pour into the pot with the cauliflower, chickpeas, the remaining salt and ½ cup water. Cover and simmer for 12 to 15 minutes, stirring now and then, until the cauliflower is tender.",
+   "Stir in the peas and cook for 3 minutes. Take the pot off the heat and stir in the yogurt (off the heat so it doesn't split), then serve over the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "turkish_baked_eggplant_chickpeas",
+  "name": "Turkish-style baked eggplant with tomatoes and feta",
+  "side": "Couscous.",
+  "cuisine": "Turkish",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "eggplant",
+    "amount": 2,
+    "text": "2 medium",
+    "note": "halved lengthwise"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 4,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "feta",
+    "amount": 170,
+    "text": "1 pack (6 oz)",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "couscous",
+    "amount": 260,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Score the cut sides of the eggplant in a crisscross pattern without cutting through the skin, set them cut side up on a sheet pan, brush with 2 tbsp of the oil and sprinkle with ½ tsp of the salt. Roast for 25 to 30 minutes until very soft.",
+   "Meanwhile, heat the remaining 2 tbsp oil in a skillet over medium heat and cook the onion for 8 minutes until soft. Stir in the garlic, paprika and cumin for 1 minute.",
+   "Add the tomatoes, sugar, chickpeas and the remaining salt and simmer for 10 minutes until thick.",
+   "Press the middle of each eggplant half with a spoon to make a hollow, pile the tomato-chickpea mixture on top and scatter with the feta. Bake for 10 minutes until the feta is lightly browned.",
+   "While it bakes, pour 1¾ cups boiling water over the couscous in a bowl, cover for 5 minutes, then fluff. Sprinkle the eggplant with parsley and serve with the couscous."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "butter_chicken",
+  "name": "Butter chicken",
+  "side": "Basmati rice.",
+  "cuisine": "Indian",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne. It's creamy and mild without it.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into bite-size pieces"
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 7.5,
+    "text": "1 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "heavy_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 4,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Don't rinse the chicken. Toss it in a bowl with the yogurt, half the garam masala and ½ tsp of the salt and set aside while you start the rice.",
+   "Rinse the rice until the water runs clearer, then bring it to a boil with 2¼ cups water and a pinch of the salt; cover, cook on low for 15 minutes, then rest it off the heat, covered, for 5 minutes.",
+   "Melt 1 tbsp of the butter in a large skillet over medium-high heat and brown the chicken in a single layer for 5 to 6 minutes, turning once; it will finish cooking in the sauce. Move it to a plate.",
+   "Lower the heat to medium, add the remaining butter and the onion and cook for 6 minutes until soft. Stir in the garlic, ginger, the rest of the garam masala, the paprika and cayenne for 1 minute.",
+   "Add the tomato sauce, sugar and the remaining salt and simmer for 5 minutes. Return the chicken and any juices and simmer for 8 to 10 minutes until the chicken reaches 165°F.",
+   "Stir in the cream, warm through for 1 minute, and serve over the rice."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, scoop 1 cup of the sauce into a small pan before the chicken goes back in and simmer cubed paneer in it for 5 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "paneer",
+     "amount": 170,
+     "text": "½ block",
+     "note": "cut into cubes"
+    }
+   ]
+  }
+ },
+ {
+  "id": "tandoori_drumsticks_potatoes",
+  "name": "Tandoori-style drumsticks with roasted potatoes",
+  "side": "Cucumber yogurt.",
+  "cuisine": "Indian",
+  "minutes": 75,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne. The paprika gives color without heat.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_drumsticks",
+    "amount": 1134,
+    "text": "8 (about 2½ lb)",
+    "note": ""
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 245,
+    "text": "1 cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 7.5,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "halved"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-inch chunks"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "grated and squeezed dry"
+   }
+  ],
+  "steps": [
+   "Don't rinse the chicken; pat it dry and cut 2 shallow slashes in each drumstick. In a large bowl, mix ½ cup of the yogurt with the paprika, garam masala, cumin, cayenne, garlic, ginger, the juice of half the lemon and 1 tsp of the salt.",
+   "Add the drumsticks, turn to coat and marinate for at least 15 minutes (or up to overnight in the fridge). Wash your hands and anything the raw chicken touched.",
+   "Heat the oven to 425°F. Line a large sheet pan with foil. Toss the potatoes with the oil and a pinch of the salt on one side of the pan and arrange the drumsticks on the other side, leaving space between them.",
+   "Roast for 40 to 45 minutes, turning the drumsticks and stirring the potatoes halfway, until the chicken is browned and reaches 165°F at the thickest part (not touching the bone) and the potatoes are tender.",
+   "Stir the cucumber and the remaining salt into the rest of the yogurt and serve with the chicken, potatoes and the other lemon half in wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside 2 tbsp of the marinade before it touches the chicken, coat cubed paneer in it and roast on a small separate pan for the last 15 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "paneer",
+     "amount": 170,
+     "text": "½ block",
+     "note": "cut into cubes"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_biryani_one_pot",
+  "name": "One-pot chicken biryani-style rice",
+  "side": "Yogurt with fresh mint.",
+  "cuisine": "Indian",
+  "minutes": 60,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne. The garam masala gives plenty of flavor on its own.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1½-inch pieces"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 380,
+    "text": "2 cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 440,
+    "text": "2 medium",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 245,
+    "text": "1 cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 7.5,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "mint",
+    "amount": 10,
+    "text": "½ cup leaves",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   }
+  ],
+  "steps": [
+   "Don't rinse the chicken. Mix it with ½ cup of the yogurt, the garlic, ginger, garam masala, turmeric, cayenne and ½ tsp of the salt and set aside for 10 minutes.",
+   "Melt the butter in a large Dutch oven over medium-high heat and cook the onions for 12 to 15 minutes, stirring often, until deep golden. Scoop out half for the topping.",
+   "Add the chicken and all its marinade and cook for 5 minutes, stirring, until the outside is no longer pink.",
+   "Stir in the rice for 1 minute, then add the broth and the remaining salt. Bring to a boil, cover tightly and cook on low for 18 minutes.",
+   "Let it rest off the heat, covered, for 10 minutes. Check that the largest piece of chicken reaches 165°F.",
+   "Fluff gently, top with the reserved onions, cilantro and half the mint, and stir the rest of the mint into the remaining yogurt to serve alongside."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer ½ cup basmati with the vegetable broth and a pinch of garam masala in a small covered pan for 15 minutes, then stir in the warmed chickpeas and some of the fried onions.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    },
+    {
+     "ingredient": "basmati",
+     "amount": 95,
+     "text": "½ cup",
+     "note": "rinsed"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 180,
+     "text": "¾ cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_jalfrezi",
+  "name": "Chicken jalfrezi",
+  "side": "Basmati rice.",
+  "cuisine": "Indian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Leave out the jalapeños and stir sliced chiles into the adults' plates instead.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into thin strips"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "cut into strips"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "cut into chunks"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 2,
+    "text": "2",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Rinse the rice until the water runs clearer, then bring it to a boil with 2¼ cups water and a pinch of the salt; cover, cook on low for 15 minutes, then rest it off the heat, covered, for 5 minutes.",
+   "Don't rinse the chicken. Toss it with the turmeric and ½ tsp of the salt. Heat 2 tbsp of the oil in a large skillet over medium-high heat and cook the chicken for 4 to 5 minutes, stirring, until browned; move it to a plate.",
+   "Add the remaining oil, the onion and peppers and stir-fry for 5 minutes until crisp-tender. Add the garlic, ginger, jalapeños, cumin and coriander and cook for 1 minute.",
+   "Pour in the tomatoes and the remaining salt and simmer for 5 minutes until saucy.",
+   "Return the chicken, sprinkle in the garam masala and simmer for 4 to 5 minutes until the chicken reaches 165°F. Serve over the rice."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, spoon some of the pepper-tomato sauce into a small pan before the chicken goes back in and simmer a can of chickpeas in it for 5 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_shawarma_sheet_pan",
+  "name": "Sheet-pan chicken shawarma",
+  "side": "Pita, garlic yogurt, cucumber and tomato.",
+  "cuisine": "Middle Eastern",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "cut into thin wedges"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 2,
+    "text": "2",
+    "note": "divided"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "grated, divided"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "pita",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 225,
+    "text": "2",
+    "note": "diced"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Don't rinse the chicken.",
+   "In a large bowl, mix the oil, the juice of 1 lemon, 3 of the garlic cloves, the cumin, paprika, turmeric, cinnamon and 1 tsp of the salt. Add the chicken and onion and toss to coat.",
+   "Spread them on a large sheet pan in a single layer and roast for 22 to 25 minutes until the chicken reaches 165°F and is browned at the edges. Let it rest for 5 minutes, then slice.",
+   "Stir the last garlic clove, the remaining salt and a squeeze of the second lemon into the yogurt. Warm the pita on the oven rack for the last 2 minutes.",
+   "Fill the pita with the chicken, onions, cucumber and tomatoes, top with garlic yogurt and serve with the rest of the lemon in wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, toss a can of chickpeas with a spoonful of the spiced oil (before the chicken goes in) and roast on a small separate pan for 20 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "turkish_chicken_kebab_sheet_pan",
+  "name": "Turkish-style chicken kebab sheet pan",
+  "side": "Buttery rice pilaf.",
+  "cuisine": "Turkish",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the chili flakes; the paprika and tomato keep it flavorful and mild.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1½-inch cubes"
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "cut into 1½-inch pieces"
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 2,
+    "text": "2",
+    "note": "cut into thick half-moons"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Don't rinse the chicken. In a large bowl, mix the yogurt, tomato paste, paprika, oregano, chili flakes, garlic, 1 tbsp of the oil and 1 tsp of the salt, then add the chicken and stir to coat.",
+   "Toss the peppers and zucchini with the remaining 2 tbsp oil and a pinch of the salt on a large sheet pan, push them to the edges and spread the chicken in the middle.",
+   "Roast for 20 to 22 minutes, stirring the vegetables once, until the chicken is browned at the edges and reaches 165°F.",
+   "Meanwhile, rinse the rice. Melt the butter in a saucepan over medium heat, stir in the rice for 2 minutes until it smells toasty, then add 2¼ cups water and the remaining salt. Bring to a boil, cover and cook on low for 15 minutes, then rest off the heat for 5 minutes.",
+   "Fluff the rice and serve with the chicken and vegetables and the pan juices spooned over."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, roast a can of chickpeas with a few extra pepper pieces on a small separate pan, tossed in a spoonful of the yogurt marinade set aside before the chicken goes in.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "lamb_kofta_herbed_couscous",
+  "name": "Lamb kofta with herbed couscous",
+  "side": "Mint-cucumber yogurt.",
+  "cuisine": "Middle Eastern",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "lamb",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_lamb",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ medium",
+    "note": "grated, juice squeezed out"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 30,
+    "text": "1 cup chopped",
+    "note": "divided"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "couscous",
+    "amount": 260,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "mint",
+    "amount": 10,
+    "text": "½ cup leaves",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F and brush a sheet pan with 1 tbsp of the oil.",
+   "Gently mix the lamb, onion, garlic, half the parsley, the cumin, coriander, cinnamon and 1 tsp of the salt with your hands. Shape into 12 finger-shaped kofta and set them on the pan. Wash your hands.",
+   "Bake for 12 to 15 minutes until browned and the kofta reach 160°F in the center.",
+   "Put the couscous in a bowl with a pinch of the salt, pour over 1¾ cups boiling water, cover for 5 minutes, then fluff with a fork. Stir in the rest of the parsley, the remaining 1 tbsp oil and the juice of half the lemon.",
+   "Stir the cucumber, mint and a pinch of the salt into the yogurt. Serve the kofta over the couscous with the yogurt and the rest of the lemon in wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, mash a can of chickpeas with a pinch of the same spices, some parsley and 2 tbsp flour, shape into small patties and bake on a separate pan beside the kofta for 15 minutes, turning once.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    },
+    {
+     "ingredient": "flour",
+     "amount": 15,
+     "text": "2 tbsp",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "beef_keema_matar",
+  "name": "Beef keema with peas",
+  "side": "Warm naan.",
+  "cuisine": "Indian",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; the peas and tomatoes make it kid-friendly.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 280,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "naan",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Cook the beef in a large skillet over medium-high heat for 6 to 8 minutes, breaking it up, until browned with no pink left and it reaches 160°F. Spoon off all but about 1 tbsp of the fat.",
+   "Add the onion and cook for 5 minutes until soft, then the garlic and ginger for 1 minute. Stir in the cumin, coriander, turmeric and cayenne for 30 seconds.",
+   "Add the tomatoes, salt and ½ cup water and simmer for 10 minutes, stirring now and then, until most of the liquid is gone.",
+   "Stir in the peas and garam masala and cook for 4 minutes until the peas are hot.",
+   "Warm the naan in a dry skillet for 1 minute per side. Scatter the cilantro over the keema and serve with the naan."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of chickpeas with a spoonful of the onion-tomato base (scooped out before the beef goes back in, or cooked in a small pan) and some of the peas.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chapli_beef_patties",
+  "name": "Chapli-style spiced beef patties",
+  "side": "Naan and yogurt.",
+  "cuisine": "Pakistani",
+  "minutes": 35,
+  "difficulty": "Medium",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Leave out the jalapeño and chili flakes; the coriander and cumin keep the patties tasty.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½ medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 113,
+    "text": "1",
+    "note": "seeded and finely diced"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 1,
+    "text": "1",
+    "note": "seeded and minced"
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 15,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "naan",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "yogurt",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Pat the diced tomato dry with paper towels so the patties hold together.",
+   "In a bowl, gently mix the beef, onion, tomato, cilantro, jalapeño, coriander, cumin, chili flakes, egg, flour and salt with your hands. Shape into 8 thin patties about 4 inches wide. Wash your hands.",
+   "Heat the oil in a large skillet over medium heat and cook the patties in batches for 3 to 4 minutes per side, until deeply browned and they reach 160°F in the center.",
+   "Drain the patties on paper towels and warm the naan in the same skillet for 1 minute per side.",
+   "Serve the patties with the naan and the yogurt for spooning over."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, dust slices of paneer in a pinch of coriander and cumin and pan-fry them for 2 minutes per side before cooking the beef.",
+   "ingredients": [
+    {
+     "ingredient": "paneer",
+     "amount": 170,
+     "text": "½ block",
+     "note": "sliced ½ inch thick"
+    }
+   ]
+  }
+ },
+ {
+  "id": "turkey_kofta_curry",
+  "name": "Turkey kofta curry",
+  "side": "Basmati rice.",
+  "cuisine": "Indian",
+  "minutes": 45,
+  "difficulty": "Medium",
+  "protein": "turkey",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_turkey",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "panko",
+    "amount": 30,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "grated, divided"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated, divided"
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 7.5,
+    "text": "1 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 1,
+    "text": "1 can",
+    "note": "shaken"
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "½ cup chopped",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Mix the turkey, panko, egg, half the garlic, half the ginger, 1 tsp of the garam masala, half the cilantro and ½ tsp of the salt. Roll into 20 walnut-size balls and wash your hands.",
+   "Rinse the rice until the water runs clearer, then bring it to a boil with 2¼ cups water and a pinch of the salt; cover, cook on low for 15 minutes, then rest it off the heat, covered, for 5 minutes.",
+   "Heat the oil in a large deep skillet over medium-high heat and brown the kofta for 5 to 6 minutes, turning, until browned all over (they'll finish in the sauce). Move to a plate.",
+   "Lower the heat to medium and cook the onion in the same pan for 6 minutes. Stir in the rest of the garlic, ginger and garam masala and the turmeric for 1 minute.",
+   "Add the tomato sauce, coconut milk and the remaining salt, bring to a simmer, then return the kofta. Cover and simmer for 12 to 15 minutes until the kofta reach 165°F in the center.",
+   "Scatter the rest of the cilantro on top and serve over the rice."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, ladle some of the sauce into a small pan before the kofta go back in and simmer a can of chickpeas in it for 8 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ },
+ {
+  "id": "lamb_rice_stuffed_peppers",
+  "name": "Spiced lamb and rice stuffed peppers",
+  "side": "Greek yogurt and chopped parsley.",
+  "cuisine": "Turkish",
+  "minutes": 80,
+  "difficulty": "Medium",
+  "protein": "lamb",
+  "equipment": [
+   "oven",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "bell_pepper",
+    "amount": 4,
+    "text": "4 large",
+    "note": "tops cut off and seeds removed"
+   },
+   {
+    "ingredient": "ground_lamb",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 95,
+    "text": "½ cup",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": "divided"
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "½ cup chopped",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 375°F. Boil the rice in a small pot of water with a pinch of the salt for 10 minutes, then drain; it will finish cooking in the oven.",
+   "Heat the oil in a large skillet over medium-high heat and cook the lamb and onion for 7 to 8 minutes, breaking up the meat, until no pink remains and it reaches 160°F. Spoon off most of the fat.",
+   "Stir in the garlic, cinnamon, cumin, paprika, pepper and the remaining salt for 1 minute, then take it off the heat and mix in the rice, half the tomato sauce and most of the parsley.",
+   "Stand the peppers upright in a baking dish, fill them with the lamb mixture and pour the rest of the tomato sauce mixed with ½ cup water around them.",
+   "Cover with foil and bake for 40 minutes, then uncover and bake for 10 to 15 minutes more until the peppers are tender when pierced with a knife.",
+   "Spoon the sauce over the peppers, sprinkle with the remaining parsley and serve with the yogurt."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, keep back ¼ cup of the parboiled rice, mix it with lightly mashed chickpeas and a spoonful of tomato sauce, and fill an extra pepper to bake in the same dish.",
+   "ingredients": [
+    {
+     "ingredient": "bell_pepper",
+     "amount": 1,
+     "text": "1",
+     "note": "top cut off and seeded"
+    },
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ },
+ {
+  "id": "lahmacun_lamb_flatbreads",
+  "name": "Lahmacun-style lamb flatbreads",
+  "side": "Parsley, sliced red onion and lemon.",
+  "cuisine": "Turkish",
+  "minutes": 45,
+  "difficulty": "Medium",
+  "protein": "lamb",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the chili flakes; the tomato-pepper topping is mild without them.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   },
+   {
+    "ingredient": "ground_lamb",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "half grated, half very thinly sliced"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 48,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "very finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 30,
+    "text": "1 cup chopped",
+    "note": "divided"
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into wedges"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 450°F with racks in the upper and lower thirds, and brush 2 large sheet pans with the oil.",
+   "In a bowl, mix the grated onion, tomato paste, bell pepper, garlic, half the parsley, the paprika, cumin, chili flakes and salt into a paste. Add the lamb and mix well with your hands, then wash your hands.",
+   "Lay 4 tortillas on the pans and spread each very thinly with an eighth of the lamb mixture, right to the edges.",
+   "Bake for 8 to 10 minutes, swapping the pans halfway, until the edges are crisp and the lamb is browned with no pink and reaches 160°F. Repeat with the remaining tortillas and topping.",
+   "Top each flatbread with sliced red onion and the rest of the parsley, squeeze lemon over, and roll up or fold to eat."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside 2 tbsp of the tomato-pepper paste before adding the lamb, spread it on 2 extra tortillas, top with crumbled feta and bake for 6 to 8 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "tortillas",
+     "amount": 2,
+     "text": "2",
+     "note": ""
+    },
+    {
+     "ingredient": "feta",
+     "amount": 85,
+     "text": "half a pack",
+     "note": "crumbled"
+    }
+   ]
+  }
+ },
+ {
+  "id": "persian_chicken_lentil_rice",
+  "name": "Persian-inspired chicken with lentil rice and raisins",
+  "side": "Yogurt on the side.",
+  "cuisine": "Persian",
+  "minutes": 55,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "lentils_brown",
+    "amount": 95,
+    "text": "½ cup",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "raisins",
+    "amount": 72,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.2,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "almonds_sliced",
+    "amount": 23,
+    "text": "¼ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Simmer the lentils in a pot of water for 15 minutes until just tender, then drain.",
+   "Return the lentils to the pot with the rice, 1 tbsp of the butter, ¾ tsp of the salt and 2½ cups water. Bring to a boil, cover and cook on low for 18 minutes, then rest off the heat, covered, for 5 minutes.",
+   "Meanwhile, don't rinse the chicken; pat it dry and season with the turmeric, cumin, pepper and ½ tsp of the salt. Heat the oil in a large skillet over medium-high heat and cook the chicken for 5 to 6 minutes per side until browned and it reaches 165°F. Rest it on a board.",
+   "Melt the remaining butter in the same skillet over medium heat and cook the onion with the last pinch of salt for 10 minutes until golden. Stir in the raisins, almonds and cinnamon for 1 to 2 minutes until the raisins plump.",
+   "Fluff the rice, spoon the onion and raisin mixture over it, and serve with the sliced chicken and the yogurt."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of chickpeas in a small pan with a pinch of turmeric and cumin and a splash of water, and serve with the rice and raisin topping.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ },
+ {
+  "id": "persian_herb_beef_stew",
+  "name": "Persian-inspired herb and beef stew (ghormeh sabzi-style)",
+  "side": "Basmati rice.",
+  "cuisine": "Persian",
+  "minutes": 150,
+  "difficulty": "Medium",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "beef_chuck",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 60,
+    "text": "1 bunch",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 60,
+    "text": "1 bunch",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 6,
+    "text": "6",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "kidney_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 2,
+    "text": "2",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.2,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Pat the beef dry and season with 1 tsp of the salt and the pepper. Heat 1 tbsp of the oil in a large Dutch oven over medium-high heat and brown the beef in 2 batches, 4 to 5 minutes per batch; move it to a plate.",
+   "Lower the heat to medium, add the onion and cook for 6 minutes, then stir in the turmeric for 30 seconds. Return the beef, add 4 cups water, bring to a boil, then cover and simmer gently for 1 hour.",
+   "Meanwhile, heat the remaining 2 tbsp oil in a large skillet over medium heat and cook the parsley, cilantro, spinach and scallions for 10 to 12 minutes, stirring often, until they turn dark green and smell toasty.",
+   "Stir the herbs, kidney beans and lemon juice into the stew and simmer, partly covered, for 45 to 60 minutes until the beef is fork-tender (well past 145°F) and the sauce has thickened. Season with the remaining salt.",
+   "About 25 minutes before serving, cook the rice: rinse it, bring to a boil with 2¼ cups water and a pinch of salt, cover and cook on low for 15 minutes, then rest for 5 minutes.",
+   "Serve the stew over the rice. Refrigerate leftovers within 2 hours; it tastes even better the next day."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, keep back ½ cup of the cooked herbs and simmer them with a can of kidney beans and the vegetable broth in a small pan for 20 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "kidney_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 240,
+     "text": "1 cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "persian_chicken_eggplant_stew",
+  "name": "Persian-inspired chicken and eggplant tomato stew",
+  "side": "Basmati rice.",
+  "cuisine": "Persian",
+  "minutes": 55,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "eggplant",
+    "amount": 2,
+    "text": "2 medium",
+    "note": "cut into 1-inch chunks"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 75,
+    "text": "5 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.2,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Toss the eggplant with 3 tbsp of the oil and ½ tsp of the salt on a sheet pan and roast for 20 to 25 minutes, stirring once, until soft and browned.",
+   "Meanwhile, don't rinse the chicken; season it with the turmeric, pepper and ½ tsp of the salt. Heat the remaining 2 tbsp oil in a large deep skillet over medium-high heat and brown the chicken for 3 minutes per side; move it to a plate.",
+   "Cook the onion in the same pan over medium heat for 6 minutes, then stir in the tomato paste and cinnamon for 1 minute. Add the tomatoes, broth and the remaining salt.",
+   "Return the chicken, cover and simmer for 15 minutes. Add the eggplant and lemon juice and simmer uncovered for 8 to 10 minutes until the chicken reaches 165°F and the sauce has thickened.",
+   "Rinse the rice until the water runs clearer, then bring it to a boil with 2¼ cups water and a pinch of salt; cover, cook on low for 15 minutes, then rest it off the heat, covered, for 5 minutes. Serve the stew over the rice."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, keep back a few pieces of roasted eggplant and simmer them in a small pan with a can of chickpeas, a spoonful of the tomato sauce (taken before the chicken goes back in) and a splash of water.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ },
+ {
+  "id": "moroccan_chicken_olives_lemon",
+  "name": "Moroccan-style chicken with olives and lemon",
+  "side": "Couscous.",
+  "cuisine": "North African",
+  "minutes": 50,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 6,
+    "text": "1 tbsp grated",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 75,
+    "text": "½ cup",
+    "note": "pitted and halved"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 2,
+    "text": "2",
+    "note": "1 zested and juiced, 1 cut into wedges"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 360,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "couscous",
+    "amount": 260,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Don't rinse the chicken; pat it dry and season with the turmeric, cumin, cinnamon and ½ tsp of the salt.",
+   "Heat the oil in a large Dutch oven over medium-high heat and brown the chicken for 4 minutes per side; move it to a plate.",
+   "Lower the heat to medium, add the onion and cook for 6 minutes until soft, then stir in the garlic and ginger for 1 minute.",
+   "Add the broth, lemon zest and juice and ¼ tsp of the salt, scraping up the browned bits. Return the chicken, cover and simmer for 20 minutes.",
+   "Add the olives and simmer uncovered for 5 minutes until the sauce reduces slightly and the chicken reaches 165°F.",
+   "Put the couscous in a bowl with a pinch of the salt, pour over 1¾ cups boiling water, cover for 5 minutes, then fluff with a fork.",
+   "Serve the chicken and sauce over the couscous, sprinkled with parsley, with the lemon wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of chickpeas in the vegetable broth with a pinch of the same spices, a few olives and a squeeze of lemon in a small pan for 10 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 240,
+     "text": "1 cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "slow_cooker_moroccan_beef_carrots",
+  "name": "Slow-cooker Moroccan-spiced beef and carrots",
+  "side": "Couscous.",
+  "cuisine": "North African",
+  "minutes": 450,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "slow_cooker",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "beef_chuck",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1½-inch pieces"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 280,
+    "text": "4",
+    "note": "cut into 1-inch chunks"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "beef_broth",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ground_ginger",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "raisins",
+    "amount": 36,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "couscous",
+    "amount": 260,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": "divided"
+   }
+  ],
+  "steps": [
+   "In the slow cooker, toss the beef with the cumin, cinnamon, paprika, ground ginger and 1 tsp of the salt.",
+   "Add the onion, carrots, garlic, tomatoes, broth, raisins and honey and stir.",
+   "Cover and cook on LOW for 7 to 8 hours, until the beef is fork-tender (well past 145°F).",
+   "Just before serving, put the couscous in a bowl with a pinch of the salt, pour over 1¾ cups boiling water, cover for 5 minutes, then fluff with a fork.",
+   "Skim any fat from the top of the stew and serve it over the couscous. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of chickpeas with a carrot, the vegetable broth and a pinch of the same spices in a small covered pan on the stove for 20 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    },
+    {
+     "ingredient": "carrots",
+     "amount": 70,
+     "text": "1",
+     "note": "diced"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 240,
+     "text": "1 cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "cod_chraimeh_chickpeas",
+  "name": "North African spiced cod in tomato sauce",
+  "side": "Crusty bread for the sauce.",
+  "cuisine": "North African",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; the paprika and cumin give flavor without heat.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "cod",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 4 pieces"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 6,
+    "text": "6 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 7.5,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "halved"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Pat the cod dry and season with ½ tsp of the salt.",
+   "Heat the oil in a large deep skillet over medium heat and cook the garlic for 1 minute without browning. Stir in the paprika, cumin, cayenne and tomato paste for 1 minute.",
+   "Add the tomatoes, chickpeas, ¾ cup water and the remaining salt and simmer for 8 minutes until slightly thickened.",
+   "Nestle the cod into the sauce, cover and simmer gently for 8 to 10 minutes until the fish flakes easily and reaches 145°F.",
+   "Squeeze half the lemon over, scatter the cilantro on top and serve with the bread and the rest of the lemon in wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, spoon some of the tomato and chickpea sauce into a small pan with an extra can of chickpeas before adding the fish, and simmer for 5 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ },
+ {
+  "id": "goan_coconut_fish_curry",
+  "name": "Goan-style coconut fish curry",
+  "side": "Basmati rice and lime.",
+  "cuisine": "Indian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Use a pinch of cayenne instead of ½ tsp; the coconut milk keeps it gentle.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tilapia",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 2-inch pieces"
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 1,
+    "text": "1 can",
+    "note": "shaken"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 225,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "halved"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Rinse the rice until the water runs clearer, then bring it to a boil with 2¼ cups water and a pinch of the salt; cover, cook on low for 15 minutes, then rest it off the heat, covered, for 5 minutes.",
+   "Pat the fish dry and season with ½ tsp of the salt and half the turmeric.",
+   "Heat the oil in a large deep skillet over medium heat and cook the onion for 7 minutes until golden. Add the garlic and ginger for 1 minute, then the rest of the turmeric, the coriander, cumin and cayenne for 30 seconds.",
+   "Add the tomatoes and cook for 4 minutes until soft, then pour in the coconut milk and the remaining salt and simmer for 5 minutes.",
+   "Slide in the fish, spoon the sauce over, and simmer gently for 5 to 6 minutes without stirring too much, until it flakes and reaches 145°F.",
+   "Squeeze in the juice of half the lime and serve over the rice with the other half in wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, ladle some of the coconut sauce into a small pan before the fish goes in and simmer a can of chickpeas in it for 5 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ },
+ {
+  "id": "shrimp_tomato_masala",
+  "name": "Shrimp and tomato masala",
+  "side": "Basmati rice.",
+  "cuisine": "Indian",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; the butter and tomato keep it mild.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "shrimp",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "thawed, tails removed"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 0.5,
+    "text": "½ lemon",
+    "note": "juiced"
+   }
+  ],
+  "steps": [
+   "Thaw the shrimp in a bowl of cold water for 10 minutes if still frozen, then drain and pat dry.",
+   "Rinse the rice until the water runs clearer, then bring it to a boil with 2¼ cups water and a pinch of the salt; cover, cook on low for 15 minutes, then rest it off the heat, covered, for 5 minutes.",
+   "Melt the butter in a large skillet over medium heat and cook the onion for 7 minutes until soft. Add the garlic and ginger for 1 minute, then the garam masala, cumin and cayenne for 30 seconds.",
+   "Add the tomatoes, the remaining salt and ¼ cup water and simmer for 8 minutes until thick.",
+   "Add the shrimp and peas and cook for 3 to 4 minutes, stirring, until the shrimp are pink and opaque all the way through.",
+   "Stir in the lemon juice, top with cilantro and serve over the rice."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, spoon some of the tomato sauce into a small pan before the shrimp go in and simmer a can of chickpeas and some of the peas in it for 5 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ },
+ {
+  "id": "salmon_tikka_green_beans",
+  "name": "Sheet-pan salmon tikka with green beans",
+  "side": "Warm naan.",
+  "cuisine": "Indian",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "salmon",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 4 fillets"
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 6,
+    "text": "1 tbsp grated",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "halved"
+   },
+   {
+    "ingredient": "green_beans",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "trimmed"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 283,
+    "text": "1 pack (10 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "naan",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Mix the yogurt, garam masala, paprika, cumin, garlic, ginger, the juice of half the lemon and ½ tsp of the salt, and spread it over the tops and sides of the salmon.",
+   "Toss the green beans and tomatoes with the oil and the remaining salt on a large sheet pan and roast for 10 minutes.",
+   "Push the vegetables to the sides, lay the salmon in the middle and roast for 12 to 15 minutes until the salmon flakes easily and reaches 145°F.",
+   "Warm the naan on the oven rack for the last 2 minutes.",
+   "Serve the salmon and vegetables with the naan and the other lemon half in wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside 2 tbsp of the yogurt marinade before it touches the fish, coat cubed paneer in it and roast on a small separate pan for 15 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "paneer",
+     "amount": 170,
+     "text": "½ block",
+     "note": "cut into cubes"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_karahi",
+  "name": "Chicken karahi",
+  "side": "Warm naan.",
+  "cuisine": "Pakistani",
+  "minutes": 45,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Leave out the jalapeños and chili flakes; add them only to the adults' portion at the end.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1½-inch pieces"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 680,
+    "text": "6",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 6,
+    "text": "6 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 20,
+    "text": "2-inch piece",
+    "note": "half grated, half cut into thin matchsticks"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 2,
+    "text": "2",
+    "note": "slit lengthwise"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "naan",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large wide skillet or wok over medium-high heat. Add the garlic and grated ginger and stir for 30 seconds.",
+   "Add the tomatoes, salt, cumin, coriander and chili flakes and cook for 10 to 12 minutes, mashing, until the tomatoes break down into a thick sauce and the oil starts to separate at the edges.",
+   "Don't rinse the chicken. Add it to the pan and cook for 12 to 15 minutes, stirring often, until it reaches 165°F and the sauce clings to it.",
+   "Lower the heat, stir in the yogurt, jalapeños and garam masala and cook for 2 minutes.",
+   "Warm the naan in a dry skillet for 1 minute per side. Top the karahi with the ginger matchsticks and cilantro and serve with the naan."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, scoop out ½ cup of the thick tomato sauce before the chicken goes in and simmer cubed paneer in it in a small pan for 5 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "paneer",
+     "amount": 170,
+     "text": "½ block",
+     "note": "cut into cubes"
+    }
+   ]
+  }
+ },
+ {
+  "id": "slow_cooker_aloo_chicken",
+  "name": "Slow-cooker chicken and potato curry",
+  "side": "Basmati rice or naan.",
+  "cuisine": "Pakistani",
+  "minutes": 440,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "slow_cooker"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; the potatoes soak up a gentle, warm sauce.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 2-inch pieces"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1½-inch chunks"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 7.5,
+    "text": "1 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "½ cup chopped",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Put the potatoes in the bottom of the slow cooker.",
+   "Stir together the onion, garlic, ginger, tomatoes, tomato paste, 2 tsp of the garam masala, the cumin, coriander, turmeric, cayenne, salt and ½ cup water.",
+   "Don't rinse the chicken. Lay it over the potatoes and pour the tomato mixture on top.",
+   "Cover and cook on LOW for 7 hours or HIGH for 4 hours, until the potatoes are tender and the chicken reaches 165°F.",
+   "Stir in the remaining garam masala, scatter with cilantro and serve. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of chickpeas with a spoonful of garam masala, a scoop of the tomato base mixed before the chicken goes in and a splash of water in a small pan for 10 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ },
+ {
+  "id": "beef_rogan_josh_style",
+  "name": "Beef rogan josh-style curry",
+  "side": "Basmati rice.",
+  "cuisine": "Indian",
+  "minutes": 140,
+  "difficulty": "Medium",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; the paprika gives the red color without heat.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "beef_chuck",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 245,
+    "text": "1 cup",
+    "note": "whisked smooth"
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 10,
+    "text": "4 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bay_leaves",
+    "amount": 0.4,
+    "text": "2 leaves",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Pat the beef dry and season with 1 tsp of the salt. Heat 2 tbsp of the oil in a Dutch oven over medium-high heat and brown the beef in 2 batches, 4 to 5 minutes each; move to a plate.",
+   "Add the remaining oil, the onion and bay leaves and cook over medium heat for 8 minutes until golden. Stir in the garlic, ginger, paprika, cayenne and coriander for 1 minute, then the tomato paste for 1 minute.",
+   "Turn the heat to low and stir in the yogurt a spoonful at a time so it doesn't split. Return the beef and juices and add 1½ cups water.",
+   "Bring to a gentle simmer, cover and cook on low for 1½ to 2 hours, stirring now and then, until the beef is fork-tender (well past 145°F). Uncover for the last 10 minutes if the sauce is thin.",
+   "About 25 minutes before serving, cook the rice: rinse it, bring to a boil with 2¼ cups water and the remaining salt, cover and cook on low for 15 minutes, then rest for 5 minutes.",
+   "Stir the garam masala into the curry, remove the bay leaves and serve over the rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of chickpeas with a pinch of paprika and garam masala and a few spoonfuls of the onion base (taken before the beef goes back in) in a small pan for 10 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ },
+ {
+  "id": "slow_cooker_pork_vindaloo",
+  "name": "Slow-cooker pork vindaloo-style curry",
+  "side": "Basmati rice.",
+  "cuisine": "Indian",
+  "minutes": 450,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "slow_cooker",
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Leave out the cayenne and use 2 tsp paprika; it's tangy rather than hot that way.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pork_shoulder",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "trimmed and cut into 1½-inch pieces"
+   },
+   {
+    "ingredient": "cider_vinegar",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 6,
+    "text": "6 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 10,
+    "text": "4 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 12,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "In the slow cooker, stir together the vinegar, garlic, ginger, paprika, cayenne, cumin, turmeric, cinnamon, tomato paste, brown sugar and 1 tsp of the salt.",
+   "Add the pork and onion and toss to coat, then pour in ½ cup water.",
+   "Cover and cook on LOW for 7 to 8 hours, until the pork is fork-tender (well past 145°F).",
+   "About 25 minutes before serving, cook the rice on the stove: rinse it, bring to a boil with 2¼ cups water and the remaining salt, cover and cook on low for 15 minutes, then rest for 5 minutes.",
+   "Skim any fat from the curry, stir, and serve over the rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, before the pork goes in, stir 2 tbsp of the spice paste into a small pan with a can of chickpeas and ½ cup water and simmer on the stove for 10 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ },
+ {
+  "id": "moroccan_chicken_chickpea_couscous",
+  "name": "One-pan Moroccan-spiced chicken and chickpea couscous",
+  "side": "A squeeze of lemon.",
+  "cuisine": "North African",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "couscous",
+    "amount": 260,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 420,
+    "text": "1¾ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½ medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "raisins",
+    "amount": 36,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "½ cup chopped",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Don't rinse the chicken. Toss it with half the cumin, half the paprika and ½ tsp of the salt.",
+   "Heat 1 tbsp of the oil in a large deep skillet with a lid over medium-high heat and cook the chicken for 6 to 7 minutes, stirring now and then, until browned and it reaches 165°F. Move it to a plate.",
+   "Add the remaining oil, the onion and zucchini and cook for 4 minutes. Stir in the rest of the cumin and paprika and the cinnamon for 30 seconds.",
+   "Add the broth, chickpeas, raisins and the remaining salt and bring to a boil. Stir in the couscous, take the pan off the heat, cover and let it stand for 5 minutes.",
+   "Fluff with a fork, fold in the chicken and parsley, squeeze over half the lemon and serve with the rest in wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "This splits easily: scoop vegetarian portions out of the pan before folding in the chicken, and stir an extra can of chickpeas into the pan with the broth so there's plenty.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_mulligatawny_soup",
+  "name": "Chicken mulligatawny soup",
+  "side": "Rice spooned into each bowl.",
+  "cuisine": "Indian",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 2 tsp curry powder instead of 1 tbsp; the coconut milk and apple keep it gentle.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "lentils_red",
+    "amount": 95,
+    "text": "½ cup",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "apples",
+    "amount": 1,
+    "text": "1",
+    "note": "peeled and diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 100,
+    "text": "2 stalks",
+    "note": "diced"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "curry_powder",
+    "amount": 7.5,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 1,
+    "text": "1 can",
+    "note": "shaken"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 190,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Rinse the rice, then bring it to a boil with 1½ cups water and a pinch of the salt; cover, cook on low for 15 minutes and rest off the heat for 5 minutes.",
+   "Heat the oil in a large pot over medium heat and cook the onion, carrots and celery for 8 minutes until softened. Stir in the garlic, ginger and curry powder for 1 minute.",
+   "Add the broth, lentils, apple and whole chicken thighs (don't rinse them). Bring to a boil, then simmer partly covered for 20 minutes until the lentils are soft and the chicken reaches 165°F.",
+   "Lift out the chicken and shred it with two forks. Stir the coconut milk and the remaining salt into the soup and blend about half of it with an immersion blender for a thicker soup, if you like.",
+   "Return the chicken, heat through for 2 minutes and serve with a spoonful of rice in each bowl. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of chickpeas in the vegetable broth with a spoonful of curry powder and a splash of the coconut milk in a small pan for 10 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 480,
+     "text": "2 cups",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "harira_lamb_lentil_soup",
+  "name": "Harira-style lamb, lentil and chickpea soup",
+  "side": "Lemon wedges and bread.",
+  "cuisine": "North African",
+  "minutes": 60,
+  "difficulty": "Easy",
+  "protein": "lamb",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_lamb",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "lentils_brown",
+    "amount": 95,
+    "text": "½ cup",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 100,
+    "text": "2 stalks",
+    "note": "diced"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ground_ginger",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 15,
+    "text": "1 cup chopped",
+    "note": "divided"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large pot over medium-high heat and cook the lamb for 6 to 7 minutes, breaking it up, until browned with no pink and it reaches 160°F. Spoon off most of the fat.",
+   "Add the onion and celery and cook for 6 minutes until soft. Stir in the turmeric, cinnamon, ground ginger and tomato paste for 1 minute.",
+   "Add the tomatoes, lentils, salt, half the cilantro and 6 cups water. Bring to a boil, then simmer partly covered for 30 minutes until the lentils are tender.",
+   "Add the chickpeas and simmer for 5 minutes more.",
+   "Stir in the juice of half the lemon and the rest of the cilantro and serve with the remaining lemon in wedges. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer an extra can of chickpeas with the vegetable broth, a pinch of the same spices and some cilantro in a small pan for 10 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 480,
+     "text": "2 cups",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "lebanese_beef_rice_almonds",
+  "name": "Lebanese-style spiced beef rice with almonds (hashweh)",
+  "side": "Cucumber yogurt.",
+  "cuisine": "Middle Eastern",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.2,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "almonds_sliced",
+    "amount": 46,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "beef_broth",
+    "amount": 540,
+    "text": "2¼ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "finely diced"
+   }
+  ],
+  "steps": [
+   "Melt 1 tbsp of the butter in a large pot over medium heat and toast the almonds for 2 to 3 minutes until golden; scoop them out.",
+   "Add the beef and onion and cook over medium-high heat for 7 to 8 minutes, breaking up the meat, until browned with no pink and it reaches 160°F. Spoon off most of the fat.",
+   "Stir in the cinnamon, cumin, pepper and the remaining butter, then the rice for 1 minute.",
+   "Add the broth and a pinch of the salt, bring to a boil, cover and cook on low for 15 minutes. Scatter the peas over, cover again and rest off the heat for 10 minutes.",
+   "Stir the cucumber and the remaining salt into the yogurt. Fluff the rice, top with the almonds and parsley and serve with the yogurt."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer ½ cup rice in the vegetable broth with a pinch of cinnamon for 15 minutes in a small covered pan, then stir in warmed chickpeas and top with some of the almonds.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    },
+    {
+     "ingredient": "basmati",
+     "amount": 95,
+     "text": "½ cup",
+     "note": "rinsed"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 180,
+     "text": "¾ cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "hawawshi_beef_pitas",
+  "name": "Egyptian-style spiced beef stuffed pitas (hawawshi)",
+  "side": "Tahini sauce and a simple salad.",
+  "cuisine": "Middle Eastern",
+  "minutes": 45,
+  "difficulty": "Medium",
+  "protein": "beef",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the jalapeño; the pepper and onion keep the filling flavorful.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pita",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ medium",
+    "note": "very finely diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "very finely diced"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 1,
+    "text": "1",
+    "note": "seeded and minced"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "½ cup chopped",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "grated, divided"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tahini",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F.",
+   "In a bowl, mix the beef, onion, bell pepper, jalapeño, parsley, 1 garlic clove, the cumin, paprika and ¾ tsp of the salt with your hands.",
+   "Cut each pita open along one edge to make a pocket and spread a quarter of the beef mixture inside in an even layer about ½ inch thick, pressing the pita closed. Wash your hands.",
+   "Brush the outsides with the oil and bake on a sheet pan for 15 to 18 minutes, flipping halfway, until the bread is crisp and the beef reaches 160°F in the center.",
+   "Whisk the tahini with the lemon juice, the remaining garlic, the last of the salt and 3 to 4 tbsp water until smooth. Cut the pitas into wedges and serve with the tahini sauce."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, fill an extra pita with lightly mashed chickpeas mixed with some of the chopped pepper, onion and spices, and bake it on the same pan.",
+   "ingredients": [
+    {
+     "ingredient": "pita",
+     "amount": 1,
+     "text": "1",
+     "note": ""
+    },
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ }
+]
