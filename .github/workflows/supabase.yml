@@ -43,11 +43,11 @@ jobs:
       - name: Function secret
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: supabase secrets set --project-ref "$PROJECT_REF" ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY"
+        run: supabase secrets set --project-ref "$PROJECT_REF" --yes ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY"
       - name: Deploy functions
         run: |
-          supabase functions deploy scan-food --project-ref "$PROJECT_REF"
-          supabase functions deploy delete-account --project-ref "$PROJECT_REF"
+          supabase functions deploy scan-food --project-ref "$PROJECT_REF" --use-api --yes
+          supabase functions deploy delete-account --project-ref "$PROJECT_REF" --use-api --yes
       - name: Sign-in emails send a 6-digit code
         run: |
           body=$(python3 - <<'PY'
