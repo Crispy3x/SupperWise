@@ -2,6 +2,15 @@
 name: iOS build and tests
 on:
   push:
+    paths-ignore:
+      - "backend/**"
+      - "app/tools/photos/**"
+      - "app/tools/recipes/**"
+      - "app/launch/**"
+      - "factory/**"
+      - "design/**"
+      - "preview/**"
+      - "**.md"
   pull_request:
   workflow_dispatch:
 
@@ -55,7 +64,9 @@ jobs:
 
   screenshots:
     # Store screenshots from the real app in demo mode (debug build, simulated purchases, a sample family).
+    # Only when started by hand (Actions → iOS build and tests → Run workflow): Mac minutes count 10× on private repos.
     needs: build
+    if: github.event_name == 'workflow_dispatch'
     runs-on: macos-15
     timeout-minutes: 45
     steps:
