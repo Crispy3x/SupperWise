@@ -193,6 +193,8 @@ def main():
             i["name"] = i["name"] + ", vegan (no shrimp paste)"
     by_id = {i["id"]: i for i in ings}
     T = tags(ings)
+    credits_path = os.path.join(RES, "photo-credits.json")
+    photo_ids = set(json.load(open(credits_path))) if os.path.exists(credits_path) else set()
     rec_path = os.path.join(RES, "recipes.json")
     recipes = json.load(open(rec_path))
     base = [r for r in recipes if not r.get("extended")]
@@ -256,7 +258,8 @@ def main():
                               difficulty=r["difficulty"], protein=r["protein"], allergens=sorted(allergens),
                               equipment=r["equipment"], spice=r["spice"],
                               ingredients=[dict(ingredient=x["ingredient"], amount=x["amount"], text=x["text"], note=x.get("note", "")) for x in r["ingredients"]],
-                              steps=r["steps"], photo=None, vegetarian=veg, pescatarian=pesc,
+                              steps=r["steps"], vegetarian=veg, pescatarian=pesc,
+                              photo=(f"rp_{r['id']}.jpg" if r["id"] in photo_ids and os.path.exists(os.path.join(RES, "photos", f"rp_{r['id']}.jpg")) else None),
                               mildNote=r.get("mildNote"),
                               vegetarianSwap=(dict(note=swap["note"], ingredients=[dict(ingredient=x["ingredient"], amount=x["amount"], text=x["text"], note=x.get("note", "")) for x in swap["ingredients"]]) if swap else None),
                               servings=4, extended=True))

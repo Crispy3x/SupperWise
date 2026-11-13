@@ -12,15 +12,18 @@ cands = json.load(open(os.path.join(HERE, "candidates.json")))
 def thumb(rid, i, url):
     path = os.path.join(CACHE, f"{rid}__{i}.jpg")
     if os.path.exists(path): return path
-    try:
-        req = urllib.request.Request(url, headers=UA)
-        img = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=40).read())).convert("RGB")
-        img.thumbnail((300, 300)); img.save(path, quality=80); return path
-    except Exception as e:
-        return None
+    import time
+    for attempt in range(4):
+        try:
+            req = urllib.request.Request(url, headers=UA)
+            img = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=40).read())).convert("RGB")
+            img.thumbnail((300, 300)); img.save(path, quality=80); time.sleep(0.4); return path
+        except Exception as e:
+            time.sleep(6 * (attempt + 1))
+    return None
 
 jobs = [(rid, i, c["url"]) for rid, v in cands.items() for i, c in enumerate(v["candidates"])]
-with cf.ThreadPoolExecutor(8) as ex: list(ex.map(lambda j: thumb(*j), jobs))
+with cf.ThreadPoolExecutor(3) as ex: list(ex.map(lambda j: thumb(*j), jobs))
 
 try: font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 22); small = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
 except Exception: font = small = ImageFont.load_default()
