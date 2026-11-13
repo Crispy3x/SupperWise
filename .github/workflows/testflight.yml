@@ -55,7 +55,7 @@ jobs:
           PY
           chmod 600 "$RUNNER_TEMP/keys/AuthKey_$KID.p8"
 
-      - name: Archive (signed automatically with your team)
+      - name: Archive (unsigned; it is signed for the App Store at export, which needs no registered device)
         env:
           TEAM: ${{ secrets.APPLE_TEAM_ID }}
           KID: ${{ secrets.ASC_KEY_ID }}
@@ -69,6 +69,7 @@ jobs:
             -authenticationKeyPath "$RUNNER_TEMP/keys/AuthKey_$KID.p8" \
             -authenticationKeyID "$KID" -authenticationKeyIssuerID "$ISS" \
             DEVELOPMENT_TEAM="$TEAM" CODE_SIGN_STYLE=Automatic \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
             CURRENT_PROJECT_VERSION="${{ github.run_number }}" \
             | grep -E "error:|warning: .*Supperwise|\*\* ARCHIVE (SUCCEEDED|FAILED) \*\*"
 

@@ -65,6 +65,9 @@ try:
             break
         except RuntimeError as e:
             msg = str(e)
+            for k, want in _re.findall(r"attribute '(\w+)'\. Expected an? (\w+)", msg):
+                answers[k] = False if want == "BOOLEAN" else "NONE"
+            if "Expected a" in msg: continue
             missing = _re.findall(r"value for the attribute '(\w+)'", msg)
             invalid = _re.findall(r'"pointer" : "/data/attributes/(\w+)"', msg) if "INVALID" in msg or "invalid" in msg else []
             if not missing and not invalid: raise
