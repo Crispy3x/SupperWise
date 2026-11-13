@@ -1,0 +1,5192 @@
+[
+ {
+  "id": "slow_cooker_pulled_pork_sandwiches",
+  "name": "Slow cooker pulled pork sandwiches",
+  "side": "Creamy coleslaw piled on top, with pickles on the side.",
+  "cuisine": "American",
+  "minutes": 450,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "slow_cooker"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pork_shoulder",
+    "amount": 1135,
+    "text": "2½ lb",
+    "note": "trimmed of thick fat, cut into 3 large chunks"
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 25,
+    "text": "2 tbsp",
+    "note": "packed"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 7,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "cider_vinegar",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "burger_buns",
+    "amount": 6,
+    "text": "6",
+    "note": "split"
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 300,
+    "text": "¼ head",
+    "note": "very thinly sliced"
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Mix the brown sugar, smoked paprika, garlic powder and 1 teaspoon of the salt, then rub it all over the pork chunks (there's no need to rinse the pork).",
+   "Scatter the sliced onion over the bottom of the slow cooker, set the pork on top, and pour over the tomato sauce stirred together with 3 tablespoons of the cider vinegar.",
+   "Cover and cook on LOW for 7 to 8 hours, until the pork is fork-tender and pulls apart easily; it will be far past the safe 145°F at this point.",
+   "Lift the pork onto a cutting board, shred it with two forks, discard any large pieces of fat, then stir the meat back into the sauce in the slow cooker.",
+   "Just before serving, toss the cabbage with the mayo, the remaining 1 tablespoon vinegar and the remaining ½ teaspoon salt to make a quick slaw.",
+   "Pile the pork onto the buns and top with slaw. Refrigerate leftover pork within 2 hours; it keeps 3 to 4 days."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a drained can of pinto beans with ½ cup tomato sauce, 1 teaspoon brown sugar and a pinch of smoked paprika for 10 minutes, mash lightly and pile onto a bun with slaw.",
+   "ingredients": [
+    {
+     "ingredient": "pinto_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "tomato_sauce",
+     "amount": 120,
+     "text": "½ cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "slow_cooker_beef_and_potato_stew",
+  "name": "Slow cooker beef and potato stew",
+  "side": "Crusty bread or dinner rolls for dunking.",
+  "cuisine": "American",
+  "minutes": 450,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "slow_cooker"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "beef_chuck",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1½-in cubes"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1½-in chunks"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 280,
+    "text": "4 carrots",
+    "note": "peeled, cut into 1-in pieces"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "beef_broth",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "worcestershire",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 150,
+    "text": "1 cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Toss the beef cubes with the flour, salt and pepper in the slow cooker until coated.",
+   "Add the potatoes, carrots, onion and garlic on top of the beef.",
+   "Whisk the tomato paste into the beef broth with the Worcestershire sauce and thyme, then pour it over everything.",
+   "Cover and cook on LOW for 7 to 8 hours (or HIGH for 4 to 5 hours), until the beef is fork-tender and the potatoes are soft; the beef will be well past the safe 145°F.",
+   "Stir in the frozen peas, cover and cook 10 minutes more until they're hot, then taste and add more salt if needed.",
+   "Ladle into bowls. Refrigerate leftovers within 2 hours; the stew keeps 3 to 4 days."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a drained can of white beans in 1 cup vegetable broth with a spoonful of tomato paste and a pinch of thyme for 10 minutes, and add a few of the peas.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 240,
+     "text": "1 cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "slow_cooker_white_chicken_chili",
+  "name": "Slow cooker white chicken chili",
+  "side": "Tortilla chips and lime wedges on the side.",
+  "cuisine": "American",
+  "minutes": 275,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "slow_cooker"
+  ],
+  "spice": 1,
+  "mildNote": "Canned green chiles are mild, but for sensitive kids use half the can; there's no other heat in the pot.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "white_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "green_chiles",
+    "amount": 113,
+    "text": "1 can (4 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 150,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cream_cheese",
+    "amount": 113,
+    "text": "4 oz",
+    "note": "cubed, softened"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 15,
+    "text": "a small handful",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Put the white beans, chicken broth, green chiles, onion, garlic, cumin, oregano and salt in the slow cooker and stir.",
+   "Nestle the chicken breasts into the liquid (don't rinse raw chicken).",
+   "Cover and cook on HIGH for 4 hours (or LOW for 7 hours), until the chicken reaches 165°F in the thickest part.",
+   "Lift the chicken onto a board and shred it with two forks, then return it to the pot with the corn and cream cheese.",
+   "Cover and cook 15 minutes more, stirring once or twice, until the cream cheese melts into a creamy broth and the corn is hot.",
+   "Stir in the lime juice and cilantro and taste for salt. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a drained can of white beans with 1 cup vegetable broth, a spoonful of the green chiles and a pinch of cumin for 10 minutes, then stir in a spoonful of cream cheese.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 240,
+     "text": "1 cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "slow_cooker_three_bean_chili",
+  "name": "Slow cooker three-bean chili",
+  "side": "Shredded cheddar, sour cream and a pan of cornbread or crackers.",
+  "cuisine": "American",
+  "minutes": 380,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "slow_cooker"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tablespoon chili powder instead of 2, and serve kids' bowls with extra sour cream and cheese.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "kidney_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "pinto_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can (28 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 150,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded, for topping"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "for topping"
+   }
+  ],
+  "steps": [
+   "Add the kidney, black and pinto beans to the slow cooker with the crushed tomatoes, onion, bell pepper and garlic.",
+   "Stir in the chili powder, cumin, vegetable broth and salt.",
+   "Cover and cook on LOW for 6 hours (or HIGH for 3 hours), until the onion and pepper are completely soft.",
+   "Stir in the frozen corn, cover and cook 15 minutes more until hot. Mash a few beans against the side of the pot to thicken the chili if you like.",
+   "Taste and add more salt if needed, then ladle into bowls and top with the cheddar and sour cream.",
+   "Refrigerate leftovers within 2 hours; the chili keeps 4 days and freezes well."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "slow_cooker_lentil_sloppy_joes",
+  "name": "Slow cooker lentil sloppy joes",
+  "side": "Carrot sticks and pickles on the side.",
+  "cuisine": "American",
+  "minutes": 385,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "slow_cooker"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 teaspoon chili powder instead of 1 tablespoon; the sauce is then sweet and tangy with no heat.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "lentils_brown",
+    "amount": 290,
+    "text": "1½ cups",
+    "note": "rinsed and picked over"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 25,
+    "text": "2 tbsp",
+    "note": "packed"
+   },
+   {
+    "ingredient": "cider_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 8,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "burger_buns",
+    "amount": 6,
+    "text": "6",
+    "note": "split and toasted"
+   }
+  ],
+  "steps": [
+   "Put the lentils, vegetable broth, tomato sauce, tomato paste, onion, bell pepper and garlic in the slow cooker.",
+   "Stir in the brown sugar, cider vinegar, mustard, chili powder and salt.",
+   "Cover and cook on LOW for 6 hours (or HIGH for 3 hours), until the lentils are completely tender.",
+   "Uncover and stir well; if it looks soupy, cook uncovered on HIGH for 15 to 20 minutes until thick enough to pile on a bun.",
+   "Taste and add more salt or a little more vinegar if needed, then spoon onto the toasted buns.",
+   "Refrigerate leftovers within 2 hours; the filling keeps 4 days."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "slow_cooker_honey_garlic_chicken",
+  "name": "Slow cooker honey garlic chicken",
+  "side": "Steamed rice and broccoli, sprinkled with sesame seeds.",
+  "cuisine": "American",
+  "minutes": 280,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "slow_cooker",
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 900,
+    "text": "2 lb",
+    "note": "boneless, skinless"
+   },
+   {
+    "ingredient": "honey",
+    "amount": 85,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 80,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 5,
+    "text": "5 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 6,
+    "text": "1 tbsp",
+    "note": "grated"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 16,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 380,
+    "text": "2 cups",
+    "note": "uncooked"
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 450,
+    "text": "1 lb",
+    "note": "cut into florets"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 6,
+    "text": "2 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Whisk the honey, soy sauce, garlic, ginger, tomato paste and rice vinegar in the slow cooker, then add the chicken thighs and turn to coat (don't rinse raw chicken).",
+   "Cover and cook on HIGH for 4 hours (or LOW for 7 hours), until the chicken is tender and reaches 165°F.",
+   "About 30 minutes before serving, cook the rice on the stovetop following the package directions, and steam the broccoli over simmering water for 5 to 6 minutes until bright green and just tender.",
+   "Lift the chicken onto a plate. Whisk the cornstarch with 2 tablespoons cold water, stir it into the sauce, cover and cook on HIGH for 15 minutes until glossy and thickened.",
+   "Shred or slice the chicken, return it to the sauce and stir to coat.",
+   "Serve over the rice with the broccoli, scattered with scallions and sesame seeds. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, pan-fry cubes of extra-firm tofu in a little oil for 8 to 10 minutes until golden, then toss with a spoonful each of honey and soy sauce and a little garlic.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "pressed, cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "slow_cooker_tortellini_minestrone",
+  "name": "Slow cooker tortellini minestrone",
+  "side": "Grated parmesan and crusty bread.",
+  "cuisine": "American",
+  "minutes": 400,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "slow_cooker"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "veg_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": "with juices"
+   },
+   {
+    "ingredient": "white_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2 carrots",
+    "note": "diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 100,
+    "text": "2 ribs",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "tortellini",
+    "amount": 567,
+    "text": "1 pack (20 oz)",
+    "note": "refrigerated"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": "baby spinach"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 25,
+    "text": "¼ cup",
+    "note": "grated"
+   }
+  ],
+  "steps": [
+   "Put the vegetable broth, diced tomatoes, white beans, onion, carrots, celery, garlic, Italian seasoning and salt in the slow cooker.",
+   "Cover and cook on LOW for 6 hours (or HIGH for 3 hours), until the carrots are tender.",
+   "Turn the slow cooker to HIGH and stir in the zucchini and tortellini.",
+   "Cover and cook 20 to 30 minutes, until the tortellini are plump and tender and the zucchini is soft.",
+   "Stir in the spinach until it wilts, taste for salt, and serve topped with the parmesan.",
+   "Refrigerate leftovers within 2 hours; the pasta will keep soaking up broth, so add a splash of water when reheating."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "slow_cooker_red_beans_and_rice",
+  "name": "Slow cooker red beans and rice with kielbasa",
+  "side": "Sliced scallions and hot sauce at the table.",
+  "cuisine": "Cajun",
+  "minutes": 440,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "slow_cooker",
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne and pass hot sauce at the table for the grown-ups.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "kielbasa",
+    "amount": 396,
+    "text": "1 rope (14 oz)",
+    "note": "sliced into coins"
+   },
+   {
+    "ingredient": "kidney_beans",
+    "amount": 3,
+    "text": "3 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1 green",
+    "note": "diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 100,
+    "text": "2 ribs",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bay_leaves",
+    "amount": 0.5,
+    "text": "2 leaves",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "uncooked long-grain rice"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Put the kielbasa, kidney beans, onion, bell pepper, celery and garlic in the slow cooker.",
+   "Add the chicken broth, smoked paprika, thyme, cayenne, bay leaves and salt and stir.",
+   "Cover and cook on LOW for 7 hours (or HIGH for 4 hours), until the vegetables are very soft and the sausage is steaming hot (165°F).",
+   "Remove the bay leaves, then mash about a quarter of the beans against the side of the pot and stir to make the sauce creamy.",
+   "About 25 minutes before serving, cook the rice on the stovetop following the package directions.",
+   "Spoon the beans over the rice and top with scallions. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a drained can of kidney beans with 1 cup vegetable broth and a pinch each of smoked paprika and thyme for 15 minutes, mashing a few beans to thicken.",
+   "ingredients": [
+    {
+     "ingredient": "kidney_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 240,
+     "text": "1 cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "air_fryer_chicken_tenders_honey_mustard",
+  "name": "Air fryer chicken tenders with honey mustard",
+  "side": "Carrot sticks and a green salad.",
+  "cuisine": "American",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "air_fryer"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-in-wide strips"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 63,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 2,
+    "text": "2",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "panko",
+    "amount": 100,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 42,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 280,
+    "text": "4 carrots",
+    "note": "peeled, cut into sticks"
+   }
+  ],
+  "steps": [
+   "Set up three shallow bowls: the flour, the beaten eggs, and the panko mixed with the paprika, garlic powder, salt and oil (rub it together with your fingers so the crumbs are evenly oily).",
+   "Pat the chicken strips dry (don't rinse raw chicken), then dip each one in flour, then egg, then press into the crumbs. Wash your hands after handling raw chicken.",
+   "Heat the air fryer to 400°F. Lay half the tenders in the basket in a single layer without touching.",
+   "Air-fry for 10 to 12 minutes, flipping halfway, until deep golden and the thickest tender reads 165°F. Repeat with the rest, keeping the first batch warm.",
+   "Meanwhile, stir together the honey, mustard and mayo for the dipping sauce.",
+   "Serve the tenders with the honey mustard and carrot sticks. Refrigerate leftovers within 2 hours and re-crisp them in the air fryer."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, coat ½-inch slices of pressed extra-firm tofu the same way and air-fry them at 400°F for 12 to 14 minutes before the chicken, flipping halfway.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "pressed, sliced ½ in thick"
+    }
+   ]
+  }
+ },
+ {
+  "id": "air_fryer_buffalo_cauliflower_wraps",
+  "name": "Air fryer buffalo cauliflower and chickpea wraps",
+  "side": "Celery sticks and extra dill yogurt dip.",
+  "cuisine": "American",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "air_fryer"
+  ],
+  "spice": 2,
+  "mildNote": "Before saucing, set aside the kids' cauliflower and chickpeas and toss them in melted butter and honey only; let them dip in the yogurt.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "cauliflower",
+    "amount": 1,
+    "text": "1 head",
+    "note": "cut into bite-size florets"
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and patted very dry"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "melted"
+   },
+   {
+    "ingredient": "sriracha",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 170,
+    "text": "¾ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "dill",
+    "amount": 5,
+    "text": "2 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 0.5,
+    "text": "½",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "warmed"
+   },
+   {
+    "ingredient": "romaine",
+    "amount": 1,
+    "text": "1 heart",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2 carrots",
+    "note": "coarsely grated"
+   }
+  ],
+  "steps": [
+   "Heat the air fryer to 400°F. Toss the cauliflower and chickpeas with the olive oil, garlic powder and ½ teaspoon of the salt.",
+   "Air-fry in two batches for 15 to 18 minutes each, shaking the basket every 5 minutes, until the cauliflower is browned at the edges and tender and the chickpeas are crisp.",
+   "While it cooks, whisk the melted butter, sriracha and honey in a large bowl for the buffalo sauce.",
+   "Stir the yogurt with the dill, lemon juice and remaining ¼ teaspoon salt to make a ranch-style dip.",
+   "Toss the hot cauliflower and chickpeas in the buffalo sauce.",
+   "Fill each tortilla with romaine, grated carrot and buffalo cauliflower, then spoon on the dill yogurt and roll up."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "air_fryer_parmesan_pork_chops",
+  "name": "Air fryer parmesan pork chops with green beans",
+  "side": "Mashed potatoes or a baked potato.",
+  "cuisine": "American",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "air_fryer"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pork_chops",
+    "amount": 680,
+    "text": "4 chops (about 1½ lb)",
+    "note": "boneless, ¾ in thick"
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "panko",
+    "amount": 50,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 25,
+    "text": "¼ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "green_beans",
+    "amount": 450,
+    "text": "1 lb",
+    "note": "trimmed"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into wedges"
+   }
+  ],
+  "steps": [
+   "Heat the air fryer to 400°F. Toss the green beans with 1 tablespoon of the oil and ¼ teaspoon of the salt and air-fry for 8 to 10 minutes, shaking once, until blistered and tender. Tip into a bowl and cover to keep warm.",
+   "Mix the panko, parmesan, Italian seasoning, garlic powder, pepper, remaining ¾ teaspoon salt and remaining 1 tablespoon oil in a shallow dish.",
+   "Pat the pork chops dry, brush both sides with the mustard, and press firmly into the crumb mixture.",
+   "Lower the air fryer to 380°F and cook the chops in a single layer (in two batches if needed) for 10 to 12 minutes, flipping halfway, until golden and the center reads 145°F.",
+   "Rest the chops for 3 minutes, then serve with the green beans and lemon wedges for squeezing. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, coat ½-inch slices of pressed extra-firm tofu with mustard and the crumbs and air-fry at 400°F for 12 to 14 minutes, flipping halfway.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "pressed, sliced ½ in thick"
+    }
+   ]
+  }
+ },
+ {
+  "id": "air_fryer_cornmeal_fish_tartar",
+  "name": "Air fryer cornmeal-crusted fish with tartar sauce",
+  "side": "Coleslaw and corn on the cob.",
+  "cuisine": "Southern",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "air_fryer"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tilapia",
+    "amount": 680,
+    "text": "4 fillets (1½ lb)",
+    "note": "patted dry"
+   },
+   {
+    "ingredient": "cornmeal",
+    "amount": 80,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 31,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": "for brushing"
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "capers",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "dill",
+    "amount": 5,
+    "text": "2 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "half juiced, half in wedges"
+   }
+  ],
+  "steps": [
+   "Stir the mayo, chopped capers, dill and the juice of half the lemon together to make tartar sauce, and refrigerate it until serving.",
+   "Mix the cornmeal, flour, paprika, garlic powder and salt in a shallow dish. Dip each fillet in the beaten egg, then press into the cornmeal mixture to coat both sides.",
+   "Heat the air fryer to 400°F and brush the basket and the tops of the fillets lightly with the oil.",
+   "Air-fry the fish in a single layer (in two batches if needed) for 8 to 10 minutes, flipping carefully halfway, until golden and the fish flakes easily or reads 145°F.",
+   "Serve with the tartar sauce and lemon wedges. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, coat ½-inch slices of pressed extra-firm tofu in egg and the cornmeal mixture and air-fry at 400°F for 12 to 14 minutes, flipping halfway.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "pressed, sliced ½ in thick"
+    }
+   ]
+  }
+ },
+ {
+  "id": "air_fryer_eggplant_parmesan",
+  "name": "Air fryer eggplant parmesan",
+  "side": "Spaghetti with the extra marinara and a green salad.",
+  "cuisine": "American",
+  "minutes": 50,
+  "difficulty": "Medium",
+  "protein": "none",
+  "equipment": [
+   "air_fryer",
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "eggplant",
+    "amount": 2,
+    "text": "2 medium",
+    "note": "sliced into ½-in rounds"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 2,
+    "text": "2",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "panko",
+    "amount": 100,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "grated, divided"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "marinara",
+    "amount": 680,
+    "text": "1 jar (24 oz)",
+    "note": "divided"
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "spaghetti",
+    "amount": 340,
+    "text": "¾ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "basil",
+    "amount": 10,
+    "text": "a few leaves",
+    "note": "torn"
+   }
+  ],
+  "steps": [
+   "Mix the panko, half the parmesan, the Italian seasoning, salt and olive oil in a shallow dish. Dip each eggplant round in beaten egg, then press into the crumbs.",
+   "Heat the air fryer to 390°F. Air-fry the eggplant in a single layer, in batches, for 8 to 10 minutes, flipping halfway, until golden outside and tender when pierced with a knife.",
+   "Meanwhile, bring a large pot of salted water to a boil and cook the spaghetti for 9 to 11 minutes until tender. Warm the marinara in a small saucepan over medium-low heat.",
+   "Return the eggplant to the basket in batches, top each round with a spoonful of marinara and some mozzarella, and air-fry 2 to 3 minutes until the cheese melts and bubbles.",
+   "Drain the spaghetti and toss with most of the remaining warm marinara.",
+   "Serve the eggplant over the spaghetti with the last of the sauce, the rest of the parmesan and torn basil."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "air_fryer_garlic_parmesan_wings",
+  "name": "Air fryer garlic parmesan wings",
+  "side": "Carrot and celery sticks with a dill yogurt dip.",
+  "cuisine": "American",
+  "minutes": 65,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "air_fryer",
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_wings",
+    "amount": 1360,
+    "text": "3 lb",
+    "note": "split into flats and drumettes, patted dry"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 35,
+    "text": "⅓ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "2 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 280,
+    "text": "4 carrots",
+    "note": "cut into sticks"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 200,
+    "text": "4 ribs",
+    "note": "cut into sticks"
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 170,
+    "text": "¾ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the air fryer to 380°F. Toss the dry wings (don't rinse them) with the olive oil, garlic powder, 1 teaspoon of the salt and the pepper.",
+   "Air-fry half the wings in a single layer for 20 minutes, shaking the basket every 7 minutes.",
+   "Raise the heat to 400°F and cook 5 to 8 minutes more, until the skin is crisp and golden and the wings read at least 165°F at the thickest part. Repeat with the second batch.",
+   "While the wings cook, melt the butter in a small saucepan over low heat, add the minced garlic and cook 1 minute until fragrant without browning.",
+   "Toss the hot wings in a large bowl with the garlic butter, parmesan and parsley.",
+   "Stir the remaining ¼ teaspoon salt into the yogurt for a dip and serve with the carrot and celery sticks. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, toss cauliflower florets in oil and garlic powder and air-fry at 400°F for 15 minutes before the wings, then toss in a spoonful of the garlic butter and parmesan.",
+   "ingredients": [
+    {
+     "ingredient": "cauliflower",
+     "amount": 0.5,
+     "text": "½ head",
+     "note": "cut into florets"
+    }
+   ]
+  }
+ },
+ {
+  "id": "grilled_bbq_chicken_thighs_corn",
+  "name": "Grilled barbecue chicken thighs with corn",
+  "side": "Coleslaw or a sliced tomato salad.",
+  "cuisine": "American",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "grill",
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 900,
+    "text": "2 lb",
+    "note": "boneless, skinless"
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 50,
+    "text": "¼ cup",
+    "note": "packed"
+   },
+   {
+    "ingredient": "cider_vinegar",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "worcestershire",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "corn_cobs",
+    "amount": 4,
+    "text": "4 ears",
+    "note": "husked"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "softened"
+   }
+  ],
+  "steps": [
+   "Simmer the tomato sauce, brown sugar, vinegar, Worcestershire, 1 teaspoon of the smoked paprika and the garlic powder in a small saucepan over medium-low heat for 8 to 10 minutes, stirring, until slightly thickened. Pour half into a serving bowl for the table.",
+   "Heat the grill to medium-high (about 425°F). Rub the chicken with the oil, the remaining 1 teaspoon smoked paprika and ¾ teaspoon of the salt (don't rinse raw chicken).",
+   "Grill the corn for 10 to 12 minutes, turning every few minutes, until charred in spots, then brush with the butter and sprinkle with the remaining ¼ teaspoon salt.",
+   "Grill the chicken for 5 to 6 minutes per side. During the last 3 minutes, brush with the sauce from the saucepan (not the serving bowl) and turn once so it caramelizes without burning.",
+   "Check that the thickest thigh reads 165°F, then rest the chicken 5 minutes. Discard any sauce left from brushing raw chicken.",
+   "Serve the chicken and corn with the clean bowl of sauce. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, grill ½-inch slabs of pressed extra-firm tofu for 4 minutes per side, brushing with sauce from the clean serving bowl before the chicken goes on.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "pressed, cut into slabs"
+    }
+   ]
+  }
+ },
+ {
+  "id": "grilled_sirloin_garlic_butter_potatoes",
+  "name": "Grilled sirloin with garlic butter and potato packets",
+  "side": "Grilled zucchini, cooked alongside.",
+  "cuisine": "American",
+  "minutes": 50,
+  "difficulty": "Medium",
+  "protein": "beef",
+  "equipment": [
+   "grill"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "sirloin",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "about 1 in thick"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into ¾-in chunks"
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 2,
+    "text": "2",
+    "note": "halved lengthwise"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "rosemary",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried, crumbled"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 56,
+    "text": "4 tbsp",
+    "note": "softened"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "2 tbsp",
+    "note": "finely chopped"
+   }
+  ],
+  "steps": [
+   "Heat the grill to medium-high. Toss the potatoes with 2 tablespoons of the oil, the rosemary and ¾ teaspoon of the salt, divide between two large sheets of heavy-duty foil, and fold into sealed packets.",
+   "Grill the packets over medium heat (the cooler side), lid closed, for 25 to 30 minutes, shaking them carefully once, until the potatoes are tender when poked through the foil with a knife.",
+   "Meanwhile, mash the butter with the garlic and parsley. Pat the steak dry and season with ½ teaspoon of the salt and the pepper; brush the zucchini with the remaining oil and remaining ¼ teaspoon salt.",
+   "When the potatoes have about 12 minutes left, grill the steak over the hot side for 4 to 6 minutes per side, until it reads 145°F in the center for medium. Grill the zucchini 3 to 4 minutes per side until marked and tender.",
+   "Rest the steak for at least 3 minutes topped with half the garlic butter, then slice thinly across the grain.",
+   "Serve the steak with the potatoes and zucchini, dotted with the rest of the garlic butter. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a drained can of white beans in a small foil packet on the grill with a spoonful of the garlic butter and serve with an extra grilled zucchini.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "zucchini",
+     "amount": 1,
+     "text": "1",
+     "note": "halved lengthwise"
+    }
+   ]
+  }
+ },
+ {
+  "id": "grilled_maple_mustard_pork_tenderloin",
+  "name": "Grilled maple mustard pork tenderloin with sweet potatoes",
+  "side": "A green salad or steamed green beans.",
+  "cuisine": "American",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "grill"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pork_tenderloin",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "silver skin trimmed"
+   },
+   {
+    "ingredient": "maple_syrup",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cider_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "sweet_potato",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "scrubbed, sliced into ½-in rounds"
+   }
+  ],
+  "steps": [
+   "Whisk the maple syrup, mustard, vinegar, garlic and thyme. Pour half into a small bowl to serve at the table; use the rest for brushing.",
+   "Heat the grill to medium-high. Rub the pork with 1 tablespoon of the oil, ¾ teaspoon of the salt and the pepper. Toss the sweet potato rounds with the remaining oil and ½ teaspoon salt.",
+   "Grill the pork for 18 to 22 minutes, turning a quarter turn every 5 minutes, and brush with the brushing glaze during the last 5 minutes. It's done when the thickest part reads 145°F.",
+   "At the same time, grill the sweet potatoes over medium heat for 12 to 14 minutes, turning every few minutes, until tender and charred in spots.",
+   "Rest the pork for 3 to 5 minutes, then slice it into medallions. Discard any glaze left from brushing.",
+   "Serve the pork and sweet potatoes drizzled with the reserved glaze. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a drained can of white beans in a small foil packet on the grill and toss with a spoonful of the reserved glaze; serve with extra sweet potato rounds.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "sweet_potato",
+     "amount": 225,
+     "text": "½ lb",
+     "note": "sliced into ½-in rounds"
+    }
+   ]
+  }
+ },
+ {
+  "id": "grilled_vegetable_mozzarella_hoagies",
+  "name": "Grilled vegetable and mozzarella hoagies",
+  "side": "Potato chips or a cucumber salad.",
+  "cuisine": "American",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "grill"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "zucchini",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced lengthwise ¼ in thick"
+   },
+   {
+    "ingredient": "eggplant",
+    "amount": 1,
+    "text": "1",
+    "note": "sliced into ½-in rounds"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "quartered, seeds removed"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "cut into thick rounds"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": "red wine vinegar"
+   },
+   {
+    "ingredient": "hoagie_rolls",
+    "amount": 4,
+    "text": "4",
+    "note": "split"
+   },
+   {
+    "ingredient": "pesto",
+    "amount": 80,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "mozzarella_fresh",
+    "amount": 227,
+    "text": "1 ball (8 oz)",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Heat the grill to medium-high. Brush the zucchini, eggplant, pepper and onion with the olive oil and season with the Italian seasoning, salt and pepper.",
+   "Grill the vegetables for 4 to 5 minutes per side, until tender and well marked; the onion may take a few minutes longer.",
+   "Pile the hot vegetables into a bowl, toss with the vinegar, and separate the onion rings.",
+   "Toast the cut sides of the rolls on the grill for about 1 minute.",
+   "Spread the rolls with pesto, fill with the grilled vegetables, and tuck in the mozzarella slices so the heat softens them."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "grilled_classic_cheeseburgers",
+  "name": "Grilled classic cheeseburgers",
+  "side": "Corn on the cob or oven fries.",
+  "cuisine": "American",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "grill"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_beef",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "85% lean"
+   },
+   {
+    "ingredient": "worcestershire",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "4 oz",
+    "note": "cut into 4 slices"
+   },
+   {
+    "ingredient": "burger_buns",
+    "amount": 4,
+    "text": "4",
+    "note": "split"
+   },
+   {
+    "ingredient": "lettuce_butter",
+    "amount": 1,
+    "text": "1 head",
+    "note": "leaves separated"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 200,
+    "text": "2",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½ medium",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Gently mix the ground beef with the Worcestershire, then shape into four ¾-inch-thick patties slightly wider than the buns. Press a shallow dimple in the center of each so they stay flat. Wash your hands.",
+   "Heat the grill to medium-high (about 425°F) and season both sides of the patties with the salt and pepper.",
+   "Grill the burgers for 4 to 5 minutes per side without pressing them, until they reach 160°F in the center.",
+   "Lay a slice of cheddar on each patty for the last minute, with the lid closed, so it melts. Toast the buns cut-side down for 30 to 60 seconds.",
+   "Spread the buns with mayo and build the burgers with lettuce, tomato and red onion. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, mash a drained can of black beans with 2 tablespoons panko and an egg, shape into 2 patties, and grill on a piece of oiled foil for 4 to 5 minutes per side.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    },
+    {
+     "ingredient": "panko",
+     "amount": 15,
+     "text": "2 tbsp",
+     "note": ""
+    },
+    {
+     "ingredient": "eggs",
+     "amount": 1,
+     "text": "1",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "sheet_pan_kielbasa_potatoes_green_beans",
+  "name": "Sheet-pan kielbasa with potatoes and green beans",
+  "side": "A dollop of honey mustard for dipping.",
+  "cuisine": "American",
+  "minutes": 50,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "kielbasa",
+    "amount": 396,
+    "text": "1 rope (14 oz)",
+    "note": "sliced into ½-in coins"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into ¾-in chunks"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "cut into wedges"
+   },
+   {
+    "ingredient": "green_beans",
+    "amount": 340,
+    "text": "¾ lb",
+    "note": "trimmed"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. On a large sheet pan, toss the potatoes and onion with the oil, paprika, garlic powder, salt and pepper, and spread them out in one layer.",
+   "Roast for 20 minutes, until the potatoes are starting to brown underneath.",
+   "Stir the potatoes, then add the green beans and kielbasa to the pan, tossing them in the oil on the pan.",
+   "Roast 15 to 20 minutes more, until the potatoes are tender and golden, the green beans are blistered, and the sausage is browned and steaming hot (165°F).",
+   "Stir the mustard and honey together and drizzle over the pan or serve on the side. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, roast a drained, patted-dry can of chickpeas on a foil-lined corner of the pan instead of the sausage, added at the same time.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "sheet_pan_honey_mustard_chicken_brussels",
+  "name": "Sheet-pan honey mustard chicken with Brussels sprouts and sweet potatoes",
+  "side": "Dinner rolls or a scoop of rice.",
+  "cuisine": "American",
+  "minutes": 50,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "boneless, skinless"
+   },
+   {
+    "ingredient": "brussels_sprouts",
+    "amount": 450,
+    "text": "1 lb",
+    "note": "trimmed and halved"
+   },
+   {
+    "ingredient": "sweet_potato",
+    "amount": 450,
+    "text": "1 lb",
+    "note": "peeled, cut into ¾-in cubes"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 42,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Toss the Brussels sprouts and sweet potatoes on a large sheet pan with 2 tablespoons of the oil and ½ teaspoon of the salt. Roast for 15 minutes.",
+   "Meanwhile, whisk the honey, mustard, garlic, thyme and remaining 1 tablespoon oil. Season the chicken with the remaining ½ teaspoon salt and the pepper (don't rinse raw chicken), then toss it in two-thirds of the honey mustard.",
+   "Stir the vegetables and push them to the edges, then lay the chicken in the middle of the pan.",
+   "Roast 20 to 25 minutes, until the vegetables are tender and caramelized and the chicken reads 165°F in the thickest part.",
+   "Brush the chicken with the remaining honey mustard (kept clean, never touched by raw chicken) and serve. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, toss a drained can of chickpeas in a spoonful of the clean honey mustard and roast it on a foil-lined corner of the pan in place of chicken.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "sheet_pan_gnocchi_tomatoes_white_beans",
+  "name": "Sheet-pan gnocchi with tomatoes, zucchini and white beans",
+  "side": "A simple green salad.",
+  "cuisine": "American",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "gnocchi",
+    "amount": 907,
+    "text": "2 packs (1 lb each)",
+    "note": "shelf-stable, separated"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 283,
+    "text": "1 pack (10 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 2,
+    "text": "2",
+    "note": "cut into ½-in half-moons"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½ medium",
+    "note": "cut into thin wedges"
+   },
+   {
+    "ingredient": "white_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained, rinsed and patted dry"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "mozzarella_fresh",
+    "amount": 227,
+    "text": "1 ball (8 oz)",
+    "note": "torn into pieces"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 25,
+    "text": "¼ cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "basil",
+    "amount": 10,
+    "text": "a handful",
+    "note": "torn"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 450°F. On a large sheet pan (or two, if crowded), toss the gnocchi, cherry tomatoes, zucchini, onion, white beans and garlic with the olive oil, Italian seasoning and salt.",
+   "Spread everything into one layer and roast for 20 to 25 minutes, stirring once halfway, until the gnocchi are golden and puffed and the tomatoes have burst.",
+   "Scatter the torn mozzarella over the top and roast 3 to 5 minutes more, until melted.",
+   "Sprinkle with the parmesan and basil and serve straight from the pan, pressing the burst tomatoes so their juice coats the gnocchi."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "sheet_pan_french_toast_bananas",
+  "name": "Sheet-pan French toast with bananas",
+  "side": "Scrambled eggs or Greek yogurt on the side.",
+  "cuisine": "American",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "sandwich_bread",
+    "amount": 12,
+    "text": "12 slices",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 6,
+    "text": "6",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 360,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 25,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 1,
+    "text": "a pinch",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "melted"
+   },
+   {
+    "ingredient": "bananas",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "maple_syrup",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "for serving"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F and brush a rimmed half sheet pan (about 18 by 13 inches) generously with the melted butter.",
+   "Whisk the eggs, milk, sugar, cinnamon and salt in a large bowl, then pour the mixture into the sheet pan.",
+   "Lay the bread slices in the custard in a single snug layer, wait 1 minute, then flip each slice so both sides soak up the custard.",
+   "Bake for 12 minutes, then flip the slices with a spatula and bake 6 to 8 minutes more, until golden, puffed and no liquid egg remains.",
+   "Top with the sliced bananas and serve with maple syrup. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "chicken_and_stuffing_bake",
+  "name": "Chicken and stuffing bake",
+  "side": "Steamed green beans or a crisp salad.",
+  "cuisine": "American",
+  "minutes": 55,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-in pieces"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 56,
+    "text": "4 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 150,
+    "text": "3 ribs",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2 carrots",
+    "note": "diced"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 31,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 600,
+    "text": "2½ cups",
+    "note": "divided"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 150,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "stuffing_cubes",
+    "amount": 170,
+    "text": "6 oz (about 5 cups)",
+    "note": ""
+   },
+   {
+    "ingredient": "sage",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 375°F. Melt 2 tablespoons of the butter in a large skillet over medium heat and cook the onion, celery and carrots for 5 minutes until softened.",
+   "Add the chicken (don't rinse raw chicken) with the salt and pepper and cook 4 to 5 minutes, stirring, until no longer pink on the outside.",
+   "Sprinkle in the flour and stir for 1 minute, then gradually stir in 1½ cups of the broth and simmer 3 to 4 minutes until thickened. Stir in the sour cream and peas and pour into a 9-by-13-inch baking dish.",
+   "Melt the remaining 2 tablespoons butter and toss it with the stuffing cubes, sage, thyme and remaining 1 cup broth until evenly moistened, then spread over the chicken.",
+   "Bake for 25 to 30 minutes, until the topping is golden, the filling bubbles, and a piece of chicken in the center reads 165°F.",
+   "Let stand 5 minutes before serving. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a drained can of white beans with a few of the vegetables, a spoonful of sour cream and ½ cup vegetable broth in a small oven-safe dish, top with some buttered stuffing cubes moistened with vegetable broth, and bake alongside.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 120,
+     "text": "½ cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "classic_cottage_pie",
+  "name": "Cottage pie",
+  "side": "Buttered green beans or a simple salad.",
+  "cuisine": "American",
+  "minutes": 65,
+  "difficulty": "Medium",
+  "protein": "beef",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "potatoes_russet",
+    "amount": 1135,
+    "text": "2½ lb",
+    "note": "peeled, cut into 2-in chunks"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "warm"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "ground_beef",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2 carrots",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "beef_broth",
+    "amount": 360,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "worcestershire",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 150,
+    "text": "1 cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F. Cover the potatoes with cold salted water in a large pot, bring to a boil and simmer 15 to 18 minutes until very tender. Drain and mash with the butter, warm milk and 1 teaspoon of the salt.",
+   "While the potatoes cook, brown the ground beef in a large oven-safe skillet over medium-high heat for 6 to 8 minutes, breaking it up, until no pink remains and it reaches 160°F. Spoon off excess fat.",
+   "Add the onion and carrots and cook 5 minutes until softened, then stir in the garlic and tomato paste for 1 minute.",
+   "Sprinkle in the flour, stir, then add the broth, Worcestershire, thyme and remaining ½ teaspoon salt. Simmer 5 minutes until thick and gravy-like, then stir in the peas.",
+   "Spread the mashed potatoes over the filling (or transfer filling to a 9-by-13-inch dish first) and rough up the top with a fork.",
+   "Bake for 20 minutes until the filling bubbles at the edges and the potato peaks are golden. Rest 5 minutes before serving and refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer ½ cup red lentils in 1½ cups vegetable broth with a little tomato paste and thyme for 15 minutes until thick, then top with some of the mash in a small baking dish and bake alongside.",
+   "ingredients": [
+    {
+     "ingredient": "lentils_red",
+     "amount": 100,
+     "text": "½ cup",
+     "note": "rinsed"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 360,
+     "text": "1½ cups",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "baked_penne_spinach_ricotta",
+  "name": "Baked penne with spinach and ricotta",
+  "side": "Garlic bread and a green salad.",
+  "cuisine": "American",
+  "minutes": 50,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "penne",
+    "amount": 340,
+    "text": "¾ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "ricotta",
+    "amount": 425,
+    "text": "1 tub (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_spinach",
+    "amount": 283,
+    "text": "1 box (10 oz)",
+    "note": "thawed and squeezed very dry"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "grated, divided"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": "plus more for the pasta water"
+   },
+   {
+    "ingredient": "marinara",
+    "amount": 680,
+    "text": "1 jar (24 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 227,
+    "text": "2 cups",
+    "note": "shredded"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 375°F. Boil the penne in a large pot of salted water for 2 minutes less than the package says (it finishes in the oven), then drain.",
+   "In a large bowl, mix the ricotta, spinach, egg, half the parmesan, garlic, Italian seasoning and salt.",
+   "Stir the drained penne into the ricotta mixture along with about two-thirds of the marinara.",
+   "Spread in a 9-by-13-inch baking dish, spoon the remaining marinara over the top, and sprinkle with the mozzarella and remaining parmesan.",
+   "Cover with foil and bake 20 minutes, then uncover and bake 10 minutes more until the cheese is melted and browned in spots.",
+   "Let stand 5 minutes before serving. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "zucchini_corn_cheddar_rice_bake",
+  "name": "Zucchini, corn and cheddar rice bake",
+  "side": "Sliced tomatoes or a green salad.",
+  "cuisine": "Southern",
+  "minutes": 60,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 1,
+  "mildNote": "Canned green chiles are gentle; use half the can, or leave them out, for the mildest version.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 190,
+    "text": "1 cup",
+    "note": "uncooked long-grain rice"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 2,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 225,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "green_chiles",
+    "amount": 113,
+    "text": "1 can (4 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 3,
+    "text": "3",
+    "note": ""
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 227,
+    "text": "2 cups",
+    "note": "shredded, divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Cook the rice on the stovetop following the package directions (about 15 minutes), then fluff it. Heat the oven to 375°F and grease a 9-by-13-inch dish with a little of the butter.",
+   "Melt the rest of the butter in a large skillet over medium heat and cook the onion and zucchini for 6 to 8 minutes, until soft and most of the liquid has cooked off. Stir in the corn and green chiles.",
+   "In a large bowl, whisk the eggs with the sour cream, salt and pepper, then stir in the rice, the vegetables and 1½ cups of the cheddar.",
+   "Spread in the dish and top with the remaining ½ cup cheddar.",
+   "Bake 25 to 30 minutes, until set in the center, bubbly and golden at the edges (the center should read 160°F).",
+   "Scatter with scallions and let stand 5 minutes before cutting. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "spinach_cheddar_strata",
+  "name": "Spinach and cheddar strata",
+  "side": "Fruit salad and a few slices of tomato.",
+  "cuisine": "American",
+  "minutes": 85,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "bread_crusty",
+    "amount": 0.75,
+    "text": "¾ loaf",
+    "note": "cut into 1-in cubes (about 6 cups)"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": "plus more for the dish"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": "baby spinach"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 600,
+    "text": "2½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "nutmeg",
+    "amount": 0.5,
+    "text": "a pinch",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "shredded, divided"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 350°F and butter a 9-by-13-inch baking dish. Spread the bread cubes in it.",
+   "Melt the butter in a skillet over medium heat, cook the onion for 4 minutes until soft, then add the spinach and stir 1 to 2 minutes until wilted. Scatter over the bread.",
+   "Whisk the eggs, milk, mustard, salt, pepper and nutmeg, stir 1 cup of the cheddar into the bread, and pour the egg mixture evenly over the top.",
+   "Press the bread down so it soaks, sprinkle with the remaining cheddar, and let stand 15 minutes (or cover and refrigerate overnight).",
+   "Bake uncovered for 45 to 50 minutes, until puffed and golden and a knife in the center comes out clean (160°F).",
+   "Rest 10 minutes before cutting. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "patty_melts_caramelized_onions",
+  "name": "Patty melts with caramelized onions",
+  "side": "Pickles and a crunchy cabbage slaw.",
+  "cuisine": "American",
+  "minutes": 45,
+  "difficulty": "Medium",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "onion_yellow",
+    "amount": 440,
+    "text": "2 medium",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "ground_beef",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "worcestershire",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sandwich_bread",
+    "amount": 8,
+    "text": "8 slices",
+    "note": ""
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Melt 1 tablespoon of the butter in a large skillet over medium-low heat, add the onions and ¼ teaspoon of the salt, and cook 15 to 20 minutes, stirring often, until soft and deep golden. Scrape into a bowl and wipe out the pan.",
+   "Mix the beef with the Worcestershire, then shape into four thin oval patties about the size of a slice of bread. Season with the remaining salt and the pepper. Wash your hands.",
+   "Cook the patties in the skillet over medium-high heat for 3 to 4 minutes per side, until they reach 160°F in the center. Transfer to a plate and pour off the fat.",
+   "Spread 4 slices of bread with mustard and build each sandwich: cheese, patty, onions, more cheese, then the top slice.",
+   "Melt the remaining butter in the skillet over medium-low heat and cook the sandwiches 2 to 3 minutes per side, pressing gently, until the bread is golden and the cheese melts.",
+   "Cut in half and serve. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, sauté a pack of sliced mushrooms in a little butter for 8 minutes until browned and use them in place of the patty with the onions and cheese.",
+   "ingredients": [
+    {
+     "ingredient": "mushrooms",
+     "amount": 227,
+     "text": "1 pack (8 oz)",
+     "note": "sliced"
+    }
+   ]
+  }
+ },
+ {
+  "id": "crispy_black_bean_burgers",
+  "name": "Crispy black bean burgers",
+  "side": "Sweet potato fries or corn on the cob.",
+  "cuisine": "American",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "black_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained, rinsed and patted very dry"
+   },
+   {
+    "ingredient": "panko",
+    "amount": 40,
+    "text": "¾ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½ medium",
+    "note": "very finely chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "burger_buns",
+    "amount": 4,
+    "text": "4",
+    "note": "split and toasted"
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 1,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "romaine",
+    "amount": 1,
+    "text": "1 heart",
+    "note": "leaves separated"
+   }
+  ],
+  "steps": [
+   "In a large bowl, mash about two-thirds of the black beans with a fork or potato masher until mostly smooth, leaving the rest whole.",
+   "Mix in the panko, egg, onion, garlic, cumin, smoked paprika and salt, then shape into 4 patties about ¾ inch thick. Chill 10 minutes if they feel soft.",
+   "Heat the oil in a large nonstick skillet over medium heat and cook the patties for 4 to 5 minutes per side, until crisp and browned and hot all the way through.",
+   "Top each patty with cheese for the last minute, covering the pan so it melts.",
+   "Serve on the toasted buns with avocado and romaine."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "baked_turkey_cheddar_sliders",
+  "name": "Baked turkey and cheddar sliders",
+  "side": "Carrot sticks and apple slices.",
+  "cuisine": "American",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "turkey",
+  "equipment": [
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "dinner_rolls",
+    "amount": 12,
+    "text": "12",
+    "note": "attached, sliced in half horizontally as a slab"
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "deli_turkey",
+    "amount": 255,
+    "text": "1 pack (9 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 170,
+    "text": "6 oz",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "melted"
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 350°F. Set the bottom slab of rolls in a 9-by-13-inch baking dish and spread with the mayo.",
+   "Layer on the turkey and the cheddar, then replace the top slab of rolls.",
+   "Whisk the melted butter with the mustard and garlic powder, brush it over the tops, and sprinkle with the sesame seeds.",
+   "Cover with foil and bake 15 minutes, then uncover and bake 5 minutes more, until the tops are golden, the cheese is melted, and the center is steaming hot (165°F).",
+   "Cut into individual sliders and serve warm. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, make a few sliders with cheddar and sliced roasted red peppers in place of the turkey; bake them on the same dish.",
+   "ingredients": [
+    {
+     "ingredient": "roasted_peppers",
+     "amount": 60,
+     "text": "2 pieces",
+     "note": "patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "skillet_tuna_melts",
+  "name": "Skillet tuna melts",
+  "side": "Tomato soup or a crunchy green salad.",
+  "cuisine": "American",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tuna_canned",
+    "amount": 4,
+    "text": "4 cans (5 oz each)",
+    "note": "drained"
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "celery",
+    "amount": 100,
+    "text": "2 ribs",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 55,
+    "text": "¼ medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 0.5,
+    "text": "½",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sandwich_bread",
+    "amount": 8,
+    "text": "8 slices",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "4 oz",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 200,
+    "text": "2",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "softened"
+   }
+  ],
+  "steps": [
+   "Mix the tuna, mayo, celery, red onion, lemon juice and mustard in a bowl, breaking up the tuna with a fork.",
+   "Butter one side of each bread slice. Lay 4 slices butter-side down and top each with cheddar, a quarter of the tuna, tomato slices and more cheddar, then the remaining bread, butter-side up.",
+   "Cook in a large skillet over medium-low heat, two at a time, for 3 to 4 minutes per side, until the bread is deep golden and the cheese has melted.",
+   "Cut in half and serve hot. Refrigerate leftover tuna salad within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, mash a drained can of chickpeas with the same mayo, celery, onion and lemon for a chickpea melt.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "grilled_cheese_and_tomato_soup",
+  "name": "Grilled cheese with creamy tomato soup",
+  "side": "Pickles or apple slices.",
+  "cuisine": "American",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "smashed"
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can (28 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "dried_basil",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 8,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "heavy_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "sandwich_bread",
+    "amount": 8,
+    "text": "8 slices",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "softened"
+   }
+  ],
+  "steps": [
+   "Heat the oil in a pot over medium heat and cook the onion and garlic for 6 to 8 minutes, until soft but not browned.",
+   "Add the crushed tomatoes, broth, basil, sugar and salt, bring to a boil, then simmer uncovered for 15 minutes.",
+   "Blend the soup until smooth with an immersion blender (or carefully in batches in a blender, with the lid vented), then stir in the cream and keep warm over low heat.",
+   "Meanwhile, butter one side of each bread slice and make 4 sandwiches with the cheddar inside, buttered sides out.",
+   "Cook the sandwiches in a large skillet over medium-low heat for 3 to 4 minutes per side, until golden and the cheese melts.",
+   "Cut the sandwiches into strips for dunking and serve with bowls of soup. Refrigerate leftover soup within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "philly_style_cheesesteaks",
+  "name": "Philly-style cheesesteaks",
+  "side": "Oven fries or a crisp green salad.",
+  "cuisine": "American",
+  "minutes": 45,
+  "difficulty": "Medium",
+  "protein": "beef",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "sirloin",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1 green",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "1 pack (8 oz)",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "hoagie_rolls",
+    "amount": 4,
+    "text": "4",
+    "note": "split"
+   }
+  ],
+  "steps": [
+   "Freeze the steak for 20 minutes so it firms up, then slice it as thinly as you can across the grain. Heat the oven to 400°F.",
+   "Heat 1 tablespoon of the oil in a large skillet over medium-high heat and cook the onion, pepper and mushrooms with ½ teaspoon of the salt for 8 to 10 minutes until soft and browned. Scrape into a bowl.",
+   "Add the remaining oil and the steak, season with the remaining salt and the pepper, and cook in two batches over high heat for 2 to 3 minutes, stirring, until browned with no pink left; the thin slices are well past the safe 145°F.",
+   "Return the vegetables to the pan with all the steak, toss, and divide into 4 piles in the pan. Top each with mozzarella, cover, and cook 1 to 2 minutes until melted.",
+   "Meanwhile, warm the rolls in the oven for 3 to 4 minutes. Slide a spatula under each cheesy pile and tuck it into a roll.",
+   "Serve hot. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, cook an extra pack of sliced mushrooms with some of the onions and peppers in a small pan, top with cheese until melted, and tuck into a roll.",
+   "ingredients": [
+    {
+     "ingredient": "mushrooms",
+     "amount": 227,
+     "text": "1 pack (8 oz)",
+     "note": "sliced"
+    }
+   ]
+  }
+ },
+ {
+  "id": "classic_sloppy_joes",
+  "name": "Classic sloppy joes",
+  "side": "Carrot sticks and corn on the cob.",
+  "cuisine": "American",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_beef",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 25,
+    "text": "2 tbsp",
+    "note": "packed"
+   },
+   {
+    "ingredient": "worcestershire",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cider_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "burger_buns",
+    "amount": 6,
+    "text": "6",
+    "note": "split and toasted"
+   }
+  ],
+  "steps": [
+   "Brown the ground beef in a large skillet over medium-high heat for 6 to 8 minutes, breaking it up, until no pink remains and it reaches 160°F. Spoon off most of the fat.",
+   "Add the onion and bell pepper and cook 5 minutes until softened, then stir in the garlic for 30 seconds.",
+   "Stir in the tomato sauce, tomato paste, brown sugar, Worcestershire, vinegar, mustard, chili powder and salt.",
+   "Simmer over medium-low heat for 10 minutes, stirring occasionally, until thick enough to mound on a spoon.",
+   "Spoon onto the toasted buns and serve. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a drained can of pinto beans with ½ cup tomato sauce, 1 teaspoon brown sugar and 1 teaspoon mustard for 10 minutes, mashing lightly.",
+   "ingredients": [
+    {
+     "ingredient": "pinto_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "tomato_sauce",
+     "amount": 120,
+     "text": "½ cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_pot_pie_skillet",
+  "name": "Chicken pot pie skillet with puff pastry",
+  "side": "A crisp green salad.",
+  "cuisine": "American",
+  "minutes": 55,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "boneless, cut into 1-in pieces"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 56,
+    "text": "4 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2 carrots",
+    "note": "diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 100,
+    "text": "2 ribs",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 42,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 150,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "puff_pastry",
+    "amount": 1,
+    "text": "1 sheet",
+    "note": "thawed in the fridge"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F. Season the chicken with ½ teaspoon of the salt and the pepper (don't rinse raw chicken).",
+   "Melt 1 tablespoon of the butter in a 10- to 12-inch oven-safe skillet over medium-high heat and brown the chicken for 6 to 8 minutes, stirring, until it reaches 165°F. Transfer to a plate.",
+   "Melt the remaining butter in the skillet over medium heat and cook the onion, carrots and celery for 6 minutes until softened; add the garlic for 30 seconds.",
+   "Sprinkle in the flour and stir for 1 minute, then slowly whisk in the broth and milk. Simmer 3 to 4 minutes, stirring, until thick, then stir in the chicken, peas, thyme and remaining ½ teaspoon salt.",
+   "Lay the puff pastry over the filling, trim or tuck the corners, and cut 4 small slits in the top.",
+   "Bake for 20 to 25 minutes, until the pastry is puffed and deep golden and the filling bubbles. Rest 5 minutes before serving, and refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, before adding the broth, scoop out a ladle of the softened vegetables and simmer in a small saucepan with a drained can of white beans, 1 cup vegetable broth and 1 tablespoon flour until thick; top with a square of pastry baked on a sheet alongside.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 240,
+     "text": "1 cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "mushroom_white_bean_pot_pie",
+  "name": "Mushroom and white bean pot pie",
+  "side": "Steamed green beans or a simple salad.",
+  "cuisine": "American",
+  "minutes": 60,
+  "difficulty": "Medium",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "butter",
+    "amount": 56,
+    "text": "4 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 454,
+    "text": "2 packs (1 lb)",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2 carrots",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "rosemary",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried, crumbled"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 42,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "white_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": "baby spinach"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pie_crust",
+    "amount": 1,
+    "text": "1 crust",
+    "note": "thawed"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F. Melt the butter in a 10-inch oven-safe skillet over medium-high heat and cook the mushrooms for 8 to 10 minutes, until their liquid has cooked off and they're browned.",
+   "Add the onion and carrots and cook 5 minutes, then stir in the garlic and rosemary for 30 seconds.",
+   "Sprinkle in the flour and stir for 1 minute, then gradually stir in the broth, milk and soy sauce. Simmer 3 to 4 minutes until thick.",
+   "Stir in the white beans, spinach and salt until the spinach wilts. Take the pan off the heat.",
+   "Unroll or ease the pie crust out of its tin, gently roll it a little larger if needed, and lay it over the filling. Crimp the edges against the pan and cut a few slits in the top.",
+   "Bake 25 to 30 minutes, until the crust is golden and the filling bubbles at the edges. Rest 10 minutes before serving; refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "stovetop_mac_cheese_spinach_tomatoes",
+  "name": "Stovetop mac and cheese with spinach and tomatoes",
+  "side": "Roasted broccoli or a crunchy salad.",
+  "cuisine": "American",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "elbow_pasta",
+    "amount": 400,
+    "text": "about 3½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 24,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 227,
+    "text": "2 cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "plus more for the pasta water"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": "baby spinach, roughly chopped"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 283,
+    "text": "1 pack (10 oz)",
+    "note": "halved"
+   }
+  ],
+  "steps": [
+   "Boil the macaroni in a large pot of salted water for 1 minute less than the package says, then drain.",
+   "In the same pot, melt the butter over medium heat, whisk in the flour and cook 1 minute.",
+   "Slowly whisk in the milk and cook, stirring, for 4 to 5 minutes until it simmers and thickens enough to coat a spoon.",
+   "Turn the heat to low and stir in the cheddar, Monterey Jack, mustard, garlic powder and salt until smooth.",
+   "Stir in the pasta and spinach until the spinach wilts, then fold in the tomatoes and warm 1 minute.",
+   "Serve right away (add a splash of milk if it thickens). Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "baked_pumpkin_mac_and_cheese",
+  "name": "Baked pumpkin mac and cheese",
+  "side": "Steamed green beans or apple slices.",
+  "cuisine": "American",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "elbow_pasta",
+    "amount": 400,
+    "text": "about 3½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 24,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "pumpkin_puree",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 227,
+    "text": "2 cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 25,
+    "text": "¼ cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "sage",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "nutmeg",
+    "amount": 0.5,
+    "text": "a pinch",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "plus more for the pasta water"
+   },
+   {
+    "ingredient": "panko",
+    "amount": 25,
+    "text": "½ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 375°F. Boil the macaroni in salted water for 2 minutes less than the package says, then drain.",
+   "In the same pot, melt 2 tablespoons of the butter over medium heat, whisk in the flour and cook 1 minute, then slowly whisk in the milk and simmer 3 to 4 minutes until thickened.",
+   "Whisk in the pumpkin, sage, nutmeg and salt, then stir in the cheddar over low heat until melted.",
+   "Fold in the pasta and spread in a 9-by-13-inch baking dish.",
+   "Melt the remaining 1 tablespoon butter, mix with the panko and parmesan, and sprinkle over the top.",
+   "Bake 18 to 20 minutes until bubbling and golden on top. Rest 5 minutes and refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "ham_and_pea_mac_and_cheese",
+  "name": "Creamy ham and pea mac and cheese",
+  "side": "Sliced cucumbers and carrot sticks.",
+  "cuisine": "American",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "elbow_pasta",
+    "amount": 400,
+    "text": "about 3½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 150,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "evaporated_milk",
+    "amount": 354,
+    "text": "1 can (12 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "plus more as needed"
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 227,
+    "text": "2 cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 8,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "plus more for the pasta water"
+   },
+   {
+    "ingredient": "ham_diced",
+    "amount": 227,
+    "text": "1 pack (8 oz)",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Boil the macaroni in salted water following the package directions, adding the frozen peas for the last 2 minutes. Drain and return to the pot.",
+   "While the pasta cooks, toss the cheddar and Monterey Jack with the cornstarch in a bowl.",
+   "Set the pot over low heat and stir in the butter, evaporated milk, milk, mustard and salt until steaming.",
+   "Add the cheese a handful at a time, stirring until each addition melts into a smooth, glossy sauce.",
+   "Stir in the ham and cook 2 to 3 minutes, until it's heated through (165°F). Loosen with a splash more milk if needed.",
+   "Serve right away. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, scoop out their portions of mac and peas before stirring in the ham.",
+   "ingredients": []
+  }
+ },
+ {
+  "id": "creamy_corn_chowder",
+  "name": "Creamy corn chowder",
+  "side": "Crusty bread or crackers.",
+  "cuisine": "American",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 100,
+    "text": "2 ribs",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1 red",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 24,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 450,
+    "text": "1 lb",
+    "note": "cut into ½-in cubes"
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 680,
+    "text": "2 bags (24 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Melt the butter in a large pot over medium heat and cook the onion, celery and bell pepper for 6 minutes until soft. Stir in the garlic for 30 seconds.",
+   "Sprinkle in the flour and stir for 1 minute, then gradually stir in the broth so no lumps form.",
+   "Add the potatoes, thyme, smoked paprika and salt, bring to a boil, then simmer 12 to 15 minutes until the potatoes are tender.",
+   "Stir in the corn and milk and heat 5 minutes without boiling hard.",
+   "For a thicker chowder, blend or mash about 2 cups of the soup and stir it back in. Taste for salt.",
+   "Serve topped with scallions. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "classic_chicken_noodle_soup",
+  "name": "Classic chicken noodle soup",
+  "side": "Crackers or buttered toast.",
+  "cuisine": "American",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 210,
+    "text": "3 carrots",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 150,
+    "text": "3 ribs",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 1890,
+    "text": "8 cups (2 cartons)",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 570,
+    "text": "1¼ lb",
+    "note": "boneless, skinless"
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "bay_leaves",
+    "amount": 0.5,
+    "text": "2 leaves",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "or to taste"
+   },
+   {
+    "ingredient": "egg_noodles",
+    "amount": 170,
+    "text": "6 oz (about 3 cups)",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "2 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 0.5,
+    "text": "½",
+    "note": "juiced"
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large pot over medium heat and cook the onion, carrots and celery for 6 to 8 minutes, until softened. Add the garlic for 30 seconds.",
+   "Add the broth, chicken thighs (don't rinse raw chicken), thyme, bay leaves and salt. Bring to a boil, then simmer gently, partly covered, for 15 to 20 minutes, until the chicken reaches 165°F.",
+   "Lift out the chicken, shred it with two forks, and discard the bay leaves.",
+   "Bring the soup back to a boil, add the noodles and cook 6 to 8 minutes until tender.",
+   "Return the chicken, stir in the parsley and lemon juice, and taste for salt.",
+   "Serve hot. Refrigerate leftovers within 2 hours; the noodles soften on standing."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a handful of the noodles and a drained can of white beans in vegetable broth with a few carrot and celery slices in a small pot for 8 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "veg_broth",
+     "amount": 720,
+     "text": "3 cups",
+     "note": ""
+    },
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "broccoli_cheddar_soup",
+  "name": "Broccoli cheddar soup",
+  "side": "Crusty bread for dipping.",
+  "cuisine": "American",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2 carrots",
+    "note": "coarsely grated"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 31,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 450,
+    "text": "1 lb",
+    "note": "chopped into small florets"
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 227,
+    "text": "2 cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "nutmeg",
+    "amount": 0.5,
+    "text": "a pinch",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": "sliced, for serving"
+   }
+  ],
+  "steps": [
+   "Melt the butter in a large pot over medium heat and cook the onion for 5 minutes until soft. Add the garlic for 30 seconds.",
+   "Sprinkle in the flour and stir for 1 minute, then slowly whisk in the broth and milk until smooth.",
+   "Add the broccoli and carrots, bring to a gentle simmer (don't let it boil hard), and cook 12 to 15 minutes until the broccoli is very tender.",
+   "Mash or briefly blend about half the soup so it's thick but still chunky.",
+   "Turn the heat to low and stir in the cheddar a handful at a time with the mustard, nutmeg and salt until melted.",
+   "Serve with the bread. Refrigerate leftovers within 2 hours and reheat gently."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "loaded_baked_potato_soup",
+  "name": "Loaded baked potato soup",
+  "side": "A green salad with a tangy dressing.",
+  "cuisine": "American",
+  "minutes": 50,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "bacon",
+    "amount": 227,
+    "text": "8 slices (8 oz)",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 24,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 960,
+    "text": "4 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "potatoes_russet",
+    "amount": 1135,
+    "text": "2½ lb",
+    "note": "peeled, cut into ¾-in cubes"
+   },
+   {
+    "ingredient": "milk",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Cook the bacon in a skillet over medium heat for 8 to 10 minutes, until crisp. Drain on paper towels.",
+   "Meanwhile, melt the butter in a large pot over medium heat and cook the onion for 5 minutes until soft; add the garlic for 30 seconds.",
+   "Stir in the flour for 1 minute, then gradually add the broth. Add the potatoes, bring to a boil, and simmer 15 to 18 minutes until very tender.",
+   "Mash the potatoes right in the pot until about half are smooth, then stir in the milk, salt and pepper and heat through without boiling.",
+   "Stir in 1 cup of the cheddar until melted.",
+   "Serve topped with the bacon, remaining cheddar, sour cream and scallions. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, ladle their bowls before adding toppings and skip the bacon; the soup itself is made with vegetable broth.",
+   "ingredients": []
+  }
+ },
+ {
+  "id": "classic_beef_and_bean_chili",
+  "name": "Classic beef and bean chili",
+  "side": "Shredded cheddar, sour cream and saltine crackers.",
+  "cuisine": "American",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1½ tablespoons chili powder for a family-mild pot, and top kids' bowls with extra sour cream.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_beef",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 24,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can (28 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "kidney_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "beef_broth",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded, for topping"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "for topping"
+   }
+  ],
+  "steps": [
+   "Brown the ground beef in a large pot over medium-high heat for 6 to 8 minutes, breaking it up, until no pink remains and it reaches 160°F. Spoon off excess fat.",
+   "Add the onion and bell pepper and cook 5 minutes until softened, then stir in the garlic, chili powder, cumin, oregano and tomato paste for 1 minute.",
+   "Add the crushed tomatoes, kidney beans, broth and salt and bring to a boil.",
+   "Lower the heat and simmer, partly covered, for 30 minutes, stirring now and then, until thick.",
+   "Taste for salt and serve topped with cheddar and sour cream. Refrigerate leftovers within 2 hours; chili freezes well."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a drained can of kidney beans with a can of diced tomatoes and 1 teaspoon chili powder in a small pot for 15 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "kidney_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "tomatoes_diced",
+     "amount": 411,
+     "text": "1 can (14.5 oz)",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "cheesy_shrimp_and_grits",
+  "name": "Shrimp and cheesy grits",
+  "side": "Sautéed spinach or a green salad.",
+  "cuisine": "Southern",
+  "minutes": 35,
+  "difficulty": "Medium",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave the cayenne out of the shrimp; the smoked paprika gives flavor without heat.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "milk",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "cornmeal",
+    "amount": 160,
+    "text": "1 cup",
+    "note": "coarse or stone-ground"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "shrimp",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "peeled, deveined, thawed and patted dry"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Bring the milk, 2 cups water and ½ teaspoon of the salt to a simmer in a medium pot. Slowly whisk in the cornmeal and keep whisking until it thickens, about 2 minutes.",
+   "Lower the heat, cover, and cook 15 to 20 minutes, stirring every few minutes so it doesn't stick, until thick and creamy. Stir in the butter and cheddar and keep warm (add a splash of water if it gets too stiff).",
+   "Toss the shrimp with the smoked paprika, cayenne and remaining ½ teaspoon salt.",
+   "Heat the oil in a large skillet over medium-high heat and cook the bell pepper for 4 minutes. Add the shrimp in one layer and cook 2 to 3 minutes per side, until pink and opaque all the way through.",
+   "Stir in the garlic for 30 seconds, then take off the heat and add the lemon juice and most of the scallions.",
+   "Spoon the grits into bowls, top with the shrimp and pan juices, and scatter with the remaining scallions. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, top their grits with sautéed peppers and a fried egg cooked until the white is set.",
+   "ingredients": [
+    {
+     "ingredient": "eggs",
+     "amount": 2,
+     "text": "2",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_and_sausage_jambalaya",
+  "name": "Chicken and sausage jambalaya",
+  "side": "Sliced scallions and a simple green salad.",
+  "cuisine": "Cajun",
+  "minutes": 50,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Skip the cayenne; the smoked paprika and sausage keep plenty of flavor.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "boneless, cut into 1-in pieces"
+   },
+   {
+    "ingredient": "kielbasa",
+    "amount": 198,
+    "text": "½ rope (7 oz)",
+    "note": "sliced into coins"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1 green",
+    "note": "diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 100,
+    "text": "2 ribs",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "uncooked long-grain rice"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": "with juices"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 540,
+    "text": "2¼ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large heavy pot over medium-high heat. Brown the chicken (don't rinse raw chicken) and kielbasa for 5 to 6 minutes, stirring, then scoop onto a plate.",
+   "Add the onion, bell pepper and celery to the pot and cook 6 minutes until softened, then stir in the garlic, smoked paprika, thyme and cayenne for 30 seconds.",
+   "Stir in the rice to coat it, then add the diced tomatoes, broth and salt and return the chicken and sausage.",
+   "Bring to a boil, then cover, turn the heat to low and simmer 20 minutes without lifting the lid.",
+   "Take off the heat and let stand, covered, 5 minutes, until the rice is tender and the liquid is absorbed. Check that a chunk of chicken reads 165°F, then fluff.",
+   "Serve hot. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, cook ½ cup rice separately, and simmer a drained can of kidney beans in 1 cup vegetable broth with a pinch of smoked paprika for 10 minutes to spoon over it.",
+   "ingredients": [
+    {
+     "ingredient": "kidney_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 240,
+     "text": "1 cup",
+     "note": ""
+    },
+    {
+     "ingredient": "jasmine",
+     "amount": 95,
+     "text": "½ cup",
+     "note": "uncooked"
+    }
+   ]
+  }
+ },
+ {
+  "id": "southern_tomato_pie",
+  "name": "Southern tomato pie",
+  "side": "Corn on the cob and a green salad.",
+  "cuisine": "Southern",
+  "minutes": 75,
+  "difficulty": "Medium",
+  "protein": "none",
+  "equipment": [
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pie_crust",
+    "amount": 1,
+    "text": "1 crust (9 in)",
+    "note": "thawed"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 600,
+    "text": "6 (about 1¼ lb)",
+    "note": "sliced ¼ in thick"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "basil",
+    "amount": 15,
+    "text": "a large handful",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Prick the pie crust all over with a fork and bake for 10 to 12 minutes until lightly golden. Lower the oven to 350°F.",
+   "Meanwhile, lay the tomato slices on paper towels, sprinkle with ½ teaspoon of the salt, and let drain 15 minutes; press dry with more towels.",
+   "Mix the cheddar, mozzarella, mayo, scallions, pepper and remaining ¼ teaspoon salt.",
+   "Layer half the tomatoes in the crust, scatter with half the basil, repeat, then spread the cheese mixture evenly over the top to the edges.",
+   "Bake 30 to 35 minutes until the top is golden and bubbly. Cover the crust edge with foil if it browns too fast.",
+   "Let rest 15 minutes so it slices cleanly. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "sweet_potato_black_bean_hash_eggs",
+  "name": "Sweet potato and black bean hash with eggs",
+  "side": "Warm tortillas or toast, and salsa.",
+  "cuisine": "American",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sweet_potato",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "peeled, cut into ½-in cubes"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½ medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   }
+  ],
+  "steps": [
+   "Heat the oil in a 12-inch skillet over medium heat. Add the sweet potato and ½ teaspoon of the salt, cover, and cook 8 minutes, stirring once or twice.",
+   "Uncover, add the onion and bell pepper, and cook 8 to 10 minutes more, stirring now and then, until the sweet potatoes are tender and browned in spots.",
+   "Stir in the smoked paprika, cumin, black beans and remaining salt and cook 2 minutes until the beans are hot.",
+   "Make 8 small wells in the hash and crack an egg into each. Cover and cook over medium-low heat for 5 to 7 minutes, until the whites are completely set and the yolks are done the way you like.",
+   "Scatter with scallions and avocado and serve straight from the pan. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "sausage_egg_potato_breakfast_burritos",
+  "name": "Sausage, egg and potato breakfast burritos",
+  "side": "Salsa, sour cream and orange wedges.",
+  "cuisine": "American",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use mild salsa, or serve it on the side; the sausage seasoning itself has no heat.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "potatoes",
+    "amount": 450,
+    "text": "1 lb",
+    "note": "cut into ½-in cubes"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ground_pork",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "sage",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "warmed"
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large skillet over medium heat, add the potatoes and ½ teaspoon of the salt, cover, and cook 10 minutes, then uncover and cook 5 to 6 minutes more, stirring, until tender and golden. Scoop into a bowl.",
+   "Add the ground pork to the skillet with the sage, paprika, pepper and ¼ teaspoon of the salt. Cook over medium-high heat for 6 to 8 minutes, breaking it up, until browned and it reaches 160°F. Spoon off excess fat and add to the potatoes.",
+   "Whisk the eggs with the remaining ¼ teaspoon salt. Lower the heat to medium-low and scramble them in the skillet for 3 to 4 minutes, until softly set with no runny egg left.",
+   "Return the potatoes and sausage to the pan and toss with the eggs.",
+   "Fill each tortilla with the mixture, cheddar and a spoonful of salsa, fold in the sides and roll up.",
+   "For crisp burritos, toast seam-side down in a dry skillet for 1 to 2 minutes per side. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside some potatoes and scrambled eggs before mixing in the sausage, and add a few spoonfuls of drained black beans warmed in a small pan.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ }
+]
