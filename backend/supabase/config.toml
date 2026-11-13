@@ -1,0 +1,8 @@
+# Supabase CLI config for Supperwise (project ref tgywrfseyrvflhusqzpt). Used by the GitHub "Supabase deploy" job.
+project_id = "supperwise"
+
+[functions.scan-food]
+verify_jwt = true
+
+[functions.delete-account]
+verify_jwt = true

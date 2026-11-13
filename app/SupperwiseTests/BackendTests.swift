@@ -78,7 +78,7 @@ final class BackendTests: XCTestCase {
         FakeServer.replies = [("/rest/v1/community_recipes", 200, row)]
         let list = try await backend().approvedRecipes(search: "soup")
         XCTAssertEqual(list.first?.recipe.name, "Nonna's soup")
-        XCTAssertEqual(list.first?.photoURL?.absoluteString, "https://YOUR-PROJECT.supabase.co/storage/v1/object/public/recipe-photos/u1/p.jpg")
+        XCTAssertEqual(list.first?.photoURL?.absoluteString, "https://tgywrfseyrvflhusqzpt.supabase.co/storage/v1/object/public/recipe-photos/u1/p.jpg")
         let q = FakeServer.seen.last?.url?.query ?? ""
         XCTAssertTrue(q.contains("status=eq.approved"))
         XCTAssertTrue(q.contains("ilike"))
@@ -99,6 +99,6 @@ final class BackendTests: XCTestCase {
         XCTAssertEqual(Backend.error(code: 429, data: Data(#"{"error":"That's all 100 scans for this month."}"#.utf8)),
                        .overLimit("That's all 100 scans for this month."))
         XCTAssertEqual(Backend.error(code: 401, data: Data()), .signedOut)
-        XCTAssertFalse(BackendConfig.isConfigured)                     // placeholders until the project exists
+        XCTAssertFalse(BackendConfig.isConfigured)                     // until the anon key is filled in
     }
 }

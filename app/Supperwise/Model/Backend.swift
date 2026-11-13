@@ -12,7 +12,7 @@ import Security
 enum BackendConfig {
     /// Filled in once the Supabase project exists (Project Settings → API). Until then, community features say
     /// they're coming soon instead of failing.
-    static let url = URL(string: "https://YOUR-PROJECT.supabase.co")!
+    static let url = URL(string: "https://tgywrfseyrvflhusqzpt.supabase.co")!
     static let anonKey = "YOUR-ANON-KEY"
     static var isConfigured: Bool { !url.absoluteString.contains("YOUR-PROJECT") && !anonKey.hasPrefix("YOUR-") }
 }
