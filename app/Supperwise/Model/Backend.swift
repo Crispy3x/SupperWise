@@ -13,7 +13,7 @@ enum BackendConfig {
     /// Filled in once the Supabase project exists (Project Settings → API). Until then, community features say
     /// they're coming soon instead of failing.
     static let url = URL(string: "https://tgywrfseyrvflhusqzpt.supabase.co")!
-    static let anonKey = "YOUR-ANON-KEY"
+    static let anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRneXdyZnNleXJ2ZmxodXNxenB0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ1NDg0NjYsImV4cCI6MjExMDEyNDQ2Nn0.IyljME217AG0_flxZUBAusyB2JZVxl-R6gvhuO9gOt8"
     static var isConfigured: Bool { !url.absoluteString.contains("YOUR-PROJECT") && !anonKey.hasPrefix("YOUR-") }
 }
 

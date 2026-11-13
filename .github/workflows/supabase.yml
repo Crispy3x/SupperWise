@@ -58,7 +58,7 @@ jobs:
         run: |
           mkdir -p ../out
           curl -s "https://api.supabase.com/v1/projects/$PROJECT_REF/api-keys" -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" \
-            | python3 -c "import json,sys; ks=json.load(sys.stdin); print(json.dumps([{'name':k.get('name'),'type':k.get('type'),'api_key':k.get('api_key')} for k in ks if k.get('name') in ('anon','publishable','default') or k.get('type')=='publishable'], indent=1))" > ../out/public-keys.json
+            | python3 -c "import json,sys; ks=json.load(sys.stdin); print(json.dumps([{'name':k.get('name'),'type':k.get('type'),'api_key':k.get('api_key')} for k in ks if k.get('type') in ('publishable', 'legacy') and k.get('name') in ('anon', 'default') and not str(k.get('api_key','')).startswith('sb_secret')], indent=1))" > ../out/public-keys.json
       - uses: actions/upload-artifact@v4
         with:
           name: supabase-public-keys

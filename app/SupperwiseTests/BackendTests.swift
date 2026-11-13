@@ -112,6 +112,6 @@ final class BackendTests: XCTestCase {
         XCTAssertEqual(Backend.error(code: 429, data: Data(#"{"error":"That's all 100 scans for this month."}"#.utf8)),
                        .overLimit("That's all 100 scans for this month."))
         XCTAssertEqual(Backend.error(code: 401, data: Data()), .signedOut)
-        XCTAssertFalse(BackendConfig.isConfigured)                     // until the anon key is filled in
+        XCTAssertTrue(BackendConfig.isConfigured)
     }
 }
