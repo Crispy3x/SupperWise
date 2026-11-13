@@ -18,9 +18,9 @@
   "secondary": "Lifestyle"
  },
  "urls": {
-  "support": "https://YOUR-SITE/support",
-  "marketing": "https://YOUR-SITE/",
-  "privacy": "https://YOUR-SITE/privacy",
+  "support": "https://crispy3x.github.io/supperwise-site/support.html",
+  "marketing": "https://crispy3x.github.io/supperwise-site/",
+  "privacy": "https://crispy3x.github.io/supperwise-site/privacy.html",
   "terms": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
  },
  "locales": {

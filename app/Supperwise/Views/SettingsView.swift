@@ -62,7 +62,7 @@ struct SettingsView: View {
                 }
 
                 Section("About") {
-                    Link("Privacy policy", destination: URL(string: "https://supperwise.app/privacy")!)
+                    Link("Privacy policy", destination: URL(string: "https://crispy3x.github.io/supperwise-site/privacy.html")!)
                     Link("Terms of use", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
                     Link("Contact support", destination: URL(string: "mailto:rrizzo574@gmail.com")!)
                     if !PhotoCredits.bundled.isEmpty {

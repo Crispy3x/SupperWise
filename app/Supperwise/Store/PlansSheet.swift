@@ -55,7 +55,7 @@ struct PlansSheet: View {
                     HStack(spacing: 18) {
                         Button("Restore purchases") { Task { await restore() } }
                         Link("Terms", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
-                        Link("Privacy", destination: URL(string: "https://supperwise.app/privacy")!)
+                        Link("Privacy", destination: URL(string: "https://crispy3x.github.io/supperwise-site/privacy.html")!)
                     }
                     .font(.footnote)
                     .tint(accent)

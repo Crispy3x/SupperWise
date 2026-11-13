@@ -11,7 +11,7 @@ on:
         default: "setup"
       site_base:
         description: "Where the privacy and support pages live, e.g. https://crispy3x.github.io/supperwise-site (optional)"
-        default: ""
+        default: "https://crispy3x.github.io/supperwise-site"
 
 jobs:
   setup:
