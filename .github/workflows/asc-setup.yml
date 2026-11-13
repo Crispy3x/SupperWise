@@ -12,6 +12,17 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+      - name: Which secrets are set
+        env:
+          TEAM: ${{ secrets.APPLE_TEAM_ID }}
+          KID: ${{ secrets.ASC_KEY_ID }}
+          ISS: ${{ secrets.ASC_ISSUER_ID }}
+          P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          for n in TEAM:APPLE_TEAM_ID KID:ASC_KEY_ID ISS:ASC_ISSUER_ID P8:ASC_KEY_P8; do
+            v="${n%%:*}"; name="${n##*:}"; val="${!v}"
+            if [ -n "$val" ]; then echo "$name: set (${#val} characters)"; else echo "::error::$name is missing or empty"; fi
+          done
       - run: pip install "pyjwt[crypto]" requests
       - name: Set up App Store Connect
         env:
