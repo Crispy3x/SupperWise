@@ -97,7 +97,7 @@ EXTRA = {
  "pesto": ("Basil pesto","cans",170,"g","6 oz jar",3.99,30,"dairy,nuts",""),
  "miso": ("White miso","dairy",400,"g","14 oz tub",4.99,180,"soy",""),
  "gochujang": ("Gochujang","cans",500,"g","17.6 oz tub",5.99,365,"soy,gluten",""),
- "green_curry_paste": ("Thai green curry paste","cans",113,"g","4 oz jar",3.29,60,"",""),
+ "green_curry_paste": ("Thai green curry paste, vegan (no shrimp paste)","cans",113,"g","4 oz jar",3.29,60,"",""),
  "beef_broth": ("Beef broth","cans",946,"ml","32 oz carton",2.49,365,"","m"),
  "artichokes": ("Artichoke hearts","cans",1,"count","14 oz can",2.79,365,"",""),
  "pumpkin_seeds": ("Pepitas","dry",142,"g","5 oz bag",3.49,180,"",""),
@@ -183,6 +183,11 @@ def main():
     for k, e in EXTRA.items():
         if k not in known:
             ings.append(dict(id=k, name=e[0], aisle=e[1], packSize=e[2], unit=e[3], packLabel=e[4], refPrice=e[5], keepsDays=e[6], staple=False))
+    # Many Thai curry pastes contain shrimp paste: the list tells shoppers to buy a vegan one, so dishes stay
+    # vegetarian and shellfish-free as planned.
+    for i in ings:
+        if i["id"] in ("red_curry_paste", "green_curry_paste") and "vegan" not in i["name"]:
+            i["name"] = i["name"] + ", vegan (no shrimp paste)"
     by_id = {i["id"]: i for i in ings}
     T = tags(ings)
     rec_path = os.path.join(RES, "recipes.json")

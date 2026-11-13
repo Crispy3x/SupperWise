@@ -1,0 +1,5275 @@
+[
+ {
+  "id": "honey_soy_glazed_salmon",
+  "name": "Honey-soy glazed salmon",
+  "side": "Jasmine rice and roasted broccoli.",
+  "cuisine": "Asian",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "oven",
+   "stovetop",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "salmon",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "4 fillets"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 42,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 450,
+    "text": "1 crown",
+    "note": "cut into florets"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 2,
+    "text": "2",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Put the rinsed rice in a saucepan with 2¼ cups water, bring to a boil, then cover and simmer on low for 15 minutes; take it off the heat and let it steam, covered, for 10 minutes.",
+   "Heat the oven to 425°F and line a sheet pan with foil.",
+   "Toss the broccoli with the oil and salt on one side of the pan and roast for 8 minutes.",
+   "Meanwhile stir together the soy sauce, honey, rice vinegar, garlic and ginger to make the glaze.",
+   "Push the broccoli aside, lay the salmon skin side down on the pan and brush it generously with the glaze.",
+   "Roast 10 to 12 minutes, until the salmon reaches 145°F in the thickest part or flakes easily with a fork, brushing on the last of the glaze halfway.",
+   "Serve the salmon and broccoli over the rice, sprinkled with scallions and sesame seeds."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, brush slices of tofu with a spoonful of the glaze and roast them on the pan beside the salmon.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "patted dry, sliced ½ inch thick"
+    }
+   ]
+  }
+ },
+ {
+  "id": "lemon_herb_crumb_cod",
+  "name": "Lemon-herb crumb cod",
+  "side": "Roasted green beans and crusty bread.",
+  "cuisine": "American",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "cod",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "4 fillets, patted dry"
+   },
+   {
+    "ingredient": "panko",
+    "amount": 50,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "melted"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested, then cut into wedges"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "¼ cup",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "green_beans",
+    "amount": 450,
+    "text": "1 lb",
+    "note": "trimmed"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F.",
+   "Toss the green beans with the olive oil and ¼ tsp salt on a sheet pan and roast for 10 minutes.",
+   "Meanwhile mix the panko, melted butter, lemon zest, parsley, garlic and ¼ tsp salt in a bowl.",
+   "Push the green beans to the edges, set the cod in the middle and season it with the remaining salt and the pepper.",
+   "Press the crumb mixture onto the tops of the fillets.",
+   "Bake 10 to 12 minutes, until the crumbs are golden and the fish reaches 145°F or flakes easily with a fork.",
+   "Squeeze lemon wedges over the fish and serve with the green beans and crusty bread."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, toss a drained can of white beans with a few spoonfuls of the crumb mixture in a small baking dish and bake it alongside for 12 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "tilapia_fish_tacos",
+  "name": "Tilapia fish tacos with lime slaw",
+  "side": "Lime slaw, avocado and lime crema.",
+  "cuisine": "Mexican",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tsp chili powder, or season the kids' pieces with just cumin, garlic powder and salt.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tilapia",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "patted dry"
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 300,
+    "text": "¼ head",
+    "note": "very thinly sliced"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 15,
+    "text": "½ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Toss the cabbage with half the lime juice, the cilantro and a pinch of salt and set aside.",
+   "Stir the sour cream with the remaining lime juice and a pinch of salt to make the crema.",
+   "Mix the chili powder, cumin, garlic powder and the rest of the salt, and rub it over both sides of the fish.",
+   "Heat the oil in a large skillet over medium-high heat and cook the fish 3 to 4 minutes per side, until it reaches 145°F and flakes easily with a fork; work in batches if needed.",
+   "Warm the tortillas in a dry skillet for about 30 seconds per side, keeping them wrapped in a towel.",
+   "Break the fish into chunks and fill the tortillas with fish, slaw, avocado and a drizzle of crema."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of black beans in a small pan with a pinch of the spice mix and use it in place of the fish.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "tuna_cakes_lemon_mayo",
+  "name": "Tuna cakes with lemon mayo",
+  "side": "Romaine salad with lemon and olive oil.",
+  "cuisine": "American",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tuna_canned",
+    "amount": 4,
+    "text": "4 cans",
+    "note": "well drained"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 2,
+    "text": "2",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "panko",
+    "amount": 45,
+    "text": "¾ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "romaine",
+    "amount": 2,
+    "text": "2 hearts",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "In a bowl mix the tuna, eggs, panko, 3 tbsp of the mayo, the Dijon, scallions, lemon zest and pepper until it holds together.",
+   "Shape into 8 patties about ¾ inch thick and chill them for 10 minutes so they hold their shape.",
+   "Heat the vegetable oil in a large nonstick skillet over medium heat and cook the cakes 3 to 4 minutes per side, until deep golden and firm in the center.",
+   "Stir the remaining mayo with 1 tbsp of the lemon juice to make the lemon mayo.",
+   "Toss the romaine with the olive oil, the rest of the lemon juice and the salt.",
+   "Serve the tuna cakes with the lemon mayo and the salad."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, mash a drained can of chickpeas with a little of the egg, panko and Dijon, shape into 2 to 3 cakes and fry them the same way.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "new_england_cod_chowder",
+  "name": "New England cod chowder",
+  "side": "Crusty bread for dunking.",
+  "cuisine": "American",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 80,
+    "text": "2 stalks",
+    "note": "diced"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 24,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into ½-inch cubes"
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bay_leaves",
+    "amount": 0.2,
+    "text": "1 leaf",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cod",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1½-inch chunks"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Melt the butter in a large pot over medium heat and cook the onion and celery for 5 minutes, until soft.",
+   "Stir in the flour and cook for 1 minute, then slowly whisk in the broth so no lumps form.",
+   "Add the potatoes, thyme, bay leaf and salt, bring to a boil, then simmer 12 to 15 minutes, until the potatoes are tender.",
+   "Stir in the milk and corn and heat until steaming and barely simmering; don't let it boil hard.",
+   "Add the cod and simmer gently 5 to 6 minutes, until it is opaque, reaches 145°F and flakes easily.",
+   "Remove the bay leaf, season with the pepper and serve with crusty bread.",
+   "Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, ladle 1 to 2 portions into a small pot before adding the cod and simmer a drained can of white beans in it for 5 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "shrimp_broccoli_stir_fry",
+  "name": "Shrimp and broccoli stir-fry",
+  "side": "Steamed jasmine rice.",
+  "cuisine": "Chinese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "shrimp",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "thawed and patted dry"
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 450,
+    "text": "1 crown",
+    "note": "cut into small florets"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "hoisin",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 8,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   }
+  ],
+  "steps": [
+   "Simmer the rice with 2¼ cups water, covered, on low for 15 minutes, then let it rest off the heat for 10 minutes.",
+   "Whisk the soy sauce, hoisin, cornstarch, sesame oil and ½ cup water in a small bowl.",
+   "Heat 1 tbsp vegetable oil in a large skillet over high heat, stir-fry the broccoli for 2 minutes, add 3 tbsp water, cover and steam 2 minutes, then move it to a plate.",
+   "Add the remaining oil and the shrimp and stir-fry 2 to 3 minutes, until pink and opaque all the way through.",
+   "Add the garlic and ginger and stir for 30 seconds.",
+   "Return the broccoli, pour in the sauce and stir for about 1 minute, until glossy and thickened. Serve over the rice."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, brown cubes of tofu in a small skillet and toss them with a few spoonfuls of the sauce and some of the broccoli.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cubed and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "tuna_caper_tomato_spaghetti",
+  "name": "Spaghetti with tuna, tomato and capers",
+  "side": "A green salad, if you like.",
+  "cuisine": "Italian",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the chili flakes and pass them at the table for the adults.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "spaghetti",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 24,
+    "text": "1 tbsp plus 1 tsp",
+    "note": "1 tbsp for the pasta water"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 0.5,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can (28 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "capers",
+    "amount": 18,
+    "text": "2 tbsp",
+    "note": "drained"
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 70,
+    "text": "½ cup",
+    "note": "pitted and halved"
+   },
+   {
+    "ingredient": "tuna_canned",
+    "amount": 3,
+    "text": "3 cans",
+    "note": "drained and flaked"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "¼ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil with 1 tbsp salt.",
+   "Warm the olive oil in a large skillet over medium heat and cook the garlic and chili flakes for 1 minute, until fragrant but not browned.",
+   "Add the crushed tomatoes, capers, olives and 1 tsp salt and simmer 10 minutes, stirring now and then.",
+   "Meanwhile cook the spaghetti according to the package, about 10 minutes, and save ½ cup of the pasta water before draining.",
+   "Stir the tuna into the sauce and warm it through for 2 minutes.",
+   "Toss the spaghetti with the sauce, adding splashes of pasta water to loosen it, and sprinkle with parsley."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside a portion of the sauce before the tuna goes in and warm a drained can of white beans in it.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "seared_scallops_lemon_orzo",
+  "name": "Seared scallops with lemon orzo and peas",
+  "side": "Lemony orzo with peas and Parmesan.",
+  "cuisine": "American",
+  "minutes": 30,
+  "difficulty": "Medium",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "scallops",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "thawed overnight in the fridge, patted very dry"
+   },
+   {
+    "ingredient": "orzo",
+    "amount": 280,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 30,
+    "text": "⅓ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Melt 1 tbsp butter in a saucepan over medium heat, add the orzo and toast it for 2 minutes, stirring.",
+   "Pour in the broth, bring to a simmer and cook 10 to 12 minutes, stirring often, until the orzo is tender and creamy; stir in the peas for the last 2 minutes.",
+   "Take the orzo off the heat and stir in the Parmesan and lemon zest; cover to keep warm.",
+   "Season the scallops with the salt and pepper. Heat the oil in a large skillet over medium-high heat until shimmering.",
+   "Sear the scallops without moving them for 2 minutes, until a golden crust forms, then flip.",
+   "Add the remaining 2 tbsp butter and the garlic and spoon the butter over the scallops for 1 to 2 minutes, until they are opaque all the way through.",
+   "Squeeze the lemon juice over the scallops and serve them on the orzo with the pan butter."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, stir a drained can of white beans into a portion of the orzo while it finishes cooking.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chipotle_shrimp_burrito_bowls",
+  "name": "Chipotle shrimp burrito bowls",
+  "side": "Cilantro-lime rice, black beans, corn and avocado.",
+  "cuisine": "Mexican",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Use half a chipotle, or set aside the kids' shrimp tossed with just cumin, garlic, oil and salt before adding the chipotle.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "shrimp",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "thawed and patted dry"
+   },
+   {
+    "ingredient": "chipotle_adobo",
+    "amount": 30,
+    "text": "2 peppers plus 1 tsp sauce",
+    "note": "minced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": "1 juiced, 1 in wedges"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 15,
+    "text": "½ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Simmer the rice with 2¼ cups water and ½ tsp salt, covered, on low for 15 minutes, rest 10 minutes, then stir in the lime juice and half the cilantro.",
+   "Toss the shrimp with the chipotle, garlic, cumin, 1 tbsp oil and the remaining salt.",
+   "Warm the black beans and corn together in a small saucepan over medium heat for 5 minutes.",
+   "Heat the remaining oil in a large skillet over medium-high heat and cook the shrimp 2 to 3 minutes, flipping once, until pink and opaque all the way through.",
+   "Build bowls with rice, beans and corn, shrimp and avocado, then top with sour cream, the rest of the cilantro and lime wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a second can of black beans with a pinch of cumin and use it in place of the shrimp.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "miso_salmon_soba",
+  "name": "Miso salmon with soba and bok choy",
+  "side": "Sesame soba noodles with bok choy.",
+  "cuisine": "Japanese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "oven",
+   "stovetop",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "salmon",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "4 fillets"
+   },
+   {
+    "ingredient": "miso",
+    "amount": 50,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "soba",
+    "amount": 270,
+    "text": "1 pack (9.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "bok_choy",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "halved lengthwise"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F and line a sheet pan with foil.",
+   "Stir the miso, honey and 1 tbsp rice vinegar into a paste and spread it over the tops of the salmon on the pan.",
+   "Roast 12 to 14 minutes, until the salmon reaches 145°F or flakes easily; if the glaze darkens too fast, lay a piece of foil loosely on top.",
+   "Meanwhile bring a large pot of water to a boil and cook the soba according to the package, usually 4 to 5 minutes, adding the bok choy for the last 2 minutes.",
+   "Drain and rinse briefly under warm water, then toss with the soy sauce, sesame oil, ginger and the remaining rice vinegar.",
+   "Serve the salmon on the noodles and bok choy, topped with scallions and sesame seeds."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, spread a little of the miso glaze on slices of tofu and roast them beside the salmon.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "patted dry, sliced ½ inch thick"
+    }
+   ]
+  }
+ },
+ {
+  "id": "cajun_tilapia_sheet_pan",
+  "name": "Cajun tilapia with corn, zucchini and peppers",
+  "side": "Roasted vegetables and rice.",
+  "cuisine": "Southern American",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "oven",
+   "stovetop",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; the smoked paprika is smoky, not hot.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tilapia",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "patted dry"
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 2,
+    "text": "2",
+    "note": "cut into half-moons"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "cut into strips"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 280,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.5,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into wedges"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   }
+  ],
+  "steps": [
+   "Simmer the rice with 2¼ cups water and ¼ tsp salt, covered, on low for 15 minutes, then let it rest off the heat.",
+   "Heat the oven to 425°F. Mix the smoked paprika, garlic powder, onion powder, thyme, cayenne and 1 tsp salt.",
+   "Toss the zucchini, peppers and corn on a sheet pan with 2 tbsp oil and half the spice mix, and roast 15 minutes.",
+   "Brush the fish with the remaining oil and rub it with the rest of the spice mix.",
+   "Push the vegetables to the sides, lay the fish in the middle and roast 8 to 10 minutes, until it reaches 145°F and flakes easily with a fork.",
+   "Serve with the rice and lemon wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, toss a drained can of chickpeas with a pinch of the spice mix and roast them with the vegetables.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "thai_green_curry_shrimp",
+  "name": "Thai green curry shrimp",
+  "side": "Jasmine rice and lime wedges.",
+  "cuisine": "Thai",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Start with 1 tbsp curry paste (brands vary a lot in heat) and serve the kids' portions with extra rice.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "shrimp",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "thawed"
+   },
+   {
+    "ingredient": "green_curry_paste",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "shaken"
+   },
+   {
+    "ingredient": "fish_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 13,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1 red",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "snap_peas",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "trimmed"
+   },
+   {
+    "ingredient": "basil",
+    "amount": 10,
+    "text": "½ cup leaves",
+    "note": "torn"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "half juiced, half in wedges"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   }
+  ],
+  "steps": [
+   "Simmer the rice with 2¼ cups water, covered, on low for 15 minutes, then let it rest off the heat for 10 minutes.",
+   "Heat the oil in a large deep skillet over medium heat and fry the curry paste for 1 minute, stirring, until fragrant.",
+   "Stir in the coconut milk, fish sauce and brown sugar and bring to a gentle simmer.",
+   "Add the bell pepper and snap peas and simmer 3 minutes.",
+   "Add the shrimp and simmer 3 to 4 minutes, until pink and opaque all the way through.",
+   "Stir in the basil and lime juice and serve over the rice with lime wedges."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "smoky_shrimp_cheesy_grits",
+  "name": "Smoky shrimp and cheesy grits",
+  "side": "Blistered cherry tomatoes and scallions.",
+  "cuisine": "Southern American",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; the smoked paprika adds flavor without heat.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "cornmeal",
+    "amount": 150,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "shrimp",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "thawed and patted dry"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.3,
+    "text": "⅛ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 285,
+    "text": "1 pack (10 oz)",
+    "note": "halved"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Bring the milk, 2 cups water and ¾ tsp salt to a simmer in a saucepan, then slowly whisk in the cornmeal.",
+   "Cook on low for 15 to 20 minutes, whisking often, until thick and creamy; stir in the butter and cheddar and cover to keep warm.",
+   "Toss the shrimp with the smoked paprika, cayenne and the remaining salt.",
+   "Heat the oil in a large skillet over medium-high heat and cook the shrimp for 2 minutes without moving them, then flip.",
+   "Add the garlic and tomatoes and cook 1 to 2 minutes more, until the shrimp are pink and opaque all the way through and the tomatoes soften.",
+   "Squeeze in the lemon juice and spoon the shrimp and tomatoes over the grits, topped with scallions."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, top a bowl of grits with a fried egg and some of the tomatoes cooked before the shrimp.",
+   "ingredients": [
+    {
+     "ingredient": "eggs",
+     "amount": 2,
+     "text": "2",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "salmon_burgers_dill_yogurt",
+  "name": "Salmon burgers with dill yogurt sauce",
+  "side": "Butter lettuce on toasted buns.",
+  "cuisine": "American",
+  "minutes": 40,
+  "difficulty": "Medium",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "salmon",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "skin removed, finely chopped"
+   },
+   {
+    "ingredient": "panko",
+    "amount": 30,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "finely sliced"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "dill",
+    "amount": 8,
+    "text": "3 tbsp",
+    "note": "chopped, divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "burger_buns",
+    "amount": 4,
+    "text": "4",
+    "note": "toasted"
+   },
+   {
+    "ingredient": "lettuce_butter",
+    "amount": 1,
+    "text": "1 head",
+    "note": "leaves separated"
+   }
+  ],
+  "steps": [
+   "Chop the salmon with a sharp knife into small bits, then mix it with the panko, egg, Dijon, scallions, lemon zest, 2 tbsp dill, ½ tsp salt and the pepper.",
+   "Shape into 4 patties about ¾ inch thick and chill for 15 minutes so they hold together.",
+   "Stir the yogurt with the remaining dill, 1 tbsp lemon juice and the rest of the salt.",
+   "Heat the oil in a large nonstick skillet over medium heat and cook the burgers about 4 minutes per side, until browned and 145°F in the center.",
+   "Serve on the toasted buns with lettuce and the dill yogurt sauce."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, mash a drained can of chickpeas with a little of the egg, panko, Dijon and dill, shape into patties and cook them the same way.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "tuna_melt_sandwiches",
+  "name": "Tuna melts",
+  "side": "Cucumber and carrot sticks.",
+  "cuisine": "American",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tuna_canned",
+    "amount": 4,
+    "text": "4 cans",
+    "note": "well drained"
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 80,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "celery",
+    "amount": 80,
+    "text": "2 stalks",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 40,
+    "text": "¼ small",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 0.5,
+    "text": "½",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sandwich_bread",
+    "amount": 8,
+    "text": "8 slices",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 170,
+    "text": "6 oz",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 200,
+    "text": "2",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "softened"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into sticks"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "cut into sticks"
+   }
+  ],
+  "steps": [
+   "Mix the tuna, mayo, celery, red onion, Dijon, lemon juice and pepper in a bowl.",
+   "Spread the tuna on 4 slices of bread and top with tomato slices, cheddar and the remaining bread.",
+   "Butter the outsides of the sandwiches.",
+   "Cook in a large skillet over medium-low heat 3 to 4 minutes per side, until golden and the cheese has melted; cover the pan for the last minute to help it melt.",
+   "Cut in half and serve with the cucumber and carrot sticks."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, make a grilled cheese with extra cheddar and tomato slices.",
+   "ingredients": [
+    {
+     "ingredient": "cheddar",
+     "amount": 60,
+     "text": "2 oz",
+     "note": "sliced"
+    }
+   ]
+  }
+ },
+ {
+  "id": "shrimp_asparagus_risotto",
+  "name": "Lemon shrimp and asparagus risotto",
+  "side": "A squeeze of lemon and extra Parmesan.",
+  "cuisine": "Italian",
+  "minutes": 45,
+  "difficulty": "Medium",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "veg_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "shallots",
+    "amount": 60,
+    "text": "2",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "arborio",
+    "amount": 300,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "asparagus",
+    "amount": 454,
+    "text": "1 bunch",
+    "note": "trimmed, cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "shrimp",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "thawed, tails removed"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Warm the broth in a saucepan over low heat.",
+   "In a large pot, melt 1 tbsp butter with the oil over medium heat and cook the shallots 3 minutes, then add the garlic and rice and stir for 1 to 2 minutes.",
+   "Add the warm broth a ladle at a time, stirring often and letting it absorb before adding more, for about 18 to 20 minutes, until the rice is creamy and just tender.",
+   "Stir in the asparagus after about 12 minutes of adding broth.",
+   "Add the shrimp for the last 4 to 5 minutes and cook until pink and opaque all the way through.",
+   "Off the heat, stir in the remaining butter, the Parmesan, lemon zest and juice, salt and pepper, and serve right away."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, spoon 1 to 2 portions into a small pan before adding the shrimp and warm a drained can of white beans in it.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "cod_tomato_olive_skillet",
+  "name": "Cod in tomato, olive and caper sauce",
+  "side": "Crusty bread for the sauce.",
+  "cuisine": "Mediterranean",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 822,
+    "text": "2 cans (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 70,
+    "text": "½ cup",
+    "note": "pitted and halved"
+   },
+   {
+    "ingredient": "capers",
+    "amount": 18,
+    "text": "2 tbsp",
+    "note": "drained"
+   },
+   {
+    "ingredient": "cod",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "4 fillets, patted dry"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "¼ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large skillet with a lid over medium heat and cook the onion 5 minutes, until soft.",
+   "Add the garlic and oregano and cook 1 minute.",
+   "Stir in the tomatoes, olives, capers and ¼ tsp salt and simmer 10 minutes, until slightly thickened.",
+   "Season the cod with the remaining salt and the pepper and nestle it into the sauce.",
+   "Cover and simmer gently 8 to 10 minutes, until the fish reaches 145°F and flakes easily with a fork.",
+   "Sprinkle with parsley and serve with crusty bread."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, spoon some sauce into a small pan before adding the fish and simmer a drained can of chickpeas in it.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "coconut_fish_curry",
+  "name": "Coconut fish curry",
+  "side": "Basmati rice and lime wedges.",
+  "cuisine": "Indian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use a mild curry powder; it's warmly spiced rather than hot, and the coconut milk softens it further.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "curry_powder",
+    "amount": 7.5,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 1,
+    "text": "1 can",
+    "note": "shaken"
+   },
+   {
+    "ingredient": "cod",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 2-inch chunks"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "half juiced, half in wedges"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "¼ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Simmer the rice with 2¼ cups water and a pinch of salt, covered, on low for 15 minutes, then rest 5 minutes off the heat.",
+   "Heat the oil in a large skillet over medium heat and cook the onion 6 to 8 minutes, until golden.",
+   "Add the garlic and ginger for 1 minute, then the curry powder and turmeric for 30 seconds.",
+   "Stir in the tomatoes and simmer 5 minutes, then add the coconut milk and the rest of the salt and simmer 5 minutes more.",
+   "Add the cod and simmer gently, without stirring too much, 6 to 8 minutes, until it reaches 145°F and flakes easily.",
+   "Stir in the lime juice, sprinkle with cilantro and serve over the rice with lime wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, ladle some sauce into a small pan before adding the fish and simmer a drained can of chickpeas in it for 5 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "tuna_noodle_casserole",
+  "name": "Tuna noodle casserole",
+  "side": "Peas baked right in.",
+  "cuisine": "American",
+  "minutes": 50,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "oven",
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "egg_noodles",
+    "amount": 340,
+    "text": "12 oz bag",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "diced"
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 24,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "tuna_canned",
+    "amount": 3,
+    "text": "3 cans",
+    "note": "drained and flaked"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "panko",
+    "amount": 30,
+    "text": "½ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 375°F and boil the noodles 2 minutes less than the package says, then drain.",
+   "Melt 2 tbsp butter in a large pot over medium heat and cook the onion and mushrooms 6 minutes, until soft.",
+   "Stir in the flour for 1 minute, then slowly whisk in the milk and simmer 3 to 4 minutes, stirring, until thickened.",
+   "Off the heat, stir in the salt, pepper and cheddar, then fold in the noodles, tuna and peas.",
+   "Spread in a 9x13-inch baking dish. Melt the remaining butter, toss it with the panko and scatter it over the top.",
+   "Bake 20 minutes, until bubbling and golden. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, spoon 1 to 2 portions into a small baking dish before the tuna goes in, stir in a drained can of white beans and bake it alongside.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "shrimp_pad_thai",
+  "name": "Shrimp pad thai",
+  "side": "Lime wedges and chopped peanuts.",
+  "cuisine": "Thai",
+  "minutes": 35,
+  "difficulty": "Medium",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave the sriracha out of the sauce and pass it at the table.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "rice_noodles",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "flat"
+   },
+   {
+    "ingredient": "fish_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 40,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": "1 juiced, 1 in wedges"
+   },
+   {
+    "ingredient": "sriracha",
+    "amount": 8,
+    "text": "1½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "shrimp",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "thawed and patted dry"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 70,
+    "text": "1",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 3,
+    "text": "3",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "peanuts",
+    "amount": 45,
+    "text": "⅓ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Soak the noodles in very hot tap water for 8 to 10 minutes, until bendable but still firm, then drain.",
+   "Whisk the fish sauce, brown sugar, rice vinegar, lime juice and sriracha until the sugar dissolves.",
+   "Heat 1 tbsp oil in a large skillet over high heat and cook the shrimp 2 to 3 minutes, until pink and opaque, then move them to a plate.",
+   "Add the remaining oil, the garlic and carrot and stir for 1 minute, then push them aside, pour in the eggs and scramble until set.",
+   "Add the noodles and sauce and toss with tongs for 2 to 3 minutes, until the noodles are tender and have soaked up the sauce.",
+   "Toss in the shrimp and scallions and serve topped with peanuts and lime wedges."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "tuna_nicoise_salad",
+  "name": "Tuna Niçoise salad",
+  "side": "Warm potatoes, green beans and eggs.",
+  "cuisine": "French",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb small",
+    "note": "halved"
+   },
+   {
+    "ingredient": "green_beans",
+    "amount": 340,
+    "text": "¾ lb",
+    "note": "trimmed"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "shallots",
+    "amount": 30,
+    "text": "1 small",
+    "note": "minced"
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 90,
+    "text": "6 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "romaine",
+    "amount": 2,
+    "text": "2 hearts",
+    "note": "torn"
+   },
+   {
+    "ingredient": "tuna_canned",
+    "amount": 3,
+    "text": "3 cans",
+    "note": "drained"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 285,
+    "text": "1 pack (10 oz)",
+    "note": "halved"
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 70,
+    "text": "½ cup",
+    "note": "pitted"
+   }
+  ],
+  "steps": [
+   "Put the potatoes in a pot of cold water with ½ tsp salt, bring to a boil and cook 12 to 15 minutes, adding the green beans for the last 3 to 4 minutes, until both are tender; drain.",
+   "Meanwhile lower the eggs into a small pot of boiling water, cook 10 minutes, then cool in cold water, peel and halve.",
+   "Whisk the shallot, Dijon, vinegar, olive oil, pepper and the rest of the salt in a large bowl.",
+   "Toss the warm potatoes and green beans with half the dressing.",
+   "Arrange the romaine on a platter and top with the potatoes, green beans, tuna, tomatoes, olives and eggs.",
+   "Drizzle with the remaining dressing and serve."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, use a drained can of chickpeas in place of the tuna on their plates.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "sheet_pan_shrimp_fajitas",
+  "name": "Sheet-pan shrimp fajitas",
+  "side": "Warm tortillas, sour cream and lime.",
+  "cuisine": "Tex-Mex",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Halve the chili powder, or toss the kids' shrimp with just cumin, garlic powder and salt.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "shrimp",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "thawed and patted dry"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced into strips"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": "1 juiced, 1 in wedges"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "¼ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F and mix the chili powder, cumin, smoked paprika, garlic powder and salt.",
+   "Toss the peppers and onion on a sheet pan with 2 tbsp oil and half the spice mix and roast 15 minutes.",
+   "Toss the shrimp with the remaining oil and spice mix.",
+   "Stir the vegetables, scatter the shrimp over them and roast 6 to 8 minutes, until the shrimp are pink and opaque all the way through; wrap the tortillas in foil and warm them in the oven at the same time.",
+   "Squeeze the lime juice over the pan and serve in the tortillas with sour cream, cilantro and lime wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a drained can of black beans with a pinch of the spice mix in a small pan and tuck them into the fajitas.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "pesto_salmon_tomato_couscous",
+  "name": "Pesto salmon with roasted tomatoes",
+  "side": "Lemony spinach couscous.",
+  "cuisine": "Italian",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "oven",
+   "stovetop",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "salmon",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "4 fillets"
+   },
+   {
+    "ingredient": "pesto",
+    "amount": 85,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 285,
+    "text": "1 pack (10 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 360,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": "roughly chopped"
+   },
+   {
+    "ingredient": "couscous",
+    "amount": 220,
+    "text": "1¼ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Set the salmon on a sheet pan, season with half the salt and the pepper, and spread the pesto over the tops.",
+   "Toss the tomatoes with the olive oil and scatter them around the fish.",
+   "Roast 12 to 15 minutes, until the salmon reaches 145°F or flakes easily and the tomatoes blister.",
+   "Meanwhile bring the broth and the rest of the salt to a boil in a saucepan, stir in the spinach until it wilts, then stir in the couscous.",
+   "Cover, take off the heat and let it stand 5 minutes, then fluff with a fork and stir in the lemon zest and juice.",
+   "Serve the salmon and tomatoes on the couscous."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, toss a drained can of chickpeas with a spoonful of pesto and roast them beside the tomatoes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "tilapia_piccata",
+  "name": "Tilapia piccata",
+  "side": "Spaghetti tossed in the lemon-caper sauce.",
+  "cuisine": "Italian-American",
+  "minutes": 30,
+  "difficulty": "Medium",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "spaghetti",
+    "amount": 340,
+    "text": "12 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "tilapia",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "patted dry"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": "plus more for the pasta water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 40,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 180,
+    "text": "¾ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 2,
+    "text": "2",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "capers",
+    "amount": 18,
+    "text": "2 tbsp",
+    "note": "drained"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "¼ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Cook the spaghetti in well-salted boiling water according to the package, then drain.",
+   "Season the fish with the salt and pepper and dredge it lightly in the flour, shaking off the extra.",
+   "Heat the oil and 1 tbsp butter in a large skillet over medium-high heat and cook the fish in two batches, 2 to 3 minutes per side, until golden, 145°F and flaking easily; move to a plate.",
+   "Lower the heat to medium, add the garlic for 30 seconds, then pour in the broth, lemon juice and capers and simmer 2 to 3 minutes, scraping up the browned bits.",
+   "Turn off the heat and swirl in the remaining 2 tbsp butter until the sauce is glossy.",
+   "Toss the spaghetti with half the sauce, top with the fish, spoon over the rest and sprinkle with parsley."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, toss a portion of the spaghetti and sauce with a drained can of white beans.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "gochujang_shrimp_rice_bowls",
+  "name": "Gochujang shrimp rice bowls",
+  "side": "Quick-pickled cucumber and carrots.",
+  "cuisine": "Korean",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Before adding the gochujang, set aside the kids' shrimp tossed with just soy sauce, honey and sesame oil, or halve the gochujang.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 28,
+    "text": "1 tbsp plus 1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 1.5,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "gochujang",
+    "amount": 35,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "shrimp",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "thawed and patted dry"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Simmer the rice with 2¼ cups water, covered, on low for 15 minutes, then let it rest off the heat for 10 minutes.",
+   "Toss the cucumber and carrots with the rice vinegar, 1 tsp honey and the salt and set aside to pickle.",
+   "Whisk the gochujang, soy sauce, sesame oil, garlic and the remaining 1 tbsp honey.",
+   "Heat the vegetable oil in a large skillet over medium-high heat and cook the shrimp 2 minutes, then flip.",
+   "Pour in the sauce and toss for 1 to 2 minutes, until the shrimp are glazed, pink and opaque all the way through.",
+   "Serve the shrimp over rice with the pickled vegetables, scallions and sesame seeds."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, brown tofu cubes in a small skillet and toss them with a spoonful of the gochujang sauce.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cubed and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "potato_pepper_frittata",
+  "name": "Potato, pepper and cheddar frittata",
+  "side": "Arugula salad with lemon.",
+  "cuisine": "Italian",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 450,
+    "text": "1 lb",
+    "note": "cut into ½-inch cubes"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1 red",
+    "note": "diced"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 10,
+    "text": "10",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "grated, divided"
+   },
+   {
+    "ingredient": "arugula",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 375°F.",
+   "Heat 2 tbsp oil in a 10- to 12-inch oven-safe skillet over medium heat, add the potatoes, cover and cook 10 to 12 minutes, stirring now and then, until tender.",
+   "Add the onion and bell pepper and cook uncovered 5 minutes more, until soft.",
+   "Whisk the eggs with the milk, paprika, ¾ tsp salt, the pepper and half the cheddar, pour over the vegetables and cook without stirring for 3 to 4 minutes, until the edges set.",
+   "Scatter the remaining cheddar on top and bake 12 to 15 minutes, until the center is set with no runny egg when you cut into it (160°F).",
+   "Let it rest 5 minutes while you toss the arugula with the last 1 tbsp oil, the lemon juice and the remaining salt. Cut the frittata into wedges and serve with the salad."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "mushroom_cheddar_strata",
+  "name": "Mushroom, spinach and cheddar strata",
+  "side": "A simple green salad.",
+  "cuisine": "American",
+  "minutes": 85,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "plus a little for the dish"
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "frozen_spinach",
+    "amount": 283,
+    "text": "1 box (10 oz)",
+    "note": "thawed and squeezed dry"
+   },
+   {
+    "ingredient": "sandwich_bread",
+    "amount": 10,
+    "text": "10 slices",
+    "note": "cut into 1-inch cubes"
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "grated"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 600,
+    "text": "2½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "romaine",
+    "amount": 2,
+    "text": "2 hearts",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 350°F and butter a 9x13-inch baking dish.",
+   "Melt the butter in a large skillet over medium-high heat and cook the mushrooms and onion 8 to 10 minutes, until browned and the liquid has cooked off; stir in the spinach.",
+   "Spread half the bread in the dish, top with half the vegetables and half the cheddar, then repeat the layers.",
+   "Whisk the eggs, milk, Dijon, ¾ tsp salt and the pepper, pour evenly over the bread and press down so it soaks in; let it stand 15 minutes (or cover and refrigerate overnight).",
+   "Bake 45 to 50 minutes, until puffed and golden and a knife in the center comes out clean (160°F); rest 5 minutes.",
+   "Toss the romaine with the olive oil, vinegar and the remaining salt and serve alongside. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "sweet_potato_pinto_enchiladas",
+  "name": "Sweet potato and pinto bean enchiladas",
+  "side": "Sour cream and cilantro on top.",
+  "cuisine": "Mexican",
+  "minutes": 65,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Red enchilada sauce is usually mild; leave out the chili powder for sensitive kids.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "sweet_potato",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "peeled, cut into ½-inch cubes"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pinto_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 227,
+    "text": "2 cups",
+    "note": "divided"
+   },
+   {
+    "ingredient": "enchilada_sauce",
+    "amount": 566,
+    "text": "2 cans (10 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "¼ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Toss the sweet potato and onion with the oil, cumin, chili powder and salt on a sheet pan and roast 20 to 25 minutes, until tender.",
+   "Lower the oven to 375°F. In a bowl, roughly mash half the beans, then stir in the rest of the beans, the roasted vegetables and 1 cup cheese.",
+   "Spread ½ cup enchilada sauce in a 9x13-inch baking dish.",
+   "Divide the filling among the tortillas, roll them up and set them seam side down in the dish.",
+   "Pour the remaining sauce over the top, sprinkle with the rest of the cheese and bake 20 minutes, until bubbling.",
+   "Top with sour cream and cilantro and serve."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "mediterranean_quinoa_chickpea_salad",
+  "name": "Mediterranean quinoa and chickpea salad",
+  "side": "Feta, olives and a lemon-oregano dressing.",
+  "cuisine": "Mediterranean",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "quinoa",
+    "amount": 255,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 285,
+    "text": "1 pack (10 oz)",
+    "note": "halved"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 75,
+    "text": "⅓",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 70,
+    "text": "½ cup",
+    "note": "pitted and halved"
+   },
+   {
+    "ingredient": "feta",
+    "amount": 170,
+    "text": "1 pack (6 oz)",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "½ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 2,
+    "text": "2",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 1,
+    "text": "1 clove",
+    "note": "grated"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the quinoa and 3 cups water to a boil, cover and simmer on low for 15 minutes, until the water is absorbed.",
+   "Let it stand covered off the heat 5 minutes, then spread it on a plate to cool for 10 minutes.",
+   "Whisk the lemon juice, olive oil, garlic, oregano, salt and pepper in a large bowl.",
+   "Add the quinoa, chickpeas, cucumber, tomatoes, red onion, olives and parsley and toss well.",
+   "Top with the feta and serve warm or cold. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "crispy_tofu_broccoli",
+  "name": "Crispy tofu and broccoli in garlic-ginger sauce",
+  "side": "Steamed jasmine rice.",
+  "cuisine": "Chinese",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tofu_firm",
+    "amount": 794,
+    "text": "2 blocks (14 oz)",
+    "note": "pressed and cut into 1-inch cubes"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 24,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 450,
+    "text": "1 crown",
+    "note": "cut into florets"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 42,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Wrap the tofu blocks in a clean towel and press under a heavy pan for 10 minutes, then cube them. Meanwhile simmer the rice with 2¼ cups water, covered, on low for 15 minutes and let it rest.",
+   "Toss the tofu with 2 tbsp cornstarch. Heat 2 tbsp oil in a large nonstick skillet over medium-high heat and fry the tofu 8 to 10 minutes, turning, until golden and crisp; move to a plate.",
+   "Whisk the soy sauce, honey, rice vinegar, sesame oil, the remaining 1 tbsp cornstarch and ½ cup water.",
+   "Add the remaining oil and the broccoli to the pan, stir 1 minute, add 3 tbsp water, cover and steam 3 minutes.",
+   "Add the garlic and ginger for 30 seconds, pour in the sauce and stir about 1 minute, until thickened.",
+   "Return the tofu, toss to coat and serve over the rice with sesame seeds."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "black_bean_burgers",
+  "name": "Black bean burgers",
+  "side": "Lettuce, tomato and melted cheddar on buns.",
+  "cuisine": "American",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "black_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained, rinsed and patted dry"
+   },
+   {
+    "ingredient": "oats",
+    "amount": 40,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½",
+    "note": "half finely diced, half sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "4 oz",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "burger_buns",
+    "amount": 4,
+    "text": "4",
+    "note": "toasted"
+   },
+   {
+    "ingredient": "lettuce_butter",
+    "amount": 1,
+    "text": "1 head",
+    "note": "leaves separated"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 200,
+    "text": "2",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Mash the beans with a fork or potato masher, leaving some pieces whole.",
+   "Stir in the oats, egg, diced onion, garlic, cumin, smoked paprika and salt, then shape into 4 patties and chill 10 minutes.",
+   "Heat the oil in a large nonstick skillet over medium heat and cook the patties 4 to 5 minutes per side, until crisp and hot all the way through (160°F, since they contain egg).",
+   "Lay the cheddar on the burgers for the last minute and cover the pan to melt it.",
+   "Serve on the buns with lettuce, tomato and sliced red onion."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "white_bean_minestrone",
+  "name": "White bean minestrone",
+  "side": "Grated Parmesan on top.",
+  "cuisine": "Italian",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 80,
+    "text": "2 stalks",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "white_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "elbow_pasta",
+    "amount": 110,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "grated"
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large pot over medium heat and cook the onion, carrots and celery 8 minutes, until soft.",
+   "Add the garlic and Italian seasoning and cook 1 minute.",
+   "Add the tomatoes, broth, beans, salt and pepper, bring to a boil, then simmer 10 minutes.",
+   "Stir in the zucchini and pasta and simmer 8 to 10 minutes, until the pasta is tender.",
+   "Ladle into bowls and top with Parmesan. Refrigerate leftovers within 2 hours; the pasta will soak up broth, so add a splash of water when reheating."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "southwestern_stuffed_peppers",
+  "name": "Southwestern stuffed peppers",
+  "side": "Sour cream and cilantro on top.",
+  "cuisine": "Tex-Mex",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 1,
+  "mildNote": "Use mild salsa and leave out the chili powder.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 190,
+    "text": "1 cup",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 4,
+    "text": "4 large",
+    "note": "halved lengthwise, seeds removed"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 250,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "divided"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "¼ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Simmer the rice with 1½ cups water, covered, on low for 15 minutes, then let it rest off the heat.",
+   "Heat the oven to 400°F. Brush the pepper halves with the oil, sprinkle with half the salt and set them cut side up in a 9x13-inch dish with ¼ cup water; cover with foil and bake 15 minutes to soften.",
+   "Mix the rice with the beans, corn, salsa, cumin, chili powder, the remaining salt and 1 cup cheese.",
+   "Fill the peppers, top with the rest of the cheese and bake uncovered 15 to 20 minutes, until the filling is hot and the cheese is browned.",
+   "Serve two halves each with sour cream and cilantro."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "lentil_sloppy_joes",
+  "name": "Lentil sloppy joes",
+  "side": "Carrot sticks on the side.",
+  "cuisine": "American",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "lentils_brown",
+    "amount": 200,
+    "text": "1 cup",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 600,
+    "text": "2½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1 green",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 26,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "burger_buns",
+    "amount": 8,
+    "text": "8",
+    "note": "toasted"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 280,
+    "text": "4",
+    "note": "cut into sticks"
+   }
+  ],
+  "steps": [
+   "Simmer the lentils in the broth in a covered saucepan for 20 to 25 minutes, until tender and most of the liquid is absorbed; drain any extra.",
+   "Meanwhile heat the oil in a large skillet over medium heat and cook the onion and pepper 6 to 8 minutes, until soft.",
+   "Add the garlic and tomato paste and stir 1 minute.",
+   "Stir in the tomato sauce, brown sugar, soy sauce, smoked paprika and salt and simmer 5 minutes.",
+   "Add the lentils and simmer 5 minutes more, until thick enough to pile on a bun.",
+   "Spoon onto the buns, two per person, and serve with carrot sticks."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "matar_paneer",
+  "name": "Matar paneer",
+  "side": "Basmati rice.",
+  "cuisine": "Indian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; garam masala is warm rather than hot.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "paneer",
+    "amount": 340,
+    "text": "1 block (12 oz)",
+    "note": "cut into ¾-inch cubes"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "garam_masala",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.5,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 280,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "heavy_cream",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Simmer the rice with 2¼ cups water and a pinch of salt, covered, on low for 15 minutes, then rest 5 minutes off the heat.",
+   "Heat 1 tbsp oil in a large skillet over medium-high heat and brown the paneer 4 to 5 minutes, turning, then move it to a plate.",
+   "Add the remaining oil and the onion and cook over medium heat 8 minutes, until golden; add the garlic and ginger for 1 minute.",
+   "Stir in the garam masala, cumin, turmeric and cayenne for 30 seconds, then add the tomato sauce, ½ cup water and the salt and simmer 8 minutes.",
+   "Add the peas and paneer and simmer 5 minutes, until the peas are hot.",
+   "Stir in the cream and serve over the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "huevos_rancheros",
+  "name": "Huevos rancheros",
+  "side": "Refried black beans, avocado and lime.",
+  "cuisine": "Mexican",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use mild salsa; everything else is mild.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "black_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 1,
+    "text": "1 clove",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 250,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 113,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "¼ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into wedges"
+   }
+  ],
+  "steps": [
+   "Warm the beans, garlic, cumin, salt and ¼ cup water in a saucepan over medium heat for 5 minutes, mashing them roughly with a potato masher; keep warm. Warm the salsa in a small pan.",
+   "Heat 2 tbsp oil in a large skillet over medium-high heat and crisp the tortillas one or two at a time, 30 to 60 seconds per side; drain on paper towels.",
+   "Lower the heat to medium, add the remaining oil and fry the eggs 3 to 4 minutes, until the whites are fully set; cover the pan for firm yolks for young kids.",
+   "Spread beans on two tortillas per plate, top each with an egg, warm salsa and cheese.",
+   "Finish with avocado, cilantro and lime wedges."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "spinach_ricotta_lasagna_rolls",
+  "name": "Spinach and ricotta lasagna roll-ups",
+  "side": "Extra marinara for dipping.",
+  "cuisine": "Italian",
+  "minutes": 70,
+  "difficulty": "Medium",
+  "protein": "none",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "lasagna_noodles",
+    "amount": 230,
+    "text": "12 noodles",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ricotta",
+    "amount": 425,
+    "text": "1 tub (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_spinach",
+    "amount": 283,
+    "text": "1 box (10 oz)",
+    "note": "thawed and squeezed dry"
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 227,
+    "text": "2 cups",
+    "note": "divided"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "nutmeg",
+    "amount": 0.3,
+    "text": "a pinch",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": "plus more for the pasta water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "marinara",
+    "amount": 680,
+    "text": "1 jar (24 oz)",
+    "note": "divided"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 375°F. Boil the noodles in salted water 2 minutes less than the package says, drain and lay them flat on a sheet of foil brushed with the oil.",
+   "Mix the ricotta, spinach, 1 cup mozzarella, the Parmesan, egg, garlic, Italian seasoning, nutmeg, salt and pepper.",
+   "Spread 1 cup marinara in a 9x13-inch baking dish.",
+   "Spread about ¼ cup filling along each noodle, roll it up and set it seam side down in the dish.",
+   "Spoon the rest of the marinara over the rolls and sprinkle with the remaining mozzarella.",
+   "Cover with foil and bake 25 minutes, then uncover and bake 10 to 15 minutes more, until bubbling and hot in the center (165°F); rest 5 minutes before serving."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "peanut_noodles_tofu_edamame",
+  "name": "Peanut noodles with tofu and edamame",
+  "side": "Crunchy cucumber and carrots on top.",
+  "cuisine": "Asian",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave the sriracha out of the sauce and pass it at the table.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tofu_firm",
+    "amount": 397,
+    "text": "1 block (14 oz)",
+    "note": "pressed and cubed"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "spaghetti",
+    "amount": 340,
+    "text": "12 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_edamame",
+    "amount": 340,
+    "text": "1 bag (12 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "peanut_butter",
+    "amount": 85,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sriracha",
+    "amount": 8,
+    "text": "1½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into matchsticks"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large nonstick skillet over medium-high heat and fry the tofu 8 to 10 minutes, turning, until golden; splash in 1 tbsp soy sauce and toss.",
+   "Cook the spaghetti in boiling water according to the package, adding the edamame for the last 3 minutes; save ½ cup of the cooking water, then drain.",
+   "Whisk the peanut butter, the remaining 3 tbsp soy sauce, rice vinegar, honey, sriracha, ginger and garlic with ¼ cup of the hot cooking water until smooth.",
+   "Toss the noodles, edamame and carrots with the sauce, adding more cooking water if it's too thick.",
+   "Serve topped with the tofu, cucumber and scallions, warm or cold. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "sweet_sour_tofu_pineapple",
+  "name": "Sweet and sour tofu with pineapple",
+  "side": "Jasmine rice.",
+  "cuisine": "Chinese-American",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "tofu_firm",
+    "amount": 794,
+    "text": "2 blocks (14 oz)",
+    "note": "pressed and cut into 1-inch cubes"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 32,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "pineapple",
+    "amount": 0.5,
+    "text": "½",
+    "note": "peeled, cored and cut into chunks (about 2 cups)"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 50,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Simmer the rice with 2¼ cups water, covered, on low for 15 minutes, then let it rest off the heat.",
+   "Toss the tofu with 3 tbsp cornstarch. Heat 2 tbsp oil in a large nonstick skillet over medium-high heat and fry the tofu 8 to 10 minutes, turning, until crisp; move to a plate.",
+   "Whisk the rice vinegar, brown sugar, tomato paste, soy sauce, the remaining 1 tbsp cornstarch and ½ cup water.",
+   "Add the remaining oil, the peppers and onion to the pan and stir-fry 3 to 4 minutes, until crisp-tender; add the pineapple and garlic for 1 minute.",
+   "Pour in the sauce and stir about 1 minute, until thick and glossy.",
+   "Fold in the tofu and serve over the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "tomato_soup_grilled_cheese",
+  "name": "Tomato soup with cheddar grilled cheese",
+  "side": "Grilled cheese for dunking.",
+  "cuisine": "American",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "butter",
+    "amount": 70,
+    "text": "5 tbsp",
+    "note": "divided, softened"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can (28 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 4,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "dried_basil",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "half_and_half",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "sandwich_bread",
+    "amount": 8,
+    "text": "8 slices",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Melt 2 tbsp butter in a pot over medium heat and cook the onion 6 to 8 minutes, until very soft, then add the garlic for 1 minute.",
+   "Add the crushed tomatoes, broth, sugar, basil, salt and pepper, bring to a boil and simmer 15 minutes; mash with a potato masher if you like it smoother.",
+   "Stir in the half-and-half and heat until steaming, without boiling.",
+   "Meanwhile make 4 sandwiches with the bread and cheddar and spread the outsides with the remaining butter.",
+   "Cook the sandwiches in a large skillet over medium-low heat 3 to 4 minutes per side, until golden and the cheese melts.",
+   "Cut the sandwiches into strips and serve with the soup."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "cuban_black_bean_soup",
+  "name": "Cuban-style black bean soup",
+  "side": "Sour cream, cilantro and tortilla chips.",
+  "cuisine": "Cuban",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the jalapeño, or cook it in a little oil separately and stir it into the adults' bowls.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1 green",
+    "note": "diced"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 1,
+    "text": "1",
+    "note": "seeded and minced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 4,
+    "text": "4 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 960,
+    "text": "4 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 8,
+    "text": "¼ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "tortilla_chips",
+    "amount": 115,
+    "text": "4 oz",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large pot over medium heat and cook the onion, bell pepper and jalapeño 8 minutes, until soft.",
+   "Add the garlic, cumin and oregano and stir for 1 minute.",
+   "Add the beans, broth and salt, bring to a boil, then simmer 15 minutes.",
+   "Mash about half the beans right in the pot with a potato masher to thicken the soup.",
+   "Stir in the lime juice and serve topped with sour cream, cilantro and tortilla chips. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "moroccan_chickpea_stew",
+  "name": "Moroccan chickpea and sweet potato stew",
+  "side": "Fluffy couscous.",
+  "cuisine": "Moroccan",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "It's warmly spiced but has no chili heat, so it's kid-friendly as is.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 210,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ground_ginger",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sweet_potato",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "peeled, cut into ¾-inch cubes"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "raisins",
+    "amount": 40,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "couscous",
+    "amount": 265,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large pot over medium heat and cook the onion and carrots 6 minutes, until softened.",
+   "Add the garlic, cumin, ginger and cinnamon and stir for 1 minute.",
+   "Add the sweet potato, tomatoes, broth, chickpeas, raisins and ¾ tsp salt, bring to a boil, then cover and simmer 20 minutes, until the sweet potato is tender.",
+   "Meanwhile bring 1¾ cups water and the remaining salt to a boil, stir in the couscous, cover, take off the heat and let it stand 5 minutes; fluff with a fork.",
+   "Serve the stew over the couscous. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "lentil_shepherds_pie",
+  "name": "Lentil shepherd's pie",
+  "side": "Golden mashed potato topping.",
+  "cuisine": "British",
+  "minutes": 75,
+  "difficulty": "Medium",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "potatoes_russet",
+    "amount": 1130,
+    "text": "2½ lb",
+    "note": "peeled and cut into chunks"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided, plus more for the potato water"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "warmed"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 210,
+    "text": "3",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lentils_brown",
+    "amount": 300,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 960,
+    "text": "4 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large deep skillet over medium heat and cook the onion and carrots 8 minutes, then add the garlic, tomato paste and thyme and stir 1 minute.",
+   "Add the lentils, broth and 1 tsp salt, bring to a boil, then cover and simmer 25 to 30 minutes, until the lentils are tender; uncover for the last 5 minutes so it thickens. Stir in the peas and pepper.",
+   "Meanwhile cover the potatoes with cold salted water, bring to a boil and cook 15 to 20 minutes, until very tender; drain.",
+   "Mash the potatoes with the butter, warm milk and the remaining salt.",
+   "Heat the oven to 400°F. Spread the lentil filling in a 9x13-inch baking dish, top with the mashed potatoes and rough up the surface with a fork.",
+   "Bake 20 minutes, until bubbling at the edges and golden on top. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "baked_eggplant_parmesan",
+  "name": "Baked eggplant Parmesan",
+  "side": "Spaghetti with marinara.",
+  "cuisine": "Italian",
+  "minutes": 75,
+  "difficulty": "Medium",
+  "protein": "none",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "eggplant",
+    "amount": 2,
+    "text": "2 medium",
+    "note": "sliced into ½-inch rounds"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 2,
+    "text": "2",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "panko",
+    "amount": 100,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 75,
+    "text": "¾ cup",
+    "note": "grated, divided"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "plus more for the pasta water"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "marinara",
+    "amount": 1360,
+    "text": "2 jars (24 oz)",
+    "note": "divided"
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 227,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "basil",
+    "amount": 6,
+    "text": "¼ cup leaves",
+    "note": "torn"
+   },
+   {
+    "ingredient": "spaghetti",
+    "amount": 340,
+    "text": "12 oz",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F and brush two sheet pans with 2 tbsp of the oil.",
+   "Mix the panko, ½ cup Parmesan, Italian seasoning and salt. Dip each eggplant slice in egg, then press it into the crumbs and set it on the pans.",
+   "Drizzle with the remaining oil and bake 20 to 25 minutes, flipping halfway, until golden and tender. Lower the oven to 375°F.",
+   "Spread 1 cup marinara in a 9x13-inch dish, layer half the eggplant, 1 cup marinara and half the mozzarella, then repeat and finish with the rest of the Parmesan.",
+   "Bake 20 minutes, until bubbling, then scatter the basil on top.",
+   "Meanwhile cook the spaghetti in salted boiling water according to the package, drain and toss with the remaining marinara, warmed. Serve with the eggplant."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "warm_french_lentil_salad",
+  "name": "Warm French lentil salad with goat cheese",
+  "side": "Roasted carrots and soft-boiled eggs.",
+  "cuisine": "French",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop",
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "lentils_green",
+    "amount": 300,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 1,
+    "text": "1 clove",
+    "note": "smashed"
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 0.5,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 280,
+    "text": "4",
+    "note": "diced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 75,
+    "text": "5 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "shallots",
+    "amount": 60,
+    "text": "2",
+    "note": "minced"
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "¼ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "arugula",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "goat_cheese",
+    "amount": 113,
+    "text": "4 oz",
+    "note": "crumbled"
+   }
+  ],
+  "steps": [
+   "Simmer the lentils with the garlic, thyme and 4 cups water for 20 to 25 minutes, until tender but holding their shape; drain and remove the garlic.",
+   "Meanwhile heat the oven to 425°F, toss the carrots with 1 tbsp oil and ¼ tsp salt on a sheet pan and roast 20 minutes, until tender.",
+   "Lower the eggs into boiling water, cook 9 minutes, cool in cold water, then peel and halve.",
+   "Whisk the shallots, Dijon, vinegar, the remaining 4 tbsp oil, the rest of the salt and the pepper in a large bowl.",
+   "Toss the warm lentils, carrots and parsley in the dressing.",
+   "Serve over the arugula, topped with goat cheese and the eggs."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "baked_gnocchi_white_beans",
+  "name": "Baked gnocchi with white beans and mozzarella",
+  "side": "Torn basil on top.",
+  "cuisine": "Italian",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can (28 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "gnocchi",
+    "amount": 908,
+    "text": "2 packs (1 lb each)",
+    "note": "shelf-stable"
+   },
+   {
+    "ingredient": "white_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "mozzarella_fresh",
+    "amount": 227,
+    "text": "1 ball (8 oz)",
+    "note": "torn"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 25,
+    "text": "¼ cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "basil",
+    "amount": 6,
+    "text": "¼ cup leaves",
+    "note": "torn"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F.",
+   "Warm the oil in a large oven-safe skillet over medium heat, add the garlic for 1 minute, then stir in the tomatoes, Italian seasoning, salt and ½ cup water and bring to a simmer.",
+   "Stir in the gnocchi, beans and spinach, a handful at a time, until the spinach wilts, and simmer 3 minutes.",
+   "Top with the mozzarella and Parmesan and bake 15 to 20 minutes, until the gnocchi are tender and the cheese is bubbling and browned.",
+   "Scatter the basil over the top and serve. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "tortellini_primavera",
+  "name": "Cheese tortellini primavera",
+  "side": "Lemon, Parmesan and fresh basil.",
+  "cuisine": "Italian",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tortellini",
+    "amount": 567,
+    "text": "1 pack (20 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "plus more for the pasta water"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 285,
+    "text": "1 pack (10 oz)",
+    "note": "halved"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "basil",
+    "amount": 6,
+    "text": "¼ cup leaves",
+    "note": "torn"
+   }
+  ],
+  "steps": [
+   "Bring a large pot of salted water to a boil.",
+   "Heat the oil and butter in a large skillet over medium heat and cook the zucchini 4 minutes, until lightly browned; add the garlic and tomatoes and cook 2 minutes, until the tomatoes soften.",
+   "Cook the tortellini according to the package, usually 3 to 4 minutes, adding the peas for the last minute; save ½ cup of the cooking water and drain.",
+   "Add the tortellini and peas to the skillet with the lemon zest and juice, Parmesan, salt, pepper and a splash of cooking water, and toss until glossy.",
+   "Top with basil and serve."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "miso_udon_tofu_soup",
+  "name": "Miso udon soup with tofu and eggs",
+  "side": "Soft-boiled eggs and scallions.",
+  "cuisine": "Japanese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "bok_choy",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "quartered lengthwise"
+   },
+   {
+    "ingredient": "tofu_firm",
+    "amount": 397,
+    "text": "1 block (14 oz)",
+    "note": "cut into ¾-inch cubes"
+   },
+   {
+    "ingredient": "udon",
+    "amount": 567,
+    "text": "1 pack (3 portions)",
+    "note": ""
+   },
+   {
+    "ingredient": "miso",
+    "amount": 70,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Lower the eggs into boiling water and cook 7 minutes, then cool in cold water, peel and halve.",
+   "Bring the broth, ginger, garlic and soy sauce to a simmer in a large pot and cook 5 minutes.",
+   "Add the mushrooms and simmer 3 minutes, then the bok choy for 2 to 3 minutes, then the tofu for 2 minutes to heat through.",
+   "Meanwhile cook the udon in a separate pot of boiling water according to the package, usually 2 to 3 minutes, and drain.",
+   "Turn the soup off, whisk the miso with a ladle of the hot broth until smooth and stir it back into the pot; don't let it boil after this.",
+   "Divide the noodles among bowls, ladle over the soup and top with the eggs, scallions and a few drops of sesame oil."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "baked_falafel_pitas",
+  "name": "Baked falafel pitas",
+  "side": "Cucumber, tomato and tahini yogurt sauce.",
+  "cuisine": "Middle Eastern",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained, rinsed and patted very dry"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½",
+    "note": "half finely chopped, half thinly sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced, divided"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 20,
+    "text": "¾ cup",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 30,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 170,
+    "text": "¾ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "tahini",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "pita",
+    "amount": 4,
+    "text": "4",
+    "note": "halved"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 200,
+    "text": "2",
+    "note": "diced"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F and brush a sheet pan with 2 tbsp oil.",
+   "Mash the chickpeas well with a potato masher, then mix in the chopped onion, 2 cloves garlic, the parsley, cumin, flour and ¾ tsp salt until it holds together.",
+   "Shape into 12 small patties, set them on the pan and brush the tops with the remaining oil.",
+   "Bake 25 minutes, flipping halfway, until golden and crisp on both sides.",
+   "Stir the yogurt, tahini, lemon juice, the last clove of garlic and the remaining salt into a sauce.",
+   "Warm the pitas in the oven for the last 2 minutes and fill them with falafel, cucumber, tomato, sliced onion and sauce."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "spinach_feta_puff_pastry_pie",
+  "name": "Spinach and feta puff pastry pie",
+  "side": "Cucumber and tomato salad.",
+  "cuisine": "Greek",
+  "minutes": 70,
+  "difficulty": "Medium",
+  "protein": "eggs",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "puff_pastry",
+    "amount": 2,
+    "text": "2 sheets",
+    "note": "thawed in the fridge overnight or 40 minutes on the counter"
+   },
+   {
+    "ingredient": "frozen_spinach",
+    "amount": 566,
+    "text": "2 boxes (10 oz)",
+    "note": "thawed and squeezed very dry"
+   },
+   {
+    "ingredient": "feta",
+    "amount": 170,
+    "text": "1 pack (6 oz)",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "ricotta",
+    "amount": 213,
+    "text": "about 1 cup (half a tub)",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": "3 for the filling, 1 for brushing"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "dill",
+    "amount": 8,
+    "text": "3 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "nutmeg",
+    "amount": 0.3,
+    "text": "a pinch",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 285,
+    "text": "1 pack (10 oz)",
+    "note": "halved"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 1.5,
+    "text": "¼ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F and line a sheet pan with parchment.",
+   "Mix the spinach, feta, ricotta, 3 eggs, scallions, dill, nutmeg and pepper in a bowl.",
+   "Lay one pastry sheet on the pan, spread the filling over it leaving a 1-inch border, then lay the second sheet on top and press the edges together with a fork.",
+   "Beat the last egg and brush it over the top, then cut a few small slits for steam.",
+   "Bake 35 to 40 minutes, until deep golden and puffed and the filling is hot and set in the middle (160°F); rest 10 minutes before cutting into squares.",
+   "Toss the cucumber and tomatoes with the olive oil, vinegar and salt and serve alongside. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ }
+]
