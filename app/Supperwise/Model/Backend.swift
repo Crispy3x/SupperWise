@@ -128,6 +128,13 @@ final class Backend {
         try adopt(data)
     }
 
+    /// Deletes the account and everything shared with it, then signs out (App Store guideline 5.1.1(v)).
+    func deleteAccount() async throws {
+        try await refreshIfNeeded()
+        _ = try await send("functions/v1/delete-account", method: "POST", body: [:])
+        signOut()
+    }
+
     func signOut() {
         current = nil
         store.save(nil)

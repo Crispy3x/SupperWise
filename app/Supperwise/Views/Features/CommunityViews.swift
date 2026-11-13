@@ -20,6 +20,7 @@ final class Account {
     func sendCode(_ email: String) async throws { try await backend.sendCode(to: email) }
     func verify(_ email: String, _ code: String) async throws { try await backend.verify(email: email, code: code); refresh() }
     func signOut() { backend.signOut(); refresh() }
+    func deleteAccount() async throws { try await backend.deleteAccount(); refresh() }
 }
 
 // MARK: - Sign in
@@ -311,6 +312,7 @@ struct MySubmissionsView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var list: [CommunityRecipe] = []
     @State private var error: String? = nil
+    @State private var confirmDelete = false
 
     var body: some View {
         NavigationStack {
@@ -332,11 +334,23 @@ struct MySubmissionsView: View {
                         }
                     }
                 }
-                Section { Button("Sign out", role: .destructive) { account.signOut(); dismiss() } }
+                Section {
+                    Button("Sign out") { account.signOut(); dismiss() }
+                    Button("Delete my account", role: .destructive) { confirmDelete = true }
+                } footer: {
+                    Text("Deleting your account removes your shared recipes and photos. Your meal plans stay on this iPhone.")
+                }
             }
             .task { await load() }
             .refreshable { await load() }
             .navigationTitle("My shared recipes")
+            .confirmationDialog("Delete your Supperwise account?", isPresented: $confirmDelete, titleVisibility: .visible) {
+                Button("Delete account and shared recipes", role: .destructive) {
+                    Task {
+                        do { try await account.deleteAccount(); dismiss() } catch { self.error = error.localizedDescription }
+                    }
+                }
+            } message: { Text("This can't be undone. It doesn't cancel a subscription; manage that in Settings.") }
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
         }
     }

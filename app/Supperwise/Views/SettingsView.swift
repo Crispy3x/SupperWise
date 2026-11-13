@@ -6,6 +6,8 @@ import UserNotifications
 struct SettingsView: View {
     @Environment(AppModel.self) private var model
     @Environment(Subscriptions.self) private var subs
+    @Environment(Account.self) private var account
+    @State private var showAccount = false
     @Environment(\.dismiss) private var dismiss
     @State private var showCustomerCenter = false
     @State private var showPaywall = false
@@ -30,6 +32,13 @@ struct SettingsView: View {
                     }
                     Button("Restore purchases") { Task { await subs.restore() } }
                     if let e = subs.lastError { Text(e).font(.footnote).foregroundStyle(.secondary) }
+                }
+
+                if account.signedIn {
+                    Section("Account") {
+                        Text(account.email ?? "Signed in").foregroundStyle(.secondary)
+                        Button("Shared recipes, sign out or delete account") { showAccount = true }
+                    }
                 }
 
                 Section("Where you shop") {
@@ -75,6 +84,7 @@ struct SettingsView: View {
             .presentCustomerCenter(isPresented: $showCustomerCenter)
             .sheet(isPresented: $showPaywall) { PlansSheet() }
             .sheet(isPresented: $showHow) { HowWePriceView() }
+            .sheet(isPresented: $showAccount) { MySubmissionsView() }
             .confirmationDialog("Erase everything on this iPhone?", isPresented: $confirmErase, titleVisibility: .visible) {
                 Button("Erase", role: .destructive) {
                     UNUserNotificationCenter.current().removeAllPendingNotificationRequests()

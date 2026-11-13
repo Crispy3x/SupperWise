@@ -1,17 +1,19 @@
-# Privacy label (updated for RevenueCat, 2026-11-12)
+# Privacy label (updated 2026-11-13: accounts, community recipes, food scan)
 
-App Store Connect › App Privacy. Supperwise itself stores everything on the device. **RevenueCat**, the subscription service, receives purchase data, so the label must list it:
+App Store Connect › App Privacy. Meal plans and household data stay on the device. Fill in:
 
-| Data type | Collected by | Linked to the person | Used for tracking | Purpose |
+| Data type | Collected by | Linked to the person | Tracking | Purpose |
 |---|---|---|---|---|
-| Purchases (purchase history) | RevenueCat | Yes, to an anonymous RevenueCat app user ID | No | App functionality (unlocking the subscription), analytics |
-| Identifiers (user ID) | RevenueCat (anonymous ID it creates) | Yes | No | App functionality |
+| Contact info › Email address | Supperwise (Supabase), only if they sign in | Yes | No | App functionality (sign-in) |
+| User content › Photos or videos | Supperwise: shared recipe photos; food-scan photos (sent for analysis, not stored) | Yes (shared recipes); food-scan photos not stored | No | App functionality |
+| User content › Other user content | Supperwise: shared recipes, reports | Yes | No | App functionality |
+| Identifiers › User ID | Supperwise account ID; RevenueCat anonymous ID | Yes | No | App functionality |
+| Purchases › Purchase history | RevenueCat | Yes (anonymous RevenueCat ID) | No | App functionality, analytics |
+| Usage data › Product interaction | Supperwise: monthly food-scan count | Yes | No | App functionality (limits) |
 
-**What isn't collected:**
-- No other data: no accounts, no names, no email, no location, no analytics SDK, no ads.
-- **Tracking: No.** No ATT prompt.
+**Not collected:** name (the first name on a shared recipe is user content they type), location, health records, contacts, browsing, diagnostics, ads. **Tracking: No.** No ATT prompt.
 
 **Other notes:**
-- The RevenueCat SDK ships its own privacy manifest, which Xcode merges with the app's.
-- Product barcodes go to Open Food Facts, but they aren't personal data.
-- Check RevenueCat's current guidance before you submit: revenuecat.com/docs, "Apple App Privacy".
+- Third-party AI: food-scan photos go to Anthropic. The app asks permission before the first scan (guideline 5.1.2(i)).
+- Account deletion is in the app (Settings › Account, or Community › My shared recipes).
+- User-generated content (guideline 1.2): recipes are approved before publishing, anyone can report one, and reports are reviewed within 24 hours.
