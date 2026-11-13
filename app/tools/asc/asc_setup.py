@@ -32,9 +32,30 @@ REVIEW_NOTE = ("Auto-renewing subscription unlocking Supperwise features. Review
 _token = {"value": None, "at": 0}
 
 
+def p8_key():
+    """The .p8 text as pasted into the GitHub secret, rebuilt into clean PEM whatever happened to the line breaks."""
+    import base64, re
+    raw = os.environ["ASC_KEY_P8"].replace("\\n", "\n").replace("\r", "")
+    body = re.sub(r"-----(BEGIN|END)[A-Z ]*-----", "", raw)
+    body = re.sub(r"[^A-Za-z0-9+/=]", "", body)
+    print(f"key check: {len(raw)} characters pasted, BEGIN line {'present' if 'BEGIN' in raw else 'missing'}, "
+          f"END line {'present' if 'END' in raw else 'missing'}, {raw.count(chr(10)) + 1} lines, {len(body)} base64 characters "
+          f"(an App Store Connect key has 184)")
+    try:
+        der = base64.b64decode(body + "=" * (-len(body) % 4))
+    except Exception:
+        der = b""
+    if len(der) < 100:
+        print("::error::ASC_KEY_P8 doesn't look like a .p8 key. Open the AuthKey_XXXX.p8 file in TextEdit and paste ALL of it, "
+              "including the -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY----- lines, as the secret.")
+        sys.exit(1)
+    lines = "\n".join(body[i:i + 64] for i in range(0, len(body), 64))
+    return f"-----BEGIN PRIVATE KEY-----\n{lines}\n-----END PRIVATE KEY-----\n"
+
+
 def token():
     if not _token["value"] or time.time() - _token["at"] > 600:
-        key = os.environ["ASC_KEY_P8"].replace("\\n", "\n")
+        key = p8_key()
         now = int(time.time())
         _token["value"] = jwt.encode({"iss": os.environ["ASC_ISSUER_ID"], "iat": now, "exp": now + 1100, "aud": "appstoreconnect-v1"},
                                      key, algorithm="ES256", headers={"kid": os.environ["ASC_KEY_ID"], "typ": "JWT"})

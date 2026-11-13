@@ -45,7 +45,14 @@ jobs:
           KID: ${{ secrets.ASC_KEY_ID }}
         run: |
           mkdir -p "$RUNNER_TEMP/keys"
-          printf '%s\n' "$P8" > "$RUNNER_TEMP/keys/AuthKey_$KID.p8"
+          # Rebuild clean PEM whatever happened to the line breaks when the key was pasted.
+          python3 - "$RUNNER_TEMP/keys/AuthKey_$KID.p8" <<'PY'
+          import os, re, sys
+          raw = os.environ["P8"].replace("\\n", "\n")
+          body = re.sub(r"[^A-Za-z0-9+/=]", "", re.sub(r"-----(BEGIN|END)[A-Z ]*-----", "", raw))
+          lines = "\n".join(body[i:i + 64] for i in range(0, len(body), 64))
+          open(sys.argv[1], "w").write(f"-----BEGIN PRIVATE KEY-----\n{lines}\n-----END PRIVATE KEY-----\n")
+          PY
           chmod 600 "$RUNNER_TEMP/keys/AuthKey_$KID.p8"
 
       - name: Archive (signed automatically with your team)
