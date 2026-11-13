@@ -1,0 +1,5111 @@
+[
+ {
+  "id": "spinach_ricotta_lasagna_rolls",
+  "name": "Spinach and ricotta lasagna roll-ups",
+  "side": "A crisp green salad on the side.",
+  "cuisine": "Italian",
+  "minutes": 70,
+  "difficulty": "Medium",
+  "protein": "none",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "lasagna_noodles",
+    "amount": 280,
+    "text": "12 noodles",
+    "note": "regular, not no-boil"
+   },
+   {
+    "ingredient": "ricotta",
+    "amount": 425,
+    "text": "1 tub (15 oz)",
+    "note": "whole-milk"
+   },
+   {
+    "ingredient": "frozen_spinach",
+    "amount": 283,
+    "text": "1 box (10 oz)",
+    "note": "thawed and squeezed dry"
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 227,
+    "text": "2 cups",
+    "note": "shredded, divided"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "finely grated, divided"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": "large"
+   },
+   {
+    "ingredient": "marinara",
+    "amount": 680,
+    "text": "1 jar (24 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "nutmeg",
+    "amount": 0.5,
+    "text": "1 pinch",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 21,
+    "text": "1 tbsp + ½ tsp",
+    "note": "1 tbsp for the pasta water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 375°F. Bring a large pot of water to a boil with 1 tbsp salt and cook the noodles 2 minutes less than the package says (about 8 minutes). Drain and lay them flat on a clean kitchen towel so they don't stick together.",
+   "While the noodles cook, squeeze the thawed spinach hard in a towel until no more water comes out. In a bowl, mix the spinach, ricotta, 1 cup of the mozzarella, half the parmesan, the egg, garlic, nutmeg, ½ tsp salt and the pepper.",
+   "Spread 1 cup of the marinara over the bottom of a 9x13-inch baking dish.",
+   "Spread about 3 tbsp of the filling along each noodle, roll it up from a short end and set it seam-side down in the dish.",
+   "Spoon the rest of the marinara over the rolls and scatter the remaining mozzarella and parmesan on top. Cover with foil and bake 25 minutes, then uncover and bake 10 to 15 minutes more until the sauce bubbles at the edges and the filling is hot in the center.",
+   "Let the dish rest 5 minutes, then serve 3 rolls per person. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "mushroom_thyme_risotto",
+  "name": "Mushroom and thyme risotto",
+  "side": "A simple arugula salad with lemon on the side.",
+  "cuisine": "Italian",
+  "minutes": 45,
+  "difficulty": "Medium",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "arborio",
+    "amount": 300,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 454,
+    "text": "2 packs (8 oz each)",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "shallots",
+    "amount": 80,
+    "text": "2",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 60,
+    "text": "⅔ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "2 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Warm the broth in a saucepan over low heat and keep it hot while you cook.",
+   "Heat the oil and 1 tbsp of the butter in a wide, heavy pot over medium-high heat. Add the mushrooms and ½ tsp salt and leave them alone for 3 minutes, then stir and cook 4 to 5 minutes more until browned and their liquid is gone. Spoon half the mushrooms into a bowl.",
+   "Lower the heat to medium. Add the shallots and cook 3 minutes until soft, then stir in the garlic and thyme for 30 seconds. Add the rice and stir for 2 minutes until the edges of the grains look translucent.",
+   "Add the hot broth about ½ cup at a time, stirring often and waiting until most of it is absorbed before adding more. After 18 to 22 minutes the rice should be creamy and tender with a slight bite in the center; you may not need all the broth.",
+   "Take the pot off the heat and stir in the remaining 2 tbsp butter, the parmesan, the rest of the salt and the pepper. Let it sit 2 minutes, adding a splash of broth if it has gone stiff; it should slowly spread on a plate.",
+   "Spoon into bowls and top with the reserved mushrooms and the parsley."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "lemon_pea_risotto",
+  "name": "Lemon risotto with peas and mint",
+  "side": "Warm crusty bread on the side.",
+  "cuisine": "Italian",
+  "minutes": 40,
+  "difficulty": "Medium",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "arborio",
+    "amount": 300,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 340,
+    "text": "1 bag (12 oz)",
+    "note": "no need to thaw"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "mint",
+    "amount": 6,
+    "text": "¼ cup leaves",
+    "note": "torn"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Warm the broth in a saucepan over low heat and keep it hot.",
+   "Heat the oil and 1 tbsp of the butter in a wide, heavy pot over medium heat. Cook the onion 5 minutes until soft but not browned, then add the garlic for 30 seconds.",
+   "Add the rice and stir 2 minutes until the edges look translucent. Add the hot broth about ½ cup at a time, stirring often and letting each addition mostly absorb before the next.",
+   "After about 15 minutes, stir in the frozen peas with the next ladle of broth. Keep going 4 to 6 minutes more until the rice is creamy and just tender with a slight bite and the peas are hot.",
+   "Take the pot off the heat and stir in the remaining 2 tbsp butter, the parmesan, lemon zest, half the lemon juice, the salt and the pepper. Taste and add more lemon juice if you like.",
+   "Rest 2 minutes, loosen with a splash of broth if needed, and serve scattered with the mint."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "sheet_pan_gnocchi_tomatoes_zucchini",
+  "name": "Sheet-pan gnocchi with cherry tomatoes and zucchini",
+  "side": "Extra basil and a green salad on the side.",
+  "cuisine": "Italian",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "gnocchi",
+    "amount": 908,
+    "text": "2 packs (1 lb each)",
+    "note": "shelf-stable, not boiled"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 567,
+    "text": "2 packs (10 oz each)",
+    "note": ""
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 2,
+    "text": "2",
+    "note": "halved lengthwise, sliced ½ in thick"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½",
+    "note": "cut into thin wedges"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 1.5,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "mozzarella_fresh",
+    "amount": 227,
+    "text": "1 ball (8 oz)",
+    "note": "torn into pieces"
+   },
+   {
+    "ingredient": "basil",
+    "amount": 10,
+    "text": "a handful",
+    "note": "leaves torn"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F with racks in the upper and lower thirds.",
+   "Break apart any gnocchi that are stuck together. On two large rimmed sheet pans, toss the gnocchi, cherry tomatoes, zucchini and red onion with the oil, Italian seasoning, garlic powder, salt and pepper. Spread everything in a single layer.",
+   "Roast 20 to 25 minutes, stirring and swapping the pans halfway, until the gnocchi are golden and puffed and the tomatoes have burst.",
+   "Scatter the torn mozzarella over the hot pans and return them to the oven for 2 to 3 minutes, just until the cheese starts to melt.",
+   "Top with the basil and serve straight from the pans. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "creamy_tomato_gnocchi_spinach",
+  "name": "Creamy tomato gnocchi with spinach",
+  "side": "Garlic bread or a crisp salad on the side.",
+  "cuisine": "Italian",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "gnocchi",
+    "amount": 908,
+    "text": "2 packs (1 lb each)",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can (28 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "heavy_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "dried_basil",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 4,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 40,
+    "text": "⅓ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 21,
+    "text": "1 tbsp + ½ tsp",
+    "note": "1 tbsp for the gnocchi water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil with 1 tbsp salt.",
+   "Meanwhile, heat the oil in a large, deep skillet over medium heat. Cook the onion 5 minutes until soft, then stir in the garlic and dried basil for 30 seconds.",
+   "Add the crushed tomatoes, sugar and ½ tsp salt. Simmer 10 minutes, stirring now and then, until slightly thickened.",
+   "Stir in the cream, then add the spinach a handful at a time, stirring until it wilts, about 2 minutes. Keep the sauce on low.",
+   "Boil the gnocchi 2 to 3 minutes, until they float to the top. Scoop them straight into the sauce with a slotted spoon and stir gently to coat.",
+   "Sprinkle with the parmesan and pepper and serve right away."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "sheet_pan_margherita_pizza",
+  "name": "Sheet-pan margherita pizza",
+  "side": "A bowl of cut raw vegetables or a green salad on the side.",
+  "cuisine": "Italian",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pizza_dough",
+    "amount": 908,
+    "text": "2 balls (1 lb each)",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 30,
+    "text": "¼ cup",
+    "note": "for dusting"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "marinara",
+    "amount": 340,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "mozzarella_fresh",
+    "amount": 454,
+    "text": "2 balls (8 oz each)",
+    "note": "torn, patted dry"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 30,
+    "text": "⅓ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "basil",
+    "amount": 21,
+    "text": "1 pack",
+    "note": "leaves picked"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 1.5,
+    "text": "¼ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Leave the dough covered on the counter for 30 minutes so it is easier to stretch. Heat the oven to 475°F with racks in the upper and lower thirds.",
+   "Brush two rimmed sheet pans with 1 tbsp oil each. On a lightly floured counter, stretch each ball of dough into a rough rectangle and press it out to fill a pan. If it springs back, let it rest 5 minutes and try again.",
+   "Brush the dough with the remaining 1 tbsp oil, spread the marinara over it leaving a ½-inch border, and sprinkle with the oregano.",
+   "Bake 8 minutes. Scatter the mozzarella and parmesan over both pizzas, swap the pans between racks, and bake 6 to 8 minutes more until the crust is deep golden underneath and the cheese is bubbling.",
+   "Top with the basil leaves and a pinch of salt, cool 3 minutes, and cut into squares. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "caramelized_onion_mushroom_flatbreads",
+  "name": "Caramelized onion and mushroom flatbreads with goat cheese",
+  "side": "Topped with lemony arugula; serve with a simple soup if you like.",
+  "cuisine": "Italian",
+  "minutes": 60,
+  "difficulty": "Medium",
+  "protein": "none",
+  "equipment": [
+   "stovetop",
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pizza_dough",
+    "amount": 908,
+    "text": "2 balls (1 lb each)",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 440,
+    "text": "2",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 454,
+    "text": "2 packs (8 oz each)",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 30,
+    "text": "¼ cup",
+    "note": "for dusting"
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 227,
+    "text": "2 cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "goat_cheese",
+    "amount": 113,
+    "text": "1 log (4 oz)",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "arugula",
+    "amount": 70,
+    "text": "½ box",
+    "note": ""
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": "red wine vinegar"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Leave the dough covered on the counter while you cook the topping.",
+   "Melt the butter with 1 tbsp oil in a large skillet over medium heat. Add the onions and ½ tsp salt and cook, stirring now and then, 20 to 25 minutes until deep golden and jammy; add a splash of water if they start to stick.",
+   "Push the onions to one side, turn the heat to medium-high and add 1 tbsp oil, the mushrooms and the thyme. Cook 6 to 8 minutes until the mushrooms are browned and dry, then stir everything together. Meanwhile heat the oven to 475°F with racks in the upper and lower thirds.",
+   "Brush two sheet pans with the remaining 1 tbsp oil. On a lightly floured counter, stretch each dough to fit a pan and lay it in.",
+   "Sprinkle the mozzarella over the dough, spread the onion and mushroom mixture on top and dot with the goat cheese. Bake 12 to 15 minutes, swapping the pans halfway, until the crust is golden underneath and the cheese is bubbling.",
+   "Toss the arugula with the vinegar, the remaining ½ tsp salt and the pepper, pile it over the hot flatbreads and cut into pieces."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "spinach_feta_puff_pastry_pie",
+  "name": "Spinach and feta pie (spanakopita-style)",
+  "side": "Sliced cucumbers and tomatoes on the side.",
+  "cuisine": "Greek",
+  "minutes": 60,
+  "difficulty": "Medium",
+  "protein": "eggs",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "puff_pastry",
+    "amount": 2,
+    "text": "2 sheets",
+    "note": "thawed in the fridge overnight"
+   },
+   {
+    "ingredient": "frozen_spinach",
+    "amount": 566,
+    "text": "2 boxes (10 oz each)",
+    "note": "thawed and squeezed dry"
+   },
+   {
+    "ingredient": "feta",
+    "amount": 170,
+    "text": "1 pack (6 oz)",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "ricotta",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 3,
+    "text": "3",
+    "note": "2 for the filling, 1 beaten for brushing"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 6,
+    "text": "6",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "dill",
+    "amount": 10,
+    "text": "⅓ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "nutmeg",
+    "amount": 0.5,
+    "text": "1 pinch",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 15,
+    "text": "2 tbsp",
+    "note": "for dusting"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F and line a rimmed sheet pan with parchment paper.",
+   "Squeeze the thawed spinach in a towel until it is very dry; wet spinach makes a soggy pie. In a bowl, mix the spinach, feta, ricotta, 2 of the eggs, scallions, dill, nutmeg and pepper.",
+   "On a lightly floured counter, roll each pastry sheet out to about 10 by 12 inches. Lay one sheet on the pan and spread the filling over it, leaving a 1-inch border.",
+   "Beat the last egg and brush it over the border. Lay the second sheet on top, press the edges together with a fork, brush the top with more egg and cut 4 small slits to let steam out.",
+   "Bake 30 to 35 minutes until the pastry is puffed and deep golden, including underneath, and the filling is hot in the center.",
+   "Let it rest 10 minutes, then cut into squares. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "lemony_orzo_chickpeas_feta",
+  "name": "Lemony orzo with chickpeas, spinach and feta",
+  "side": "Sliced cucumber with a pinch of salt on the side.",
+  "cuisine": "Greek",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "orzo",
+    "amount": 340,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 840,
+    "text": "3½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": "roughly chopped"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "dill",
+    "amount": 8,
+    "text": "2 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "feta",
+    "amount": 113,
+    "text": "¾ cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large, deep skillet or pot over medium heat. Cook the onion 4 minutes until soft, then stir in the garlic and oregano for 30 seconds.",
+   "Add the orzo and stir 2 minutes until lightly toasted.",
+   "Pour in the broth, add the salt and bring to a boil. Lower the heat to a gentle simmer and cook 10 to 12 minutes, stirring often so it doesn't stick, until the orzo is tender and most of the liquid is absorbed. Stir in the chickpeas for the last 3 minutes.",
+   "Take the pan off the heat and stir in the spinach until it wilts, then the lemon zest and juice, dill and pepper.",
+   "Spoon into bowls and top with the feta."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "greek_baked_white_beans",
+  "name": "Greek baked beans in tomato and dill",
+  "side": "Crusty bread for dipping and a cucumber salad.",
+  "cuisine": "Greek",
+  "minutes": 65,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "white_beans",
+    "amount": 3,
+    "text": "3 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can (28 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 80,
+    "text": "2 stalks",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "honey",
+    "amount": 7,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "dill",
+    "amount": 10,
+    "text": "¼ cup",
+    "note": "chopped, divided"
+   },
+   {
+    "ingredient": "feta",
+    "amount": 113,
+    "text": "¾ cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": "for serving"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 375°F.",
+   "Heat 3 tbsp of the oil in an oven-safe pot or deep skillet over medium heat. Cook the onion, carrots and celery 8 minutes until soft. Stir in the garlic and oregano for 1 minute.",
+   "Add the crushed tomatoes, honey, salt and pepper and simmer 5 minutes.",
+   "Stir in the beans, half the dill and ½ cup water. Drizzle the remaining 1 tbsp oil over the top.",
+   "Bake uncovered 35 to 40 minutes until the sauce is thick and the edges are bubbling and browned.",
+   "Scatter the feta and the rest of the dill over the beans and serve with the bread, sliced. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "baked_falafel_pitas",
+  "name": "Baked chickpea falafel pitas with tzatziki",
+  "side": "Stuffed into pitas with cucumber and tomato.",
+  "cuisine": "Mediterranean",
+  "minutes": 45,
+  "difficulty": "Medium",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained, rinsed and patted dry"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 55,
+    "text": "¼",
+    "note": "roughly chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "divided"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 30,
+    "text": "1 cup leaves",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 30,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "half grated, half sliced"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 200,
+    "text": "2",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "pita",
+    "amount": 6,
+    "text": "6",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F. Spread 2 tbsp of the oil over a rimmed sheet pan.",
+   "Pulse the chickpeas, red onion, 2 garlic cloves, parsley, cumin, coriander, ¾ tsp salt and half the lemon juice in a food processor until coarse and crumbly, scraping down the sides; or mash everything well with a potato masher. Stir in the flour.",
+   "Shape the mixture into 16 small patties about 2 inches wide and set them on the oiled pan. Brush the tops with the remaining 1 tbsp oil.",
+   "Bake 12 minutes, flip carefully, and bake 10 to 12 minutes more until crisp and golden on both sides. Wrap the pitas in foil and warm them in the oven for the last 5 minutes.",
+   "While the falafel bake, squeeze the grated cucumber in your hands to remove the water. Mix it with the yogurt, the last garlic clove (finely grated), the rest of the lemon juice and ¼ tsp salt.",
+   "Fill the warm pitas with falafel, sliced cucumber, tomatoes and a spoonful of tzatziki."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "ribollita",
+  "name": "Tuscan bread and bean soup (ribollita)",
+  "side": "Extra parmesan and a drizzle of olive oil at the table.",
+  "cuisine": "Italian",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "white_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "kale",
+    "amount": 280,
+    "text": "1 bunch",
+    "note": "stems removed, chopped"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 80,
+    "text": "2 stalks",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 0.5,
+    "text": "½ loaf",
+    "note": "day-old, torn into 1-inch pieces"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 40,
+    "text": "⅓ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat 2 tbsp of the oil in a large pot over medium heat. Cook the onion, carrots and celery 8 to 10 minutes until soft.",
+   "Stir in the garlic and thyme for 1 minute, then add the diced tomatoes and cook 3 minutes.",
+   "Add the broth and beans. Scoop out about 1 cup of the beans, mash them with a fork and stir them back in to thicken the soup. Bring to a boil, then lower to a simmer.",
+   "Stir in the kale and simmer 15 minutes until it is very tender.",
+   "Add the torn bread and simmer 5 minutes more, stirring, until the bread breaks down and the soup is thick. Season with the salt and pepper, adding a splash of water if it is too thick to ladle.",
+   "Serve topped with the parmesan and the remaining 1 tbsp oil. Refrigerate leftovers within 2 hours; it is even better reheated the next day."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "pasta_e_ceci",
+  "name": "Pasta e ceci (chickpea and pasta soup)",
+  "side": "Crusty bread on the side.",
+  "cuisine": "Italian",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "elbow_pasta",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 70,
+    "text": "1",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "rosemary",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried, crumbled"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 1200,
+    "text": "5 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 40,
+    "text": "⅓ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat 2 tbsp of the oil in a large pot over medium heat. Cook the onion and carrot 6 minutes until soft.",
+   "Stir in the garlic and rosemary for 1 minute, then the tomato paste for 2 minutes until it darkens.",
+   "Add the chickpeas and broth, bring to a boil and simmer 10 minutes. Mash about a third of the chickpeas against the side of the pot to thicken the soup.",
+   "Stir in the pasta and simmer, stirring often so it doesn't stick, 9 to 11 minutes until tender. Add up to 1 cup water if it gets too thick; it should be a thick, spoonable soup.",
+   "Season with the salt and pepper and serve topped with the parmesan and the remaining 1 tbsp oil. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "greek_briam",
+  "name": "Greek roasted vegetables with feta (briam)",
+  "side": "Crusty bread to soak up the juices.",
+  "cuisine": "Greek",
+  "minutes": 85,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "oven"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "sliced ¼ in thick"
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced ½ in thick"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "cut into strips"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 80,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "feta",
+    "amount": 170,
+    "text": "1 pack (6 oz)",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "½ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": "for serving"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F.",
+   "In a 9x13-inch baking dish, toss the potatoes, zucchini, bell peppers, red onion and garlic with the diced tomatoes and their juice, the oil, oregano, salt and pepper. Spread it out evenly with the potatoes tucked under the liquid as much as possible.",
+   "Cover tightly with foil and bake 40 minutes.",
+   "Uncover, stir gently, and bake 25 to 30 minutes more until the potatoes are tender when pierced with a knife and the edges are browned.",
+   "Scatter the feta and parsley over the top and let it sit 5 minutes. Serve with the bread, sliced. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "pasta_alla_norma",
+  "name": "Pasta alla Norma with eggplant and ricotta",
+  "side": "A green salad on the side.",
+  "cuisine": "Italian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the chili flakes and pass them at the table for the adults.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "rigatoni",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "eggplant",
+    "amount": 2,
+    "text": "2 medium",
+    "note": "cut into ¾-inch cubes"
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can (28 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 75,
+    "text": "5 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "basil",
+    "amount": 21,
+    "text": "1 pack",
+    "note": "leaves torn"
+   },
+   {
+    "ingredient": "ricotta",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 30,
+    "text": "¼ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 27,
+    "text": "1 tbsp + 1½ tsp",
+    "note": "1 tbsp for the pasta water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil with 1 tbsp salt.",
+   "Heat 2 tbsp of the oil in a large, deep skillet over medium-high heat. Add half the eggplant and ½ tsp salt and cook, stirring now and then, 8 to 10 minutes until browned and soft. Move it to a plate and repeat with 2 tbsp more oil and the rest of the eggplant.",
+   "Lower the heat to medium, add the remaining 1 tbsp oil, the garlic and chili flakes and cook 1 minute. Add the crushed tomatoes and ½ tsp salt and simmer 10 minutes until thickened. Stir in the eggplant and half the basil.",
+   "Meanwhile, boil the rigatoni until al dente, about 11 to 13 minutes. Save 1 cup of the pasta water, then drain.",
+   "Toss the pasta into the sauce with a splash of pasta water until glossy. Season with the pepper.",
+   "Serve topped with spoonfuls of ricotta, the parmesan and the remaining basil."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "pesto_spaghetti_potatoes_green_beans",
+  "name": "Pesto spaghetti with potatoes and green beans",
+  "side": "Sliced tomatoes with salt on the side.",
+  "cuisine": "Italian",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "spaghetti",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 340,
+    "text": "2 medium",
+    "note": "peeled, cut into ½-inch cubes"
+   },
+   {
+    "ingredient": "green_beans",
+    "amount": 227,
+    "text": "½ lb",
+    "note": "trimmed, cut into 2-inch pieces"
+   },
+   {
+    "ingredient": "pesto",
+    "amount": 170,
+    "text": "1 jar (6 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 0.5,
+    "text": "½",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 30,
+    "text": "¼ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 18,
+    "text": "1 tbsp",
+    "note": "for the pasta water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil with the salt.",
+   "Add the potatoes and boil 5 minutes.",
+   "Add the spaghetti and cook, stirring now and then, following the package time (usually 9 to 11 minutes). Add the green beans for the last 5 minutes. The potatoes should be soft and the beans tender.",
+   "Save 1 cup of the cooking water, then drain everything.",
+   "Return the pasta, potatoes and beans to the empty pot off the heat. Add the pesto and ½ cup of the reserved water and toss until creamy, adding more water if it looks dry; the potatoes will break up a little and thicken the sauce.",
+   "Stir in the lemon juice and pepper and serve topped with the parmesan."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "lemon_ricotta_rigatoni_broccoli",
+  "name": "Lemon ricotta rigatoni with roasted broccoli",
+  "side": "Nothing else needed; add a salad if you like.",
+  "cuisine": "Italian",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave the chili flakes off; the pasta has no other heat.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "rigatoni",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 450,
+    "text": "1 lb",
+    "note": "cut into small florets"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "ricotta",
+    "amount": 300,
+    "text": "1¼ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 24,
+    "text": "1 tbsp + 1 tsp",
+    "note": "1 tbsp for the pasta water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F and bring a large pot of water to a boil with 1 tbsp salt.",
+   "Toss the broccoli on a sheet pan with 2 tbsp of the oil and ½ tsp salt. Roast 12 minutes, then scatter the garlic over it, toss, and roast 6 to 8 minutes more until the florets are tender and browned at the edges.",
+   "Meanwhile, boil the rigatoni until al dente, about 11 to 13 minutes. Save 1 cup of the pasta water, then drain.",
+   "In a large bowl, stir together the ricotta, lemon zest and juice, parmesan, the remaining 1 tbsp oil, ½ tsp salt and the pepper.",
+   "Add the hot pasta and ½ cup of the pasta water to the bowl and toss until creamy, adding more water if it looks thick. Fold in the broccoli and garlic.",
+   "Sprinkle the chili flakes over the adult portions and serve."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "spanish_potato_tortilla",
+  "name": "Spanish potato and onion tortilla",
+  "side": "Arugula and roasted red pepper salad.",
+  "cuisine": "Spanish",
+  "minutes": 50,
+  "difficulty": "Medium",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "eggs",
+    "amount": 8,
+    "text": "8",
+    "note": "large"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "peeled, thinly sliced"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 180,
+    "text": "¾ cup",
+    "note": "most is drained off and saved"
+   },
+   {
+    "ingredient": "arugula",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "roasted_peppers",
+    "amount": 170,
+    "text": "½ jar",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": "red wine vinegar"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a 10-inch nonstick skillet over medium heat. Add the potatoes, onion and 1 tsp salt. Cook gently, turning every few minutes, 15 to 20 minutes, until the potatoes are tender when pierced but only lightly colored; lower the heat if they brown fast.",
+   "Set a sieve over a heatproof bowl and drain the potatoes and onion, saving the oil.",
+   "Beat the eggs in a large bowl with ½ tsp salt. Fold in the warm potatoes and onion and let it sit 5 minutes.",
+   "Wipe the skillet, add 2 tbsp of the saved oil and heat over medium. Pour in the egg mixture and cook 6 to 8 minutes, shaking the pan now and then, until the edges are set and the bottom is golden.",
+   "Slide the tortilla onto a large plate, put the skillet upside down over it and, holding both with oven mitts, flip it back into the pan. Cook 4 to 5 minutes more until the center is set and no liquid egg shows when you press the middle.",
+   "Toss the arugula and roasted peppers with 1 tbsp of the saved oil, the vinegar and the pepper. Cut the tortilla into wedges and serve warm or at room temperature with the salad. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "tortellini_spinach_tomato_soup",
+  "name": "Tortellini soup with spinach and tomatoes",
+  "side": "Crusty bread or garlic toast on the side.",
+  "cuisine": "Italian",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tortellini",
+    "amount": 567,
+    "text": "1 pack (20 oz)",
+    "note": "refrigerated"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 30,
+    "text": "¼ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large pot over medium heat. Cook the onion and carrots 6 minutes until starting to soften.",
+   "Stir in the garlic and Italian seasoning for 1 minute.",
+   "Add the broth and diced tomatoes, bring to a boil, then simmer 8 minutes until the carrots are tender.",
+   "Add the tortellini and simmer according to the package, usually 3 to 5 minutes, until tender. Stir in the spinach until it wilts.",
+   "Season with the salt and pepper and serve topped with the parmesan. Refrigerate leftovers within 2 hours; the pasta keeps soaking up broth, so add a splash of water when reheating."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "mediterranean_quinoa_bowls",
+  "name": "Mediterranean quinoa bowls with crispy chickpeas",
+  "side": "Built in the bowl with hummus, vegetables, olives and feta.",
+  "cuisine": "Mediterranean",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "quinoa",
+    "amount": 255,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained, rinsed and patted dry"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 283,
+    "text": "1 pack (10 oz)",
+    "note": "halved"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 55,
+    "text": "¼",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 70,
+    "text": "½ cup",
+    "note": "pitted, halved"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "hummus",
+    "amount": 283,
+    "text": "1 tub (10 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "feta",
+    "amount": 113,
+    "text": "¾ cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Toss the chickpeas on a sheet pan with 1 tbsp of the oil, the smoked paprika and ½ tsp salt. Roast 20 to 25 minutes, shaking the pan halfway, until crisp.",
+   "Meanwhile, bring the quinoa, 3 cups water and ¼ tsp salt to a boil in a saucepan. Cover, lower the heat and simmer 15 minutes until the water is absorbed. Take off the heat and leave covered 5 minutes, then fluff with a fork.",
+   "In a bowl, toss the cucumber, cherry tomatoes, red onion and olives with 2 tbsp of the oil, half the lemon juice, the oregano, the remaining ¼ tsp salt and the pepper.",
+   "Stir the remaining 1 tbsp oil and lemon juice into the quinoa.",
+   "Divide the quinoa among bowls and top with the salad, crispy chickpeas, a big spoonful of hummus and the feta."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "chicken_souvlaki_pitas",
+  "name": "Chicken souvlaki pitas with tzatziki",
+  "side": "Warm pitas with tomato, red onion and tzatziki.",
+  "cuisine": "Greek",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "boneless, cut into 1½-inch pieces"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "finely grated, divided"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 3,
+    "text": "1 tbsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "grated"
+   },
+   {
+    "ingredient": "dill",
+    "amount": 8,
+    "text": "2 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "pita",
+    "amount": 6,
+    "text": "6",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 200,
+    "text": "2",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 55,
+    "text": "¼",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "In a bowl, whisk 2 tbsp of the oil, the lemon zest, half the lemon juice, 3 garlic cloves, the oregano, 1 tsp salt and the pepper. Add the chicken, toss to coat and leave 15 minutes while you make the tzatziki. Don't rinse the raw chicken, and wash your hands and board after handling it.",
+   "Squeeze the grated cucumber in your hands to remove the water. Mix it with the yogurt, dill, the last garlic clove, the rest of the lemon juice and ¼ tsp salt. Keep it cold.",
+   "Heat the remaining 1 tbsp oil in a large skillet or grill pan over medium-high heat. Add the chicken in a single layer, discarding any leftover marinade.",
+   "Cook 8 to 10 minutes, turning every few minutes, until browned on all sides and the thickest piece reads 165°F on an instant-read thermometer.",
+   "Warm the pitas in a dry pan or wrapped in foil in a 350°F oven for 5 minutes.",
+   "Fill the pitas with chicken, tomatoes, red onion and a spoonful of tzatziki. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of chickpeas in a small pan with 1 tsp oil, a pinch of oregano and a squeeze of lemon, and tuck them into pitas with the same toppings.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_piccata_spaghetti",
+  "name": "Chicken piccata with lemon spaghetti",
+  "side": "Spaghetti tossed in the lemon-caper pan sauce; green beans on the side.",
+  "cuisine": "Italian",
+  "minutes": 35,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb (2 large)",
+    "note": "each cut in half horizontally into thin cutlets"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 60,
+    "text": "½ cup",
+    "note": "for dredging"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 2,
+    "text": "2",
+    "note": "juiced (about ⅓ cup)"
+   },
+   {
+    "ingredient": "capers",
+    "amount": 18,
+    "text": "2 tbsp",
+    "note": "drained"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "3 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "spaghetti",
+    "amount": 340,
+    "text": "12 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 24,
+    "text": "1 tbsp + 1 tsp",
+    "note": "1 tbsp for the pasta water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil with 1 tbsp salt. Press the chicken cutlets with your palm to an even ½-inch thickness. Season them with 1 tsp salt and the pepper and dredge in the flour, shaking off the extra. Don't rinse the raw chicken.",
+   "Heat the oil and 1 tbsp of the butter in a large skillet over medium-high heat. Cook the cutlets, two at a time, 3 to 4 minutes per side until golden and 165°F inside. Move them to a plate.",
+   "Start the spaghetti; cook it according to the package (usually 9 to 11 minutes) and save ½ cup pasta water before draining.",
+   "Lower the heat under the skillet to medium. Add the garlic for 30 seconds, then the broth, lemon juice and capers, scraping up the browned bits. Simmer 4 to 5 minutes until reduced by about half.",
+   "Turn off the heat and swirl in the remaining 2 tbsp butter until the sauce is glossy. Return the chicken to the pan for 1 minute to warm through.",
+   "Toss the drained spaghetti with half the sauce and a splash of pasta water. Serve the chicken on top with the rest of the sauce and the parsley. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside their spaghetti before it meets the pan sauce and toss it with butter, a squeeze of lemon, a few capers and parmesan, plus warmed cannellini beans.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "parmesan",
+     "amount": 20,
+     "text": "¼ cup",
+     "note": "grated"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_cacciatore",
+  "name": "Chicken cacciatore",
+  "side": "Crusty bread to mop up the sauce.",
+  "cuisine": "Italian",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "boneless"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "1 pack (8 oz)",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can (28 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "3 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": "for serving"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Pat the chicken dry (don't rinse it) and season with ½ tsp salt and the pepper.",
+   "Heat the oil in a large, deep skillet over medium-high heat. Brown the chicken 4 minutes per side; it will finish cooking later. Move it to a plate.",
+   "Lower the heat to medium. Add the onion, bell peppers and mushrooms and cook 7 minutes until softened and lightly browned. Stir in the garlic and Italian seasoning for 1 minute.",
+   "Add the crushed tomatoes, broth and the remaining ½ tsp salt, scraping up the browned bits. Nestle the chicken and its juices into the sauce.",
+   "Cover, lower the heat and simmer gently 20 to 25 minutes, until the chicken is tender and reads 165°F in the thickest part.",
+   "Scatter with the parsley and serve with the bread, sliced. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of cannellini beans with a cup of marinara and a pinch of Italian seasoning in a small pan for 10 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "marinara",
+     "amount": 240,
+     "text": "1 cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "greek_sheet_pan_chicken_potatoes",
+  "name": "Greek sheet-pan chicken with potatoes and olives",
+  "side": "Spoonfuls of Greek yogurt and a cucumber salad.",
+  "cuisine": "Greek",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "boneless"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-inch chunks"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1",
+    "note": "cut into wedges"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 2,
+    "text": "2",
+    "note": "1 juiced, 1 cut into wedges"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 3,
+    "text": "1 tbsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 70,
+    "text": "½ cup",
+    "note": "pitted"
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 170,
+    "text": "¾ cup",
+    "note": "for serving"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "3 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F.",
+   "On a large rimmed sheet pan, toss the potatoes and red onion with 2 tbsp of the oil and ¾ tsp salt. Roast 15 minutes.",
+   "Meanwhile, in a bowl mix the remaining 2 tbsp oil, the lemon juice, garlic, oregano, ¾ tsp salt and the pepper. Add the chicken and turn to coat. Don't rinse the raw chicken.",
+   "Push the potatoes aside, lay the chicken on the pan and add the lemon wedges. Roast 20 to 25 minutes, until the potatoes are golden and the chicken reads 165°F in the thickest part.",
+   "Scatter the olives over the pan for the last 5 minutes.",
+   "Sprinkle with the parsley and serve with the yogurt. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, roast a can of chickpeas tossed with oil, oregano and lemon on a small separate pan alongside the potatoes for the last 20 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_avgolemono_soup",
+  "name": "Greek lemon chicken and orzo soup (avgolemono)",
+  "side": "Warm pita or crusty bread on the side.",
+  "cuisine": "Greek",
+  "minutes": 50,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "boneless"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 1890,
+    "text": "8 cups (2 cartons)",
+    "note": ""
+   },
+   {
+    "ingredient": "orzo",
+    "amount": 135,
+    "text": "¾ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 3,
+    "text": "3",
+    "note": "large"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 2,
+    "text": "2",
+    "note": "juiced (about ⅓ cup)"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 80,
+    "text": "2 stalks",
+    "note": "diced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "dill",
+    "amount": 8,
+    "text": "2 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large pot over medium heat. Cook the onion, carrots and celery 6 minutes until soft.",
+   "Add the broth and bring to a boil. Add the whole chicken breasts, lower to a gentle simmer and cook 15 to 18 minutes until they read 165°F in the thickest part. Lift them out onto a board and shred with two forks.",
+   "Bring the broth back to a boil, add the orzo and cook 8 to 9 minutes until tender. Turn the heat to low.",
+   "In a bowl, whisk the eggs and lemon juice until frothy. Slowly whisk in 2 ladles of the hot broth, a little at a time, so the eggs warm up without scrambling.",
+   "Pour the egg mixture back into the pot, stirring constantly. Keep it on low, without boiling, 3 to 4 minutes until the soup thickens slightly and turns silky.",
+   "Stir in the chicken, salt, pepper and dill and serve. Refrigerate leftovers within 2 hours and reheat gently without boiling."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "creamy_tuscan_chicken_fettuccine",
+  "name": "Creamy Tuscan chicken with fettuccine",
+  "side": "Tossed with fettuccine; a green salad on the side.",
+  "cuisine": "Italian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb (2 large)",
+    "note": "each cut in half horizontally into thin cutlets"
+   },
+   {
+    "ingredient": "fettuccine",
+    "amount": 340,
+    "text": "12 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "roasted_peppers",
+    "amount": 170,
+    "text": "½ jar",
+    "note": "drained, sliced"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "heavy_cream",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 24,
+    "text": "1 tbsp + 1 tsp",
+    "note": "1 tbsp for the pasta water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil with 1 tbsp salt. Season the chicken cutlets with 1 tsp salt and the pepper. Don't rinse the raw chicken.",
+   "Heat the oil in a large skillet over medium-high heat and cook the chicken 4 to 5 minutes per side until golden and 165°F inside. Move it to a plate.",
+   "Cook the fettuccine according to the package (usually 10 to 12 minutes). Save ½ cup pasta water, then drain.",
+   "Lower the heat under the skillet to medium. Add the garlic, Italian seasoning and roasted peppers and cook 1 minute. Pour in the broth, scraping up the browned bits, then the cream. Simmer 3 to 4 minutes until slightly thickened.",
+   "Stir in the spinach until wilted, then the parmesan. Add the fettuccine and toss, loosening with pasta water as needed.",
+   "Slice the chicken and lay it on top of the pasta. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside their fettuccine before it goes into the sauce and toss it with pesto and a splash of pasta water.",
+   "ingredients": [
+    {
+     "ingredient": "pesto",
+     "amount": 45,
+     "text": "3 tbsp",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "baked_chicken_parmesan",
+  "name": "Baked chicken parmesan with spaghetti",
+  "side": "Spaghetti with marinara; a green salad on the side.",
+  "cuisine": "Italian",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop",
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb (2 large)",
+    "note": "each cut in half horizontally into thin cutlets"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "panko",
+    "amount": 90,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "marinara",
+    "amount": 680,
+    "text": "1 jar (24 oz)",
+    "note": "divided"
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "spaghetti",
+    "amount": 340,
+    "text": "12 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "basil",
+    "amount": 10,
+    "text": "a handful",
+    "note": "torn"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 21,
+    "text": "1 tbsp + ½ tsp",
+    "note": "1 tbsp for the pasta water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F and line a sheet pan with foil.",
+   "Toast the panko with the oil in a skillet over medium heat, stirring, 3 to 4 minutes until golden. Tip it into a shallow bowl, let it cool a minute, then stir in the parmesan and Italian seasoning.",
+   "Season the chicken with ½ tsp salt and the pepper. Dip each cutlet in the beaten egg, then press into the crumbs to coat. Set on the sheet pan. Wash your hands and anything that touched the raw chicken.",
+   "Bake 15 minutes. Spoon 2 tbsp marinara over each cutlet, top with the mozzarella and bake 5 to 7 minutes more until the cheese melts and the chicken reads 165°F in the thickest part.",
+   "Meanwhile, bring a large pot of water to a boil with 1 tbsp salt and cook the spaghetti according to the package. Warm the rest of the marinara in a small pot, drain the pasta and toss it with the sauce.",
+   "Serve the chicken on the spaghetti, topped with the basil. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, bread 4 thick eggplant rounds in the egg and crumbs BEFORE the chicken, and bake them on a separate small pan the same way.",
+   "ingredients": [
+    {
+     "ingredient": "eggplant",
+     "amount": 1,
+     "text": "1 small",
+     "note": "cut into ½-inch rounds"
+    }
+   ]
+  }
+ },
+ {
+  "id": "weeknight_chicken_shrimp_paella",
+  "name": "Weeknight chicken and shrimp paella",
+  "side": "Lemon wedges and a green salad.",
+  "cuisine": "Spanish",
+  "minutes": 60,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "boneless, cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "shrimp",
+    "amount": 340,
+    "text": "¾ lb",
+    "note": "thawed, peeled"
+   },
+   {
+    "ingredient": "arborio",
+    "amount": 300,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 900,
+    "text": "3¾ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into wedges"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   }
+  ],
+  "steps": [
+   "Season the chicken with ½ tsp salt. Heat the oil in a 12-inch skillet over medium-high heat and brown the chicken 5 minutes, stirring now and then.",
+   "Add the onion and bell pepper and cook 5 minutes until soft. Stir in the garlic, smoked paprika and turmeric for 30 seconds, then the tomatoes, and cook 3 minutes.",
+   "Stir in the rice to coat, then pour in the broth and add the remaining ½ tsp salt. Spread the rice in an even layer and bring to a boil.",
+   "Lower the heat to medium-low and simmer uncovered, without stirring, 18 minutes until most of the liquid is absorbed.",
+   "Press the shrimp into the top of the rice and scatter the peas over. Cover with a lid or foil and cook 5 to 7 minutes until the shrimp are pink and opaque all the way through, the rice is tender, and the chicken reads 165°F.",
+   "Uncover and turn the heat to medium-high for 1 to 2 minutes to lightly crisp the bottom (listen for crackling, don't let it burn). Rest 5 minutes and serve with the lemon wedges. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "rosemary_pork_tenderloin_white_beans",
+  "name": "Rosemary pork tenderloin with garlicky white beans",
+  "side": "Sliced pork over the beans and spinach.",
+  "cuisine": "Italian",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pork_tenderloin",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "trimmed"
+   },
+   {
+    "ingredient": "rosemary",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": "dried, crumbled"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "1 grated, 3 sliced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "white_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Pat the pork dry and rub it with 1 tbsp of the oil, the rosemary, the grated garlic, ¾ tsp salt and the pepper.",
+   "Heat 1 tbsp oil in an oven-safe skillet over medium-high heat. Brown the pork on all sides, 6 to 8 minutes total.",
+   "Move the skillet to the oven and roast 12 to 18 minutes, until an instant-read thermometer in the thickest part reads 145°F. Rest the pork on a board at least 3 minutes before slicing.",
+   "While the pork roasts, heat the remaining 1 tbsp oil in a saucepan over medium heat and cook the sliced garlic 1 minute until fragrant, not brown. Add the beans, broth and remaining ¼ tsp salt and simmer 5 minutes, lightly mashing some of the beans.",
+   "Stir the spinach into the beans until wilted, then add the lemon zest and juice.",
+   "Slice the pork and serve it over the beans, with any juices from the board poured over. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "The garlicky beans and spinach are cooked in their own pan and are vegetarian; add an extra can of beans to the pot so vegetarians get a full portion.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "pork_chops_pizzaiola",
+  "name": "Pork chops pizzaiola",
+  "side": "Crusty bread for the sauce and a green salad.",
+  "cuisine": "Italian",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pork_chops",
+    "amount": 680,
+    "text": "4 chops (1½ lb)",
+    "note": "boneless, about ¾ inch thick"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "capers",
+    "amount": 18,
+    "text": "2 tbsp",
+    "note": "drained"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": "for serving"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Pat the chops dry and season with ½ tsp salt and the pepper.",
+   "Heat the oil in a large skillet over medium-high heat. Brown the chops 3 minutes per side; they will finish in the sauce. Move them to a plate.",
+   "Lower the heat to medium. Add the bell pepper and onion and cook 5 minutes until soft. Add the garlic and oregano for 30 seconds.",
+   "Add the diced tomatoes, capers and the remaining ¼ tsp salt and simmer 5 minutes, scraping up the browned bits.",
+   "Return the chops and their juices to the pan, spoon sauce over them, cover and simmer gently 4 to 6 minutes until they read 145°F in the center. Let them rest 3 minutes before serving.",
+   "Serve the chops with the sauce spooned over and the bread on the side, sliced. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of cannellini beans with marinara and a pinch of oregano in a small pan for 5 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "marinara",
+     "amount": 120,
+     "text": "½ cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "sausage_potato_kale_soup",
+  "name": "Sausage, potato and kale soup",
+  "side": "Crusty bread on the side.",
+  "cuisine": "Italian",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the chili flakes; Italian sausage has gentle heat of its own. Choose mild sausage for kids.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pork_sausage",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "casings removed"
+   },
+   {
+    "ingredient": "potatoes_russet",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "halved and sliced ¼ in thick"
+   },
+   {
+    "ingredient": "kale",
+    "amount": 140,
+    "text": "½ bunch",
+    "note": "stems removed, chopped"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "heavy_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large pot over medium-high heat. Add the sausage and cook 6 to 8 minutes, breaking it up with a spoon, until browned with no pink left and it reads 160°F. Spoon off all but about 1 tbsp of the fat.",
+   "Lower the heat to medium, add the onion and cook 5 minutes until soft. Stir in the garlic and chili flakes for 1 minute.",
+   "Add the broth and potatoes, bring to a boil, then simmer 12 to 15 minutes until the potatoes are tender when pierced.",
+   "Stir in the kale and simmer 5 minutes until tender.",
+   "Turn the heat to low and stir in the cream; heat through without boiling. Season with the salt and pepper. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "rigatoni_sausage_broccoli",
+  "name": "Rigatoni with sausage and broccoli",
+  "side": "Extra parmesan at the table.",
+  "cuisine": "Italian",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Skip the chili flakes and use mild sausage.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "rigatoni",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "pork_sausage",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "casings removed"
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 450,
+    "text": "1 lb",
+    "note": "cut into small florets"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 18,
+    "text": "1 tbsp",
+    "note": "for the pasta water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil with the salt.",
+   "Heat the oil in a large, deep skillet over medium-high heat. Cook the sausage 6 to 8 minutes, breaking it into small pieces, until browned with no pink left and it reads 160°F.",
+   "Lower the heat to medium, add the garlic and chili flakes and cook 1 minute.",
+   "Meanwhile, boil the rigatoni according to the package (usually 11 to 13 minutes), adding the broccoli for the last 3 minutes. Save 1 cup of the pasta water and drain.",
+   "Add the pasta and broccoli to the skillet with ½ cup of the pasta water and the parmesan. Toss over medium heat 1 minute until glossy, adding more water if dry. Season with the pepper. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside some pasta and broccoli before it goes into the skillet and toss with warmed cannellini beans, a little olive oil, garlic and parmesan.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "polenta_sausage_ragu",
+  "name": "Creamy polenta with sausage and tomato ragù",
+  "side": "Sautéed spinach or a green salad on the side.",
+  "cuisine": "Italian",
+  "minutes": 50,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "cornmeal",
+    "amount": 190,
+    "text": "1¼ cups",
+    "note": "medium or coarse"
+   },
+   {
+    "ingredient": "milk",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "pork_sausage",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "casings removed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can (28 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the milk, 3 cups water and 1 tsp salt to a simmer in a heavy saucepan. Slowly pour in the cornmeal while whisking so no lumps form.",
+   "Turn the heat to low and cook 25 to 30 minutes, stirring every few minutes with a wooden spoon and scraping the bottom, until thick and no longer gritty. Add a splash of water if it gets too stiff.",
+   "Meanwhile, heat the oil in a skillet over medium-high heat. Cook the sausage 6 to 8 minutes, breaking it up, until browned with no pink left and it reads 160°F.",
+   "Add the onion and cook 4 minutes, then the garlic and oregano for 30 seconds. Add the crushed tomatoes and the remaining ½ tsp salt and simmer 15 minutes until thick.",
+   "Stir the butter, half the parmesan and the pepper into the polenta.",
+   "Spoon the polenta into bowls, top with the ragù and the rest of the parmesan. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "The polenta is vegetarian. For vegetarians, brown a pack of sliced mushrooms in a little oil with a pinch of oregano in a small pan and spoon them over with extra parmesan.",
+   "ingredients": [
+    {
+     "ingredient": "mushrooms",
+     "amount": 227,
+     "text": "1 pack (8 oz)",
+     "note": "sliced"
+    }
+   ]
+  }
+ },
+ {
+  "id": "baked_penne_beef_ricotta",
+  "name": "Baked penne with beef and ricotta",
+  "side": "A green salad on the side.",
+  "cuisine": "Italian",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "penne",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "marinara",
+    "amount": 680,
+    "text": "1 jar (24 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "ricotta",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 227,
+    "text": "2 cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 30,
+    "text": "¼ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 21,
+    "text": "1 tbsp + ½ tsp",
+    "note": "1 tbsp for the pasta water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 375°F. Bring a large pot of water to a boil with 1 tbsp salt and cook the penne 2 minutes less than the package says. Drain.",
+   "Meanwhile, cook the beef and onion in a large skillet over medium-high heat 7 to 8 minutes, breaking up the meat, until no pink remains and it reads 160°F. Spoon off the extra fat, then stir in the garlic, Italian seasoning, ½ tsp salt and the pepper for 1 minute.",
+   "In a large bowl, mix the drained penne with the marinara and tomato sauce. Stir in the beef mixture.",
+   "Spread half the pasta in a 9x13-inch baking dish, dot with spoonfuls of the ricotta and sprinkle with half the mozzarella. Top with the rest of the pasta, then the remaining mozzarella and the parmesan.",
+   "Cover with foil and bake 15 minutes, then uncover and bake 10 to 15 minutes more until bubbling and the cheese is golden in spots. Rest 5 minutes. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, before stirring in the beef, scoop a portion of the sauced pasta into a small baking dish, fold in a handful of baby spinach, top with some of the ricotta and cheese, and bake it alongside.",
+   "ingredients": [
+    {
+     "ingredient": "spinach",
+     "amount": 40,
+     "text": "a big handful",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "beef_eggplant_moussaka",
+  "name": "Beef and eggplant moussaka",
+  "side": "A cucumber and tomato salad on the side.",
+  "cuisine": "Greek",
+  "minutes": 110,
+  "difficulty": "Medium",
+  "protein": "beef",
+  "equipment": [
+   "stovetop",
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "eggplant",
+    "amount": 2,
+    "text": "2 medium",
+    "note": "sliced into ½-inch rounds"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 31,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 600,
+    "text": "2½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "nutmeg",
+    "amount": 0.5,
+    "text": "1 pinch",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 40,
+    "text": "⅓ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Brush the eggplant rounds on both sides with 3 tbsp of the oil, spread them on two sheet pans, sprinkle with ½ tsp salt and roast 20 to 25 minutes until soft and browned. Lower the oven to 375°F.",
+   "Meanwhile, heat the remaining 1 tbsp oil in a large skillet over medium-high heat. Cook the beef and onion 8 minutes, breaking up the meat, until no pink remains and it reads 160°F. Spoon off extra fat. Stir in the garlic and cinnamon for 1 minute, then the tomato sauce and ½ tsp salt, and simmer 10 minutes until thick.",
+   "For the white sauce, melt the butter in a saucepan over medium heat, whisk in the flour and cook 1 minute. Slowly whisk in the milk and cook, whisking, 5 to 7 minutes until it thickens enough to coat a spoon. Take it off the heat and stir in the nutmeg, the remaining ½ tsp salt and half the parmesan.",
+   "Whisk a ladle of the hot sauce into the beaten egg, then whisk the egg mixture back into the sauce.",
+   "In a 9-inch square or 7x11-inch baking dish, layer half the eggplant, all the meat sauce, then the rest of the eggplant. Pour the white sauce over the top and sprinkle with the remaining parmesan.",
+   "Bake at 375°F for 35 to 40 minutes until the top is golden and the edges bubble. Rest 15 minutes before cutting so it holds together. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "slow_cooker_beef_stifado",
+  "name": "Slow-cooker Greek beef stew (stifado) with orzo",
+  "side": "Served over buttered orzo with a green salad.",
+  "cuisine": "Greek",
+  "minutes": 455,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop",
+   "slow_cooker"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "beef_chuck",
+    "amount": 907,
+    "text": "2 lb",
+    "note": "stew cuts, patted dry"
+   },
+   {
+    "ingredient": "shallots",
+    "amount": 227,
+    "text": "1 bag (8 oz)",
+    "note": "peeled, halved if large"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "smashed"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 64,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "red wine vinegar"
+   },
+   {
+    "ingredient": "beef_broth",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bay_leaves",
+    "amount": 0.4,
+    "text": "2 leaves",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "orzo",
+    "amount": 340,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 24,
+    "text": "1 tbsp + 1 tsp",
+    "note": "1 tbsp for the orzo water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Season the beef with 1 tsp salt and the pepper. Heat the oil in a large skillet over medium-high heat and brown the beef in two batches, about 5 minutes per batch. Move it into the slow cooker.",
+   "Lower the heat to medium, add the onion and cook 3 minutes, then stir in the tomato paste for 1 minute. Pour in the broth and vinegar, scraping up the browned bits, and pour it all into the slow cooker.",
+   "Add the shallots, garlic, diced tomatoes, cinnamon and bay leaves to the slow cooker and stir.",
+   "Cover and cook on LOW for 7 hours or HIGH for 4 hours, until the beef is fork-tender (well above the safe 145°F).",
+   "About 20 minutes before serving, bring a pot of water to a boil with 1 tbsp salt and cook the orzo 8 to 10 minutes until tender. Drain.",
+   "Remove the bay leaves, taste the stew for salt and serve it over the orzo. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "lamb_kofta_herbed_couscous",
+  "name": "Lamb kofta with herbed couscous and yogurt sauce",
+  "side": "Herby couscous and a cucumber-yogurt sauce.",
+  "cuisine": "Mediterranean",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "lamb",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_lamb",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 55,
+    "text": "¼",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "finely grated, divided"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 30,
+    "text": "1 cup",
+    "note": "chopped, divided"
+   },
+   {
+    "ingredient": "mint",
+    "amount": 6,
+    "text": "¼ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "couscous",
+    "amount": 270,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F and line a sheet pan with foil brushed with 1 tbsp of the oil.",
+   "In a bowl, mix the lamb, grated onion, 2 garlic cloves, cumin, coriander, half the parsley, ¾ tsp salt and the pepper with your hands until just combined. Shape into 12 oval logs about 3 inches long and set them on the pan. Wash your hands.",
+   "Bake 12 to 15 minutes until browned and 160°F in the center.",
+   "Meanwhile, bring 1½ cups water, the remaining 1 tbsp oil and ¼ tsp salt to a boil. Stir in the couscous, cover, take off the heat and leave 5 minutes. Fluff with a fork and stir in the rest of the parsley, the mint and the lemon zest.",
+   "Mix the yogurt, cucumber, the last garlic clove, half the lemon juice and ¼ tsp salt.",
+   "Squeeze the rest of the lemon juice over the couscous and serve the kofta on top with the yogurt sauce. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, roast a can of chickpeas tossed with oil, cumin and a pinch of salt on a separate small pan for 20 minutes and serve with the same couscous and sauce.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "sirloin_salsa_verde_potatoes",
+  "name": "Sirloin steak with salsa verde and crispy potatoes",
+  "side": "Crispy roast potatoes and a bright parsley-caper sauce.",
+  "cuisine": "Italian",
+  "minutes": 50,
+  "difficulty": "Medium",
+  "protein": "beef",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "sirloin",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "about 1 inch thick"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-inch chunks"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 135,
+    "text": "½ cup + 1 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 30,
+    "text": "1 cup packed leaves",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "capers",
+    "amount": 18,
+    "text": "2 tbsp",
+    "note": "drained, chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 2,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Toss the potatoes on a sheet pan with 2 tbsp of the oil and ½ tsp salt. Roast 30 to 35 minutes, turning once, until golden and crisp.",
+   "Take the steak out of the fridge, pat it dry and season with ¾ tsp salt and the pepper.",
+   "For the salsa verde, stir together the parsley, capers, garlic, lemon zest and juice, ¼ cup plus 2 tbsp oil and the remaining ¼ tsp salt.",
+   "When the potatoes have about 15 minutes left, heat the remaining 1 tbsp oil in a heavy skillet over medium-high heat until shimmering. Cook the steak 4 to 5 minutes per side until an instant-read thermometer reads 145°F in the center.",
+   "Rest the steak on a board at least 3 minutes, then slice it thinly across the grain.",
+   "Serve the steak and potatoes with the salsa verde spooned over. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, fry 2 eggs per person in a separate pan and spoon the salsa verde over them with the potatoes.",
+   "ingredients": [
+    {
+     "ingredient": "eggs",
+     "amount": 4,
+     "text": "4",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_romesco_green_beans",
+  "name": "Spanish chicken with romesco and roasted green beans",
+  "side": "Crusty bread to swipe through the extra sauce.",
+  "cuisine": "Spanish",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "boneless"
+   },
+   {
+    "ingredient": "green_beans",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "trimmed"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 75,
+    "text": "5 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "roasted_peppers",
+    "amount": 170,
+    "text": "½ jar",
+    "note": "drained"
+   },
+   {
+    "ingredient": "almonds_sliced",
+    "amount": 45,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": ""
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": "red wine vinegar"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Spread the almonds on a large sheet pan and toast them in the oven 4 to 5 minutes until golden; tip them into a blender and let the pan cool slightly.",
+   "Rub the chicken with 1 tbsp of the oil, 1 tsp smoked paprika, ¾ tsp salt and the pepper. Toss the green beans with 1 tbsp oil and ¼ tsp salt. Spread both on the sheet pan. Don't rinse the raw chicken, and wash your hands after handling it.",
+   "Roast 20 to 25 minutes, until the beans are blistered and the chicken reads 165°F in the thickest part.",
+   "While it roasts, add the roasted peppers, garlic, vinegar, the remaining 1 tsp smoked paprika, 3 tbsp oil and ¼ tsp salt to the almonds and blend until thick and fairly smooth.",
+   "Serve the chicken and green beans with the romesco spooned over. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, roast a can of chickpeas with oil and smoked paprika on a small separate pan alongside, and serve with the romesco and green beans.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "shrimp_saganaki_orzo",
+  "name": "Shrimp saganaki with tomatoes and feta over orzo",
+  "side": "Served over orzo; crusty bread if you like.",
+  "cuisine": "Greek",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the chili flakes; the dish is still full of flavor.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "shrimp",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "thawed, peeled and deveined"
+   },
+   {
+    "ingredient": "orzo",
+    "amount": 340,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 822,
+    "text": "2 cans (14.5 oz each)",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 0.5,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "feta",
+    "amount": 113,
+    "text": "¾ cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "3 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 21,
+    "text": "1 tbsp + ½ tsp",
+    "note": "1 tbsp for the orzo water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring a pot of water to a boil with 1 tbsp salt. Cook the orzo 8 to 10 minutes until tender, then drain.",
+   "Meanwhile, heat the oil in a large skillet over medium heat. Cook the onion 5 minutes until soft, then stir in the garlic, oregano and chili flakes for 30 seconds.",
+   "Add the diced tomatoes, ½ tsp salt and the pepper and simmer 10 minutes until thickened.",
+   "Nestle the shrimp into the sauce in a single layer. Cover and simmer 3 to 4 minutes, turning once, until the shrimp are pink and opaque all the way through.",
+   "Scatter the feta over, cover for 1 minute to soften it, and sprinkle with the parsley.",
+   "Serve over the orzo. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, before adding the shrimp, ladle about 1 cup of the tomato sauce into a small pot with a can of cannellini beans and simmer 5 minutes; top with feta.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "shrimp_fra_diavolo",
+  "name": "Shrimp fra diavolo with spaghetti",
+  "side": "A green salad and crusty bread on the side.",
+  "cuisine": "Italian",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Use just a pinch of chili flakes, or none, and pass them at the table; the sauce is fiery as written.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "shrimp",
+    "amount": 567,
+    "text": "1¼ lb",
+    "note": "thawed, peeled and deveined"
+   },
+   {
+    "ingredient": "spaghetti",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can (28 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 5,
+    "text": "5 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 2,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "3 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 22,
+    "text": "1 tbsp + ¾ tsp",
+    "note": "1 tbsp for the pasta water"
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil with 1 tbsp salt.",
+   "Heat the oil in a large, deep skillet over medium heat. Cook the garlic and chili flakes 1 minute until the garlic is pale golden.",
+   "Add the crushed tomatoes, oregano and ½ tsp salt and simmer 12 minutes until slightly thickened.",
+   "Meanwhile, cook the spaghetti according to the package (usually 9 to 11 minutes). Save 1 cup of the pasta water and drain.",
+   "Season the shrimp with ¼ tsp salt, add them to the sauce and simmer 3 to 4 minutes, turning once, until pink and opaque all the way through.",
+   "Toss the spaghetti into the sauce with a splash of pasta water until glossy, and serve topped with the parsley. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, spoon some sauce into a small pan before adding the shrimp and simmer it with half a can of cannellini beans; toss with their pasta.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 0.5,
+     "text": "½ can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "greek_baked_cod_tomatoes_feta",
+  "name": "Greek baked cod with tomatoes, olives and feta",
+  "side": "Crusty bread to soak up the sauce.",
+  "cuisine": "Greek",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "cod",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "4 fillets, patted dry"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 70,
+    "text": "½ cup",
+    "note": "pitted, halved"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "half juiced, half in wedges"
+   },
+   {
+    "ingredient": "feta",
+    "amount": 85,
+    "text": "½ cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "3 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": "for serving"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F.",
+   "Heat 2 tbsp of the oil in an oven-safe skillet over medium heat. Cook the onion 5 minutes until soft, then the garlic and oregano for 30 seconds.",
+   "Add the diced tomatoes, olives and ¼ tsp salt and simmer 5 minutes.",
+   "Season the cod with the remaining ¼ tsp salt and the pepper. Nestle the fillets into the sauce, spoon some sauce over them, drizzle with the remaining 1 tbsp oil and the lemon juice, and scatter the feta on top.",
+   "Bake 12 to 15 minutes until the fish reads 145°F in the thickest part and flakes easily with a fork.",
+   "Sprinkle with the parsley and serve with the lemon wedges and bread. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, before adding the fish, spoon about 1 cup of the sauce into a small baking dish with a can of chickpeas, top with a little feta, and bake it alongside.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "salmon_lemony_orzo_asparagus",
+  "name": "Salmon with lemony orzo and asparagus",
+  "side": "Roasted asparagus and buttery lemon orzo.",
+  "cuisine": "Mediterranean",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop",
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "salmon",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "4 fillets"
+   },
+   {
+    "ingredient": "asparagus",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "woody ends snapped off"
+   },
+   {
+    "ingredient": "orzo",
+    "amount": 340,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 2,
+    "text": "2",
+    "note": "1 zested and juiced, 1 sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 30,
+    "text": "¼ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "dill",
+    "amount": 8,
+    "text": "2 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 24,
+    "text": "1 tbsp + 1 tsp",
+    "note": "1 tbsp for the orzo water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F and bring a pot of water to a boil with 1 tbsp salt.",
+   "On a sheet pan, toss the asparagus with 1 tbsp of the oil and ¼ tsp salt and push it to one side. Set the salmon on the other side, rub with the remaining 1 tbsp oil and the garlic, season with ½ tsp salt and the pepper, and lay the lemon slices on top.",
+   "Roast 12 to 15 minutes, until the salmon reads 145°F in the thickest part and flakes easily, and the asparagus is tender.",
+   "Meanwhile, cook the orzo 8 to 10 minutes until tender. Save ½ cup of the water and drain.",
+   "Return the orzo to the pot and stir in the butter, parmesan, lemon zest and juice, dill, the remaining ¼ tsp salt and a splash of the cooking water until creamy.",
+   "Serve the salmon and asparagus over the orzo. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "The lemony orzo is vegetarian. For vegetarians, roast a can of chickpeas with oil and a pinch of salt on a small separate pan and serve with the orzo.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "spaghetti_tuna_capers_lemon",
+  "name": "Spaghetti with tuna, capers and lemon",
+  "side": "Topped with garlicky toasted breadcrumbs; a green salad on the side.",
+  "cuisine": "Italian",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the chili flakes and sprinkle them over adult plates instead.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "spaghetti",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "tuna_canned",
+    "amount": 3,
+    "text": "3 cans (5 oz each)",
+    "note": "in olive oil, drained"
+   },
+   {
+    "ingredient": "capers",
+    "amount": 27,
+    "text": "3 tbsp",
+    "note": "drained"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "panko",
+    "amount": 30,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "½ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 18,
+    "text": "1 tbsp",
+    "note": "for the pasta water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil with the salt and cook the spaghetti according to the package (usually 9 to 11 minutes). Save 1 cup of the pasta water and drain.",
+   "Meanwhile, heat 1 tbsp of the oil in a large skillet over medium heat. Toast the panko, stirring, 2 to 3 minutes until golden. Tip it into a bowl.",
+   "Add the remaining 3 tbsp oil to the skillet with the garlic and chili flakes and cook 1 minute until the garlic is pale golden.",
+   "Add the tuna and capers, breaking the tuna into flakes, and warm through 1 to 2 minutes.",
+   "Add the spaghetti, lemon zest and juice, and ½ cup pasta water, and toss until glossy, adding more water if it looks dry. Season with the pepper and stir in the parsley.",
+   "Serve topped with the toasted panko. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside their spaghetti before adding it to the tuna pan and toss it with warmed cannellini beans, olive oil, lemon, capers and the toasted crumbs.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "parmesan_crusted_tilapia",
+  "name": "Parmesan-crusted tilapia with roasted tomatoes and zucchini",
+  "side": "Roasted cherry tomatoes and zucchini; crusty bread or rice if you like.",
+  "cuisine": "Italian",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tilapia",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "4 fillets, patted dry"
+   },
+   {
+    "ingredient": "panko",
+    "amount": 60,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 40,
+    "text": "⅓ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 1.5,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 2,
+    "text": "2",
+    "note": "halved lengthwise, sliced ½ in thick"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 283,
+    "text": "1 pack (10 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into wedges"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Toss the zucchini and cherry tomatoes on a large sheet pan with 1 tbsp of the oil, 1 tsp Italian seasoning and ½ tsp salt. Roast 10 minutes.",
+   "Meanwhile, mix the panko, parmesan, the remaining 1 tsp Italian seasoning, the garlic powder and the remaining 1 tbsp oil in a bowl.",
+   "Season the tilapia with ¼ tsp salt and the pepper and spread the top of each fillet with mayo. Press the crumb mixture firmly onto the mayo.",
+   "Push the vegetables to the edges of the pan and lay the fillets in the middle. Roast 10 to 12 minutes until the crumbs are golden and the fish reads 145°F and flakes easily with a fork.",
+   "Serve with the vegetables and lemon wedges. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, roast a can of chickpeas with oil and Italian seasoning on a small separate pan alongside, and serve with the vegetables.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "spanish_cod_chickpea_stew",
+  "name": "Smoky Spanish cod and chickpea stew",
+  "side": "Crusty bread for dipping.",
+  "cuisine": "Spanish",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "cod",
+    "amount": 567,
+    "text": "1¼ lb",
+    "note": "cut into 1½-inch chunks"
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "3 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": "for serving"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": "divided"
+   }
+  ],
+  "steps": [
+   "Heat the oil in a wide pot over medium heat. Cook the onion 6 minutes until soft, then stir in the garlic, smoked paprika and cumin for 30 seconds.",
+   "Add the diced tomatoes, broth, chickpeas and ½ tsp salt. Bring to a boil, then simmer 10 minutes.",
+   "Stir in the spinach until wilted.",
+   "Season the cod with the remaining ¼ tsp salt and nestle the pieces into the stew. Cover and simmer gently 5 to 7 minutes until the fish is opaque, reads 145°F and flakes easily.",
+   "Scatter with the parsley and serve in bowls with the bread. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, ladle their portions of the chickpea and spinach stew into a small pot before the cod goes in, add an extra can of chickpeas, and keep it warm.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "creamy_chicken_gnocchi_soup",
+  "name": "Creamy chicken gnocchi soup",
+  "side": "A crisp green salad on the side.",
+  "cuisine": "Italian",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "cut into ½-inch pieces"
+   },
+   {
+    "ingredient": "gnocchi",
+    "amount": 454,
+    "text": "1 pack (1 lb)",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 80,
+    "text": "2 stalks",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 31,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "half_and_half",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 70,
+    "text": "2 big handfuls",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Melt the butter in a large pot over medium heat. Cook the onion, carrots and celery 6 to 7 minutes until soft. Stir in the garlic and thyme for 30 seconds.",
+   "Sprinkle in the flour and stir 1 minute. Slowly pour in the broth, stirring so no lumps form, and bring to a boil.",
+   "Add the chicken, lower to a simmer and cook 8 to 10 minutes until the pieces are white all the way through and read 165°F.",
+   "Add the gnocchi and simmer 3 to 4 minutes until they float and are tender.",
+   "Lower the heat and stir in the half-and-half and spinach until the spinach wilts; don't let it boil. Season with the salt and pepper. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "ham_mushroom_artichoke_pizza",
+  "name": "Ham, mushroom and artichoke pizza",
+  "side": "A green salad on the side.",
+  "cuisine": "Italian",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pizza_dough",
+    "amount": 908,
+    "text": "2 balls (1 lb each)",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 30,
+    "text": "¼ cup",
+    "note": "for dusting"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "marinara",
+    "amount": 340,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 340,
+    "text": "3 cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "ham_diced",
+    "amount": 227,
+    "text": "1 pack (8 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "1 pack (8 oz)",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "artichokes",
+    "amount": 1,
+    "text": "1 can (14 oz)",
+    "note": "drained, quartered"
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 60,
+    "text": "⅓ cup",
+    "note": "pitted, halved"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   }
+  ],
+  "steps": [
+   "Leave the dough covered on the counter for 30 minutes. Heat the oven to 475°F with racks in the upper and lower thirds.",
+   "Brush two sheet pans with 1 tbsp oil each. On a lightly floured counter, stretch each dough to fit a pan and lay it in.",
+   "Spread the marinara over the dough, leaving a ½-inch border, and sprinkle with the mozzarella.",
+   "Scatter the ham, mushrooms, artichokes and olives over the cheese. Drizzle with the remaining 1 tbsp oil and sprinkle with the oregano.",
+   "Bake 14 to 18 minutes, swapping the pans halfway, until the crust is golden underneath, the cheese is bubbling and the mushrooms are tender.",
+   "Cool 3 minutes and cut into squares. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, leave the ham off one whole pizza and pile on extra mushrooms and artichokes instead.",
+   "ingredients": []
+  }
+ },
+ {
+  "id": "greek_turkey_burgers_tzatziki",
+  "name": "Greek turkey burgers with feta and tzatziki",
+  "side": "Sliced tomato and red onion on the burgers; cucumber spears on the side.",
+  "cuisine": "Greek",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "turkey",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_turkey",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "feta",
+    "amount": 85,
+    "text": "½ cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 40,
+    "text": "1 cup",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½",
+    "note": "half grated, half thinly sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "finely grated, divided"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 180,
+    "text": "¾ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "half grated, half cut into spears"
+   },
+   {
+    "ingredient": "dill",
+    "amount": 5,
+    "text": "1 tbsp",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "burger_buns",
+    "amount": 4,
+    "text": "4",
+    "note": "toasted"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 200,
+    "text": "2",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "In a bowl, gently mix the turkey, feta, spinach, grated red onion, 2 garlic cloves, oregano, ¾ tsp salt and the pepper. Shape into 4 patties about ¾ inch thick and press a shallow dimple in the center of each. Wash your hands.",
+   "Squeeze the grated cucumber to remove the water and mix it with the yogurt, dill, the last garlic clove and ¼ tsp salt.",
+   "Heat the oil in a large skillet over medium heat. Cook the patties 5 to 6 minutes per side until browned and an instant-read thermometer reads 165°F in the center.",
+   "Toast the buns cut-side down in the skillet or a toaster.",
+   "Build the burgers with tzatziki, tomato and sliced red onion, and serve the cucumber spears on the side. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, mash a can of chickpeas with a spoonful of the feta, a pinch of oregano and the panko, shape into 2 patties and pan-fry in a separate pan 3 to 4 minutes per side until crisp.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    },
+    {
+     "ingredient": "panko",
+     "amount": 20,
+     "text": "⅓ cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "slow_cooker_pork_ragu_fettuccine",
+  "name": "Slow-cooker pork ragù with fettuccine",
+  "side": "A green salad on the side.",
+  "cuisine": "Italian",
+  "minutes": 455,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "slow_cooker",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pork_shoulder",
+    "amount": 907,
+    "text": "2 lb",
+    "note": "boneless, trimmed, cut into 4 chunks"
+   },
+   {
+    "ingredient": "tomatoes_crushed",
+    "amount": 794,
+    "text": "1 can (28 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 70,
+    "text": "1",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "rosemary",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": "dried, crumbled"
+   },
+   {
+    "ingredient": "bay_leaves",
+    "amount": 0.4,
+    "text": "2 leaves",
+    "note": ""
+   },
+   {
+    "ingredient": "fettuccine",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 40,
+    "text": "⅓ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 24,
+    "text": "1 tbsp + 1 tsp",
+    "note": "1 tbsp for the pasta water"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Season the pork all over with 1 tsp salt and the pepper and set it in the slow cooker.",
+   "Stir together the crushed tomatoes, tomato paste, onion, carrot, garlic and rosemary and pour it over the pork. Tuck in the bay leaves.",
+   "Cover and cook on LOW for 7 hours or HIGH for 4 hours, until the pork is fork-tender and falls apart easily (well above the safe 145°F).",
+   "Remove the bay leaves. Shred the pork right in the sauce with two forks, skimming off any fat on top, and taste for salt.",
+   "About 20 minutes before serving, bring a large pot of water to a boil with 1 tbsp salt and cook the fettuccine according to the package. Drain, saving ½ cup of the water.",
+   "Toss the pasta with about half the ragù and a splash of pasta water, then serve with the rest of the ragù and the parmesan on top. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ }
+]
