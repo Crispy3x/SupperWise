@@ -96,9 +96,6 @@ struct FoodScanView: View {
                 }
             }
             ForEach(findings) { FindingRow(finding: $0) }
-            if (s.allergens ?? []).contains("sesame") {
-                FindingRow(finding: Finding(severity: .info, text: "Likely contains sesame."))
-            }
             NutritionGrid(n: n)
             VStack(alignment: .leading, spacing: 6) {
                 Text("What's likely in it").font(.headline)

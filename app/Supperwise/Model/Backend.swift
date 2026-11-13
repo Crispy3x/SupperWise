@@ -85,7 +85,7 @@ struct FoodScan: Codable, Hashable {
     }
     var score: Int { HealthScore.score(asNutrition) }
 
-    /// Allergens the planner knows about (sesame is shown but isn't a household setting yet).
+    /// Allergens as household settings.
     var householdAllergens: Set<Allergen> {
         Set((allergens ?? []).compactMap { $0 == "nuts" ? .nuts : Allergen(rawValue: $0) })
     }

@@ -9,6 +9,7 @@ old = open(OUT).read()
 img = re.search(r"^const IMG = (.*);$", old, re.M).group(1)
 data = json.loads(re.search(r"^const DATA = (.*);$", old, re.M).group(1))
 data["ingredients"] = json.load(open(os.path.join(RES, "ingredients.json")))
+data["recipes"] = [{k: v for k, v in r.items() if k != "extended"} for r in json.load(open(os.path.join(RES, "recipes.json")))]
 lunch = json.load(open(os.path.join(RES, "lunches.json")))
 data["lunches"], data["lunchNotes"] = lunch["lunches"], lunch["notes"]
 html = open(os.path.join(ROOT, "preview", "template.html")).read()

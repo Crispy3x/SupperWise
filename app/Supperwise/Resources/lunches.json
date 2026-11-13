@@ -103,7 +103,8 @@
    ],
    "allergens": [
     "gluten",
-    "dairy"
+    "dairy",
+    "sesame"
    ],
    "vegetarian": true,
    "thermos": false
@@ -561,7 +562,8 @@
     }
    ],
    "allergens": [
-    "gluten"
+    "gluten",
+    "sesame"
    ],
    "vegetarian": true,
    "thermos": false
@@ -571,6 +573,6 @@
   "Every lunch here is nut-free; sunflower seed butter stands in for peanut butter.",
   "Keep cold lunches cold: an ice pack, or a frozen water bottle, in an insulated bag. Perishable food shouldn't sit above 40°F for more than 2 hours.",
   "Hot lunches: fill the thermos with boiling water for 5 minutes, empty it, then add food piping hot.",
-  "Hummus contains sesame. Check every label if someone has an allergy."
+  "Check every label if someone has an allergy."
  ]
 }

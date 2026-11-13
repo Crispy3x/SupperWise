@@ -31,7 +31,7 @@ L = [  # id, name, how to pack, ingredients, allergens, vegetarian, needs a ther
  ("sunbutter_jam", "Sunflower butter and jam sandwich", "Nut-free for school. Banana and carrot sticks alongside.",
   [i("sandwich_bread",2,"2 slices bread"), i("sunbutter",32,"2 tbsp sunflower butter"), i("jam",20,"1 tbsp jam"), i("bananas",1,"1 banana"), i("carrots",60,"a handful of carrot sticks")], ["gluten"], True, False),
  ("hummus_box", "Hummus snack box", "Pita triangles, cucumber, cherry tomatoes and a little cheese to dip.",
-  [i("pita",1,"1 pita"), i("hummus",60,"1/4 cup hummus"), i("cucumber",0.5,"half a cucumber"), i("tomatoes_cherry",60,"a handful of cherry tomatoes"), i("string_cheese",1,"1 string cheese")], ["gluten","dairy"], True, False),
+  [i("pita",1,"1 pita"), i("hummus",60,"1/4 cup hummus"), i("cucumber",0.5,"half a cucumber"), i("tomatoes_cherry",60,"a handful of cherry tomatoes"), i("string_cheese",1,"1 string cheese")], ["gluten","dairy","sesame"], True, False),
  ("cheese_crackers", "Cheese, crackers and grapes", "Cut grapes in quarters lengthwise for children under 4.",
   [i("crackers",40,"a handful of crackers"), i("string_cheese",1,"1 string cheese"), i("grapes",90,"a handful of grapes"), i("carrots",60,"carrot sticks")], ["gluten","dairy"], True, False),
  ("turkey_pinwheels", "Turkey and spinach pinwheels", "Roll tight, slice into rounds. An orange on the side.",
@@ -57,7 +57,7 @@ L = [  # id, name, how to pack, ingredients, allergens, vegetarian, needs a ther
  ("turkey_cracker_stack", "Build-your-own cracker stacks", "Turkey, cheese and crackers to stack. Apple slices on the side.",
   [i("crackers",35,"a handful of crackers"), i("deli_turkey",50,"2 slices turkey"), i("string_cheese",1,"1 string cheese"), i("apples",1,"1 apple")], ["gluten","dairy"], False, False),
  ("veggie_pita", "Hummus and veggie pita pocket", "Spread hummus inside, then stuff with cucumber, carrot and spinach.",
-  [i("pita",1,"1 pita"), i("hummus",50,"3 tbsp hummus"), i("cucumber",0.5,"sliced cucumber"), i("carrots",40,"grated carrot"), i("spinach",10,"spinach"), i("orange",1,"1 orange")], ["gluten"], True, False),
+  [i("pita",1,"1 pita"), i("hummus",50,"3 tbsp hummus"), i("cucumber",0.5,"sliced cucumber"), i("carrots",40,"grated carrot"), i("spinach",10,"spinach"), i("orange",1,"1 orange")], ["gluten","sesame"], True, False),
 ]
 out = []
 for (id_, name, note, items, allergens, veg, thermos) in L:
@@ -67,6 +67,6 @@ json.dump({"lunches": out, "notes": [
   "Every lunch here is nut-free; sunflower seed butter stands in for peanut butter.",
   "Keep cold lunches cold: an ice pack, or a frozen water bottle, in an insulated bag. Perishable food shouldn't sit above 40°F for more than 2 hours.",
   "Hot lunches: fill the thermos with boiling water for 5 minutes, empty it, then add food piping hot.",
-  "Hummus contains sesame. Check every label if someone has an allergy."]},
+  "Check every label if someone has an allergy."]},
   open(os.path.join(R, "lunches.json"), "w"), indent=1, ensure_ascii=False)
 print(len(out), "lunches;", len(ings), "ingredients")

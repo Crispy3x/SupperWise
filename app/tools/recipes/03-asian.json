@@ -1,0 +1,5340 @@
+[
+ {
+  "id": "mushroom_mapo_tofu",
+  "name": "Mushroom mapo tofu",
+  "side": "Steamed jasmine rice.",
+  "cuisine": "Chinese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the chili flakes; the garlic, ginger and soy sauce still give plenty of flavor.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "tofu_firm",
+    "amount": 794,
+    "text": "2 blocks (14 oz each)",
+    "note": "cut into ¾-in cubes"
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 12,
+    "text": "1-in piece",
+    "note": "minced"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 2,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced, whites and greens kept apart"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 360,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 4,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Heat the oil in a large skillet over medium-high heat. Add the mushrooms and cook, stirring now and then, until browned and their liquid has cooked off, 6–8 minutes.",
+   "Add the garlic, ginger, chili flakes and scallion whites and stir for 1 minute until fragrant.",
+   "Pour in the broth, soy sauce and sugar and bring to a simmer. Slide in the tofu and simmer gently for 5 minutes, nudging it with a spatula instead of stirring so it doesn't break.",
+   "Stir the cornstarch into 3 tbsp cold water, pour it in and simmer 1 minute until the sauce is thick and glossy.",
+   "Drizzle with the sesame oil, scatter the scallion greens over and serve over the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "kung_pao_tofu",
+  "name": "Kung pao tofu",
+  "side": "Steamed jasmine rice.",
+  "cuisine": "Chinese",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Skip the chili flakes. It stays sweet, tangy and nutty, which most kids like.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "tofu_firm",
+    "amount": 794,
+    "text": "2 blocks (14 oz each)",
+    "note": "patted dry, cut into ¾-in cubes"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 24,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 25,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "1 red and 1 green, diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 12,
+    "text": "1-in piece",
+    "note": "minced"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced, whites and greens kept apart"
+   },
+   {
+    "ingredient": "peanuts",
+    "amount": 70,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Toss the tofu with 2 tbsp of the cornstarch. In a small bowl whisk the soy sauce, vinegar, sugar, the remaining 1 tbsp cornstarch and ⅓ cup water.",
+   "Heat 2 tbsp oil in a large nonstick skillet over medium-high heat. Fry the tofu in a single layer, turning, until golden on most sides, 8–10 minutes, then move it to a plate.",
+   "Add the remaining 1 tbsp oil and the bell peppers and stir-fry 3 minutes until crisp-tender. Add the garlic, ginger, chili flakes and scallion whites and stir 30 seconds.",
+   "Return the tofu, stir the sauce and pour it in, then toss 1–2 minutes until thick and glossy.",
+   "Stir in the peanuts and scallion greens and serve over the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "tofu_pad_thai",
+  "name": "Tofu pad thai",
+  "side": "Lime wedges and chopped peanuts on top.",
+  "cuisine": "Thai",
+  "minutes": 35,
+  "difficulty": "Medium",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "rice_noodles",
+    "amount": 283,
+    "text": "10 oz",
+    "note": "flat, about ¼ in wide"
+   },
+   {
+    "ingredient": "tofu_firm",
+    "amount": 397,
+    "text": "1 block (14 oz)",
+    "note": "patted dry, cut into ¾-in cubes"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 3,
+    "text": "3",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 40,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": "1 juiced, 1 cut into wedges"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "cut into thin matchsticks"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 5,
+    "text": "5",
+    "note": "cut into 1-in pieces, whites and greens kept apart"
+   },
+   {
+    "ingredient": "peanuts",
+    "amount": 48,
+    "text": "⅓ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   }
+  ],
+  "steps": [
+   "Soak the noodles in a bowl of very hot tap water for 8–10 minutes until bendy but still firm in the center, then drain and rinse with cold water.",
+   "Whisk the soy sauce, brown sugar, vinegar, lime juice and 2 tbsp water until the sugar dissolves.",
+   "Heat 2 tbsp oil in a large skillet or wok over medium-high heat and fry the tofu, turning, until golden, 6–8 minutes. Move it to a plate.",
+   "Add the remaining 1 tbsp oil, the carrots, garlic and scallion whites and stir-fry 2 minutes. Push them to one side, pour the eggs into the space and scramble until just set, about 1 minute.",
+   "Add the noodles, sauce and tofu and toss with tongs for 2–3 minutes until the noodles are tender and have soaked up the sauce; add a splash of water if they stick.",
+   "Toss in the scallion greens and serve topped with the peanuts, with lime wedges on the side."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "korean_tofu_zucchini_stew",
+  "name": "Korean soft tofu and zucchini stew",
+  "side": "Steamed rice for spooning into the broth.",
+  "cuisine": "Korean",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Use just 1 tbsp gochujang and skip the chili flakes for a gently sweet, mild broth.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "tofu_firm",
+    "amount": 794,
+    "text": "2 blocks (14 oz each)",
+    "note": "cut into large chunks"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 150,
+    "text": "1 small",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "gochujang",
+    "amount": 36,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 960,
+    "text": "4 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into half-moons"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Heat the sesame oil in a large pot over medium heat and cook the onion 3 minutes. Add the garlic, gochujang and chili flakes and stir 1 minute.",
+   "Add the broth, soy sauce, mushrooms and zucchini, bring to a boil, then simmer 5 minutes until the zucchini is tender.",
+   "Add the tofu and simmer 3 minutes, stirring gently so it holds together.",
+   "Crack the eggs into the stew, spaced apart, cover and simmer on low for 5–6 minutes until the whites are fully set and the yolks have thickened.",
+   "Scatter with scallions and serve in bowls with the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "green_curry_tofu_green_beans",
+  "name": "Green curry with tofu and green beans",
+  "side": "Jasmine rice.",
+  "cuisine": "Thai",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Use only 1 tbsp curry paste. It stays fragrant and coconutty but mild.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "tofu_firm",
+    "amount": 794,
+    "text": "2 blocks (14 oz each)",
+    "note": "patted dry, cut into 1-in cubes"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "green_curry_paste",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "check the label: some brands contain shrimp paste"
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "not shaken"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 13,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "green_beans",
+    "amount": 227,
+    "text": "½ lb",
+    "note": "trimmed, cut into 2-in pieces"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "red, sliced"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "basil",
+    "amount": 10,
+    "text": "½ cup leaves",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Heat the oil in a large deep skillet over medium-high heat and brown the tofu, turning, 6–8 minutes. Move it to a plate.",
+   "Turn the heat to medium. Add the curry paste and ½ cup of the thick cream from the top of a coconut milk can and fry, stirring, for 2 minutes until fragrant.",
+   "Stir in the rest of the coconut milk, the soy sauce and brown sugar and bring to a simmer. Add the green beans and bell pepper and simmer 6–8 minutes until crisp-tender.",
+   "Return the tofu and simmer 2 minutes. Off the heat, stir in the lime juice and basil and serve over the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "vietnamese_tofu_noodle_bowls",
+  "name": "Vietnamese-style tofu noodle bowls",
+  "side": "Crunchy lettuce, cucumber and carrots in the bowl.",
+  "cuisine": "Vietnamese",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "rice_noodles",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "thin vermicelli"
+   },
+   {
+    "ingredient": "tofu_firm",
+    "amount": 794,
+    "text": "2 blocks (14 oz each)",
+    "note": "patted dry, cut into ¾-in cubes"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 75,
+    "text": "5 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 3,
+    "text": "3",
+    "note": "2 juiced, 1 cut into wedges"
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 26,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "romaine",
+    "amount": 1,
+    "text": "1 heart",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into matchsticks"
+   },
+   {
+    "ingredient": "mint",
+    "amount": 10,
+    "text": "½ cup leaves",
+    "note": ""
+   },
+   {
+    "ingredient": "peanuts",
+    "amount": 48,
+    "text": "⅓ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Cook the noodles in a pot of boiling water for 3–5 minutes until tender, then drain, rinse under cold water and drain well.",
+   "For the dressing, whisk 3 tbsp of the soy sauce, the lime juice, brown sugar, garlic and ⅓ cup warm water until the sugar dissolves.",
+   "Toss the tofu with the cornstarch. Heat the oil in a large nonstick skillet over medium-high heat and fry the tofu, turning, until crisp on all sides, 8–10 minutes.",
+   "Add the remaining 2 tbsp soy sauce to the pan and toss 30 seconds until the tofu is glazed.",
+   "Divide the noodles, lettuce, carrots and cucumber between 4 bowls. Top with the tofu, mint and peanuts, spoon the dressing over and serve with lime wedges."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "hot_and_sour_tofu_soup",
+  "name": "Hot and sour soup with tofu",
+  "side": "Steamed rice on the side.",
+  "cuisine": "Chinese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Cut the black pepper to ¼ tsp and leave out the chili flakes; it will be tangy rather than hot.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 12,
+    "text": "1-in piece",
+    "note": "cut into thin matchsticks"
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 70,
+    "text": "1",
+    "note": "cut into thin matchsticks"
+   },
+   {
+    "ingredient": "tofu_firm",
+    "amount": 397,
+    "text": "1 block (14 oz)",
+    "note": "cut into thin strips"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "plus more to taste"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 24,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 3,
+    "text": "3",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Bring the broth, ginger, mushrooms and carrot to a boil in a large pot, then simmer 5 minutes.",
+   "Add the tofu, soy sauce, vinegar, pepper and chili flakes and simmer 3 minutes.",
+   "Stir the cornstarch into ¼ cup cold water, stir it into the simmering soup and cook 1–2 minutes until slightly thickened.",
+   "Stirring the soup slowly in one direction, pour in the eggs in a thin stream and cook 1 minute until the ribbons are set.",
+   "Off the heat, stir in the sesame oil and scallions, taste and add more vinegar if you like, and serve with the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "miso_udon_tofu_bok_choy",
+  "name": "Miso udon soup with tofu and bok choy",
+  "side": "A soft-boiled egg in each bowl.",
+  "cuisine": "Japanese",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 12,
+    "text": "1-in piece",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "bok_choy",
+    "amount": 340,
+    "text": "¾ lb",
+    "note": "halved lengthwise"
+   },
+   {
+    "ingredient": "tofu_firm",
+    "amount": 397,
+    "text": "1 block (14 oz)",
+    "note": "cut into ¾-in cubes"
+   },
+   {
+    "ingredient": "udon",
+    "amount": 567,
+    "text": "1 three-pack (20 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "miso",
+    "amount": 85,
+    "text": "5 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 9,
+    "text": "1 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Lower the eggs into a pot of gently boiling water and cook 8 minutes, then move them to cold water, peel and halve.",
+   "Bring the broth, ginger and mushrooms to a simmer in a large pot and cook 5 minutes.",
+   "Add the bok choy and tofu and simmer 3 minutes until the bok choy stems are tender. Add the udon and simmer 2–3 minutes, loosening the noodles with chopsticks, until hot.",
+   "Turn the heat to low. Whisk the miso with a ladle of the hot broth until smooth, then stir it back into the pot with the soy sauce; don't let it boil after the miso goes in.",
+   "Divide between bowls and top with the eggs, scallions and sesame seeds."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "japanese_vegetable_curry_eggs",
+  "name": "Japanese-style vegetable curry with eggs",
+  "side": "Steamed rice.",
+  "cuisine": "Japanese",
+  "minutes": 50,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Japanese curry is gentle already; for small kids use 1 tbsp curry powder and an extra teaspoon of honey.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 210,
+    "text": "3",
+    "note": "cut into chunks"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "cut into 1-in chunks"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 960,
+    "text": "4 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 6,
+    "text": "6",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 31,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "curry_powder",
+    "amount": 15,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 16,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Heat the oil in a large pot over medium heat and cook the onion 6–8 minutes until soft and golden. Add the carrots, potatoes and broth, bring to a boil, then cover and simmer 15 minutes until the potatoes are tender when pierced.",
+   "Meanwhile, lower the eggs into a pot of boiling water and cook 10 minutes, then cool them in cold water, peel and halve.",
+   "For the roux, melt the butter in a small skillet over medium-low heat, stir in the flour and cook, stirring, 3–4 minutes until light tan. Stir in the curry powder for 30 seconds.",
+   "Whisk a ladle of the hot broth into the roux until smooth, then stir it into the pot with the soy sauce, honey and tomato paste. Simmer, stirring, 5 minutes until thick enough to coat a spoon, adding the peas for the last 2 minutes.",
+   "Serve the curry over the rice with the eggs on top."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "yaki_udon_cabbage_egg",
+  "name": "Yaki udon with cabbage and egg",
+  "side": "Extra scallions on top.",
+  "cuisine": "Japanese",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "udon",
+    "amount": 567,
+    "text": "1 three-pack (20 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 13,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 150,
+    "text": "1 small",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "cut into thin matchsticks"
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 300,
+    "text": "¼ head",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Put the udon in a bowl, cover with boiling water for 1 minute to loosen, then drain.",
+   "Whisk the soy sauce, brown sugar, vinegar and sesame oil.",
+   "Heat 1 tbsp oil in a large skillet over medium heat and cook the eggs, stirring, until just set, 1–2 minutes. Move them to a plate.",
+   "Add the remaining 1 tbsp oil and turn the heat to medium-high. Stir-fry the onion and carrots 3 minutes, add the mushrooms for 3 minutes, then the cabbage for 2–3 minutes until wilted but still crisp.",
+   "Add the udon and sauce and toss 2–3 minutes until the noodles are hot and coated. Fold in the eggs and scallions and serve."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "vegetable_bibimbap",
+  "name": "Vegetable bibimbap with fried eggs",
+  "side": "Gochujang sauce to stir in at the table.",
+  "cuisine": "Korean",
+  "minutes": 40,
+  "difficulty": "Medium",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Serve the gochujang sauce on the side; kids can season their bowls with a little soy sauce and sesame oil instead.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 333,
+    "text": "1¾ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "gochujang",
+    "amount": 54,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "cut into thin matchsticks"
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into thin matchsticks"
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 9,
+    "text": "1 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2⅔ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "For the sauce, stir together the gochujang, honey, 1 tbsp sesame oil and 1 tbsp water.",
+   "Heat 1 tbsp neutral oil in a large skillet over medium-high heat. Cook the vegetables one at a time, seasoning each with 1 tsp soy sauce, and pile them on a plate: carrots 2–3 minutes, zucchini 2–3 minutes, mushrooms 4–5 minutes.",
+   "Add the spinach and garlic to the pan and stir 1 minute until wilted, then toss with the remaining 1 tbsp soy sauce and 1 tbsp sesame oil.",
+   "Wipe the pan, add the remaining 1 tbsp neutral oil and fry the eggs over medium heat for 3–4 minutes until the whites are fully set and the edges crisp.",
+   "Divide the rice between bowls, arrange the vegetables on top, add an egg and sesame seeds, and serve with the sauce to mix in."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "tortang_talong",
+  "name": "Filipino eggplant omelets (tortang talong)",
+  "side": "Rice and a tomato and onion salad.",
+  "cuisine": "Filipino",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "eggplant",
+    "amount": 2,
+    "text": "2 medium",
+    "note": ""
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 227,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "cider_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 6,
+    "text": "6",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "finely sliced"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 450°F. Prick the eggplants all over with a fork and roast them on a sheet pan for 30–35 minutes, turning once, until collapsed and very soft. Cook the rice while they roast: bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Toss the tomatoes, red onion, vinegar and a pinch of the salt for the salad.",
+   "When the eggplants are cool enough to handle, peel off the skin, leaving the stems on. Halve each one lengthwise and flatten the halves with a fork into rough fans.",
+   "Beat the eggs with the garlic, scallions, the rest of the salt and the pepper in a wide shallow dish.",
+   "Heat 1 tbsp oil in a nonstick skillet over medium heat. Dip an eggplant half into the egg, lay it in the pan and spoon a little extra egg over it. Cook 2–3 minutes per side until the egg is set and golden, then repeat with the rest, adding oil as needed and pouring any leftover egg over the last ones.",
+   "Serve with the rice and tomato salad."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "gado_gado_peanut",
+  "name": "Gado-gado with peanut sauce",
+  "side": "It's a full platter: potatoes, beans, eggs, tofu and crunchy vegetables.",
+  "cuisine": "Indonesian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave the sriracha out of the sauce and pass it at the table for adults.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "small, halved"
+   },
+   {
+    "ingredient": "green_beans",
+    "amount": 340,
+    "text": "¾ lb",
+    "note": "trimmed"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 6,
+    "text": "6",
+    "note": ""
+   },
+   {
+    "ingredient": "tofu_firm",
+    "amount": 397,
+    "text": "1 block (14 oz)",
+    "note": "patted dry, cut into 1-in cubes"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "peanut_butter",
+    "amount": 128,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 13,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 1,
+    "text": "1 clove",
+    "note": "grated"
+   },
+   {
+    "ingredient": "sriracha",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 300,
+    "text": "¼ head",
+    "note": "finely shredded"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Cover the potatoes with cold water in a large pot, bring to a boil and cook 12–15 minutes until tender, adding the green beans for the last 3 minutes. Lift everything out with a slotted spoon.",
+   "Lower the eggs into the same simmering water and cook 10 minutes, then cool in cold water, peel and quarter.",
+   "Meanwhile, heat the oil in a nonstick skillet over medium-high heat and fry the tofu, turning, until golden, about 8 minutes.",
+   "For the sauce, whisk the peanut butter, soy sauce, lime juice, brown sugar, garlic and sriracha with ½ cup hot water until smooth and pourable.",
+   "Arrange the potatoes, beans, cabbage, cucumber, tofu and eggs on a platter and spoon the sauce over."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "vegetable_nasi_goreng",
+  "name": "Vegetable nasi goreng with fried eggs",
+  "side": "Sliced cucumber and tomato on the side.",
+  "cuisine": "Indonesian",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the sriracha and add it to adult plates at the end.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 333,
+    "text": "1¾ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 26,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "shallots",
+    "amount": 120,
+    "text": "4",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "sriracha",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "diced small"
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 225,
+    "text": "3 cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 227,
+    "text": "2",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2⅔ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes. Spread the rice on a sheet pan and let it cool for 15 minutes (or use 6 cups cold leftover rice).",
+   "Stir the soy sauce and brown sugar together until the sugar dissolves to make a quick sweet soy sauce.",
+   "Heat 2 tbsp oil in a large skillet or wok over medium-high heat. Cook the shallots 2–3 minutes, add the garlic and sriracha for 30 seconds, then the carrots and cabbage for 3 minutes and the peas for 1 minute.",
+   "Add the rice, breaking up clumps, drizzle in the sweet soy and stir-fry 4–5 minutes until hot and lightly toasted.",
+   "In another skillet, heat the remaining 1 tbsp oil over medium heat and fry the eggs 3–4 minutes until the whites are fully set and the edges crisp.",
+   "Serve the rice topped with the eggs, with cucumber and tomato slices on the side. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "tomato_egg_stir_fry",
+  "name": "Chinese tomato and egg stir-fry",
+  "side": "Steamed jasmine rice.",
+  "cuisine": "Chinese",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced, whites and greens kept apart"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 680,
+    "text": "6",
+    "note": "cut into wedges"
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 12,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Beat the eggs with ¼ tsp of the salt and the sesame oil.",
+   "Heat 2 tbsp oil in a large skillet over medium-high heat, pour in the eggs and stir gently into large soft curds, 1–2 minutes. Slide them onto a plate while still slightly wet.",
+   "Add the remaining 1 tbsp oil, the garlic and scallion whites and stir 30 seconds. Add the tomatoes and cook 4–5 minutes, stirring, until soft and juicy.",
+   "Stir in the sugar, soy sauce and remaining salt. Mix the cornstarch with 3 tbsp water, stir it in and simmer 1 minute until the sauce thickens.",
+   "Return the eggs and fold for 30 seconds until cooked through, scatter the scallion greens over and serve over the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "miso_eggplant_edamame_bowls",
+  "name": "Miso-glazed eggplant and edamame rice bowls",
+  "side": "Quick cucumber pickles in the bowl.",
+  "cuisine": "Japanese",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "eggplant",
+    "amount": 2,
+    "text": "2 medium",
+    "note": "cut into 1-in cubes"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "miso",
+    "amount": 51,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 42,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 6,
+    "text": "1 tbsp",
+    "note": "grated"
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "frozen_edamame",
+    "amount": 340,
+    "text": "1 bag (12 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 9,
+    "text": "1 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Toss the eggplant with the oil and most of the salt on a sheet pan and roast 20 minutes, flipping halfway, until golden and soft.",
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Whisk the miso, honey, soy sauce, ginger, 1 tbsp of the vinegar and 1 tbsp water. Toss the eggplant with the glaze on the pan and roast 5–7 minutes more until sticky; watch it, as miso burns quickly.",
+   "Cook the edamame in boiling water for 4–5 minutes and drain. Toss the cucumber with the remaining 1 tbsp vinegar and a pinch of salt.",
+   "Divide the rice between bowls and top with the eggplant, edamame and cucumber. Finish with scallions and sesame seeds."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "cold_sesame_soba_edamame",
+  "name": "Cold sesame soba with edamame",
+  "side": "Crisp cucumber and carrot tossed through.",
+  "cuisine": "Japanese",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "frozen_edamame",
+    "amount": 340,
+    "text": "1 bag (12 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "soba",
+    "amount": 270,
+    "text": "1 pack (9.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tahini",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 1,
+    "text": "1 clove",
+    "note": "grated"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into matchsticks"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 9,
+    "text": "1 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil. Cook the edamame 4 minutes and scoop them out with a slotted spoon.",
+   "Cook the soba in the same water for 4–5 minutes until just tender, then drain and rinse well under cold water until the noodles are cool and no longer starchy.",
+   "Whisk the tahini, soy sauce, vinegar, honey, sesame oil and garlic with 2–3 tbsp warm water until creamy.",
+   "Toss the noodles with the dressing, edamame, cucumber and carrots.",
+   "Top with the scallions and sesame seeds and serve cold or at room temperature. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "thai_peanut_sweet_potato_chickpea_curry",
+  "name": "Peanut curry with sweet potato and chickpeas",
+  "side": "Jasmine rice.",
+  "cuisine": "Thai",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tbsp curry paste; the peanut butter and coconut keep it mellow and slightly sweet.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 12,
+    "text": "1-in piece",
+    "note": "grated"
+   },
+   {
+    "ingredient": "red_curry_paste",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "check the label: some brands contain shrimp paste"
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 1,
+    "text": "1 can",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "peanut_butter",
+    "amount": 48,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sweet_potato",
+    "amount": 680,
+    "text": "1½ lb (2 medium)",
+    "note": "peeled, cut into ¾-in cubes"
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Heat the oil in a large pot over medium heat and cook the onion 5 minutes until soft. Add the garlic, ginger and curry paste and stir 1 minute.",
+   "Whisk in the coconut milk, broth and peanut butter until smooth. Add the sweet potato, cover and simmer 15 minutes until tender.",
+   "Stir in the chickpeas and simmer 5 minutes, then stir in the spinach for 1 minute until wilted.",
+   "Season with the soy sauce and lime juice and serve over the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "edamame_vegetable_lo_mein",
+  "name": "Vegetable lo mein with edamame",
+  "side": "It's a one-pan noodle dinner.",
+  "cuisine": "Chinese",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "egg_noodles",
+    "amount": 340,
+    "text": "12 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_edamame",
+    "amount": 225,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "hoisin",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "cut into thin matchsticks"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 225,
+    "text": "3 cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 6,
+    "text": "1 tbsp",
+    "note": "grated"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "cut into 1-in pieces"
+   }
+  ],
+  "steps": [
+   "Cook the noodles in a large pot of boiling water according to the package, about 5 minutes, adding the edamame for the last 3 minutes. Drain and toss with the sesame oil.",
+   "Whisk the soy sauce, hoisin and 2 tbsp water.",
+   "Heat the oil in a large skillet or wok over medium-high heat. Stir-fry the mushrooms 4 minutes, add the carrots and bell pepper for 2 minutes, then the cabbage for 2 minutes. Add the garlic and ginger and stir 30 seconds.",
+   "Add the noodles, edamame and sauce and toss with tongs for 2 minutes until hot and glossy. Toss in the scallions and serve."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "chicken_teriyaki_bowls",
+  "name": "Chicken teriyaki rice bowls",
+  "side": "Steamed broccoli in the bowl.",
+  "cuisine": "Japanese",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 42,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 13,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 6,
+    "text": "1 tbsp",
+    "note": "grated"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 8,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "cut into florets"
+   },
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into bite-size pieces"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 9,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Whisk the soy sauce, honey, brown sugar, vinegar, ginger, garlic, cornstarch and ¼ cup water for the sauce.",
+   "Put the broccoli in a large skillet with ¼ cup water, cover and steam over medium-high heat for 3–4 minutes until bright green and tender-crisp. Move it to a bowl and wipe the pan dry.",
+   "Pat the chicken dry (don't rinse it). Heat the oil in the skillet over medium-high heat and cook the chicken, turning, 6–8 minutes until browned and it reaches 165°F inside.",
+   "Stir the sauce, pour it in and simmer 1–2 minutes, tossing, until thick and glossy.",
+   "Serve the chicken over the rice with the broccoli, topped with sesame seeds and scallions. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside ¼ of the sauce before cooking the chicken. Brown cubed tofu in a small nonstick pan, then simmer it in the reserved sauce for 1 minute.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_pad_see_ew",
+  "name": "Chicken pad see ew",
+  "side": "It's a full noodle dinner with broccoli.",
+  "cuisine": "Thai",
+  "minutes": 35,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "rice_noodles",
+    "amount": 340,
+    "text": "12 oz",
+    "note": "wide flat"
+   },
+   {
+    "ingredient": "chicken_breast",
+    "amount": 567,
+    "text": "1¼ lb",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 8,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 26,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 340,
+    "text": "¾ lb",
+    "note": "small florets, stems peeled and thinly sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 3,
+    "text": "3",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Soak the noodles in very hot tap water for 10 minutes until bendy, then drain.",
+   "Toss the chicken with the cornstarch and 1 tbsp of the soy sauce. Whisk the remaining 3 tbsp soy sauce with the brown sugar, vinegar and 2 tbsp water.",
+   "Heat 1 tbsp oil in a large skillet or wok over high heat and cook the chicken, stirring, 5–6 minutes until browned and it reaches 165°F. Move it to a plate and wash your hands and any board used for the raw chicken.",
+   "Add 1 tbsp oil, the broccoli, garlic and 2 tbsp water and stir-fry 3 minutes until crisp-tender. Push to one side, add the last 1 tbsp oil and scramble the eggs in the space until set, about 1 minute.",
+   "Add the noodles, sauce and chicken and toss 2–3 minutes until the noodles are tender and lightly browned in spots. Sprinkle with the pepper and serve."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, before the chicken goes back in, move some noodles, broccoli and egg to a small pan and toss with browned tofu cubes and a splash of soy sauce.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "thai_basil_chicken",
+  "name": "Thai basil chicken (pad kra pao)",
+  "side": "Jasmine rice and a fried egg on top.",
+  "cuisine": "Thai",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Leave out the jalapeños and chili flakes; the garlic and basil carry the dish.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "fish_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 13,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 6,
+    "text": "6 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 2,
+    "text": "2",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 150,
+    "text": "1 small",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "green_beans",
+    "amount": 227,
+    "text": "½ lb",
+    "note": "cut into ½-in pieces"
+   },
+   {
+    "ingredient": "basil",
+    "amount": 21,
+    "text": "1 pack (about 1 cup leaves)",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Whisk the soy sauce, fish sauce, brown sugar and 2 tbsp water.",
+   "Heat 1 tbsp oil in a large skillet over medium-high heat. Stir-fry the garlic, jalapeños, chili flakes and onion for 1 minute.",
+   "Add the chicken and cook, breaking it up, 5–6 minutes until no pink remains and it reaches 165°F. Add the green beans and sauce and stir-fry 3 minutes until the beans are crisp-tender and the sauce is absorbed.",
+   "Off the heat, stir in the basil until wilted.",
+   "In a second skillet, heat the remaining 1 tbsp oil over medium heat and fry the eggs 3–4 minutes until the whites are fully set. Serve the chicken over the rice with an egg on top."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, crumble tofu into a small pan with a little garlic, a few green beans and basil, and season with soy sauce only (the main sauce contains fish sauce).",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "crumbled"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_adobo",
+  "name": "Filipino chicken adobo",
+  "side": "Steamed rice and green beans.",
+  "cuisine": "Filipino",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 8,
+    "text": "8 cloves",
+    "note": "smashed"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 80,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cider_vinegar",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "bay_leaves",
+    "amount": 0.6,
+    "text": "3 leaves",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": "coarsely ground"
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 13,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "green_beans",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "trimmed"
+   }
+  ],
+  "steps": [
+   "Pat the chicken dry (don't rinse it). Heat the oil in a large deep skillet over medium-high heat and brown the chicken 4 minutes per side, in batches if needed.",
+   "Add the garlic and stir 1 minute. Add the soy sauce, vinegar, ½ cup water, bay leaves, pepper and brown sugar and bring to a boil without stirring for 2 minutes to mellow the vinegar.",
+   "Cover and simmer on low for 20 minutes until the chicken is tender and reaches 165°F.",
+   "Meanwhile, bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Uncover the chicken and simmer 8–10 minutes more, turning the pieces, until the sauce reduces and lightly coats them. Steam the green beans in a covered pot with ½ in of water for 4–5 minutes until tender.",
+   "Remove the bay leaves and serve the chicken and sauce over the rice with the beans. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer cubed tofu in a small saucepan with 2 tbsp each soy sauce and vinegar, ¼ cup water and 2 garlic cloves for 15 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 397,
+     "text": "1 block (14 oz)",
+     "note": "cut into 1-in cubes"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_katsu_slaw",
+  "name": "Chicken katsu with cabbage slaw",
+  "side": "Rice and crunchy cabbage slaw.",
+  "cuisine": "Japanese",
+  "minutes": 45,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "worcestershire",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 16,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 300,
+    "text": "¼ head",
+    "note": "very finely shredded"
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb (2 large)",
+    "note": "halved horizontally and pounded ½ in thick"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 63,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 2,
+    "text": "2",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "panko",
+    "amount": 120,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 240,
+    "text": "1 cup",
+    "note": "for shallow frying"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "For the katsu sauce, stir the Worcestershire, soy sauce, honey, tomato paste and 1 tbsp water. Toss the cabbage with the vinegar and a pinch of the salt.",
+   "Season the chicken with the rest of the salt and the pepper. Coat each piece in flour, then egg, then panko, pressing so it sticks. Wash your hands and board after handling raw chicken.",
+   "Heat the oil (about ⅛ in deep) in a large skillet over medium heat to 350°F. Fry 2 cutlets at a time for 3–4 minutes per side until deep golden and the chicken reaches 165°F inside.",
+   "Drain on paper towels, then slice into strips.",
+   "Serve with the rice and slaw, with the sauce drizzled over. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, cut tofu into ½-in slabs, bread and fry them before the chicken so they never touch raw chicken, and serve with soy sauce instead of the katsu sauce (Worcestershire contains anchovies).",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 397,
+     "text": "1 block (14 oz)",
+     "note": "patted dry, sliced"
+    }
+   ]
+  }
+ },
+ {
+  "id": "cashew_chicken",
+  "name": "Cashew chicken",
+  "side": "Steamed jasmine rice.",
+  "cuisine": "Chinese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "cashews",
+    "amount": 85,
+    "text": "⅔ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-in pieces"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "hoisin",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 150,
+    "text": "1 small",
+    "note": "cut into 1-in pieces"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 80,
+    "text": "2 stalks",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "red, cut into 1-in pieces"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 6,
+    "text": "1 tbsp",
+    "note": "grated"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Toast the cashews in a dry large skillet over medium heat, stirring, 2–3 minutes until golden, then tip them out.",
+   "Toss the chicken with 1 tbsp cornstarch and 1 tbsp soy sauce. Whisk the remaining 3 tbsp soy sauce, hoisin, vinegar, honey, remaining 1 tbsp cornstarch and ½ cup water.",
+   "Heat 1 tbsp oil in the skillet over medium-high heat and cook the chicken in a single layer, turning, 5–7 minutes until golden and it reaches 165°F. Move it to a plate.",
+   "Add the remaining oil with the onion, celery and bell pepper and stir-fry 3–4 minutes. Add the garlic and ginger and stir 30 seconds.",
+   "Return the chicken, stir the sauce and pour it in, then simmer 1–2 minutes until thick. Stir in the cashews and serve over the rice."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, before the chicken goes back in, move some vegetables to a small pan with edamame and a few spoonfuls of the sauce and simmer 2 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "frozen_edamame",
+     "amount": 150,
+     "text": "1 cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_pho",
+  "name": "Chicken pho-style noodle soup",
+  "side": "Herbs, lime and sliced jalapeño at the table.",
+  "cuisine": "Vietnamese",
+  "minutes": 50,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Serve the jalapeño on the side only; the broth itself isn't spicy.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "halved"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 30,
+    "text": "2-in piece",
+    "note": "halved lengthwise"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 1892,
+    "text": "2 cartons (8 cups)",
+    "note": ""
+   },
+   {
+    "ingredient": "five_spice",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "fish_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 8,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_noodles",
+    "amount": 283,
+    "text": "10 oz",
+    "note": "thin"
+   },
+   {
+    "ingredient": "basil",
+    "amount": 10,
+    "text": "½ cup leaves",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup leaves",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": "cut into wedges"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 1,
+    "text": "1",
+    "note": "thinly sliced"
+   }
+  ],
+  "steps": [
+   "Set the onion and ginger cut side down in a dry large pot over medium-high heat and cook 4–5 minutes until blackened in spots.",
+   "Add the broth, five-spice, fish sauce and sugar, then the chicken. Bring to a boil, lower to a gentle simmer, cover and cook 15–20 minutes until the chicken reaches 165°F.",
+   "Lift out the chicken, let it rest 5 minutes and shred it. Simmer the broth 10 minutes more, then scoop out the onion and ginger.",
+   "Meanwhile, cook the noodles in a separate pot of boiling water for 3–4 minutes until tender, then drain and rinse.",
+   "Divide the noodles and chicken between bowls and ladle the hot broth over.",
+   "Top with basil, cilantro and scallions and serve with lime wedges and jalapeño on the side. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer vegetable broth in a small pot with a slice of ginger and 1 tbsp soy sauce, add cubed tofu for 3 minutes, and ladle over a portion of the noodles.",
+   "ingredients": [
+    {
+     "ingredient": "veg_broth",
+     "amount": 960,
+     "text": "4 cups",
+     "note": ""
+    },
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "massaman_chicken_potato_curry",
+  "name": "Massaman-style chicken and potato curry",
+  "side": "Jasmine rice.",
+  "cuisine": "Thai",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tbsp curry paste; the peanuts, cinnamon and coconut keep it mellow.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1½-in pieces"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "cut into wedges"
+   },
+   {
+    "ingredient": "red_curry_paste",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 2,
+    "text": "2 cans",
+    "note": ""
+   },
+   {
+    "ingredient": "fish_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 26,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 567,
+    "text": "1¼ lb",
+    "note": "cut into 1-in chunks"
+   },
+   {
+    "ingredient": "peanuts",
+    "amount": 48,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Heat the oil in a large pot over medium-high heat and brown the chicken 5 minutes (it won't be cooked through). Move it to a plate.",
+   "Turn the heat to medium, add the onion and cook 3 minutes. Stir in the curry paste and cinnamon for 1 minute.",
+   "Stir in the coconut milk, ½ cup water, fish sauce and brown sugar, then add the potatoes and chicken. Simmer, partly covered, 20–25 minutes until the potatoes are tender and the chicken reaches 165°F.",
+   "Stir in the peanuts and lime juice and serve over the rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of chickpeas in a small pan with half a can of coconut milk, 1 tsp curry paste, a few potato chunks and 1 tsp soy sauce for 20 minutes (the main curry has fish sauce).",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    },
+    {
+     "ingredient": "coconut_milk",
+     "amount": 0.5,
+     "text": "½ can",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "oyakodon",
+  "name": "Chicken and egg rice bowls (oyakodon)",
+  "side": "Wilted spinach in the bowl.",
+  "cuisine": "Japanese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 333,
+    "text": "1¾ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 360,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 25,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 567,
+    "text": "1¼ lb",
+    "note": "cut into bite-size pieces"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 6,
+    "text": "6",
+    "note": "lightly beaten"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2⅔ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "In a large lidded skillet, bring the broth, soy sauce and sugar to a simmer over medium heat. Add the onion and cook 4–5 minutes until soft.",
+   "Add the chicken in a single layer and simmer 7–8 minutes, turning once, until it reaches 165°F. Add the spinach and let it wilt for 1 minute.",
+   "Pour the eggs evenly over everything, cover and cook on low for 3–4 minutes until the eggs are fully set.",
+   "Divide the rice between bowls and slide a portion of the chicken, egg and broth over each. Top with scallions. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer vegetable broth with 1 tbsp soy sauce and 1 tsp sugar in a small skillet, add tofu and some of the onion, then pour 2 beaten eggs over, cover and cook until set.",
+   "ingredients": [
+    {
+     "ingredient": "veg_broth",
+     "amount": 120,
+     "text": "½ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cubed"
+    },
+    {
+     "ingredient": "eggs",
+     "amount": 2,
+     "text": "2",
+     "note": "beaten"
+    }
+   ]
+  }
+ },
+ {
+  "id": "gochujang_chicken_cabbage",
+  "name": "Gochujang chicken with cabbage and sweet potato",
+  "side": "Steamed rice.",
+  "cuisine": "Korean",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Use 1 tbsp gochujang and an extra tbsp honey for a sweet, barely spicy version.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into bite-size pieces"
+   },
+   {
+    "ingredient": "gochujang",
+    "amount": 72,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 6,
+    "text": "1 tbsp",
+    "note": "grated"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sweet_potato",
+    "amount": 340,
+    "text": "1 medium",
+    "note": "peeled, cut into thin half-moons"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 150,
+    "text": "1 small",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 450,
+    "text": "⅓ head",
+    "note": "cut into 2-in pieces"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "cut into 2-in pieces"
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 9,
+    "text": "1 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Toss the chicken with the gochujang, soy sauce, honey, garlic and ginger and let it sit while you prep the vegetables, about 10 minutes.",
+   "Heat the oil in a large skillet over medium-high heat. Add the sweet potato and 2 tbsp water, cover and cook 6–7 minutes, stirring once, until nearly tender.",
+   "Add the chicken with all its marinade and the onion and cook, stirring, 6 minutes.",
+   "Add the cabbage and ¼ cup water and cook, stirring, 5 minutes until the cabbage is wilted, the sweet potato is tender and the chicken reaches 165°F.",
+   "Toss in the scallions, sprinkle with sesame seeds and serve with the rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set some sweet potato aside, then cook it in a small pan with tofu, 1 tsp gochujang and a splash of soy sauce.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "beef_bulgogi_bowls",
+  "name": "Beef bulgogi rice bowls",
+  "side": "Quick cucumber pickles.",
+  "cuisine": "Korean",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 75,
+    "text": "5 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 26,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "apples",
+    "amount": 1,
+    "text": "1",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 6,
+    "text": "1 tbsp",
+    "note": "grated"
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sirloin",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "very thinly sliced"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 150,
+    "text": "1 small",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "cut into 2-in pieces"
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 9,
+    "text": "1 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Stir the soy sauce, brown sugar, apple, garlic, ginger and sesame oil in a bowl. Add the beef and onion, toss and let sit 15 minutes. (Freezing the steak for 20 minutes first makes thin slicing easier.)",
+   "Toss the cucumber with the vinegar.",
+   "Heat the oil in a large skillet over high heat. Lift the beef out of the marinade and cook it in 2 batches in a single layer, 3–4 minutes per batch, until browned and no pink remains (145°F), adding the scallions to the last batch. Discard any leftover marinade.",
+   "Let the beef rest 3 minutes, then serve over the rice with the cucumber and a sprinkle of sesame seeds. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, spoon 2 tbsp of the marinade into a separate bowl before the beef goes in, toss tofu slices in it and pan-fry them first in a clean pan.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "sliced"
+    }
+   ]
+  }
+ },
+ {
+  "id": "beef_and_broccoli",
+  "name": "Beef and broccoli",
+  "side": "Steamed jasmine rice.",
+  "cuisine": "Chinese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "flank_steak",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "thinly sliced against the grain"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 75,
+    "text": "5 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 24,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "beef_broth",
+    "amount": 180,
+    "text": "¾ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 26,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 567,
+    "text": "1¼ lb",
+    "note": "cut into florets"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 12,
+    "text": "1-in piece",
+    "note": "grated"
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Toss the beef with 2 tbsp soy sauce and 2 tbsp cornstarch and let it sit 10 minutes. Whisk the broth, remaining 3 tbsp soy sauce, brown sugar and remaining 1 tbsp cornstarch.",
+   "Put the broccoli in a large skillet with ⅓ cup water, cover and steam over medium-high heat 3 minutes until bright green. Tip it out and wipe the pan dry.",
+   "Heat 1 tbsp oil in the skillet over high heat and sear the beef in 2 batches, 2–3 minutes per batch, adding more oil as needed, until browned. Move it to a plate.",
+   "Add the last of the oil, the garlic and ginger and stir 30 seconds. Stir the sauce, pour it in and simmer 1–2 minutes until thick.",
+   "Return the beef and broccoli and toss 1 minute until coated and the beef reaches 145°F with no pink left. Rest off the heat 3 minutes, drizzle with sesame oil and serve over the rice."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, fry tofu cubes in a small pan and toss with some of the broccoli, 1 tbsp soy sauce, 1 tsp brown sugar and 2 tbsp water (the main sauce has beef broth).",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "vietnamese_shaking_beef",
+  "name": "Vietnamese shaking beef",
+  "side": "Peppery greens, tomatoes and rice with a lime-pepper dip.",
+  "cuisine": "Vietnamese",
+  "minutes": 35,
+  "difficulty": "Medium",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "sirloin",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-in cubes"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "fish_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 13,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 5,
+    "text": "5 cloves",
+    "note": "minced, divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 4,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": "1 juiced, 1 cut into wedges"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 1.5,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "arugula",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 283,
+    "text": "1 pack (10 oz)",
+    "note": "halved"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 150,
+    "text": "1 small",
+    "note": "cut into wedges"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Toss the beef with the soy sauce, fish sauce, brown sugar, half the garlic and ½ tsp pepper and let it sit 10 minutes.",
+   "For the dip, stir the lime juice with the remaining 1 tsp pepper and the salt. Spread the arugula and tomatoes on a platter.",
+   "Heat 1 tbsp oil in a very large skillet over high heat until shimmering. Add half the beef in a single layer and sear 1–2 minutes without moving, then shake the pan and cook 2–3 minutes more until browned outside and 145°F in the center. Move to a plate and repeat with the remaining oil and beef.",
+   "With the second batch still in the pan, add the butter, onion and remaining garlic and toss 1 minute, then return the first batch.",
+   "Let the beef rest 3 minutes, then spoon it with the pan juices over the greens. Serve with the rice, lime-pepper dip and lime wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, sear tofu cubes in a separate pan and season with soy sauce, garlic and pepper (the beef marinade contains fish sauce).",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "gyudon_beef_onion_bowls",
+  "name": "Beef and onion rice bowls (gyudon)",
+  "side": "Tender bok choy alongside.",
+  "cuisine": "Japanese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 333,
+    "text": "1¾ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "beef_broth",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 25,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 12,
+    "text": "1-in piece",
+    "note": "cut into thin matchsticks"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 330,
+    "text": "1½",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "bok_choy",
+    "amount": 340,
+    "text": "¾ lb",
+    "note": "halved lengthwise"
+   },
+   {
+    "ingredient": "sirloin",
+    "amount": 567,
+    "text": "1¼ lb",
+    "note": "sliced paper-thin"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2⅔ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Bring the broth, soy sauce, sugar and ginger to a simmer in a large skillet over medium heat. Add the onion and simmer 6–8 minutes until soft.",
+   "Lay the bok choy on top, cover and simmer 3 minutes until tender, then lift it out.",
+   "Add the beef, spreading it out, and simmer 3–4 minutes, stirring gently and skimming off any foam, until no pink remains (145°F).",
+   "Let it rest off the heat 3 minutes, then spoon the beef, onion and some broth over bowls of rice. Add the bok choy and scallions. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer tofu slices and some onion in a small pan with vegetable broth, 1 tbsp soy sauce and 1 tsp sugar for 5 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "veg_broth",
+     "amount": 120,
+     "text": "½ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "sliced"
+    }
+   ]
+  }
+ },
+ {
+  "id": "filipino_beef_giniling",
+  "name": "Filipino beef giniling",
+  "side": "Steamed rice.",
+  "cuisine": "Filipino",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 340,
+    "text": "¾ lb",
+    "note": "cut into ½-in dice"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "cut into ½-in dice"
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "raisins",
+    "amount": 48,
+    "text": "⅓ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Heat the oil in a large skillet over medium heat and cook the onion 4 minutes until soft. Add the garlic for 30 seconds.",
+   "Add the beef and cook, breaking it up, 6–8 minutes until no pink remains and it reaches 160°F. Spoon off excess fat.",
+   "Stir in the potatoes, carrots, tomato sauce, soy sauce, pepper and ½ cup water. Cover and simmer 15 minutes, stirring now and then, until the potatoes are tender.",
+   "Stir in the peas and raisins and cook 3 minutes until hot. Serve over the rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside ½ cup of the tomato sauce and simmer it in a small pan with a can of chickpeas, a few peas and raisins and a splash of soy sauce.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    }
+   ]
+  }
+ },
+ {
+  "id": "slow_cooker_beef_rendang",
+  "name": "Slow-cooker beef rendang",
+  "side": "Jasmine rice.",
+  "cuisine": "Indonesian",
+  "minutes": 460,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "slow_cooker",
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Use ¼ tsp chili flakes; it will still be rich and fragrant from the ginger and spices.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "very finely chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 5,
+    "text": "5 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 24,
+    "text": "2-in piece",
+    "note": "grated"
+   },
+   {
+    "ingredient": "coriander",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 2,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 13,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 1,
+    "text": "1 can",
+    "note": ""
+   },
+   {
+    "ingredient": "beef_chuck",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1½-in pieces"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   }
+  ],
+  "steps": [
+   "Stir the onion, garlic, ginger, coriander, cumin, turmeric, cinnamon, chili flakes, brown sugar, soy sauce and coconut milk together in the slow cooker.",
+   "Add the beef and stir to coat. Cover and cook on LOW for 7–8 hours or HIGH for 4 hours, until the beef is very tender and pulls apart easily.",
+   "About 25 minutes before serving, cook the rice: bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Spoon the beef and sauce into a large skillet and simmer over medium-high heat, stirring often, 10–15 minutes until the sauce reduces and clings to the beef.",
+   "Stir in the lime juice and serve with the rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of chickpeas in a small pan with half a can of coconut milk and a pinch each of the same spices for 20 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained"
+    },
+    {
+     "ingredient": "coconut_milk",
+     "amount": 0.5,
+     "text": "½ can",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "char_siu_pork_tenderloin",
+  "name": "Char siu-style pork tenderloin",
+  "side": "Garlicky bok choy and rice.",
+  "cuisine": "Chinese",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "hoisin",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 42,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "five_spice",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced, divided"
+   },
+   {
+    "ingredient": "pork_tenderloin",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "patted dry"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bok_choy",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "halved lengthwise"
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F and line a sheet pan with foil. Stir the hoisin, 1 tbsp honey, soy sauce, five-spice and 2 garlic cloves. Set 2 tbsp aside in a clean bowl for glazing, coat the pork with the rest and let it sit 15 minutes.",
+   "Roast the pork on the sheet pan for 15 minutes. Stir the remaining 1 tbsp honey into the reserved sauce and brush it over the pork.",
+   "Roast 5–10 minutes more until the pork reaches 145°F in the thickest part. Let it rest 5 minutes before slicing.",
+   "While the pork roasts, bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Heat the oil in a large skillet over medium-high heat, add the remaining garlic for 30 seconds, then the bok choy and 2 tbsp water and cook 3–4 minutes until tender. Drizzle with the sesame oil.",
+   "Slice the pork thinly and serve with the bok choy and rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside an extra spoonful of the sauce before the pork touches it, brush it over tofu slabs and roast them on a separate small pan for 20 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "sliced ½ in thick"
+    }
+   ]
+  }
+ },
+ {
+  "id": "sichuan_green_beans_pork",
+  "name": "Sichuan-style green beans with pork",
+  "side": "Steamed jasmine rice.",
+  "cuisine": "Chinese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Skip the chili flakes; it's garlicky and savory without them.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "green_beans",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "trimmed and dried well"
+   },
+   {
+    "ingredient": "ground_pork",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 5,
+    "text": "5 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 12,
+    "text": "1-in piece",
+    "note": "minced"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced, whites and greens kept apart"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 4,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Heat 2 tbsp oil in a large skillet over medium-high heat. Cook the green beans in a single layer, turning now and then, 8–10 minutes until blistered and wrinkled. Move them to a plate.",
+   "Add the remaining 1 tbsp oil and the pork and cook, breaking it up, 6–7 minutes until browned, no pink remains and it reaches 160°F.",
+   "Add the garlic, ginger, chili flakes and scallion whites and stir 1 minute.",
+   "Stir in the soy sauce, sugar and vinegar, return the beans and toss 2 minutes until glossy. Top with scallion greens and serve over the rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside a portion of the blistered beans and toss them in a small pan with crumbled tofu, a little garlic and a splash of soy sauce.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "crumbled"
+    }
+   ]
+  }
+ },
+ {
+  "id": "vietnamese_caramel_pork_bowls",
+  "name": "Vietnamese caramel pork rice bowls",
+  "side": "Quick pickled carrots and cucumber.",
+  "cuisine": "Vietnamese",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "cut into thin matchsticks"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 8,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 40,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "shallots",
+    "amount": 90,
+    "text": "3",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ground_pork",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "fish_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup leaves",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into wedges"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Toss the carrots and cucumber with the vinegar and sugar and let them stand 15 minutes.",
+   "In a large skillet over medium heat, stir the brown sugar with 2 tbsp water and let it bubble 2–3 minutes until it darkens slightly and smells like caramel. Take care: it's very hot.",
+   "Add the oil, shallots and garlic and stir 1 minute. Add the pork and cook, breaking it up, 6–8 minutes until no pink remains and it reaches 160°F.",
+   "Stir in the fish sauce and pepper and simmer 2–3 minutes until sticky.",
+   "Serve over the rice with the drained pickles, cilantro and lime wedges. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, brown crumbled tofu in a small pan with a spoonful of brown sugar, a little garlic and soy sauce instead of fish sauce.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "crumbled"
+    }
+   ]
+  }
+ },
+ {
+  "id": "ants_climbing_tree",
+  "name": "Ants climbing a tree (pork and rice noodles)",
+  "side": "Spinach is cooked right in.",
+  "cuisine": "Chinese",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Skip the chili flakes; the pork, ginger and soy sauce carry the flavor.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "rice_noodles",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "thin vermicelli"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ground_pork",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 12,
+    "text": "1-in piece",
+    "note": "minced"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced, whites and greens kept apart"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 480,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 4,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 142,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Soak the noodles in hot tap water for 10 minutes until bendy, drain and snip them a few times with scissors.",
+   "Heat the oil in a large skillet over medium-high heat and cook the pork, breaking it up, 6–7 minutes until browned and it reaches 160°F.",
+   "Add the garlic, ginger, chili flakes and scallion whites and stir 1 minute.",
+   "Add the broth, soy sauce and sugar and bring to a simmer. Add the noodles and cook, tossing, 3–4 minutes until they have soaked up most of the broth.",
+   "Stir in the spinach until wilted, about 1 minute, then drizzle with sesame oil and top with scallion greens. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, keep back a handful of soaked noodles and simmer them in a small pan with vegetable broth, crumbled tofu and a splash of soy sauce.",
+   "ingredients": [
+    {
+     "ingredient": "veg_broth",
+     "amount": 120,
+     "text": "½ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "crumbled"
+    }
+   ]
+  }
+ },
+ {
+  "id": "pancit_bihon_pork",
+  "name": "Pancit bihon with pork and vegetables",
+  "side": "Lemon wedges to squeeze over.",
+  "cuisine": "Filipino",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "rice_noodles",
+    "amount": 283,
+    "text": "10 oz",
+    "note": "thin vermicelli"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pork_chops",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "cut into thin strips"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 150,
+    "text": "1 small",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "cut into thin matchsticks"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 80,
+    "text": "2 stalks",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 600,
+    "text": "2½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 300,
+    "text": "¼ head",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into wedges"
+   }
+  ],
+  "steps": [
+   "Soak the noodles in warm water for 10 minutes, then drain.",
+   "Heat 1 tbsp oil in a large skillet or wok over medium-high heat and cook the pork 4–5 minutes until browned and it reaches 145°F. Move it to a plate.",
+   "Add the remaining oil, the onion and garlic and cook 2 minutes. Add the carrots and celery and cook 3 minutes.",
+   "Add the broth, soy sauce and pepper and bring to a boil. Add the noodles and toss 4–5 minutes until they are tender and have soaked up the broth.",
+   "Add the cabbage and pork and toss 2 minutes until the cabbage wilts. Serve with lemon wedges. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, keep back a handful of soaked noodles and cook them in a small pan with vegetable broth, soy sauce, some of the vegetables and tofu strips.",
+   "ingredients": [
+    {
+     "ingredient": "veg_broth",
+     "amount": 120,
+     "text": "½ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cut into strips"
+    }
+   ]
+  }
+ },
+ {
+  "id": "japanese_ginger_pork",
+  "name": "Japanese ginger pork (shogayaki)",
+  "side": "Rice and shredded cabbage.",
+  "cuisine": "Japanese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 24,
+    "text": "2-in piece",
+    "note": "grated"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 300,
+    "text": "¼ head",
+    "note": "very finely shredded"
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pork_chops",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "sliced ¼ in thick"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "thinly sliced"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Stir the ginger, soy sauce, honey, garlic and 2 tbsp water for the sauce. Toss the cabbage with the vinegar.",
+   "Dust the pork slices with the flour. Heat 1 tbsp oil in a large skillet over medium-high heat and sear the pork in batches, 1–2 minutes per side, until browned and it reaches 145°F. Move it to a plate.",
+   "Add the remaining oil and the onion and cook 4 minutes until soft.",
+   "Pour in the sauce, return the pork and simmer 1–2 minutes, turning, until glossy. Let it rest 3 minutes, then serve with the rice and cabbage. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside 2 tbsp of the sauce, pan-fry flour-dusted tofu slices in a clean pan and glaze them with it.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "sliced"
+    }
+   ]
+  }
+ },
+ {
+  "id": "sweet_sour_pork_pineapple",
+  "name": "Sweet and sour pork with pineapple",
+  "side": "Steamed jasmine rice.",
+  "cuisine": "Chinese",
+  "minutes": 40,
+  "difficulty": "Medium",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 50,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 40,
+    "text": "5 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pork_tenderloin",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-in cubes"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 84,
+    "text": "6 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 150,
+    "text": "1 small",
+    "note": "cut into 1-in pieces"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "cut into 1-in pieces"
+   },
+   {
+    "ingredient": "pineapple",
+    "amount": 0.5,
+    "text": "½",
+    "note": "peeled, cored, cut into chunks"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Whisk the vinegar, sugar, tomato paste, soy sauce, 1 tbsp cornstarch and ½ cup water for the sauce.",
+   "Toss the pork with the egg, then with the remaining 4 tbsp cornstarch until coated.",
+   "Heat 4 tbsp oil in a large skillet over medium-high heat and fry the pork in 2 batches, turning, 5–6 minutes until crisp and golden and it reaches 145°F. Drain on paper towels.",
+   "Pour off all but a film of oil, add the remaining 2 tbsp oil, the onion and peppers and stir-fry 3 minutes. Add the pineapple for 2 minutes.",
+   "Stir the sauce, pour it in and simmer 1–2 minutes until thick, then toss in the pork and serve over the rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, coat tofu cubes in cornstarch and fry them before the pork, then toss with some of the vegetables and sauce in a small pan.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "turkey_larb_lettuce_wraps",
+  "name": "Turkey larb lettuce wraps",
+  "side": "Lettuce cups, cucumber and sticky rice.",
+  "cuisine": "Thai",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "turkey",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Leave out the chili flakes and put them on the table for adults.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 310,
+    "text": "1½ cups plus 2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ground_turkey",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "fish_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 3,
+    "text": "3",
+    "note": "2 juiced, 1 cut into wedges"
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 4,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 2,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "shallots",
+    "amount": 90,
+    "text": "3",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "mint",
+    "amount": 10,
+    "text": "½ cup leaves",
+    "note": "torn"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup leaves",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "lettuce_butter",
+    "amount": 2,
+    "text": "2 heads",
+    "note": "leaves separated"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Toast 2 tbsp of the uncooked rice in a dry skillet over medium heat, shaking, 4–5 minutes until golden. Cool, then crush to a coarse powder in a zip-top bag with a rolling pin.",
+   "Rinse the remaining 1½ cups rice. Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Heat the oil in the skillet over medium-high heat and cook the turkey, breaking it up, 6–8 minutes until no pink remains and it reaches 165°F.",
+   "Off the heat, stir in the fish sauce, lime juice, sugar, chili flakes and shallots. Let it cool 2 minutes, then stir in the mint, cilantro, scallions and toasted rice powder.",
+   "Spoon into lettuce leaves and serve with the rice, cucumber and lime wedges. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, brown crumbled tofu in a small pan and season with soy sauce and lime juice instead of fish sauce, then add the herbs and shallots.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "crumbled"
+    }
+   ]
+  }
+ },
+ {
+  "id": "miso_salmon_bok_choy",
+  "name": "Miso-glazed salmon with bok choy",
+  "side": "Steamed rice.",
+  "cuisine": "Japanese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "miso",
+    "amount": 51,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 6,
+    "text": "1 tbsp",
+    "note": "grated"
+   },
+   {
+    "ingredient": "bok_choy",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "halved lengthwise"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salmon",
+    "amount": 680,
+    "text": "4 fillets (6 oz each)",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 9,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Whisk the miso, honey, soy sauce, vinegar and ginger.",
+   "Toss the bok choy with the oil on a sheet pan and push it to the edges. Set the salmon in the middle, skin side down, and spread the glaze over the top.",
+   "Roast 12–14 minutes until the salmon reaches 145°F and flakes easily with a fork.",
+   "Sprinkle with sesame seeds and scallions and serve with the rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside a spoonful of glaze, spread it on tofu slabs and roast them on a separate small pan alongside.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "sliced ½ in thick"
+    }
+   ]
+  }
+ },
+ {
+  "id": "turmeric_dill_fish_noodles",
+  "name": "Turmeric-dill fish with rice noodles",
+  "side": "Noodles, peanuts and a tangy dipping sauce.",
+  "cuisine": "Vietnamese",
+  "minutes": 35,
+  "difficulty": "Medium",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "rice_noodles",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "thin vermicelli"
+   },
+   {
+    "ingredient": "cod",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 2-in pieces"
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "fish_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": "1 juiced, 1 cut into wedges"
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 4,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 6,
+    "text": "6",
+    "note": "cut into 2-in pieces"
+   },
+   {
+    "ingredient": "dill",
+    "amount": 21,
+    "text": "1 pack",
+    "note": "fronds and tender stems"
+   },
+   {
+    "ingredient": "peanuts",
+    "amount": 48,
+    "text": "⅓ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Cook the noodles in boiling water for 3–5 minutes until tender, then drain and rinse with cold water.",
+   "Toss the cod gently with the turmeric, 1 tbsp fish sauce, garlic and cornstarch and let it sit 10 minutes.",
+   "For the dipping sauce, stir the remaining 1 tbsp fish sauce, the lime juice, sugar and 3 tbsp water.",
+   "Heat the oil in a large nonstick skillet over medium-high heat. Cook the fish without moving it for 3 minutes, turn carefully and cook 2–3 minutes more until golden, it reaches 145°F and flakes easily.",
+   "Add the scallions and dill and toss gently for 1 minute until just wilted.",
+   "Serve over the noodles with the peanuts, lime wedges and dipping sauce. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, toss tofu cubes with a pinch of turmeric and soy sauce, fry them first in a separate pan and finish with some of the dill and scallions.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "ginger_scallion_steamed_cod",
+  "name": "Ginger-scallion cod",
+  "side": "Rice and steamed broccoli.",
+  "cuisine": "Chinese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "cut into florets"
+   },
+   {
+    "ingredient": "cod",
+    "amount": 680,
+    "text": "4 fillets (6 oz each)",
+    "note": ""
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 24,
+    "text": "2-in piece",
+    "note": "cut into thin matchsticks, divided"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 6,
+    "text": "6",
+    "note": "cut into thin 2-in strips"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 4,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup leaves",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Put the broccoli in a large skillet with ¼ cup water, cover and steam over medium-high heat 3–4 minutes until tender-crisp. Tip it out.",
+   "Lay the cod in the same skillet with ½ cup water and scatter half the ginger over it. Cover and cook over medium heat 8–10 minutes until the fish reaches 145°F and flakes easily.",
+   "Lift the fish onto a platter and top with the remaining ginger and the scallions. Stir the soy sauce and sugar with 2 tbsp hot water and spoon it around the fish.",
+   "Heat the neutral oil in a small pan until shimmering, then carefully pour it over the ginger and scallions so they sizzle. Drizzle with sesame oil, add the cilantro and serve with the rice and broccoli."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, cook tofu slabs the same way in a separate covered pan with a little water and ginger, and top them with the sizzling oil too.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 397,
+     "text": "1 block (14 oz)",
+     "note": "sliced 1 in thick"
+    }
+   ]
+  }
+ },
+ {
+  "id": "tuna_mayo_rice_bowls",
+  "name": "Japanese tuna mayo rice bowls",
+  "side": "Edamame and cucumber in the bowl.",
+  "cuisine": "Japanese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 333,
+    "text": "1¾ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "frozen_edamame",
+    "amount": 225,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "tuna_canned",
+    "amount": 4,
+    "text": "4 cans (5 oz each)",
+    "note": "drained"
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 80,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 4,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 9,
+    "text": "1 tbsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2⅔ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Cook the edamame in boiling water for 4 minutes and drain.",
+   "Mix the tuna with the mayo and 1 tbsp soy sauce. Toss the cucumber with the vinegar and sugar.",
+   "Beat the eggs with the remaining 1 tbsp soy sauce. Heat the oil in a nonstick skillet over medium heat and scramble the eggs into small curds until fully set, about 2 minutes.",
+   "Divide the rice between bowls and top with the tuna, eggs, edamame and cucumber. Finish with scallions and sesame seeds. Refrigerate leftovers within 2 hours; don't let the tuna mayo sit out."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, skip the tuna and add an extra scrambled egg and more edamame to their bowls.",
+   "ingredients": [
+    {
+     "ingredient": "eggs",
+     "amount": 2,
+     "text": "2",
+     "note": ""
+    },
+    {
+     "ingredient": "frozen_edamame",
+     "amount": 115,
+     "text": "¾ cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "shrimp_pineapple_fried_rice",
+  "name": "Shrimp and pineapple fried rice",
+  "side": "Toasted cashews on top.",
+  "cuisine": "Thai",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 333,
+    "text": "1¾ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "shrimp",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "thawed, patted dry"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 3,
+    "text": "3",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 150,
+    "text": "1 small",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "curry_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pineapple",
+    "amount": 0.5,
+    "text": "½",
+    "note": "peeled, cored, diced"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "fish_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cashews",
+    "amount": 65,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2⅔ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes. Spread the rice on a sheet pan and let it cool for 15 minutes (or use 6 cups cold leftover rice).",
+   "Heat 1 tbsp oil in a large skillet or wok over medium-high heat and cook the shrimp 2–3 minutes, turning once, until pink and opaque. Move them to a plate.",
+   "Add 1 tbsp oil, scramble the eggs until just set, about 1 minute, and add them to the shrimp.",
+   "Add the remaining oil and the onion and cook 3 minutes. Add the garlic and curry powder for 30 seconds.",
+   "Add the rice, pineapple and peas and stir-fry 4–5 minutes until hot. Stir in the fish sauce and soy sauce, then return the shrimp and eggs with the cashews and scallions and toss 1 minute.",
+   "Serve hot. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, scoop out their portions before the fish sauce and shrimp go in, season with a little soy sauce and stir in an extra scrambled egg.",
+   "ingredients": [
+    {
+     "ingredient": "eggs",
+     "amount": 2,
+     "text": "2",
+     "note": "beaten"
+    }
+   ]
+  }
+ },
+ {
+  "id": "thai_coconut_shrimp_soup",
+  "name": "Thai coconut shrimp soup",
+  "side": "Jasmine rice to spoon into the bowls.",
+  "cuisine": "Thai",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the chili flakes and add them to adult bowls only.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 24,
+    "text": "2-in piece",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 2,
+    "text": "2 cans",
+    "note": ""
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 283,
+    "text": "1 pack (10 oz)",
+    "note": "halved"
+   },
+   {
+    "ingredient": "shrimp",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "thawed"
+   },
+   {
+    "ingredient": "fish_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 13,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": "1 juiced, 1 cut into wedges"
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup leaves",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring the rice and 2¼ cups water to a boil in a covered pot, turn the heat to low and simmer 15 minutes, then let it steam off the heat, covered, for 10 minutes.",
+   "Simmer the broth and ginger in a large pot for 5 minutes.",
+   "Add the coconut milk, mushrooms and tomatoes and simmer gently, without boiling hard, for 5 minutes.",
+   "Add the shrimp and cook 2–3 minutes until pink and opaque.",
+   "Off the heat, stir in the fish sauce, brown sugar, lime juice and chili flakes. Fish out the ginger slices, top with cilantro and serve with the rice and lime wedges. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer vegetable broth and half a can of coconut milk in a small pot with a few mushrooms and tofu, and season with soy sauce and lime.",
+   "ingredients": [
+    {
+     "ingredient": "veg_broth",
+     "amount": 240,
+     "text": "1 cup",
+     "note": ""
+    },
+    {
+     "ingredient": "coconut_milk",
+     "amount": 0.5,
+     "text": "½ can",
+     "note": ""
+    },
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "singapore_curry_noodles_shrimp",
+  "name": "Singapore-style curry noodles with shrimp",
+  "side": "It's a one-pan noodle dinner.",
+  "cuisine": "Chinese",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 2 tsp curry powder instead of 2 tbsp; the noodles will still turn golden.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "rice_noodles",
+    "amount": 227,
+    "text": "8 oz",
+    "note": "thin vermicelli"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 4,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "shrimp",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "thawed, patted dry"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 3,
+    "text": "3",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 150,
+    "text": "1 small",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 70,
+    "text": "1",
+    "note": "cut into thin matchsticks"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "red, sliced"
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 225,
+    "text": "3 cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "curry_powder",
+    "amount": 15,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "cut into 1-in pieces"
+   }
+  ],
+  "steps": [
+   "Soak the noodles in hot tap water for 8–10 minutes until bendy, then drain. Stir the soy sauce, sugar and 3 tbsp water.",
+   "Heat 1 tbsp oil in a large skillet or wok over medium-high heat and cook the shrimp 2–3 minutes until pink and opaque. Move them to a plate.",
+   "Add 1 tbsp oil and scramble the eggs until set, about 1 minute; add them to the shrimp.",
+   "Add the remaining oil, the onion, carrot and bell pepper and stir-fry 3 minutes, then the cabbage for 2 minutes. Add the garlic and curry powder and stir 30 seconds.",
+   "Add the noodles and sauce and toss with tongs 2–3 minutes until evenly golden and hot. Return the shrimp and eggs with the scallions and toss 1 minute. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, move their portions to a plate before the shrimp go back in and top with pan-fried tofu cubes.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cubed"
+    }
+   ]
+  }
+ }
+]

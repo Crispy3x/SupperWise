@@ -66,7 +66,7 @@ struct OpenFoodFacts {
         let tags = (p["allergens_tags"] as? [String] ?? []).joined(separator: " ")
         var allergens: Set<Allergen> = []
         let map: [(String, Allergen)] = [("milk", .dairy), ("eggs", .egg), ("gluten", .gluten), ("soybeans", .soy), ("fish", .fish),
-                                         ("crustaceans", .shellfish), ("molluscs", .shellfish), ("nuts", .nuts), ("peanuts", .nuts)]
+                                         ("crustaceans", .shellfish), ("molluscs", .shellfish), ("nuts", .nuts), ("peanuts", .nuts), ("sesame", .sesame)]
         for (k, a) in map where tags.contains(k) { allergens.insert(a) }
         let ingredients = (p["ingredients_text_en"] as? String) ?? (p["ingredients_text"] as? String)
         let lower = (ingredients ?? "").lowercased()

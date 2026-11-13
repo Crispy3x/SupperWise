@@ -1,0 +1,5399 @@
+[
+ {
+  "id": "sweet_potato_black_bean_enchiladas",
+  "name": "Sweet potato and black bean enchiladas",
+  "side": "Shredded romaine with a squeeze of lime.",
+  "cuisine": "Tex-Mex",
+  "minutes": 60,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tsp chili powder and check that the enchilada sauce is labeled mild.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "sweet_potato",
+    "amount": 680,
+    "text": "1½ lb (2 medium)",
+    "note": "peeled, ½-inch dice"
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "enchilada_sauce",
+    "amount": 566,
+    "text": "2 cans",
+    "note": "10 oz each"
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "for serving"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. On a sheet pan, toss the sweet potato and onion with the oil, cumin, chili powder and salt, and spread them out.",
+   "Roast 20 minutes, stirring once, until the sweet potato is tender when pierced with a fork. Turn the oven down to 375°F.",
+   "Tip the vegetables into a bowl, add the black beans and half the cheese, and mash lightly with a fork so the filling holds together.",
+   "Spread 1 cup of the enchilada sauce over the bottom of a 9x13-inch baking dish. Divide the filling among the tortillas, roll them up and lay them seam-side down in the dish.",
+   "Pour the rest of the sauce over the top and scatter on the remaining cheese. Cover with foil and bake 15 minutes, then uncover and bake 10 minutes more until bubbling.",
+   "Rest 5 minutes, then sprinkle with cilantro and serve with sour cream. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "calabacitas_quesadillas",
+  "name": "Zucchini and corn quesadillas",
+  "side": "Salsa, sour cream and a crisp green salad.",
+  "cuisine": "Mexican",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 2,
+    "text": "2",
+    "note": "diced small"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "green_chiles",
+    "amount": 113,
+    "text": "1 can",
+    "note": "4 oz, drained"
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 226,
+    "text": "2 cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 250,
+    "text": "1 cup",
+    "note": "for serving"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "for serving"
+   }
+  ],
+  "steps": [
+   "Heat 1 tbsp of the oil in a large skillet over medium-high heat. Cook the onion 3 minutes, then add the zucchini and corn and cook 6–7 minutes, stirring, until the zucchini is tender and lightly browned.",
+   "Stir in the green chiles, cumin and salt and cook 1 minute. Tip the filling into a bowl and wipe out the skillet.",
+   "Lay out 4 tortillas. Top each with ¼ cup cheese, a quarter of the vegetables and another ¼ cup cheese, then cover with the remaining tortillas.",
+   "Brush the skillet with a little of the remaining oil and cook the quesadillas one at a time over medium heat, 2–3 minutes per side, until golden and the cheese has melted. Add more oil as needed.",
+   "Cut each quesadilla into wedges and serve with salsa and sour cream."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "huevos_rancheros",
+  "name": "Huevos rancheros",
+  "side": "Orange wedges on the side.",
+  "cuisine": "Mexican",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the jalapeño and the sauce is completely mild.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "pinto_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained, liquid kept"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can",
+    "note": "14.5 oz"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 1,
+    "text": "1",
+    "note": "seeded and minced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "feta",
+    "amount": 75,
+    "text": "½ cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 1,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Heat 1 tbsp oil in a saucepan over medium heat. Cook the onion and jalapeño 4 minutes, add the garlic for 30 seconds, then add the tomatoes and half the salt. Simmer 10 minutes, mashing a little, until slightly thickened.",
+   "Meanwhile, warm the pinto beans with 3 tbsp of their liquid, the cumin and the rest of the salt in a small pan over medium heat, mashing them roughly, about 5 minutes.",
+   "Heat 1 tbsp oil in a large nonstick skillet over medium-high heat and fry the tortillas one at a time, about 30 seconds a side, until soft and lightly crisp. Drain on paper towels and put 2 on each plate.",
+   "Add the last 1 tbsp oil to the skillet and turn the heat to medium. Fry the eggs 4 at a time for 3–4 minutes, until the whites are fully set and the yolks are as firm as you like (cook the yolks firm for young kids).",
+   "Spread the beans on the tortillas, top each with an egg and spoon over the sauce. Finish with feta, avocado and cilantro."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "chilaquiles_rojos",
+  "name": "Chilaquiles rojos with fried eggs",
+  "side": "Sliced radishes or a simple green salad.",
+  "cuisine": "Mexican",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Choose a mild enchilada sauce and put hot sauce on the table for the grown-ups.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tortilla_chips",
+    "amount": 227,
+    "text": "8 oz (about 8 cups)",
+    "note": "sturdy chips"
+   },
+   {
+    "ingredient": "enchilada_sauce",
+    "amount": 566,
+    "text": "2 cans",
+    "note": "10 oz each"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "feta",
+    "amount": 75,
+    "text": "½ cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Warm the enchilada sauce, broth and black beans in a large, deep skillet over medium heat until gently simmering, about 5 minutes.",
+   "Meanwhile, heat the oil in a nonstick skillet over medium heat and fry the eggs 3–4 minutes, until the whites are fully set and the yolks are as firm as you like (cook the yolks firm for young kids).",
+   "Take the sauce off the heat, add the tortilla chips and fold gently for about 1 minute until they are coated but still crunchy in places.",
+   "Divide among plates and top each with a fried egg, red onion, feta, a spoonful of sour cream and cilantro. Serve right away, before the chips go soft."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "huancaina_potatoes_eggs",
+  "name": "Potatoes with creamy huancaína sauce and eggs",
+  "side": "Romaine leaves and olives.",
+  "cuisine": "Peruvian",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 jalapeño with all the seeds and ribs removed, or swap in half a yellow bell pepper for a sauce with no heat.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "potatoes",
+    "amount": 907,
+    "text": "2 lb",
+    "note": "Yukon Gold, halved if large"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 6,
+    "text": "6",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 2,
+    "text": "2",
+    "note": "seeded and chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 1,
+    "text": "1 clove",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "feta",
+    "amount": 150,
+    "text": "1 cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "evaporated_milk",
+    "amount": 180,
+    "text": "¾ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "crackers",
+    "amount": 20,
+    "text": "about 6",
+    "note": "broken up"
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "romaine",
+    "amount": 1,
+    "text": "1 heart",
+    "note": "leaves separated"
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 45,
+    "text": "⅓ cup",
+    "note": "halved"
+   }
+  ],
+  "steps": [
+   "Put the potatoes in a large pot, cover with cold water by 1 inch and add the salt. Bring to a boil and simmer 15–18 minutes, until a knife slides in easily. Drain.",
+   "While the potatoes cook, put the eggs in a saucepan, cover with water and bring to a boil. Cover, turn off the heat and leave 11 minutes, then cool in cold water, peel and halve.",
+   "Heat the oil in a small skillet over medium heat and cook the jalapeños and garlic 3 minutes until soft.",
+   "Blend the jalapeños, garlic and their oil with the feta, evaporated milk, crackers and turmeric until smooth and pourable, about 1 minute. Add a splash of water if it's too thick.",
+   "Line plates with romaine leaves, add the warm potatoes and eggs, pour the sauce over and scatter with olives. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "cuban_black_beans_rice",
+  "name": "Cuban black beans and rice",
+  "side": "Sliced avocado.",
+  "cuisine": "Cuban",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "or other long-grain white rice"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "one drained, one with its liquid"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "green, diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bay_leaves",
+    "amount": 0.2,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 4,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": "red wine"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced, for serving"
+   }
+  ],
+  "steps": [
+   "Rinse the rice, then put it in a saucepan with 2¼ cups water and ½ tsp of the salt. Bring to a boil, cover, cook on low for 15 minutes, then rest off the heat, covered, for 10 minutes.",
+   "Meanwhile, heat the oil in a large saucepan over medium heat. Cook the onion and bell pepper 7–8 minutes until soft. Add the garlic, cumin and oregano and stir 1 minute.",
+   "Add both cans of beans (one with its liquid), the bay leaf, sugar and the remaining salt. Simmer uncovered 15 minutes, stirring now and then and mashing a few beans against the side of the pan to thicken.",
+   "Take out the bay leaf and stir in the vinegar.",
+   "Spoon the beans over the rice and serve with sliced avocado."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "pinto_burrito_bowls",
+  "name": "Pinto bean burrito bowls with cilantro-lime rice",
+  "side": "Tortilla chips on the side.",
+  "cuisine": "Tex-Mex",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tsp chili powder and a mild salsa.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 15,
+    "text": "¾ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pinto_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 250,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "grated"
+   }
+  ],
+  "steps": [
+   "Rinse the rice and put it in a saucepan with 2¼ cups water and ½ tsp of the salt. Bring to a boil, cover, cook on low 15 minutes, then rest off the heat 10 minutes. Stir in the juice of 1 lime and half the cilantro.",
+   "Meanwhile, heat 1 tbsp oil in a large skillet over medium-high heat. Cook the peppers and onion 7–8 minutes until soft and charred in spots, then move them to a plate.",
+   "Add the remaining oil, the corn, chili powder and cumin to the skillet and cook 2 minutes. Add the pinto beans, the rest of the salt and ¼ cup water and simmer 4 minutes until hot.",
+   "Fill bowls with rice, beans, peppers and onion. Top with salsa, cheddar, the rest of the cilantro and wedges of the second lime."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "tofu_sofritas_tacos",
+  "name": "Smoky tofu sofritas tacos",
+  "side": "Lime-dressed red cabbage and avocado.",
+  "cuisine": "Mexican",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Use ½ chipotle and skip the extra adobo sauce for a gentle smoky warmth.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tofu_firm",
+    "amount": 794,
+    "text": "2 blocks (14 oz each)",
+    "note": ""
+   },
+   {
+    "ingredient": "red_cabbage",
+    "amount": 150,
+    "text": "2 cups",
+    "note": "finely shredded"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "chipotle_adobo",
+    "amount": 35,
+    "text": "2 chipotles plus 1 tbsp sauce",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 48,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Press the tofu between paper towels with a heavy pan on top for 10 minutes, then crumble it into pea-size pieces. Toss the cabbage with the juice of 1 lime and set aside.",
+   "Heat 2 tbsp oil in a large nonstick skillet over medium-high heat. Add the tofu and cook 10–12 minutes, stirring only every few minutes, until golden and a little crisp.",
+   "Push the tofu to the side, add the last 1 tbsp oil, the onion and garlic, and cook 3 minutes. Stir in the chipotles and adobo sauce, tomato paste, cumin and oregano for 1 minute.",
+   "Add the soy sauce and ½ cup water and simmer 3–4 minutes, stirring, until the sauce clings to the tofu.",
+   "Warm the tortillas in a dry skillet 30 seconds a side and keep them wrapped in a clean towel.",
+   "Fill the tortillas with tofu, cabbage and avocado, and serve with wedges of the second lime."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "roasted_cauliflower_tacos",
+  "name": "Roasted cauliflower tacos with chipotle crema",
+  "side": "Black beans or Mexican rice on the side.",
+  "cuisine": "Mexican",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Leave the adobo out of the crema and use 1 tsp chili powder.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "cauliflower",
+    "amount": 1,
+    "text": "1 head",
+    "note": "cut into small florets"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "chipotle_adobo",
+    "amount": 15,
+    "text": "1 tbsp adobo sauce",
+    "note": "from the can"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   },
+   {
+    "ingredient": "radishes",
+    "amount": 90,
+    "text": "6",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "feta",
+    "amount": 75,
+    "text": "½ cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 450°F. On a sheet pan, toss the cauliflower and corn with the oil, chili powder, smoked paprika, cumin and salt, and spread them out in one layer.",
+   "Roast 22–25 minutes, stirring halfway, until the cauliflower is tender and browned at the edges.",
+   "Meanwhile, stir the sour cream with the adobo sauce and the juice of 1 lime to make the crema.",
+   "Warm the tortillas in a dry skillet 30 seconds per side and keep them wrapped in a clean towel.",
+   "Fill the tortillas with the cauliflower and corn, drizzle with crema and top with radishes, feta and cilantro. Serve with wedges of the second lime."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "rajas_con_crema_tacos",
+  "name": "Rajas con crema tacos",
+  "side": "Black beans and sliced tomatoes.",
+  "cuisine": "Mexican",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 1,
+  "mildNote": "Poblanos vary, so taste a strip first. If they're hot, use 3 poblanos and 1 green bell pepper.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "poblano",
+    "amount": 5,
+    "text": "5",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 210,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 180,
+    "text": "¾ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Set the broiler to high. Broil the poblanos on a foil-lined pan about 4 inches from the heat, turning every few minutes, until blackened all over, 8–10 minutes. Put them in a bowl, cover with a plate and let them steam 10 minutes.",
+   "Rub off the skins, pull out the stems and seeds, and slice the peppers into thin strips.",
+   "Heat the oil in a large skillet over medium heat and cook the onion 6–7 minutes until soft and golden. Add the garlic and corn and cook 3 minutes.",
+   "Turn the heat to low, add the poblano strips, sour cream and salt, and stir 2–3 minutes until creamy and hot; don't let it boil. Stir in the cheese until melted.",
+   "Warm the tortillas in a dry skillet 30 seconds a side and spoon in the rajas."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "mexican_stuffed_peppers",
+  "name": "Rice and black bean stuffed peppers",
+  "side": "Sour cream and a green salad.",
+  "cuisine": "Tex-Mex",
+  "minutes": 65,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tsp chili powder.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 190,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 4,
+    "text": "4 large",
+    "note": "halved lengthwise, seeds removed"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "diced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can",
+    "note": "14.5 oz, with juice"
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "for serving"
+   }
+  ],
+  "steps": [
+   "Bring the rice and 1½ cups water to a boil in a saucepan, cover and cook on low 15 minutes, then rest 5 minutes. Heat the oven to 400°F.",
+   "Meanwhile, heat the oil in a large skillet over medium heat and cook the onion 5 minutes. Stir in the cumin and chili powder for 30 seconds, then add the tomatoes, black beans, corn and salt and simmer 5 minutes.",
+   "Stir the cooked rice and half the cheese into the skillet.",
+   "Set the pepper halves cut-side up in a 9x13-inch baking dish, pack in the filling and pour ¼ cup water into the dish. Cover with foil and bake 30 minutes.",
+   "Uncover, top with the remaining cheese and bake 10–15 minutes more, until the peppers are tender and the cheese is browned.",
+   "Serve with sour cream. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "quinoa_vegetable_stew",
+  "name": "Peruvian-style quinoa and potato stew",
+  "side": "Crusty bread.",
+  "cuisine": "Peruvian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "red, diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "½-inch dice"
+   },
+   {
+    "ingredient": "quinoa",
+    "amount": 170,
+    "text": "1 cup",
+    "note": "rinsed"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "feta",
+    "amount": 75,
+    "text": "½ cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large pot over medium heat. Cook the onion and bell pepper 6 minutes until soft, then add the garlic, cumin and oregano and stir 1 minute.",
+   "Add the potatoes, quinoa, broth and salt. Bring to a boil, then simmer partly covered for 18–20 minutes, stirring now and then, until the potatoes are tender and the quinoa shows its little white tails.",
+   "Stir in the corn and peas and simmer 3 minutes until hot. It should be like a thick soup; add a splash of water if it gets too thick.",
+   "Ladle into bowls and top with feta and cilantro. Refrigerate leftovers within 2 hours; the stew thickens as it sits, so loosen it with water when reheating."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "curry_channa_rice",
+  "name": "Trinidad-style curry chickpeas with rice",
+  "side": "Sliced cucumber with lime.",
+  "cuisine": "Caribbean",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the jalapeño; the curry powder alone is warm, not hot.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "basmati",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "curry_powder",
+    "amount": 15,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 1,
+    "text": "1",
+    "note": "seeded and minced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 340,
+    "text": "¾ lb",
+    "note": "½-inch dice"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Rinse the rice, then put it in a saucepan with 2¼ cups water and a pinch of the salt. Bring to a boil, cover, cook on low for 15 minutes, then rest off the heat, covered, for 10 minutes.",
+   "Meanwhile, stir the curry powder and cumin with ¼ cup water to make a paste.",
+   "Heat the oil in a large saucepan over medium heat. Cook the onion and jalapeño 5 minutes, add the garlic and thyme for 30 seconds, then add the curry paste and stir 2 minutes until it darkens slightly and smells toasty.",
+   "Add the chickpeas, potatoes, the rest of the salt and 2 cups water. Bring to a boil, then simmer partly covered for 20 minutes until the potatoes are soft.",
+   "Mash some of the chickpeas and potatoes against the side of the pan to thicken the sauce and simmer 3 minutes more. Scatter with cilantro and serve over the rice."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "rice_and_peas_jerk_sweet_potatoes",
+  "name": "Coconut rice and peas with jerk-spiced sweet potatoes",
+  "side": "Lime wedges and sliced cucumber.",
+  "cuisine": "Caribbean",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; the cinnamon and brown sugar keep it sweet and gentle.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "sweet_potato",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "peeled, 1-inch cubes"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 13,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "nutmeg",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 1,
+    "text": "1 can",
+    "note": "13.5 oz"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "smashed"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "whites and greens sliced separately"
+   },
+   {
+    "ingredient": "kidney_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "cut in wedges"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Mix the brown sugar, cinnamon, nutmeg, cayenne, 1 tsp of the thyme and ½ tsp of the salt. On a sheet pan, toss the sweet potatoes with the oil and the spice mix.",
+   "Roast 25–30 minutes, turning once, until tender and caramelized at the edges.",
+   "Meanwhile, rinse the rice. In a saucepan, combine the coconut milk with ⅔ cup water, the garlic, the remaining thyme and salt, and the scallion whites, and bring to a boil.",
+   "Stir in the rice and kidney beans, return to a boil, then cover and cook on the lowest heat 18 minutes. Rest off the heat, covered, 10 minutes, then fluff with a fork and pick out the garlic.",
+   "Serve the rice and peas topped with the sweet potatoes and scallion greens, with lime wedges."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "bean_tamale_pie",
+  "name": "Two-bean tamale pie",
+  "side": "Sliced avocado and a green salad.",
+  "cuisine": "Tex-Mex",
+  "minutes": 70,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tsp chili powder and a mild enchilada sauce.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pinto_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "enchilada_sauce",
+    "amount": 283,
+    "text": "1 can",
+    "note": "10 oz"
+   },
+   {
+    "ingredient": "milk",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cornmeal",
+    "amount": 150,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "grated"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 375°F. Heat the oil in a large skillet over medium heat and cook the onion and pepper 6 minutes until soft. Stir in the chili powder and cumin for 30 seconds.",
+   "Add the pinto beans, black beans, corn and enchilada sauce and simmer 5 minutes. Spread the mixture in a 9x13-inch baking dish.",
+   "For the topping, bring the milk, 2½ cups water and the salt to a boil in a saucepan. Slowly whisk in the cornmeal, then cook over low heat, stirring often, 8–10 minutes until thick enough to hold a spoon upright. It bubbles and spits, so use a long spoon. Stir in half the cheddar.",
+   "Spread the cornmeal over the beans right to the edges and sprinkle with the remaining cheddar.",
+   "Bake 25–30 minutes, until the filling bubbles at the edges and the top is lightly browned. Rest 10 minutes before cutting. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "crispy_potato_tacos",
+  "name": "Crispy potato tacos",
+  "side": "Shredded cabbage, salsa and sour cream.",
+  "cuisine": "Mexican",
+  "minutes": 45,
+  "difficulty": "Medium",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "potatoes_russet",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "peeled, 1-inch cubes"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 84,
+    "text": "6 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 150,
+    "text": "2 cups",
+    "note": "finely shredded"
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 250,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Cover the potatoes with water in a saucepan, add ½ tsp of the salt and boil 12–15 minutes until very tender. Drain well and mash with the cheese, garlic powder, cumin and the rest of the salt.",
+   "Warm the tortillas in a dry skillet 20 seconds a side and keep them stacked in a clean towel so they bend without cracking.",
+   "Spread about 3 tbsp of potato over half of each tortilla, fold it over and press gently. Pin with a toothpick if it springs open.",
+   "Heat 3 tbsp oil in a large skillet over medium heat. Fry the tacos in batches, 2–3 minutes per side, until golden and crisp, adding more oil between batches. Drain on paper towels and remove any toothpicks.",
+   "Open each taco slightly, tuck in some cabbage, and serve with salsa and sour cream."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "potato_egg_burritos",
+  "name": "Potato, egg and pepper burritos",
+  "side": "Salsa and orange slices.",
+  "cuisine": "Tex-Mex",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "½-inch dice"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "diced"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 125,
+    "text": "½ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large nonstick skillet over medium heat. Add the potatoes in a single layer and cook 12–15 minutes, turning every few minutes, until golden and tender when pierced.",
+   "Add the bell pepper, onion, smoked paprika and half the salt and cook 5 minutes until the vegetables soften. Move everything to a bowl.",
+   "Beat the eggs with the rest of the salt and the black pepper. Melt the butter in the skillet over medium-low heat, add the eggs and stir slowly 3–4 minutes, until softly set with no runny egg left.",
+   "Warm the tortillas in a dry skillet 20 seconds a side.",
+   "Divide the potatoes, eggs and cheddar among the tortillas and add a spoonful of salsa. Fold in the sides, roll up tightly and toast seam-side down in the skillet 1–2 minutes to seal."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "mushroom_pepper_fajitas",
+  "name": "Mushroom and pepper fajitas",
+  "side": "Black beans or Mexican rice.",
+  "cuisine": "Tex-Mex",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tsp chili powder; the smoked paprika keeps the flavor without heat.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chili_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 454,
+    "text": "2 packs (1 lb)",
+    "note": "thickly sliced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Mix the chili powder, cumin, smoked paprika, garlic powder and salt in a small bowl.",
+   "Heat 1½ tbsp oil in a large skillet over high heat. Add the mushrooms in a single layer and cook without stirring for 4 minutes until browned, then stir and cook 3 minutes more. Sprinkle with half the spice mix and move to a bowl.",
+   "Add the remaining oil, the peppers and onion and cook 6–8 minutes, stirring now and then, until tender-crisp and charred in spots. Add the rest of the spice mix, return the mushrooms and squeeze over the juice of 1 lime.",
+   "Warm the tortillas in a dry skillet 20 seconds per side.",
+   "Serve the vegetables in the tortillas with cheese, sour cream, avocado and wedges of the second lime."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "pinto_tortilla_soup",
+  "name": "Smoky tortilla soup with pinto beans",
+  "side": "Extra lime wedges and warm tortillas.",
+  "cuisine": "Mexican",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the chipotle; the soup is still full of flavor.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "chipotle_adobo",
+    "amount": 10,
+    "text": "1 chipotle",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can",
+    "note": "14.5 oz, with juice"
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 946,
+    "text": "1 carton (about 4 cups)",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pinto_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "tortilla_chips",
+    "amount": 113,
+    "text": "4 oz (about 4 cups)",
+    "note": "lightly crushed"
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large pot over medium heat. Cook the onion 5 minutes until soft, then add the garlic, chipotle and cumin and stir 1 minute.",
+   "Add the tomatoes with their juice, the broth, 1 cup water and the salt. Bring to a boil and simmer 10 minutes.",
+   "Add the pinto beans and corn and simmer 10 minutes more.",
+   "Stir in the juice of the lime, then taste and add a pinch more salt if needed.",
+   "Ladle into bowls and top with tortilla chips, cheese and avocado. Refrigerate leftovers within 2 hours, keeping the chips separate."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "green_chile_spinach_enchiladas",
+  "name": "Creamy green chile spinach enchiladas",
+  "side": "Sliced tomatoes and a squeeze of lime.",
+  "cuisine": "Tex-Mex",
+  "minutes": 50,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "green_chiles",
+    "amount": 113,
+    "text": "1 can",
+    "note": "4 oz, with juice"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_spinach",
+    "amount": 283,
+    "text": "1 box (10 oz)",
+    "note": "thawed and squeezed dry"
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "cream_cheese",
+    "amount": 113,
+    "text": "4 oz",
+    "note": "softened"
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 226,
+    "text": "2 cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 375°F. Melt the butter in a saucepan over medium heat and cook the onion 4 minutes. Add the garlic and cumin for 30 seconds, then the flour, and stir 1 minute.",
+   "Whisk in the broth and simmer 2–3 minutes until thickened. Off the heat, stir in the sour cream, green chiles and salt.",
+   "In a bowl, mix the spinach, black beans, cream cheese, 1 cup of the jack and ½ cup of the sauce.",
+   "Spread ½ cup sauce over the bottom of a 9x13-inch baking dish. Fill and roll the tortillas and lay them seam-side down. Pour the rest of the sauce over and sprinkle with the remaining cheese.",
+   "Bake 20–25 minutes until bubbling and lightly browned. Rest 5 minutes before serving. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "chicken_tinga_tacos",
+  "name": "Chicken tinga tacos",
+  "side": "Sliced avocado, sour cream and lime.",
+  "cuisine": "Mexican",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Use 1 chipotle and no extra adobo sauce for a smoky, mild tinga.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can",
+    "note": "14.5 oz"
+   },
+   {
+    "ingredient": "chipotle_adobo",
+    "amount": 35,
+    "text": "2 chipotles plus 1 tbsp sauce",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "boneless"
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "cut in wedges"
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large, deep skillet over medium heat. Cook the onion 6 minutes until soft, then add the garlic and oregano for 30 seconds.",
+   "Blend or mash the tomatoes with the chipotles and adobo sauce, then add them to the skillet with the salt and ½ cup water. Bring to a simmer.",
+   "Add the chicken thighs (no need to rinse raw chicken), cover and simmer over medium-low 18–20 minutes, turning once, until the thickest piece reads 165°F.",
+   "Move the chicken to a board, shred it with two forks and return it to the sauce. Simmer uncovered 5 minutes until the sauce clings.",
+   "Warm the tortillas in a dry skillet 30 seconds a side and keep them wrapped in a clean towel.",
+   "Fill the tortillas with tinga and top with avocado, sour cream and cilantro, with lime wedges on the side. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, before adding the chicken, spoon 1 cup of the sauce into a small pan and simmer a drained can of pinto beans in it for 10 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "pinto_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "sheet_pan_chicken_fajitas",
+  "name": "Sheet-pan chicken fajitas",
+  "side": "Sour cream, avocado and lime wedges.",
+  "cuisine": "Tex-Mex",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tsp chili powder and leave the heat to hot sauce at the table.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chili_powder",
+    "amount": 8,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into ½-inch strips"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Mix the chili powder, cumin, smoked paprika, garlic powder and salt. Don't rinse the chicken; just cut it straight into strips.",
+   "On a large sheet pan, toss the chicken, peppers and onion with the oil and spice mix and spread everything in a single layer (use two pans if crowded). Wash your hands and board after handling the raw chicken.",
+   "Roast 18–22 minutes, stirring halfway, until the thickest chicken strip reads 165°F and the peppers are tender and browned at the edges.",
+   "Squeeze the juice of 1 lime over the pan. Wrap the tortillas in foil and warm them in the oven for the last 5 minutes.",
+   "Serve in the tortillas with sour cream, avocado and wedges of the second lime. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, roast some of the peppers and onion on a separate small pan with a drained can of black beans and a pinch of the spice mix.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "carne_asada_tacos",
+  "name": "Carne asada tacos",
+  "side": "Salsa, avocado and lime wedges.",
+  "cuisine": "Mexican",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tsp chili powder and a mild salsa.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "orange",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flank_steak",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 15,
+    "text": "¾ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 250,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   }
+  ],
+  "steps": [
+   "In a shallow dish, whisk the orange juice, the juice of 1 lime, the garlic, cumin, chili powder, 2 tbsp oil and the salt. Add the steak, turn to coat and marinate in the fridge for 30 minutes (or up to 8 hours).",
+   "Lift the steak out, discard the marinade and pat the steak dry. Heat the remaining oil in a large heavy skillet over high heat until it just smokes.",
+   "Sear the steak 4–6 minutes per side until the thickest part reads 145°F. Rest it on a board for 5 minutes (at least 3).",
+   "Meanwhile, mix the onion and cilantro, and warm the tortillas in a dry skillet 30 seconds a side.",
+   "Slice the steak thinly across the grain, then chop it into bite-size pieces. Fill the tortillas and top with the onion and cilantro, salsa and avocado, with wedges of the second lime."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of pinto beans with a pinch of cumin and a few spoonfuls of the salsa, and use it as the taco filling.",
+   "ingredients": [
+    {
+     "ingredient": "pinto_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "slow_cooker_carnitas",
+  "name": "Slow-cooker pork carnitas",
+  "side": "Warm tortillas, salsa and lime.",
+  "cuisine": "Mexican",
+  "minutes": 450,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "slow_cooker",
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pork_shoulder",
+    "amount": 907,
+    "text": "2 lb",
+    "note": "trimmed, 2-inch chunks"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "quartered"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 5,
+    "text": "5 cloves",
+    "note": "smashed"
+   },
+   {
+    "ingredient": "bay_leaves",
+    "amount": 0.4,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "orange",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 250,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Season the pork with the salt, cumin and oregano and put it in the slow cooker with the onion, garlic and bay leaves.",
+   "Pour over the orange juice and the juice of 1 lime. Cover and cook on LOW for 7 hours or HIGH for 4 hours, until the pork shreds easily with a fork (it will be well above 145°F).",
+   "Lift out the pork, discard the onion and bay leaves, and shred the meat with two forks. Heat the broiler to high.",
+   "Spread the pork on a sheet pan, drizzle with ½ cup of the cooking juices and broil about 4 inches from the heat for 4–6 minutes until crisp at the edges. Stir and broil 2–3 minutes more.",
+   "Warm the tortillas in a dry skillet and fill them with pork, salsa and cilantro, with wedges of the second lime. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of black beans with a squeeze of orange and a pinch of cumin in a small pan for 10 minutes and use as the filling.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "pork_pozole_style_soup",
+  "name": "Red pozole-style pork and bean soup",
+  "side": "Shredded cabbage, radishes and lime at the table.",
+  "cuisine": "Mexican",
+  "minutes": 120,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use a mild enchilada sauce; the toppings keep it fresh, not hot.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pork_shoulder",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "trimmed, 1-inch cubes"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "enchilada_sauce",
+    "amount": 283,
+    "text": "1 can",
+    "note": "10 oz"
+   },
+   {
+    "ingredient": "white_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 150,
+    "text": "2 cups",
+    "note": "finely shredded"
+   },
+   {
+    "ingredient": "radishes",
+    "amount": 90,
+    "text": "6",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": "cut in wedges"
+   }
+  ],
+  "steps": [
+   "Pat the pork dry and season with the salt. Heat the oil in a large pot over medium-high heat and brown the pork in two batches, about 5 minutes per batch.",
+   "Add the onion and cook 4 minutes, then stir in the garlic, oregano and cumin for 1 minute.",
+   "Pour in the broth and enchilada sauce, scraping up the browned bits. Bring to a boil, then cover partly and simmer on low for 1¼–1½ hours until the pork is fork-tender (well above 145°F).",
+   "Add the white beans and corn and simmer 10 minutes more.",
+   "Ladle into bowls and let everyone top their own with cabbage, radishes and a squeeze of lime. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of white beans and some corn in vegetable broth with a spoonful of enchilada sauce for 10 minutes, with the same toppings.",
+   "ingredients": [
+    {
+     "ingredient": "veg_broth",
+     "amount": 480,
+     "text": "2 cups",
+     "note": ""
+    },
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_enchiladas_rojas",
+  "name": "Red chicken enchiladas",
+  "side": "Shredded romaine and sour cream.",
+  "cuisine": "Mexican",
+  "minutes": 50,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 1,
+  "mildNote": "Choose a mild enchilada sauce; the dish is then gentle enough for kids.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "diced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "enchilada_sauce",
+    "amount": 566,
+    "text": "2 cans",
+    "note": "10 oz each"
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "grated"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "for serving"
+   }
+  ],
+  "steps": [
+   "Put the chicken in a saucepan, cover with water by 1 inch, add ½ tsp of the salt and bring to a simmer. Cook gently 15–18 minutes until the thickest part reads 165°F, then shred with two forks.",
+   "Heat the oven to 400°F. Heat 1 tbsp oil in a skillet over medium heat and cook the onion 4 minutes. Add the cumin for 30 seconds, then stir in the chicken, ½ cup of the enchilada sauce and the rest of the salt.",
+   "Brush the tortillas lightly with the remaining oil and warm them in a dry skillet 15 seconds a side so they roll without cracking.",
+   "Spread ½ cup sauce in a 9x13-inch baking dish. Fill each tortilla with chicken and a little cheese, roll it up and lay it seam-side down. Pour over the rest of the sauce and top with the remaining cheese.",
+   "Bake 15–20 minutes until bubbling. Scatter with cilantro and serve with sour cream. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, fill 3 tortillas with mashed black beans and cheese and bake them in a small dish alongside, with a little of the sauce on top.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and mashed"
+    },
+    {
+     "ingredient": "corn_tortillas",
+     "amount": 3,
+     "text": "3",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "oven_crisp_beef_burritos",
+  "name": "Oven-crisp beef and bean burritos",
+  "side": "Salsa and sour cream.",
+  "cuisine": "Tex-Mex",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop",
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tsp chili powder and a mild salsa.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 8,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 213,
+    "text": "½ can (about ¾ cup)",
+    "note": ""
+   },
+   {
+    "ingredient": "pinto_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and mashed"
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "grated"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 250,
+    "text": "1 cup",
+    "note": "for serving"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "for serving"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Cook the beef and onion in a large skillet over medium-high heat, breaking up the meat, 7–8 minutes until browned with no pink left and 160°F. Spoon off excess fat.",
+   "Stir in the chili powder, cumin, garlic powder and salt for 1 minute, then add the tomato sauce and mashed beans and simmer 5 minutes until thick.",
+   "Divide the filling and cheese among the tortillas, fold in the sides and roll up tightly. Place seam-side down on a sheet pan and brush the tops with the oil.",
+   "Bake 15–18 minutes until golden and crisp.",
+   "Serve with salsa and sour cream. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, fill 2 tortillas with mashed pinto beans, cheese and a spoonful of salsa and bake them on the same pan.",
+   "ingredients": [
+    {
+     "ingredient": "pinto_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and mashed"
+    },
+    {
+     "ingredient": "tortillas",
+     "amount": 2,
+     "text": "2",
+     "note": "8 in flour"
+    }
+   ]
+  }
+ },
+ {
+  "id": "cuban_picadillo",
+  "name": "Cuban picadillo with rice",
+  "side": "Sliced avocado or a green salad.",
+  "cuisine": "Cuban",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "or other long-grain white rice"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 340,
+    "text": "¾ lb",
+    "note": "½-inch dice"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "green, diced"
+   },
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can",
+    "note": "15 oz"
+   },
+   {
+    "ingredient": "raisins",
+    "amount": 50,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 45,
+    "text": "⅓ cup",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Rinse the rice, then put it in a saucepan with 2¼ cups water and a pinch of the salt. Bring to a boil, cover, cook on low for 15 minutes, then rest off the heat, covered, for 10 minutes.",
+   "Meanwhile, heat 1 tbsp oil in a large skillet over medium heat and cook the potatoes 8–10 minutes, stirring, until browned and nearly tender. Move them to a plate.",
+   "Add the remaining oil, the onion and bell pepper and cook 5 minutes. Add the beef and cook, breaking it up, 6–7 minutes until no pink remains and it reaches 160°F. Spoon off excess fat, then stir in the garlic, cumin and oregano for 1 minute.",
+   "Add the tomato sauce, raisins, olives, potatoes, the rest of the salt and ½ cup water. Cover and simmer 10 minutes until the potatoes are tender and the sauce is thick.",
+   "Serve the picadillo over the rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of black beans with a little cumin, oregano and a spoonful of the tomato sauce (taken out before it goes in the pan) for 10 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "cuban_mojo_pork_tenderloin",
+  "name": "Cuban mojo pork tenderloin",
+  "side": "Black beans on the side.",
+  "cuisine": "Cuban",
+  "minutes": 65,
+  "difficulty": "Medium",
+  "protein": "pork",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "orange",
+    "amount": 2,
+    "text": "2",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 6,
+    "text": "6 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pork_tenderloin",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Whisk the orange and lime juice, garlic, cumin, oregano, 2 tbsp oil, ½ tsp of the salt and the pepper. Set aside ¼ cup of this mojo before it touches the raw pork and toss it with the red onion.",
+   "Put the pork in a dish, pour over the rest of the mojo and marinate in the fridge for 30 minutes (or up to 8 hours). Heat the oven to 425°F.",
+   "Rinse the rice, then put it in a saucepan with 2¼ cups water and the rest of the salt. Bring to a boil, cover, cook on low 15 minutes, then rest off the heat 10 minutes.",
+   "Lift the pork from the marinade, discard the marinade and pat the pork dry. Heat the remaining oil in an ovenproof skillet over medium-high heat and sear the pork 2 minutes per side until browned all over.",
+   "Move the skillet to the oven and roast 12–18 minutes, until the thickest part reads 145°F. Rest on a board for 5 minutes (at least 3).",
+   "Slice the pork and serve over the rice, topped with the onions and their mojo. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of black beans in a small pan with a spoonful of the reserved mojo and onions.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "slow_cooker_ropa_vieja",
+  "name": "Slow-cooker ropa vieja",
+  "side": "Black beans on the side.",
+  "cuisine": "Cuban",
+  "minutes": 455,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "slow_cooker",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "flank_steak",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 3 pieces"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "1 red and 1 green, sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can",
+    "note": "15 oz"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": "red wine"
+   },
+   {
+    "ingredient": "bay_leaves",
+    "amount": 0.4,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "capers",
+    "amount": 18,
+    "text": "2 tbsp",
+    "note": "drained"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Season the steak with ½ tsp of the salt and lay it in the slow cooker. Scatter over the onion, peppers and garlic.",
+   "Whisk the tomato sauce, tomato paste, cumin, oregano, vinegar and ½ cup water, pour it over the beef and tuck in the bay leaves.",
+   "Cover and cook on LOW for 7 hours or HIGH for 4 hours, until the beef shreds easily with a fork (well above 145°F).",
+   "About 25 minutes before serving, rinse the rice and put it in a saucepan with 2¼ cups water and the rest of the salt. Bring to a boil, cover, cook on low 15 minutes, then rest off the heat 10 minutes.",
+   "Remove the bay leaves, shred the beef right in the cooker with two forks and stir in the capers.",
+   "Serve over the rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of black beans with half a can of diced tomatoes and a pinch of cumin and oregano in a small pan for 15 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "tomatoes_diced",
+     "amount": 205,
+     "text": "½ can",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "peruvian_drumsticks_green_sauce",
+  "name": "Peruvian-style roast drumsticks with green sauce",
+  "side": "Roasted potato wedges, cooked on the second pan.",
+  "cuisine": "Peruvian",
+  "minutes": 60,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Seed the jalapeño or leave it out of the sauce; the chicken itself isn't spicy.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "garlic",
+    "amount": 5,
+    "text": "5 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "chicken_drumsticks",
+    "amount": 1135,
+    "text": "8 (about 2½ lb)",
+    "note": ""
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into wedges"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 30,
+    "text": "1 packed cup",
+    "note": ""
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 1,
+    "text": "1",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Mix 4 of the garlic cloves with the cumin, paprika, oregano, soy sauce, the juice of 1 lime, 1 tbsp oil and ½ tsp of the salt. Rub it over the drumsticks (don't rinse them) and lay them on a foil-lined sheet pan.",
+   "On a second sheet pan, toss the potato wedges with the remaining oil and salt.",
+   "Roast both pans 40–45 minutes, turning everything once halfway, until the potatoes are crisp and the drumsticks are browned and read 165°F next to the bone (they're juiciest around 175°F).",
+   "Meanwhile, blend the cilantro, jalapeño, the last garlic clove, the mayo, the juice of the second lime and 1 tbsp water until smooth.",
+   "Serve the chicken and potatoes with the green sauce for dipping. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, toss a drained can of chickpeas with a little oil, cumin and paprika in a separate bowl and roast them on the potato pan for the last 20 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "lomo_saltado",
+  "name": "Lomo saltado",
+  "side": "Served with rice and oven fries, as in Peru.",
+  "cuisine": "Peruvian",
+  "minutes": 45,
+  "difficulty": "Medium",
+  "protein": "beef",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the jalapeño; the soy and vinegar sauce isn't spicy.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "potatoes_russet",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into ½-inch fries"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 56,
+    "text": "4 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "sirloin",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into thin strips"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1",
+    "note": "cut into thick wedges"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 1,
+    "text": "1",
+    "note": "seeded, cut into strips"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 270,
+    "text": "3",
+    "note": "cut into wedges"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "red wine"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 450°F. Toss the fries with 2 tbsp oil and ½ tsp of the salt on a sheet pan and roast 30–35 minutes, turning once, until golden.",
+   "Meanwhile, rinse the rice and put it in a saucepan with 2¼ cups water and the rest of the salt. Bring to a boil, cover, cook on low 15 minutes, then rest off the heat 10 minutes.",
+   "Toss the beef with the cumin, pepper and garlic. Heat 1 tbsp oil in a large skillet over high heat until shimmering and sear the beef in two batches, 1–2 minutes per side, until browned and 145°F inside. Move it to a plate and let it rest 3 minutes.",
+   "Add the last 1 tbsp oil, the onion and jalapeño and stir-fry 2 minutes until the edges char but the onion is still crisp. Add the tomatoes and cook 1 minute.",
+   "Return the beef and its juices, add the soy sauce and vinegar and toss 30 seconds until glossy. Fold in the fries and cilantro.",
+   "Serve right away with the rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, press and cube half a block of tofu, brown it in a small pan and toss it with some of the onions, tomatoes, soy sauce and vinegar.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "pressed and cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "jerk_chicken_mango_salsa",
+  "name": "Jerk chicken thighs with mango salsa",
+  "side": "Rice and a green salad.",
+  "cuisine": "Caribbean",
+  "minutes": 70,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Leave the jalapeño out of the marinade and use only half, seeded, in the salsa.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "scallions",
+    "amount": 6,
+    "text": "6",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 2,
+    "text": "2",
+    "note": "1 chopped, 1 seeded and finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": ""
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "nutmeg",
+    "amount": 0.6,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 13,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "boneless"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "mango",
+    "amount": 2,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 55,
+    "text": "¼",
+    "note": "finely diced"
+   }
+  ],
+  "steps": [
+   "Blend 4 of the scallions, the chopped jalapeño, garlic, thyme, cinnamon, nutmeg, brown sugar, soy sauce, the juice of 1 lime and the oil into a paste. Coat the chicken (don't rinse it) and marinate in the fridge for 30 minutes or up to overnight.",
+   "Heat the oven to 425°F. Rinse the rice and put it in a saucepan with 2¼ cups water. Bring to a boil, cover, cook on low 15 minutes, then rest off the heat 10 minutes.",
+   "Lay the chicken on a foil-lined sheet pan and spoon over the marinade. Roast 20–25 minutes until the thickest piece reads 165°F, then broil 2–3 minutes to char the edges.",
+   "Meanwhile, mix the mango, red onion, the remaining scallions, the diced jalapeño and the juice of the second lime.",
+   "Rest the chicken 5 minutes, slice and serve over the rice with the mango salsa. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside 2 tbsp of the paste before it touches the chicken, toss it with cubed sweet potato and roast on a separate small pan for 25–30 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "sweet_potato",
+     "amount": 340,
+     "text": "¾ lb",
+     "note": "1-inch cubes"
+    }
+   ]
+  }
+ },
+ {
+  "id": "pork_al_pastor_tacos",
+  "name": "Pork al pastor-style tacos with pineapple",
+  "side": "Black beans or a crunchy slaw.",
+  "cuisine": "Mexican",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tsp chili powder; the pineapple keeps it sweet.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chili_powder",
+    "amount": 8,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "cider_vinegar",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pork_chops",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "boneless, sliced into thin strips"
+   },
+   {
+    "ingredient": "pineapple",
+    "amount": 0.5,
+    "text": "½",
+    "note": "peeled, cored, small pieces"
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 15,
+    "text": "¾ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "cut in wedges"
+   }
+  ],
+  "steps": [
+   "Mix the chili powder, smoked paprika, cumin, oregano, garlic, vinegar, 1 tbsp oil and the salt into a paste. Toss the pork strips in it and marinate in the fridge for 15 minutes.",
+   "Heat a large skillet over medium-high heat and cook the pineapple 4–5 minutes, stirring now and then, until caramelized in spots. Move it to a plate.",
+   "Add the remaining oil and cook the pork in two batches in a single layer, 2–3 minutes per side, until charred at the edges and 145°F inside. Rest 3 minutes, then chop.",
+   "Mix the onion and cilantro, and warm the tortillas in a dry skillet 30 seconds a side.",
+   "Fill the tortillas with pork and pineapple, top with the onion and cilantro, and serve with lime wedges. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside a spoonful of the spice paste before it touches the pork and cook it with a drained can of pinto beans in a small pan for 5 minutes. Serve with the pineapple.",
+   "ingredients": [
+    {
+     "ingredient": "pinto_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "spiced_tilapia_tacos",
+  "name": "Spiced tilapia tacos with lime slaw",
+  "side": "Sliced avocado and lime crema.",
+  "cuisine": "Mexican",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tsp chili powder; the slaw and crema cool it down.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "cabbage",
+    "amount": 225,
+    "text": "3 cups",
+    "note": "finely shredded"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "tilapia",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Toss the cabbage with the juice of 1 lime, the cilantro and ¼ tsp of the salt. Stir the sour cream with 1 tbsp juice from the second lime to make a crema; cut the rest of that lime into wedges.",
+   "Pat the fish dry and season both sides with the chili powder, cumin, garlic powder and the rest of the salt.",
+   "Heat the oil in a large nonstick skillet over medium-high heat. Cook the fillets 3–4 minutes per side until they flake easily and reach 145°F. Break into large chunks.",
+   "Warm the tortillas in a dry skillet 30 seconds a side.",
+   "Fill the tortillas with fish, slaw and avocado, drizzle with the crema and serve with lime wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of black beans with a pinch of the same spices in a small pan and use it in place of the fish.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "veracruz_cod",
+  "name": "Veracruz-style cod with tomatoes and olives",
+  "side": "Rice and a green salad.",
+  "cuisine": "Mexican",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the jalapeño; the olives and capers carry the flavor.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 1,
+    "text": "1",
+    "note": "seeded and sliced"
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 822,
+    "text": "2 cans",
+    "note": "14.5 oz each"
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 60,
+    "text": "½ cup",
+    "note": "halved"
+   },
+   {
+    "ingredient": "capers",
+    "amount": 18,
+    "text": "2 tbsp",
+    "note": "drained"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bay_leaves",
+    "amount": 0.2,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "cod",
+    "amount": 680,
+    "text": "4 fillets (1½ lb)",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "¼ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Rinse the rice, then put it in a saucepan with 2¼ cups water and a pinch of the salt. Bring to a boil, cover, cook on low for 15 minutes, then rest off the heat, covered, for 10 minutes.",
+   "Meanwhile, heat 2 tbsp oil in a large, deep skillet over medium heat. Cook the onion 6 minutes until soft, then add the garlic and jalapeño for 1 minute.",
+   "Add the tomatoes, olives, capers, oregano, bay leaf and half the remaining salt. Simmer 10 minutes until slightly thickened.",
+   "Season the cod with the rest of the salt, nestle it into the sauce and drizzle with the last 1 tbsp oil. Cover and simmer gently 8–10 minutes until the fish flakes easily and reaches 145°F.",
+   "Remove the bay leaf, scatter with parsley and serve over the rice."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a drained can of white beans in a ladle of the sauce in a small pan before the fish goes in.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "moqueca_shrimp_stew",
+  "name": "Brazilian-style shrimp and coconut stew",
+  "side": "Rice to soak up the sauce.",
+  "cuisine": "Brazilian",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "shrimp",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "thawed, peeled"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "red and yellow, sliced"
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can",
+    "note": "14.5 oz"
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 1,
+    "text": "1 can",
+    "note": "13.5 oz"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 15,
+    "text": "¾ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Toss the shrimp with the juice of 1 lime, the garlic and ½ tsp of the salt and keep in the fridge while you start the rice.",
+   "Rinse the rice and put it in a saucepan with 2¼ cups water and a pinch of salt. Bring to a boil, cover, cook on low 15 minutes, then rest off the heat 10 minutes.",
+   "Heat the oil in a large, deep skillet over medium heat. Cook the onion and peppers 6–8 minutes until soft, then stir in the paprika for 30 seconds.",
+   "Add the tomatoes, coconut milk and the rest of the salt and simmer 10 minutes until slightly thickened.",
+   "Add the shrimp and their juices and simmer 3–4 minutes, until pink and opaque all the way through.",
+   "Stir in the juice of the second lime and the cilantro, and serve over the rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, ladle a cup of the sauce into a small pan before the shrimp go in and simmer a drained can of chickpeas in it for 5 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chili_lime_salmon_corn_salsa",
+  "name": "Chili-lime salmon with black bean and corn salsa",
+  "side": "Warm tortillas or rice.",
+  "cuisine": "Tex-Mex",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tsp chili powder on the kids' fillets.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "salmon",
+    "amount": 680,
+    "text": "4 fillets (1½ lb)",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 210,
+    "text": "1½ cups",
+    "note": "thawed"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 150,
+    "text": "1 cup",
+    "note": "quartered"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 55,
+    "text": "¼",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F and line a sheet pan with foil.",
+   "Mix the chili powder, cumin, honey, 1 tbsp oil, ½ tsp of the salt and the juice of ½ lime. Lay the salmon skin-side down on the pan and brush the mixture over the tops.",
+   "Roast 10–14 minutes, until the salmon flakes easily and reaches 145°F at the thickest part.",
+   "Meanwhile, mix the black beans, corn, tomatoes, red onion, cilantro and avocado with the remaining oil and salt and the juice of the remaining 1½ limes.",
+   "Serve the salmon with the salsa spooned over."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, add an extra can of black beans to their share of the salsa and serve it with warm tortillas.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chorizo_potato_tacos",
+  "name": "Chorizo and potato tacos",
+  "side": "Salsa and lime wedges.",
+  "cuisine": "Mexican",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Mexican chorizo varies in heat; choose a mild one and serve sour cream for the kids.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "potatoes",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "½-inch dice"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chorizo",
+    "amount": 340,
+    "text": "12 oz",
+    "note": "casings removed"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "diced"
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   },
+   {
+    "ingredient": "feta",
+    "amount": 75,
+    "text": "½ cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 125,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "cut in wedges"
+   }
+  ],
+  "steps": [
+   "Put the potatoes in a saucepan, cover with water, add the salt and boil 6–8 minutes until just tender. Drain.",
+   "Cook the chorizo in a large skillet over medium heat, breaking it up, 6–8 minutes until the fat renders and it is cooked through to 160°F.",
+   "Push the chorizo aside, add the oil and onion and cook 3 minutes. Add the potatoes and cook 6–8 minutes, stirring now and then, until they crisp in spots and soak up the chorizo fat.",
+   "Warm the tortillas in a dry skillet 30 seconds a side.",
+   "Fill the tortillas with the chorizo and potatoes and top with feta, cilantro and salsa, with lime wedges. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, set aside some of the boiled potatoes and onion and brown them in a small pan with a drained can of black beans and a pinch of cumin.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "arroz_con_pollo",
+  "name": "Arroz con pollo",
+  "side": "Sliced avocado and lime wedges.",
+  "cuisine": "Caribbean",
+  "minutes": 50,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "boneless"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": "or other long-grain white rice"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 660,
+    "text": "2¾ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Pat the chicken dry (don't rinse it) and season with half the salt, the paprika and cumin. Heat the oil in a large, deep skillet or pot with a lid over medium-high heat and brown the thighs 4 minutes per side. Move them to a plate; they finish cooking later.",
+   "Turn the heat to medium. Cook the onion and pepper 5 minutes, then stir in the garlic, turmeric and tomato paste for 1 minute.",
+   "Add the rice and stir 1 minute to coat. Pour in the broth with the rest of the salt and bring to a boil, scraping up the browned bits.",
+   "Nestle the chicken into the rice, cover and cook on low 20 minutes, until the rice has absorbed the liquid and the thickest piece of chicken reads 165°F.",
+   "Scatter the peas over the top, cover again and rest off the heat 5–10 minutes. Fluff the rice around the chicken and serve. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, cook ½ cup rice in a small covered pot with 1 cup vegetable broth, a pinch of turmeric and a drained can of black beans for 18 minutes, adding a handful of peas at the end.",
+   "ingredients": [
+    {
+     "ingredient": "jasmine",
+     "amount": 95,
+     "text": "½ cup",
+     "note": ""
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 240,
+     "text": "1 cup",
+     "note": ""
+    },
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "turkey_enchilada_skillet",
+  "name": "Turkey enchilada skillet",
+  "side": "Shredded romaine with lime.",
+  "cuisine": "Tex-Mex",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "turkey",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 1,
+  "mildNote": "Use a mild enchilada sauce; the sour cream softens any heat.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ground_turkey",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "diced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "enchilada_sauce",
+    "amount": 566,
+    "text": "2 cans",
+    "note": "10 oz each"
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "cut into 1-inch strips"
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Heat the broiler to high. Heat the oil in a large ovenproof skillet over medium-high heat and cook the turkey and onion, breaking up the meat, 7–8 minutes until no pink remains and it reaches 165°F.",
+   "Stir in the cumin and salt, then the enchilada sauce, black beans, corn and ½ cup water, and simmer 3 minutes.",
+   "Stir in the tortilla strips and simmer 5 minutes, stirring now and then, until they soften and the sauce thickens.",
+   "Sprinkle with the cheese and broil 2–3 minutes until melted and bubbling, watching closely.",
+   "Top with sour cream and scallions. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, take out ½ cup of enchilada sauce first and simmer it in a small pan with a drained can of pinto beans and a few tortilla strips, then top with cheese.",
+   "ingredients": [
+    {
+     "ingredient": "pinto_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "beef_taco_rice_skillet",
+  "name": "One-pan beef taco rice",
+  "side": "Sour cream and sliced avocado.",
+  "cuisine": "Tex-Mex",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tsp chili powder and a mild salsa.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "diced"
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 8,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 190,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 250,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "beef_broth",
+    "amount": 360,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "romaine",
+    "amount": 1,
+    "text": "1 heart",
+    "note": "shredded"
+   }
+  ],
+  "steps": [
+   "Cook the beef and onion in a large, deep skillet with a lid over medium-high heat, breaking up the meat, 7–8 minutes until browned with no pink left and 160°F. Spoon off excess fat.",
+   "Stir in the chili powder, cumin, garlic powder, salt and rice and cook 1 minute.",
+   "Add the salsa and broth and bring to a boil. Cover and simmer on low 18–20 minutes until the rice is tender, stirring in the corn for the last 5 minutes.",
+   "Sprinkle with the cheddar, cover and leave 2 minutes to melt.",
+   "Serve topped with shredded romaine. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of black beans with a spoonful of salsa and a pinch of cumin, and serve it over a little of the cheese and romaine.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "turkey_taco_salad",
+  "name": "Turkey taco salad",
+  "side": "Extra tortilla chips on the side.",
+  "cuisine": "Tex-Mex",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "turkey",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tsp chili powder in the turkey.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ground_turkey",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 8,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 213,
+    "text": "½ can (about ¾ cup)",
+    "note": ""
+   },
+   {
+    "ingredient": "kidney_beans",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "romaine",
+    "amount": 3,
+    "text": "3 hearts",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 283,
+    "text": "1 pack (10 oz)",
+    "note": "halved"
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "tortilla_chips",
+    "amount": 113,
+    "text": "4 oz (about 4 cups)",
+    "note": "lightly crushed"
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large skillet over medium-high heat. Cook the turkey, breaking it up, 6–8 minutes until no pink remains and it reaches 165°F.",
+   "Stir in the chili powder, cumin and salt for 1 minute, then add the tomato sauce, kidney beans and ¼ cup water and simmer 5 minutes until thick.",
+   "Whisk the sour cream with the juice of the lime and 1–2 tbsp water to make a pourable dressing.",
+   "Pile the romaine into bowls and top with the warm turkey, tomatoes, cheddar, avocado and tortilla chips. Drizzle with the dressing and serve right away."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a second can of kidney beans with a pinch of chili powder and cumin and a splash of water in a small pan, and use it in place of the turkey.",
+   "ingredients": [
+    {
+     "ingredient": "kidney_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "beef_chile_colorado",
+  "name": "Beef chile colorado",
+  "side": "Warm flour tortillas and rice.",
+  "cuisine": "Mexican",
+  "minutes": 135,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tbsp chili powder; the sauce stays rich and only gently warm.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "beef_chuck",
+    "amount": 907,
+    "text": "2 lb",
+    "note": "1½-inch cubes"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 15,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "beef_broth",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can",
+    "note": "15 oz"
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   }
+  ],
+  "steps": [
+   "Pat the beef dry, season with the salt and toss with the flour.",
+   "Heat the oil in a large heavy pot over medium-high heat and brown the beef in two batches, 5–6 minutes per batch. Move it to a plate.",
+   "Turn the heat to medium, add the onion and cook 5 minutes, then stir in the garlic, chili powder, cumin and oregano for 1 minute.",
+   "Pour in the broth and tomato sauce, scraping up the browned bits, and return the beef. Bring to a boil, then cover and simmer on low for 1¾–2 hours, stirring now and then, until the beef is fork-tender (well above 145°F) and the sauce is thick.",
+   "Warm the tortillas in a dry skillet and serve with the stew. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of pinto beans in a small pan with vegetable broth and a spoonful each of chili powder and the tomato sauce (set aside first) for 15 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "pinto_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 240,
+     "text": "1 cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "feijoada_style_black_beans",
+  "name": "Feijoada-style black beans with kielbasa",
+  "side": "Rice, garlicky greens and orange wedges.",
+  "cuisine": "Brazilian",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "bacon",
+    "amount": 100,
+    "text": "4 slices",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "kielbasa",
+    "amount": 397,
+    "text": "1 rope (14 oz)",
+    "note": "sliced into coins"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "black_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "with their liquid"
+   },
+   {
+    "ingredient": "bay_leaves",
+    "amount": 0.4,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "kale",
+    "amount": 140,
+    "text": "½ bunch",
+    "note": "stems removed, thinly sliced"
+   },
+   {
+    "ingredient": "orange",
+    "amount": 2,
+    "text": "2",
+    "note": "cut in wedges"
+   }
+  ],
+  "steps": [
+   "Rinse the rice, then put it in a saucepan with 2¼ cups water and a pinch of the salt. Bring to a boil, cover, cook on low for 15 minutes, then rest off the heat, covered, for 10 minutes.",
+   "Meanwhile, cook the bacon in a large pot over medium heat 5–6 minutes until crisp and the fat has rendered. Add the kielbasa and brown it 4 minutes.",
+   "Add the onion and cook 5 minutes, then 3 of the garlic cloves and the cumin for 1 minute. Add the beans with their liquid, the bay leaves and 1 cup water, and simmer 20 minutes, mashing a few beans to thicken.",
+   "While the beans simmer, heat the oil in a skillet over medium-high heat and cook the kale with the last garlic clove and the rest of the salt 3–4 minutes until just wilted.",
+   "Remove the bay leaves and serve the beans over the rice with the kale and orange wedges. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of black beans with a little of the onion, garlic and cumin in a small pan for 15 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "with liquid"
+    }
+   ]
+  }
+ },
+ {
+  "id": "ajiaco_chicken_potato_soup",
+  "name": "Colombian-style chicken, potato and corn soup",
+  "side": "Avocado, capers and sour cream at the table.",
+  "cuisine": "Colombian",
+  "minutes": 60,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_broth",
+    "amount": 1892,
+    "text": "2 cartons (about 8 cups)",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "potatoes_russet",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "peeled, ½-inch dice"
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "1-inch chunks"
+   },
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "corn_cobs",
+    "amount": 3,
+    "text": "3",
+    "note": "cut into 2-inch rounds"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "capers",
+    "amount": 36,
+    "text": "¼ cup",
+    "note": "drained"
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 15,
+    "text": "¾ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Put the broth, onion, garlic, oregano and salt in a large pot and bring to a boil.",
+   "Add the russet and Yukon potatoes and the whole chicken breasts. Simmer, partly covered, 20–25 minutes until the thickest part of the chicken reads 165°F. Lift out the chicken.",
+   "Add the corn and simmer 15 minutes more, until the russets break down and thicken the soup. Mash some of the potatoes against the side of the pot.",
+   "Shred the chicken, return it to the pot and heat through for 2 minutes.",
+   "Ladle into bowls with a piece of corn in each, and let everyone add sour cream, capers, avocado and cilantro. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer some potatoes and a round of corn in vegetable broth with a drained can of white beans in a small pot for 20 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "veg_broth",
+     "amount": 720,
+     "text": "3 cups",
+     "note": ""
+    },
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chimichurri_steak_potatoes",
+  "name": "Chimichurri steak with roasted potatoes",
+  "side": "A tomato and red onion salad.",
+  "cuisine": "Argentine",
+  "minutes": 45,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "potatoes",
+    "amount": 907,
+    "text": "2 lb",
+    "note": "1-inch chunks"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 122,
+    "text": "½ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 35,
+    "text": "1 packed cup",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "red wine"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_flakes",
+    "amount": 0.5,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sirloin",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "about 1 inch thick"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F. Toss the potatoes with 2 tbsp oil and ½ tsp of the salt on a sheet pan and roast 30–35 minutes, turning once, until crisp and tender.",
+   "Make the chimichurri: mix the parsley, garlic, vinegar, oregano, chili flakes, ⅓ cup oil and ½ tsp of the salt. Let it stand 10 minutes.",
+   "Pat the steak dry and season with the rest of the salt and the pepper. Heat the last 1 tbsp oil in a heavy skillet over medium-high heat until shimmering, and sear the steak 4–5 minutes per side until the center reads 145°F.",
+   "Rest the steak on a board for 5 minutes (at least 3), then slice thinly across the grain.",
+   "Serve the steak and potatoes with the chimichurri spooned over. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, toss a drained can of white beans with a few spoonfuls of the chimichurri and serve with the potatoes.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "aji_de_gallina_style_chicken",
+  "name": "Creamy Peruvian-style chicken with rice",
+  "side": "Rice, sliced eggs and olives, as in Peru.",
+  "cuisine": "Peruvian",
+  "minutes": 50,
+  "difficulty": "Medium",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 jalapeño with the seeds and ribs removed; the sauce is creamy and mild.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "sandwich_bread",
+    "amount": 3,
+    "text": "3 slices",
+    "note": "crusts removed, torn"
+   },
+   {
+    "ingredient": "evaporated_milk",
+    "amount": 354,
+    "text": "1 can (12 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 2,
+    "text": "2",
+    "note": "seeded and chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "turmeric",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 30,
+    "text": "⅓ cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 45,
+    "text": "⅓ cup",
+    "note": "halved"
+   }
+  ],
+  "steps": [
+   "Put the chicken in a saucepan, cover with water by 1 inch, add ½ tsp of the salt and simmer gently 15–18 minutes until the thickest part reads 165°F. Shred with two forks.",
+   "Meanwhile, rinse the rice and put it in a saucepan with 2¼ cups water and a pinch of salt. Bring to a boil, cover, cook on low 15 minutes, then rest off the heat 10 minutes. In a small pan, cover the eggs with water, bring to a boil, then cover off the heat for 11 minutes; cool, peel and quarter.",
+   "Soak the bread in the evaporated milk for 5 minutes.",
+   "Heat the oil in a large skillet over medium heat and cook the onion and jalapeños 6–7 minutes until soft. Add the garlic, turmeric and cumin for 1 minute, then blend everything with the soaked bread and milk until smooth.",
+   "Return the sauce to the skillet with ½ cup water and the rest of the salt and simmer 3–4 minutes, stirring, until thick like gravy. Stir in the parmesan and chicken and heat through 2 minutes, adding a splash of water if it gets too thick.",
+   "Serve over the rice topped with the eggs and olives. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, spoon some of the finished sauce into a small pan before the chicken goes in and warm a drained can of chickpeas in it.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "albondigas_soup",
+  "name": "Mexican meatball soup",
+  "side": "Warm tortillas and lime wedges.",
+  "cuisine": "Mexican",
+  "minutes": 55,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "mildNote": null,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "jasmine",
+    "amount": 50,
+    "text": "¼ cup",
+    "note": "uncooked"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 15,
+    "text": "¾ cup",
+    "note": "chopped, divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1",
+    "note": "half grated, half diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 1440,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can",
+    "note": "15 oz"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 2,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "cut in wedges"
+   }
+  ],
+  "steps": [
+   "Mix the beef, rice, egg, half the cilantro, the grated onion, 1 garlic clove, the cumin and ½ tsp of the salt. Roll into about 24 balls, 1 inch across.",
+   "In a large pot, combine the broth, tomato sauce, diced onion, remaining garlic, oregano and the rest of the salt and bring to a boil.",
+   "Add the carrots and simmer 5 minutes. Gently drop in the meatballs, return to a gentle simmer, partly cover and cook 20 minutes until the rice in the meatballs is tender.",
+   "Add the zucchini and simmer 8–10 minutes until it is tender and the meatballs read 160°F in the center.",
+   "Ladle into bowls, scatter with the remaining cilantro and serve with lime wedges. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a can of pinto beans with some of the carrots and zucchini in vegetable broth with a spoonful of tomato sauce (set aside first) for 15 minutes.",
+   "ingredients": [
+    {
+     "ingredient": "pinto_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "veg_broth",
+     "amount": 480,
+     "text": "2 cups",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "camarones_a_la_diabla",
+  "name": "Camarones a la diabla",
+  "side": "Rice and sliced avocado.",
+  "cuisine": "Mexican",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 2,
+  "mildNote": "Use ½ chipotle and no adobo sauce, or stir a spoonful of sour cream into the kids' portions.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "jasmine",
+    "amount": 285,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can",
+    "note": "15 oz"
+   },
+   {
+    "ingredient": "chipotle_adobo",
+    "amount": 35,
+    "text": "2 chipotles plus 1 tbsp sauce",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "divided"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "shrimp",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "thawed, peeled, patted dry"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "½ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Rinse the rice, then put it in a saucepan with 2¼ cups water and a pinch of the salt. Bring to a boil, cover, cook on low for 15 minutes, then rest off the heat, covered, for 10 minutes.",
+   "Blend the tomato sauce, chipotles and adobo sauce, 2 of the garlic cloves and the oregano until smooth.",
+   "Heat the oil and butter in a large skillet over medium heat. Cook the onion 4 minutes, then mince the remaining garlic and add it for 30 seconds.",
+   "Pour in the sauce with the rest of the salt and simmer 6–8 minutes until slightly thickened.",
+   "Add the shrimp and simmer 3–5 minutes, turning them, until pink and opaque all the way through.",
+   "Squeeze in the juice of the lime, scatter with cilantro and serve over the rice. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, simmer a drained can of black beans in a ladle of the sauce in a small pan before the shrimp go in.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ }
+]

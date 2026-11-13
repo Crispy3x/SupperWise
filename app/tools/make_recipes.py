@@ -81,11 +81,11 @@ EXTRA = {
  "chipotle_adobo": ("Chipotles in adobo","cans",198,"g","7 oz can",1.99,365,"",""),
  "green_chiles": ("Diced green chiles","cans",113,"g","4 oz can",1.29,365,"",""),
  "peanut_butter": ("Peanut butter","cans",454,"g","16 oz jar",2.99,180,"nuts",""),
- "tahini": ("Tahini","cans",454,"g","16 oz jar",6.99,180,"",""),
+ "tahini": ("Tahini","cans",454,"g","16 oz jar",6.99,180,"sesame",""),
  "fish_sauce": ("Fish sauce","cans",200,"ml","6.8 oz bottle",3.49,365,"fish","f"),
  "hoisin": ("Hoisin sauce","cans",240,"ml","8 oz jar",2.99,365,"soy,gluten",""),
  "sriracha": ("Sriracha","cans",481,"g","17 oz bottle",3.99,365,"",""),
- "sesame_oil": ("Toasted sesame oil","staples",148,"ml","5 oz bottle",3.99,365,"",""),
+ "sesame_oil": ("Toasted sesame oil","staples",148,"ml","5 oz bottle",3.99,365,"sesame",""),
  "rice_vinegar": ("Rice vinegar","cans",355,"ml","12 oz bottle",2.49,365,"",""),
  "cider_vinegar": ("Apple cider vinegar","cans",473,"ml","16 oz bottle",2.29,365,"",""),
  "maple_syrup": ("Maple syrup","cans",355,"ml","12 oz bottle",7.99,365,"",""),
@@ -120,7 +120,7 @@ EXTRA = {
  "peanuts": ("Roasted peanuts","dry",454,"g","16 oz jar",3.49,180,"nuts",""),
  "cashews": ("Roasted cashews","dry",255,"g","9 oz bag",5.99,180,"nuts",""),
  "almonds_sliced": ("Sliced almonds","dry",170,"g","6 oz bag",4.49,180,"nuts",""),
- "sesame_seeds": ("Sesame seeds","spices",62,"g","2.2 oz jar",2.99,365,"",""),
+ "sesame_seeds": ("Sesame seeds","spices",62,"g","2.2 oz jar",2.99,365,"sesame",""),
  "tortilla_chips": ("Tortilla chips","dry",369,"g","13 oz bag",3.49,60,"",""),
  "corn_tortillas": ("Corn tortillas","bakery",30,"count","30 count",2.49,21,"",""),
  "burger_buns": ("Hamburger buns","bakery",8,"count","8 count",2.99,6,"gluten",""),
@@ -158,11 +158,14 @@ BASE_TAGS = {
  "bread_crusty":("gluten",""),"breadcrumbs":("gluten",""),"flour":("gluten",""),"stuffing_cubes":("gluten",""),
  "pie_crust":("gluten,dairy",""),"puff_pastry":("gluten,dairy",""),"dinner_rolls":("gluten,dairy,egg",""),
  "sandwich_bread":("gluten",""),"crackers":("gluten",""),"pita":("gluten",""),"oats":("gluten",""),
- "soy_sauce":("soy,gluten",""),"rice_noodles":("",""),
+ "soy_sauce":("soy,gluten",""),"hummus":("sesame",""),"rice_noodles":("",""),
  "salmon":("fish","f"),"shrimp":("shellfish","s"),
  "chicken_thighs":("","m"),"chicken_drumsticks":("","m"),"ground_turkey":("","m"),"ground_beef":("","m"),
  "pork_sausage":("","m"),"turkey_whole":("","m"),"ham_spiral":("","m"),"deli_turkey":("","m"),"chicken_broth":("","m"),
 }
+
+# The same dish written in two batches: the later copy is left out.
+DUPLICATES = set(["04-indian-middle-eastern.json:baked_falafel_pitas", "04-indian-middle-eastern.json:lamb_kofta_herbed_couscous", "06-seafood-vegetarian.json:baked_eggplant_parmesan", "06-seafood-vegetarian.json:baked_falafel_pitas", "06-seafood-vegetarian.json:black_bean_burgers", "06-seafood-vegetarian.json:coconut_fish_curry", "06-seafood-vegetarian.json:huevos_rancheros", "06-seafood-vegetarian.json:lentil_sloppy_joes", "06-seafood-vegetarian.json:matar_paneer", "06-seafood-vegetarian.json:miso_salmon_soba", "06-seafood-vegetarian.json:miso_udon_tofu_soup", "06-seafood-vegetarian.json:moroccan_chickpea_stew", "06-seafood-vegetarian.json:mushroom_cheddar_strata", "06-seafood-vegetarian.json:smoky_shrimp_cheesy_grits", "06-seafood-vegetarian.json:spinach_feta_puff_pastry_pie", "06-seafood-vegetarian.json:spinach_ricotta_lasagna_rolls", "06-seafood-vegetarian.json:sweet_potato_pinto_enchiladas", "06-seafood-vegetarian.json:tilapia_fish_tacos", "06-seafood-vegetarian.json:tomato_soup_grilled_cheese", "06-seafood-vegetarian.json:tuna_caper_tomato_spaghetti", "06-seafood-vegetarian.json:tuna_melt_sandwiches"])
 
 PROTEINS = {"chicken","beef","pork","turkey","lamb","fish","shellfish","eggs","legumes","tofu","none"}
 EQUIP = {"oven","stovetop","sheet_pan","air_fryer","grill","slow_cooker"}
@@ -201,6 +204,7 @@ def main():
         try: batch = json.load(open(f))
         except Exception as ex: errors.append(f"{os.path.basename(f)}: not valid JSON: {ex}"); continue
         for n, r in enumerate(batch):
+            if f"{os.path.basename(f)}:{r.get('id')}" in DUPLICATES: continue
             where = f"{os.path.basename(f)}[{n}] {r.get('id', '?')}"
             def err(m): errors.append(f"{where}: {m}")
             for k in ("id","name","side","cuisine","minutes","difficulty","protein","equipment","spice","ingredients","steps"):

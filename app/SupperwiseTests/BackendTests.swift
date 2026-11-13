@@ -89,7 +89,7 @@ final class BackendTests: XCTestCase {
         let (scan, left) = try Backend.parseScan(Data(reply.utf8))
         XCTAssertEqual(left, 97)
         XCTAssertLessThan(scan.score, 30)                              // fried, ultra-processed, 1,100 kcal
-        XCTAssertEqual(scan.householdAllergens, [.gluten, .dairy])      // sesame shown, not a household setting
+        XCTAssertEqual(scan.householdAllergens, [.gluten, .dairy, .sesame])
         XCTAssertEqual(scan.notVegetarian, ["beef patty"])
         let salad = #"{"remaining":5,"result":{"kind":"meal","name":"Lentil salad","portion":"2 cups","ingredients":[{"name":"lentils","visible":true}],"nutrition":{"kcal":420,"proteinG":22,"fiberG":14,"addedSugarG":2,"saturatedFatG":2,"sodiumMg":380},"allergens":[],"ultraProcessed":false,"confidence":"high","notes":""}}"#
         XCTAssertGreaterThanOrEqual(try Backend.parseScan(Data(salad.utf8)).0.score, 75)

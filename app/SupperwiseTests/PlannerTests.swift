@@ -30,9 +30,12 @@ final class PlannerTests: XCTestCase {
             for ri in r.ingredients + (r.vegetarianSwap?.ingredients ?? []) {
                 XCTAssertNotNil(catalog.ingredients[ri.ingredient], "\(r.id) uses unknown \(ri.ingredient)")
             }
-            if !r.vegetarian && r.protein != "fish" && r.protein != "none" && r.protein != "eggs" && r.protein != "legumes" {
-                XCTAssertNotNil(r.vegetarianSwap, "\(r.id) has meat but no vegetarian plate")
-            }
+        }
+        // A dish with meat or fish and no written vegetarian plate is never planned for a household with a vegetarian.
+        var veg = Settings()
+        veg.people = [Person(name: "A"), Person(name: "B", diet: .vegetarian)]
+        for r in catalog.eligibleRecipes(for: veg) {
+            XCTAssertTrue(r.vegetarian || r.vegetarianSwap != nil, "\(r.id) would leave the vegetarian without a plate")
         }
     }
 

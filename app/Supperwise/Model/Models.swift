@@ -51,7 +51,7 @@ struct RecipeIngredient: Codable, Hashable {
 }
 
 enum Allergen: String, Codable, CaseIterable, Identifiable {
-    case dairy, egg, gluten, soy, fish, shellfish, nuts
+    case dairy, egg, gluten, soy, fish, shellfish, nuts, sesame
     var id: String { rawValue }
     var label: String {
         switch self {
@@ -62,6 +62,7 @@ enum Allergen: String, Codable, CaseIterable, Identifiable {
         case .fish: "No fish"
         case .shellfish: "No shellfish"
         case .nuts: "No nuts"
+        case .sesame: "No sesame"
         }
     }
 }

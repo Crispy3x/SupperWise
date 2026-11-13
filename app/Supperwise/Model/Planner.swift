@@ -41,10 +41,30 @@ struct Planner {
 
         var rng = SeededRandom(seed: seed)
         var best: (recipes: [Recipe], score: Double)? = nil
-        for _ in 0..<400 {
+        for _ in 0..<min(400, max(150, 60_000 / max(pool.count, 1))) {
             guard let pick = draw(pool, count: nights.count, rng: &rng) else { continue }
             let s = score(pick, nights: nights)
             if best == nil || s < best!.score { best = (pick, s) }
+        }
+        // With a large catalog, random draws can land a little over budget: improve the best week one night at a
+        // time, swapping in the dish that lowers the score most (cheaper, still varied), until nothing helps.
+        // Only runs when the week is over budget, and only tries the cheapest dishes, so it stays fast on a phone.
+        if var b = best, !settings.cheapestWeek, pricer.price(Array(zip(nights, b.recipes))).total > settings.budget {
+            let cheap = Array(pool.sorted { standalone($0) < standalone($1) }.prefix(40))
+            var improved = true, rounds = 0
+            while improved && rounds < 4 {
+                improved = false; rounds += 1
+                for i in b.recipes.indices {
+                    let inWeek = Set(b.recipes.map(\.id))
+                    for c in cheap where !inWeek.contains(c.id) {
+                        var trial = b.recipes
+                        trial[i] = c
+                        let s = score(trial, nights: nights)
+                        if s < b.score - 0.01 { b = (trial, s); improved = true }
+                    }
+                }
+            }
+            best = b
         }
         let chosen = best?.recipes ?? Array(pool.prefix(nights.count))
         let dinners = zip(nights, chosen).map { PlannedDinner(day: $0.0, recipeID: $0.1.id) }
@@ -95,6 +115,9 @@ struct Planner {
         }
         return out.count == count ? out : nil
     }
+
+    /// What a dish costs on its own for this household (whole packs), for ranking cheap candidates.
+    private func standalone(_ r: Recipe) -> Double { pricer.price([(.mon, r)]).total }
 
     private func proteinClash(_ recipes: [Recipe]) -> Bool {
         zip(recipes, recipes.dropFirst()).contains { $0.protein == $1.protein && $0.protein != "none" }

@@ -67,6 +67,7 @@ enum BabyAdvice {
         case .fish: ["fish"]
         case .shellfish: ["shellfish"]
         case .nuts: ["peanut", "tree nut"]
+        case .sesame: ["sesame"]
         }
     }
 
