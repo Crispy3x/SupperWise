@@ -57,7 +57,20 @@ try:
     for k in ["gambling", "unrestrictedWebAccess", "lootBox", "messagingAndChat", "advertising", "ageAssurance", "parentalControls", "healthOrWellnessTopics"]:
         if k in decl["attributes"]: answers[k] = False
     if "userGeneratedContent" in decl["attributes"]: answers["userGeneratedContent"] = True   # community recipes (moderated)
-    call("PATCH", f"/v1/ageRatingDeclarations/{decl['id']}", {"data": {"type": "ageRatingDeclarations", "id": decl["id"], "attributes": answers}})
+    import re as _re
+    # Apple adds questions over time: answer any it says are missing ("NONE" for frequency questions, no for yes/no ones).
+    for attempt in range(6):
+        try:
+            call("PATCH", f"/v1/ageRatingDeclarations/{decl['id']}", {"data": {"type": "ageRatingDeclarations", "id": decl["id"], "attributes": answers}})
+            break
+        except RuntimeError as e:
+            msg = str(e)
+            missing = _re.findall(r"value for the attribute '(\w+)'", msg)
+            invalid = _re.findall(r'"pointer" : "/data/attributes/(\w+)"', msg) if "INVALID" in msg or "invalid" in msg else []
+            if not missing and not invalid: raise
+            for k in missing: answers.setdefault(k, "NONE")
+            for k in invalid: answers[k] = False if answers.get(k) == "NONE" else "NONE"
+            print(f"added answers for: {', '.join(missing + invalid)}")
     print(f"answered {len(answers)} questions (none of the mature themes; moderated user recipes)")
 except RuntimeError as e:
     print(f"age rating: answer it in App Store Connect › App Information ({e})")
