@@ -78,7 +78,13 @@ def call(method, path, body=None, params=None, ok=(200, 201, 204)):
 def all_pages(path, params=None):
     out, url, p = [], path, dict(params or {}, limit=200)
     while url:
-        d = call("GET", url, params=p)
+        try:
+            d = call("GET", url, params=p)
+        except RuntimeError as e:
+            # Some relationship endpoints don't take a page size: ask again without one.
+            if p and "limit" in p and "'limit'" in str(e):
+                p = {k: v for k, v in p.items() if k != "limit"}; continue
+            raise
         out += d.get("data", [])
         nxt = d.get("links", {}).get("next")
         url, p = (nxt.replace(API, ""), None) if nxt else (None, None)
