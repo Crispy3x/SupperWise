@@ -1,35 +1,35 @@
 {
-  "primaryLocale": "en-US",
-  "subscriptions": true,
-  "competitors": [
-    "TapCook",
-    "Whipp",
-    "Potto",
-    "eMeals",
-    "NeatEat",
-    "mise",
-    "MealPrepPro",
-    "HelloFresh",
-    "Supper Tab",
-    "Mealime"
-  ],
-  "category": {
-    "primary": "Food & Drink",
-    "secondary": "Lifestyle"
-  },
-  "urls": {
-    "support": "https://YOUR-SITE/support",
-    "marketing": "https://YOUR-SITE/",
-    "privacy": "https://YOUR-SITE/privacy",
-    "terms": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
-  },
-  "locales": {
-    "en-US": {
-      "name": "Supperwise: Meal Planner",
-      "subtitle": "Weekly budget dinners, priced",
-      "keywords": "grocery,list,family,recipe,cheap,vegetarian,allergy,pantry,shopping,cooking,menu,kid,food,cost,prep",
-      "promotionalText": "New: plan a week of family dinners that fits your grocery budget, priced by the pack you actually buy. Your first week is free to keep.",
-      "description": "Plan a week of dinners for your family and see what the groceries will cost before you leave the house.\n\nSupperwise builds the week and the shopping list together, for the kind of store you use, and keeps the total under the budget you set. It prices the pack you actually buy, not the spoonful you use.\n\nHOW IT WORKS\n• Enter your ZIP code and the kind of store you shop at.\n• Tell it who's eating, which nights you cook and what you want to spend.\n• Get a week of dinners and one grocery list with a total.\n\nEVERYONE AT THE TABLE\n• Set each person's diet, allergies and spice level. Dishes with an allergen someone avoids are left out.\n• When a dish has meat, there's a written vegetarian plate for whoever needs one.\n• Tell it what's in your kitchen: no air fryer, no grill, no problem.\n\nA LIST THAT MATCHES THE CHECKOUT\n• Priced by the whole pack: one jar of garam masala, two cans of chickpeas.\n• Ingredients shared across the week are bought once.\n• Notes tell you what's left over and how long it keeps.\n• Tick what you already have and it comes off the bill, this week and every week after.\n\nDINNERS WORTH COOKING\n• Written recipes with real prep steps, from chickpea tikka masala to skillet lemon chicken.\n• Swap any night with one tap; the list reprices.\n• A reminder at 4:30 with tonight's dish, if you want one.\n\nPRIVATE BY DESIGN\nNo account. Your household and plans stay on your iPhone.\n\nPRICES\nGrocery prices are estimates for your type of store and region, not live prices from any retailer. Supperwise isn't affiliated with any grocery store.\n\nYOUR FIRST WEEK IS FREE\nPlan your first week and keep it, list and all. To plan every week after, subscribe yearly (with a 7-day free trial) or monthly. Payment is charged to your Apple ID. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period. Manage or cancel in your App Store account settings.\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://YOUR-SITE/privacy"
-    }
+ "primaryLocale": "en-US",
+ "subscriptions": true,
+ "competitors": [
+  "TapCook",
+  "Whipp",
+  "Potto",
+  "eMeals",
+  "NeatEat",
+  "mise",
+  "MealPrepPro",
+  "HelloFresh",
+  "Supper Tab",
+  "Mealime"
+ ],
+ "category": {
+  "primary": "Food & Drink",
+  "secondary": "Lifestyle"
+ },
+ "urls": {
+  "support": "https://YOUR-SITE/support",
+  "marketing": "https://YOUR-SITE/",
+  "privacy": "https://YOUR-SITE/privacy",
+  "terms": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+ },
+ "locales": {
+  "en-US": {
+   "name": "Supperwise: Meal Planner",
+   "subtitle": "Family dinners under budget",
+   "keywords": "grocery,list,budget,recipe,lunchbox,baby,food,scan,calorie,allergy,vegetarian,pantry,healthy,cheap",
+   "promotionalText": "Nearly 300 family dinners, planned under your grocery budget and priced by the pack. New: snap any meal for a 1–100 health score. Your first week is free to keep.",
+   "description": "Plan a week of dinners your whole family can eat, and see what the groceries will cost before you leave the house.\n\nSupperwise builds the week and the shopping list together, for the kind of store you use, and keeps the total under the budget you set. It prices the pack you actually buy, not the spoonful you use.\n\nHOW IT WORKS\n• Enter your ZIP code and the kind of store you shop at.\n• Tell it who's eating, which nights you cook and what you want to spend.\n• Get a week of dinners and one grocery list with a total.\n\nEVERYONE AT THE TABLE\n• Diets, allergies (including sesame) and spice levels, person by person. Dishes with an allergen someone avoids are never planned.\n• When a dish has meat, there's a written vegetarian plate for whoever needs one.\n• Nearly 300 recipes from Italian to Indian, Mexican to Korean, with exact amounts and safe cooking temperatures.\n\nA LIST THAT MATCHES THE CHECKOUT\n• Priced by the whole pack, and ingredients shared across the week are bought once.\n• Tick what you already have and it comes off the bill.\n• Swap any night with one tap; the list reprices.\n\nPLANS\n• Plus: a new week every Sunday, swaps, cook mode with timers, Thanksgiving and Christmas menus with a one-oven timeline, community recipes.\n• Family: everything in Plus, plus nut-free school lunches on the same list, first foods for babies, food scan (snap a meal for a 1–100 score, calories and what's likely in it), barcode scanner, eating-out scores, leftovers, receipt check and a weekly recap.\n• Pro: everything in Family, plus a fridge scan that finds what you can cook tonight.\n\nPRIVATE BY DESIGN\nYour household, allergies and plans stay on your iPhone. An account is only needed to share recipes or scan food.\n\nPRICES AND ESTIMATES\nGrocery prices are estimates for your type of store and region, not live prices from any retailer. Food-scan nutrition is an estimate from a photo. Supperwise isn't affiliated with any grocery store and isn't medical advice: always check labels for allergies.\n\nYOUR FIRST WEEK IS FREE\nPlan your first week and keep it, list and all. To plan every week after, subscribe monthly or yearly (yearly plans start with a 1-week free trial). Payment is charged to your Apple ID. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period. Manage or cancel in your App Store account settings.\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: PRIVACY_URL"
   }
+ }
 }

@@ -5,6 +5,13 @@ name: App Store Connect setup
 # Uses the same repository secrets as the TestFlight upload (ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8).
 on:
   workflow_dispatch:
+    inputs:
+      what:
+        description: "setup (bundle ID and subscriptions) or listing (store text, age rating, screenshots)"
+        default: "setup"
+      site_base:
+        description: "Where the privacy and support pages live, e.g. https://crispy3x.github.io/supperwise-site (optional)"
+        default: ""
 
 jobs:
   setup:
@@ -29,4 +36,6 @@ jobs:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
-        run: python3 app/tools/asc/asc_setup.py
+          SITE_BASE: ${{ github.event.inputs.site_base }}
+        run: |
+          if [ "${{ github.event.inputs.what }}" = "listing" ]; then python3 app/tools/asc/asc_listing.py; else python3 app/tools/asc/asc_setup.py; fi
