@@ -1,0 +1,21 @@
+name: App Store Connect setup
+
+# Run by hand after the app record exists. Registers the bundle ID and creates the subscription group, the 6
+# subscriptions, their prices in every country, the yearly free trials and the review screenshots.
+# Uses the same repository secrets as the TestFlight upload (ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8).
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install "pyjwt[crypto]" requests
+      - name: Set up App Store Connect
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: python3 app/tools/asc/asc_setup.py
