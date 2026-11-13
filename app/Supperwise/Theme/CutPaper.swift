@@ -92,11 +92,12 @@ struct PlateView: View {
 
     var body: some View {
         ZStack {
-            if let photo = recipe.photo, UIImage(named: photo) != nil {
-                Image(photo)
+            if let photo = recipe.photo, let image = UIImage(named: photo) {
+                // Cut-out studio dishes sit small in their frame; catalog photos (rp_*) are already framed.
+                Image(uiImage: image)
                     .resizable()
                     .scaledToFill()
-                    .scaleEffect(1.5)
+                    .scaleEffect(photo.hasPrefix("rp_") ? 1.1 : 1.5)
             } else {
                 ZStack {
                     Circle().fill(tint.opacity(0.85))

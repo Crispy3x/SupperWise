@@ -56,6 +56,9 @@ struct SettingsView: View {
                     Link("Privacy policy", destination: URL(string: "https://supperwise.app/privacy")!)
                     Link("Terms of use", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
                     Link("Contact support", destination: URL(string: "mailto:support@supperwise.app")!)
+                    if !PhotoCredits.bundled.isEmpty {
+                        NavigationLink("Photo credits") { PhotoCreditsView() }
+                    }
                     Text("Recipes are a guide. Check ingredients, allergens and food-safety temperatures before cooking. Diet and allergy settings are a convenience, not a medical guarantee.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
@@ -105,5 +108,27 @@ struct SettingsView: View {
                                                 trigger: UNCalendarNotificationTrigger(dateMatching: when, repeats: false))
             try? await center.add(request)
         }
+    }
+}
+
+/// Every recipe photo's photographer and license, as the licenses require.
+struct PhotoCreditsView: View {
+    @Environment(AppModel.self) private var model
+    var body: some View {
+        let credits = PhotoCredits.bundled
+        let names = Dictionary(uniqueKeysWithValues: model.catalog.recipes.map { ($0.id, $0.name) })
+        List(credits.keys.sorted { (names[$0] ?? $0) < (names[$1] ?? $1) }, id: \.self) { id in
+            let c = credits[id]!
+            VStack(alignment: .leading, spacing: 2) {
+                Text(names[id] ?? id).font(.subheadline.weight(.semibold))
+                Text(c.line).font(.footnote)
+                HStack(spacing: 12) {
+                    if let p = c.page, let u = URL(string: p) { Link("Original", destination: u) }
+                    if let l = c.licenseURL, let u = URL(string: l) { Link("License", destination: u) }
+                }
+                .font(.footnote)
+            }
+        }
+        .navigationTitle("Photo credits")
     }
 }

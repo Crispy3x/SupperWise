@@ -52,6 +52,12 @@ struct RecipeView: View {
                             .background(RoundedRectangle(cornerRadius: 12).fill(Paper.chip))
                     }
 
+                    if let credit = PhotoCredits.bundled[recipe.id] {
+                        Group {
+                            if let page = credit.page, let url = URL(string: page) { Link(credit.line, destination: url) } else { Text(credit.line) }
+                        }
+                        .font(.caption2).foregroundStyle(Paper.ink2).padding(.top, 14)
+                    }
                     GatedButton(feature: .cookMode, action: { cooking = true }) {
                         Label("Cook step by step", systemImage: "play.circle").font(.subheadline.weight(.semibold))
                     }

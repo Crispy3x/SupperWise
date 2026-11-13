@@ -4,7 +4,7 @@ Usage: python3 tools/linux-check.py /path/to/swift/usr/bin"""
 import os, re, shutil, subprocess, sys
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUT = os.path.join(ROOT, ".linux-check")
-CORE = ["Models", "Catalog", "Pricing", "Planner", "HealthScore", "FoodProduct", "RecipeImporter", "HolidayMenu", "FirstFoods", "Lunchbox", "Backend"]
+CORE = ["Models", "Catalog", "Pricing", "Planner", "HealthScore", "FoodProduct", "RecipeImporter", "HolidayMenu", "FirstFoods", "Lunchbox", "Backend", "PhotoCredits"]
 SKIP_TESTS = ["testQuantityScaling", "testReceiptTotal", "testTimersInSteps", "testTierMapping"]  # live in SwiftUI or RevenueCat files
 shutil.rmtree(OUT, ignore_errors=True)
 src = os.path.join(OUT, "Sources", "SupperwiseCore"); tst = os.path.join(OUT, "Tests", "SupperwiseCoreTests")
