@@ -11,6 +11,8 @@ struct KitchenView: View {
     @State private var holiday: HolidayMenu? = nil
     @State private var showFirstFoods = false
     @State private var showLunchbox = false
+    @State private var showFoodScan = false
+    @State private var showCommunity = false
     private var menus: [HolidayMenu] { HolidayMenu.bundled }
 
     var body: some View {
@@ -31,7 +33,9 @@ struct KitchenView: View {
                 }
                 Section {
                     GatedButton(feature: .fridge, action: { showFridge = true }) { Label("What can I cook tonight?", systemImage: "camera.viewfinder") }
-                    GatedButton(feature: .scanner, action: { showScanner = true }) { Label("Scan a product", systemImage: "barcode.viewfinder") }
+                    GatedButton(feature: .scanner, action: { showFoodScan = true }) { Label("Scan food: score and calories", systemImage: "camera.metering.matrix") }
+                    GatedButton(feature: .scanner, action: { showScanner = true }) { Label("Scan a barcode", systemImage: "barcode.viewfinder") }
+                    GatedButton(feature: .importRecipe, action: { showCommunity = true }) { Label("Community recipes", systemImage: "person.3") }
                     GatedButton(feature: .importRecipe, action: { showImport = true }) { Label("Save a recipe from a link", systemImage: "link") }
                     GatedButton(feature: .lunchbox, action: { showLunchbox = true }) { Label("Plan school lunches", systemImage: "bag") }
                     GatedButton(feature: .firstFoods, action: { showFirstFoods = true }) { Label("First foods for baby", systemImage: "figure.and.child.holdinghands") }
@@ -85,6 +89,8 @@ struct KitchenView: View {
             .sheet(isPresented: $showScanner) { ScannerView() }
             .sheet(isPresented: $showFirstFoods) { FirstFoodsView() }
             .sheet(isPresented: $showLunchbox) { LunchboxView() }
+            .sheet(isPresented: $showFoodScan) { FoodScanView() }
+            .sheet(isPresented: $showCommunity) { CommunityView() }
             .sheet(item: $holiday) { HolidayMenuView(menu: $0) }
         }
     }

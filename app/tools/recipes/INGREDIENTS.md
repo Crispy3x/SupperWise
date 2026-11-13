@@ -1,0 +1,238 @@
+# Ingredients you may use (id · name · unit · pack · allergens/kind)
+
+Amounts are in the UNIT shown: g = grams, ml = millilitres, count = whole items (cans, eggs, garlic CLOVES, tortillas, lemons...).
+garlic is counted in cloves (30 per sleeve). scallions: count of stalks. Staples assumed in the kitchen: olive_oil, neutral_oil, salt, pepper, sugar.
+
+- `baguette` · Baguette · count · each · gluten
+- `bread_crusty` · Crusty bread · count · 1 loaf · gluten
+- `burger_buns` · Hamburger buns · count · 8 count · gluten
+- `corn_tortillas` · Corn tortillas · count · 30 count
+- `dinner_rolls` · Dinner rolls · count · 12 count · gluten/dairy/egg
+- `hoagie_rolls` · Hoagie rolls · count · 6 count · gluten
+- `naan` · Naan · count · 4 count · gluten/dairy
+- `pita` · Pita bread · count · 6 count · gluten
+- `sandwich_bread` · Whole-wheat sandwich bread · count · 20-slice loaf · gluten
+- `stuffing_cubes` · Unseasoned bread cubes · g · 12 oz bag · gluten
+- `tortillas` · Flour tortillas, 8 in · count · 10 count · gluten
+- `artichokes` · Artichoke hearts · count · 14 oz can
+- `beef_broth` · Beef broth · ml · 32 oz carton · MEAT
+- `black_beans` · Black beans · count · 15 oz can
+- `capers` · Capers · g · 3.5 oz jar
+- `chicken_broth` · Chicken broth · ml · 32 oz carton · MEAT
+- `chickpeas` · Chickpeas · count · 15 oz can
+- `chipotle_adobo` · Chipotles in adobo · g · 7 oz can
+- `cider_vinegar` · Apple cider vinegar · ml · 16 oz bottle
+- `coconut_milk` · Coconut milk · count · 13.5 oz can
+- `dijon` · Dijon mustard · g · 8 oz jar
+- `enchilada_sauce` · Red enchilada sauce · g · 10 oz can
+- `evaporated_milk` · Evaporated milk · ml · 12 oz can · dairy
+- `fish_sauce` · Fish sauce · ml · 6.8 oz bottle · fish, FISH
+- `gochujang` · Gochujang · g · 17.6 oz tub · soy/gluten
+- `green_chiles` · Diced green chiles · g · 4 oz can
+- `green_curry_paste` · Thai green curry paste · g · 4 oz jar
+- `hoisin` · Hoisin sauce · ml · 8 oz jar · soy/gluten
+- `honey` · Honey · g · 12 oz bottle
+- `jam` · Strawberry jam · g · 18 oz jar
+- `kidney_beans` · Kidney beans · count · 15 oz can
+- `maple_syrup` · Maple syrup · ml · 12 oz bottle
+- `marinara` · Marinara sauce · g · 24 oz jar
+- `mayo` · Mayonnaise · ml · 30 oz jar · egg
+- `olives_kalamata` · Kalamata olives · g · 6 oz jar
+- `peanut_butter` · Peanut butter · g · 16 oz jar · nuts
+- `pesto` · Basil pesto · g · 6 oz jar · dairy/nuts
+- `pinto_beans` · Pinto beans · count · 15 oz can
+- `pumpkin_puree` · Pumpkin purée · g · 15 oz can
+- `red_curry_paste` · Thai red curry paste · g · 4 oz jar
+- `rice_vinegar` · Rice vinegar · ml · 12 oz bottle
+- `roasted_peppers` · Roasted red peppers · g · 12 oz jar
+- `salsa` · Salsa · g · 16 oz jar
+- `soy_sauce` · Soy sauce · ml · 15 oz bottle · soy/gluten
+- `sriracha` · Sriracha · g · 17 oz bottle
+- `sunbutter` · Sunflower seed butter · g · 16 oz jar
+- `tahini` · Tahini · g · 16 oz jar
+- `tomato_paste` · Tomato paste · g · 6 oz can
+- `tomato_sauce` · Tomato sauce · g · 15 oz can
+- `tomatoes_crushed` · Crushed tomatoes · g · 28 oz can
+- `tomatoes_diced` · Diced tomatoes · g · 14.5 oz can
+- `tuna_canned` · Canned tuna · count · 5 oz can · fish, FISH
+- `veg_broth` · Vegetable broth · ml · 32 oz carton
+- `vinegar` · Red wine vinegar · ml · 12 oz bottle
+- `white_beans` · Cannellini beans · count · 15 oz can
+- `worcestershire` · Worcestershire sauce · ml · 10 oz bottle · fish, FISH
+- `butter` · Butter · g · 1 lb box · dairy
+- `cheddar` · Sharp cheddar · g · 8 oz block · dairy
+- `cream_cheese` · Cream cheese · g · 8 oz block · dairy
+- `eggs` · Eggs · count · 1 dozen · egg
+- `feta` · Feta · g · 6 oz pack · dairy
+- `goat_cheese` · Goat cheese · g · 4 oz log · dairy
+- `greek_yogurt` · Plain Greek yogurt · g · 32 oz tub · dairy
+- `half_and_half` · Half-and-half · ml · 1 pint · dairy
+- `heavy_cream` · Heavy cream · ml · 1 pint · dairy
+- `hummus` · Hummus · g · 10 oz tub
+- `milk` · Whole milk · ml · half gallon · dairy
+- `miso` · White miso · g · 14 oz tub · soy
+- `monterey_jack` · Monterey Jack, shredded · g · 8 oz bag · dairy
+- `mozzarella` · Mozzarella, shredded · g · 8 oz bag · dairy
+- `mozzarella_fresh` · Fresh mozzarella · g · 8 oz ball · dairy
+- `paneer` · Paneer · g · 12 oz block · dairy
+- `parmesan` · Parmesan · g · 5 oz wedge · dairy
+- `pizza_dough` · Pizza dough · g · 1 lb ball · gluten
+- `ricotta` · Whole-milk ricotta · g · 15 oz tub · dairy
+- `sour_cream` · Sour cream · g · 16 oz tub · dairy
+- `string_cheese` · String cheese · count · 12 count · dairy
+- `tofu_firm` · Extra-firm tofu · g · 14 oz block · soy
+- `tortellini` · Cheese tortellini, refrigerated · g · 20 oz pack · gluten/egg/dairy
+- `yogurt` · Plain whole-milk yogurt · g · 32 oz tub · dairy
+- `almonds_sliced` · Sliced almonds · g · 6 oz bag · nuts
+- `arborio` · Arborio rice · g · 2 lb bag
+- `basmati` · Basmati rice · g · 2 lb bag
+- `breadcrumbs` · Panko breadcrumbs · g · 8 oz box · gluten
+- `brown_rice` · Brown rice · g · 2 lb bag
+- `brown_sugar` · Brown sugar · g · 2 lb bag
+- `cashews` · Roasted cashews · g · 9 oz bag · nuts
+- `cornmeal` · Cornmeal · g · 24 oz bag
+- `cornstarch` · Cornstarch · g · 16 oz box
+- `couscous` · Couscous · g · 10 oz box · gluten
+- `crackers` · Whole-grain crackers · g · 9 oz box · gluten
+- `egg_noodles` · Egg noodles · g · 12 oz bag · gluten/egg
+- `elbow_pasta` · Elbow macaroni · g · 1 lb box · gluten
+- `fettuccine` · Fettuccine · g · 1 lb box · gluten
+- `flour` · All-purpose flour · g · 2 lb bag · gluten
+- `gnocchi` · Potato gnocchi · g · 1 lb pack · gluten/egg
+- `jasmine` · Jasmine rice · g · 2 lb bag
+- `lasagna_noodles` · Lasagna noodles · g · 1 lb box · gluten
+- `lentils_brown` · Brown lentils · g · 1 lb bag
+- `lentils_green` · French green lentils · g · 1 lb bag
+- `lentils_red` · Red lentils · g · 1 lb bag
+- `oats` · Rolled oats · g · 18 oz canister · gluten
+- `orzo` · Orzo · g · 1 lb box · gluten
+- `panko` · Panko breadcrumbs · g · 8 oz box · gluten
+- `peanuts` · Roasted peanuts · g · 16 oz jar · nuts
+- `penne` · Penne · g · 1 lb box · gluten
+- `pumpkin_seeds` · Pepitas · g · 5 oz bag
+- `quinoa` · Quinoa · g · 12 oz bag
+- `raisins` · Raisins · g · 12 oz box
+- `rice_noodles` · Rice noodles · g · 14 oz pack
+- `rigatoni` · Rigatoni · g · 1 lb box · gluten
+- `soba` · Soba noodles · g · 9.5 oz pack · gluten
+- `spaghetti` · Spaghetti · g · 1 lb box · gluten
+- `tortilla_chips` · Tortilla chips · g · 13 oz bag
+- `udon` · Udon noodles · g · 3-pack, 20 oz · gluten
+- `frozen_corn` · Frozen corn · g · 12 oz bag
+- `frozen_edamame` · Frozen shelled edamame · g · 12 oz bag · soy
+- `frozen_peas` · Frozen peas · g · 12 oz bag
+- `frozen_spinach` · Frozen chopped spinach · g · 10 oz box
+- `frozen_stir_fry_veg` · Frozen stir-fry vegetables · g · 16 oz bag
+- `pie_crust` · Frozen pie crust, 9 in · count · 2-pack · gluten/dairy
+- `puff_pastry` · Frozen puff pastry · count · 2 sheets · gluten/dairy
+- `bacon` · Bacon · g · 12 oz pack · MEAT
+- `beef_chuck` · Beef chuck, stew cuts · g · 2 lb pack · MEAT
+- `chicken_breast` · Boneless chicken breasts · g · 1.5 lb pack · MEAT
+- `chicken_drumsticks` · Chicken drumsticks · g · 3 lb pack · MEAT
+- `chicken_thighs` · Boneless chicken thighs · g · 1.5 lb pack · MEAT
+- `chicken_wings` · Chicken wings · g · 3 lb pack · MEAT
+- `chorizo` · Mexican chorizo · g · 12 oz pack · MEAT
+- `deli_turkey` · Sliced turkey breast · g · 9 oz pack · MEAT
+- `flank_steak` · Flank steak · g · about 1.5 lb · MEAT
+- `ground_beef` · Ground beef, 85% lean · g · 1 lb pack · MEAT
+- `ground_lamb` · Ground lamb · g · 1 lb pack · MEAT
+- `ground_pork` · Ground pork · g · 1 lb pack · MEAT
+- `ground_turkey` · Ground turkey, 93% lean · g · 1 lb pack · MEAT
+- `ham_diced` · Diced cooked ham · g · 8 oz pack · MEAT
+- `ham_spiral` · Spiral-cut ham, fully cooked, bone-in · g · per lb · MEAT
+- `kielbasa` · Smoked kielbasa · g · 14 oz rope · MEAT
+- `pork_chops` · Boneless pork chops · g · 1.5 lb pack · MEAT
+- `pork_sausage` · Italian sausage · g · 1 lb pack · MEAT
+- `pork_shoulder` · Pork shoulder, boneless · g · about 3 lb · MEAT
+- `pork_tenderloin` · Pork tenderloin · g · about 1.5 lb · MEAT
+- `sirloin` · Sirloin steak · g · 1 lb · MEAT
+- `turkey_whole` · Whole turkey, frozen · g · per lb · MEAT
+- `apples` · Baking apples · count · each
+- `arugula` · Arugula · g · 5 oz box
+- `asparagus` · Asparagus · g · 1 lb bunch
+- `avocado` · Avocados · count · each
+- `bananas` · Bananas · count · each
+- `basil` · Basil · g · 0.75 oz pack
+- `bell_pepper` · Bell peppers · count · each
+- `bok_choy` · Baby bok choy · g · 1 lb
+- `broccoli` · Broccoli crowns · g · about 1 lb
+- `brussels_sprouts` · Brussels sprouts · g · 1 lb
+- `butternut_squash` · Butternut squash · count · each, about 2 lb
+- `cabbage` · Green cabbage · g · 1 head
+- `carrots` · Carrots · g · 2 lb bag
+- `cauliflower` · Cauliflower · count · 1 head
+- `celery` · Celery · g · 1 bunch
+- `cilantro` · Cilantro · g · 1 bunch
+- `corn_cobs` · Corn on the cob · count · each
+- `cranberries` · Fresh cranberries · g · 12 oz bag
+- `cucumber` · Cucumbers · count · each
+- `dill` · Dill · g · 0.75 oz pack
+- `eggplant` · Eggplant · count · each
+- `garlic` · Garlic · count · 3-head sleeve
+- `ginger` · Fresh ginger · g · about 3 in piece
+- `grapes` · Seedless grapes · g · about 2 lb
+- `green_beans` · Green beans · g · 1 lb
+- `jalapeno` · Jalapeños · count · each
+- `kale` · Kale · g · 1 bunch
+- `leeks` · Leeks · count · 2-pack
+- `lemon` · Lemons · count · each
+- `lettuce_butter` · Butter lettuce · count · 1 head
+- `lime` · Limes · count · each
+- `mango` · Mangoes · count · each
+- `mint` · Mint · g · 0.75 oz pack
+- `mushrooms` · Cremini mushrooms · g · 8 oz pack
+- `onion_red` · Red onions · g · 3 lb bag
+- `onion_yellow` · Yellow onions · g · 3 lb bag
+- `orange` · Oranges · count · each
+- `parsley` · Flat-leaf parsley · g · 1 bunch
+- `pineapple` · Pineapple · count · each
+- `poblano` · Poblano peppers · count · each
+- `potatoes` · Yukon Gold potatoes · g · 3 lb bag
+- `potatoes_russet` · Russet potatoes · g · 5 lb bag
+- `radishes` · Radishes · g · 1 bunch
+- `red_cabbage` · Red cabbage · g · 1 head
+- `romaine` · Romaine hearts · count · 3-pack
+- `scallions` · Scallions · count · 1 bunch
+- `shallots` · Shallots · g · 8 oz bag
+- `snap_peas` · Sugar snap peas · g · 8 oz bag
+- `spinach` · Baby spinach · g · 5 oz box
+- `sweet_potato` · Sweet potatoes · g · per lb
+- `tomatoes_cherry` · Cherry tomatoes · g · 10 oz pack
+- `tomatoes_roma` · Roma tomatoes · g · about 1 lb
+- `zucchini` · Zucchini · count · each
+- `cod` · Cod fillets · g · 1 lb pack · fish, FISH
+- `salmon` · Salmon fillets · g · 1 lb pack · fish, FISH
+- `scallops` · Sea scallops, frozen · g · 1 lb bag · shellfish, SHELLFISH
+- `shrimp` · Frozen shrimp, peeled · g · 1 lb bag · shellfish, SHELLFISH
+- `tilapia` · Tilapia fillets · g · 1 lb pack · fish, FISH
+- `bay_leaves` · Bay leaves · g · 0.15 oz jar
+- `cayenne` · Cayenne pepper · g · 1.6 oz jar
+- `chili_flakes` · Red chili flakes · g · 1.5 oz jar
+- `chili_powder` · Chili powder · g · 2.5 oz jar
+- `cinnamon` · Ground cinnamon · g · 2.4 oz jar
+- `coriander` · Ground coriander · g · 1.25 oz jar
+- `cumin` · Ground cumin · g · 2 oz jar
+- `curry_powder` · Curry powder · g · 2 oz jar
+- `dried_basil` · Dried basil · g · 0.5 oz jar
+- `five_spice` · Chinese five-spice · g · 1.7 oz jar
+- `garam_masala` · Garam masala · g · 2 oz jar
+- `garlic_powder` · Garlic powder · g · 3.1 oz jar
+- `ground_ginger` · Ground ginger · g · 1.4 oz jar
+- `italian_seasoning` · Italian seasoning · g · 0.75 oz jar
+- `nutmeg` · Ground nutmeg · g · 1.1 oz jar
+- `onion_powder` · Onion powder · g · 2.6 oz jar
+- `oregano` · Dried oregano · g · 0.75 oz jar
+- `paprika` · Sweet paprika · g · 2.2 oz jar
+- `pumpkin_spice` · Pumpkin pie spice · g · 1 oz jar
+- `rosemary` · Dried rosemary · g · 0.75 oz jar
+- `sage` · Dried sage · g · 0.5 oz jar
+- `sesame_seeds` · Sesame seeds · g · 2.2 oz jar
+- `smoked_paprika` · Smoked paprika · g · 2 oz jar
+- `thyme` · Dried thyme · g · 0.75 oz jar
+- `turmeric` · Ground turmeric · g · 1.6 oz jar
+- `neutral_oil` · Vegetable oil · ml · 48 oz bottle
+- `olive_oil` · Olive oil · ml · 500 ml bottle
+- `pepper` · Black pepper · g · 2 oz jar
+- `salt` · Kosher salt · g · 26 oz box
+- `sesame_oil` · Toasted sesame oil · ml · 5 oz bottle
+- `sugar` · Sugar · g · 4 lb bag

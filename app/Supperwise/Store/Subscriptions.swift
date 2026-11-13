@@ -44,8 +44,8 @@ enum Tier: Int, Comparable, CaseIterable, Identifiable {
     var features: [String] {
         switch self {
         case .free: ["Your first week's plan and list, kept"]
-        case .plus: ["A new week every Sunday", "Swap any night; the list reprices", "Cook mode with timers", "Holiday menus", "Save 10 recipes a month"]
-        case .family: ["Everything in Plus", "First foods for babies", "Lunchbox planner, on the same list", "Product scanner and health scores", "Eating-out scores", "Leftovers, receipt check, weekly recap"]
+        case .plus: ["A new week every Sunday", "Swap any night; the list reprices", "Cook mode with timers", "Holiday menus", "Community recipes", "Save 10 recipes a month"]
+        case .family: ["Everything in Plus", "First foods for babies", "Lunchbox planner, on the same list", "Food scan: photo to score and calories", "Barcode scanner and eating-out scores", "Leftovers, receipt check, weekly recap"]
         case .pro: ["Everything in Family", "Fridge scan: what can I cook tonight?"]
         }
     }

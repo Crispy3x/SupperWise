@@ -4,7 +4,7 @@ Usage: python3 tools/linux-check.py /path/to/swift/usr/bin"""
 import os, re, shutil, subprocess, sys
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUT = os.path.join(ROOT, ".linux-check")
-CORE = ["Models", "Catalog", "Pricing", "Planner", "HealthScore", "FoodProduct", "RecipeImporter", "HolidayMenu", "FirstFoods", "Lunchbox"]
+CORE = ["Models", "Catalog", "Pricing", "Planner", "HealthScore", "FoodProduct", "RecipeImporter", "HolidayMenu", "FirstFoods", "Lunchbox", "Backend"]
 SKIP_TESTS = ["testQuantityScaling", "testReceiptTotal", "testTimersInSteps", "testTierMapping"]  # live in SwiftUI or RevenueCat files
 shutil.rmtree(OUT, ignore_errors=True)
 src = os.path.join(OUT, "Sources", "SupperwiseCore"); tst = os.path.join(OUT, "Tests", "SupperwiseCoreTests")
@@ -23,7 +23,7 @@ def strip_funcs(code, names):
         while depth: depth += {"{": 1, "}": -1}.get(code[i], 0); i += 1
         code = code[:m.start()] + code[i:]
     return code
-for f in ["PlannerTests.swift", "FeatureTests.swift", "AppModelTests.swift"]:
+for f in ["PlannerTests.swift", "FeatureTests.swift", "AppModelTests.swift", "BackendTests.swift"]:
     code = open(os.path.join(ROOT, "SupperwiseTests", f)).read()
     code = code.replace("@testable import Supperwise", "@testable import SupperwiseCore").replace("bundle: .main", "bundle: .module").replace("load(bundle: .main)", "load(bundle: .module)")
     code = "\n".join(l for l in code.split("\n") if "Feature." not in l and "Subscriptions." not in l)  # RevenueCat-side types

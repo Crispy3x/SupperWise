@@ -4,6 +4,7 @@ import SwiftUI
 struct SupperwiseApp: App {
     @State private var model = Demo.isOn ? Demo.model() : AppModel()
     @State private var subs = Subscriptions()
+    @State private var account = Account()
 
     init() { Fonts.register() }
 
@@ -12,6 +13,7 @@ struct SupperwiseApp: App {
             RootView()
                 .environment(model)
                 .environment(subs)
+                .environment(account)
                 .task { await subs.load() }
         }
     }
