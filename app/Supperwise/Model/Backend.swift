@@ -119,8 +119,49 @@ final class Backend {
 
     // MARK: Auth: a 6-digit code by email (no password to forget)
 
+    /// Where the emailed sign-in link sends people back: the app (registered in Supperwise-Info.plist).
+    static let redirect = "supperwise://login"
+
+    /// Emails a sign-in link (and a 6-digit code where the email template includes one).
     func sendCode(to email: String) async throws {
-        _ = try await send("auth/v1/otp", method: "POST", body: ["email": email, "create_user": true], auth: false)
+        _ = try await send("auth/v1/otp", query: [URLQueryItem(name: "redirect_to", value: Self.redirect)], method: "POST",
+                           body: ["email": email, "create_user": true], auth: false)
+    }
+
+    /// Signs in from the emailed link: supperwise://login#access_token=…&refresh_token=…&expires_in=…
+    /// Returns false if the link isn't a sign-in link; throws if it's one that failed or expired.
+    @discardableResult
+    func handleSignInLink(_ url: URL, now: Date = .now) throws -> Bool {
+        guard url.scheme == "supperwise", url.host == "login" else { return false }
+        var params: [String: String] = [:]
+        for part in [url.fragment, URLComponents(url: url, resolvingAgainstBaseURL: false)?.query].compactMap({ $0 }) {
+            for pair in part.split(separator: "&") {
+                let kv = pair.split(separator: "=", maxSplits: 1).map { String($0).removingPercentEncoding ?? String($0) }
+                if kv.count == 2 { params[kv[0]] = kv[1] }
+            }
+        }
+        if let e = params["error_description"] ?? params["error"] {
+            throw BackendError.server(e.replacingOccurrences(of: "+", with: " ") + ". Ask for a new sign-in email.")
+        }
+        guard let access = params["access_token"], let refresh = params["refresh_token"],
+              let claims = Self.claims(of: access), let id = claims["sub"] as? String else {
+            throw BackendError.server("That sign-in link didn't work. Ask for a new one.")
+        }
+        current = Session(accessToken: access, refreshToken: refresh,
+                          expiresAt: now.addingTimeInterval(Double(params["expires_in"] ?? "") ?? 3600),
+                          userID: id, email: claims["email"] as? String)
+        store.save(current)
+        return true
+    }
+
+    /// The payload of a JWT (not verified here; the server verifies every request).
+    static func claims(of jwt: String) -> [String: Any]? {
+        let parts = jwt.split(separator: ".")
+        guard parts.count == 3 else { return nil }
+        var b64 = parts[1].replacingOccurrences(of: "-", with: "+").replacingOccurrences(of: "_", with: "/")
+        while b64.count % 4 != 0 { b64 += "=" }
+        guard let data = Data(base64Encoded: b64) else { return nil }
+        return try? JSONSerialization.jsonObject(with: data) as? [String: Any]
     }
 
     func verify(email: String, code: String) async throws {

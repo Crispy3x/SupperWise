@@ -48,18 +48,9 @@ jobs:
         run: |
           supabase functions deploy scan-food --project-ref "$PROJECT_REF" --use-api --yes
           supabase functions deploy delete-account --project-ref "$PROJECT_REF" --use-api --yes
-      - name: Sign-in emails send a 6-digit code
+      - name: Sign-in links open the app
         run: |
-          body=$(python3 - <<'PY'
-          import json
-          html = ("<h2>Your Supperwise code</h2><p>Enter this code in the app to sign in:</p>"
-                  "<p style='font-size:28px;font-weight:bold;letter-spacing:4px'>{{ .Token }}</p>"
-                  "<p>It expires in 1 hour. If you didn't ask for it, ignore this email.</p>")
-          print(json.dumps({"mailer_subjects_magic_link": "Your Supperwise code", "mailer_templates_magic_link_content": html,
-                            "mailer_subjects_confirmation": "Your Supperwise code", "mailer_templates_confirmation_content": html,
-                            "mailer_otp_exp": 3600}))
-          PY
-          )
+          body='{"site_url":"supperwise://login","uri_allow_list":"supperwise://login,supperwise://**","mailer_otp_exp":3600}'
           code=$(curl -s -o /tmp/auth.json -w "%{http_code}" -X PATCH "https://api.supabase.com/v1/projects/$PROJECT_REF/config/auth" \
             -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" -H "Content-Type: application/json" -d "$body")
           echo "auth config: HTTP $code"; [ "$code" -lt 300 ] || { cat /tmp/auth.json; exit 1; }

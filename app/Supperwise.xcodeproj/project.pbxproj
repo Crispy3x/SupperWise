@@ -304,9 +304,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Supperwise-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Supperwise;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Scan barcodes on food so you can see calories, ingredients and anything someone at your table avoids.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Scan barcodes and photograph food so you can see calories, ingredients and anything someone at your table avoids.";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -337,9 +338,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Supperwise-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Supperwise;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Scan barcodes on food so you can see calories, ingredients and anything someone at your table avoids.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Scan barcodes and photograph food so you can see calories, ingredients and anything someone at your table avoids.";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

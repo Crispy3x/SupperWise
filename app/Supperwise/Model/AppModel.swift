@@ -72,6 +72,8 @@ final class AppModel {
     var catalog: Catalog { Catalog(ingredients: baseCatalog.ingredients, recipes: baseCatalog.recipes + (state.savedRecipes ?? [])) }
     private(set) var state: SavedState
     var lastError: String? = nil
+    /// Shows a message in the app's alert (used for sign-in link problems).
+    func reportProblem(_ message: String) { lastError = message }
     private let fileURL: URL
     private let lunchGuide: LunchGuide?
 

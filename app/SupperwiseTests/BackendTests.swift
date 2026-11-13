@@ -95,6 +95,19 @@ final class BackendTests: XCTestCase {
         XCTAssertGreaterThanOrEqual(try Backend.parseScan(Data(salad.utf8)).0.score, 75)
     }
 
+    func testSignInLinkStartsASession() throws {
+        // A JWT whose payload is {"sub":"u9","email":"c@d.co"} (signature isn't checked on the device).
+        let payload = Data(#"{"sub":"u9","email":"c@d.co"}"#.utf8).base64EncodedString()
+            .replacingOccurrences(of: "=", with: "").replacingOccurrences(of: "+", with: "-").replacingOccurrences(of: "/", with: "_")
+        let store = MemorySessionStore()
+        let b = backend(store)
+        XCTAssertTrue(try b.handleSignInLink(URL(string: "supperwise://login#access_token=h.\(payload).s&refresh_token=r1&expires_in=3600&type=magiclink")!))
+        XCTAssertEqual(store.value?.userID, "u9")
+        XCTAssertEqual(store.value?.email, "c@d.co")
+        XCTAssertFalse(try b.handleSignInLink(URL(string: "https://example.com")!))
+        XCTAssertThrowsError(try b.handleSignInLink(URL(string: "supperwise://login#error=access_denied&error_description=Email+link+is+invalid+or+has+expired")!))
+    }
+
     func testErrorsAreReadable() {
         XCTAssertEqual(Backend.error(code: 429, data: Data(#"{"error":"That's all 100 scans for this month."}"#.utf8)),
                        .overLimit("That's all 100 scans for this month."))

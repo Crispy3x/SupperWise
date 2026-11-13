@@ -15,6 +15,7 @@ struct SupperwiseApp: App {
                 .environment(subs)
                 .environment(account)
                 .task { await subs.load() }
+                .onOpenURL { url in if let problem = account.handle(url) { model.reportProblem(problem) } }
         }
     }
 }

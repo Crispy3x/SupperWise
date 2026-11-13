@@ -21,6 +21,10 @@ final class Account {
     func verify(_ email: String, _ code: String) async throws { try await backend.verify(email: email, code: code); refresh() }
     func signOut() { backend.signOut(); refresh() }
     func deleteAccount() async throws { try await backend.deleteAccount(); refresh() }
+    /// From the emailed sign-in link.
+    func handle(_ url: URL) -> String? {
+        do { if try backend.handleSignInLink(url) { refresh() }; return nil } catch { return error.localizedDescription }
+    }
 }
 
 // MARK: - Sign in
@@ -46,9 +50,10 @@ struct SignInView: View {
                         .textInputAutocapitalization(.never).autocorrectionDisabled()
                         .disabled(sent)
                     if sent {
-                        TextField("6-digit code", text: $code).keyboardType(.numberPad).textContentType(.oneTimeCode)
+                        Label("Check your email and tap the sign-in link on this iPhone.", systemImage: "envelope.open")
+                        TextField("Or type the 6-digit code, if your email has one", text: $code).keyboardType(.numberPad).textContentType(.oneTimeCode)
                     }
-                    Button(sent ? "Sign in" : "Email me a code") { Task { await go() } }
+                    Button(sent ? "Sign in with code" : "Email me a sign-in link") { Task { await go() } }
                         .disabled(busy || !email.contains("@") || (sent && code.count < 6))
                     if sent { Button("Use a different email") { sent = false; code = "" } }
                 } footer: {
@@ -57,6 +62,7 @@ struct SignInView: View {
                 }
             }
             .navigationTitle("Sign in")
+            .onChange(of: account.signedIn) { _, on in if on { dismiss() } }
             .toolbar { ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } } }
         }
     }
