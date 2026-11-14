@@ -25,7 +25,7 @@ struct RootView: View {
     @Environment(Subscriptions.self) private var subs
     @Environment(\.scenePhase) private var phase
     @State private var tab = ["today": 0, "groceries": 1, "kitchen": 2, "lunchbox": 2, "firstfoods": 2][Demo.screen ?? ""] ?? 3
-    @State private var demoSheet = ["lunchbox", "firstfoods", "plans", "scanner"].contains(Demo.screen ?? "") ? Demo.screen : nil
+    @State private var demoSheet = ["lunchbox", "firstfoods", "plans", "scanner", "recipes", "profile", "fridge"].contains(Demo.screen ?? "") ? Demo.screen : nil
 
     var body: some View {
         Group {
@@ -55,6 +55,9 @@ struct RootView: View {
             case "lunchbox": LunchboxView()
             case "firstfoods": FirstFoodsView()
             case "scanner": ScannerView()
+            case "recipes": RecipeBrowserView()
+            case "profile": NavigationStack { ProfileView() }
+            case "fridge": FridgeView()
             default: PlansSheet()
             }
         }

@@ -89,7 +89,7 @@ jobs:
           xcrun simctl install "$UDID" "$APP"
           BID=$(/usr/libexec/PlistBuddy -c "Print CFBundleIdentifier" "$APP/Info.plist")
           mkdir -p shots
-          for s in home today groceries kitchen lunchbox firstfoods plans; do
+          for s in home today groceries kitchen recipes profile fridge lunchbox firstfoods plans; do
             xcrun simctl launch --terminate-running-process "$UDID" "$BID" -demo -screen "$s"
             sleep 8
             xcrun simctl io "$UDID" screenshot "shots/$s.png"
