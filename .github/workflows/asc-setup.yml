@@ -7,11 +7,14 @@ on:
   workflow_dispatch:
     inputs:
       what:
-        description: "setup (bundle ID and subscriptions), listing (store text, age rating, screenshots) or testflight (testers for the latest build)"
+        description: "setup (bundle ID and subscriptions), listing (store text, age rating, screenshots) testflight (testers for the latest build) or invite"
         default: "setup"
       site_base:
         description: "Where the privacy and support pages live, e.g. https://crispy3x.github.io/supperwise-site (optional)"
         default: "https://crispy3x.github.io/supperwise-site"
+      invite_email:
+        description: "For 'invite': the email to invite as a TestFlight tester"
+        default: ""
 
 jobs:
   setup:
@@ -41,5 +44,6 @@ jobs:
           case "${{ github.event.inputs.what }}" in
             listing) python3 app/tools/asc/asc_listing.py ;;
             testflight) python3 app/tools/asc/asc_testflight.py ;;
+            invite) INVITE_EMAIL="${{ github.event.inputs.invite_email }}" python3 app/tools/asc/asc_invite.py ;;
             *) python3 app/tools/asc/asc_setup.py ;;
           esac
