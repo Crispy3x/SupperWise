@@ -118,19 +118,34 @@ struct ImportRecipeView: View {
 /// and the matches rank dinners by what's already there. Nothing is uploaded.
 struct FridgeView: View {
     @Environment(AppModel.self) private var model
+    @Environment(Account.self) private var account
     @Environment(\.dismiss) private var dismiss
     @State private var item: PhotosPickerItem? = nil
     @State private var scanning = false
     @State private var adding = false
+    @State private var showCamera = false
+    @State private var signingIn = false
+    @State private var message: String? = nil
+    @State private var pending: UIImage? = nil
+    @State private var askConsent = false
+    /// Shared with the food scan: permission to send photos to the AI, asked once.
+    @AppStorage("foodScanConsent") private var consent = false
 
     var body: some View {
         NavigationStack {
             List {
                 Section {
-                    PhotosPicker(selection: $item, matching: .images) { Label("Scan a photo of your fridge or pantry", systemImage: "camera.viewfinder") }
+                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                        Button { showCamera = true } label: { Label("Take a photo of your fridge or pantry", systemImage: "camera") }
+                    }
+                    PhotosPicker(selection: $item, matching: .images) { Label("Choose a photo", systemImage: "photo") }
                     if scanning { ProgressView("Looking at your shelves…") }
-                    Text("Recognised on your iPhone; nothing is uploaded. Check the list: tap an item to remove it, or add what it missed.")
+                    if let message { Text(message).font(.footnote).foregroundStyle(Color(hex: 0xAD321C)) }
+                    Text(account.signedIn
+                         ? "The photo is read by AI to find ingredients, then matched to dinners. Check the list: tap an item to remove it, or add what it missed."
+                         : "Recognised on your iPhone (basic). Sign in for a much better scan that reads labels and finds far more items.")
                         .font(.footnote).foregroundStyle(Paper.ink2)
+                    if !account.signedIn { Button("Sign in for the better scan") { signingIn = true } }
                 }
                 .listRowBackground(Paper.ground)
                 Section("What you have (\(model.fridge.count))") {
@@ -169,8 +184,18 @@ struct FridgeView: View {
             .background(Paper.ground)
             .navigationTitle("What can I cook?")
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
-            .onChange(of: item) { _, new in Task { await scan(new) } }
+            .onChange(of: item) { _, new in
+                Task { if let new, let d = try? await new.loadTransferable(type: Data.self), let ui = UIImage(data: d) { await scan(ui) } }
+            }
             .sheet(isPresented: $adding) { AddFridgeItem() }
+            .sheet(isPresented: $showCamera) { CameraPicker { img in Task { await scan(img) } }.ignoresSafeArea() }
+            .sheet(isPresented: $signingIn) { SignInView(why: "Sign in for the AI fridge scan. Scans are counted per account.") }
+            .alert("Send this photo to be analysed?", isPresented: $askConsent) {
+                Button("Allow") { consent = true; if let p = pending { Task { await scan(p) } } }
+                Button("Not now", role: .cancel) { pending = nil }
+            } message: {
+                Text("To find ingredients, the photo is sent to Supperwise's server and analysed by Anthropic's Claude AI. Supperwise doesn't store the photo, and Anthropic doesn't use it to train its models.")
+            }
         }
     }
 
@@ -179,7 +204,7 @@ struct FridgeView: View {
     func matches() -> [Match] {
         let have = Set(model.fridge).union(model.inKitchen)
         let pricer = model.planner.pricer
-        return model.catalog.eligibleRecipes(for: model.settings).map { r in
+        return model.catalog.eligibleRecipes(for: model.settings, taste: model.taste).map { r in
             let need = r.ingredients.filter { model.catalog.ingredients[$0.ingredient]?.staple == false }
             let missing = need.filter { !have.contains($0.ingredient) }
             let cost = missing.reduce(0.0) { sum, ri in
@@ -194,12 +219,26 @@ struct FridgeView: View {
         .prefix(6).map { $0 }
     }
 
-    private func scan(_ item: PhotosPickerItem?) async {
-        guard let item, let data = try? await item.loadTransferable(type: Data.self), let ui = UIImage(data: data), let image = ui.cgImage else { return }
-        scanning = true
-        defer { scanning = false }
-        let found = await FoodRecognizer.ingredients(in: image, orientation: CGImagePropertyOrientation(ui.imageOrientation))
-        model.setFridge(Array(Set(model.fridge).union(found)).sorted())
+    private func scan(_ ui: UIImage) async {
+        message = nil
+        if account.signedIn {
+            guard consent else { pending = ui; askConsent = true; return }
+            guard let jpeg = ui.downscaledJPEG(maxSide: 1400, quality: 0.75) else { return }
+            scanning = true
+            defer { scanning = false }
+            do {
+                let (found, left) = try await account.backend.scanFridge(jpeg: jpeg, catalog: Array(model.catalog.ingredients.values))
+                model.setFridge(Array(Set(model.fridge).union(found)).sorted())
+                message = found.isEmpty ? "Couldn't spot any ingredients. Try a closer, brighter photo." : "Found \(found.count) items · \(left) scans left this month."
+            } catch { message = error.localizedDescription }
+        } else {
+            guard let image = ui.cgImage else { return }
+            scanning = true
+            defer { scanning = false }
+            let found = await FoodRecognizer.ingredients(in: image, orientation: CGImagePropertyOrientation(ui.imageOrientation))
+            model.setFridge(Array(Set(model.fridge).union(found)).sorted())
+            message = found.isEmpty ? "The basic scan found nothing. Sign in for the AI scan, or add items by hand." : nil
+        }
     }
 }
 

@@ -108,6 +108,13 @@ final class BackendTests: XCTestCase {
         XCTAssertThrowsError(try b.handleSignInLink(URL(string: "supperwise://login#error=access_denied&error_description=Email+link+is+invalid+or+has+expired")!))
     }
 
+    func testFridgeScanKeepsOnlyKnownIngredientsOnce() throws {
+        let reply = #"{"remaining":42,"result":{"items":[{"id":"eggs","seen":"carton"},{"id":"cheddar","seen":"block"},{"id":"eggs","seen":"again"},{"id":"unicorn","seen":"?"}],"notes":""}}"#
+        let (ids, left) = try Backend.parseFridge(Data(reply.utf8), known: ["eggs", "cheddar", "milk"])
+        XCTAssertEqual(ids, ["eggs", "cheddar"])
+        XCTAssertEqual(left, 42)
+    }
+
     func testErrorsAreReadable() {
         XCTAssertEqual(Backend.error(code: 429, data: Data(#"{"error":"That's all 100 scans for this month."}"#.utf8)),
                        .overLimit("That's all 100 scans for this month."))

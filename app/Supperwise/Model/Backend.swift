@@ -296,6 +296,24 @@ final class Backend {
         return try Self.parseScan(data)
     }
 
+    /// Fridge or pantry photo: returns the catalog ingredient ids it can see, and scans left this month.
+    func scanFridge(jpeg: Data, catalog: [Ingredient]) async throws -> ([String], Int) {
+        try await refreshIfNeeded()
+        let list = catalog.filter { !$0.staple }.map { ["id": $0.id, "name": $0.name] }
+        let data = try await send("functions/v1/scan-food", method: "POST",
+                                  body: ["image": jpeg.base64EncodedString(), "mediaType": "image/jpeg", "mode": "fridge", "catalog": list], timeout: 60)
+        return try Self.parseFridge(data, known: Set(catalog.map(\.id)))
+    }
+
+    static func parseFridge(_ data: Data, known: Set<String>) throws -> ([String], Int) {
+        struct Item: Decodable { let id: String }
+        struct Result: Decodable { let items: [Item] }
+        struct Reply: Decodable { let result: Result; let remaining: Int }
+        let r = try JSONDecoder().decode(Reply.self, from: data)
+        var seen = Set<String>()
+        return (r.result.items.map(\.id).filter { known.contains($0) && seen.insert($0).inserted }, r.remaining)
+    }
+
     static func parseScan(_ data: Data) throws -> (FoodScan, Int) {
         struct Reply: Decodable { let result: FoodScan; let remaining: Int }
         let r = try JSONDecoder().decode(Reply.self, from: data)

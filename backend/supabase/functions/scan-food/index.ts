@@ -76,7 +76,7 @@ Deno.serve(async (req) => {
   const { data: { user } } = await userClient.auth.getUser();
   if (!user) return json({ error: "Sign in to scan food." }, 401);
 
-  let body: { image?: string; mediaType?: string };
+  let body: { image?: string; mediaType?: string; mode?: string; catalog?: { id: string; name: string }[] };
   try { body = await req.json(); } catch { return json({ error: "Send JSON with an image." }, 400); }
   const image = body.image ?? "";
   const mediaType = body.mediaType === "image/png" ? "image/png" : "image/jpeg";
@@ -87,6 +87,45 @@ Deno.serve(async (req) => {
   const { data: used, error: usageError } = await admin.rpc("use_scan", { p_user: user.id, p_limit: MONTHLY_LIMIT });
   if (usageError) return json({ error: "Couldn't check your scans. Try again." }, 500);
   if (used === -1) return json({ error: `That's all ${MONTHLY_LIMIT} scans for this month. They reset on the 1st.`, remaining: 0 }, 429);
+
+  // Fridge or pantry photo: which of the app's catalog ingredients are on the shelves.
+  if (body.mode === "fridge") {
+    const catalog = (body.catalog ?? []).filter((c) => c && typeof c.id === "string" && typeof c.name === "string").slice(0, 500);
+    if (catalog.length === 0) return json({ error: "Missing the ingredient list." }, 400);
+    const ids = catalog.map((c) => c.id);
+    const schema = {
+      type: "object", additionalProperties: false, required: ["items", "notes"],
+      properties: {
+        items: { type: "array", items: { type: "object", additionalProperties: false, required: ["id", "seen"],
+          properties: { id: { type: "string", enum: ids }, seen: { type: "string", description: "What you saw, e.g. 'carton of eggs'" } } } },
+        notes: { type: "string" },
+      },
+    };
+    try {
+      const response = await anthropic.beta.messages.create({
+        model: "claude-opus-5-5",
+        max_tokens: 4000,
+        betas: ["server-side-fallback-2026-07-01"],
+        fallbacks: "default",
+        output_config: { effort: "low", format: { type: "json_schema", schema } },
+        system: "You look at a photo of a fridge, freezer, pantry shelf or counter and list which of the given grocery " +
+          "ingredients are clearly visible. Use only ids from the list. Match sensibly (a block of orange cheese is sharp " +
+          "cheddar; a bag of shredded cheese is shredded mozzarella or Monterey Jack, whichever fits; a carton of eggs is eggs). " +
+          "Don't guess at things you can't see or hidden inside closed opaque containers. Each id at most once.",
+        messages: [{ role: "user", content: [
+          { type: "image", source: { type: "base64", media_type: mediaType, data: image } },
+          { type: "text", text: "Ingredient list (id: name):\n" + catalog.map((c) => `${c.id}: ${c.name}`).join("\n") },
+        ] }],
+      });
+      if (response.stop_reason === "refusal") return json({ error: "That photo couldn't be scanned." }, 422);
+      const text = response.content.find((b) => b.type === "text");
+      if (!text || text.type !== "text") return json({ error: "The scan didn't return a result." }, 502);
+      return json({ result: JSON.parse(text.text), remaining: MONTHLY_LIMIT - (used as number) });
+    } catch (e) {
+      if (e instanceof Anthropic.RateLimitError) return json({ error: "Scanning is busy. Try again in a moment." }, 503);
+      return json({ error: "The scan failed. Try again." }, 502);
+    }
+  }
 
   try {
     const response = await anthropic.beta.messages.create({
