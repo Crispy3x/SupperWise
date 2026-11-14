@@ -1,0 +1,5115 @@
+[
+ {
+  "id": "spinach_pinto_jack_quesadillas",
+  "name": "Spinach and pinto bean quesadillas",
+  "side": "Salsa, sour cream and shredded lettuce.",
+  "cuisine": "Mexican",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the chili powder and use mild salsa; the beans and cheese are kid-friendly on their own.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   },
+   {
+    "ingredient": "pinto_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 140,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 227,
+    "text": "1 bag (2 cups)",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ onion",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 230,
+    "text": "1 cup",
+    "note": "for serving"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": "for serving"
+   }
+  ],
+  "steps": [
+   "Heat 1 tbsp of the oil in a large skillet over medium heat and cook the onion for 4 minutes, until soft.",
+   "Stir in the garlic, cumin, chili powder and salt and cook for 30 seconds, until fragrant.",
+   "Add the pinto beans and 2 tbsp water, mash them roughly with a fork or potato masher and cook for 2 minutes, until thick.",
+   "Stir in the spinach a handful at a time until it wilts, about 2 minutes, then scrape the filling into a bowl and wipe out the skillet.",
+   "Spread the filling over half of each tortilla, top with the Monterey Jack and fold the tortillas in half.",
+   "Brush the skillet with a little of the remaining oil and cook the quesadillas two at a time over medium heat for 2 to 3 minutes per side, until golden and the cheese has melted.",
+   "Cut into wedges and serve with the salsa and sour cream."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "crispy_gnocchi_peas_parmesan",
+  "name": "Crispy skillet gnocchi with peas and parmesan",
+  "side": "A green salad with vinaigrette.",
+  "cuisine": "Italian",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "gnocchi",
+    "amount": 908,
+    "text": "2 packs (1 lb each)",
+    "note": "shelf-stable"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 280,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 140,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 60,
+    "text": "¾ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat 1 tbsp of the oil in a large nonstick skillet over medium-high heat and add half the gnocchi straight from the package in a single layer.",
+   "Cook undisturbed for 3 minutes, until golden underneath, then toss and cook 3 to 4 minutes more, until crisp and puffed; tip into a bowl and repeat with the remaining oil and gnocchi.",
+   "Lower the heat to medium, melt the butter in the skillet and cook the garlic for 1 minute.",
+   "Add the peas and 2 tbsp water and cook for 2 to 3 minutes, until hot, then stir in the spinach until it wilts.",
+   "Return the gnocchi to the pan with the lemon zest, lemon juice, salt and pepper and toss well.",
+   "Take the pan off the heat, stir in half the parmesan and serve topped with the rest."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "pesto_tortellini_blistered_tomatoes",
+  "name": "Pesto tortellini with blistered cherry tomatoes",
+  "side": "Garlic bread or a simple green salad.",
+  "cuisine": "Italian",
+  "minutes": 15,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tortellini",
+    "amount": 567,
+    "text": "1 pack (20 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 280,
+    "text": "1 pack (10 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "pesto",
+    "amount": 115,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 140,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 0.5,
+    "text": "½",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 30,
+    "text": "⅓ cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "for the pasta water"
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil and add the salt.",
+   "Meanwhile, heat the oil in a large skillet over medium-high heat and cook the cherry tomatoes for 4 to 5 minutes, shaking the pan, until blistered and starting to burst; add the garlic for the last 30 seconds.",
+   "Cook the tortellini according to the package, usually 2 to 3 minutes, then scoop out ½ cup of the cooking water and drain.",
+   "Add the tortellini, spinach, pesto, lemon juice and ¼ cup of the cooking water to the skillet and toss over low heat until the spinach wilts and the sauce is glossy, adding more water if it looks dry.",
+   "Serve sprinkled with the parmesan."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "mushroom_stroganoff_egg_noodles",
+  "name": "Mushroom stroganoff with egg noodles",
+  "side": "Steamed green beans or a crisp cucumber salad.",
+  "cuisine": "Eastern European",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "mushrooms",
+    "amount": 680,
+    "text": "1½ lb (3 packs)",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "egg_noodles",
+    "amount": 340,
+    "text": "1 bag (12 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 onion",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 360,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 180,
+    "text": "¾ cup",
+    "note": "at room temperature"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "a small handful",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil with half the salt for the noodles.",
+   "Melt 2 tbsp of the butter in a large skillet over medium-high heat, add the mushrooms and cook for 8 minutes, stirring now and then, until browned and their liquid has cooked off.",
+   "Add the remaining butter and the onion and cook for 3 minutes, then stir in the garlic and paprika for 30 seconds.",
+   "Sprinkle in the flour and stir for 1 minute, then whisk in the broth, soy sauce and Dijon and simmer for 3 minutes, until thickened.",
+   "Meanwhile, cook the egg noodles for 6 to 7 minutes, until tender, and drain.",
+   "Take the skillet off the heat and stir in the sour cream, the rest of the salt and the pepper; don't let it boil once the sour cream is in or it may split.",
+   "Serve the stroganoff over the noodles, scattered with parsley."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "corn_tofu_egg_drop_soup",
+  "name": "Corn and tofu egg drop soup",
+  "side": "Sesame cucumber salad and crackers.",
+  "cuisine": "Chinese",
+  "minutes": 15,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "veg_broth",
+    "amount": 1420,
+    "text": "6 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 340,
+    "text": "1 bag (12 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tofu_firm",
+    "amount": 397,
+    "text": "1 block (14 oz)",
+    "note": "cut into ½-inch cubes"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 24,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "thinly sliced"
+   }
+  ],
+  "steps": [
+   "Bring the broth, ginger and soy sauce to a boil in a large pot over high heat.",
+   "Add the corn and tofu and simmer for 4 minutes, until the corn is hot.",
+   "Whisk the cornstarch with ¼ cup cold water, stir it into the soup and simmer for 1 to 2 minutes, until slightly thickened.",
+   "Turn the heat down so the soup barely simmers, stir it in a slow circle and drizzle in the beaten eggs in a thin stream; leave for 30 seconds, then stir gently so the eggs set into ribbons and are cooked through.",
+   "Take the pot off the heat, stir in the sesame oil and pepper and serve topped with the scallions."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "soba_tofu_snap_pea_stir_fry",
+  "name": "Stir-fried soba with tofu and snap peas",
+  "side": "Sliced cucumbers with a splash of rice vinegar.",
+  "cuisine": "Japanese",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "soba",
+    "amount": 270,
+    "text": "1 pack (9.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tofu_firm",
+    "amount": 397,
+    "text": "1 block (14 oz)",
+    "note": "patted dry, cut into ¾-inch cubes"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 8,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "snap_peas",
+    "amount": 227,
+    "text": "1 bag (8 oz)",
+    "note": "trimmed"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2 carrots",
+    "note": "cut into thin matchsticks"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 15,
+    "text": "1½-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "grated"
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Bring a pot of water to a boil for the soba.",
+   "Toss the tofu with the cornstarch, heat 1½ tbsp of the oil in a large nonstick skillet over medium-high heat and cook the tofu for 6 to 8 minutes, turning, until golden on all sides; set it aside on a plate.",
+   "Whisk the soy sauce, honey, rice vinegar, ginger, garlic and sesame oil in a small bowl.",
+   "Cook the soba for about 4 minutes, following the package, then drain and rinse under cold water so it doesn't stick.",
+   "Add the remaining oil to the skillet and stir-fry the snap peas and carrots for 3 minutes, until crisp-tender.",
+   "Add the soba, tofu and sauce and toss for 1 to 2 minutes, until everything is hot and coated.",
+   "Serve topped with the scallions."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "tex_mex_migas",
+  "name": "Tex-Mex migas with peppers",
+  "side": "Black beans and sliced oranges.",
+  "cuisine": "Tex-Mex",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the jalapeño (or cook it only into one side of the pan) and use mild salsa.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "eggs",
+    "amount": 10,
+    "text": "10",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ onion",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 1,
+    "text": "1",
+    "note": "seeded and minced"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 225,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "tortilla_chips",
+    "amount": 85,
+    "text": "about 3 cups",
+    "note": "lightly crushed"
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "a small handful",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Beat the eggs with the salt in a bowl.",
+   "Heat the oil in a large nonstick skillet over medium heat and cook the onion, bell pepper and jalapeño for 5 minutes, until soft.",
+   "Add the tomatoes and cook for 2 minutes, then stir in the tortilla chips for 1 minute so they soften slightly.",
+   "Pour in the eggs, turn the heat to medium-low and stir gently for 3 to 4 minutes, until softly set with no liquid egg left.",
+   "Scatter the cheddar over the top, cover for 1 minute to melt, then take the pan off the heat.",
+   "Warm the tortillas in a dry skillet for 30 seconds per side and serve the migas in them with the salsa and cilantro."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "roasted_red_pepper_rigatoni",
+  "name": "Creamy roasted red pepper rigatoni",
+  "side": "Arugula salad with lemon.",
+  "cuisine": "Italian",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "rigatoni",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ onion",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 16,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "roasted_peppers",
+    "amount": 340,
+    "text": "1 jar (12 oz)",
+    "note": "drained"
+   },
+   {
+    "ingredient": "cream_cheese",
+    "amount": 113,
+    "text": "4 oz (½ block)",
+    "note": "softened"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 40,
+    "text": "½ cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 140,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "basil",
+    "amount": 10,
+    "text": "a handful of leaves",
+    "note": "torn"
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil with most of the salt and cook the rigatoni for 11 to 12 minutes, until al dente; scoop out 1 cup of the cooking water before draining.",
+   "Meanwhile, heat the oil in a large skillet over medium heat and cook the onion for 4 minutes, until soft.",
+   "Stir in the garlic, tomato paste and smoked paprika and cook for 1 minute.",
+   "Blend the onion mixture with the roasted peppers, cream cheese and the rest of the salt in a blender (or with a stick blender in a tall jug) until smooth, then pour it back into the skillet.",
+   "Stir in the parmesan and ½ cup of the pasta water and simmer for 2 minutes.",
+   "Add the drained rigatoni and the spinach and toss until the spinach wilts, loosening with more pasta water if needed.",
+   "Serve scattered with the basil."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "chili_paneer_peppers",
+  "name": "Chili paneer with peppers and onions",
+  "side": "Warm naan and sliced cucumbers.",
+  "cuisine": "Indo-Chinese",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave the sriracha out of the sauce and pass it at the table for anyone who wants heat.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "paneer",
+    "amount": 510,
+    "text": "1½ blocks (18 oz)",
+    "note": "cut into 1-inch cubes"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 24,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 220,
+    "text": "1 onion",
+    "note": "cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 15,
+    "text": "1½-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sriracha",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 8,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "naan",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Toss the paneer with 2 tbsp of the cornstarch.",
+   "Heat 2 tbsp of the oil in a large nonstick skillet over medium-high heat and fry the paneer for 5 to 6 minutes, turning, until golden on most sides; set aside on a plate.",
+   "Whisk the soy sauce, sriracha, rice vinegar, sugar, the remaining 1 tbsp cornstarch and ½ cup water in a small bowl.",
+   "Add the remaining oil to the skillet and stir-fry the onion and bell peppers for 3 to 4 minutes, until crisp-tender, then add the garlic and ginger for 30 seconds.",
+   "Stir the sauce, pour it in and let it bubble for 1 minute, until glossy and thick, then return the paneer and toss to coat.",
+   "Warm the naan in a dry skillet for about 1 minute per side and serve with the chili paneer, topped with the scallions."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "fettuccine_alfredo_broccoli",
+  "name": "Fettuccine Alfredo with broccoli",
+  "side": "Sliced tomatoes with a pinch of salt.",
+  "cuisine": "Italian-American",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "fettuccine",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 450,
+    "text": "1 crown",
+    "note": "cut into small florets"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "for the pasta water"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "heavy_cream",
+    "amount": 360,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 100,
+    "text": "1¼ cups",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "nutmeg",
+    "amount": 0.5,
+    "text": "a pinch",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil, add the salt and cook the fettuccine for 10 to 11 minutes, adding the broccoli for the last 3 minutes; scoop out 1 cup of the cooking water, then drain.",
+   "Meanwhile, melt the butter in a large skillet over medium-low heat and cook the garlic for 1 minute without browning.",
+   "Add the cream and simmer gently for 4 to 5 minutes, until slightly thickened.",
+   "Take the skillet off the heat and whisk in the parmesan, nutmeg and pepper until smooth.",
+   "Add the fettuccine and broccoli and toss, adding splashes of the cooking water until the sauce coats the pasta; serve right away."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "herb_goat_cheese_omelets",
+  "name": "Herb and goat cheese omelets",
+  "side": "Arugula and tomato salad with baguette.",
+  "cuisine": "French",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "eggs",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "¼ cup",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 2,
+    "text": "2",
+    "note": "finely sliced"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "goat_cheese",
+    "amount": 113,
+    "text": "1 log (4 oz)",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "arugula",
+    "amount": 140,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 280,
+    "text": "1 pack (10 oz)",
+    "note": "halved"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "baguette",
+    "amount": 1,
+    "text": "1",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Toss the arugula and cherry tomatoes with the olive oil, lemon juice and a pinch of the salt, and slice the baguette.",
+   "Beat the eggs with the rest of the salt, the pepper, parsley and scallions until no streaks of white remain.",
+   "Melt ½ tbsp of the butter in an 8- to 10-inch nonstick skillet over medium heat and pour in a quarter of the eggs (about ¾ cup).",
+   "Stir gently with a spatula for 30 seconds, then let it cook undisturbed for 1 to 2 minutes, until the top is just set with no runny egg.",
+   "Scatter a quarter of the goat cheese over one half, fold the omelet over and slide it onto a plate; cover loosely with foil.",
+   "Repeat with the remaining butter, eggs and goat cheese to make 4 omelets, and serve with the salad and baguette."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "thai_pumpkin_curry_soup",
+  "name": "Thai red curry pumpkin soup with chickpeas",
+  "side": "Warm naan for dipping.",
+  "cuisine": "Thai",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 1 tbsp curry paste for a mild, sweet soup, and stir a little extra paste into adult bowls if you like.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 onion",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 15,
+    "text": "1½-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "red_curry_paste",
+    "amount": 40,
+    "text": "2½ tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pumpkin_puree",
+    "amount": 850,
+    "text": "2 cans (15 oz each)",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 1,
+    "text": "1 can",
+    "note": "shaken"
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 12,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "a small handful",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "naan",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large pot over medium heat and cook the onion for 4 minutes, until soft.",
+   "Stir in the garlic, ginger and curry paste and cook for 1 minute, until fragrant.",
+   "Add the pumpkin, broth, brown sugar, salt and all but 3 tbsp of the coconut milk, stir until smooth and bring to a simmer.",
+   "Add the chickpeas and simmer for 8 minutes, stirring now and then so it doesn't catch on the bottom.",
+   "Meanwhile, warm the naan in a dry skillet for about 1 minute per side.",
+   "Stir in the lime juice, then serve the soup drizzled with the saved coconut milk and topped with cilantro, with the naan on the side."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "hoisin_tofu_lettuce_wraps",
+  "name": "Hoisin tofu lettuce wraps",
+  "side": "Sliced cucumbers and orange wedges.",
+  "cuisine": "Chinese",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "tofu_firm",
+    "amount": 794,
+    "text": "2 blocks (14 oz each)",
+    "note": "patted dry and crumbled"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "1 pack (8 oz)",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 15,
+    "text": "1½-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced, white and green parts kept apart"
+   },
+   {
+    "ingredient": "hoisin",
+    "amount": 80,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lettuce_butter",
+    "amount": 2,
+    "text": "2 heads",
+    "note": "leaves separated"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2 carrots",
+    "note": "grated"
+   },
+   {
+    "ingredient": "peanuts",
+    "amount": 40,
+    "text": "⅓ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Press the tofu in a clean towel to squeeze out as much water as you can, then crumble it into small pieces.",
+   "Heat the oil in a large nonstick skillet over medium-high heat and cook the tofu for 7 to 8 minutes, stirring now and then, until golden and dry.",
+   "Add the mushrooms and cook for 3 to 4 minutes, until browned, then stir in the garlic, ginger and scallion whites for 1 minute.",
+   "Stir in the hoisin, soy sauce and rice vinegar and cook for 1 minute, until the filling is glossy.",
+   "Spoon the filling into the lettuce leaves and top with the carrots, scallion greens and peanuts."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "hummus_naan_pizzas",
+  "name": "Mediterranean hummus naan pizzas",
+  "side": "Cucumber slices and a green salad.",
+  "cuisine": "Mediterranean",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "naan",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   },
+   {
+    "ingredient": "hummus",
+    "amount": 283,
+    "text": "1 tub (10 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 140,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 280,
+    "text": "1 pack (10 oz)",
+    "note": "halved"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 55,
+    "text": "¼ onion",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 75,
+    "text": "½ cup",
+    "note": "pitted and halved"
+   },
+   {
+    "ingredient": "feta",
+    "amount": 113,
+    "text": "¾ cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 450°F and set the naan on a large sheet pan.",
+   "Toss the spinach with the olive oil.",
+   "Spread the hummus over the naan, almost to the edges, then pile on the spinach, mozzarella, cherry tomatoes, red onion, olives and feta.",
+   "Sprinkle with the oregano and bake for 8 to 10 minutes, until the cheese has melted and the edges are crisp.",
+   "Cut each naan into wedges and serve hot."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "black_bean_sheet_pan_nachos",
+  "name": "Loaded black bean sheet-pan nachos",
+  "side": "Fresh pico de gallo and mashed avocado on top.",
+  "cuisine": "Tex-Mex",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Leave the jalapeño out of the pico and halve the chili powder.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "black_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 170,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "tortilla_chips",
+    "amount": 300,
+    "text": "most of a 13-oz bag",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 227,
+    "text": "1 block (8 oz)",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 225,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 55,
+    "text": "¼ onion",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 1,
+    "text": "1",
+    "note": "seeded and minced"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "a small handful",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F and toss the black beans and corn with the cumin, chili powder and half the salt.",
+   "Spread half the tortilla chips on a large sheet pan, scatter over half the beans and corn and half the cheddar, then repeat the layers.",
+   "Bake for 8 to 10 minutes, until the cheese has melted and the edges of the chips are toasted.",
+   "Meanwhile, stir the tomatoes, red onion, jalapeño, cilantro and half the lime juice together for a quick pico de gallo.",
+   "Mash the avocados with the rest of the lime juice and salt.",
+   "Spoon the pico, mashed avocado and sour cream over the hot nachos and serve straight from the pan."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "antipasto_penne_artichokes_feta",
+  "name": "Penne with artichokes, olives and roasted peppers",
+  "side": "Crusty bread and sliced cucumbers.",
+  "cuisine": "Mediterranean",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "penne",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "for the pasta water"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "artichokes",
+    "amount": 1,
+    "text": "1 can",
+    "note": "drained and quartered"
+   },
+   {
+    "ingredient": "roasted_peppers",
+    "amount": 170,
+    "text": "½ jar",
+    "note": "drained and sliced"
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 85,
+    "text": "½ jar",
+    "note": "pitted and halved"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "arugula",
+    "amount": 70,
+    "text": "½ box",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "¼ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "feta",
+    "amount": 113,
+    "text": "¾ cup",
+    "note": "crumbled"
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil, add the salt and cook the penne for 10 to 11 minutes, until al dente; scoop out 1 cup of the cooking water before draining.",
+   "Meanwhile, warm the olive oil in a large skillet over medium heat and cook the garlic and oregano for 1 minute, until the garlic is pale gold.",
+   "Add the artichokes, roasted peppers and olives and cook for 3 minutes, until hot and the artichokes start to brown at the edges.",
+   "Add the drained penne, lemon zest, lemon juice and ½ cup of the cooking water and toss until glossy.",
+   "Take the pan off the heat, fold in the arugula and parsley, and serve topped with the feta."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "crispy_tofu_banh_mi",
+  "name": "Crispy tofu banh mi sandwiches",
+  "side": "Extra quick-pickled carrots and cucumber spears.",
+  "cuisine": "Vietnamese",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "tofu",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use plain mayo for kids' sandwiches and leave out the jalapeño.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2 carrots",
+    "note": "cut into thin matchsticks"
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 12,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tofu_firm",
+    "amount": 794,
+    "text": "2 blocks (14 oz each)",
+    "note": "patted dry, cut into ½-inch slabs"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 80,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "sriracha",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "hoagie_rolls",
+    "amount": 4,
+    "text": "4",
+    "note": "split"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "thinly sliced lengthwise"
+   },
+   {
+    "ingredient": "jalapeno",
+    "amount": 1,
+    "text": "1",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 15,
+    "text": "a large handful",
+    "note": "leaves and tender stems"
+   }
+  ],
+  "steps": [
+   "Stir the rice vinegar, sugar, salt and ¼ cup warm water in a bowl until dissolved, add the carrots and leave them to pickle while you cook.",
+   "Brush the tofu slabs with the soy sauce, then dust both sides with the cornstarch.",
+   "Heat the oil in a large nonstick skillet over medium-high heat and fry the tofu for 3 to 4 minutes per side, until crisp and golden, in two batches if needed.",
+   "Stir the mayo and sriracha together, and toast the split rolls cut side down in the skillet or under the broiler for 1 to 2 minutes.",
+   "Spread the rolls with the sriracha mayo and fill with the tofu, drained pickled carrots, cucumber, jalapeño and cilantro."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "greek_chickpea_salad_pitas",
+  "name": "Greek chickpea salad pitas",
+  "side": "Extra cucumber sticks and grapes.",
+  "cuisine": "Greek",
+  "minutes": 15,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "greek_yogurt",
+    "amount": 225,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 1,
+    "text": "1 clove",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "dill",
+    "amount": 10,
+    "text": "¼ cup",
+    "note": "chopped, divided"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced, divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 225,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 55,
+    "text": "¼ onion",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "olives_kalamata",
+    "amount": 60,
+    "text": "⅓ cup",
+    "note": "pitted and chopped"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "feta",
+    "amount": 113,
+    "text": "¾ cup",
+    "note": "crumbled"
+   },
+   {
+    "ingredient": "pita",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Stir the yogurt with the garlic, half the dill, half the lemon juice and a pinch of the salt to make a quick sauce.",
+   "Put the chickpeas in a large bowl and lightly mash about half of them with a fork.",
+   "Add the cucumber, tomatoes, red onion, olives, olive oil, oregano, the remaining dill, lemon juice and salt and toss well, then fold in the feta.",
+   "Warm the pitas in a dry skillet over medium heat for about 30 seconds per side, then cut them in half and open the pockets.",
+   "Spread a spoonful of the yogurt sauce inside each pocket and stuff with the chickpea salad, with extra sauce on the side."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "smashed_pinto_bean_tostadas",
+  "name": "Smashed pinto bean tostadas",
+  "side": "Lime wedges and extra salsa.",
+  "cuisine": "Mexican",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "oven",
+   "stovetop",
+   "sheet_pan"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the chili powder and use mild salsa.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ onion",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pinto_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 225,
+    "text": "about 3 cups",
+    "note": "finely shredded"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 2,
+    "text": "2",
+    "note": "1 juiced, 1 cut into wedges"
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "feta",
+    "amount": 85,
+    "text": "⅔ cup",
+    "note": "crumbled"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F, brush the tortillas on both sides with 2 tbsp of the oil and spread them over two sheet pans.",
+   "Bake for 8 to 10 minutes, flipping halfway, until crisp and golden.",
+   "Meanwhile, heat the remaining oil in a skillet over medium heat and cook the onion for 4 minutes, then stir in the garlic, cumin and chili powder for 30 seconds.",
+   "Add the pinto beans and ¼ cup water, mash them well and cook for 3 minutes, until thick and spreadable; season with half the salt.",
+   "Toss the cabbage with the lime juice and the rest of the salt.",
+   "Spread the beans over the tostadas and top with the cabbage, avocado, salsa and feta; serve with the lime wedges."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "cheddar_corn_fritters",
+  "name": "Cheddar corn fritters with salsa",
+  "side": "Sliced tomatoes and a green salad.",
+  "cuisine": "American",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "frozen_corn",
+    "amount": 510,
+    "text": "1½ bags (about 3½ cups)",
+    "note": "thawed and patted dry"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 3,
+    "text": "3",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 125,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cornmeal",
+    "amount": 40,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salsa",
+    "amount": 230,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Rinse the frozen corn under warm water to thaw it, then pat it very dry on a towel.",
+   "Whisk the eggs and milk in a large bowl, then stir in the flour, cornmeal, salt and smoked paprika until just combined.",
+   "Fold in the corn, cheddar and scallions.",
+   "Heat 2 tbsp of the oil in a large skillet over medium heat, drop in ¼-cup scoops of batter, flatten them slightly and cook for about 3 minutes per side, until deep golden and the centers spring back when pressed.",
+   "Move the fritters to a paper-towel-lined plate and repeat with the rest of the batter, adding more oil between batches.",
+   "Serve hot with the salsa and sour cream."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "ginger_scallion_noodles_fried_eggs",
+  "name": "Ginger-scallion noodles with bok choy and fried eggs",
+  "side": "Sliced cucumbers with rice vinegar.",
+  "cuisine": "Chinese",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "egg_noodles",
+    "amount": 340,
+    "text": "1 bag (12 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "bok_choy",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "halved lengthwise"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 8,
+    "text": "8",
+    "note": "very finely chopped"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 25,
+    "text": "2-inch piece",
+    "note": "peeled and finely grated"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 2,
+    "text": "⅓ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sugar",
+    "amount": 4,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil for the noodles.",
+   "Put the scallions, ginger and salt in a heatproof bowl, heat 3 tbsp of the oil in a small skillet over medium-high heat until it shimmers, then carefully pour it over (it will sizzle) and stir.",
+   "Stir the soy sauce, sesame oil, rice vinegar and sugar into the ginger-scallion oil.",
+   "Cook the egg noodles for 5 to 6 minutes, adding the bok choy for the last 2 minutes, then drain.",
+   "Meanwhile, heat the remaining oil in a nonstick skillet over medium heat and fry the eggs for 3 to 4 minutes, until the whites are completely set.",
+   "Toss the noodles and bok choy with the ginger-scallion sauce and serve each bowl topped with a fried egg."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "honey_garlic_chicken_peppers",
+  "name": "Honey garlic chicken bites with peppers",
+  "side": "Cucumber salad, or rice if you have some cooked.",
+  "cuisine": "Chinese-American",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 24,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 2,
+    "text": "⅓ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 85,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 5,
+    "text": "5 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Toss the chicken with the cornstarch, salt and pepper (don't rinse raw chicken; wash your hands and board after handling it).",
+   "Whisk the honey, soy sauce, rice vinegar, garlic and 2 tbsp water in a small bowl.",
+   "Heat 1 tbsp of the oil in a large skillet over medium-high heat and stir-fry the bell peppers for 3 minutes, until crisp-tender; set aside.",
+   "Add the remaining oil and the chicken in a single layer and cook for 6 to 8 minutes, turning, until golden and the thickest pieces reach 165°F.",
+   "Pour in the sauce and simmer for 1 to 2 minutes, stirring, until thick and glossy.",
+   "Return the peppers, toss, and serve topped with the scallions and sesame seeds."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, toss cubed tofu in cornstarch, fry it in a small pan until golden, then toss with a few spoonfuls of the sauce before it goes in with the chicken.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "patted dry and cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_club_wraps",
+  "name": "Chicken club wraps",
+  "side": "Carrot sticks and apple slices.",
+  "cuisine": "American",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "bacon",
+    "amount": 170,
+    "text": "6 slices",
+    "note": ""
+   },
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "halved horizontally into thin cutlets"
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": "if needed"
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 80,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   },
+   {
+    "ingredient": "romaine",
+    "amount": 1,
+    "text": "1 heart",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 225,
+    "text": "2",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Cook the bacon in a large skillet over medium heat for 7 to 8 minutes, until crisp, then drain on paper towels and pour off all but about 1 tbsp of the fat (add the olive oil if the pan looks dry).",
+   "Season the chicken cutlets with the garlic powder, paprika, salt and pepper.",
+   "Cook the chicken in the skillet over medium-high heat for 3 to 4 minutes per side, until golden and 165°F in the thickest part, then rest it for 3 minutes and slice.",
+   "Stir the mayo and Dijon together, and warm the tortillas in the skillet or microwave so they roll without cracking.",
+   "Spread each tortilla with the Dijon mayo, add romaine, tomato, avocado, sliced chicken and crumbled bacon, then roll up tightly and cut in half."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, mash a can of chickpeas with a spoonful of the Dijon mayo and roll it up with the vegetables instead of the chicken and bacon.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "creamy_cajun_chicken_penne",
+  "name": "Creamy Cajun chicken penne",
+  "side": "Green salad with ranch-style dressing.",
+  "cuisine": "Southern",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; the paprika gives color and flavor without heat.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "penne",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 8,
+    "text": "1¼ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "chicken_breast",
+    "amount": 570,
+    "text": "1¼ lb",
+    "note": "cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_powder",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.5,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "half_and_half",
+    "amount": 360,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 40,
+    "text": "½ cup",
+    "note": "grated"
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil, add about half the salt and cook the penne for 10 to 11 minutes; scoop out ½ cup of the cooking water before draining.",
+   "Mix the paprika, garlic powder, onion powder, thyme, cayenne and the rest of the salt, and toss the chicken in it.",
+   "Heat the oil in a large skillet over medium-high heat and cook the chicken for 6 to 7 minutes, turning, until browned and 165°F inside; move it to a plate.",
+   "Add the bell pepper to the skillet and cook for 3 minutes, then stir in the garlic for 30 seconds.",
+   "Pour in the half-and-half and simmer for 3 minutes, until slightly thickened, then stir in the parmesan.",
+   "Return the chicken with the drained penne and toss, adding pasta water as needed for a creamy sauce."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, before the chicken goes back in, spoon some pasta and sauce into a small pan and stir in a can of white beans until hot.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "fresh_orange_chicken_broccoli",
+  "name": "Fresh orange chicken with broccoli",
+  "side": "Sliced cucumbers, or rice if you have some cooked.",
+  "cuisine": "Chinese-American",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "orange",
+    "amount": 2,
+    "text": "2",
+    "note": "zested and juiced (about ½ cup)"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 42,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 30,
+    "text": "about ¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-inch pieces"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "broccoli",
+    "amount": 340,
+    "text": "¾ crown",
+    "note": "cut into small florets"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Whisk the orange zest and juice, soy sauce, honey, rice vinegar, garlic, ginger and 1 tbsp of the cornstarch in a bowl.",
+   "Toss the chicken with the remaining cornstarch (don't rinse raw chicken; wash your hands after handling it).",
+   "Heat 1 tbsp of the oil in a large skillet over medium-high heat, add the broccoli and 3 tbsp water, cover and cook for 3 minutes, until bright green and crisp-tender; set aside.",
+   "Add the remaining oil and the chicken in a single layer and cook for 6 to 8 minutes, turning, until golden and 165°F inside.",
+   "Stir the sauce, pour it in and simmer for 1 to 2 minutes, until thick and glossy.",
+   "Return the broccoli, toss, and serve topped with the scallions and sesame seeds."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, fry cubed tofu tossed in cornstarch in a small pan until golden, then toss it with a few spoonfuls of the orange sauce.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "patted dry and cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_milanese_arugula",
+  "name": "Chicken Milanese with lemony arugula",
+  "side": "Lemon wedges and crusty bread.",
+  "cuisine": "Italian",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "halved horizontally and pounded ¼ inch thin"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 40,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 2,
+    "text": "2",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "panko",
+    "amount": 85,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 30,
+    "text": "⅓ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 90,
+    "text": "6 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "arugula",
+    "amount": 140,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 280,
+    "text": "1 pack (10 oz)",
+    "note": "halved"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 2,
+    "text": "2",
+    "note": "1 juiced, 1 cut into wedges"
+   }
+  ],
+  "steps": [
+   "Set out three shallow dishes: the flour mixed with half the salt and the pepper, the beaten eggs, and the panko mixed with the parmesan.",
+   "Dip each cutlet in flour, then egg, then the panko mix, pressing so it sticks; wash your hands after handling the raw chicken.",
+   "Heat 2 tbsp of the oil in a large skillet over medium-high heat and fry two cutlets for 2 to 3 minutes per side, until golden and 165°F inside; drain on paper towels.",
+   "Add 2 more tbsp of oil and fry the remaining cutlets the same way.",
+   "Toss the arugula and cherry tomatoes with the last 2 tbsp of oil, the lemon juice and the rest of the salt.",
+   "Serve each cutlet topped with a pile of the salad, with the lemon wedges on the side."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, bread ½-inch slices of eggplant the same way and fry them in a clean pan first, 3 to 4 minutes per side, until tender.",
+   "ingredients": [
+    {
+     "ingredient": "eggplant",
+     "amount": 0.5,
+     "text": "½",
+     "note": "cut into ½-inch slices"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chipotle_chicken_quesadillas",
+  "name": "Chipotle chicken and pepper quesadillas",
+  "side": "Cilantro sour cream and a quick corn salad.",
+  "cuisine": "Mexican",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave the chipotle out of the filling and stir a little into the adults' sour cream instead.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_thighs",
+    "amount": 570,
+    "text": "1¼ lb",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½ onion",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "chipotle_adobo",
+    "amount": 20,
+    "text": "1 pepper plus 1 tsp sauce",
+    "note": "minced"
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   },
+   {
+    "ingredient": "monterey_jack",
+    "amount": 227,
+    "text": "1 bag (2 cups)",
+    "note": ""
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "a small handful",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Toss the chicken with the cumin and salt; don't rinse raw chicken, and wash your hands after handling it.",
+   "Heat 1 tbsp of the oil in a large skillet over medium-high heat and cook the chicken for 6 to 7 minutes, until browned and 165°F inside.",
+   "Add the bell pepper and onion and cook for 3 to 4 minutes, until soft, then stir in the chipotle and half the lime juice for 30 seconds; scrape into a bowl and wipe out the skillet.",
+   "Sprinkle half of each tortilla with cheese, add the filling, top with more cheese and fold over.",
+   "Brush the skillet with the remaining oil and cook the quesadillas two at a time over medium heat for 2 to 3 minutes per side, until golden and melted.",
+   "Stir the sour cream with the cilantro and the rest of the lime juice and serve with the quesadillas, cut into wedges."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of pinto beans with a pinch of the cumin in a small pan, mash, and use as the filling in a couple of the quesadillas, cooked first in a clean pan.",
+   "ingredients": [
+    {
+     "ingredient": "pinto_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "creamy_garlic_mushroom_chicken",
+  "name": "Creamy garlic mushroom chicken",
+  "side": "Crusty bread and a green salad.",
+  "cuisine": "French",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "halved horizontally into thin cutlets"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "mushrooms",
+    "amount": 227,
+    "text": "1 pack (8 oz)",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "shallots",
+    "amount": 60,
+    "text": "2",
+    "note": "minced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "heavy_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "a small handful",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Season the chicken with the salt and pepper and dust it lightly with the flour.",
+   "Heat the oil and 1 tbsp of the butter in a large skillet over medium-high heat and cook the chicken for 4 to 5 minutes per side, until golden and 165°F inside; move it to a plate.",
+   "Add the remaining butter and the mushrooms and cook for 5 minutes, until browned, then stir in the shallots, garlic and thyme for 1 minute.",
+   "Pour in the broth, scraping up the browned bits, and simmer for 3 minutes, until reduced by about a third.",
+   "Stir in the cream and Dijon and simmer for 2 minutes, until the sauce coats a spoon.",
+   "Return the chicken and any juices, simmer for 1 minute, and serve scattered with parsley."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, spoon some of the mushroom sauce into a small pan before the chicken goes back in, add a can of white beans and simmer until hot.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken_caprese_skillet",
+  "name": "Chicken caprese skillet",
+  "side": "Toasted baguette and a green salad.",
+  "cuisine": "Italian",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "chicken",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "chicken_breast",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "halved horizontally into thin cutlets"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "mozzarella_fresh",
+    "amount": 227,
+    "text": "1 ball (8 oz)",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 280,
+    "text": "1 pack (10 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "basil",
+    "amount": 10,
+    "text": "a handful of leaves",
+    "note": "torn"
+   },
+   {
+    "ingredient": "baguette",
+    "amount": 1,
+    "text": "1",
+    "note": "sliced and toasted"
+   }
+  ],
+  "steps": [
+   "Season the chicken with the Italian seasoning, most of the salt and the pepper; wash your hands after handling the raw chicken.",
+   "Heat the oil in a large skillet over medium-high heat and cook the chicken for 3 to 4 minutes per side, until golden and 165°F inside.",
+   "Top each cutlet with mozzarella slices, cover the pan for 1 to 2 minutes until the cheese melts, then move the chicken to plates.",
+   "Add the cherry tomatoes and garlic to the skillet and cook for 3 minutes, until the tomatoes burst, then stir in the vinegar and the rest of the salt.",
+   "Spoon the tomatoes over the chicken, scatter with the basil and serve with the toasted baguette."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of white beans with a few of the burst tomatoes in a small pan and top with a slice of the mozzarella.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "egg_roll_in_a_bowl",
+  "name": "Egg roll in a bowl with rice noodles",
+  "side": "Sriracha and extra soy sauce at the table.",
+  "cuisine": "Chinese-American",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "rice_noodles",
+    "amount": 200,
+    "text": "about ½ pack",
+    "note": "thin"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ground_pork",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 15,
+    "text": "1½-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 4,
+    "text": "4",
+    "note": "sliced, white and green parts kept apart"
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 450,
+    "text": "½ head",
+    "note": "finely shredded"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2 carrots",
+    "note": "grated"
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 45,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "sesame_oil",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Soak the rice noodles in a bowl of very hot tap water for 8 to 10 minutes, until tender, then drain.",
+   "Heat the oil in a large skillet over medium-high heat and cook the pork for 6 to 7 minutes, breaking it up, until browned with no pink left and 160°F.",
+   "Stir in the garlic, ginger and scallion whites and cook for 1 minute.",
+   "Add the cabbage and carrots and cook for 4 to 5 minutes, stirring, until wilted but still a little crisp.",
+   "Stir in the soy sauce and rice vinegar, then toss in the noodles until hot.",
+   "Drizzle with the sesame oil and serve topped with the scallion greens."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, fry crumbled tofu in a small pan until golden, then add a share of the cabbage and carrots and a splash of soy sauce before the cabbage goes in with the pork.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "patted dry and crumbled"
+    }
+   ]
+  }
+ },
+ {
+  "id": "pork_chops_apples_dijon",
+  "name": "Pork chops with apples and Dijon pan sauce",
+  "side": "Green salad and crusty bread.",
+  "cuisine": "American",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pork_chops",
+    "amount": 680,
+    "text": "4 chops (1½ lb)",
+    "note": "about ¾ inch thick"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "apples",
+    "amount": 2,
+    "text": "2",
+    "note": "cored and sliced"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ onion",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "chicken_broth",
+    "amount": 180,
+    "text": "¾ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cider_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "heavy_cream",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Pat the pork chops dry and season both sides with the salt, pepper and thyme.",
+   "Heat the oil in a large skillet over medium-high heat and sear the chops for 4 to 5 minutes per side, until browned and 145°F in the center; move them to a plate and rest for 3 minutes.",
+   "Turn the heat to medium, melt the butter and cook the apples and onion for 5 minutes, until golden and tender.",
+   "Pour in the broth and cider vinegar, scraping up the browned bits, and simmer for 2 minutes.",
+   "Stir in the Dijon and cream and simmer for 1 minute, then return the chops and their juices and spoon the sauce over."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "five_spice_pork_green_beans",
+  "name": "Five-spice pork medallions with green beans",
+  "side": "Sliced cucumbers, or noodles if you like.",
+  "cuisine": "Chinese",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "pork_tenderloin",
+    "amount": 680,
+    "text": "1 tenderloin (about 1½ lb)",
+    "note": "sliced into ¾-inch medallions"
+   },
+   {
+    "ingredient": "five_spice",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "green_beans",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "trimmed"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "hoisin",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "honey",
+    "amount": 21,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rice_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 3,
+    "text": "3",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "sesame_seeds",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Season the pork medallions all over with the five-spice and salt.",
+   "Heat 1 tbsp of the oil in a large skillet over medium-high heat and sear the pork for about 3 minutes per side, until browned and 145°F in the center; move it to a plate and rest for 3 minutes.",
+   "Add the remaining oil, the green beans and 3 tbsp water, cover and cook for 3 minutes, then uncover and cook 2 minutes more, until crisp-tender and lightly blistered; stir in the garlic for 30 seconds.",
+   "Whisk the hoisin, soy sauce, honey, rice vinegar and 2 tbsp water, pour it into the pan and let it bubble for 1 minute.",
+   "Return the pork and its juices and toss to coat, then serve topped with the scallions and sesame seeds."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, sear slices of tofu in a small pan until golden and toss them with a spoonful of the sauce and some of the green beans.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "patted dry and sliced"
+    }
+   ]
+  }
+ },
+ {
+  "id": "sausage_tortellini_tomato_cream",
+  "name": "Sausage tortellini in tomato cream sauce",
+  "side": "Green salad with Italian dressing.",
+  "cuisine": "Italian",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": "for the pasta water"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pork_sausage",
+    "amount": 340,
+    "text": "¾ lb",
+    "note": "casings removed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ onion",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tortellini",
+    "amount": 567,
+    "text": "1 pack (20 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "heavy_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 140,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 30,
+    "text": "⅓ cup",
+    "note": "grated"
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil and add the salt.",
+   "Heat the oil in a large skillet over medium-high heat and cook the sausage and onion for 6 to 7 minutes, breaking up the sausage, until browned with no pink left and 160°F.",
+   "Stir in the garlic and Italian seasoning for 30 seconds, then add the tomatoes and simmer for 5 minutes.",
+   "Meanwhile, cook the tortellini according to the package, usually 2 to 3 minutes, and drain.",
+   "Stir the cream into the sauce, add the spinach and stir until wilted, then fold in the tortellini.",
+   "Serve sprinkled with the parmesan."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a cup of marinara in a small pan and toss a share of the tortellini in it with some parmesan.",
+   "ingredients": [
+    {
+     "ingredient": "marinara",
+     "amount": 230,
+     "text": "1 cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "kielbasa_cabbage_noodles",
+  "name": "Kielbasa with buttered cabbage and noodles",
+  "side": "Applesauce or sliced apples.",
+  "cuisine": "Polish",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "egg_noodles",
+    "amount": 340,
+    "text": "1 bag (12 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 56,
+    "text": "4 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 onion",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "cabbage",
+    "amount": 560,
+    "text": "about ½ large head",
+    "note": "cut into 1-inch ribbons"
+   },
+   {
+    "ingredient": "kielbasa",
+    "amount": 397,
+    "text": "1 rope (14 oz)",
+    "note": "sliced into coins"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cider_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil with a pinch of the salt.",
+   "Melt 3 tbsp of the butter in a large, deep skillet over medium-high heat and cook the onion and cabbage with the rest of the salt for 8 to 10 minutes, stirring often, until tender and golden at the edges.",
+   "Meanwhile, melt the remaining butter in a second skillet over medium-high heat and brown the kielbasa for 4 to 5 minutes, until sizzling and hot all the way through.",
+   "Cook the egg noodles for 6 to 7 minutes, until tender, and drain.",
+   "Stir the garlic and paprika into the cabbage for 30 seconds, then add the vinegar, noodles and pepper and toss.",
+   "Fold in the kielbasa and serve."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, scoop out a portion of the cabbage and noodles before the kielbasa goes in and top it with a fried egg.",
+   "ingredients": [
+    {
+     "ingredient": "eggs",
+     "amount": 2,
+     "text": "2",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "chorizo_chickpeas_spinach",
+  "name": "Chorizo and chickpeas with spinach",
+  "side": "Warm crusty bread for dipping.",
+  "cuisine": "Spanish",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Look for a mild chorizo; the smoked paprika adds smokiness, not heat.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "chorizo",
+    "amount": 340,
+    "text": "1 pack (12 oz)",
+    "note": "casings removed"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ onion",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomatoes_diced",
+    "amount": 411,
+    "text": "1 can (14.5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 140,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "a small handful",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large skillet over medium heat and cook the chorizo for 6 to 7 minutes, breaking it up, until browned and 160°F; spoon off all but about 1 tbsp of the fat.",
+   "Add the onion and cook for 4 minutes, until soft, then stir in the garlic and smoked paprika for 30 seconds.",
+   "Add the tomatoes, chickpeas and ½ cup water and simmer for 6 to 8 minutes, until slightly thickened.",
+   "Stir in the spinach until it wilts, then scatter with the parsley.",
+   "Warm the bread in a low oven or toast it, and serve with the chorizo and chickpeas."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of chickpeas in a small pan with a little olive oil, garlic and smoked paprika, then stir in a handful of the spinach.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "spaghetti_carbonara_peas",
+  "name": "Spaghetti carbonara with peas",
+  "side": "Green salad with lemon dressing.",
+  "cuisine": "Italian",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "spaghetti",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "for the pasta water"
+   },
+   {
+    "ingredient": "bacon",
+    "amount": 225,
+    "text": "8 slices",
+    "note": "cut into ½-inch pieces"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 4,
+    "text": "4",
+    "note": "2 whole plus 2 yolks"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 85,
+    "text": "1 cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 3,
+    "text": "1½ tsp",
+    "note": "coarsely ground"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil, add the salt and cook the spaghetti for 9 to 10 minutes, adding the peas for the last minute.",
+   "Meanwhile, cook the bacon in a large skillet over medium heat for 6 to 8 minutes, until crisp; turn off the heat and pour off all but about 2 tbsp of the fat.",
+   "Whisk the 2 eggs, 2 yolks, parmesan and pepper in a bowl.",
+   "Scoop out 1 cup of the pasta water, drain the spaghetti and peas, and add them to the skillet with the bacon; toss well.",
+   "Pour in the egg mixture with ¼ cup of the hot pasta water, tossing quickly, then set the pan over low heat and keep tossing for 1 to 2 minutes, until the sauce thickens into a creamy coating and no runny egg remains (add more pasta water if it gets too thick).",
+   "Serve right away with extra pepper."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, toss a share of the spaghetti and peas in a small pan with butter and a little of the egg-parmesan mixture over low heat until creamy.",
+   "ingredients": [
+    {
+     "ingredient": "butter",
+     "amount": 14,
+     "text": "1 tbsp",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "smash_burger_tacos",
+  "name": "Smash burger tacos",
+  "side": "Carrot sticks and pickles.",
+  "cuisine": "American",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_beef",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "divided into 8 balls"
+   },
+   {
+    "ingredient": "tortillas",
+    "amount": 8,
+    "text": "8",
+    "note": "8 in flour"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ onion",
+    "note": "very finely diced"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 80,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "romaine",
+    "amount": 1,
+    "text": "1 heart",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 225,
+    "text": "2",
+    "note": "diced"
+   }
+  ],
+  "steps": [
+   "Stir the mayo, Dijon and paprika together for the burger sauce.",
+   "Press each ball of beef very thin over one side of a tortilla, right to the edges, then sprinkle with the onion, salt and pepper; wash your hands after handling the raw beef.",
+   "Heat a large skillet over medium-high heat and cook the tacos beef side down, two or three at a time, for 3 to 4 minutes, until the beef is well browned and cooked through to 160°F.",
+   "Flip so the tortilla side is down, scatter the cheddar over the beef and cook for 1 to 2 minutes, until the tortilla is crisp and the cheese melts.",
+   "Repeat with the rest, then top with the burger sauce, romaine and tomatoes, fold and serve."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, mash a can of black beans with a pinch of paprika, press it onto a couple of tortillas and cook them first in a clean pan the same way.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "garlic_butter_steak_bites_asparagus",
+  "name": "Garlic butter steak bites with asparagus",
+  "side": "Baguette slices to mop up the butter.",
+  "cuisine": "American",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "sirloin",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-inch cubes"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 5,
+    "text": "1 scant tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "asparagus",
+    "amount": 454,
+    "text": "1 bunch (1 lb)",
+    "note": "woody ends snapped off, cut into 2-inch pieces"
+   },
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "a small handful",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into wedges"
+   },
+   {
+    "ingredient": "baguette",
+    "amount": 1,
+    "text": "1",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Pat the steak dry and season it with most of the salt and the pepper.",
+   "Heat 1 tbsp of the oil in a large skillet over medium-high heat and cook the asparagus with the rest of the salt for 4 to 5 minutes, until bright green and crisp-tender; set aside.",
+   "Add the remaining oil and sear the steak in a single layer, in two batches if needed, for about 2 minutes per side, until browned and 145°F inside.",
+   "Turn the heat to medium, add the butter and garlic and cook for 1 minute, then return the asparagus and toss everything in the garlic butter.",
+   "Let it rest for 3 minutes off the heat, then scatter with parsley and serve with the lemon wedges and baguette."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, brown thickly sliced mushrooms in a small pan with a pat of the butter and some garlic.",
+   "ingredients": [
+    {
+     "ingredient": "mushrooms",
+     "amount": 227,
+     "text": "1 pack (8 oz)",
+     "note": "thickly sliced"
+    }
+   ]
+  }
+ },
+ {
+  "id": "one_pot_cheeseburger_macaroni",
+  "name": "One-pot cheeseburger macaroni",
+  "side": "Steamed green beans or a green salad.",
+  "cuisine": "American",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ onion",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "tomato_paste",
+    "amount": 32,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "beef_broth",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "worcestershire",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "elbow_pasta",
+    "amount": 340,
+    "text": "3 cups (¾ lb)",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 227,
+    "text": "1 block (8 oz)",
+    "note": "shredded"
+   }
+  ],
+  "steps": [
+   "Brown the beef and onion in a large, deep skillet or pot over medium-high heat for 6 to 7 minutes, breaking up the meat, until no pink remains and it reaches 160°F; spoon off excess fat.",
+   "Stir in the garlic, tomato paste and paprika and cook for 1 minute.",
+   "Add the broth, milk, Worcestershire, Dijon, salt and pepper and bring to a boil.",
+   "Stir in the macaroni, cover, turn the heat to medium-low and simmer for 10 to 12 minutes, stirring often so it doesn't stick, until the pasta is tender and most of the liquid is absorbed.",
+   "Take the pan off the heat, stir in the cheddar until melted and let it sit for 2 minutes to thicken before serving."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "mongolian_beef_noodles",
+  "name": "Mongolian-style beef noodles",
+  "side": "Sliced cucumbers or steamed broccoli.",
+  "cuisine": "Chinese-American",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "egg_noodles",
+    "amount": 340,
+    "text": "1 bag (12 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "flank_steak",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "very thinly sliced against the grain"
+   },
+   {
+    "ingredient": "cornstarch",
+    "amount": 16,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "soy_sauce",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 50,
+    "text": "¼ cup packed",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 140,
+    "text": "2 carrots",
+    "note": "cut into thin matchsticks"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 4,
+    "text": "4 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 15,
+    "text": "1½-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 6,
+    "text": "6",
+    "note": "cut into 2-inch lengths"
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil and cook the egg noodles for 6 minutes, until tender; drain.",
+   "Toss the steak with the cornstarch, and whisk the soy sauce, brown sugar and ½ cup water in a bowl.",
+   "Heat 1 tbsp of the oil in a large skillet over high heat and sear the beef in two batches for 1 to 2 minutes per side, until browned with no pink left (at least 145°F); move it to a plate.",
+   "Add the remaining oil and the carrots and stir-fry for 2 minutes, then add the garlic and ginger for 30 seconds.",
+   "Pour in the sauce and simmer for 2 minutes, until slightly thickened.",
+   "Return the beef with the scallions and noodles and toss for 1 minute, until everything is coated and hot."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, fry cubed tofu tossed in a little cornstarch in a small pan until golden, then toss with some noodles and a few spoonfuls of the sauce before the beef goes back in.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "patted dry and cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "turkey_zucchini_spaghetti",
+  "name": "Quick turkey and zucchini spaghetti",
+  "side": "Garlic bread or a green salad.",
+  "cuisine": "Italian-American",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "turkey",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "spaghetti",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ground_turkey",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ onion",
+    "note": "diced"
+   },
+   {
+    "ingredient": "zucchini",
+    "amount": 2,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "marinara",
+    "amount": 680,
+    "text": "1 jar (24 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 40,
+    "text": "½ cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "basil",
+    "amount": 10,
+    "text": "a handful of leaves",
+    "note": "torn"
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil, add most of the salt and cook the spaghetti for 9 to 10 minutes; scoop out ½ cup of the cooking water before draining.",
+   "Meanwhile, heat the oil in a large skillet over medium-high heat and cook the turkey and onion for 6 to 7 minutes, breaking up the meat, until no pink remains and it reaches 165°F.",
+   "Add the zucchini and the rest of the salt and cook for 3 to 4 minutes, until just tender.",
+   "Stir in the garlic and Italian seasoning for 30 seconds, then add the marinara and simmer for 5 minutes.",
+   "Toss the spaghetti with the sauce, loosening it with pasta water if needed, and serve with the parmesan and basil."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of white beans with a cup of marinara in a small pan and spoon it over their spaghetti.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "marinara",
+     "amount": 230,
+     "text": "1 cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "spiced_lamb_hummus_bowls",
+  "name": "Spiced lamb over hummus with chopped salad",
+  "side": "Warm pita and the chopped salad.",
+  "cuisine": "Lebanese",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "lamb",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ground_lamb",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ onion",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cinnamon",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "cucumber",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 225,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "¼ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "hummus",
+    "amount": 566,
+    "text": "2 tubs (10 oz each)",
+    "note": ""
+   },
+   {
+    "ingredient": "pita",
+    "amount": 4,
+    "text": "4",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large skillet over medium-high heat and cook the lamb and onion for 6 to 7 minutes, breaking up the meat, until browned with no pink left and 160°F; spoon off excess fat.",
+   "Stir in the garlic, cumin, paprika, cinnamon and most of the salt with 2 tbsp water and cook for 1 minute.",
+   "Toss the cucumber, tomatoes and parsley with the lemon juice and the rest of the salt.",
+   "Warm the pitas in a dry skillet for about 30 seconds per side.",
+   "Spread the hummus in shallow bowls, spoon the lamb over the top and serve with the chopped salad and warm pita."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of chickpeas with a pinch each of the cumin, paprika and cinnamon in a small pan and spoon it over the hummus.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "seared_salmon_caesar_salad",
+  "name": "Seared salmon Caesar salad",
+  "side": "Extra lemon wedges.",
+  "cuisine": "American",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "mayo",
+    "amount": 80,
+    "text": "⅓ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 10,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 1,
+    "text": "1 clove",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "worcestershire",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "⅔ cup",
+    "note": "grated, divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "baguette",
+    "amount": 0.5,
+    "text": "½",
+    "note": "cut into ¾-inch cubes"
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salmon",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "4 fillets"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "romaine",
+    "amount": 3,
+    "text": "3 hearts",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Whisk the mayo, lemon juice, Dijon, garlic, Worcestershire, half the parmesan, half the pepper and 1 tbsp water into a dressing.",
+   "Toast the bread cubes in a large skillet with 1 tbsp of the oil over medium heat for 4 to 5 minutes, stirring, until golden; set aside.",
+   "Season the salmon with the salt and the rest of the pepper, add the remaining oil to the skillet and turn the heat to medium-high.",
+   "Cook the salmon flesh side down for 4 minutes, flip and cook 3 to 4 minutes more, until it reaches 145°F or flakes easily with a fork.",
+   "Toss the romaine with the dressing, croutons and remaining parmesan and serve topped with the salmon."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of chickpeas in a small pan with a little olive oil until crisp at the edges, and dress their salad with lemon and olive oil instead of the Caesar dressing, which contains Worcestershire.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and patted dry"
+    }
+   ]
+  }
+ },
+ {
+  "id": "lemon_salmon_fettuccine_peas",
+  "name": "Lemon cream fettuccine with salmon and peas",
+  "side": "Green salad.",
+  "cuisine": "Italian",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "fettuccine",
+    "amount": 400,
+    "text": "14 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "salmon",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 210,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "half_and_half",
+    "amount": 240,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 40,
+    "text": "½ cup",
+    "note": "grated"
+   },
+   {
+    "ingredient": "dill",
+    "amount": 10,
+    "text": "¼ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Bring a large pot of water to a boil with most of the salt.",
+   "Season the salmon with the rest of the salt and the pepper, heat the oil in a large skillet over medium-high heat and cook it for about 4 minutes per side, until 145°F or it flakes easily; move to a plate and break into large flakes, discarding any skin.",
+   "Cook the fettuccine for 10 to 11 minutes, adding the peas for the last 2 minutes; scoop out 1 cup of the cooking water, then drain.",
+   "Meanwhile, wipe out the skillet, melt the butter over medium heat and cook the garlic for 1 minute, then add the half-and-half and lemon zest and simmer for 2 minutes.",
+   "Whisk in the parmesan, then add the pasta, peas, lemon juice and a splash of the cooking water and toss until creamy.",
+   "Gently fold in the salmon and dill and serve."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, serve a portion before the salmon goes in and top it with a can of white beans warmed in a small pan.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "brown_butter_cod_capers_couscous",
+  "name": "Cod with brown butter, capers and lemon couscous",
+  "side": "Steamed green beans.",
+  "cuisine": "French",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "veg_broth",
+    "amount": 420,
+    "text": "1¾ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "couscous",
+    "amount": 283,
+    "text": "1 box (10 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 140,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 2,
+    "text": "2",
+    "note": "zested and juiced"
+   },
+   {
+    "ingredient": "cod",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "4 fillets, patted dry"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 30,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 56,
+    "text": "4 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "capers",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": "drained"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "¼ cup",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Bring the broth to a boil in a saucepan, stir in the couscous and peas, cover and take off the heat for 5 minutes, then fluff with a fork and stir in the lemon zest and the juice of 1 lemon.",
+   "Season the cod with the salt and pepper and dust it lightly with the flour.",
+   "Heat the oil and 1 tbsp of the butter in a large nonstick skillet over medium-high heat and cook the cod for 3 to 4 minutes per side, until golden and 145°F or it flakes easily; move to plates.",
+   "Turn the heat to medium, add the remaining butter and swirl for 2 to 3 minutes, until it foams and smells nutty and golden brown.",
+   "Take the pan off the heat, stir in the capers, the juice of the second lemon and the parsley, and spoon the brown butter over the cod; serve with the couscous."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of chickpeas in a separate small pan with a tablespoon of butter and a squeeze of lemon and serve over the couscous.",
+   "ingredients": [
+    {
+     "ingredient": "chickpeas",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "butter",
+     "amount": 14,
+     "text": "1 tbsp",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "red_curry_coconut_tilapia",
+  "name": "Red curry coconut tilapia with spinach",
+  "side": "Lime wedges.",
+  "cuisine": "Thai",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Use 2 teaspoons of curry paste; the coconut milk keeps it gentle, and adults can stir in more.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "rice_noodles",
+    "amount": 225,
+    "text": "about ½ pack",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "ginger",
+    "amount": 10,
+    "text": "1-inch piece",
+    "note": "peeled and grated"
+   },
+   {
+    "ingredient": "red_curry_paste",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "coconut_milk",
+    "amount": 1,
+    "text": "1 can",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 8,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tilapia",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "4 fillets"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 2,
+    "text": "⅓ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "fish_sauce",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 140,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 10,
+    "text": "a small handful",
+    "note": "chopped"
+   }
+  ],
+  "steps": [
+   "Soak the rice noodles in very hot tap water for 8 to 10 minutes, until tender, then drain.",
+   "Heat the oil in a large, deep skillet over medium heat and cook the garlic, ginger and curry paste for 1 minute.",
+   "Stir in the coconut milk and brown sugar and simmer for 2 minutes.",
+   "Season the tilapia with the salt, stir the fish sauce into the sauce and nestle in the fillets; cover and simmer gently for 6 to 8 minutes, until the fish reaches 145°F and flakes easily.",
+   "Push the spinach into the sauce around the fish until it wilts, then stir in the lime juice.",
+   "Serve the fish and sauce over the noodles, scattered with cilantro."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, ladle some of the coconut curry sauce into a small pan before the fish sauce and fish go in, and simmer tofu cubes and a handful of the spinach in it.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "cubed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "chili_lime_shrimp_tacos",
+  "name": "Chili-lime shrimp tacos with avocado salsa",
+  "side": "Black beans or a quick corn salad.",
+  "cuisine": "Mexican",
+  "minutes": 20,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Halve the chili powder; it's earthy rather than hot, and the sour cream cools it further.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "shrimp",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "thawed, tails removed"
+   },
+   {
+    "ingredient": "chili_powder",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lime",
+    "amount": 3,
+    "text": "3",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "avocado",
+    "amount": 2,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 225,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "onion_red",
+    "amount": 55,
+    "text": "¼ onion",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "cilantro",
+    "amount": 15,
+    "text": "a large handful",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "red_cabbage",
+    "amount": 225,
+    "text": "about 2 cups",
+    "note": "finely shredded"
+   },
+   {
+    "ingredient": "corn_tortillas",
+    "amount": 12,
+    "text": "12",
+    "note": ""
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "If the shrimp are frozen, thaw them in a colander under cold running water for 5 minutes, then pat dry.",
+   "Gently mix the avocado, tomatoes, red onion, cilantro, the juice of 1 lime and a pinch of the salt for the salsa, and toss the cabbage with the juice of another lime.",
+   "Toss the shrimp with the chili powder, cumin, garlic powder and the rest of the salt.",
+   "Heat the oil in a large skillet over medium-high heat and cook the shrimp in a single layer for about 2 minutes per side, until pink and opaque all the way through, then squeeze over the last lime.",
+   "Warm the tortillas in a dry skillet for about 30 seconds per side.",
+   "Fill the tortillas with the cabbage, shrimp and avocado salsa and top with sour cream."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, warm a can of black beans with a pinch of the spices in a small pan and use them in place of the shrimp.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "shrimp_po_boys",
+  "name": "Shrimp po' boys",
+  "side": "Coleslaw or pickles on the side.",
+  "cuisine": "Southern",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; the paprika coating is mild.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "shrimp",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "thawed, tails removed, patted dry"
+   },
+   {
+    "ingredient": "mayo",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 2,
+    "text": "2",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "flour",
+    "amount": 60,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cornmeal",
+    "amount": 80,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.5,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "hoagie_rolls",
+    "amount": 4,
+    "text": "4",
+    "note": "split"
+   },
+   {
+    "ingredient": "romaine",
+    "amount": 1,
+    "text": "1 heart",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "tomatoes_roma",
+    "amount": 225,
+    "text": "2",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Stir the mayo, Dijon, lemon juice and a pinch of the paprika together for the sauce.",
+   "Put the beaten eggs in one bowl and mix the flour, cornmeal, the rest of the paprika, the cayenne and salt in another.",
+   "Dip the shrimp in the egg, then roll them in the cornmeal mixture.",
+   "Heat the oil (about ¼ inch deep) in a large skillet over medium-high heat until it shimmers, about 350°F, and fry the shrimp in batches for 1½ to 2 minutes per side, until golden and opaque all the way through; drain on paper towels.",
+   "Toast the split rolls, spread with the sauce, and fill with the romaine, tomato and shrimp."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, coat slices of tofu in the same egg and cornmeal mixture and fry them first, before the shrimp, until golden.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "patted dry and sliced"
+    }
+   ]
+  }
+ },
+ {
+  "id": "shrimp_kielbasa_corn_skillet",
+  "name": "Smoky shrimp, kielbasa and corn skillet",
+  "side": "Crusty bread and lemon wedges.",
+  "cuisine": "Southern",
+  "minutes": 25,
+  "difficulty": "Easy",
+  "protein": "shellfish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 1,
+  "mildNote": "Leave out the cayenne; smoked paprika is not hot.",
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "butter",
+    "amount": 42,
+    "text": "3 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "kielbasa",
+    "amount": 200,
+    "text": "½ rope (7 oz)",
+    "note": "sliced into coins"
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ onion",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 2,
+    "text": "2",
+    "note": "diced"
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 340,
+    "text": "1 bag (12 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 3,
+    "text": "3 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 3,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cayenne",
+    "amount": 0.5,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "shrimp",
+    "amount": 454,
+    "text": "1 lb",
+    "note": "thawed, tails removed"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 10,
+    "text": "a small handful",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": "sliced"
+   }
+  ],
+  "steps": [
+   "Melt 1 tbsp of the butter in a large skillet over medium-high heat and brown the kielbasa for 4 minutes.",
+   "Add the onion and bell peppers and cook for 4 minutes, then add the corn and cook 3 minutes more, until hot.",
+   "Stir in the remaining butter, garlic, smoked paprika, thyme and cayenne for 30 seconds.",
+   "Add the shrimp and cook for 3 to 4 minutes, stirring, until pink and opaque all the way through.",
+   "Squeeze in the lemon juice, scatter with parsley and serve with the crusty bread."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, sauté a share of the corn and peppers in a separate small pan with butter, a pinch of the smoked paprika and a can of white beans until hot.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "butter",
+     "amount": 14,
+     "text": "1 tbsp",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "tuscan_tuna_white_bean_salad",
+  "name": "Tuscan tuna and white bean salad with garlic toasts",
+  "side": "Garlic toasts (made in the recipe) and olives.",
+  "cuisine": "Italian",
+  "minutes": 15,
+  "difficulty": "Easy",
+  "protein": "fish",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "onion_red",
+    "amount": 110,
+    "text": "½ onion",
+    "note": "very thinly sliced"
+   },
+   {
+    "ingredient": "vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "juiced"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "dijon",
+    "amount": 5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": "divided"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "white_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "tomatoes_cherry",
+    "amount": 280,
+    "text": "1 pack (10 oz)",
+    "note": "halved"
+   },
+   {
+    "ingredient": "parsley",
+    "amount": 15,
+    "text": "¼ cup",
+    "note": "chopped"
+   },
+   {
+    "ingredient": "tuna_canned",
+    "amount": 3,
+    "text": "3 cans (5 oz each)",
+    "note": "drained"
+   },
+   {
+    "ingredient": "arugula",
+    "amount": 140,
+    "text": "1 box (5 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "bread_crusty",
+    "amount": 1,
+    "text": "1 loaf",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 1,
+    "text": "1 clove",
+    "note": "halved"
+   }
+  ],
+  "steps": [
+   "Put the red onion in a large bowl with the vinegar, lemon juice and salt and let it sit for 5 minutes to soften.",
+   "Whisk in the Dijon, 3 tbsp of the olive oil and the pepper.",
+   "Add the white beans, cherry tomatoes and parsley, then the tuna in large chunks, and toss gently.",
+   "Brush the bread with the remaining oil and toast it in a skillet over medium heat for about 2 minutes per side, until golden, then rub with the cut garlic.",
+   "Fold the arugula into the salad just before serving with the garlic toasts."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, scoop out some salad before the tuna goes in and add an extra can of white beans to it.",
+   "ingredients": [
+    {
+     "ingredient": "white_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ }
+]
