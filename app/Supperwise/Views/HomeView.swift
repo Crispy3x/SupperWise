@@ -108,6 +108,7 @@ struct HomeView: View {
         case .baby: FirstFoodsView()
         case .holiday:
             if let m = HolidayMenu.bundled.first(where: { $0.inSeason() }) ?? HolidayMenu.bundled.first { HolidayMenuView(menu: m) }
+        case .recipes: RecipeBrowserView()
         case .community: CommunityView()
         case .importLink: ImportRecipeView()
         case .receipt: ReceiptView()
@@ -120,7 +121,7 @@ struct HomeView: View {
 
 /// Everything Supperwise does, in the order a family needs it.
 enum HomeTool: String, CaseIterable, Identifiable {
-    case plan, groceries, pantry, foodScan, barcode, eatOut, fridge, lunches, baby, holiday, community, importLink, receipt, recap, profile
+    case plan, recipes, groceries, pantry, foodScan, barcode, eatOut, fridge, lunches, baby, holiday, community, importLink, receipt, recap, profile
     var id: String { rawValue }
 
     enum Section: CaseIterable {
@@ -145,7 +146,7 @@ enum HomeTool: String, CaseIterable, Identifiable {
 
     var section: Section {
         switch self {
-        case .plan, .groceries, .pantry, .fridge: .plan
+        case .plan, .recipes, .groceries, .pantry, .fridge: .plan
         case .foodScan, .barcode, .eatOut: .health
         case .lunches, .baby, .holiday, .community, .importLink: .family
         case .receipt, .recap, .profile: .more
@@ -155,6 +156,7 @@ enum HomeTool: String, CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .plan: "This week's dinners"
+        case .recipes: "All recipes"
         case .groceries: "Grocery list"
         case .pantry: "What's in my kitchen"
         case .foodScan: "Scan a meal"
@@ -175,6 +177,7 @@ enum HomeTool: String, CaseIterable, Identifiable {
     var detail: String {
         switch self {
         case .plan: "A week of dinners everyone can eat"
+        case .recipes: "Nearly 500 dinners to search and save"
         case .groceries: "One list, one total, under budget"
         case .pantry: "Tick what you have; it comes off the bill"
         case .foodScan: "Photo → health score and calories"
@@ -195,6 +198,7 @@ enum HomeTool: String, CaseIterable, Identifiable {
     var icon: String {
         switch self {
         case .plan: "calendar"
+        case .recipes: "book"
         case .groceries: "cart"
         case .pantry: "refrigerator"
         case .foodScan: "camera.metering.matrix"
@@ -215,7 +219,7 @@ enum HomeTool: String, CaseIterable, Identifiable {
     /// The plan a tool needs (nil = free).
     var feature: Feature? {
         switch self {
-        case .plan, .groceries, .pantry, .profile: nil
+        case .plan, .recipes, .groceries, .pantry, .profile: nil
         case .foodScan, .barcode: .scanner
         case .eatOut: .eatOut
         case .fridge: .fridge

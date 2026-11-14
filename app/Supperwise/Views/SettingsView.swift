@@ -66,11 +66,11 @@ struct SettingsView: View {
                 }
 
                 Section {
-                    Toggle("Dinner reminder at 4:30 pm", isOn: Binding(get: { model.settings.dinnerReminder }, set: { on in
+                    Toggle("Dinner at 4:30 pm, and Sunday planning", isOn: Binding(get: { model.settings.dinnerReminder }, set: { on in
                         Task { await setReminder(on) }
                     }))
                 } footer: {
-                    Text("A notification on cook nights with tonight's dish.")
+                    Text("A notification on cook nights with tonight's dish, and on Sunday evening when it's time to plan next week.")
                 }
 
                 Section("About") {
@@ -117,7 +117,14 @@ struct SettingsView: View {
         }
         let granted = (try? await center.requestAuthorization(options: [.alert, .sound])) ?? false
         model.updateSettings { $0.dinnerReminder = granted }
-        guard granted, let plan = model.plan else { return }
+        guard granted else { return }
+        // Every Sunday at 5 pm: plan next week.
+        let sunday = UNMutableNotificationContent()
+        sunday.title = "Next week's dinners"
+        sunday.body = "Plan the week and get one grocery list, priced and under budget."
+        try? await center.add(UNNotificationRequest(identifier: "sunday-plan", content: sunday,
+                                                    trigger: UNCalendarNotificationTrigger(dateMatching: DateComponents(hour: 17, weekday: 1), repeats: true)))
+        guard let plan = model.plan else { return }
         for (day, recipe) in model.recipes(of: plan) {
             let content = UNMutableNotificationContent()
             content.title = "Tonight: \(recipe.name)"

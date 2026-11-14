@@ -1,4 +1,5 @@
 import SwiftUI
+import StoreKit
 
 struct RecipeView: View {
     @Environment(AppModel.self) private var model
@@ -11,6 +12,7 @@ struct RecipeView: View {
     @AppStorage("recipeTextLarge") private var largeText = false
     @State private var cooking = false
     @State private var askRating = false
+    @Environment(\.requestReview) private var requestReview
 
     var body: some View {
         let palette = DayPalette.of(day)
@@ -121,6 +123,11 @@ struct RecipeView: View {
                     ShareLink(item: shareText()) { Label("Share recipe", systemImage: "square.and.arrow.up") }
                     Button { model.rate(recipe.id, .up) } label: { Label("We loved it", systemImage: model.rating(recipe.id) == .up ? "hand.thumbsup.fill" : "hand.thumbsup") }
                     Button { model.rate(recipe.id, .down) } label: { Label("Not for us", systemImage: model.rating(recipe.id) == .down ? "hand.thumbsdown.fill" : "hand.thumbsdown") }
+                    if let plan = model.plan {
+                        Menu {
+                            ForEach(plan.dinners) { d in Button(d.day.name) { model.setDinner(d.day, recipeID: recipe.id) } }
+                        } label: { Label("Cook this on…", systemImage: "calendar.badge.plus") }
+                    }
                     Button(role: .destructive) { model.setHidden(recipe.id, true) } label: { Label("Don't suggest this again", systemImage: "nosign") }
                 } label: { Image(systemName: "ellipsis.circle") }
                 .accessibilityLabel("More")
@@ -129,7 +136,12 @@ struct RecipeView: View {
         .onAppear { servings = model.settings.householdSize }
         .fullScreenCover(isPresented: $cooking) { CookModeView(recipe: recipe, day: day) }
         .confirmationDialog("How was \(recipe.name)?", isPresented: $askRating, titleVisibility: .visible) {
-            Button("We loved it") { model.rate(recipe.id, .up); dismiss() }
+            Button("We loved it") {
+                model.rate(recipe.id, .up)
+                // Ask for an App Store rating at a happy moment, a few times at most (iOS limits it further).
+                if [3, 12, 40].contains(model.stats.dinners) { requestReview() }
+                dismiss()
+            }
             Button("It was fine") { dismiss() }
             Button("Not for us") { model.rate(recipe.id, .down); dismiss() }
         } message: { Text("Loved dishes come up more often; ones you didn't like, much less.") }
