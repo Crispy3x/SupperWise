@@ -14,12 +14,18 @@ exec(src[:src.index("# 1. Bundle ID and capabilities")])
 OUT = os.environ["OUT_DIR"]; PW = os.environ["P12_PASSWORD"]
 os.makedirs(OUT, exist_ok=True)
 
-def sh(*args): subprocess.run(args, check=True, cwd=OUT, capture_output=True)
+from cryptography import x509
+from cryptography.x509.oid import NameOID
+from cryptography.hazmat.primitives import hashes, serialization
+from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.primitives.serialization import pkcs12
 
 step("Distribution certificate")
-sh("openssl", "genrsa", "-out", "dist.key", "2048")
-sh("openssl", "req", "-new", "-key", "dist.key", "-out", "dist.csr", "-subj", "/CN=Supperwise CI/O=Supperwise/C=US")
-csr = open(os.path.join(OUT, "dist.csr")).read()
+# The key and request are made here, in Python (the same on every machine); the private key never leaves this run.
+key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+csr = x509.CertificateSigningRequestBuilder().subject_name(x509.Name([
+    x509.NameAttribute(NameOID.COMMON_NAME, "Supperwise CI"), x509.NameAttribute(NameOID.ORGANIZATION_NAME, "Supperwise"),
+    x509.NameAttribute(NameOID.COUNTRY_NAME, "US")])).sign(key, hashes.SHA256()).public_bytes(serialization.Encoding.PEM).decode()
 cert = None
 for attempt in range(2):
     try:
@@ -41,10 +47,11 @@ for attempt in range(2):
                 print(f"revoked the oldest distribution certificate ({old['attributes'].get('name')}, expiring {old['attributes'].get('expirationDate')}) to make room")
                 continue
         raise
-open(os.path.join(OUT, "dist.cer"), "wb").write(base64.b64decode(cert["attributes"]["certificateContent"]))
-sh("openssl", "x509", "-inform", "DER", "-in", "dist.cer", "-out", "dist.pem")
-sh("openssl", "pkcs12", "-export", "-legacy", "-inkey", "dist.key", "-in", "dist.pem", "-out", "dist.p12", "-passout", f"pass:{PW}")
-os.remove(os.path.join(OUT, "dist.key"))
+certificate = x509.load_der_x509_certificate(base64.b64decode(cert["attributes"]["certificateContent"]))
+# The older PKCS#12 encryption, which the macOS keychain imports reliably.
+enc = (serialization.PrivateFormat.PKCS12.encryption_builder().kdf_rounds(50000)
+       .key_cert_algorithm(pkcs12.PBES.PBESv1SHA1And3KeyTripleDESCBC).hmac_hash(hashes.SHA1()).build(PW.encode()))
+open(os.path.join(OUT, "dist.p12"), "wb").write(pkcs12.serialize_key_and_certificates(b"Supperwise Distribution", key, certificate, None, enc))
 print(f"created {cert['attributes'].get('name')} (expires {cert['attributes'].get('expirationDate')})")
 
 step("App Store provisioning profile")
