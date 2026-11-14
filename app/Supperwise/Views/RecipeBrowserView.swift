@@ -15,7 +15,15 @@ struct RecipeBrowserView: View {
     @State private var open: Recipe? = nil
 
     private var all: [Recipe] { model.catalog.recipes }
-    private var cuisines: [String] { Array(Set(all.filter { $0.source == nil }.map(\.cuisine))).sorted() }
+    private var cuisines: [String] { CuisineGroup.order }
+
+    /// Sort key without cooking-method prefixes, so "Air fryer…" and "Sheet-pan…" dishes don't crowd the top.
+    private func sortName(_ r: Recipe) -> String {
+        var n = r.name.lowercased()
+        for p in ["air fryer ", "air-fryer ", "sheet-pan ", "sheet pan ", "slow-cooker ", "slow cooker ", "one-pot ", "one-pan ", "skillet ", "baked ", "easy ", "quick ", "classic "] where n.hasPrefix(p) { n = String(n.dropFirst(p.count)) }
+        return n
+    }
+    private func hasPhoto(_ r: Recipe) -> Bool { r.photo.map { UIImage(named: $0) != nil } ?? false }
 
     private func conflicts(_ r: Recipe) -> [String] {
         var out: [String] = []
@@ -31,14 +39,18 @@ struct RecipeBrowserView: View {
         return all.filter { r in
             (q.isEmpty || r.name.localizedCaseInsensitiveContains(q) || r.cuisine.localizedCaseInsensitiveContains(q)
                 || r.ingredients.contains { ($0.text + " " + (model.catalog.ingredients[$0.ingredient]?.name ?? "")).localizedCaseInsensitiveContains(q) })
-            && (cuisine == nil || r.cuisine == cuisine)
+            && (cuisine == nil || CuisineGroup.of(r.cuisine) == cuisine)
             && (maxMinutes == 0 || r.minutes <= maxMinutes)
             && (!vegetarianOnly || r.vegetarian)
             && (!favoritesOnly || model.favorites.contains(r.id))
             && (!safeOnly || conflicts(r).isEmpty)
             && !model.hiddenRecipes.contains(r.id)
         }
-        .sorted { (model.favorites.contains($0.id) ? 0 : 1, $0.name) < (model.favorites.contains($1.id) ? 0 : 1, $1.name) }
+        .sorted {
+            // Favorites first, then dishes with photos, then A–Z by dish (ignoring the cooking method).
+            (model.favorites.contains($0.id) ? 0 : 1, hasPhoto($0) ? 0 : 1, sortName($0)) <
+            (model.favorites.contains($1.id) ? 0 : 1, hasPhoto($1) ? 0 : 1, sortName($1))
+        }
     }
 
     var body: some View {

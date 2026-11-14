@@ -43,7 +43,7 @@ struct Taste: Hashable {
         var b = 0.0
         if favorites.contains(r.id) { b += 4 }
         switch ratings[r.id] { case .up: b += 3; case .down: b -= 6; case nil: break }
-        if prefs.favoriteCuisines.contains(r.cuisine) { b += 2 }
+        if prefs.favoriteCuisines.contains(CuisineGroup.of(r.cuisine)) || prefs.favoriteCuisines.contains(r.cuisine) { b += 2 }
         return b
     }
 }
@@ -75,5 +75,30 @@ struct HomeCookingStats: Equatable {
         }
         if (perWeek[weekStart(now)] ?? 0) >= 3, s.weekStreak == 0 { s.weekStreak = 1 }
         return s
+    }
+}
+
+/// Cuisines grouped into a short list people recognise (the recipe keeps its precise label).
+enum CuisineGroup {
+    static let order = ["American", "Southern & Cajun", "Mexican & Tex-Mex", "Latin & Caribbean", "Italian", "Mediterranean & Greek",
+                        "Middle Eastern", "Indian & Pakistani", "Chinese", "Japanese & Korean", "Thai & Southeast Asian", "European", "African"]
+
+    static func of(_ cuisine: String) -> String {
+        let c = cuisine.lowercased()
+        func has(_ words: String...) -> Bool { words.contains { c.contains($0) } }
+        if has("southern", "cajun") { return "Southern & Cajun" }
+        if has("tex-mex", "mexican") { return "Mexican & Tex-Mex" }
+        if has("peru", "cuba", "caribbean", "brazil", "colombia", "argentin") { return "Latin & Caribbean" }
+        if has("italian") { return "Italian" }
+        if has("greek", "mediterranean", "spanish") { return "Mediterranean & Greek" }
+        if has("middle eastern", "lebanese", "turkish", "persian") { return "Middle Eastern" }
+        if has("indo-chinese") { return "Indian & Pakistani" }
+        if has("indian", "pakistan") { return "Indian & Pakistani" }
+        if has("chinese") { return "Chinese" }
+        if has("japan", "korea") { return "Japanese & Korean" }
+        if has("thai", "vietnam", "filipino", "indonesia", "asian") { return "Thai & Southeast Asian" }
+        if has("french", "british", "german", "polish", "hungarian", "russian", "swedish", "eastern european") { return "European" }
+        if has("african", "ethiopia") { return "African" }
+        return "American"
     }
 }

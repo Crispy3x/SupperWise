@@ -40,6 +40,16 @@ final class TasteTests: XCTestCase {
         XCTAssertGreaterThan(try picks(Taste(favorites: favs)), try picks(Taste()))
     }
 
+    func testEveryCuisineHasAGroup() {
+        for r in catalog.recipes { XCTAssertTrue(CuisineGroup.order.contains(CuisineGroup.of(r.cuisine)), r.cuisine) }
+        XCTAssertEqual(CuisineGroup.of("Chinese-American"), "Chinese")
+        XCTAssertEqual(CuisineGroup.of("Tex-Mex"), "Mexican & Tex-Mex")
+        XCTAssertEqual(CuisineGroup.of("Indo-Chinese"), "Indian & Pakistani")
+        XCTAssertEqual(CuisineGroup.of("German-American"), "European")
+        let groups = Set(catalog.recipes.map { CuisineGroup.of($0.cuisine) })
+        XCTAssertGreaterThanOrEqual(groups.count, 12)
+    }
+
     func testSavingsAndStreak() {
         let cal = Calendar(identifier: .gregorian)
         let now = cal.date(from: DateComponents(year: 2026, month: 11, day: 19, hour: 19))!   // a Thursday

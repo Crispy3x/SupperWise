@@ -8,9 +8,7 @@ struct ProfileView: View {
     @State private var ingredientQuery = ""
     @State private var open: Recipe? = nil
 
-    private var cuisines: [String] {
-        Array(Set(model.catalog.recipes.filter { $0.source == nil }.map(\.cuisine))).sorted()
-    }
+    private var cuisines: [String] { CuisineGroup.order }
 
     var body: some View {
         let stats = model.stats
