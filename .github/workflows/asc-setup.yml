@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       what:
-        description: "setup (bundle ID and subscriptions) or listing (store text, age rating, screenshots)"
+        description: "setup (bundle ID and subscriptions), listing (store text, age rating, screenshots) or testflight (testers for the latest build)"
         default: "setup"
       site_base:
         description: "Where the privacy and support pages live, e.g. https://crispy3x.github.io/supperwise-site (optional)"
@@ -38,4 +38,8 @@ jobs:
           ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
           SITE_BASE: ${{ github.event.inputs.site_base }}
         run: |
-          if [ "${{ github.event.inputs.what }}" = "listing" ]; then python3 app/tools/asc/asc_listing.py; else python3 app/tools/asc/asc_setup.py; fi
+          case "${{ github.event.inputs.what }}" in
+            listing) python3 app/tools/asc/asc_listing.py ;;
+            testflight) python3 app/tools/asc/asc_testflight.py ;;
+            *) python3 app/tools/asc/asc_setup.py ;;
+          esac
