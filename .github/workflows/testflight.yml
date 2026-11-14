@@ -55,21 +55,41 @@ jobs:
           PY
           chmod 600 "$RUNNER_TEMP/keys/AuthKey_$KID.p8"
 
-      - name: Archive (unsigned; it is signed for the App Store at export, which needs no registered device)
+      - name: Distribution certificate and App Store profile (through Apple's API)
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          python3 -m pip install --quiet "pyjwt[crypto]" requests
+          P12_PASSWORD=$(openssl rand -hex 16); echo "::add-mask::$P12_PASSWORD"; echo "P12_PASSWORD=$P12_PASSWORD" >> "$GITHUB_ENV"
+          OUT_DIR="$RUNNER_TEMP/signing" P12_PASSWORD="$P12_PASSWORD" python3 app/tools/asc/asc_signing.py
+
+      - name: Install them in a temporary keychain
+        run: |
+          KC="$RUNNER_TEMP/build.keychain-db"; KCPW=$(openssl rand -hex 16)
+          security create-keychain -p "$KCPW" "$KC"
+          security set-keychain-settings -lut 3600 "$KC"
+          security unlock-keychain -p "$KCPW" "$KC"
+          security import "$RUNNER_TEMP/signing/dist.p12" -k "$KC" -P "$P12_PASSWORD" -T /usr/bin/codesign -T /usr/bin/security
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KCPW" "$KC" >/dev/null
+          security list-keychains -d user -s "$KC" $(security list-keychains -d user | tr -d '"')
+          mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
+          UUID=$(security cms -D -i "$RUNNER_TEMP/signing/profile.mobileprovision" | plutil -extract UUID raw -)
+          cp "$RUNNER_TEMP/signing/profile.mobileprovision" "$HOME/Library/MobileDevice/Provisioning Profiles/$UUID.mobileprovision"
+          echo "PROFILE_NAME=$(cat "$RUNNER_TEMP/signing/profile_name.txt")" >> "$GITHUB_ENV"
+          security find-identity -v -p codesigning "$KC" | head -3
+
+      - name: Archive (signed for the App Store)
         env:
           TEAM: ${{ secrets.APPLE_TEAM_ID }}
-          KID: ${{ secrets.ASC_KEY_ID }}
-          ISS: ${{ secrets.ASC_ISSUER_ID }}
         run: |
           set -o pipefail
           xcodebuild archive \
             -project app/Supperwise.xcodeproj -scheme Supperwise -configuration Release \
             -destination "generic/platform=iOS" -archivePath "$RUNNER_TEMP/Supperwise.xcarchive" \
-            -allowProvisioningUpdates \
-            -authenticationKeyPath "$RUNNER_TEMP/keys/AuthKey_$KID.p8" \
-            -authenticationKeyID "$KID" -authenticationKeyIssuerID "$ISS" \
-            DEVELOPMENT_TEAM="$TEAM" CODE_SIGN_STYLE=Automatic \
-            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+            DEVELOPMENT_TEAM="$TEAM" CODE_SIGN_STYLE=Manual CODE_SIGN_IDENTITY="Apple Distribution" \
+            PROVISIONING_PROFILE_SPECIFIER="$PROFILE_NAME" \
             CURRENT_PROJECT_VERSION="${{ github.run_number }}" \
             | grep -E "error:|warning: .*Supperwise|\*\* ARCHIVE (SUCCEEDED|FAILED) \*\*"
 
@@ -86,17 +106,18 @@ jobs:
             <key>method</key><string>app-store-connect</string>
             <key>destination</key><string>upload</string>
             <key>teamID</key><string>$TEAM</string>
-            <key>signingStyle</key><string>automatic</string>
+            <key>signingStyle</key><string>manual</string>
+            <key>signingCertificate</key><string>Apple Distribution</string>
+            <key>provisioningProfiles</key><dict><key>com.supperwise.app</key><string>$PROFILE_NAME</string></dict>
             <key>uploadSymbols</key><true/>
           </dict></plist>
           PLIST
           xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/Supperwise.xcarchive" \
             -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" -exportPath "$RUNNER_TEMP/export" \
-            -allowProvisioningUpdates \
             -authenticationKeyPath "$RUNNER_TEMP/keys/AuthKey_$KID.p8" \
             -authenticationKeyID "$KID" -authenticationKeyIssuerID "$ISS"
           echo "Uploaded build ${{ github.run_number }}. It appears in TestFlight after Apple processes it (usually 10–30 minutes)."
 
-      - name: Remove the key
+      - name: Remove the keys
         if: always()
-        run: rm -rf "$RUNNER_TEMP/keys"
+        run: rm -rf "$RUNNER_TEMP/keys" "$RUNNER_TEMP/signing" "$RUNNER_TEMP/build.keychain-db"
