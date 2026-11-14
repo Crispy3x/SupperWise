@@ -4,13 +4,14 @@ import SwiftUI
 /// then the first week, shown in full before any paywall.
 struct OnboardingFlow: View {
     @Environment(AppModel.self) private var model
-    @State private var step = 0
+    @State private var step = -1
     @State private var editing: Person? = nil
 
     var body: some View {
         NavigationStack {
             Group {
                 switch step {
+                case -1: WelcomeStep { step = 0 }
                 case 0: StoreStep { step = 1 }
                 case 1: householdStep
                 default: FirstWeekView()
@@ -123,5 +124,49 @@ struct StoreStep: View {
             store = model.settings.price.storeName
             kind = model.settings.price.storeKind
         }
+    }
+}
+
+
+/// First screen: what Supperwise is for, in one line, and what it does, in six.
+struct WelcomeStep: View {
+    let next: () -> Void
+    private let accent = Color(hex: 0xAD321C)
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Supperwise").font(.footnote.weight(.bold)).foregroundStyle(Paper.ink2)
+                Text("Feed your family well, for less.").font(.serif(48)).displayTracking(48).foregroundStyle(Paper.ink)
+                Text("Your family's food app. It plans dinners everyone can eat, shops to your budget, and helps you eat healthier at home, at school and out.")
+                    .foregroundStyle(Paper.ink2)
+                VStack(alignment: .leading, spacing: 14) {
+                    row("calendar", "A week of dinners, planned", "Around everyone's diets, allergies and spice levels.")
+                    row("cart", "One grocery list, under budget", "Priced by the pack you actually buy.")
+                    row("camera.metering.matrix", "Scan any meal or snack", "A 1–100 health score, calories and allergens.")
+                    row("bag", "School lunches and baby's first foods", "Planned on the same list.")
+                    row("fork.knife", "Eating out and holidays", "Restaurant scores, Thanksgiving and Christmas menus.")
+                    row("dollarsign.circle", "See what you save", "Every dinner cooked at home, against takeout.")
+                }
+                .padding(.vertical, 6)
+                Button(action: next) { Text("Get started: it takes a minute").frame(maxWidth: .infinity) }
+                    .buttonStyle(PillButtonStyle(fill: accent, ink: Ink.onDay))
+                Text("Your first week is free to keep. Your household and plans stay on this iPhone.")
+                    .font(.footnote).foregroundStyle(Paper.ink2)
+            }
+            .padding(24)
+        }
+        .background(Paper.ground)
+    }
+
+    private func row(_ icon: String, _ title: String, _ detail: String) -> some View {
+        HStack(alignment: .top, spacing: 14) {
+            Image(systemName: icon).font(.title3).foregroundStyle(accent).frame(width: 30)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title).font(.headline).foregroundStyle(Paper.ink)
+                Text(detail).font(.subheadline).foregroundStyle(Paper.ink2)
+            }
+        }
+        .accessibilityElement(children: .combine)
     }
 }

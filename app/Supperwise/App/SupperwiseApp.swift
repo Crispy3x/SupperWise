@@ -24,7 +24,7 @@ struct RootView: View {
     @Environment(AppModel.self) private var model
     @Environment(Subscriptions.self) private var subs
     @Environment(\.scenePhase) private var phase
-    @State private var tab = ["groceries": 1, "kitchen": 2, "lunchbox": 2, "firstfoods": 2][Demo.screen ?? ""] ?? 0
+    @State private var tab = ["today": 0, "groceries": 1, "kitchen": 2, "lunchbox": 2, "firstfoods": 2][Demo.screen ?? ""] ?? 3
     @State private var demoSheet = ["lunchbox", "firstfoods", "plans", "scanner"].contains(Demo.screen ?? "") ? Demo.screen : nil
 
     var body: some View {
@@ -33,6 +33,9 @@ struct RootView: View {
                 OnboardingFlow()
             } else {
                 TabView(selection: $tab) {
+                    HomeView(tab: $tab)
+                        .tabItem { Label("Home", systemImage: "house") }
+                        .tag(3)
                     TodayView()
                         .tabItem { Label("Week", systemImage: "calendar") }
                         .tag(0)
