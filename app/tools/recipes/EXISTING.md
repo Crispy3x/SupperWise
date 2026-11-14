@@ -1,0 +1,300 @@
+# Recipes already in the app (do not duplicate)
+
+- Air fryer buffalo cauliflower and chickpea wraps
+- Air fryer chicken tenders with honey mustard
+- Air fryer cornmeal-crusted fish with tartar sauce
+- Air fryer eggplant parmesan
+- Air fryer garlic parmesan wings
+- Air fryer parmesan pork chops with green beans
+- Ants climbing a tree (pork and rice noodles)
+- Arroz con pollo
+- Baked chicken parmesan with spaghetti
+- Baked chickpea falafel pitas with tzatziki
+- Baked gnocchi with white beans and mozzarella
+- Baked penne with beef and ricotta
+- Baked penne with spinach and ricotta
+- Baked potatoes with broccoli and cheddar
+- Baked pumpkin mac and cheese
+- Baked turkey and cheddar sliders
+- Beef and broccoli
+- Beef and eggplant moussaka
+- Beef and mushroom ragù
+- Beef and onion rice bowls (gyudon)
+- Beef bulgogi rice bowls
+- Beef chile colorado
+- Beef keema with peas
+- Beef rogan josh-style curry
+- Black bean tacos
+- Brazilian-style shrimp and coconut stew
+- Broccoli cheddar soup
+- Butter chicken
+- Cajun tilapia with corn, zucchini and peppers
+- Camarones a la diabla
+- Caramelized onion and mushroom flatbreads with goat cheese
+- Carne asada tacos
+- Cashew chicken
+- Cauliflower and chickpea korma
+- Chana masala
+- Chapli-style spiced beef patties
+- Char siu-style pork tenderloin
+- Cheese tortellini primavera
+- Chicken and egg rice bowls (oyakodon)
+- Chicken and sausage jambalaya
+- Chicken and spinach curry
+- Chicken and stuffing bake
+- Chicken cacciatore
+- Chicken jalfrezi
+- Chicken karahi
+- Chicken katsu with cabbage slaw
+- Chicken mulligatawny soup
+- Chicken pad see ew
+- Chicken pho-style noodle soup
+- Chicken piccata with lemon spaghetti
+- Chicken pot pie skillet with puff pastry
+- Chicken souvlaki pitas with tzatziki
+- Chicken teriyaki rice bowls
+- Chicken tinga tacos
+- Chickpea tikka masala
+- Chilaquiles rojos with fried eggs
+- Chili-lime salmon with black bean and corn salsa
+- Chimichurri steak with roasted potatoes
+- Chinese tomato and egg stir-fry
+- Chipotle shrimp burrito bowls
+- Chorizo and potato tacos
+- Classic beef and bean chili
+- Classic chicken noodle soup
+- Classic sloppy joes
+- Coconut red lentil dal
+- Coconut rice and peas with jerk-spiced sweet potatoes
+- Cod in tomato, olive and caper sauce
+- Cold sesame soba with edamame
+- Colombian-style chicken, potato and corn soup
+- Cottage pie
+- Creamy Peruvian-style chicken with rice
+- Creamy Tuscan chicken with fettuccine
+- Creamy brown lentil and kidney bean dal
+- Creamy chicken gnocchi soup
+- Creamy corn chowder
+- Creamy green chile spinach enchiladas
+- Creamy ham and pea mac and cheese
+- Creamy polenta with sausage and tomato ragù
+- Creamy tomato gnocchi with spinach
+- Crispy black bean burgers
+- Crispy potato tacos
+- Crispy tofu and broccoli in garlic-ginger sauce
+- Cuban black beans and rice
+- Cuban mojo pork tenderloin
+- Cuban picadillo with rice
+- Cuban-style black bean soup
+- Egg curry
+- Egg fried rice
+- Egyptian-style spiced beef stuffed pitas (hawawshi)
+- Feijoada-style black beans with kielbasa
+- Filipino beef giniling
+- Filipino chicken adobo
+- Filipino eggplant omelets (tortang talong)
+- Gado-gado with peanut sauce
+- Garlic butter shrimp
+- Ginger-scallion cod
+- Goan-style coconut fish curry
+- Gochujang chicken with cabbage and sweet potato
+- Gochujang shrimp rice bowls
+- Greek baked beans in tomato and dill
+- Greek baked cod with tomatoes, olives and feta
+- Greek lemon chicken and orzo soup (avgolemono)
+- Greek roasted vegetables with feta (briam)
+- Greek sheet-pan chicken with potatoes and olives
+- Greek turkey burgers with feta and tzatziki
+- Green curry with tofu and green beans
+- Grilled barbecue chicken thighs with corn
+- Grilled cheese with creamy tomato soup
+- Grilled classic cheeseburgers
+- Grilled maple mustard pork tenderloin with sweet potatoes
+- Grilled sirloin with garlic butter and potato packets
+- Grilled vegetable and mozzarella hoagies
+- Ham, mushroom and artichoke pizza
+- Harira-style lamb, lentil and chickpea soup
+- Honey-soy glazed salmon
+- Hot and sour soup with tofu
+- Huevos rancheros
+- Japanese ginger pork (shogayaki)
+- Japanese tuna mayo rice bowls
+- Japanese-style vegetable curry with eggs
+- Jerk chicken thighs with mango salsa
+- Korean soft tofu and zucchini stew
+- Kung pao tofu
+- Lahmacun-style lamb flatbreads
+- Lamb kofta with herbed couscous and yogurt sauce
+- Lebanese-style lentil, spinach and lemon soup
+- Lebanese-style spiced beef rice with almonds (hashweh)
+- Lemon ricotta rigatoni with roasted broccoli
+- Lemon risotto with peas and mint
+- Lemon shrimp and asparagus risotto
+- Lemon-herb crumb cod
+- Lemon-thyme skillet chicken
+- Lemony orzo with chickpeas, spinach and feta
+- Lentil shepherd's pie
+- Loaded baked potato soup
+- Lomo saltado
+- Massaman-style chicken and potato curry
+- Matar paneer
+- Mediterranean quinoa and chickpea salad
+- Mediterranean quinoa bowls with crispy chickpeas
+- Mexican meatball soup
+- Miso udon soup with tofu and bok choy
+- Miso-glazed eggplant and edamame rice bowls
+- Miso-glazed salmon with bok choy
+- Moroccan-spiced sweet potato and chickpea stew
+- Moroccan-style chicken with olives and lemon
+- Mujadara with crispy onions
+- Mushroom and pea masala
+- Mushroom and pepper fajitas
+- Mushroom and thyme risotto
+- Mushroom and white bean pot pie
+- Mushroom mapo tofu
+- New England cod chowder
+- North African spiced cod in tomato sauce
+- One-pan Moroccan-spiced chicken and chickpea couscous
+- One-pan beef taco rice
+- One-pot chicken biryani-style rice
+- Oven-crisp beef and bean burritos
+- Oven-crisp drumsticks
+- Palak paneer
+- Pancit bihon with pork and vegetables
+- Paneer and egg kathi rolls
+- Parmesan-crusted tilapia with roasted tomatoes and zucchini
+- Pasta alla Norma with eggplant and ricotta
+- Pasta e ceci (chickpea and pasta soup)
+- Patty melts with caramelized onions
+- Peanut curry with sweet potato and chickpeas
+- Peanut noodles with tofu and edamame
+- Penne arrabbiata
+- Persian-inspired chicken and eggplant tomato stew
+- Persian-inspired chicken with lentil rice and raisins
+- Persian-inspired herb and beef stew (ghormeh sabzi-style)
+- Persian-inspired herb frittata (kuku sabzi)
+- Peruvian-style quinoa and potato stew
+- Peruvian-style roast drumsticks with green sauce
+- Pesto salmon with roasted tomatoes
+- Pesto spaghetti with potatoes and green beans
+- Philly-style cheesesteaks
+- Pinto bean burrito bowls with cilantro-lime rice
+- Pork al pastor-style tacos with pineapple
+- Pork chops pizzaiola
+- Potato, egg and pepper burritos
+- Potato, pepper and cheddar frittata
+- Potatoes with creamy huancaína sauce and eggs
+- Rajas con crema tacos
+- Red chicken enchiladas
+- Red curry noodle soup
+- Red lentil and rice khichdi with spinach
+- Red lentil and tomato soup
+- Red pozole-style pork and bean soup
+- Rice and black bean stuffed peppers
+- Rigatoni with sausage and broccoli
+- Roasted aloo gobi with chickpeas
+- Roasted cauliflower tacos with chipotle crema
+- Roasted eggplant and chickpea curry
+- Rosemary pork tenderloin with garlicky white beans
+- Salmon burgers with dill yogurt sauce
+- Salmon with lemony orzo and asparagus
+- Sausage and peppers
+- Sausage, egg and potato breakfast burritos
+- Sausage, potato and kale soup
+- Seared scallops with lemon orzo and peas
+- Shakshuka with crusty bread
+- Sheet-pan French toast with bananas
+- Sheet-pan chicken fajitas
+- Sheet-pan chicken shawarma
+- Sheet-pan chickpea and cauliflower shawarma
+- Sheet-pan gnocchi with cherry tomatoes and zucchini
+- Sheet-pan gnocchi with tomatoes, zucchini and white beans
+- Sheet-pan honey mustard chicken with Brussels sprouts and sweet potatoes
+- Sheet-pan kielbasa with potatoes and green beans
+- Sheet-pan margherita pizza
+- Sheet-pan paneer tikka with peppers
+- Sheet-pan salmon
+- Sheet-pan salmon tikka with green beans
+- Sheet-pan shrimp fajitas
+- Shrimp and broccoli stir-fry
+- Shrimp and cheesy grits
+- Shrimp and pineapple fried rice
+- Shrimp and tomato masala
+- Shrimp fra diavolo with spaghetti
+- Shrimp pad thai
+- Shrimp saganaki with tomatoes and feta over orzo
+- Sichuan-style green beans with pork
+- Singapore-style curry noodles with shrimp
+- Sirloin steak with salsa verde and crispy potatoes
+- Skillet tuna melts
+- Slow cooker beef and potato stew
+- Slow cooker honey garlic chicken
+- Slow cooker lentil sloppy joes
+- Slow cooker pulled pork sandwiches
+- Slow cooker red beans and rice with kielbasa
+- Slow cooker three-bean chili
+- Slow cooker tortellini minestrone
+- Slow cooker white chicken chili
+- Slow-cooker Greek beef stew (stifado) with orzo
+- Slow-cooker Moroccan-spiced beef and carrots
+- Slow-cooker beef rendang
+- Slow-cooker chicken and potato curry
+- Slow-cooker pork carnitas
+- Slow-cooker pork ragù with fettuccine
+- Slow-cooker pork vindaloo-style curry
+- Slow-cooker ropa vieja
+- Smoky Spanish cod and chickpea stew
+- Smoky tofu sofritas tacos
+- Smoky tortilla soup with pinto beans
+- Southern tomato pie
+- Southwestern stuffed peppers
+- Spaghetti with garlic, white beans and spinach
+- Spaghetti with tuna, capers and lemon
+- Spanish chicken with romesco and roasted green beans
+- Spanish potato and onion tortilla
+- Spiced lamb and rice stuffed peppers
+- Spiced tilapia tacos with lime slaw
+- Spinach and cheddar strata
+- Spinach and feta pie (spanakopita-style)
+- Spinach and ricotta lasagna roll-ups
+- Stovetop mac and cheese with spinach and tomatoes
+- Sweet and sour pork with pineapple
+- Sweet and sour tofu with pineapple
+- Sweet potato and black bean enchiladas
+- Sweet potato and black bean hash with eggs
+- Tandoori-style drumsticks with roasted potatoes
+- Thai basil chicken (pad kra pao)
+- Thai coconut shrimp soup
+- Thai green curry shrimp
+- Tilapia piccata
+- Tofu pad thai
+- Tortellini soup with spinach and tomatoes
+- Trinidad-style curry chickpeas with rice
+- Tuna Niçoise salad
+- Tuna cakes with lemon mayo
+- Tuna noodle casserole
+- Turkey and black bean chili
+- Turkey enchilada skillet
+- Turkey kofta curry
+- Turkey larb lettuce wraps
+- Turkey meatballs, orzo and arugula
+- Turkey taco salad
+- Turkish-style baked eggplant with tomatoes and feta
+- Turkish-style chicken kebab sheet pan
+- Turmeric-dill fish with rice noodles
+- Tuscan bread and bean soup (ribollita)
+- Two-bean tamale pie
+- Vegetable bibimbap with fried eggs
+- Vegetable biryani-style rice with cashews
+- Vegetable lo mein with edamame
+- Vegetable nasi goreng with fried eggs
+- Veracruz-style cod with tomatoes and olives
+- Vietnamese caramel pork rice bowls
+- Vietnamese shaking beef
+- Vietnamese-style tofu noodle bowls
+- Warm French lentil salad with goat cheese
+- Weeknight chicken and shrimp paella
+- White bean minestrone
+- Yaki udon with cabbage and egg
+- Zucchini and corn quesadillas
+- Zucchini, corn and cheddar rice bake

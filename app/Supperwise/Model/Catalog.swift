@@ -22,9 +22,11 @@ struct Catalog {
     }
 
     /// Mirrors the engine's rules: which recipes work for everyone in this household, with this kitchen.
-    func eligibleRecipes(for settings: Settings) -> [Recipe] {
+    func eligibleRecipes(for settings: Settings, taste: Taste = Taste()) -> [Recipe] {
         let avoided = settings.avoided
         return recipes.filter { r in
+            // Hidden dishes, dishes over the time limit, and dishes with an ingredient nobody wants.
+            guard taste.allows(r) else { return false }
             // Saved recipes have no checked allergen or equipment data, so they're never planned automatically.
             guard r.source == nil else { return false }
             // Every piece of equipment the recipe needs must be in the kitchen.

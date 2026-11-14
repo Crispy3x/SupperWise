@@ -24,6 +24,8 @@ struct Planner {
     let inKitchen: Set<String>
     var adjust: Double = 1
     var leftovers: Set<Weekday> = []
+    /// Favorites, ratings, hidden dishes and preferences.
+    var taste = Taste()
 
     var pricer: Pricer { Pricer(catalog: catalog, settings: settings, inKitchen: inKitchen, leftovers: leftovers, adjust: adjust) }
 
@@ -32,7 +34,7 @@ struct Planner {
     /// Dishes from last week are avoided when there are enough others.
     func plan(weekStart: Date, avoiding lastWeek: Set<String> = [], seed: UInt64 = UInt64.random(in: 1...UInt64.max)) throws -> WeekPlan {
         let nights = settings.cookNights.sorted()
-        let eligible = catalog.eligibleRecipes(for: settings)
+        let eligible = catalog.eligibleRecipes(for: settings, taste: taste)
         guard eligible.count >= nights.count else {
             throw PlanError.notEnoughRecipes(available: eligible.count, needed: nights.count)
         }
@@ -79,7 +81,7 @@ struct Planner {
         let current = recipes(of: plan)
         let before = pricer.price(current).total
         var rng = SeededRandom(seed: seed)
-        let candidates = catalog.eligibleRecipes(for: settings).filter { !inWeek.contains($0.id) }.shuffled(using: &rng)
+        let candidates = catalog.eligibleRecipes(for: settings, taste: taste).filter { !inWeek.contains($0.id) }.shuffled(using: &rng)
         var bestPlan = plan
         var bestScore = Double.infinity
         for c in candidates {
@@ -135,6 +137,8 @@ struct Planner {
             s += total * 0.05
         }
         if proteinClash(pick) { s += 40 }
+        // Favorites, thumbs-up and favorite cuisines come up more often; thumbs-down much less.
+        s -= pick.reduce(0) { $0 + taste.bonus($1) }
         let cuisines = Set(pick.map(\.cuisine)).count
         s -= Double(cuisines) * 1.5
         // Long cooks on more than two nights is a lot for a weeknight.

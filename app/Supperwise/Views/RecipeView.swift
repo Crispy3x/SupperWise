@@ -10,6 +10,7 @@ struct RecipeView: View {
     @State private var servings: Int = 4
     @AppStorage("recipeTextLarge") private var largeText = false
     @State private var cooking = false
+    @State private var askRating = false
 
     var body: some View {
         let palette = DayPalette.of(day)
@@ -90,7 +91,7 @@ struct RecipeView: View {
 
                     Button {
                         model.markCooked(day)
-                        dismiss()
+                        if model.rating(recipe.id) == nil { askRating = true } else { dismiss() }
                     } label: {
                         Text("I cooked it").frame(maxWidth: .infinity)
                     }
@@ -109,11 +110,29 @@ struct RecipeView: View {
         .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                ShareLink(item: shareText()) { Image(systemName: "square.and.arrow.up") }
+                Button { model.toggleFavorite(recipe.id) } label: {
+                    Image(systemName: model.favorites.contains(recipe.id) ? "heart.fill" : "heart")
+                }
+                .accessibilityLabel(model.favorites.contains(recipe.id) ? "Remove from favorites" : "Add to favorites")
+                .sensoryFeedback(.selection, trigger: model.favorites.contains(recipe.id))
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu {
+                    ShareLink(item: shareText()) { Label("Share recipe", systemImage: "square.and.arrow.up") }
+                    Button { model.rate(recipe.id, .up) } label: { Label("We loved it", systemImage: model.rating(recipe.id) == .up ? "hand.thumbsup.fill" : "hand.thumbsup") }
+                    Button { model.rate(recipe.id, .down) } label: { Label("Not for us", systemImage: model.rating(recipe.id) == .down ? "hand.thumbsdown.fill" : "hand.thumbsdown") }
+                    Button(role: .destructive) { model.setHidden(recipe.id, true) } label: { Label("Don't suggest this again", systemImage: "nosign") }
+                } label: { Image(systemName: "ellipsis.circle") }
+                .accessibilityLabel("More")
             }
         }
         .onAppear { servings = model.settings.householdSize }
         .fullScreenCover(isPresented: $cooking) { CookModeView(recipe: recipe, day: day) }
+        .confirmationDialog("How was \(recipe.name)?", isPresented: $askRating, titleVisibility: .visible) {
+            Button("We loved it") { model.rate(recipe.id, .up); dismiss() }
+            Button("It was fine") { dismiss() }
+            Button("Not for us") { model.rate(recipe.id, .down); dismiss() }
+        } message: { Text("Loved dishes come up more often; ones you didn't like, much less.") }
         .sensoryFeedback(.success, trigger: model.plan?.dinners.first { $0.day == day }?.cooked ?? false)
     }
 

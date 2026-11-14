@@ -21,6 +21,11 @@ struct SavedState: Codable {
     var fridge: [String]? = nil
     var baby: BabyProfile? = nil
     var foodLog: [FoodLogEntry]? = nil
+    // Added in v3: profile, favorites, ratings, hidden dishes, cooked log.
+    var favorites: Set<String>? = nil
+    var hidden: Set<String>? = nil
+    var ratings: [String: Rating]? = nil
+    var cookedLog: [CookedEntry]? = nil
 
     init() {}
 
@@ -43,6 +48,10 @@ struct SavedState: Codable {
         fridge = try c.decodeIfPresent([String].self, forKey: .fridge)
         baby = try c.decodeIfPresent(BabyProfile.self, forKey: .baby)
         foodLog = try c.decodeIfPresent([FoodLogEntry].self, forKey: .foodLog)
+        favorites = try c.decodeIfPresent(Set<String>.self, forKey: .favorites)
+        hidden = try c.decodeIfPresent(Set<String>.self, forKey: .hidden)
+        ratings = try c.decodeIfPresent([String: Rating].self, forKey: .ratings)
+        cookedLog = try c.decodeIfPresent([CookedEntry].self, forKey: .cookedLog)
     }
 }
 
@@ -119,7 +128,7 @@ final class AppModel {
 
     var planner: Planner {
         Planner(catalog: catalog, settings: state.settings, inKitchen: state.inKitchen,
-                adjust: state.storeAdjust ?? 1, leftovers: state.plan?.leftovers ?? [])
+                adjust: state.storeAdjust ?? 1, leftovers: state.plan?.leftovers ?? [], taste: taste)
     }
     var storeAdjust: Double { state.storeAdjust ?? 1 }
     var savedRecipes: [Recipe] { state.savedRecipes ?? [] }
@@ -233,13 +242,59 @@ final class AppModel {
         save()
     }
 
-    func markCooked(_ day: Weekday, _ cooked: Bool = true) {
+    func markCooked(_ day: Weekday, _ cooked: Bool = true, now: Date = .now) {
         guard var p = state.plan, let i = p.dinners.firstIndex(where: { $0.day == day }) else { return }
+        let wasCooked = p.dinners[i].cooked
         p.dinners[i].cooked = cooked
         state.plan = p
-        if cooked, let id = p.dinners.first(where: { $0.day == day })?.recipeID {
+        if cooked, !wasCooked {
+            let id = p.dinners[i].recipeID
             state.history.append(id)
+            let plate = cost(of: p).perDinner[day] ?? 0
+            var log = state.cookedLog ?? []
+            log.append(CookedEntry(date: now, recipeID: id, cost: plate, servings: state.settings.householdSize))
+            state.cookedLog = log
         }
+        save()
+    }
+
+    // MARK: Profile, favorites and ratings
+
+    var prefs: Preferences { state.settings.prefs ?? Preferences() }
+    var favorites: Set<String> { state.favorites ?? [] }
+    var hiddenRecipes: Set<String> { state.hidden ?? [] }
+    var taste: Taste { Taste(favorites: favorites, hidden: hiddenRecipes, ratings: state.ratings ?? [:], prefs: prefs) }
+    var stats: HomeCookingStats { HomeCookingStats.compute(state.cookedLog ?? [], takeoutPerPerson: prefs.takeoutPerPerson) }
+
+    func rating(_ id: String) -> Rating? { state.ratings?[id] }
+
+    func updatePrefs(_ change: (inout Preferences) -> Void) {
+        var p = prefs
+        change(&p)
+        state.settings.prefs = p
+        save()
+    }
+
+    func toggleFavorite(_ id: String) {
+        var f = favorites
+        if f.contains(id) { f.remove(id) } else { f.insert(id) }
+        state.favorites = f
+        save()
+    }
+
+    func rate(_ id: String, _ r: Rating?) {
+        var all = state.ratings ?? [:]
+        all[id] = r
+        state.ratings = all
+        save()
+    }
+
+    /// "Don't suggest this again": never planned automatically. Can be undone in Profile.
+    func setHidden(_ id: String, _ hide: Bool) {
+        var h = hiddenRecipes
+        if hide { h.insert(id) } else { h.remove(id) }
+        state.hidden = h
+        if hide { state.favorites?.remove(id) }
         save()
     }
 

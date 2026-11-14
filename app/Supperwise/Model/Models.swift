@@ -204,6 +204,8 @@ struct Settings: Codable, Hashable {
     var dinnerReminder: Bool = false
     /// Lunchbox planning (Family); nil until it's set up.
     var lunch: LunchSettings? = nil
+    /// Profile preferences (cuisines, dislikes, time limit). Optional so older saves still load.
+    var prefs: Preferences? = nil
 
     var householdSize: Int { max(people.count, 1) }
     var vegetarianCount: Int { people.filter { $0.diet == .vegetarian }.count }

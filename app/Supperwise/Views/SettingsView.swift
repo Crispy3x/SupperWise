@@ -17,6 +17,18 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
+                Section {
+                    NavigationLink {
+                        ProfileView()
+                    } label: {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(model.prefs.displayName.isEmpty ? "Your profile" : model.prefs.displayName).font(.headline)
+                            Text("Saved \(model.stats.saved.formatted(.currency(code: "USD").precision(.fractionLength(0)))) by cooking at home · favorites, tastes, time limit")
+                                .font(.footnote).foregroundStyle(.secondary)
+                        }
+                    }
+                }
+
                 Section("Your plan") {
                     if subs.isSubscribed, let pro = subs.activeEntitlement {
                         Label(subs.tier.name, systemImage: "checkmark.seal")

@@ -29,6 +29,14 @@ struct PlansSheet: View {
                     } else {
                         Text("Dinners that work for everyone, priced by the pack, under your budget.").foregroundStyle(Paper.ink2)
                     }
+                    VStack(alignment: .leading, spacing: 10) {
+                        benefit("calendar.badge.checkmark", "A new week every Sunday", "Planned around everyone's diets and allergies.")
+                        benefit("cart", "One list, priced by the pack", "Under the budget you set, with what you have taken off.")
+                        benefit("dollarsign.circle", saved > 1 ? "You've saved \(saved.formatted(.currency(code: "USD").precision(.fractionLength(0)))) so far" : "Cheaper than one takeout night",
+                                saved > 1 ? "Cooking at home instead of takeout, by your own numbers." : "Plus costs less a month than one family takeout dinner.")
+                        benefit("xmark.circle", "Cancel anytime", "In Settings, at least 24 hours before it renews.")
+                    }
+                    .padding(.vertical, 4)
 
                     Picker("Billing", selection: $yearly) {
                         Text(yearlyLabel).tag(true)
@@ -69,6 +77,20 @@ struct PlansSheet: View {
                 if subs.offering == nil { await subs.load() }
             }
         }
+    }
+
+    @Environment(AppModel.self) private var model
+    private var saved: Double { model.stats.saved }
+
+    private func benefit(_ icon: String, _ title: String, _ detail: String) -> some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: icon).font(.title3).foregroundStyle(accent).frame(width: 28)
+            VStack(alignment: .leading, spacing: 1) {
+                Text(title).font(.subheadline.weight(.semibold)).foregroundStyle(Paper.ink)
+                Text(detail).font(.footnote).foregroundStyle(Paper.ink2)
+            }
+        }
+        .accessibilityElement(children: .combine)
     }
 
     // MARK: Cards

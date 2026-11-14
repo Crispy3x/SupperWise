@@ -31,6 +31,12 @@ struct KitchenView: View {
                     }
                     .listRowBackground(Paper.ground)
                 }
+                if model.stats.dinners > 0 {
+                    Section {
+                        HomeCookingCard(stats: model.stats, accent: accent)
+                    }
+                    .listRowBackground(Paper.ground)
+                }
                 Section {
                     GatedButton(feature: .fridge, action: { showFridge = true }) { Label("What can I cook tonight?", systemImage: "camera.viewfinder") }
                     GatedButton(feature: .scanner, action: { showFoodScan = true }) { Label("Scan food: score and calories", systemImage: "camera.metering.matrix") }
