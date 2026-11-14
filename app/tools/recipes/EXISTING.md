@@ -8,14 +8,22 @@
 - Air fryer parmesan pork chops with green beans
 - Ants climbing a tree (pork and rice noodles)
 - Arroz con pollo
+- Bacon and egg breakfast pizza
+- Baked cheese tortellini with zucchini marinara
 - Baked chicken parmesan with spaghetti
 - Baked chickpea falafel pitas with tzatziki
 - Baked gnocchi with white beans and mozzarella
+- Baked lentil meatballs with spaghetti
+- Baked parmesan chicken nuggets with oven fries
+- Baked peanut chicken skewers with rice
 - Baked penne with beef and ricotta
 - Baked penne with spinach and ricotta
 - Baked potatoes with broccoli and cheddar
 - Baked pumpkin mac and cheese
+- Baked spaghetti pie
 - Baked turkey and cheddar sliders
+- Barbecue chicken and corn pizza
+- Bean and cheese chili mac
 - Beef and broccoli
 - Beef and eggplant moussaka
 - Beef and mushroom ragù
@@ -24,9 +32,14 @@
 - Beef chile colorado
 - Beef keema with peas
 - Beef rogan josh-style curry
+- Beef, potato and cheese hand pies
 - Black bean tacos
 - Brazilian-style shrimp and coconut stew
+- Broccoli and cheese calzones
+- Broccoli cheddar quiche
 - Broccoli cheddar soup
+- Brown lentil tacos
+- Build-your-own pita pizzas
 - Butter chicken
 - Cajun tilapia with corn, zucchini and peppers
 - Camarones a la diabla
@@ -37,12 +50,25 @@
 - Chana masala
 - Chapli-style spiced beef patties
 - Char siu-style pork tenderloin
+- Cheddar corn fritters with salsa
 - Cheese tortellini primavera
+- Cheesy black bean and corn taquitos
+- Cheesy black bean stuffed sweet potatoes
+- Cheesy chicken, broccoli and rice bake
+- Cheesy one-pot beef taco pasta
+- Cheesy turkey and potato skillet
+- Cheesy veggie egg muffin cups with buttered toast
+- Chicken Milanese with lemony arugula
+- Chicken alfredo pasta bake with peas
 - Chicken and egg rice bowls (oyakodon)
+- Chicken and rolled dumplings
 - Chicken and sausage jambalaya
 - Chicken and spinach curry
 - Chicken and stuffing bake
 - Chicken cacciatore
+- Chicken caprese skillet
+- Chicken club wraps
+- Chicken fried rice with peas, carrots and corn
 - Chicken jalfrezi
 - Chicken karahi
 - Chicken katsu with cabbage slaw
@@ -54,12 +80,17 @@
 - Chicken souvlaki pitas with tzatziki
 - Chicken teriyaki rice bowls
 - Chicken tinga tacos
+- Chickpea noodle soup
 - Chickpea tikka masala
 - Chilaquiles rojos with fried eggs
+- Chili paneer with peppers and onions
 - Chili-lime salmon with black bean and corn salsa
+- Chili-lime shrimp tacos with avocado salsa
 - Chimichurri steak with roasted potatoes
 - Chinese tomato and egg stir-fry
+- Chipotle chicken and pepper quesadillas
 - Chipotle shrimp burrito bowls
+- Chorizo and chickpeas with spinach
 - Chorizo and potato tacos
 - Classic beef and bean chili
 - Classic chicken noodle soup
@@ -67,40 +98,62 @@
 - Coconut red lentil dal
 - Coconut rice and peas with jerk-spiced sweet potatoes
 - Cod in tomato, olive and caper sauce
+- Cod with brown butter, capers and lemon couscous
 - Cold sesame soba with edamame
 - Colombian-style chicken, potato and corn soup
+- Corn and tofu egg drop soup
 - Cottage pie
+- Creamy Cajun chicken penne
 - Creamy Peruvian-style chicken with rice
 - Creamy Tuscan chicken with fettuccine
 - Creamy brown lentil and kidney bean dal
+- Creamy butternut squash soup with cheesy toast dippers
 - Creamy chicken gnocchi soup
 - Creamy corn chowder
+- Creamy garlic mushroom chicken
 - Creamy green chile spinach enchiladas
 - Creamy ham and pea mac and cheese
+- Creamy parmesan orzo with peas, carrots and white beans
 - Creamy polenta with sausage and tomato ragù
+- Creamy roasted red pepper rigatoni
 - Creamy tomato gnocchi with spinach
+- Crispy baked chicken tacos
+- Crispy baked fish sticks with oven fries
+- Crispy baked tofu nuggets with rice and broccoli
 - Crispy black bean burgers
+- Crispy pork schnitzel with buttered potatoes and peas
 - Crispy potato tacos
+- Crispy skillet gnocchi with peas and parmesan
 - Crispy tofu and broccoli in garlic-ginger sauce
+- Crispy tofu banh mi sandwiches
 - Cuban black beans and rice
 - Cuban mojo pork tenderloin
 - Cuban picadillo with rice
 - Cuban-style black bean soup
+- Easy beef lasagna
 - Egg curry
 - Egg fried rice
+- Egg roll in a bowl with rice noodles
 - Egyptian-style spiced beef stuffed pitas (hawawshi)
 - Feijoada-style black beans with kielbasa
+- Fettuccine Alfredo with broccoli
 - Filipino beef giniling
 - Filipino chicken adobo
 - Filipino eggplant omelets (tortang talong)
+- Five-spice pork medallions with green beans
+- Folded bean and cheese tortilla wraps
+- Fresh orange chicken with broccoli
 - Gado-gado with peanut sauce
 - Garlic butter shrimp
+- Garlic butter steak bites with asparagus
 - Ginger-scallion cod
+- Ginger-scallion noodles with bok choy and fried eggs
 - Goan-style coconut fish curry
 - Gochujang chicken with cabbage and sweet potato
 - Gochujang shrimp rice bowls
 - Greek baked beans in tomato and dill
 - Greek baked cod with tomatoes, olives and feta
+- Greek chickpea salad pitas
 - Greek lemon chicken and orzo soup (avgolemono)
 - Greek roasted vegetables with feta (briam)
 - Greek sheet-pan chicken with potatoes and olives
@@ -112,8 +165,15 @@
 - Grilled maple mustard pork tenderloin with sweet potatoes
 - Grilled sirloin with garlic butter and potato packets
 - Grilled vegetable and mozzarella hoagies
+- Ham and white bean soup
 - Ham, mushroom and artichoke pizza
+- Ham, potato and cheddar breakfast casserole
 - Harira-style lamb, lentil and chickpea soup
+- Hawaiian French bread pizzas
+- Herb and goat cheese omelets
+- Hoisin tofu lettuce wraps
+- Homemade sausage patties with cheesy eggs and skillet potatoes
+- Honey garlic chicken bites with peppers
 - Honey-soy glazed salmon
 - Hot and sour soup with tofu
 - Huevos rancheros
@@ -121,12 +181,16 @@
 - Japanese tuna mayo rice bowls
 - Japanese-style vegetable curry with eggs
 - Jerk chicken thighs with mango salsa
+- Kielbasa pigs in a blanket with barbecue beans
+- Kielbasa with buttered cabbage and noodles
 - Korean soft tofu and zucchini stew
 - Kung pao tofu
 - Lahmacun-style lamb flatbreads
 - Lamb kofta with herbed couscous and yogurt sauce
+- Lazy pierogi bake
 - Lebanese-style lentil, spinach and lemon soup
 - Lebanese-style spiced beef rice with almonds (hashweh)
+- Lemon cream fettuccine with salmon and peas
 - Lemon ricotta rigatoni with roasted broccoli
 - Lemon risotto with peas and mint
 - Lemon shrimp and asparagus risotto
@@ -135,15 +199,20 @@
 - Lemony orzo with chickpeas, spinach and feta
 - Lentil shepherd's pie
 - Loaded baked potato soup
+- Loaded black bean sheet-pan nachos
 - Lomo saltado
 - Massaman-style chicken and potato curry
 - Matar paneer
+- Mediterranean hummus naan pizzas
 - Mediterranean quinoa and chickpea salad
 - Mediterranean quinoa bowls with crispy chickpeas
 - Mexican meatball soup
+- Mini turkey meatball noodle soup
+- Mini turkey meatloaves with roasted potatoes and green beans
 - Miso udon soup with tofu and bok choy
 - Miso-glazed eggplant and edamame rice bowls
 - Miso-glazed salmon with bok choy
+- Mongolian-style beef noodles
 - Moroccan-spiced sweet potato and chickpea stew
 - Moroccan-style chicken with olives and lemon
 - Mujadara with crispy onions
@@ -152,10 +221,13 @@
 - Mushroom and thyme risotto
 - Mushroom and white bean pot pie
 - Mushroom mapo tofu
+- Mushroom stroganoff with egg noodles
 - New England cod chowder
 - North African spiced cod in tomato sauce
+- Omelet rice with corn and peas (omurice)
 - One-pan Moroccan-spiced chicken and chickpea couscous
 - One-pan beef taco rice
+- One-pot cheeseburger macaroni
 - One-pot chicken biryani-style rice
 - Oven-crisp beef and bean burritos
 - Oven-crisp drumsticks
@@ -169,6 +241,7 @@
 - Peanut curry with sweet potato and chickpeas
 - Peanut noodles with tofu and edamame
 - Penne arrabbiata
+- Penne with artichokes, olives and roasted peppers
 - Persian-inspired chicken and eggplant tomato stew
 - Persian-inspired chicken with lentil rice and raisins
 - Persian-inspired herb and beef stew (ghormeh sabzi-style)
@@ -177,15 +250,20 @@
 - Peruvian-style roast drumsticks with green sauce
 - Pesto salmon with roasted tomatoes
 - Pesto spaghetti with potatoes and green beans
+- Pesto tortellini with blistered cherry tomatoes
 - Philly-style cheesesteaks
 - Pinto bean burrito bowls with cilantro-lime rice
 - Pork al pastor-style tacos with pineapple
 - Pork chops pizzaiola
+- Pork chops with apples and Dijon pan sauce
 - Potato, egg and pepper burritos
 - Potato, pepper and cheddar frittata
 - Potatoes with creamy huancaína sauce and eggs
+- Puffy oven pancake with bananas and yogurt
+- Quick turkey and zucchini spaghetti
 - Rajas con crema tacos
 - Red chicken enchiladas
+- Red curry coconut tilapia with spinach
 - Red curry noodle soup
 - Red lentil and rice khichdi with spinach
 - Red lentil and tomato soup
@@ -199,14 +277,19 @@
 - Salmon burgers with dill yogurt sauce
 - Salmon with lemony orzo and asparagus
 - Sausage and peppers
+- Sausage lasagna soup
+- Sausage tortellini in tomato cream sauce
 - Sausage, egg and potato breakfast burritos
 - Sausage, potato and kale soup
+- Scrambled egg and pinto bean breakfast tacos
+- Seared salmon Caesar salad
 - Seared scallops with lemon orzo and peas
 - Shakshuka with crusty bread
 - Sheet-pan French toast with bananas
 - Sheet-pan chicken fajitas
 - Sheet-pan chicken shawarma
 - Sheet-pan chickpea and cauliflower shawarma
+- Sheet-pan garlic-herb chicken with sweet potatoes and green beans
 - Sheet-pan gnocchi with cherry tomatoes and zucchini
 - Sheet-pan gnocchi with tomatoes, zucchini and white beans
 - Sheet-pan honey mustard chicken with Brussels sprouts and sweet potatoes
@@ -222,6 +305,7 @@
 - Shrimp and tomato masala
 - Shrimp fra diavolo with spaghetti
 - Shrimp pad thai
+- Shrimp po' boys
 - Shrimp saganaki with tomatoes and feta over orzo
 - Sichuan-style green beans with pork
 - Singapore-style curry noodles with shrimp
@@ -232,6 +316,7 @@
 - Slow cooker lentil sloppy joes
 - Slow cooker pulled pork sandwiches
 - Slow cooker red beans and rice with kielbasa
+- Slow cooker salsa chicken rice bowls
 - Slow cooker three-bean chili
 - Slow cooker tortellini minestrone
 - Slow cooker white chicken chili
@@ -243,29 +328,39 @@
 - Slow-cooker pork ragù with fettuccine
 - Slow-cooker pork vindaloo-style curry
 - Slow-cooker ropa vieja
+- Smash burger tacos
+- Smashed pinto bean tostadas
 - Smoky Spanish cod and chickpea stew
+- Smoky shrimp, kielbasa and corn skillet
 - Smoky tofu sofritas tacos
 - Smoky tortilla soup with pinto beans
 - Southern tomato pie
 - Southwestern stuffed peppers
+- Spaghetti carbonara with peas
 - Spaghetti with garlic, white beans and spinach
 - Spaghetti with tuna, capers and lemon
 - Spanish chicken with romesco and roasted green beans
 - Spanish potato and onion tortilla
 - Spiced lamb and rice stuffed peppers
+- Spiced lamb over hummus with chopped salad
 - Spiced tilapia tacos with lime slaw
 - Spinach and cheddar strata
 - Spinach and feta pie (spanakopita-style)
+- Spinach and pinto bean quesadillas
 - Spinach and ricotta lasagna roll-ups
+- Stir-fried soba with tofu and snap peas
 - Stovetop mac and cheese with spinach and tomatoes
+- Swedish-style turkey meatballs with egg noodles
 - Sweet and sour pork with pineapple
 - Sweet and sour tofu with pineapple
 - Sweet potato and black bean enchiladas
 - Sweet potato and black bean hash with eggs
 - Tandoori-style drumsticks with roasted potatoes
+- Tex-Mex migas with peppers
 - Thai basil chicken (pad kra pao)
 - Thai coconut shrimp soup
 - Thai green curry shrimp
+- Thai red curry pumpkin soup with chickpeas
 - Tilapia piccata
 - Tofu pad thai
 - Tortellini soup with spinach and tomatoes
@@ -273,16 +368,21 @@
 - Tuna Niçoise salad
 - Tuna cakes with lemon mayo
 - Tuna noodle casserole
+- Turkey Salisbury steaks with mushroom gravy and mashed potatoes
 - Turkey and black bean chili
 - Turkey enchilada skillet
 - Turkey kofta curry
 - Turkey larb lettuce wraps
+- Turkey meatball marinara sliders
 - Turkey meatballs, orzo and arugula
+- Turkey pizza burgers
 - Turkey taco salad
+- Turkey, bean and rice burrito bake
 - Turkish-style baked eggplant with tomatoes and feta
 - Turkish-style chicken kebab sheet pan
 - Turmeric-dill fish with rice noodles
 - Tuscan bread and bean soup (ribollita)
+- Tuscan tuna and white bean salad with garlic toasts
 - Two-bean tamale pie
 - Vegetable bibimbap with fried eggs
 - Vegetable biryani-style rice with cashews
