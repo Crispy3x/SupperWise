@@ -61,9 +61,10 @@ jobs:
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
         run: |
-          python3 -m pip install --quiet "pyjwt[crypto]" requests
+          python3 -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install --quiet "pyjwt[crypto]" requests
           P12_PASSWORD=$(openssl rand -hex 16); echo "::add-mask::$P12_PASSWORD"; echo "P12_PASSWORD=$P12_PASSWORD" >> "$GITHUB_ENV"
-          OUT_DIR="$RUNNER_TEMP/signing" P12_PASSWORD="$P12_PASSWORD" python3 app/tools/asc/asc_signing.py
+          OUT_DIR="$RUNNER_TEMP/signing" P12_PASSWORD="$P12_PASSWORD" "$RUNNER_TEMP/venv/bin/python" app/tools/asc/asc_signing.py
 
       - name: Install them in a temporary keychain
         run: |
