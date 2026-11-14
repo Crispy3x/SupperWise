@@ -63,6 +63,14 @@
   "page": "https://commons.wikimedia.org/w/index.php?curid=40984113",
   "title": "Mutton Rogan Josh curry"
  },
+ "black_bean_sheet_pan_nachos": {
+  "creator": "pointnshoot",
+  "license": "by",
+  "licenseURL": "https://creativecommons.org/licenses/by/2.0",
+  "licenseVersion": "2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Buffalo_Nachos_at_Buffalo_Bills_-_Flickr_-_pointnshoot.jpg",
+  "title": "Buffalo Nachos at Buffalo Bills - Flickr - pointnshoot.jpg"
+ },
  "butternut_squash_soup_cheese_toasts": {
   "creator": "Ewan Munro from London, UK",
   "license": "by-sa",
@@ -359,6 +367,22 @@
   "page": "https://commons.wikimedia.org/wiki/File:-2020-01-24_Sirloin_steak,_chips_and_mushrooms,_Trimingham.JPG",
   "title": "-2020-01-24 Sirloin steak, chips and mushrooms, Trimingham.JPG"
  },
+ "herb_goat_cheese_omelets": {
+  "creator": "joyce godsey",
+  "license": "by",
+  "licenseURL": "https://creativecommons.org/licenses/by/2.0",
+  "licenseVersion": "2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Asparagus_cheddar_cheese_omelet.jpg",
+  "title": "Asparagus cheddar cheese omelet.jpg"
+ },
+ "honey_soy_glazed_salmon": {
+  "creator": "OriginalJo",
+  "license": "by",
+  "licenseURL": "https://creativecommons.org/licenses/by/2.0/",
+  "licenseVersion": "2.0",
+  "page": "https://www.flickr.com/photos/20081689@N00/7252612314",
+  "title": "Miso Maple Glazed Salmon Rice Bowl"
+ },
  "hot_and_sour_tofu_soup": {
   "creator": "avlxyz",
   "license": "by-sa",
@@ -551,6 +575,14 @@
   "page": "https://www.flickr.com/photos/7927684@N03/14703152728",
   "title": "Mmm... Margherita Pizza"
  },
+ "shrimp_broccoli_stir_fry": {
+  "creator": "The Marmot",
+  "license": "by",
+  "licenseURL": "https://creativecommons.org/licenses/by/2.0/",
+  "licenseVersion": "2.0",
+  "page": "https://www.flickr.com/photos/38142119@N00/26964252333",
+  "title": "Shrimp and Carrot Stir-fry - 4"
+ },
  "shrimp_fra_diavolo": {
   "creator": "jeffreyw",
   "license": "by",
@@ -623,6 +655,14 @@
   "page": "https://www.flickr.com/photos/60258967@N00/6936775232",
   "title": "Zapatista - pork carnitas"
  },
+ "slow_cooker_french_dip_sandwiches": {
+  "creator": "Nick Ares",
+  "license": "by-sa",
+  "licenseURL": "https://creativecommons.org/licenses/by-sa/2.0",
+  "licenseVersion": "2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:French_dip.jpg",
+  "title": "French dip.jpg"
+ },
  "slow_cooker_moroccan_beef_carrots": {
   "creator": "Daderot",
   "license": "cc0",
@@ -630,6 +670,14 @@
   "licenseVersion": "",
   "page": "https://commons.wikimedia.org/wiki/File:Beef_stew_with_carrots_and_celery_-_Massachusetts.jpg",
   "title": "Beef stew with carrots and celery - Massachusetts.jpg"
+ },
+ "slow_cooker_potato_leek_soup": {
+  "creator": "Vegan Feast Catering",
+  "license": "by",
+  "licenseURL": "https://creativecommons.org/licenses/by/2.0",
+  "licenseVersion": "2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Potato_Leek_Soup_(4257988225).jpg",
+  "title": "Potato Leek Soup (4257988225).jpg"
  },
  "slow_cooker_pulled_pork_sandwiches": {
   "creator": "Marshall Astor",
@@ -654,6 +702,14 @@
   "licenseVersion": "2.0",
   "page": "https://www.flickr.com/photos/55768440@N00/4552527326",
   "title": "Ropa Vieja"
+ },
+ "spaghetti_carbonara_peas": {
+  "creator": "Alpha from Melbourne, Australia",
+  "license": "by-sa",
+  "licenseURL": "https://creativecommons.org/licenses/by-sa/2.0",
+  "licenseVersion": "2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Spaghetti_Carbonara_-_Barbagallo_AUD19.jpg",
+  "title": "Spaghetti Carbonara - Barbagallo AUD19.jpg"
  },
  "spanish_potato_tortilla": {
   "creator": "wlayton",
@@ -782,5 +838,13 @@
   "licenseVersion": "2.0",
   "page": "https://www.flickr.com/photos/85936780@N00/2320197071",
   "title": "Stir-fried noodles (Yaki-udon)"
+ },
+ "zucchini_boats_lentil_tomato": {
+  "creator": "Deodora333",
+  "license": "by-sa",
+  "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0",
+  "licenseVersion": "4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:%D0%91%D1%80%D0%BE%D0%B4%D1%87%D0%B8%D1%9A%D0%B0_%D0%BE%D0%B4_%D1%82%D0%B8%D0%BA%D0%B2%D0%B8%D1%87%D0%BA%D0%B8.jpg",
+  "title": "Бродчиња од тиквички.jpg"
  }
 }
