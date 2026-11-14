@@ -879,232 +879,6 @@
   }
  },
  {
-  "id": "one_pot_cheeseburger_macaroni",
-  "name": "One-pot cheeseburger macaroni",
-  "side": "Steamed green beans.",
-  "cuisine": "American",
-  "minutes": 30,
-  "difficulty": "Easy",
-  "protein": "beef",
-  "equipment": [
-   "stovetop"
-  ],
-  "spice": 0,
-  "servings": 4,
-  "ingredients": [
-   {
-    "ingredient": "ground_beef",
-    "amount": 454,
-    "text": "1 lb",
-    "note": ""
-   },
-   {
-    "ingredient": "onion_yellow",
-    "amount": 110,
-    "text": "½ medium",
-    "note": "finely diced"
-   },
-   {
-    "ingredient": "tomato_paste",
-    "amount": 32,
-    "text": "2 tbsp",
-    "note": ""
-   },
-   {
-    "ingredient": "garlic_powder",
-    "amount": 2.5,
-    "text": "1 tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "paprika",
-    "amount": 2.5,
-    "text": "1 tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "beef_broth",
-    "amount": 720,
-    "text": "3 cups",
-    "note": ""
-   },
-   {
-    "ingredient": "milk",
-    "amount": 240,
-    "text": "1 cup",
-    "note": ""
-   },
-   {
-    "ingredient": "worcestershire",
-    "amount": 5,
-    "text": "1 tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "dijon",
-    "amount": 5,
-    "text": "1 tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "elbow_pasta",
-    "amount": 340,
-    "text": "12 oz",
-    "note": ""
-   },
-   {
-    "ingredient": "cheddar",
-    "amount": 170,
-    "text": "1½ cups",
-    "note": "shredded"
-   },
-   {
-    "ingredient": "salt",
-    "amount": 3,
-    "text": "½ tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "pepper",
-    "amount": 1,
-    "text": "¼ tsp",
-    "note": ""
-   }
-  ],
-  "steps": [
-   "Cook the beef and onion in a large deep skillet or pot over medium-high heat for 6 to 8 minutes, breaking up the meat, until no pink remains and it reaches 160°F. Spoon off excess fat.",
-   "Stir in the tomato paste, garlic powder and paprika and cook 1 minute.",
-   "Add the broth, milk, Worcestershire, mustard, salt, pepper and macaroni. Bring to a boil, then lower to a simmer.",
-   "Cook uncovered 10 to 12 minutes, stirring often so nothing sticks, until the pasta is tender and most of the liquid is absorbed.",
-   "Turn off the heat and stir in the cheddar until melted and creamy. Let it stand 2 minutes to thicken. Refrigerate leftovers within 2 hours."
-  ],
-  "vegetarianSwap": {
-   "note": "For vegetarians, cook 1 cup of macaroni in a small pot with 1¼ cups vegetable broth until tender, then stir in ½ cup cheddar.",
-   "ingredients": [
-    {
-     "ingredient": "elbow_pasta",
-     "amount": 100,
-     "text": "1 cup",
-     "note": ""
-    },
-    {
-     "ingredient": "veg_broth",
-     "amount": 300,
-     "text": "1¼ cups",
-     "note": ""
-    },
-    {
-     "ingredient": "cheddar",
-     "amount": 56,
-     "text": "½ cup",
-     "note": "shredded"
-    }
-   ]
-  }
- },
- {
-  "id": "sheet_pan_chicken_corn_quesadillas",
-  "name": "Sheet-pan chicken and corn quesadillas",
-  "side": "Sour cream and salsa for dipping.",
-  "cuisine": "Tex-Mex",
-  "minutes": 40,
-  "difficulty": "Easy",
-  "protein": "chicken",
-  "equipment": [
-   "stovetop",
-   "oven",
-   "sheet_pan"
-  ],
-  "spice": 0,
-  "servings": 4,
-  "ingredients": [
-   {
-    "ingredient": "chicken_thighs",
-    "amount": 567,
-    "text": "1¼ lb",
-    "note": ""
-   },
-   {
-    "ingredient": "cumin",
-    "amount": 2.5,
-    "text": "1 tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "garlic_powder",
-    "amount": 2.5,
-    "text": "1 tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "salt",
-    "amount": 4.5,
-    "text": "¾ tsp",
-    "note": "divided"
-   },
-   {
-    "ingredient": "neutral_oil",
-    "amount": 30,
-    "text": "2 tbsp",
-    "note": "divided"
-   },
-   {
-    "ingredient": "bell_pepper",
-    "amount": 1,
-    "text": "1",
-    "note": "finely diced"
-   },
-   {
-    "ingredient": "frozen_corn",
-    "amount": 150,
-    "text": "1 cup",
-    "note": ""
-   },
-   {
-    "ingredient": "tortillas",
-    "amount": 8,
-    "text": "8",
-    "note": "8-inch flour"
-   },
-   {
-    "ingredient": "monterey_jack",
-    "amount": 227,
-    "text": "2 cups",
-    "note": ""
-   },
-   {
-    "ingredient": "sour_cream",
-    "amount": 120,
-    "text": "½ cup",
-    "note": ""
-   },
-   {
-    "ingredient": "salsa",
-    "amount": 130,
-    "text": "½ cup",
-    "note": "mild"
-   }
-  ],
-  "steps": [
-   "Heat the oven to 425°F. Season the chicken with the cumin, garlic powder and ½ teaspoon of the salt. Heat 1 tablespoon of the oil in a large skillet over medium-high heat and cook the chicken 5 to 6 minutes per side, until 165°F inside. Rest 5 minutes, then chop finely.",
-   "In the same skillet, cook the bell pepper and corn with the remaining ¼ teaspoon salt for 3 to 4 minutes until the pepper softens.",
-   "Brush a large sheet pan with ½ tablespoon of the oil and lay 4 tortillas on it. Sprinkle with half the cheese, then the chicken and vegetables, then the rest of the cheese, and top with the remaining tortillas.",
-   "Brush the tops with the remaining ½ tablespoon oil. Bake 8 minutes, flip each quesadilla carefully with a wide spatula, and bake 5 to 6 minutes more until golden and the cheese is melted.",
-   "Cut into wedges and serve with sour cream and salsa. Refrigerate leftovers within 2 hours."
-  ],
-  "vegetarianSwap": {
-   "note": "For vegetarians, make one of the quesadillas with a drained, lightly mashed can of black beans instead of chicken.",
-   "ingredients": [
-    {
-     "ingredient": "black_beans",
-     "amount": 1,
-     "text": "1 can",
-     "note": "drained and mashed"
-    }
-   ]
-  }
- },
- {
   "id": "bbq_chicken_corn_pizza",
   "name": "Barbecue chicken and corn pizza",
   "side": "A simple green salad.",
@@ -1505,113 +1279,6 @@
   }
  },
  {
-  "id": "sticky_orange_chicken_rice",
-  "name": "Sticky orange chicken with rice",
-  "side": "Steamed broccoli.",
-  "cuisine": "Chinese-American",
-  "minutes": 40,
-  "difficulty": "Easy",
-  "protein": "chicken",
-  "equipment": [
-   "stovetop"
-  ],
-  "spice": 0,
-  "servings": 4,
-  "ingredients": [
-   {
-    "ingredient": "jasmine",
-    "amount": 285,
-    "text": "1½ cups",
-    "note": "rinsed"
-   },
-   {
-    "ingredient": "chicken_thighs",
-    "amount": 680,
-    "text": "1½ lb",
-    "note": "cut into 1-inch pieces"
-   },
-   {
-    "ingredient": "salt",
-    "amount": 1.5,
-    "text": "¼ tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "cornstarch",
-    "amount": 40,
-    "text": "5 tbsp",
-    "note": "divided"
-   },
-   {
-    "ingredient": "orange",
-    "amount": 2,
-    "text": "2",
-    "note": "zest of 1, juice of both (about ⅔ cup)"
-   },
-   {
-    "ingredient": "soy_sauce",
-    "amount": 45,
-    "text": "3 tbsp",
-    "note": ""
-   },
-   {
-    "ingredient": "brown_sugar",
-    "amount": 55,
-    "text": "¼ cup",
-    "note": "packed"
-   },
-   {
-    "ingredient": "rice_vinegar",
-    "amount": 15,
-    "text": "1 tbsp",
-    "note": ""
-   },
-   {
-    "ingredient": "garlic",
-    "amount": 2,
-    "text": "2 cloves",
-    "note": "minced"
-   },
-   {
-    "ingredient": "ginger",
-    "amount": 5,
-    "text": "1 tsp",
-    "note": "grated"
-   },
-   {
-    "ingredient": "neutral_oil",
-    "amount": 45,
-    "text": "3 tbsp",
-    "note": "divided"
-   },
-   {
-    "ingredient": "scallions",
-    "amount": 2,
-    "text": "2",
-    "note": "sliced"
-   }
-  ],
-  "steps": [
-   "Bring the rice and 2¼ cups water to a boil, cover, turn the heat to low and cook 15 minutes, then let it stand covered off the heat.",
-   "Whisk the orange zest and juice, soy sauce, brown sugar, vinegar, garlic, ginger and 1 tablespoon of the cornstarch in a bowl until smooth.",
-   "Toss the chicken with the salt and the remaining 4 tablespoons cornstarch until coated (don't rinse raw chicken first).",
-   "Heat 1½ tablespoons of the oil in a large nonstick skillet over medium-high heat. Cook half the chicken 6 to 7 minutes, turning, until golden and 165°F inside, then move to a plate. Repeat with the remaining oil and chicken.",
-   "Return all the chicken to the pan, stir the sauce and pour it in. Simmer 1 to 2 minutes, stirring, until glossy and thick.",
-   "Serve over the rice with the scallions on top. Refrigerate leftovers within 2 hours."
-  ],
-  "vegetarianSwap": {
-   "note": "For vegetarians, coat ½ block of cubed tofu in cornstarch, fry it first in the same pan until golden and toss with a few spoonfuls of the sauce in a small pan.",
-   "ingredients": [
-    {
-     "ingredient": "tofu_firm",
-     "amount": 200,
-     "text": "½ block",
-     "note": "pressed and cubed"
-    }
-   ]
-  }
- },
- {
   "id": "swedish_turkey_meatballs_egg_noodles",
   "name": "Swedish-style turkey meatballs with egg noodles",
   "side": "Buttered peas and a spoon of jam on the side.",
@@ -1861,337 +1528,6 @@
   }
  },
  {
-  "id": "spaghetti_turkey_meat_sauce_hidden_carrots",
-  "name": "Spaghetti with turkey meat sauce and hidden carrots",
-  "side": "Cucumber slices or a green salad.",
-  "cuisine": "Italian-American",
-  "minutes": 45,
-  "difficulty": "Easy",
-  "protein": "turkey",
-  "equipment": [
-   "stovetop"
-  ],
-  "spice": 0,
-  "servings": 4,
-  "ingredients": [
-   {
-    "ingredient": "ground_turkey",
-    "amount": 454,
-    "text": "1 lb",
-    "note": ""
-   },
-   {
-    "ingredient": "olive_oil",
-    "amount": 30,
-    "text": "2 tbsp",
-    "note": ""
-   },
-   {
-    "ingredient": "onion_yellow",
-    "amount": 220,
-    "text": "1 medium",
-    "note": "grated"
-   },
-   {
-    "ingredient": "carrots",
-    "amount": 140,
-    "text": "2",
-    "note": "finely grated"
-   },
-   {
-    "ingredient": "garlic",
-    "amount": 3,
-    "text": "3 cloves",
-    "note": "minced"
-   },
-   {
-    "ingredient": "tomato_paste",
-    "amount": 32,
-    "text": "2 tbsp",
-    "note": ""
-   },
-   {
-    "ingredient": "italian_seasoning",
-    "amount": 2,
-    "text": "2 tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "tomatoes_crushed",
-    "amount": 794,
-    "text": "1 can (28 oz)",
-    "note": ""
-   },
-   {
-    "ingredient": "sugar",
-    "amount": 4,
-    "text": "1 tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "salt",
-    "amount": 6,
-    "text": "1 tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "pepper",
-    "amount": 1,
-    "text": "¼ tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "spaghetti",
-    "amount": 400,
-    "text": "about 14 oz",
-    "note": ""
-   },
-   {
-    "ingredient": "parmesan",
-    "amount": 25,
-    "text": "¼ cup",
-    "note": "finely grated"
-   }
-  ],
-  "steps": [
-   "Heat the oil in a large skillet over medium heat. Cook the grated onion and carrots for 8 minutes, stirring, until very soft so they melt into the sauce. Add the garlic for 30 seconds.",
-   "Raise the heat to medium-high, add the turkey and cook 6 to 8 minutes, breaking it into small crumbles, until no pink remains and it reaches 165°F.",
-   "Stir in the tomato paste and Italian seasoning for 1 minute, then add the crushed tomatoes, sugar, salt and pepper. Simmer 15 minutes, stirring now and then.",
-   "Meanwhile, cook the spaghetti in a large pot of boiling water for 9 to 11 minutes until tender. Save ½ cup of the cooking water, then drain.",
-   "Toss the spaghetti with a few spoonfuls of the sauce and a splash of the pasta water so it doesn't stick, then serve topped with the rest of the sauce and the parmesan.",
-   "Refrigerate leftovers within 2 hours."
-  ],
-  "vegetarianSwap": {
-   "note": "For vegetarians, warm 1 cup marinara with a drained can of white beans in a small pan and spoon it over their spaghetti.",
-   "ingredients": [
-    {
-     "ingredient": "marinara",
-     "amount": 250,
-     "text": "1 cup",
-     "note": ""
-    },
-    {
-     "ingredient": "white_beans",
-     "amount": 1,
-     "text": "1 can",
-     "note": "drained and rinsed"
-    }
-   ]
-  }
- },
- {
-  "id": "pork_egg_roll_bowls",
-  "name": "Pork egg roll bowls",
-  "side": "Extra soy sauce at the table.",
-  "cuisine": "Chinese-American",
-  "minutes": 35,
-  "difficulty": "Easy",
-  "protein": "pork",
-  "equipment": [
-   "stovetop"
-  ],
-  "spice": 0,
-  "servings": 4,
-  "ingredients": [
-   {
-    "ingredient": "jasmine",
-    "amount": 285,
-    "text": "1½ cups",
-    "note": "rinsed"
-   },
-   {
-    "ingredient": "ground_pork",
-    "amount": 454,
-    "text": "1 lb",
-    "note": ""
-   },
-   {
-    "ingredient": "neutral_oil",
-    "amount": 15,
-    "text": "1 tbsp",
-    "note": ""
-   },
-   {
-    "ingredient": "garlic",
-    "amount": 3,
-    "text": "3 cloves",
-    "note": "minced"
-   },
-   {
-    "ingredient": "ginger",
-    "amount": 10,
-    "text": "1 tbsp",
-    "note": "grated"
-   },
-   {
-    "ingredient": "scallions",
-    "amount": 4,
-    "text": "4",
-    "note": "sliced, whites and greens kept apart"
-   },
-   {
-    "ingredient": "cabbage",
-    "amount": 450,
-    "text": "½ small head",
-    "note": "thinly shredded"
-   },
-   {
-    "ingredient": "carrots",
-    "amount": 140,
-    "text": "2",
-    "note": "coarsely grated"
-   },
-   {
-    "ingredient": "soy_sauce",
-    "amount": 45,
-    "text": "3 tbsp",
-    "note": ""
-   },
-   {
-    "ingredient": "rice_vinegar",
-    "amount": 15,
-    "text": "1 tbsp",
-    "note": ""
-   },
-   {
-    "ingredient": "honey",
-    "amount": 21,
-    "text": "1 tbsp",
-    "note": ""
-   },
-   {
-    "ingredient": "sesame_oil",
-    "amount": 10,
-    "text": "2 tsp",
-    "note": ""
-   }
-  ],
-  "steps": [
-   "Bring the rice and 2¼ cups water to a boil, cover, turn the heat to low and cook 15 minutes, then let stand covered.",
-   "Cook the pork in a large skillet over medium-high heat for 6 to 8 minutes, breaking it up, until no pink remains and it reaches 160°F. Lift it into a bowl with a slotted spoon and pour off the fat.",
-   "Add the oil to the skillet, then the garlic, ginger and scallion whites, and stir for 1 minute. Add the cabbage and carrots and stir-fry 5 to 6 minutes until tender-crisp.",
-   "Stir in the soy sauce, vinegar and honey and cook 1 minute. Return the pork and toss everything together.",
-   "Turn off the heat, stir in the sesame oil and scallion greens and serve over the rice. Refrigerate leftovers within 2 hours."
-  ],
-  "vegetarianSwap": {
-   "note": "For vegetarians, set aside a portion of the cabbage before the pork goes back in and serve it with ½ block of tofu crumbled and browned in a small pan with a splash of soy sauce.",
-   "ingredients": [
-    {
-     "ingredient": "tofu_firm",
-     "amount": 200,
-     "text": "½ block",
-     "note": "crumbled"
-    }
-   ]
-  }
- },
- {
-  "id": "skillet_pork_chops_quick_applesauce",
-  "name": "Skillet pork chops with quick applesauce",
-  "side": "Buttered corn on the cob.",
-  "cuisine": "American",
-  "minutes": 35,
-  "difficulty": "Easy",
-  "protein": "pork",
-  "equipment": [
-   "stovetop"
-  ],
-  "spice": 0,
-  "servings": 4,
-  "ingredients": [
-   {
-    "ingredient": "apples",
-    "amount": 4,
-    "text": "4",
-    "note": "peeled, cored and chopped"
-   },
-   {
-    "ingredient": "brown_sugar",
-    "amount": 14,
-    "text": "1 tbsp",
-    "note": "packed"
-   },
-   {
-    "ingredient": "cinnamon",
-    "amount": 1.25,
-    "text": "½ tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "butter",
-    "amount": 28,
-    "text": "2 tbsp",
-    "note": "divided"
-   },
-   {
-    "ingredient": "corn_cobs",
-    "amount": 4,
-    "text": "4 ears",
-    "note": "husked"
-   },
-   {
-    "ingredient": "pork_chops",
-    "amount": 680,
-    "text": "4 (about 1½ lb)",
-    "note": "boneless, about ¾ inch thick"
-   },
-   {
-    "ingredient": "paprika",
-    "amount": 2.5,
-    "text": "1 tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "garlic_powder",
-    "amount": 2.5,
-    "text": "1 tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "thyme",
-    "amount": 1,
-    "text": "1 tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "salt",
-    "amount": 6,
-    "text": "1 tsp",
-    "note": "divided"
-   },
-   {
-    "ingredient": "pepper",
-    "amount": 1,
-    "text": "¼ tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "neutral_oil",
-    "amount": 15,
-    "text": "1 tbsp",
-    "note": ""
-   }
-  ],
-  "steps": [
-   "Put the apples, brown sugar, cinnamon, ¼ teaspoon of the salt and ⅓ cup water in a saucepan. Cover and simmer over medium heat 12 to 15 minutes, stirring now and then, until very soft. Mash with a fork and stir in 1 tablespoon of the butter.",
-   "Meanwhile, bring a large pot of water to a boil, add the corn and cook 5 to 7 minutes until tender. Drain and rub with the remaining 1 tablespoon butter.",
-   "Pat the pork chops dry and season both sides with the paprika, garlic powder, thyme, the remaining ¾ teaspoon salt and the pepper.",
-   "Heat the oil in a large skillet over medium-high heat. Cook the chops 4 to 5 minutes per side, until golden and a thermometer in the center reads 145°F.",
-   "Rest the chops 3 minutes, then slice for kids and serve with the warm applesauce and corn. Refrigerate leftovers within 2 hours."
-  ],
-  "vegetarianSwap": {
-   "note": "For vegetarians, brown a drained can of chickpeas in a small pan with butter and a pinch of the same spice rub and serve with the applesauce and corn.",
-   "ingredients": [
-    {
-     "ingredient": "chickpeas",
-     "amount": 1,
-     "text": "1 can",
-     "note": "drained and patted dry"
-    }
-   ]
-  }
- },
- {
   "id": "chicken_and_rolled_dumplings",
   "name": "Chicken and rolled dumplings",
   "side": "Sliced cucumbers or apple slices on the side.",
@@ -2381,88 +1717,6 @@
      "amount": 200,
      "text": "½ block",
      "note": "pressed and cubed"
-    }
-   ]
-  }
- },
- {
-  "id": "bacon_and_pea_carbonara",
-  "name": "Bacon and pea carbonara",
-  "side": "Sliced cherry tomatoes or a green salad.",
-  "cuisine": "Italian",
-  "minutes": 25,
-  "difficulty": "Easy",
-  "protein": "pork",
-  "equipment": [
-   "stovetop"
-  ],
-  "spice": 0,
-  "servings": 4,
-  "ingredients": [
-   {
-    "ingredient": "spaghetti",
-    "amount": 400,
-    "text": "about 14 oz",
-    "note": ""
-   },
-   {
-    "ingredient": "frozen_peas",
-    "amount": 140,
-    "text": "1 cup",
-    "note": ""
-   },
-   {
-    "ingredient": "bacon",
-    "amount": 170,
-    "text": "6 slices (6 oz)",
-    "note": "chopped"
-   },
-   {
-    "ingredient": "garlic",
-    "amount": 1,
-    "text": "1 clove",
-    "note": "minced"
-   },
-   {
-    "ingredient": "eggs",
-    "amount": 3,
-    "text": "3",
-    "note": ""
-   },
-   {
-    "ingredient": "parmesan",
-    "amount": 70,
-    "text": "¾ cup",
-    "note": "finely grated"
-   },
-   {
-    "ingredient": "pepper",
-    "amount": 1,
-    "text": "¼ tsp",
-    "note": ""
-   }
-  ],
-  "steps": [
-   "Cook the spaghetti in a large pot of boiling water for 9 to 11 minutes until tender, adding the peas for the last 2 minutes. Save 1 cup of the cooking water, then drain.",
-   "Meanwhile, cook the bacon in a large skillet over medium heat for 7 to 8 minutes until crisp. Add the garlic for 30 seconds, then pour off all but about 2 tablespoons of fat and turn off the heat.",
-   "Whisk the eggs, parmesan and pepper in a bowl.",
-   "Add the spaghetti and peas to the skillet and toss in the bacon fat over low heat. Pour in the egg mixture with ¼ cup of the pasta water and toss constantly for 1 to 2 minutes, until the sauce thickens, clings to the pasta and is no longer runny (this cooks the eggs to 160°F). Add a splash more pasta water if it gets too thick.",
-   "Serve right away. Refrigerate leftovers within 2 hours."
-  ],
-  "vegetarianSwap": {
-   "note": "For vegetarians, toss a portion of the spaghetti and peas with butter and grated parmesan before adding it to the bacon pan.",
-   "ingredients": [
-    {
-     "ingredient": "butter",
-     "amount": 14,
-     "text": "1 tbsp",
-     "note": ""
-    },
-    {
-     "ingredient": "parmesan",
-     "amount": 15,
-     "text": "3 tbsp",
-     "note": "grated"
     }
    ]
   }
@@ -3772,102 +3026,6 @@
   "vegetarianSwap": null
  },
  {
-  "id": "egg_drop_noodle_soup_corn_peas",
-  "name": "Egg drop noodle soup with corn and peas",
-  "side": "Sliced cucumbers or steamed edamame.",
-  "cuisine": "Chinese-inspired",
-  "minutes": 30,
-  "difficulty": "Easy",
-  "protein": "eggs",
-  "equipment": [
-   "stovetop"
-  ],
-  "spice": 0,
-  "servings": 4,
-  "ingredients": [
-   {
-    "ingredient": "veg_broth",
-    "amount": 1900,
-    "text": "8 cups",
-    "note": ""
-   },
-   {
-    "ingredient": "ginger",
-    "amount": 10,
-    "text": "1 tbsp",
-    "note": "grated"
-   },
-   {
-    "ingredient": "garlic",
-    "amount": 2,
-    "text": "2 cloves",
-    "note": "minced"
-   },
-   {
-    "ingredient": "soy_sauce",
-    "amount": 30,
-    "text": "2 tbsp",
-    "note": ""
-   },
-   {
-    "ingredient": "carrots",
-    "amount": 140,
-    "text": "2",
-    "note": "sliced into thin coins"
-   },
-   {
-    "ingredient": "egg_noodles",
-    "amount": 225,
-    "text": "4 cups (8 oz)",
-    "note": ""
-   },
-   {
-    "ingredient": "frozen_corn",
-    "amount": 150,
-    "text": "1 cup",
-    "note": ""
-   },
-   {
-    "ingredient": "frozen_peas",
-    "amount": 140,
-    "text": "1 cup",
-    "note": ""
-   },
-   {
-    "ingredient": "cornstarch",
-    "amount": 16,
-    "text": "2 tbsp",
-    "note": ""
-   },
-   {
-    "ingredient": "eggs",
-    "amount": 4,
-    "text": "4",
-    "note": "beaten"
-   },
-   {
-    "ingredient": "sesame_oil",
-    "amount": 5,
-    "text": "1 tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "scallions",
-    "amount": 3,
-    "text": "3",
-    "note": "thinly sliced"
-   }
-  ],
-  "steps": [
-   "Bring the broth, ginger, garlic and soy sauce to a boil in a large pot. Add the carrots and simmer 5 minutes.",
-   "Add the noodles and simmer 6 to 8 minutes until tender, adding the corn and peas for the last 2 minutes.",
-   "Whisk the cornstarch with ¼ cup cold water, stir it into the soup and simmer 1 minute until slightly thickened.",
-   "Turn the heat down so the soup barely simmers. Stir the soup in a slow circle and drizzle in the beaten eggs in a thin stream. Wait 30 seconds, then stir gently until the egg ribbons are fully set.",
-   "Turn off the heat, stir in the sesame oil and scallions and serve. Refrigerate leftovers within 2 hours."
-  ],
-  "vegetarianSwap": null
- },
- {
   "id": "creamy_parmesan_orzo_peas_white_beans",
   "name": "Creamy parmesan orzo with peas, carrots and white beans",
   "side": "Sliced tomatoes or a green salad.",
@@ -4233,104 +3391,6 @@
   "vegetarianSwap": null
  },
  {
-  "id": "sheet_pan_black_bean_nacho_bar",
-  "name": "Sheet-pan black bean nacho bar",
-  "side": "Toppings bar of guacamole, tomatoes, sour cream and salsa.",
-  "cuisine": "Tex-Mex",
-  "minutes": 25,
-  "difficulty": "Easy",
-  "protein": "legumes",
-  "equipment": [
-   "stovetop",
-   "oven",
-   "sheet_pan"
-  ],
-  "spice": 0,
-  "servings": 4,
-  "ingredients": [
-   {
-    "ingredient": "black_beans",
-    "amount": 2,
-    "text": "2 cans",
-    "note": "drained and rinsed"
-   },
-   {
-    "ingredient": "frozen_corn",
-    "amount": 150,
-    "text": "1 cup",
-    "note": ""
-   },
-   {
-    "ingredient": "cumin",
-    "amount": 2.5,
-    "text": "1 tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "garlic_powder",
-    "amount": 1.25,
-    "text": "½ tsp",
-    "note": ""
-   },
-   {
-    "ingredient": "salt",
-    "amount": 3,
-    "text": "½ tsp",
-    "note": "divided"
-   },
-   {
-    "ingredient": "tortilla_chips",
-    "amount": 280,
-    "text": "10 oz",
-    "note": ""
-   },
-   {
-    "ingredient": "monterey_jack",
-    "amount": 227,
-    "text": "2 cups",
-    "note": ""
-   },
-   {
-    "ingredient": "avocado",
-    "amount": 2,
-    "text": "2",
-    "note": ""
-   },
-   {
-    "ingredient": "lime",
-    "amount": 1,
-    "text": "1",
-    "note": "juiced"
-   },
-   {
-    "ingredient": "tomatoes_roma",
-    "amount": 225,
-    "text": "2",
-    "note": "diced"
-   },
-   {
-    "ingredient": "sour_cream",
-    "amount": 120,
-    "text": "½ cup",
-    "note": ""
-   },
-   {
-    "ingredient": "salsa",
-    "amount": 260,
-    "text": "1 cup",
-    "note": "mild"
-   }
-  ],
-  "steps": [
-   "Heat the oven to 400°F. Warm the beans, corn, cumin, garlic powder, ¼ teaspoon of the salt and ¼ cup water in a saucepan over medium heat for 5 minutes, mashing a few of the beans.",
-   "Spread the chips in an even, overlapping layer on a parchment-lined sheet pan. Spoon the beans over them and sprinkle evenly with the cheese.",
-   "Bake 8 to 10 minutes until the cheese is melted.",
-   "Meanwhile, mash the avocados with the lime juice and the remaining ¼ teaspoon salt.",
-   "Set the pan on the table with the guacamole, tomatoes, sour cream and salsa so everyone tops their own corner. Refrigerate leftover toppings within 2 hours."
-  ],
-  "vegetarianSwap": null
- },
- {
   "id": "bean_and_cheese_chili_mac",
   "name": "Bean and cheese chili mac",
   "side": "Corn on the cob or a crunchy salad.",
@@ -4430,96 +3490,6 @@
    "Stir in the macaroni, lower the heat to a lively simmer and cook uncovered 10 to 12 minutes, stirring often so it doesn't stick, until the pasta is tender and the sauce has thickened.",
    "Turn off the heat and stir in 1 cup of the cheddar, then sprinkle the remaining ½ cup on top and cover for 2 minutes to melt.",
    "Serve in bowls. Refrigerate leftovers within 2 hours; add a splash of water when reheating."
-  ],
-  "vegetarianSwap": null
- },
- {
-  "id": "cheesy_corn_fritters_bean_salsa",
-  "name": "Cheesy corn fritters with black bean salsa",
-  "side": "Sour cream and a green salad.",
-  "cuisine": "American",
-  "minutes": 35,
-  "difficulty": "Easy",
-  "protein": "eggs",
-  "equipment": [
-   "stovetop"
-  ],
-  "spice": 0,
-  "servings": 4,
-  "ingredients": [
-   {
-    "ingredient": "frozen_corn",
-    "amount": 450,
-    "text": "3 cups",
-    "note": "thawed and patted dry"
-   },
-   {
-    "ingredient": "eggs",
-    "amount": 3,
-    "text": "3",
-    "note": ""
-   },
-   {
-    "ingredient": "flour",
-    "amount": 95,
-    "text": "¾ cup",
-    "note": ""
-   },
-   {
-    "ingredient": "salt",
-    "amount": 4.5,
-    "text": "¾ tsp",
-    "note": "divided"
-   },
-   {
-    "ingredient": "cheddar",
-    "amount": 113,
-    "text": "1 cup",
-    "note": "shredded"
-   },
-   {
-    "ingredient": "scallions",
-    "amount": 3,
-    "text": "3",
-    "note": "thinly sliced"
-   },
-   {
-    "ingredient": "black_beans",
-    "amount": 1,
-    "text": "1 can",
-    "note": "drained and rinsed"
-   },
-   {
-    "ingredient": "tomatoes_roma",
-    "amount": 225,
-    "text": "2",
-    "note": "diced"
-   },
-   {
-    "ingredient": "lime",
-    "amount": 1,
-    "text": "1",
-    "note": "juiced"
-   },
-   {
-    "ingredient": "neutral_oil",
-    "amount": 60,
-    "text": "¼ cup",
-    "note": "divided"
-   },
-   {
-    "ingredient": "sour_cream",
-    "amount": 120,
-    "text": "½ cup",
-    "note": ""
-   }
-  ],
-  "steps": [
-   "Whisk the eggs with ½ teaspoon of the salt in a large bowl, then stir in the flour until smooth. Fold in the corn, cheddar and scallions to make a thick batter.",
-   "For the salsa, mix the beans, tomatoes, lime juice and the remaining ¼ teaspoon salt in a bowl.",
-   "Heat 2 tablespoons of the oil in a large nonstick skillet over medium heat. Drop in ¼-cup mounds of batter and flatten them to about ½ inch thick.",
-   "Cook 3 to 4 minutes per side until deep golden and set in the middle. Move to a plate and repeat with the remaining oil and batter (you'll get about 14 fritters).",
-   "Serve the fritters with the black bean salsa and sour cream. Refrigerate leftovers within 2 hours."
   ],
   "vegetarianSwap": null
  },
@@ -5047,6 +4017,1025 @@
    "Starting with the bean quarter, fold it up over the cheese quarter, then fold down over the corn, then over the chips, to make a layered triangle.",
    "Heat ½ tablespoon of the oil in a large skillet over medium heat. Cook 2 wraps at a time for 2 to 3 minutes per side, pressing with a spatula, until golden and the cheese has melted. Repeat with the remaining oil and wraps.",
    "Serve with sour cream and salsa for dipping. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "cheesy_beef_taco_pasta",
+  "name": "Cheesy one-pot beef taco pasta",
+  "side": "Shredded lettuce and sliced cucumbers.",
+  "cuisine": "Tex-Mex",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "beef",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "cumin",
+    "amount": 5,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "oregano",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "beef_broth",
+    "amount": 720,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "rigatoni",
+    "amount": 340,
+    "text": "12 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 150,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "shredded, divided"
+   }
+  ],
+  "steps": [
+   "Cook the beef and onion in a large pot over medium-high heat for 6 to 8 minutes, breaking up the meat, until no pink remains and it reaches 160°F. Spoon off excess fat.",
+   "Stir in the cumin, paprika, garlic powder and oregano and cook 1 minute.",
+   "Add the tomato sauce, broth, salt and rigatoni. Bring to a boil, then lower to a lively simmer and cook uncovered 13 to 15 minutes, stirring often so nothing sticks, until the pasta is tender and the sauce has thickened. Stir in the corn for the last 2 minutes.",
+   "Turn off the heat and stir in the sour cream and 1 cup of the cheddar. Sprinkle the remaining ½ cup on top and cover for 2 minutes to melt.",
+   "Serve in bowls. Refrigerate leftovers within 2 hours; add a splash of water when reheating."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, boil 1 cup of rigatoni separately and toss it with a drained can of black beans warmed with ½ cup mild salsa and a handful of cheddar.",
+   "ingredients": [
+    {
+     "ingredient": "rigatoni",
+     "amount": 85,
+     "text": "1 cup",
+     "note": ""
+    },
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "salsa",
+     "amount": 130,
+     "text": "½ cup",
+     "note": "mild"
+    }
+   ]
+  }
+ },
+ {
+  "id": "kielbasa_pigs_in_blanket_bbq_beans",
+  "name": "Kielbasa pigs in a blanket with barbecue beans",
+  "side": "Carrot and cucumber sticks.",
+  "cuisine": "American",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "oven",
+   "sheet_pan",
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "puff_pastry",
+    "amount": 1,
+    "text": "1 sheet",
+    "note": "thawed in the fridge"
+   },
+   {
+    "ingredient": "kielbasa",
+    "amount": 397,
+    "text": "1 rope (14 oz)",
+    "note": "cut into 16 pieces"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": "beaten"
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "pinto_beans",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 245,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "packed"
+   },
+   {
+    "ingredient": "cider_vinegar",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "smoked_paprika",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 1.5,
+    "text": "¼ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F and line a sheet pan with parchment.",
+   "Unfold the pastry and cut it into 16 squares (4 cuts each way). Roll each piece of kielbasa in a pastry square, set seam-side down on the pan and brush with the beaten egg.",
+   "Bake 20 to 22 minutes, until the pastry is puffed and golden and the kielbasa is heated through to 165°F.",
+   "Meanwhile, heat the oil in a saucepan over medium heat and cook the onion for 5 minutes. Add the beans, tomato sauce, brown sugar, vinegar, smoked paprika, salt and ¼ cup water.",
+   "Simmer 15 minutes, stirring now and then, until the beans are glossy and thick.",
+   "Serve the pigs in a blanket with the barbecue beans. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, wrap 2 string cheeses, each cut into 3 pieces, in some of the pastry squares instead of kielbasa and bake them on the same pan for 12 to 14 minutes (watch that the cheese doesn't leak).",
+   "ingredients": [
+    {
+     "ingredient": "string_cheese",
+     "amount": 2,
+     "text": "2 sticks",
+     "note": "each cut into 3 pieces"
+    }
+   ]
+  }
+ },
+ {
+  "id": "crispy_pork_schnitzel_potatoes_peas",
+  "name": "Crispy pork schnitzel with buttered potatoes and peas",
+  "side": "Lemon wedges for squeezing.",
+  "cuisine": "German-American",
+  "minutes": 45,
+  "difficulty": "Medium",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into 1-inch chunks"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 9,
+    "text": "1½ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "frozen_peas",
+    "amount": 210,
+    "text": "1½ cups",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pork_chops",
+    "amount": 680,
+    "text": "4 (about 1½ lb)",
+    "note": "boneless"
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "flour",
+    "amount": 60,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 2,
+    "text": "2",
+    "note": ""
+   },
+   {
+    "ingredient": "panko",
+    "amount": 100,
+    "text": "2 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 90,
+    "text": "6 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "lemon",
+    "amount": 1,
+    "text": "1",
+    "note": "cut into wedges"
+   }
+  ],
+  "steps": [
+   "Cover the potatoes with cold water in a pot, add ½ teaspoon of the salt and boil 12 to 15 minutes until tender, adding the peas for the last 2 minutes. Drain and toss with the butter and ¼ teaspoon of the salt. Keep covered.",
+   "Meanwhile, set each pork chop between two sheets of plastic wrap and pound to about ¼ inch thick with a rolling pin or heavy pan. Season with ½ teaspoon of the salt and the pepper.",
+   "Set out three shallow bowls: the flour; the eggs beaten with the remaining ¼ teaspoon salt; and the panko. Coat each cutlet in flour, then egg, then panko, pressing so the crumbs stick. Wash your hands.",
+   "Heat 3 tablespoons of the oil in a large skillet over medium-high heat until shimmering. Fry 2 cutlets 2 to 3 minutes per side, until deep golden and 145°F in the thickest part. Drain on paper towels and repeat with the remaining oil and cutlets.",
+   "Rest the schnitzel 3 minutes, then serve with the potatoes and peas and lemon wedges. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, bread ½ block of pressed tofu cut into thin slabs the same way and fry it first, 2 to 3 minutes per side.",
+   "ingredients": [
+    {
+     "ingredient": "tofu_firm",
+     "amount": 200,
+     "text": "½ block",
+     "note": "pressed and sliced into ½-inch slabs"
+    }
+   ]
+  }
+ },
+ {
+  "id": "cheesy_turkey_potato_skillet",
+  "name": "Cheesy turkey and potato skillet",
+  "side": "Sliced apples or a green salad.",
+  "cuisine": "American",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "turkey",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into ½-inch cubes"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 6,
+    "text": "1 tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "ground_turkey",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "diced"
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "frozen_corn",
+    "amount": 150,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 170,
+    "text": "1½ cups",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "sour_cream",
+    "amount": 120,
+    "text": "½ cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large nonstick skillet with a lid over medium heat. Add the potatoes and ½ teaspoon of the salt, cover and cook 8 minutes, stirring once.",
+   "Uncover, raise the heat to medium-high and cook 6 to 8 minutes more, turning now and then, until the potatoes are tender and browned. Push them to the edges of the pan.",
+   "Add the turkey, onion and bell pepper to the middle and cook 6 to 8 minutes, breaking up the meat, until no pink remains and it reaches 165°F.",
+   "Stir in the paprika, garlic powder, corn and the remaining ½ teaspoon salt and cook 2 minutes until the corn is hot.",
+   "Sprinkle the cheddar over the top, cover and cook 2 minutes until melted. Serve with sour cream. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, scoop out a portion of the potatoes before the turkey goes in and toss them in a small pan with a drained can of black beans and a little cheddar.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    }
+   ]
+  }
+ },
+ {
+  "id": "pork_breakfast_sausage_eggs_potatoes",
+  "name": "Homemade sausage patties with cheesy eggs and skillet potatoes",
+  "side": "Orange wedges and toast.",
+  "cuisine": "American",
+  "minutes": 40,
+  "difficulty": "Easy",
+  "protein": "pork",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "neutral_oil",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "potatoes",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": "cut into ½-inch cubes"
+   },
+   {
+    "ingredient": "paprika",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 7.5,
+    "text": "1¼ tsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "ground_pork",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "sage",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "brown_sugar",
+    "amount": 7,
+    "text": "½ tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 8,
+    "text": "8",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 30,
+    "text": "2 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 14,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 56,
+    "text": "½ cup",
+    "note": "shredded"
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large nonstick skillet with a lid over medium heat. Add the potatoes, paprika and ¼ teaspoon of the salt, cover and cook 8 minutes. Uncover and cook 8 to 10 minutes more, turning now and then, until crisp and tender.",
+   "Meanwhile, mix the pork with the sage, brown sugar, ¾ teaspoon of the salt and the pepper. Shape into 8 thin patties about 3 inches wide, then wash your hands.",
+   "Cook the patties in a second skillet over medium heat for 4 to 5 minutes per side, until browned and 160°F in the center. Move to a plate and wipe out the skillet.",
+   "Whisk the eggs with the milk and the remaining ¼ teaspoon salt. Melt the butter in the wiped skillet over medium-low heat, add the eggs and stir slowly 3 to 4 minutes until softly set with no runny egg left. Sprinkle with the cheddar and turn off the heat.",
+   "Serve the sausage patties with the cheesy eggs and potatoes. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, skip the sausage and warm a drained can of black beans with a pinch of cumin to serve with the eggs and potatoes.",
+   "ingredients": [
+    {
+     "ingredient": "black_beans",
+     "amount": 1,
+     "text": "1 can",
+     "note": "drained and rinsed"
+    },
+    {
+     "ingredient": "cumin",
+     "amount": 1,
+     "text": "a pinch",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "turkey_pizza_burgers",
+  "name": "Turkey pizza burgers",
+  "side": "Oven fries or carrot sticks.",
+  "cuisine": "American",
+  "minutes": 30,
+  "difficulty": "Easy",
+  "protein": "turkey",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "ground_turkey",
+    "amount": 680,
+    "text": "1½ lb",
+    "note": ""
+   },
+   {
+    "ingredient": "panko",
+    "amount": 30,
+    "text": "½ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 25,
+    "text": "¼ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 2.5,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 4.5,
+    "text": "¾ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "marinara",
+    "amount": 250,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 113,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "burger_buns",
+    "amount": 4,
+    "text": "4",
+    "note": "split"
+   }
+  ],
+  "steps": [
+   "Mix the turkey, panko, parmesan, Italian seasoning, garlic powder and salt with your hands. Shape into 4 patties about ¾ inch thick and slightly wider than the buns, pressing a shallow dent in the middle of each. Wash your hands.",
+   "Heat the oil in a large skillet over medium-high heat and cook the patties 5 to 6 minutes per side, until a thermometer in the center reads 165°F.",
+   "Meanwhile, warm the marinara in a small saucepan and toast the buns cut-side down in a dry skillet or under the broiler.",
+   "Spoon 2 tablespoons marinara over each patty, top with the mozzarella, cover the skillet and cook 1 to 2 minutes until the cheese melts.",
+   "Set the patties on the buns and serve the rest of the marinara for dipping. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, slice half an eggplant into ½-inch rounds, brush with oil and pan-fry 3 to 4 minutes per side until tender, then top with marinara and mozzarella the same way.",
+   "ingredients": [
+    {
+     "ingredient": "eggplant",
+     "amount": 0.5,
+     "text": "½",
+     "note": "sliced into ½-inch rounds"
+    }
+   ]
+  }
+ },
+ {
+  "id": "easy_beef_lasagna",
+  "name": "Easy beef lasagna",
+  "side": "Green salad and garlic bread.",
+  "cuisine": "Italian-American",
+  "minutes": 100,
+  "difficulty": "Medium",
+  "protein": "beef",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "lasagna_noodles",
+    "amount": 255,
+    "text": "12 noodles",
+    "note": ""
+   },
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ground_beef",
+    "amount": 454,
+    "text": "1 lb",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 110,
+    "text": "½ medium",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "marinara",
+    "amount": 680,
+    "text": "1 jar (24 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "tomato_sauce",
+    "amount": 425,
+    "text": "1 can (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 2,
+    "text": "2 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ricotta",
+    "amount": 425,
+    "text": "1 tub (15 oz)",
+    "note": ""
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 1,
+    "text": "1",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "finely grated, divided"
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 340,
+    "text": "3 cups",
+    "note": "divided"
+   }
+  ],
+  "steps": [
+   "Cook the noodles in a large pot of boiling water for 2 minutes less than the package says. Drain, toss with the oil and lay them flat on a sheet of foil so they don't stick.",
+   "Meanwhile, cook the beef and onion in a large skillet over medium-high heat for 7 to 8 minutes, breaking up the meat, until no pink remains and it reaches 160°F. Spoon off the fat, add the garlic for 30 seconds, then stir in the marinara, tomato sauce and Italian seasoning and simmer 10 minutes.",
+   "Heat the oven to 375°F. Mix the ricotta, egg, ¼ cup of the parmesan and the salt.",
+   "Spread 1 cup of the meat sauce in a 9x13-inch baking dish. Layer 4 noodles, half the ricotta, 1 cup mozzarella and 1½ cups sauce; then 4 noodles, the rest of the ricotta, 1 cup mozzarella and 1½ cups sauce; then the last 4 noodles, the remaining sauce, the last 1 cup mozzarella and the remaining ¼ cup parmesan.",
+   "Cover loosely with foil and bake 25 minutes, then uncover and bake 20 minutes more until bubbling and browned in spots.",
+   "Rest 15 minutes so it slices cleanly. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": {
+   "note": "For vegetarians, layer 3 noodles with some of the ricotta mixture, mozzarella and a cup of plain marinara in a loaf pan and bake it alongside.",
+   "ingredients": [
+    {
+     "ingredient": "lasagna_noodles",
+     "amount": 60,
+     "text": "3 noodles",
+     "note": ""
+    },
+    {
+     "ingredient": "marinara",
+     "amount": 250,
+     "text": "1 cup",
+     "note": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "chickpea_noodle_soup",
+  "name": "Chickpea noodle soup",
+  "side": "Crackers or buttered toast.",
+  "cuisine": "American",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "legumes",
+  "equipment": [
+   "stovetop"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "olive_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": ""
+   },
+   {
+    "ingredient": "onion_yellow",
+    "amount": 220,
+    "text": "1 medium",
+    "note": "diced"
+   },
+   {
+    "ingredient": "carrots",
+    "amount": 210,
+    "text": "3",
+    "note": "sliced into coins"
+   },
+   {
+    "ingredient": "celery",
+    "amount": 150,
+    "text": "3 stalks",
+    "note": "sliced"
+   },
+   {
+    "ingredient": "garlic",
+    "amount": 2,
+    "text": "2 cloves",
+    "note": "minced"
+   },
+   {
+    "ingredient": "thyme",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "veg_broth",
+    "amount": 1900,
+    "text": "8 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "chickpeas",
+    "amount": 2,
+    "text": "2 cans",
+    "note": "drained and rinsed"
+   },
+   {
+    "ingredient": "egg_noodles",
+    "amount": 170,
+    "text": "3 cups",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "¼ tsp",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oil in a large pot over medium heat and cook the onion, carrots and celery for 7 minutes, stirring now and then, until softened.",
+   "Add the garlic and thyme and stir 30 seconds.",
+   "Add the broth, chickpeas and salt, bring to a boil, then simmer 10 minutes until the carrots are tender.",
+   "Add the noodles and simmer 6 to 8 minutes until tender. Stir in the pepper and taste for salt.",
+   "Ladle into bowls. Refrigerate leftovers within 2 hours; the noodles soak up broth, so add a splash of water when reheating."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "baked_spaghetti_pie",
+  "name": "Baked spaghetti pie",
+  "side": "Steamed broccoli or a green salad.",
+  "cuisine": "Italian-American",
+  "minutes": 60,
+  "difficulty": "Easy",
+  "protein": "none",
+  "equipment": [
+   "stovetop",
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "spaghetti",
+    "amount": 340,
+    "text": "12 oz",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "divided"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 3,
+    "text": "3",
+    "note": ""
+   },
+   {
+    "ingredient": "parmesan",
+    "amount": 50,
+    "text": "½ cup",
+    "note": "finely grated"
+   },
+   {
+    "ingredient": "garlic_powder",
+    "amount": 1.25,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "ricotta",
+    "amount": 250,
+    "text": "1 cup",
+    "note": ""
+   },
+   {
+    "ingredient": "italian_seasoning",
+    "amount": 1,
+    "text": "1 tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "marinara",
+    "amount": 500,
+    "text": "2 cups",
+    "note": "divided"
+   },
+   {
+    "ingredient": "mozzarella",
+    "amount": 113,
+    "text": "1 cup",
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Heat the oven to 350°F and grease a deep 10-inch pie dish with a little of the butter.",
+   "Cook the spaghetti in a large pot of boiling water for 9 to 11 minutes until tender, drain and toss with the rest of the butter. Let it cool 5 minutes.",
+   "Whisk the eggs, parmesan, garlic powder and salt, toss with the spaghetti and press it into the dish, pushing it up the sides to make a crust.",
+   "Stir the ricotta with the Italian seasoning and spread it over the spaghetti. Spoon over 1½ cups of the marinara and sprinkle with the mozzarella.",
+   "Bake 30 to 35 minutes, until bubbling and the center is set (160°F). Meanwhile, warm the remaining ½ cup marinara.",
+   "Rest 10 minutes, cut into wedges and serve with the warm marinara. Refrigerate leftovers within 2 hours."
+  ],
+  "vegetarianSwap": null
+ },
+ {
+  "id": "cheesy_veggie_egg_muffin_cups",
+  "name": "Cheesy veggie egg muffin cups with buttered toast",
+  "side": "Fresh fruit on the side.",
+  "cuisine": "American",
+  "minutes": 35,
+  "difficulty": "Easy",
+  "protein": "eggs",
+  "equipment": [
+   "oven"
+  ],
+  "spice": 0,
+  "servings": 4,
+  "ingredients": [
+   {
+    "ingredient": "neutral_oil",
+    "amount": 15,
+    "text": "1 tbsp",
+    "note": "for the pan"
+   },
+   {
+    "ingredient": "eggs",
+    "amount": 10,
+    "text": "10",
+    "note": ""
+   },
+   {
+    "ingredient": "milk",
+    "amount": 60,
+    "text": "¼ cup",
+    "note": ""
+   },
+   {
+    "ingredient": "salt",
+    "amount": 3,
+    "text": "½ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "pepper",
+    "amount": 1,
+    "text": "¼ tsp",
+    "note": ""
+   },
+   {
+    "ingredient": "spinach",
+    "amount": 60,
+    "text": "2 handfuls",
+    "note": "finely chopped"
+   },
+   {
+    "ingredient": "bell_pepper",
+    "amount": 1,
+    "text": "1",
+    "note": "finely diced"
+   },
+   {
+    "ingredient": "scallions",
+    "amount": 2,
+    "text": "2",
+    "note": "thinly sliced"
+   },
+   {
+    "ingredient": "cheddar",
+    "amount": 113,
+    "text": "1 cup",
+    "note": "shredded"
+   },
+   {
+    "ingredient": "sandwich_bread",
+    "amount": 8,
+    "text": "8 slices",
+    "note": ""
+   },
+   {
+    "ingredient": "butter",
+    "amount": 28,
+    "text": "2 tbsp",
+    "note": "softened"
+   }
+  ],
+  "steps": [
+   "Heat the oven to 350°F and brush a 12-cup muffin pan well with the oil.",
+   "Whisk the eggs, milk, salt and pepper in a large bowl or pitcher.",
+   "Divide the spinach, bell pepper, scallions and cheddar among the muffin cups, then pour in the egg mixture until each cup is about ¾ full.",
+   "Bake 20 to 22 minutes, until puffed and a knife inserted in the center of one comes out clean (160°F). Cool 5 minutes, then run a knife around each cup to lift them out.",
+   "While they cool, toast the bread and spread with the butter. Serve 3 egg cups each with the toast. Refrigerate leftovers within 2 hours."
   ],
   "vegetarianSwap": null
  }
