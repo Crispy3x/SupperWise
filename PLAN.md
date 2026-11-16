@@ -213,3 +213,21 @@ At $29 for one crew: estimated cost about $4.50 (hosting, routing, support). Abo
 **Pricing impact:** none to the plan prices. They were always subscription-based and payments revenue was only a bonus. Slightly lower costs (no payments support). The comparison against Jobber still holds on subscription price. Keep the "payments are included" row off marketing pages.
 
 **Revisit later (phase 3):** Stripe Connect Standard accounts (owners keep their own Stripe account, we only create payment links and read status) is the lightest version. Confirm Stripe's current Connect terms and fees first. Tap to Pay needs Apple's entitlement, so apply early if you plan it.
+
+---
+
+# Update: Launch strategy and founding-member promise
+
+**v1 strategy:** ship without payment-processing risk, at a lower price than competitors, with the 14-day free trial, and fix the top complaint areas first (billing/cancellation friction, price creep, reliability/offline, snow-specific workflows, proof of service).
+
+**Founding-member promise (draft):** everyone subscribed during the founding period gets the future payments feature added at no extra subscription cost, and joins its beta first ("part of the trial").
+
+Draft terms to settle before advertising it:
+- **Wording:** "Founding members get Ridgeline payments at no extra subscription cost." We can waive our own platform fee. We cannot waive the payment processor's card/ACH fees, so say that plainly.
+- **Who qualifies:** subscribers who join before a stated date, or the first N accounts, and who stay subscribed.
+- **Time limit:** decide whether it is "forever" or a set number of years. Open-ended promises are hard to honour if costs change, so pick the term you can afford.
+- **No date promised:** say "planned", not a delivery date, until the payments work is scoped.
+- **Beta first:** founding members get early access and can shape the feature.
+- Have a lawyer glance at the final text before it goes on the website or App Store listing.
+
+**Research round 2 (running):** owner voices from forums, App Store review text analysis with counts, customer-side (homeowner/property manager) complaints, verified vendor pricing, and market size. Outputs: `research/07` to `research/11`.
