@@ -349,3 +349,8 @@ Per-push and hybrid contracts have a per-contract setting. Default `perStorm` (o
 
 # Build status (latest)
 Core logic is built and tested (59 tests): pricing and trial gating, snow billing, storm triggers, dispatcher-controlled route ordering, bulk rescheduling, tamper-evident proof-of-service log, time clock, customer notices, sub pay, offline store. SwiftUI screens (Crew, Storm, Customers, Invoices, Proof, Plans) are written but not yet compiled, since that needs Xcode. See `README.md` for the full list and known placeholders.
+
+---
+
+# Decision: routing uses Apple Maps and Google Maps plus our own weather layer
+Google Routes API gives traffic-aware batch drive times (server-side, key never in the app). Apple MapKit gives live per-leg ETAs on the device and Apple Maps handles next-stop navigation; Google Maps handles whole-route navigation links. Neither knows about snow, so the weather layer and the optimizer are ours. Weather factors are starting guesses to be calibrated from logged drives. Terms of service, cost and the server are open items (see README, "How routing works"). Built and tested: 86 tests.

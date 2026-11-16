@@ -4,11 +4,11 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 
 ## What exists so far
 
-**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 59 unit tests, all passing.
+**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 86 unit tests, all passing.
 - `Pricing`, `Entitlements`: Pro and Max per-crew prices, annual 20% off, 14-day trial (all features unlocked), feature gating, read-only after trial.
 - `SnowBilling`: per-push, seasonal, per-inch, hybrid (base, cap, overage) and time-and-materials. One invoice line per storm, skipped visits never billed, per-contract push counting (default one push per storm).
 - `Storm`: trigger depth per site, near-trigger warnings.
-- `RouteSequencer`, `Geo`: dispatcher-controlled ordering: strict priority tiers, nearest-next within a tier, first N stops frozen, storm speed factor, ETAs. Uses an offline straight-line drive-time estimate behind a `DriveTimeProvider` protocol, so a traffic-aware provider (Valhalla, Google, Mapbox) can be swapped in.
+- **Routing engine** (`RouteSequencer`, `RouteOptimizer`, `Conditions`, `DriveTimeMatrix`, `GoogleRoutes`, `NavigationLinks`): see "How routing works" below.
 - `Scheduling` (`RouteBook`): bulk move routes to another crew or weekday, swap crews, move sites between routes.
 - `VisitLog`, `DisputePacket`, `SHA256`: hash-chained, tamper-evident proof-of-service log (arrival, geofence, photos with hashes, weather note, salt) and a shareable text packet. Pure-Swift SHA-256 checked against reference vectors.
 - `TimeClock`: shifts and per-job timers, audited corrections, labor cost per site, missed punch-out detection, geofence "start the job?" prompt, 20-region monitoring cap.
@@ -18,7 +18,7 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 
 **App screens (`Sources/RidgelineUI`)**: SwiftUI for iPhone, iPad and Mac. **Written but never compiled or run**, because SwiftUI only builds on Apple platforms; expect small fixes on first build in Xcode.
 - Crew: log a visit (completed or skipped with a reason), see standing site instructions, preview the customer message.
-- Storm: set snowfall, see sites at trigger in planned order with ETAs, freeze stops, adjust storm speed.
+- Storm: set snowfall, falling rate, temperature and wind; see sites at trigger in planned order with ETAs and late warnings; freeze stops; open the route in Apple Maps or Google Maps.
 - Customers: add customers and sites, or load demo data.
 - Invoices: built from the visit log.
 - Proof: tamper check and a shareable proof-of-service packet.
@@ -27,8 +27,22 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 **Known placeholders**
 - Photo capture only logs that a photo was taken (no camera yet).
 - No map geocoding: addresses added in the app have no coordinates, so they are left out of route order until coordinates exist. Demo data has coordinates.
-- Drive times are straight-line estimates, not real roads or traffic.
+- Drive times in the app are still the straight-line estimate. The Google server call and the live Apple ETAs are written (Apple) or specified (Google) but not wired in.
 - No weather feed (snowfall is entered by hand), no sync, no accounts, no payments, no push notifications, no real StoreKit or web billing. The trial clock runs locally.
+
+## How routing works
+1. **Drive times** come from a `MatrixSource`: Google Routes API (traffic-aware, batch, through your own server) first, then the offline estimate if it fails. `GoogleRoutesMatrix` builds the request, splits big jobs into allowed-size blocks and reads the response. The Google key must stay on the server.
+2. **Weather layer** (`ConditionsModel`): snow on the ground, snowfall rate, temperature, wind and visibility become a driving-speed factor and a time-per-site factor. Google and Apple drive times know traffic but have no snow logic, so this sits on top. The numbers are starting guesses; `SpeedCalibrator` replaces them with what your trucks actually did (median of expected vs actual drive time from the visit log).
+3. **Ordering** (`RouteOptimizer`): frozen first stops never move, priority tiers are strict (hospital before driveway), inside a tier nearest-next then 2-opt improvement (never longer than nearest-next). Deadlines are checked and late stops reported, not forced. Crews are assigned by sweeping around the depot into balanced groups.
+4. **Live refresh**: Apple MapKit gives a live ETA per leg on the device (`MapKitETASource`, one leg per request, so only the next few legs via `LegRefiner`).
+5. **Navigation**: the driver taps through to Apple Maps (next stop) or Google Maps (whole route in linked parts, about 9 waypoints each) for turn-by-turn.
+
+**Limits and open questions**
+- Neither Apple nor Google has snow-aware or plow-aware routing, and the weather factors are not validated yet.
+- Strict priority tiers can add driving. The dispatcher can freeze stops and override.
+- Google Maps Platform terms limit caching and showing its results beside a non-Google map. Read the current terms before relying on it. An open-source engine (Valhalla with VROOM) avoids that and the per-request cost, and fits behind the same `MatrixSource`.
+- Cost check from research: Google traffic-aware matrices were about $10 per 1,000 elements, and a matrix grows with the square of the stops (about $6 for a 25-stop route). Cache and refresh only the next stops.
+- The server that calls Google and the real Apple/Google calls are not built or tested yet. The request/response handling, chunking, fallback, optimizer and link building are tested offline.
 
 ## Run the tests
 ```

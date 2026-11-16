@@ -8,13 +8,17 @@ public struct Stop: Identifiable, Equatable, Sendable {
     /// 1 = most important. All priority-1 stops are served before priority 2, and so on.
     public var priority: Int
     public var serviceMinutes: Double
+    /// Latest acceptable arrival, in seconds after the route starts (for example a clinic open at 6am).
+    public var deadlineSeconds: Double?
 
-    public init(id: UUID, name: String, coordinate: Coordinate, priority: Int = 3, serviceMinutes: Double = 10) {
+    public init(id: UUID, name: String, coordinate: Coordinate, priority: Int = 3, serviceMinutes: Double = 10,
+                deadlineSeconds: Double? = nil) {
         self.id = id
         self.name = name
         self.coordinate = coordinate
         self.priority = priority
         self.serviceMinutes = serviceMinutes
+        self.deadlineSeconds = deadlineSeconds
     }
 }
 
