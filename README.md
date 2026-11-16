@@ -4,7 +4,7 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 
 ## What exists so far
 
-**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 86 unit tests, all passing.
+**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 91 unit tests, all passing.
 - `Pricing`, `Entitlements`: Pro and Max per-crew prices, annual 20% off, 14-day trial (all features unlocked), feature gating, read-only after trial.
 - `SnowBilling`: per-push, seasonal, per-inch, hybrid (base, cap, overage) and time-and-materials. One invoice line per storm, skipped visits never billed, per-contract push counting (default one push per storm).
 - `Storm`: trigger depth per site, near-trigger warnings.
@@ -42,7 +42,15 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 - Strict priority tiers can add driving. The dispatcher can freeze stops and override.
 - Google Maps Platform terms limit caching and showing its results beside a non-Google map. Read the current terms before relying on it. An open-source engine (Valhalla with VROOM) avoids that and the per-request cost, and fits behind the same `MatrixSource`.
 - Cost check from research: Google traffic-aware matrices were about $10 per 1,000 elements, and a matrix grows with the square of the stops (about $6 for a 25-stop route). Cache and refresh only the next stops.
-- The server that calls Google and the real Apple/Google calls are not built or tested yet. The request/response handling, chunking, fallback, optimizer and link building are tested offline.
+- **Routing server built** (`server/`, see its README): holds the Google key, caps cost per token per day, caches, splits large requests. The Swift client (`ProxyMatrixSource`) is built. Both are tested against a stand-in for Google, and the real Swift client was run against the real server (token check, matrix, outage fallback). **Not yet run against real Google**, not deployed, and not wired into the app screens. The Apple live-ETA code needs Xcode to compile.
+
+## Use the server from the app
+```swift
+let planner = RoutePlanner(matrixSource: FallbackMatrixSource(
+    primary: ProxyMatrixSource(baseURL: serverURL, token: tokenFromKeychain),
+    secondary: ProviderMatrixSource()))   // offline estimate if the server is down
+let plan = await planner.plan(stops: stops, start: depot, conditions: weather)
+```
 
 ## Run the tests
 ```

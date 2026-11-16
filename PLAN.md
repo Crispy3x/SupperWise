@@ -354,3 +354,8 @@ Core logic is built and tested (59 tests): pricing and trial gating, snow billin
 
 # Decision: routing uses Apple Maps and Google Maps plus our own weather layer
 Google Routes API gives traffic-aware batch drive times (server-side, key never in the app). Apple MapKit gives live per-leg ETAs on the device and Apple Maps handles next-stop navigation; Google Maps handles whole-route navigation links. Neither knows about snow, so the weather layer and the optimizer are ours. Weather factors are starting guesses to be calibrated from logged drives. Terms of service, cost and the server are open items (see README, "How routing works"). Built and tested: 86 tests.
+
+---
+
+# Build status: routing server
+Built `server/` (zero-dependency Node proxy for Google's Routes API with per-token auth, rate and daily-cost caps, cache, request splitting) and the Swift `ProxyMatrixSource` client. 16 server tests and 91 Swift tests pass; the real Swift client was run against the real server with a stand-in for Google. Not yet tested with a real Google key, not deployed, not wired into the screens. Open items: Google terms on caching and non-Google maps, hosting and budget alerts, a real-key smoke test.
