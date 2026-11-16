@@ -1,0 +1,149 @@
+import Foundation
+
+public enum PhotoKind: String, Codable, Sendable {
+    case before, after, damage, gate, other
+}
+
+public struct PhotoRef: Equatable, Codable, Sendable {
+    public var kind: PhotoKind
+    public var filename: String
+    public var capturedAt: Date
+    /// SHA-256 of the image bytes, so a swapped photo is detectable.
+    public var sha256: String
+
+    public init(kind: PhotoKind, filename: String, capturedAt: Date, sha256: String) {
+        self.kind = kind
+        self.filename = filename
+        self.capturedAt = capturedAt
+        self.sha256 = sha256
+    }
+}
+
+/// What the crew recorded at a site during a storm.
+public struct VisitRecord: Identifiable, Equatable, Codable, Sendable {
+    public var id: UUID
+    public var siteID: UUID
+    public var crewMemberName: String
+    public var stormID: String
+    public var arrival: Date
+    public var departure: Date?
+    public var arrivedInsideGeofence: Bool
+    public var status: VisitStatus
+    public var snowDepthInches: Double
+    public var weatherNote: String
+    public var saltPounds: Double
+    public var photos: [PhotoRef]
+    public var note: String
+
+    public init(id: UUID = UUID(), siteID: UUID, crewMemberName: String, stormID: String, arrival: Date,
+                departure: Date? = nil, arrivedInsideGeofence: Bool = true, status: VisitStatus = .completed,
+                snowDepthInches: Double = 0, weatherNote: String = "", saltPounds: Double = 0,
+                photos: [PhotoRef] = [], note: String = "") {
+        self.id = id
+        self.siteID = siteID
+        self.crewMemberName = crewMemberName
+        self.stormID = stormID
+        self.arrival = arrival
+        self.departure = departure
+        self.arrivedInsideGeofence = arrivedInsideGeofence
+        self.status = status
+        self.snowDepthInches = snowDepthInches
+        self.weatherNote = weatherNote
+        self.saltPounds = saltPounds
+        self.photos = photos
+        self.note = note
+    }
+
+    public var hasBeforePhoto: Bool { photos.contains { $0.kind == .before } }
+    public var hasAfterPhoto: Bool { photos.contains { $0.kind == .after } }
+
+    public var durationHours: Double {
+        guard let departure else { return 0 }
+        return max(departure.timeIntervalSince(arrival), 0) / 3600
+    }
+
+    /// Billing view of this record.
+    public func asBillingVisit(materials: Money = .zero) -> Visit {
+        Visit(id: id, stormID: stormID, date: arrival, status: status,
+              snowDepthInches: snowDepthInches, hours: durationHours, materials: materials)
+    }
+}
+
+public struct VisitLogEntry: Equatable, Codable, Sendable {
+    public var record: VisitRecord
+    public var previousHash: String
+    public var hash: String
+}
+
+/// Append-only, hash-chained log. Editing or removing any earlier entry breaks `verify()`.
+/// This makes the log tamper-evident for insurance and claim disputes; it is not a legal guarantee on its own.
+public struct VisitLog: Equatable, Codable, Sendable {
+    public private(set) var entries: [VisitLogEntry] = []
+    public static let genesisHash = String(repeating: "0", count: 64)
+
+    public init() {}
+
+    public mutating func append(_ record: VisitRecord) {
+        let previous = entries.last?.hash ?? Self.genesisHash
+        entries.append(VisitLogEntry(record: record, previousHash: previous, hash: Self.hash(record, previous: previous)))
+    }
+
+    public func verify() -> Bool {
+        var previous = Self.genesisHash
+        for e in entries {
+            if e.previousHash != previous { return false }
+            if e.hash != Self.hash(e.record, previous: previous) { return false }
+            previous = e.hash
+        }
+        return true
+    }
+
+    public func records(forSite siteID: UUID) -> [VisitRecord] {
+        entries.map(\.record).filter { $0.siteID == siteID }
+    }
+
+    static func hash(_ record: VisitRecord, previous: String) -> String {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.sortedKeys]
+        encoder.dateEncodingStrategy = .iso8601
+        let json = (try? encoder.encode(record)).flatMap { String(data: $0, encoding: .utf8) } ?? ""
+        return SHA256.hex(previous + json)
+    }
+
+    // Test hook: lets tests simulate tampering without a public mutator.
+    mutating func _tamper(at index: Int, _ change: (inout VisitRecord) -> Void) {
+        change(&entries[index].record)
+    }
+}
+
+/// Plain-text dispute packet an owner can send to an insurer or customer.
+public enum DisputePacket {
+    public static func render(site: Site, log: VisitLog, from: Date? = nil, to: Date? = nil,
+                              timeZone: TimeZone = .current) -> String {
+        let f = DateFormatter()
+        f.dateFormat = "yyyy-MM-dd HH:mm"
+        f.timeZone = timeZone
+        f.locale = Locale(identifier: "en_US_POSIX")
+
+        let records = log.records(forSite: site.id)
+            .filter { (from == nil || $0.arrival >= from!) && (to == nil || $0.arrival <= to!) }
+            .sorted { $0.arrival < $1.arrival }
+
+        var lines: [String] = []
+        lines.append("PROOF OF SERVICE: \(site.address)")
+        lines.append("Log integrity check: \(log.verify() ? "PASSED" : "FAILED (log was altered)")")
+        lines.append("Visits: \(records.count)")
+        lines.append("")
+        for r in records {
+            let out = r.departure.map { f.string(from: $0) } ?? "n/a"
+            var status = "completed"
+            if case .skipped(let reason) = r.status { status = "skipped (\(reason))" }
+            lines.append("\(f.string(from: r.arrival)) to \(out) | storm \(r.stormID) | \(status)")
+            lines.append("  crew: \(r.crewMemberName) | inside geofence: \(r.arrivedInsideGeofence ? "yes" : "no") | depth: \(r.snowDepthInches) in | salt: \(r.saltPounds) lb")
+            if !r.weatherNote.isEmpty { lines.append("  weather: \(r.weatherNote)") }
+            lines.append("  photos: \(r.photos.count) (before: \(r.hasBeforePhoto ? "yes" : "no"), after: \(r.hasAfterPhoto ? "yes" : "no"))")
+            if !r.note.isEmpty { lines.append("  note: \(r.note)") }
+        }
+        return lines.joined(separator: "\n")
+    }
+}

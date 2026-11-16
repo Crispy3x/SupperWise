@@ -31,7 +31,7 @@ public struct DepthTier: Equatable, Sendable, Codable {
     }
 }
 
-public enum VisitStatus: Equatable, Sendable {
+public enum VisitStatus: Equatable, Sendable, Codable {
     case completed
     /// Never billed. Reason is kept for the customer record.
     case skipped(reason: String)
