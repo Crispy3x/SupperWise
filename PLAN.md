@@ -344,3 +344,8 @@ Mid-case Apple-only market is about 58,000 businesses. Most are solos averaging 
 
 # Decision: push counting
 Per-push and hybrid contracts have a per-contract setting. Default `perStorm` (one push per storm, however many return trips, fewest billing disputes); owners can switch a contract to `perVisit`. Implemented and tested in `Sources/RidgelineCore/SnowBilling.swift`.
+
+---
+
+# Build status (latest)
+Core logic is built and tested (59 tests): pricing and trial gating, snow billing, storm triggers, dispatcher-controlled route ordering, bulk rescheduling, tamper-evident proof-of-service log, time clock, customer notices, sub pay, offline store. SwiftUI screens (Crew, Storm, Customers, Invoices, Proof, Plans) are written but not yet compiled, since that needs Xcode. See `README.md` for the full list and known placeholders.
