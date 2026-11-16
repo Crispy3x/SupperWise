@@ -193,3 +193,23 @@ The earlier idea of "processor rate plus about 0.3%" would make us dearer than J
 
 ## Margin check (assumptions)
 At $29 for one crew: estimated cost about $4.50 (hosting, routing, support). About 85% gross on web billing, about 70% through the App Store at 15%. Still healthy. Max at 10 crews has the thinnest absolute margin per crew because of the $29 crew rate, so watch SMS and live-traffic costs there.
+
+---
+
+# Update: No built-in payment processing for now (supersedes earlier payment notes)
+
+**Decision:** Ridgeline Ops will not process payments in v1. Too much ongoing work (merchant onboarding and identity checks, payouts and holds, disputes, support) for the first release. The payments page stays "in progress".
+
+**What replaces it in v1 (Pro and Max):**
+- Invoices include a payment link to the owner's own Stripe, Square or PayPal account, or a note with Venmo/Zelle/cash/check instructions.
+- Mark invoices paid manually (cash, check, other), with partial payments.
+- Seasonal contracts: scheduled invoices and reminders, with no autopay for now.
+- QuickBooks sync (Max) matches one deposit to many invoices.
+
+**Removed or deferred from the plan:** Stripe Connect, Tap to Pay on iPhone, ACH pricing, any payments revenue, and the card/ACH comparison against Jobber.
+
+**Pitch advantage:** "We never touch your money. No holds, no forced processor, no payment fees from us." Jobber, Housecall Pro and Square draw complaints about holds and forced processors.
+
+**Pricing impact:** none to the plan prices. They were always subscription-based and payments revenue was only a bonus. Slightly lower costs (no payments support). The comparison against Jobber still holds on subscription price. Keep the "payments are included" row off marketing pages.
+
+**Revisit later (phase 3):** Stripe Connect Standard accounts (owners keep their own Stripe account, we only create payment links and read status) is the lightest version. Confirm Stripe's current Connect terms and fees first. Tap to Pay needs Apple's entitlement, so apply early if you plan it.
