@@ -278,3 +278,64 @@ Pro at 10 crews ($165): cost roughly $40 (hosting, routing, support) gives about
 
 ## New to watch
 Plow360 and Yeti Snow are direct snow-specific competitors we had not found in round one. Do a hands-on trial of both before launch.
+
+---
+
+# Update: Round 2 synthesis (what to build and how to pitch it)
+
+Sources: `research/07` (owner voices), `08` (App Store review text, 3,055 reviews, 1,362 coded 1-3 star), `09` (customer-side complaints), `10` (verified pricing), `11` (market size).
+
+**Evidence limits:** owner voices are search excerpts (PlowSite/LawnSite redirected to bot-gating domains and Reddit was refused, so no Reddit data), mostly old and lawn-leaning. The App Store sample is the newest 500 reviews per app, keyword-coded with an estimated 65-80% precision, so counts are indicative. Snow-specific voice is almost absent (3 core-app reviews mention snow). Interviews with real snow operators are the missing piece.
+
+## What the App Store data says (core software apps, 778 coded reviews)
+| Rank | Theme | Share |
+|---|---|---|
+| 1 | Bugs, crashes, slowness | 28% |
+| 2 | Support | 20% |
+| 3 | Billing and cancellation | 18% |
+| 4 | Price | 16% |
+| 5 | Missing features | 16% |
+| 6 | UI and usability | 11% |
+| 7 | Routing | 10% (mostly Route4Me) |
+| 8 | Sync/offline and time clock/GPS | 5% each |
+| 10 | Payment holds and payout delays | 4% |
+
+Takeaways:
+- **Reliability and support beat everything.** The strongest promise is an app that does not crash, does not force re-logins, uploads photos in the background and works offline.
+- **Billing and cancellation** is the third-biggest complaint (cancel-by-phone, charges after cancelling, annual lock-in, trial-to-paid surprises). Our one-tap cancel, export and clear trial ending are real differentiators.
+- **Skipping payments in v1 removes a complaint category** (only 4% of reviews, but a high-anger one).
+- Most requested missing features: estimate/invoice editing, customer text/email/phone, photo upload, push notifications, recurring jobs and calendar control, search, offline mode, live crew location, adjustable missed punches.
+- Workyard complaints: "always" location permission and auto clock-out. Keep our time clock prompt-based and low-power.
+
+## Changes to the feature plan
+**Add or raise priority (Pro unless noted):**
+1. Bulk and recurring-route rescheduling (change a route's day or crew in one action). Owners report editing each customer one by one.
+2. Invoices with one line per storm or season, flexible due dates, late fees, and billing within minutes of a storm ending. Quick post-storm billing is the bar set by existing snow billing tools.
+3. Photo capture with background upload, retries and never losing a photo.
+4. Customer notifications (scheduled, en route, delayed, skipped with reason) and a client link with timestamped photo timeline.
+5. Immutable visit log (time, geofence, before/after photos, material quantities) with exportable dispute packet. Wanted for insurance and claim defense, not marketing.
+6. Sub pay by percentage of job, hourly or per-push, with payment status visible to subs.
+7. Stability work as a feature: no forced re-login, offline-first, update regression testing.
+
+**Reposition routing (Max):** present it as dispatcher-controlled re-sequencing, not an autopilot. Owners distrust auto-routing ("zero faith"). Include a "next stop" driver view, shared-driveway consecutive stops, and keep the storm-speed and priority controls editable. Freeze the next stops so routes never reshuffle under a driver.
+
+**Lower priority until validated:** marketing tools, all-in-one breadth and "Apple-native" as selling points. No owner asked for them in our sample. Test with real owners before building around them.
+
+## Pitch (draft)
+"Snow-ready crew software that doesn't crash, never loses a photo, never holds your money, and cancels in one tap. From $29 a month."
+
+## Market sizing reality check
+Mid-case Apple-only market is about 58,000 businesses. Most are solos averaging about $36k a year, and most firms run 1-2 crews, so average revenue per account is closer to about $70 a month than $100. At 1% of the market that is roughly 580 accounts. iPhone share among contractors is the biggest unvalidated assumption (45-65% estimated).
+
+## Biggest remaining risks
+1. No first-hand snow-operator interviews yet. Do 10-15 before building much beyond the MVP.
+2. Direct snow competitors (Plow360, Yeti Snow) not tried hands-on.
+3. iPhone share among target customers and the Android crew-member gap.
+4. Founding-member payments promise terms not yet settled.
+5. Name trademark and domain checks for Ridgeline Ops.
+
+## Suggested next steps
+1. Interview 10-15 snow and landscaping owners (script: what do you use, what do you hate, what did you switch from, iPhone or Android, what would you pay).
+2. Trial Plow360 and Yeti Snow.
+3. Run a trademark and domain check for Ridgeline Ops.
+4. Build the MVP: offline-first crew app, scheduling with bulk reschedule, proof-of-service log, snow invoicing, 14-day trial billing.
