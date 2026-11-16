@@ -231,3 +231,50 @@ Draft terms to settle before advertising it:
 - Have a lawyer glance at the final text before it goes on the website or App Store listing.
 
 **Research round 2 (running):** owner voices from forums, App Store review text analysis with counts, customer-side (homeowner/property manager) complaints, verified vendor pricing, and market size. Outputs: `research/07` to `research/11`.
+
+---
+
+# Update: Verified pricing and revised prices (supersedes earlier price tables)
+
+Source: `research/10-verified-pricing.md`, fetched from official vendor pages on 2026-11-16 (spot-check key figures before using them in marketing).
+
+**Correction to my earlier comparison:** I said we were cheaper than Jobber at every size. On annual billing, Max at 10 crews ($317/mo) was actually above Jobber Grow ($299/mo annual prepaid). Prices below fix that.
+
+## Revised prices (per crew; office seats free)
+| | Pro | Max |
+|---|---|---|
+| Base (1 crew) | $29 | $79 |
+| Extra crew, 2-5 | +$19 | +$29 |
+| Extra crew, 6+ | +$12 | +$19 |
+| Annual | 20% off | 20% off |
+
+| Crews | Pro /mo | Pro annual (per mo) | Max /mo | Max annual (per mo) |
+|---|---|---|---|---|
+| 1 | $29 | $23 | $79 | $63 |
+| 3 | $67 | $54 | $137 | $110 |
+| 5 | $105 | $84 | $195 | $156 |
+| 10 | $165 | $132 | $290 | $232 |
+
+## Verified competitor prices (official pages, per month, monthly / annual)
+- Jobber: Core 1 user $49 / $29. Connect 5 users $199 / $149, 10 users $299 / $229. Grow 5 users $299 / $229, 10 users $399 / $299. Extra user $29. 14-day trial.
+- Housecall Pro: Basic $79 / $59 (1 user). Essentials $189 / $149 (5). Max $329 / $299 (8, +$35 per extra user). 14-day trial.
+- Service Fusion: Starter $259 / $220, unlimited users, no trial.
+- GorillaDesk: $49 / $99 / $149, unlimited users, extra routes cost more. 14-day trial.
+- Kickserv: $60 (5 users), $119 (10), $199 (20). 30-day trial.
+- LMN: Starter $297 plus onboarding fee.
+- Route planners: Upper $50 per user ($40 yearly), Route4Me $199-$349, OptimoRoute about $35-$44 per driver.
+- **Snow-specific, direct competitors:** Plow360 (Solo $20 for 25 sites, Team from $40, Pro from $140 with storm dispatch, time clock and QuickBooks, 14-day trial); Yeti Snow ($66.50/mo annual for 1-25 sites, no trial).
+- Not public: Workiz, FieldPulse, Aspire.
+
+## Where we win and lose (monthly vs monthly, then annual vs annual)
+- Pro beats every full field-service product with a published price at 1, 3, 5 and 10 crews, including on annual billing.
+- Max beats Jobber Grow at every size on both monthly and annual billing after the cut (10 crews: $290 vs $399 monthly, $232 vs $299 annual).
+- We do not beat Kickserv ($60 for 5 users) or the site-capped snow tools (Plow360, Yeti) on raw price at 3-10 crews. Compete on features and no site caps instead.
+- Free office seats are a real edge only against per-user vendors (Jobber, Housecall Pro, Kickserv). Service Fusion and GorillaDesk already include unlimited users.
+- Gap: no built-in payments in v1, which Service Fusion, LMN, GorillaDesk and Kickserv offer.
+
+## Margin check (assumptions)
+Pro at 10 crews ($165): cost roughly $40 (hosting, routing, support) gives about 75% web margin, about 60% through the App Store at 15%. Max at 10 crews ($290) assumes higher routing/SMS costs, about 70% web. Watch the 6+ crew rate if usage costs run higher than assumed.
+
+## New to watch
+Plow360 and Yeti Snow are direct snow-specific competitors we had not found in round one. Do a hands-on trial of both before launch.
