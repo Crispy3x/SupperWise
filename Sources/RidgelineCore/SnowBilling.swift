@@ -1,20 +1,28 @@
 import Foundation
 
 /// How a snow customer is billed.
-public enum ContractTerms: Equatable, Sendable {
-    /// Flat rate per push (each completed visit is one push).
-    case perPush(rate: Money)
+public enum ContractTerms: Equatable, Sendable, Codable {
+    /// Flat rate per push. See `PushCounting` for what counts as a push.
+    case perPush(rate: Money, counting: PushCounting = .perStorm)
     /// One season price. Billed once, regardless of visits.
     case seasonal(total: Money)
     /// Price by snowfall depth. A storm is billed at the highest tier its deepest visit reached.
     case perInch(tiers: [DepthTier])
     /// Seasonal base covering a number of pushes, then a per-push overage.
-    case hybrid(seasonalBase: Money, includedPushes: Int, overagePerPush: Money)
+    case hybrid(seasonalBase: Money, includedPushes: Int, overagePerPush: Money, counting: PushCounting = .perStorm)
     /// Hours at an hourly rate plus materials with optional markup percent (e.g. 15 for +15%).
     case timeAndMaterials(hourly: Money, materialsMarkupPercent: Int)
 }
 
-public struct DepthTier: Equatable, Sendable {
+/// What counts as one "push" when a crew returns to a site during the same storm.
+public enum PushCounting: String, Equatable, Sendable, Codable {
+    /// One push per storm however many times the crew returns (default, fewest billing disputes).
+    case perStorm
+    /// Every completed visit is a push.
+    case perVisit
+}
+
+public struct DepthTier: Equatable, Sendable, Codable {
     public let minInches: Double
     public let rate: Money
     public init(minInches: Double, rate: Money) {
@@ -83,11 +91,14 @@ public enum SnowBilling {
 
         var lines: [InvoiceLine] = []
         var capReached = false
+        var pushesThisInvoice = completed.count   // default for contracts without push counting
 
         switch terms {
-        case .perPush(let rate):
+        case .perPush(let rate, let counting):
+            pushesThisInvoice = 0
             for storm in storms {
-                let qty = storm.visits.count
+                let qty = pushes(in: storm, counting)
+                pushesThisInvoice += qty
                 lines.append(InvoiceLine(description: "Snow removal, storm \(storm.id): \(qty) push\(qty == 1 ? "" : "es") x \(rate.formatted)",
                                          stormID: storm.id, amount: rate * qty))
             }
@@ -108,15 +119,17 @@ public enum SnowBilling {
                 // Below the lowest tier: no charge (trigger depth not reached).
             }
 
-        case .hybrid(let base, let included, let overage):
+        case .hybrid(let base, let included, let overage, let counting):
+            pushesThisInvoice = 0
             if includeSeasonalBase {
                 lines.append(InvoiceLine(description: "Seasonal base (includes \(included) pushes)", stormID: nil, amount: base))
             }
             var used = alreadyUsedPushes
             for storm in storms {
                 var over = 0
-                for _ in storm.visits {
+                for _ in 0..<pushes(in: storm, counting) {
                     used += 1
+                    pushesThisInvoice += 1
                     if used > included { over += 1 }
                 }
                 if over > 0 {
@@ -140,12 +153,19 @@ public enum SnowBilling {
         }
 
         return BillingResult(lines: lines,
-                             pushesUsed: alreadyUsedPushes + completed.count,
+                             pushesUsed: alreadyUsedPushes + pushesThisInvoice,
                              capReached: capReached,
                              skippedVisitCount: skipped)
     }
 
     // MARK: helpers
+
+    private static func pushes(in storm: Storm, _ counting: PushCounting) -> Int {
+        switch counting {
+        case .perStorm: return storm.visits.isEmpty ? 0 : 1
+        case .perVisit: return storm.visits.count
+        }
+    }
 
     private struct Storm { let id: String; let visits: [Visit] }
 

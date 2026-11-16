@@ -10,10 +10,29 @@ final class SnowBillingTests: XCTestCase {
             Visit(stormID: "S1", date: day(2)),
             Visit(stormID: "S2", date: day(10)),
         ]
-        let r = SnowBilling.bill(terms: .perPush(rate: Money(dollars: 60)), visits: visits)
+        let r = SnowBilling.bill(terms: .perPush(rate: Money(dollars: 60), counting: .perVisit), visits: visits)
         XCTAssertEqual(r.lines.count, 2)
         XCTAssertEqual(r.total, Money(dollars: 180))
         XCTAssertEqual(r.pushesUsed, 3)
+    }
+
+    func testPerPushDefaultsToOnePushPerStorm() {
+        let visits = [
+            Visit(stormID: "S1", date: day(1)),
+            Visit(stormID: "S1", date: day(2)),   // return trip, same storm
+            Visit(stormID: "S2", date: day(10)),
+        ]
+        let r = SnowBilling.bill(terms: .perPush(rate: Money(dollars: 60)), visits: visits)
+        XCTAssertEqual(r.lines.count, 2)
+        XCTAssertEqual(r.total, Money(dollars: 120))
+        XCTAssertEqual(r.pushesUsed, 2)
+    }
+
+    func testSkippedStormDoesNotCountAsPush() {
+        let visits = [Visit(stormID: "S1", date: day(1), status: .skipped(reason: "Car in way"))]
+        let r = SnowBilling.bill(terms: .perPush(rate: Money(dollars: 60)), visits: visits)
+        XCTAssertEqual(r.total, .zero)
+        XCTAssertEqual(r.pushesUsed, 0)
     }
 
     func testSkippedVisitsAreNeverBilled() {
@@ -53,7 +72,7 @@ final class SnowBillingTests: XCTestCase {
     }
 
     func testHybridBillsOverageOnlyAfterCap() {
-        let terms = ContractTerms.hybrid(seasonalBase: Money(dollars: 500), includedPushes: 3, overagePerPush: Money(dollars: 45))
+        let terms = ContractTerms.hybrid(seasonalBase: Money(dollars: 500), includedPushes: 3, overagePerPush: Money(dollars: 45), counting: .perVisit)
         let visits = [
             Visit(stormID: "S1", date: day(1)),
             Visit(stormID: "S2", date: day(5)),
@@ -92,6 +111,18 @@ final class SnowBillingTests: XCTestCase {
         // labor 2h x $100 = $200, materials $50 x 1.2 = $60
         XCTAssertEqual(r.total, Money(dollars: 260))
         XCTAssertEqual(r.lines.count, 1)
+    }
+
+    func testHybridPerStormCountsReturnTripsOnce() {
+        let terms = ContractTerms.hybrid(seasonalBase: Money(dollars: 500), includedPushes: 1, overagePerPush: Money(dollars: 45))
+        let visits = [
+            Visit(stormID: "S1", date: day(1)),
+            Visit(stormID: "S1", date: day(2)),   // same storm: still push 1, inside the cap
+            Visit(stormID: "S2", date: day(9)),   // push 2: overage
+        ]
+        let r = SnowBilling.bill(terms: terms, visits: visits)
+        XCTAssertEqual(r.total, Money(dollars: 545))
+        XCTAssertEqual(r.pushesUsed, 2)
     }
 
     func testVisitOrderDoesNotMatter() {

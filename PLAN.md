@@ -339,3 +339,8 @@ Mid-case Apple-only market is about 58,000 businesses. Most are solos averaging 
 2. Trial Plow360 and Yeti Snow.
 3. Run a trademark and domain check for Ridgeline Ops.
 4. Build the MVP: offline-first crew app, scheduling with bulk reschedule, proof-of-service log, snow invoicing, 14-day trial billing.
+
+---
+
+# Decision: push counting
+Per-push and hybrid contracts have a per-contract setting. Default `perStorm` (one push per storm, however many return trips, fewest billing disputes); owners can switch a contract to `perVisit`. Implemented and tested in `Sources/RidgelineCore/SnowBilling.swift`.
