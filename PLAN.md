@@ -141,3 +141,55 @@ Example monthly totals:
 **Margins (assumptions, not measured):** roughly 75-85% gross on web billing, 60-70% when billed through the App Store at 15%. Max costs more to serve (live-traffic refreshes, SMS, weather), which the higher price covers.
 
 **Billing note:** App Store subscriptions are fixed products, so "per-crew" pricing means selling bundles (for example 1, 3, 5 and 10 crews) there. Web billing (Stripe) handles per-crew pricing cleanly, so make it primary and re-check Apple's link-out rules before launch.
+
+---
+
+# Update: Beat competitors on price and on what's included
+
+## Price changes
+- **Pro base lowered from $39 to $29** (1 crew). Reason: Jobber's cheapest plan, Core, is $29/mo on annual prepay, so $39 would not have been cheaper at the entry level.
+- Extra crews unchanged (Pro +$25 for crews 2-5, +$18 for 6+; Max +$39 and +$29).
+
+| Crews | Pro /mo | Pro annual (per mo) | Max /mo | Max annual (per mo) |
+|---|---|---|---|---|
+| 1 | $29 | $24 | $79 | $66 |
+| 3 | $79 | $66 | $157 | $131 |
+| 5 | $129 | $108 | $235 | $196 |
+| 10 | $219 | $183 | $380 | $317 |
+
+Annual = 2 months free.
+
+## Against Jobber (official pricing page, per month; Jobber charges per user, we charge per crew with free office seats)
+| Size | Jobber Connect (monthly / annual prepaid) | Ridgeline Pro | Jobber Grow (monthly / annual prepaid) | Ridgeline Max |
+|---|---|---|---|---|
+| 1 | $139 / $99 | $29 / $24 | $199 / $149 | $79 / $66 |
+| 5 | $199 / $149 | $129 / $108 | $299 / $229 | $235 / $196 |
+| 10 | $299 / $229 | $219 / $183 | $399 / $299 | $380 / $317 |
+
+Notes:
+- Cheaper at every size in the table, but the gap at 10 crews is small for Max (about $19-$30/mo less than Grow). Honest pitch for big fleets is "same price or less, with far more included", not "half price".
+- Jobber's Core ($29-$49) is a stripped-down plan, so it isn't a like-for-like match for Pro.
+- Real savings are bigger than shown, because Jobber charges $29 for each extra user including office staff, and ours are free.
+- Jobber's Marketing Suite add-on is $99/mo; ours is included in Max.
+
+## What we include that competitors charge extra for or lack
+| Feature | Jobber | Ridgeline Ops |
+|---|---|---|
+| Unlimited office seats | $29/user | Free |
+| Marketing (review requests, renewals) | $99/mo add-on | Included in Max |
+| Snow billing (per-push, seasonal, trigger, hybrid) | Not found in their pages | Included in Pro |
+| GPS and photo proof of service | Not found as a built-in snow feature | Included in Pro |
+| Storm triggers and conditions-aware routing | Not found | Max |
+| Cancellation | Complaints about annual plans | Month-to-month, one-tap cancel, data export |
+
+("Not found" means absent from Jobber's own pages and the sources we saw, not proof it's missing. Re-check Jobber's current feature list before putting it in marketing.)
+
+## Payments must not undo the price advantage
+The earlier idea of "processor rate plus about 0.3%" would make us dearer than Jobber (2.9% + 30¢ card, 2.7% + 30¢ Tap to Pay, 1% ACH). Instead:
+- Card: match Jobber, 2.9% + 30¢.
+- ACH: beat Jobber, pass through Stripe's reported 0.8% capped at $5 (unverified, confirm Connect pricing).
+- Earn the margin from subscriptions, not payments. Any Stripe Connect revenue share is a bonus.
+- Publish payout timing and holds policy.
+
+## Margin check (assumptions)
+At $29 for one crew: estimated cost about $4.50 (hosting, routing, support). About 85% gross on web billing, about 70% through the App Store at 15%. Still healthy. Max at 10 crews has the thinnest absolute margin per crew because of the $29 crew rate, so watch SMS and live-traffic costs there.
