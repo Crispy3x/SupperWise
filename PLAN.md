@@ -102,3 +102,42 @@ Seasonal idea: since snow is seasonal, offer a **season pass or pause** (pay Nov
 - Apple link-out fee ruling, StoreKit trial durations, Tap to Pay minimum iOS.
 - Routing at 200-1,000 stops: solve time, server memory, Mapbox/HERE costs.
 - Name trademark and domain checks.
+
+---
+
+# Update: Name and plan structure (supersedes sections 4 and 6)
+
+## Name: Ridgeline Ops
+Web searches found no software product with this exact name (nearest: RIDGID Connect, an unrelated jobsite app). Not a trademark clearance, so run a USPTO search and check domains and the App Store before spending on branding. "Ridgeline" alone is a very common word and brand, so always use the full name "Ridgeline Ops".
+
+## Plans: Pro and Max (14-day free trial)
+Priced per crew (one field device). Office/admin seats are free. Price rises with the number of crews.
+
+| | **Pro** | **Max** |
+|---|---|---|
+| For | Solo to small crews running the business | Crews that want storm automation and optimization |
+| Base (includes 1 crew) | $39/mo | $79/mo |
+| Each extra crew (2-5) | +$25 | +$39 |
+| Each extra crew (6+) | +$18 | +$29 |
+| Annual | 2 months free | 2 months free |
+
+Example monthly totals:
+
+| Crews | Pro | Max |
+|---|---|---|
+| 1 | $39 | $79 |
+| 3 | $89 | $157 |
+| 5 | $139 | $235 |
+| 10 | $229 | $380 |
+
+**Pro:** CRM, scheduling, quotes/invoices, offline crew app, time clock, Stripe payments, snow billing (per-push, seasonal, trigger, hybrid), GPS and photo proof of service, basic route ordering by drive time, "service complete" texts.
+
+**Max (everything in Pro, plus):** conditions-aware route optimizer (traffic, storm speed factors, priorities, time windows), storm events with weather triggers and 3am dispatch, sub management (COI expiry, pay rules, no-photo/no-pay), QuickBooks two-way sync, marketing (review requests, renewal campaigns), roles/permissions, advanced reports.
+
+**Trial:** 14 days with Max features unlocked so owners see the storm and routing wedge, then they pick a plan. Month-to-month with one-tap cancel.
+
+**Comparison (Jobber's published prices):** Jobber Grow for 5 users is $299/mo month-to-month. Ridgeline Max for 5 crews is $235 with unlimited office seats and routing included. Housecall Pro MAX is $329/mo for up to 8 users (reported).
+
+**Margins (assumptions, not measured):** roughly 75-85% gross on web billing, 60-70% when billed through the App Store at 15%. Max costs more to serve (live-traffic refreshes, SMS, weather), which the higher price covers.
+
+**Billing note:** App Store subscriptions are fixed products, so "per-crew" pricing means selling bundles (for example 1, 3, 5 and 10 crews) there. Web billing (Stripe) handles per-crew pricing cleanly, so make it primary and re-check Apple's link-out rules before launch.
