@@ -369,3 +369,8 @@ Built the National Weather Service client (forecast and winter alerts) with test
 
 # Build status: invoicing
 Built editable invoices, manual payments, late fees applied only on the owner's say-so, installment splits, CSV export and a double-billing guard (121 tests). Wired into the Invoices screen (unverified UI). Not built: payment links, PDF invoices, QuickBooks sync (CSV only), emailing invoices.
+
+---
+
+# Build status: quotes and job costing
+Quotes (expiry, accept or decline once, contract from accepted quote), season-cost estimates with a mild-to-heavy range, and per-site job costing. 130 tests. Core only, no screens yet.
