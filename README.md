@@ -4,7 +4,7 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 
 ## What exists so far
 
-**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 91 unit tests, all passing.
+**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 103 unit tests, all passing.
 - `Pricing`, `Entitlements`: Pro and Max per-crew prices, annual 20% off, 14-day trial (all features unlocked), feature gating, read-only after trial.
 - `SnowBilling`: per-push, seasonal, per-inch, hybrid (base, cap, overage) and time-and-materials. One invoice line per storm, skipped visits never billed, per-contract push counting (default one push per storm).
 - `Storm`: trigger depth per site, near-trigger warnings.
@@ -43,6 +43,9 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 - Google Maps Platform terms limit caching and showing its results beside a non-Google map. Read the current terms before relying on it. An open-source engine (Valhalla with VROOM) avoids that and the per-request cost, and fits behind the same `MatrixSource`.
 - Cost check from research: Google traffic-aware matrices were about $10 per 1,000 elements, and a matrix grows with the square of the stops (about $6 for a 25-stop route). Cache and refresh only the next stops.
 - **Routing server built** (`server/`, see its README): holds the Google key, caps cost per token per day, caches, splits large requests. The Swift client (`ProxyMatrixSource`) is built. Both are tested against a stand-in for Google, and the real Swift client was run against the real server (token check, matrix, outage fallback). **Not yet run against real Google**, not deployed, and not wired into the app screens. The Apple live-ETA code needs Xcode to compile.
+
+## Weather feed (National Weather Service)
+`NWSClient` loads the free NWS forecast and winter alerts for the yard location (rounded to about 1 km; customer addresses are never sent). `NWSForecast.summary(from:to:)` turns it into storm total snow (inches), peak rate, temperature, wind and visibility for a time window, and `.conditions` feeds the route weather model. It was checked against the live NWS service (forecast read, alerts read, location rounding accepted); there was no snow in the forecast that day, so a real snowfall total has not yet been seen end to end. Set a real app name and contact address in `AppModel.weatherUserAgent` before release, as NWS asks. US only. NWS snowfall forecasts are estimates and can be wrong, so the dispatcher can still override every number.
 
 ## Use the server from the app
 ```swift

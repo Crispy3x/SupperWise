@@ -11,6 +11,9 @@ struct StormView: View {
     @State private var tempF = 28.0
     @State private var windMph = 10.0
     @State private var frozen = 0
+    @State private var depotLat = ""
+    @State private var depotLon = ""
+    @State private var loading = false
 
     private let conditionsModel = ConditionsModel()
 
@@ -41,6 +44,37 @@ struct StormView: View {
         let plan = result
         NavigationStack {
             Form {
+                Section("Forecast (National Weather Service, US)") {
+                    if model.data.depot == nil {
+                        TextField("Yard latitude, e.g. 44.98", text: $depotLat)
+                        TextField("Yard longitude, e.g. -93.27", text: $depotLon)
+                        Button("Save yard location") {
+                            if let la = Double(depotLat), let lo = Double(depotLon), (-90...90).contains(la), (-180...180).contains(lo) {
+                                model.setDepot(latitude: la, longitude: lo)
+                            }
+                        }
+                    } else {
+                        Button(loading ? "Loading..." : "Load forecast for the next 24 hours") {
+                            loading = true
+                            Task {
+                                await model.refreshWeather(hours: 24)
+                                if let s = model.forecast {
+                                    inches = min(24, (s.snowfallInches * 2).rounded() / 2)
+                                    ratePerHour = min(3, (s.peakSnowRateInPerHour * 4).rounded() / 4)
+                                    tempF = max(-20, min(45, (s.temperatureF ?? tempF).rounded()))
+                                    windMph = max(0, min(60, ((s.maxWindMph ?? 0) / 5).rounded() * 5))
+                                }
+                                loading = false
+                            }
+                        }
+                        .disabled(loading)
+                    }
+                    if let status = model.weatherStatus { Text(status).font(.footnote).foregroundStyle(.secondary) }
+                    ForEach(Array(model.winterAlerts.enumerated()), id: \.offset) { _, alert in
+                        Label(alert.headline, systemImage: "exclamationmark.triangle.fill")
+                            .font(.footnote).foregroundStyle(.orange)
+                    }
+                }
                 Section("Weather") {
                     Slider(value: $inches, in: 0...24, step: 0.5)
                     Text("\(inches, specifier: "%.1f") inches on the ground")

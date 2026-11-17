@@ -359,3 +359,8 @@ Google Routes API gives traffic-aware batch drive times (server-side, key never 
 
 # Build status: routing server
 Built `server/` (zero-dependency Node proxy for Google's Routes API with per-token auth, rate and daily-cost caps, cache, request splitting) and the Swift `ProxyMatrixSource` client. 16 server tests and 91 Swift tests pass; the real Swift client was run against the real server with a stand-in for Google. Not yet tested with a real Google key, not deployed, not wired into the screens. Open items: Google terms on caching and non-Google maps, hosting and budget alerts, a real-key smoke test.
+
+---
+
+# Build status: weather feed
+Built the National Weather Service client (forecast and winter alerts) with tests (103 total), checked against the live service. Wired into the Storm screen (unverified UI): set yard location, load the next 24 hours, inputs fill automatically, winter alerts show. Open: real snowfall total not yet seen live (no snow in the forecast that day), Apple WeatherKit as a second source (needs Xcode and a developer account), NWS contact in the user agent.

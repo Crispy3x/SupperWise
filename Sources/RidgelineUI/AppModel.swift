@@ -8,6 +8,12 @@ import RidgelineCore
 public final class AppModel {
     public var data: AppData
     public var saveError: String?
+    /// Latest forecast summary for the depot, from the National Weather Service.
+    public var forecast: WeatherWindowSummary?
+    public var winterAlerts: [WinterAlert] = []
+    public var weatherStatus: String?
+    /// NWS asks apps to identify themselves. Put your app name and a contact address here before release.
+    public var weatherUserAgent = "RidgelineOpsApp"
     private let store: FileStore?
 
     public init(store: FileStore? = AppModel.defaultStore()) {
@@ -39,6 +45,31 @@ public final class AppModel {
 
     public func customerName(for site: Site) -> String {
         data.customers.first { $0.id == site.customerID }?.name ?? "Unknown customer"
+    }
+
+    // MARK: weather
+
+    /// Loads the forecast for the next `hours` at the depot. Customer addresses are never sent.
+    public func refreshWeather(hours: Double = 24) async {
+        guard let depot = data.depot else {
+            weatherStatus = "Set your yard location first."
+            return
+        }
+        let client = NWSClient(userAgent: weatherUserAgent)
+        do {
+            let grid = try await client.forecast(near: depot)
+            let now = Date()
+            forecast = grid.summary(from: now, to: now.addingTimeInterval(hours * 3600))
+            winterAlerts = (try? await client.activeWinterAlerts(near: depot)) ?? []
+            weatherStatus = "Forecast updated for the next \(Int(hours)) hours."
+        } catch {
+            weatherStatus = "Weather unavailable (\(error.localizedDescription)). You can still enter conditions by hand."
+        }
+    }
+
+    public func setDepot(latitude: Double, longitude: Double) {
+        data.depot = Coordinate(latitude: latitude, longitude: longitude)
+        save()
     }
 
     // MARK: edits
