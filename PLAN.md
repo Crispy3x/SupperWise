@@ -364,3 +364,8 @@ Built `server/` (zero-dependency Node proxy for Google's Routes API with per-tok
 
 # Build status: weather feed
 Built the National Weather Service client (forecast and winter alerts) with tests (103 total), checked against the live service. Wired into the Storm screen (unverified UI): set yard location, load the next 24 hours, inputs fill automatically, winter alerts show. Open: real snowfall total not yet seen live (no snow in the forecast that day), Apple WeatherKit as a second source (needs Xcode and a developer account), NWS contact in the user agent.
+
+---
+
+# Build status: invoicing
+Built editable invoices, manual payments, late fees applied only on the owner's say-so, installment splits, CSV export and a double-billing guard (121 tests). Wired into the Invoices screen (unverified UI). Not built: payment links, PDF invoices, QuickBooks sync (CSV only), emailing invoices.

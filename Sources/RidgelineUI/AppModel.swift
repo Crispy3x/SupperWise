@@ -67,6 +67,42 @@ public final class AppModel {
         }
     }
 
+    // MARK: invoices
+
+    /// Creates a draft invoice for the storms not yet billed on this contract. Returns a message for the user.
+    @discardableResult
+    public func createInvoice(for contract: SnowContract) -> String {
+        guard let site = data.sites.first(where: { $0.id == contract.siteID }) else { return "Site not found." }
+        let visits = data.visitLog.records(forSite: site.id).map { $0.asBillingVisit() }
+        let existing = data.invoices.filter { $0.siteID == site.id }
+        let next = InvoicePlanner.nextBilling(terms: contract.terms, visits: visits, existing: existing)
+        let number = InvoiceNumbering.next(existing: data.invoices.map(\.number))
+        let invoice = Invoice.fromBilling(next.result, number: number, customerID: site.customerID, siteID: site.id, issueDate: Date())
+        var message = "Nothing new to bill."
+        if !invoice.lines.isEmpty {
+            data.invoices.append(invoice)
+            save()
+            message = "Created draft \(number) for \(invoice.total.formatted)."
+        }
+        if !next.heldBack.isEmpty {
+            message += " \(next.heldBack.count) visit(s) were added after their storm was invoiced and are not billed automatically."
+        }
+        return message
+    }
+
+    public func updateInvoice(id: UUID, _ change: (inout Invoice) throws -> Void) -> String? {
+        guard let i = data.invoices.firstIndex(where: { $0.id == id }) else { return "Invoice not found." }
+        var copy = data.invoices[i]
+        do { try change(&copy) } catch { return "Could not change the invoice: \(error)" }
+        data.invoices[i] = copy
+        save()
+        return nil
+    }
+
+    public func invoicesCSV() -> String {
+        InvoiceCSV.export(data.invoices, customerName: { id in data.customers.first { $0.id == id }?.name ?? "" }, now: Date())
+    }
+
     public func setDepot(latitude: Double, longitude: Double) {
         data.depot = Coordinate(latitude: latitude, longitude: longitude)
         save()

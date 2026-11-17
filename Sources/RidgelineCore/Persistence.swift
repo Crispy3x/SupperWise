@@ -15,8 +15,29 @@ public struct AppData: Equatable, Codable, Sendable {
     public var subscription = Subscription()
     /// Where trucks start (the yard). Optional so older saved files still load.
     public var depot: Coordinate?
+    public var invoices: [Invoice] = []
+    public var lateFeePolicy = LateFeePolicy()
 
     public init() {}
+
+    // Older saved files lack newer fields, so every field falls back to its default when missing.
+    public init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        schemaVersion = try c.decodeIfPresent(Int.self, forKey: .schemaVersion) ?? 1
+        companyName = try c.decodeIfPresent(String.self, forKey: .companyName) ?? ""
+        customers = try c.decodeIfPresent([Customer].self, forKey: .customers) ?? []
+        sites = try c.decodeIfPresent([Site].self, forKey: .sites) ?? []
+        contracts = try c.decodeIfPresent([SnowContract].self, forKey: .contracts) ?? []
+        crews = try c.decodeIfPresent([Crew].self, forKey: .crews) ?? []
+        routes = try c.decodeIfPresent([Route].self, forKey: .routes) ?? []
+        storms = try c.decodeIfPresent([StormEvent].self, forKey: .storms) ?? []
+        visitLog = try c.decodeIfPresent(VisitLog.self, forKey: .visitLog) ?? VisitLog()
+        timeEntries = try c.decodeIfPresent([TimeEntry].self, forKey: .timeEntries) ?? []
+        subscription = try c.decodeIfPresent(Subscription.self, forKey: .subscription) ?? Subscription()
+        depot = try c.decodeIfPresent(Coordinate.self, forKey: .depot)
+        invoices = try c.decodeIfPresent([Invoice].self, forKey: .invoices) ?? []
+        lateFeePolicy = try c.decodeIfPresent(LateFeePolicy.self, forKey: .lateFeePolicy) ?? LateFeePolicy()
+    }
 }
 
 /// Offline-first local store: one JSON file, written atomically so a crash or low battery never leaves half a file.

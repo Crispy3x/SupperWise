@@ -4,7 +4,7 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 
 ## What exists so far
 
-**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 103 unit tests, all passing.
+**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 121 unit tests, all passing.
 - `Pricing`, `Entitlements`: Pro and Max per-crew prices, annual 20% off, 14-day trial (all features unlocked), feature gating, read-only after trial.
 - `SnowBilling`: per-push, seasonal, per-inch, hybrid (base, cap, overage) and time-and-materials. One invoice line per storm, skipped visits never billed, per-contract push counting (default one push per storm).
 - `Storm`: trigger depth per site, near-trigger warnings.
@@ -12,6 +12,7 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 - `Scheduling` (`RouteBook`): bulk move routes to another crew or weekday, swap crews, move sites between routes.
 - `VisitLog`, `DisputePacket`, `SHA256`: hash-chained, tamper-evident proof-of-service log (arrival, geofence, photos with hashes, weather note, salt) and a shareable text packet. Pure-Swift SHA-256 checked against reference vectors.
 - `TimeClock`: shifts and per-job timers, audited corrections, labor cost per site, missed punch-out detection, geofence "start the job?" prompt, 20-region monitoring cap.
+- `Invoicing`: editable invoices (add, change or remove lines until the first payment), due dates, manual payments (cash, check, other), partial payments, void, statuses, invoice numbering, seasonal installment splits with exact cents, a late-fee policy that is applied only when the owner chooses (once, labelled), CSV export with spreadsheet-formula protection, and `InvoicePlanner`, which stops a storm being billed twice and keeps hybrid push caps correct across invoices. A return trip added after its storm was invoiced is flagged, not silently billed or lost.
 - `Notices`: customer message templates (scheduled, en route, delayed, skipped, complete). Completion notices require an after photo.
 - `SubPay`: percent of job, hourly, per-push, per-lot, with "no photo, no pay".
 - `Persistence` (`FileStore`): offline-first single-file store with atomic writes.
