@@ -491,6 +491,14 @@ public final class AppModel {
         return (RoutePlanner(), false, "the offline estimate")
     }
 
+    /// True when a routing server token is stored in the keychain.
+    public var hasRoutingToken: Bool {
+        #if canImport(Security)
+        if let token = KeychainStore.load(Self.routingTokenKey), !token.isEmpty { return true }
+        #endif
+        return false
+    }
+
     public func setRoutingProvider(_ provider: RoutingProvider) {
         data.routingProvider = provider
         save()
