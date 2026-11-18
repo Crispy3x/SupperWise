@@ -46,7 +46,16 @@ struct SettingsView: View {
                     #endif
                     if !locationNote.isEmpty { Text(locationNote).font(.footnote).foregroundStyle(.secondary) }
                 }
-                Section("Live traffic routing") {
+                Section("Drive times") {
+                    Picker("Source", selection: binding({ model.data.routingProvider }, { model.setRoutingProvider($0) })) {
+                        Text("Apple Maps on this device").tag(RoutingProvider.appleMaps)
+                        Text("My routing server (Google)").tag(RoutingProvider.server)
+                        Text("Offline estimate").tag(RoutingProvider.offline)
+                    }
+                    Text("Apple Maps is free and needs no setup. Apple answers one leg at a time and may slow requests down, so Ridgeline measures the most important legs and estimates the rest. Answers are kept in memory for 10 minutes only, because Apple's terms limit how long its map data may be stored.")
+                        .font(.footnote).foregroundStyle(.secondary)
+                }
+                Section("Routing server (only used if chosen above)") {
                     TextField("Routing server address (https://...)", text: $serverAddress)
                     SecureField(model.hasRoutingToken ? "Token saved (leave blank to keep it)" : "Access token", text: $serverToken)
                     Button("Save routing server") {

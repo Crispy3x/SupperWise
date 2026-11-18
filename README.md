@@ -4,7 +4,7 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 
 ## What exists so far
 
-**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 148 unit tests, all passing.
+**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 160 unit tests, all passing.
 - `Pricing`, `Entitlements`: Pro and Max per-crew prices, annual 20% off, 14-day trial (all features unlocked), feature gating, read-only after trial.
 - `SnowBilling`: per-push, seasonal, per-inch, hybrid (base, cap, overage) and time-and-materials. One invoice line per storm, skipped visits never billed, per-contract push counting (default one push per storm).
 - `Storm`: trigger depth per site, near-trigger warnings.
@@ -31,6 +31,16 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 - No map geocoding: addresses added in the app have no coordinates, so they are left out of route order until coordinates exist. Demo data has coordinates.
 - Drive times in the app are still the straight-line estimate. The Google server call and the live Apple ETAs are written (Apple) or specified (Google) but not wired in.
 - No weather feed (snowfall is entered by hand), no sync, no accounts, no payments, no push notifications, no real StoreKit or web billing. The trial clock runs locally.
+
+## Apple Maps routing (default)
+Drive times now come from **Apple Maps on the device** by default (free, no key, includes live traffic). Apple answers one origin and destination per request and slows heavy use down, so `SampledMatrixSource` measures only the legs that matter most (yard to every stop, then each stop to its 3 nearest neighbours, capped at 150 requests, 3 at a time with short pauses), scales the straight-line estimate for every other pair by how the measured legs compared, and stops asking and finishes with estimates if Apple stops answering. The Storm screen says how many legs were measured. Answers are cached in memory only, for 10 minutes (`CachedETASource`), so changing the weather sliders does not ask Apple again. Settings lets you pick Apple Maps, your own Google routing server, or the offline estimate.
+
+**Apple's terms (read from the Apple Developer Program License Agreement, Attachment 6, version date not visible in what I read; I did not read the whole agreement):**
+- §1.2 bars **MapKit JS on non-Apple hardware** from fleet management (including dispatch), asset tracking and enterprise route optimization. The sentence names MapKit JS; this app calls native MapKit on Apple devices. Because of that sentence, Apple Maps must **never be called from a server** (no Apple Maps Server API or MapKit JS in this project). This reading is mine, not a legal opinion, and an app for dispatching crews is close to what that sentence is about. **Ask Apple developer support or a lawyer before launch, and keep the Google or offline options as a fallback.**
+- §2.5 allows Map Data to be kept only temporarily and limitedly, then deleted: hence memory-only 10-minute caching.
+- §2.4 requires Apple map results shown on a map to be shown on an Apple map: the app hands off navigation to Apple or Google Maps and does not draw Apple results on another map.
+- §2.6 bars charging fees solely for access to the Apple Maps Service. The Max plan includes the route planner, which is our own logic, but keep the pricing wording about features, not about maps.
+- §2.7 lets Apple limit or revoke access at any time.
 
 ## How routing works
 1. **Drive times** come from a `MatrixSource`: Google Routes API (traffic-aware, batch, through your own server) first, then the offline estimate if it fails. `GoogleRoutesMatrix` builds the request, splits big jobs into allowed-size blocks and reads the response. The Google key must stay on the server.

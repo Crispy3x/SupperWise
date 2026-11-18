@@ -181,6 +181,18 @@ final class OperationsTests: XCTestCase {
         XCTAssertEqual(data.unassignedHours(now: t0 + 99_999), 1.5, accuracy: 0.0001)
     }
 
+    func testRoutingProviderDefaultsAndSurvivesSave() throws {
+        XCTAssertEqual(AppData().routingProvider, .appleMaps)
+        let old = try FileStore.decoder.decode(AppData.self, from: Data(#"{"companyName":"Old"}"#.utf8))
+        XCTAssertEqual(old.routingProvider, .appleMaps)               // older files get the default
+        var data = AppData(); data.routingProvider = .server
+        let dir = FileManager.default.temporaryDirectory.appendingPathComponent("ridgeline-rp-\(UUID().uuidString)")
+        defer { try? FileManager.default.removeItem(at: dir) }
+        let store = FileStore(url: dir.appendingPathComponent("data.json"))
+        try store.save(data)
+        XCTAssertEqual(try store.load().routingProvider, .server)
+    }
+
     func testNewFieldsSurviveSaveAndLoad() throws {
         var data = AppData()
         data.laborCostPerHour = Money(dollars: 28)

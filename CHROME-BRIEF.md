@@ -31,7 +31,7 @@ You are helping me set up the accounts and settings for an iPhone, iPad and Mac 
 2. In appstoreconnect.apple.com > Apps > New App, create the app: platform iOS, name = my first choice, primary language English (U.S.), the bundle ID above, SKU = ridgelineops-1. If the name is taken, try my second choice and tell me which worked. Do not fill in anything else and do not submit.
 3. Report the exact name that was accepted.
 
-## Task 3: Google Cloud (for live traffic routing)
+## Task 3: Google Cloud (OPTIONAL: skip Tasks 3 and 4 unless I ask for them. The app uses Apple Maps on the device by default.)
 1. Open console.cloud.google.com. If there is no billing account, stop and tell me: I will add the payment method myself.
 2. Create a new project named ridgeline-routing.
 3. **Before enabling any API**, open Billing > Budgets & alerts and create a budget of [ASK ME FOR THE DOLLAR AMOUNT] per month with email alerts at 50%, 90% and 100%. Tell me the amount you used.

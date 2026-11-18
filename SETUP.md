@@ -37,7 +37,8 @@ The app icon is in `App/Assets.xcassets` (a first draft, replace it whenever you
 - Create the products in App Store Connect with a **14-day free introductory offer**, then send me the product IDs.
 - Optional: RevenueCat can tie App Store and web purchases together.
 
-## 4. Live traffic routing (Google)
+## 4. Live traffic routing (Google) - OPTIONAL
+**The app now uses Apple Maps on the device by default, which needs no account, key or hosting. Skip this whole step unless you want the Google option.** Before launch, ask Apple developer support or a lawyer whether using Apple Maps drive times for crew route planning fits Apple's terms (see the Apple Maps routing section of `README.md`); this step is your backup plan.
 The routing server is built and tested against a stand-in, never against real Google.
 1. Create a Google Cloud account and a project. **Set a budget alert first** (Billing > Budgets) so a mistake cannot run up a bill.
 2. Turn on the **Routes API**.

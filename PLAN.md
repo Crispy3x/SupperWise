@@ -379,3 +379,8 @@ Quotes (expiry, accept or decline once, contract from accepted quote), season-co
 
 # Build status: app complete as code, awaiting a Mac
 All screens (Crew, Storm, Customers, Quotes, Invoices, Routes, Time clock, Job costs, Proof, Plans, Settings), camera and location and address lookup, Keychain token, live-route wiring, Xcode project generator and App target are written. Core logic has 144 tests; the screens and Apple-only code have never been compiled. `SETUP.md` lists what the owner must do.
+
+---
+
+# Decision: Apple Maps is the default drive-time source
+Apple MapKit on the device (free, live traffic, no key). Because Apple answers one leg per request and throttles, the app measures the most important legs and estimates the rest, and reports how many were measured. Google via the routing server stays as an option, and the offline estimate as a fallback. Apple's terms were read in part: the fleet management ban is worded for MapKit JS on non-Apple hardware, results may be kept only briefly, and Apple can limit access at any time. Open: confirm with Apple developer support or a lawyer that crew route planning in a native app is allowed. 160 tests.

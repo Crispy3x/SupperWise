@@ -44,7 +44,7 @@ struct StormView: View {
 
     /// Changes whenever anything that affects the route changes, so the live plan is refreshed.
     private var planKey: String {
-        "\(hits.map(\.id))|\(inches)|\(ratePerHour)|\(tempF)|\(windMph)|\(frozen)|\(model.data.routingServerURL)"
+        "\(hits.map(\.id))|\(inches)|\(ratePerHour)|\(tempF)|\(windMph)|\(frozen)|\(model.data.routingServerURL)|\(model.data.routingProvider.rawValue)"
     }
 
     var body: some View {
@@ -113,7 +113,13 @@ struct StormView: View {
                             .font(.footnote).foregroundStyle(.orange)
                     }
                 }
-                Section { Text(planNote).font(.footnote).foregroundStyle(.secondary) }
+                Section {
+                    Text(planNote).font(.footnote).foregroundStyle(.secondary)
+                    if model.data.routingProvider == .appleMaps, let r = model.routeReport, livePlan != nil {
+                        Text("Apple Maps measured \(r.measured) of the \(r.totalPairs) legs; the rest are estimated from those.\(r.stoppedEarly ? " Apple Maps stopped answering part way, so more of this is estimated." : "")")
+                            .font(.footnote).foregroundStyle(r.stoppedEarly ? .orange : .secondary)
+                    }
+                }
                 if let first = plan.stops.first {
                     Section("Navigate") {
                         if let url = NavigationLinks.appleMaps(to: first.coordinate, from: start) {
@@ -137,15 +143,19 @@ struct StormView: View {
             }
             .navigationTitle("Storm")
             .task(id: planKey) {
+                try? await Task.sleep(nanoseconds: 700_000_000)   // let the sliders settle, so each tweak is not a new lookup
+                if Task.isCancelled { return }
                 let chosen = model.routePlanner()
-                guard chosen.usingServer, !stops.isEmpty else {
+                guard chosen.isLive, !stops.isEmpty else {
                     livePlan = nil
-                    planNote = "Offline estimate of drive times."
+                    planNote = "Drive times are the offline estimate."
                     return
                 }
+                planNote = "Asking \(chosen.label)..."
                 let live = await chosen.planner.plan(stops: stops, start: start, conditions: conditions, frozenPrefix: frozen)
+                if Task.isCancelled { return }
                 livePlan = live
-                planNote = "Drive times from your routing server, adjusted for the weather."
+                planNote = "Drive times from \(chosen.label), adjusted for the weather."
             }
         }
     }

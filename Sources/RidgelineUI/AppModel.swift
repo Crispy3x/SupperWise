@@ -20,6 +20,12 @@ public final class AppModel {
     public var weatherStatus: String?
     /// NWS asks apps to identify themselves. Put your app name and a contact address here before release.
     public var weatherUserAgent = "RidgelineOpsApp"
+    /// What the last Apple Maps planning run measured, so screens can say how much is estimated.
+    public var routeReport: SampledReport?
+    #if canImport(MapKit)
+    /// Kept for the life of the app so repeat planning reuses answers for a few minutes, in memory only.
+    private let appleETA = CachedETASource(base: MapKitETASource())
+    #endif
     private let store: FileStore?
     /// Where photos are kept, next to the data file. nil when there is no place to save (previews, tests).
     public let photoStorage: PhotoStorage?
@@ -153,24 +159,31 @@ public final class AppModel {
 
     public static let routingTokenKey = "routingToken"
 
-    /// The planner to use: the routing server (live traffic) when it is set up, otherwise the offline estimate.
-    /// The second value says which one, for showing to the user.
-    func routePlanner() -> (planner: RoutePlanner, usingServer: Bool) {
-        #if canImport(Security)
-        if let url = RoutingServerSettings.validatedURL(data.routingServerURL), let token = KeychainStore.load(Self.routingTokenKey), !token.isEmpty {
-            let source = FallbackMatrixSource(primary: ProxyMatrixSource(baseURL: url, token: token), secondary: ProviderMatrixSource())
-            return (RoutePlanner(matrixSource: source), true)
+    /// The planner for the chosen source. `isLive` is false for the offline estimate; `label` names the source for the user.
+    func routePlanner() -> (planner: RoutePlanner, isLive: Bool, label: String) {
+        if data.routingProvider == .appleMaps {
+            #if canImport(MapKit)
+            let source = SampledMatrixSource(etaSource: appleETA, onReport: { [weak self] report in
+                Task { @MainActor in self?.routeReport = report }
+            })
+            return (RoutePlanner(matrixSource: source), true, "Apple Maps on this device")
+            #endif
         }
-        #endif
-        return (RoutePlanner(), false)
+        if data.routingProvider == .server {
+            #if canImport(Security)
+            if let url = RoutingServerSettings.validatedURL(data.routingServerURL), let token = KeychainStore.load(Self.routingTokenKey), !token.isEmpty {
+                let source = FallbackMatrixSource(primary: ProxyMatrixSource(baseURL: url, token: token), secondary: ProviderMatrixSource())
+                return (RoutePlanner(matrixSource: source), true, "your routing server")
+            }
+            #endif
+        }
+        return (RoutePlanner(), false, "the offline estimate")
     }
 
-    public var hasRoutingToken: Bool {
-        #if canImport(Security)
-        return !(KeychainStore.load(Self.routingTokenKey) ?? "").isEmpty
-        #else
-        return false
-        #endif
+    public func setRoutingProvider(_ provider: RoutingProvider) {
+        data.routingProvider = provider
+        routeReport = nil
+        save()
     }
 
     /// Saves the server address and token. A blank token keeps the one already stored.

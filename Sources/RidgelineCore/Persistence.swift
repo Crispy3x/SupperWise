@@ -23,6 +23,8 @@ public struct AppData: Equatable, Codable, Sendable {
     public var saltCostPerPound: Money = .zero
     /// Address of the routing server (not secret). The access token lives in the Keychain, never in this file.
     public var routingServerURL: String = ""
+    /// Where drive times come from. Apple Maps on the device by default (free, no key).
+    public var routingProvider: RoutingProvider = .appleMaps
 
     public init() {}
 
@@ -47,6 +49,7 @@ public struct AppData: Equatable, Codable, Sendable {
         laborCostPerHour = try c.decodeIfPresent(Money.self, forKey: .laborCostPerHour) ?? .zero
         saltCostPerPound = try c.decodeIfPresent(Money.self, forKey: .saltCostPerPound) ?? .zero
         routingServerURL = try c.decodeIfPresent(String.self, forKey: .routingServerURL) ?? ""
+        routingProvider = try c.decodeIfPresent(RoutingProvider.self, forKey: .routingProvider) ?? .appleMaps
     }
 }
 
