@@ -26,6 +26,8 @@ targets:
       path: App/Info.plist
       properties:
         CFBundleDisplayName: Ridgeline Ops
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         LSApplicationCategoryType: public.app-category.business
         ITSAppUsesNonExemptEncryption: false   # the app only uses standard HTTPS; confirm before submitting
         UILaunchScreen: {}
