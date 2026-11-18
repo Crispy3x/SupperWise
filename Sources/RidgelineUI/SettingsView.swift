@@ -1,9 +1,14 @@
 #if canImport(SwiftUI)
 import SwiftUI
+import UniformTypeIdentifiers
 import RidgelineCore
 
 struct SettingsView: View {
     @Environment(AppModel.self) private var model
+    @State private var backupURL: URL?
+    @State private var csvURLs: [URL] = []
+    @State private var dataNote = ""
+    @State private var showImporter = false
     @State private var serverAddress = ""
     @State private var serverToken = ""
     @State private var serverNote = ""
@@ -84,6 +89,24 @@ struct SettingsView: View {
                     Stepper("Each extra 30 days: \(model.data.lateFeePolicy.monthlyPercent)% of the balance",
                             value: binding({ model.data.lateFeePolicy.monthlyPercent }, { model.data.lateFeePolicy.monthlyPercent = $0 }), in: 0...10)
                 }
+                Section("Your data") {
+                    Button("Prepare a backup and spreadsheets") {
+                        let export = model.prepareExport()
+                        backupURL = export.backup
+                        csvURLs = export.csvs
+                        dataNote = export.problem ?? "Ready. Choose what to share."
+                    }
+                    if let backupURL {
+                        ShareLink(item: backupURL) { Label("Share full backup (JSON)", systemImage: "square.and.arrow.up") }
+                    }
+                    ForEach(csvURLs, id: \.self) { url in
+                        ShareLink(item: url) { Label(url.lastPathComponent, systemImage: "tablecells") }
+                    }
+                    Button("Restore from a backup file...") { showImporter = true }
+                    Text("The backup holds all your records. Photo files are not included: they stay on this device. Restoring replaces the data on this device, after saving a safety copy of what is there now.")
+                        .font(.footnote).foregroundStyle(.secondary)
+                    if !dataNote.isEmpty { Text(dataNote).font(.footnote).foregroundStyle(.secondary) }
+                }
                 Section("Plan") {
                     switch model.subscriptionState {
                     case .trial(let days): Text("Free trial, \(days) day\(days == 1 ? "" : "s") left. All features unlocked.")
@@ -93,6 +116,21 @@ struct SettingsView: View {
                     Text("Buying a plan is not connected yet in this build.").font(.footnote).foregroundStyle(.secondary)
                 }
                 if let error = model.saveError { Section { Text(error).font(.footnote).foregroundStyle(.red) } }
+            }
+            .fileImporter(isPresented: $showImporter, allowedContentTypes: [.json]) { result in
+                switch result {
+                case .success(let url): dataNote = model.readBackup(at: url) ?? ""
+                case .failure(let error): dataNote = "Could not open the file: \(error.localizedDescription)"
+                }
+            }
+            .alert("Replace the data on this device?",
+                   isPresented: Binding(get: { model.pendingRestore != nil }, set: { if !$0 { model.pendingRestore = nil } })) {
+                Button("Replace", role: .destructive) { dataNote = model.applyPendingRestore() }
+                Button("Cancel", role: .cancel) { model.pendingRestore = nil }
+            } message: {
+                if let r = model.pendingRestore {
+                    Text("This backup has \(r.customerCount) customers, \(r.siteCount) sites, \(r.invoiceCount) invoices and \(r.visitCount) visits. Your current data is saved as a safety copy first.")
+                }
             }
             .onAppear { serverAddress = model.data.routingServerURL }
             .navigationTitle("Settings")

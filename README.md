@@ -4,7 +4,7 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 
 ## What exists so far
 
-**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 160 unit tests, all passing.
+**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 167 unit tests, all passing.
 - `Pricing`, `Entitlements`: Pro and Max per-crew prices, annual 20% off, 14-day trial (all features unlocked), feature gating, read-only after trial.
 - `SnowBilling`: per-push, seasonal, per-inch, hybrid (base, cap, overage) and time-and-materials. One invoice line per storm, skipped visits never billed, per-contract push counting (default one push per storm).
 - `Storm`: trigger depth per site, near-trigger warnings.
@@ -14,6 +14,7 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 - `TimeClock`: shifts and per-job timers, audited corrections, labor cost per site, missed punch-out detection, geofence "start the job?" prompt, 20-region monitoring cap.
 - `Invoicing`: editable invoices (add, change or remove lines until the first payment), due dates, manual payments (cash, check, other), partial payments, void, statuses, invoice numbering, seasonal installment splits with exact cents, a late-fee policy that is applied only when the owner chooses (once, labelled), CSV export with spreadsheet-formula protection, and `InvoicePlanner`, which stops a storm being billed twice and keeps hybrid push caps correct across invoices. A return trip added after its storm was invoiced is flagged, not silently billed or lost.
 - `Quotes`: quotes that expire, can be accepted or declined once, and produce the contract; `SeasonEstimate` shows a customer the season cost (and a mild-to-heavy winter range) for every contract type from stated assumptions, so a per-push price never becomes a surprise; `JobCosting` gives margin per site from invoiced revenue, labor at your cost per hour, salt and sub pay.
+- `DataExport`: a full JSON backup that restores everything, eight spreadsheet files (customers, sites, contracts, visits, invoices, payments, time entries, quotes) with spreadsheet-formula protection, and a restore that refuses non-backups and files from newer versions, flags a tampered visit log, and (in the app) saves a safety copy of the current data first. Photo files are not in the backup.
 - `Notices`: customer message templates (scheduled, en route, delayed, skipped, complete). Completion notices require an after photo.
 - `SubPay`: percent of job, hourly, per-push, per-lot, with "no photo, no pay".
 - `Persistence` (`FileStore`): offline-first single-file store with atomic writes.

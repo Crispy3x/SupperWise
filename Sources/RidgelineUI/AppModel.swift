@@ -119,6 +119,73 @@ public final class AppModel {
         }
     }
 
+    // MARK: your data
+
+    /// A backup waiting for the user to confirm replacing the data on this device.
+    public var pendingRestore: RestoreResult?
+
+    /// Writes a full backup and spreadsheets to a temporary folder so they can be shared. Returns their locations.
+    public func prepareExport() -> (backup: URL?, csvs: [URL], problem: String?) {
+        let now = Date()
+        let stamp = ISO8601DateFormatter().string(from: now).replacingOccurrences(of: ":", with: "-")
+        let dir = FileManager.default.temporaryDirectory.appendingPathComponent("RidgelineExport-\(stamp)")
+        do {
+            try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+            let backup = dir.appendingPathComponent("ridgeline-backup.json")
+            try DataExport.backupJSON(data).write(to: backup, options: .atomic)
+            var csvs: [URL] = []
+            for file in DataExport.csvFiles(data, now: now) {
+                let url = dir.appendingPathComponent(file.name)
+                try Data(file.content.utf8).write(to: url, options: .atomic)
+                csvs.append(url)
+            }
+            return (backup, csvs, nil)
+        } catch {
+            return (nil, [], "Could not prepare the export: \(error.localizedDescription)")
+        }
+    }
+
+    /// Reads a chosen backup file and holds it until the user confirms. Returns a message on failure.
+    public func readBackup(at url: URL) -> String? {
+        let scoped = url.startAccessingSecurityScopedResource()
+        defer { if scoped { url.stopAccessingSecurityScopedResource() } }
+        do {
+            pendingRestore = try DataExport.restore(from: try Data(contentsOf: url))
+            return nil
+        } catch BackupError.newerVersion {
+            return "That backup was made by a newer version of the app. Update the app first."
+        } catch BackupError.unreadable {
+            return "That file is not a Ridgeline Ops backup."
+        } catch {
+            return "Could not read the file: \(error.localizedDescription)"
+        }
+    }
+
+    /// Replaces the data on this device with the pending backup, after saving a safety copy of what is there now.
+    public func applyPendingRestore() -> String {
+        guard let result = pendingRestore else { return "Nothing to restore." }
+        pendingRestore = nil
+        if let folder = store?.url.deletingLastPathComponent() {
+            let stamp = Int(Date().timeIntervalSince1970)
+            let safety = folder.appendingPathComponent("before-restore-\(stamp).json")
+            do {
+                try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+                try DataExport.backupJSON(data).write(to: safety, options: .atomic)
+            } catch {
+                return "Could not save a safety copy of your current data, so nothing was changed."
+            }
+        }
+        var restored = result.data
+        restored.subscription = data.subscription          // a backup never changes this device's trial or plan
+        data = restored
+        save()
+        var message = "Restored \(result.customerCount) customers, \(result.siteCount) sites, \(result.invoiceCount) invoices and \(result.visitCount) visits. Your previous data was kept as a safety copy."
+        if !result.visitLogVerified {
+            message += " Warning: the proof-of-service log in this backup failed its tamper check, so proof packets will say so."
+        }
+        return message
+    }
+
     // MARK: invoices
 
     /// Creates a draft invoice for the storms not yet billed on this contract. Returns a message for the user.
