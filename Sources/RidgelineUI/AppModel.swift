@@ -11,6 +11,8 @@ import AuthenticationServices
 public final class AppModel {
     public var data: AppData
     public var saveError: String?
+    /// Whether a server address and token are saved. Kept as a value so screens do not read the Keychain on every redraw.
+    public private(set) var serverConfigured = false
     /// A short message about something that just happened (for example an invoice was created). The user can dismiss it.
     public var notice: String?
     /// The storm the crew is logging visits under. Both the Today and Storm screens use it.
@@ -42,6 +44,7 @@ public final class AppModel {
         self.data = recovery?.data ?? AppData()
         self.loadNotice = recovery?.notice
         self.savingBlocked = !(recovery?.safeToSave ?? true)
+        refreshServerFlag()
         // Every site gets its private page link up front, so a link in a message always matches a saved one.
         let before = data.portalLinks.count
         data.ensurePortalLinks(now: Date())
@@ -295,11 +298,14 @@ public final class AppModel {
             }
         }
         data = data.erasedCopy()
+        serverConfigured = false
         forecast = nil; winterAlerts = []; pendingRestore = nil; lastSafetyCopy = nil; notice = nil
         save()
     }
 
     // MARK: client portal, requests and storm messages
+
+    func refreshServerFlag() { serverConfigured = portalClient() != nil }
 
     func portalClient() -> PortalClient? {
         #if canImport(Security)
@@ -346,7 +352,7 @@ public final class AppModel {
                 edit { $0.markDecisionSynced(id: r.id) }
                 done += 1
             } catch {
-                if (error as? PortalError) == .server(409) {          // the server already has an answer for it
+                if (error as? PortalError) == .server(409) || (error as? PortalError) == .server(404) {   // already answered, or the server no longer has it
                     edit { $0.markDecisionSynced(id: r.id) }
                     done += 1
                 }
@@ -500,6 +506,7 @@ public final class AppModel {
             KeychainStore.save("", for: Self.routingTokenKey)
             #endif
             save()
+            refreshServerFlag()
             return "Routing server removed."
         }
         guard RoutingServerSettings.validatedURL(trimmed) != nil else { return "The address must start with https://." }
@@ -513,6 +520,7 @@ public final class AppModel {
         #endif
         data.routingServerURL = trimmed
         save()
+        refreshServerFlag()
         return "Saved."
     }
 
@@ -534,7 +542,7 @@ public final class AppModel {
         data.customers.append(customer)
         data.sites.append(site)
         data.contracts.append(SnowContract(siteID: site.id, season: Self.currentSeason(),
-                                           terms: seasonPrice.map { .seasonal(total: $0) } ?? .perPush(rate: perPushRate)))
+                                           terms: seasonPrice.map { ContractTerms.seasonal(total: $0) } ?? ContractTerms.perPush(rate: perPushRate)))
         data.ensurePortalLinks(now: Date())
         save()
     }

@@ -28,7 +28,7 @@ struct TodayView: View {
                 }
                 if overdue > 0 {
                     NavigationLink { InvoicesView().environment(\.embeddedInStack, true) } label: {
-                        HubRow(icon: "exclamationmark.circle.fill", title: "\(overdue) overdue invoice\(overdue == 1 ? "" : "s")", subtitle: "You can send friendly reminders", badge: overdue, tint: .red)
+                        HubRow(icon: "exclamationmark.circle.fill", title: "\(overdue) overdue invoice\(overdue == 1 ? "" : "s")", subtitle: model.reminderPlan().messages.isEmpty ? "Past their due date" : "You can send friendly reminders", badge: overdue, tint: .red)
                     }
                 }
             }
@@ -36,10 +36,10 @@ struct TodayView: View {
     }
 
     @ViewBuilder private var setupSection: some View {
-        let items = SetupChecklist.items(for: model.data, serverConfigured: model.portalClient() != nil)
+        let items = SetupChecklist.items(for: model.data, serverConfigured: model.serverConfigured)
         let progress = SetupChecklist.progress(items)
         let remaining = items.filter { !$0.done }
-        if progress.done < progress.total || remaining.contains(where: { $0.optional }) {
+        if progress.done < progress.total {
             Section {
                 ProgressView(value: Double(progress.done), total: Double(max(progress.total, 1)))
                 ForEach(remaining) { item in

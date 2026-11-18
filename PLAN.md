@@ -427,3 +427,8 @@ Fixed: client links in storm emails now match saved, published pages (links are 
 
 # Added features (latest)
 Today home with attention list and setup checklist; season statement per client; overdue reminders with consent, spacing and a limit of three; client import from CSV. 250 Swift tests, 33 server tests. Ideas not built yet: recurring landscaping visits with their own billing (a site can have only one contract today), card-on-file and payment links (payments are deliberately out of scope), live crew tracking, receipts by email when you record a payment, text messages, accounts and sync on a server.
+
+---
+
+# Review round 5 fixes
+Fixed: the client import sheet no longer rebuilds itself on every redraw; the setup card disappears once the required steps are done (the optional Apple sign-in no longer keeps it on screen); answers for requests the server no longer has are not retried forever; the overdue row only promises reminders when some can actually be sent; the consent record says when consent was cleared because the email changed; the welcome only offers the two billing styles the add-client form supports; import and deletion wording is more exact.

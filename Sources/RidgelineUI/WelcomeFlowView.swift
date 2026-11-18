@@ -78,9 +78,10 @@ struct WelcomeFlowView: View {
             }
         case .snowBilling:
             Picker("How you bill", selection: $answers.snowBilling) {
-                ForEach(SnowBillingChoice.allCases, id: \.self) { Text($0.title).tag($0) }
+                ForEach([SnowBillingChoice.perPush, .seasonal], id: \.self) { Text($0.title).tag($0) }
             }
             .pickerStyle(.segmented)
+            Text("Depth-based and mixed contracts are set up from a quote.").font(.footnote).foregroundStyle(.secondary)
             Stepper("Start plowing at \(answers.triggerInches, specifier: "%.1f") inches", value: $answers.triggerInches, in: 0.5...12, step: 0.5)
         case .homeBase:
             #if canImport(CoreLocation)

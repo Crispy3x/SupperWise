@@ -105,7 +105,7 @@ struct ClientDetailView: View {
             guard !optedOut else { return }                       // a client who asked to stop is never changed here
             if keepConsent != wasConsenting {
                 try data.recordConsent(customerID: customerID, email: keepConsent, sms: false,
-                                       source: keepConsent ? "Owner confirmed the client agreed" : "Owner turned messages off", now: Date())
+                                       source: keepConsent ? "Owner confirmed the client agreed" : ((emailChanged && wasConsenting) ? "The email address changed, so consent was cleared" : "Owner turned messages off"), now: Date())
             }
         } ?? ((emailChanged && wasConsenting && agreed) ? "Saved. The email changed, so confirm the client agreed to messages at the new address." : "Saved.")
         if emailChanged && wasConsenting { agreed = false }

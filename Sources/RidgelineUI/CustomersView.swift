@@ -42,8 +42,8 @@ struct CustomersView: View {
                 } label: { Label("Add", systemImage: "plus") }
             }
             .sheet(isPresented: $showingAdd) { AddCustomerSheet() }
-            .sheet(item: Binding(get: { importReport.map { ImportBox(report: $0) } }, set: { if $0 == nil { importReport = nil } })) { box in
-                ImportClientsSheet(report: box.report)
+            .sheet(isPresented: Binding(get: { importReport != nil }, set: { if !$0 { importReport = nil } })) {
+                if let report = importReport { ImportClientsSheet(report: report) }
             }
             .fileImporter(isPresented: $showingImporter, allowedContentTypes: [.commaSeparatedText, .plainText]) { result in
                 switch result {
@@ -62,11 +62,6 @@ struct CustomersView: View {
             }
         }
     }
-}
-
-private struct ImportBox: Identifiable {
-    let id = UUID()
-    let report: ImportReport
 }
 
 /// Shows what an import would add before anything is saved. Imported clients are never marked as having agreed to messages.
@@ -101,6 +96,7 @@ struct ImportClientsSheet: View {
                 }
                 Section {
                     Text("Nobody is marked as having agreed to messages. Open each client to record that, only if they said yes.").font(.footnote).foregroundStyle(.secondary)
+                    Text("A client without a price has no contract, so they are not billed or messaged until you add one (for example by accepting a quote).").font(.footnote).foregroundStyle(.secondary)
                 }
             }
             .navigationTitle("Import clients")
