@@ -27,6 +27,8 @@ jobs:
       BUNDLE_ID_PREFIX: ${{ secrets.BUNDLE_ID_PREFIX }}
       # Optional: the app's full bundle ID. Use this for an app that already exists in TestFlight.
       BUNDLE_ID: ${{ secrets.BUNDLE_ID }}
+      # Optional: the version shown to testers (for example 2.0.0). Must be at least the version already in App Store Connect.
+      APP_VERSION: ${{ secrets.APP_VERSION }}
     steps:
       - uses: actions/checkout@v4
 
@@ -64,6 +66,8 @@ jobs:
           # TestFlight only accepts a build number higher than every earlier build of the app. A UTC timestamp always is.
           BUILD_NUMBER="$(date -u +%y%m%d%H%M)"
           echo "Build number: $BUILD_NUMBER"
+          VERSION_ARG=""
+          if [ -n "$APP_VERSION" ]; then VERSION_ARG="MARKETING_VERSION=$APP_VERSION"; fi
           xcodebuild archive \
             -project RidgelineOps.xcodeproj \
             -scheme RidgelineOps \
@@ -74,7 +78,8 @@ jobs:
             -authenticationKeyPath "$RUNNER_TEMP/keys/AuthKey_${ASC_KEY_ID}.p8" \
             -authenticationKeyID "$ASC_KEY_ID" \
             -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
-            CURRENT_PROJECT_VERSION="$BUILD_NUMBER"
+            CURRENT_PROJECT_VERSION="$BUILD_NUMBER" \
+            $VERSION_ARG
 
       - name: Upload to TestFlight
         run: |

@@ -51,6 +51,8 @@ Before the first run you need (in this order):
 
 If the app already exists in TestFlight, add a `BUNDLE_ID` secret with that app's exact full bundle ID (then `BUNDLE_ID_PREFIX` is not needed), and use that app's exact bundle ID and a version number (`MARKETING_VERSION` in `project.yml`) at or above the one there. The workflow numbers builds with a UTC timestamp, so the build number is always higher than earlier ones.
 
+**Replacing the old Superwise app:** upload Ridgeline Ops as a new version of the existing Superwise app record. Find Superwise's exact bundle ID in App Store Connect > the app > App Information, put it in the `BUNDLE_ID` secret, and add an `APP_VERSION` secret set above Superwise's latest version (for example 2.0.0). You can rename the app in App Store Connect > App Information. Existing testers get the update through TestFlight. The Superwise bundle ID also needs the Sign in with Apple capability ticked.
+
 Cost note: GitHub counts Mac minutes at 10 times the normal rate on private repositories, so a free account's monthly allowance covers only a handful of runs. Check your plan's limits.
 
 ## 3. Subscriptions (the 14-day free trial and Pro and Max)
