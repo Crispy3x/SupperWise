@@ -49,7 +49,7 @@ Before the first run you need (in this order):
 6. Check that the **CI** workflow is green first (the "Build the app project" job compiles the app the same way, without signing). If it is red, send me its log: the TestFlight run would fail the same way.
 7. **Merge this branch into your repository's default branch first.** GitHub only shows the "Run workflow" button for a workflow file that is on the default branch. Then GitHub > Actions > **TestFlight** > Run workflow. It takes roughly 10 to 20 minutes. Then open App Store Connect > your app > TestFlight: the build appears after Apple finishes processing, and you can add internal testers.
 
-If the app already exists in TestFlight, use that app's exact bundle ID and a version number (`MARKETING_VERSION` in `project.yml`) at or above the one there. The workflow numbers builds with a UTC timestamp, so the build number is always higher than earlier ones.
+If the app already exists in TestFlight, add a `BUNDLE_ID` secret with that app's exact full bundle ID (then `BUNDLE_ID_PREFIX` is not needed), and use that app's exact bundle ID and a version number (`MARKETING_VERSION` in `project.yml`) at or above the one there. The workflow numbers builds with a UTC timestamp, so the build number is always higher than earlier ones.
 
 Cost note: GitHub counts Mac minutes at 10 times the normal rate on private repositories, so a free account's monthly allowance covers only a handful of runs. Check your plan's limits.
 
