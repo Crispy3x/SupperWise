@@ -30,6 +30,25 @@ What to have ready: Apple Developer Program membership; your bundle ID and team 
 5. Testers install the TestFlight app, accept the invite, and need iOS 17 or newer.
 The app icon is in `App/Assets.xcassets` (a first draft, replace it whenever you have a real logo; it must stay 1024 by 1024 with no transparency).
 
+### TestFlight without a Mac: let GitHub build and upload it
+`.github/workflows/testflight.yml` builds the iPhone and iPad app on GitHub's Mac machines and uploads it to TestFlight. **It has never been run.** The first run may fail on a compile error or a signing detail; send me the log.
+
+Before the first run you need (in this order):
+1. **Apple Developer Program membership** (step 2 above) and your **Team ID**.
+2. **Register your bundle ID**: developer.apple.com > Certificates, Identifiers & Profiles > Identifiers > + > App IDs. Use the prefix you chose plus `.ridgelineops` (for example `com.yourbusiness.ridgelineops`).
+3. **Create the app in App Store Connect** (New App) with that bundle ID. The upload fails if this record does not exist.
+4. **Create an App Store Connect API key**: appstoreconnect.apple.com > Users and Access > Integrations > App Store Connect API > Team Keys > Generate. Name it "GitHub builds" and give it the **Admin** role (it needs permission to manage signing certificates). Download the `.p8` file (Apple shows it **only once**) and note the **Key ID** and the **Issuer ID** shown at the top of that page. **This key can manage your Apple account: only ever put it in GitHub secrets, never in a chat, email or file in this repository, and never give it to me or to Claude in Chrome.** Delete the key in App Store Connect when you no longer need it.
+5. **Add five secrets** in GitHub: your repository > Settings > Secrets and variables > Actions > New repository secret:
+   - `ASC_KEY_ID`: the Key ID
+   - `ASC_ISSUER_ID`: the Issuer ID
+   - `ASC_KEY_P8_BASE64`: the `.p8` file turned into one line of text. On a Mac: `base64 -i AuthKey_XXXX.p8 | pbcopy`. On Windows PowerShell: `[Convert]::ToBase64String([IO.File]::ReadAllBytes("AuthKey_XXXX.p8")) | Set-Clipboard`. On Linux: `base64 -w0 AuthKey_XXXX.p8`. Paste it only into the GitHub secret box.
+   - `APPLE_TEAM_ID`: your 10-character Team ID
+   - `BUNDLE_ID_PREFIX`: for example `com.yourbusiness` (the workflow adds `.ridgelineops`)
+6. Check that the **CI** workflow is green first (the "Build the app project" job compiles the app the same way, without signing). If it is red, send me its log: the TestFlight run would fail the same way.
+7. GitHub > Actions > **TestFlight** > Run workflow. It takes roughly 10 to 20 minutes. Then open App Store Connect > your app > TestFlight: the build appears after Apple finishes processing, and you can add internal testers.
+
+Cost note: GitHub counts Mac minutes at 10 times the normal rate on private repositories, so a free account's monthly allowance covers only a handful of runs. Check your plan's limits.
+
 ## 3. Subscriptions (the 14-day free trial and Pro and Max)
 **Not built yet: buying a plan.** The trial clock runs on the device only. To finish it I need these decisions from you:
 - **Where to bill:** the App Store (Apple takes 15% to 30%, the trial is an "introductory offer") or your own website with Stripe (you keep more, Apple's rules for linking out are still changing). I suggested web billing as the main route.

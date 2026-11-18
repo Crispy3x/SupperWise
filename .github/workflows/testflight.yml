@@ -1,0 +1,94 @@
+# Builds the iPhone and iPad app on GitHub's Mac machines and uploads it to TestFlight.
+# Start it by hand: GitHub > Actions > "TestFlight" > Run workflow.
+# NOT YET RUN. The first run will probably need a fix or two; read the log and send me any errors.
+name: TestFlight
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: testflight
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    name: Build and upload
+    runs-on: macos-15
+    timeout-minutes: 45
+    env:
+      # Add these in GitHub > Settings > Secrets and variables > Actions (see SETUP.md). Never paste them anywhere else.
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+      ASC_KEY_P8_BASE64: ${{ secrets.ASC_KEY_P8_BASE64 }}
+      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      BUNDLE_ID_PREFIX: ${{ secrets.BUNDLE_ID_PREFIX }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the secrets are set
+        run: |
+          for name in ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8_BASE64 APPLE_TEAM_ID BUNDLE_ID_PREFIX; do
+            if [ -z "${!name}" ]; then echo "Missing secret: $name (see SETUP.md)"; exit 1; fi
+          done
+
+      - name: Put your bundle ID prefix and team ID into the project file
+        run: |
+          sed -i '' "s/com\.example/${BUNDLE_ID_PREFIX}/g" project.yml
+          sed -i '' "s/DEVELOPMENT_TEAM: \"\"/DEVELOPMENT_TEAM: \"${APPLE_TEAM_ID}\"/" project.yml
+          grep -n "PRODUCT_BUNDLE_IDENTIFIER\|DEVELOPMENT_TEAM\|bundleIdPrefix" project.yml
+
+      - name: Install XcodeGen and make the Xcode project
+        run: |
+          brew install xcodegen
+          xcodegen
+
+      - name: Save the App Store Connect key for this run only
+        run: |
+          mkdir -p "$RUNNER_TEMP/keys"
+          echo "$ASC_KEY_P8_BASE64" | base64 --decode > "$RUNNER_TEMP/keys/AuthKey_${ASC_KEY_ID}.p8"
+          chmod 600 "$RUNNER_TEMP/keys/AuthKey_${ASC_KEY_ID}.p8"
+
+      - name: Build the archive
+        run: |
+          xcodebuild archive \
+            -project RidgelineOps.xcodeproj \
+            -scheme RidgelineOps \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/RidgelineOps.xcarchive" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/keys/AuthKey_${ASC_KEY_ID}.p8" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            CURRENT_PROJECT_VERSION="${{ github.run_number }}"
+
+      - name: Upload to TestFlight
+        run: |
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<PLIST
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>method</key><string>app-store-connect</string>
+              <key>destination</key><string>upload</string>
+              <key>teamID</key><string>${APPLE_TEAM_ID}</string>
+              <key>signingStyle</key><string>automatic</string>
+              <key>uploadSymbols</key><true/>
+          </dict>
+          </plist>
+          PLIST
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/RidgelineOps.xcarchive" \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" \
+            -exportPath "$RUNNER_TEMP/export" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/keys/AuthKey_${ASC_KEY_ID}.p8" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+
+      - name: Remove the key
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/keys"
