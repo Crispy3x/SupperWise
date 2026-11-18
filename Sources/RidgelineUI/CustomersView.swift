@@ -13,7 +13,9 @@ struct CustomersView: View {
                     Section {
                         Text("No customers yet. Add one, or load demo data to try the app.")
                             .foregroundStyle(.secondary)
-                        Button("Load demo data (adds sample customers)") { model.loadDemoData() }
+                        if model.data.customers.isEmpty && model.data.contracts.isEmpty {
+                            Button("Load demo data (adds sample customers)") { model.loadDemoData() }
+                        }
                     }
                 }
                 ForEach(model.data.sites) { site in
@@ -58,10 +60,13 @@ struct AddCustomerSheet: View {
                     #if canImport(CoreLocation)
                     Button(searching ? "Looking up..." : "Find map location") {
                         searching = true
+                        let looked = address
                         Task {
-                            coordinate = await AddressGeocoder.coordinate(for: address)
-                            locationNote = coordinate == nil ? "Address not found. The site will be left out of route ordering." : "Map location found."
+                            let found = await AddressGeocoder.coordinate(for: looked)
                             searching = false
+                            guard looked == address else { return }   // the address changed while looking
+                            coordinate = found
+                            locationNote = found == nil ? "Address not found. The site will be left out of route ordering." : "Map location found."
                         }
                     }
                     .disabled(searching || address.isEmpty)

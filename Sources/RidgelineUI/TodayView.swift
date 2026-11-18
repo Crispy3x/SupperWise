@@ -53,6 +53,7 @@ struct VisitSheet: View {
     @State private var salt = 0.0
     @State private var beforePhotos: [PhotoRef] = []
     @State private var afterPhotos: [PhotoRef] = []
+    @State private var problemPhotos: [PhotoRef] = []
     @State private var note = ""
     @State private var arrival = Date()
     @State private var geofence: GeofenceStatus = .unknown
@@ -84,7 +85,7 @@ struct VisitSheet: View {
                 Section(site.address) {
                     if !site.instructions.isEmpty { Text(site.instructions).foregroundStyle(.orange) }
                     Toggle("Could not service this visit", isOn: $skipped)
-                    if skipped { TextField("Reason (customer will see this)", text: $reason) }
+                    if skipped { TextField("Reason (saved in the proof record and the message preview)", text: $reason) }
                 }
                 Section("Who and where") {
                     TextField("Your name", text: $crewName)
@@ -113,8 +114,12 @@ struct VisitSheet: View {
                     }
                 }
                 Section(skipped ? "Photos of the problem" : "Photos") {
-                    PhotoCaptureRow(title: skipped ? "What blocked the visit" : "Before", kind: skipped ? .other : .before, photos: $beforePhotos)
-                    if !skipped { PhotoCaptureRow(title: "After", kind: .after, photos: $afterPhotos) }
+                    if skipped {
+                        PhotoCaptureRow(title: "What blocked the visit", kind: .other, photos: $problemPhotos)
+                    } else {
+                        PhotoCaptureRow(title: "Before", kind: .before, photos: $beforePhotos)
+                        PhotoCaptureRow(title: "After", kind: .after, photos: $afterPhotos)
+                    }
                 }
                 Section("Note") { TextField("Optional note", text: $note) }
                 Section("Message to customer (preview only, messages are not sent yet)") {
@@ -153,7 +158,7 @@ struct VisitSheet: View {
                                  geofence: geofence,
                                  status: skipped ? .skipped(reason: reason) : .completed,
                                  snowDepthInches: skipped ? 0 : depth, saltPounds: skipped ? 0 : salt,
-                                 photos: beforePhotos + afterPhotos, note: note)
+                                 photos: skipped ? problemPhotos : beforePhotos + afterPhotos, note: note)
         model.record(record)
         dismiss()
     }

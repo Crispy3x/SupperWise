@@ -79,7 +79,7 @@ struct SettingsView: View {
                     switch model.subscriptionState {
                     case .trial(let days): Text("Free trial, \(days) day\(days == 1 ? "" : "s") left. All features unlocked.")
                     case .active(let tier): Text("Plan: \(tier == .pro ? "Pro" : "Max")")
-                    case .expired: Text("Trial ended. Your data is safe and can be exported.")
+                    case .expired: Text("Trial ended. Nothing is locked in this build.")
                     }
                     Text("Buying a plan is not connected yet in this build.").font(.footnote).foregroundStyle(.secondary)
                 }

@@ -8,6 +8,9 @@ import RidgelineCore
 public final class AppModel {
     public var data: AppData
     public var saveError: String?
+    /// True while saving is switched off to protect an unreadable data file.
+    public var savingIsBlocked: Bool { savingBlocked }
+    public func dismissLoadNotice() { if !savingBlocked { loadNotice = nil } }
     /// Set when the saved file could not be read: the app started empty and the old file was kept.
     public var loadNotice: String?
     private var savingBlocked = false

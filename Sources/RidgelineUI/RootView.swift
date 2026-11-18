@@ -12,7 +12,16 @@ public struct RidgelineRootView: View {
     public var body: some View {
         VStack(spacing: 0) {
             if let notice = model.loadNotice {
-                Text(notice)
+                VStack(spacing: 4) {
+                    Text(notice).font(.footnote)
+                    if !model.savingIsBlocked {
+                        Button("Dismiss") { model.dismissLoadNotice() }.font(.footnote).buttonStyle(.bordered)
+                    }
+                }
+                .frame(maxWidth: .infinity).padding(6).background(.red.opacity(0.2))
+            }
+            if let problem = model.saveError {
+                Text(problem)
                     .font(.footnote).frame(maxWidth: .infinity).padding(6).background(.red.opacity(0.2))
             }
             SubscriptionBanner()
