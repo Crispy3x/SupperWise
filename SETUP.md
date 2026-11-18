@@ -1,6 +1,5 @@
 # What you need to do
 
-**Already have an Apple Developer account?** `CHROME-BRIEF-TESTFLIGHT.md` is a ready-to-paste brief for Claude in Chrome that does the clicking from the Apple and GitHub websites up to the upload, and stops for payments, agreements and secrets.
 
 **Shortcut for the browser steps:** `CHROME-BRIEF.md` is a ready-to-paste brief for Claude in Chrome. It does the account clicking (Apple Developer, App Store Connect, Google Cloud, hosting, build results, name checks) but stops for payments, passwords, identity and legal agreements, which only you can do.
 
@@ -47,7 +46,7 @@ Before the first run you need (in this order):
    - `APPLE_TEAM_ID`: your 10-character Team ID
    - `BUNDLE_ID_PREFIX`: for example `com.yourbusiness` (the workflow adds `.ridgelineops`)
 6. Check that the **CI** workflow is green first (the "Build the app project" job compiles the app the same way, without signing). If it is red, send me its log: the TestFlight run would fail the same way.
-7. **Merge this branch into your repository's default branch first.** GitHub only shows the "Run workflow" button for a workflow file that is on the default branch. Then GitHub > Actions > **TestFlight** > Run workflow. It takes roughly 10 to 20 minutes. Then open App Store Connect > your app > TestFlight: the build appears after Apple finishes processing, and you can add internal testers.
+7. This branch is already the repository's default branch, so the "Run workflow" button is available. GitHub > Actions > **TestFlight** > Run workflow. It takes roughly 10 to 20 minutes. Then open App Store Connect > your app > TestFlight: the build appears after Apple finishes processing, and you can add internal testers.
 
 If the app already exists in TestFlight, add a `BUNDLE_ID` secret with that app's exact full bundle ID (then `BUNDLE_ID_PREFIX` is not needed), and use that app's exact bundle ID and a version number (`MARKETING_VERSION` in `project.yml`) at or above the one there. The workflow numbers builds with a UTC timestamp, so the build number is always higher than earlier ones.
 
