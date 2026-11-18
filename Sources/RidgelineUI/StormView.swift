@@ -2,14 +2,12 @@
 import SwiftUI
 import RidgelineCore
 
-/// Dispatcher view: set the weather, see which sites hit their trigger, and plan the order.
+/// Dispatcher view: set the snowfall, see which sites hit their trigger, and plan the order by drive time.
 /// The dispatcher stays in control: priorities are strict, and the first N stops can be frozen.
+/// Routes are ordered by drive time only. Weather decides which sites need service, not how the route is driven.
 struct StormView: View {
     @Environment(AppModel.self) private var model
     @State private var inches = 4.0
-    @State private var ratePerHour = 0.5
-    @State private var tempF = 28.0
-    @State private var windMph = 10.0
     @State private var frozen = 0
     @State private var depotLat = ""
     @State private var depotLon = ""
@@ -17,11 +15,6 @@ struct StormView: View {
     @State private var livePlan: RoutePlanResult?
     @State private var planNote = "Offline estimate of drive times."
 
-    private let conditionsModel = ConditionsModel()
-
-    private var conditions: WeatherConditions {
-        WeatherConditions(snowfallRateInPerHour: ratePerHour, accumulationInches: inches, temperatureF: tempF, windMph: windMph)
-    }
     private var hits: [Site] { TriggerEvaluator.sitesToServe(sites: model.data.sites, inches: inches) }
     private var warnings: [Site] { TriggerEvaluator.sitesNearTrigger(sites: model.data.sites, inches: inches, within: 1.5) }
 
@@ -35,16 +28,13 @@ struct StormView: View {
     private var start: Coordinate { model.data.depot ?? stops.first?.coordinate ?? Coordinate(latitude: 0, longitude: 0) }
 
     private var result: RoutePlanResult {
-        // Offline estimate here. On a device with a server, drive times come from Google (batch) and Apple (next legs),
-        // through RoutePlanner and a MatrixSource; the weather layer below stays the same.
-        let provider = StormAdjustedDriveTime(base: HaversineDriveTime(), speedFactor: conditionsModel.speedFactor(conditions))
-        return RouteOptimizer.optimize(stops: stops, start: start, frozenPrefix: frozen, provider: provider,
-                                       serviceTimeFactor: conditionsModel.serviceTimeFactor(conditions))
+        // Offline estimate, shown until the chosen source (Apple Maps or the routing server) answers.
+        return RouteOptimizer.optimize(stops: stops, start: start, frozenPrefix: frozen, provider: HaversineDriveTime())
     }
 
     /// Changes whenever anything that affects the route changes, so the live plan is refreshed.
     private var planKey: String {
-        "\(hits.map(\.id))|\(inches)|\(ratePerHour)|\(tempF)|\(windMph)|\(frozen)|\(model.data.routingServerURL)|\(model.data.routingProvider.rawValue)"
+        "\(hits.map(\.id))|\(frozen)|\(model.data.routingServerURL)|\(model.data.routingProvider.rawValue)"
     }
 
     var body: some View {
@@ -67,9 +57,6 @@ struct StormView: View {
                                 await model.refreshWeather(hours: 24)
                                 if let s = model.forecast {
                                     inches = min(24, (s.snowfallInches * 2).rounded() / 2)
-                                    ratePerHour = min(3, (s.peakSnowRateInPerHour * 4).rounded() / 4)
-                                    tempF = max(-20, min(45, (s.temperatureF ?? tempF).rounded()))
-                                    windMph = max(0, min(60, ((s.maxWindMph ?? 0) / 5).rounded() * 5))
                                 }
                                 loading = false
                             }
@@ -82,13 +69,10 @@ struct StormView: View {
                             .font(.footnote).foregroundStyle(.orange)
                     }
                 }
-                Section("Weather") {
+                Section("Snowfall") {
                     Slider(value: $inches, in: 0...24, step: 0.5)
-                    Text("\(inches, specifier: "%.1f") inches on the ground")
-                    Stepper("Falling: \(ratePerHour, specifier: "%.1f") in/hr", value: $ratePerHour, in: 0...3, step: 0.25)
-                    Stepper("Temperature: \(Int(tempF))°F", value: $tempF, in: -20...45, step: 1)
-                    Stepper("Wind: \(Int(windMph)) mph", value: $windMph, in: 0...60, step: 5)
-                    Text("Driving ×\(conditionsModel.speedFactor(conditions), specifier: "%.2f"), time per site ×\(conditionsModel.serviceTimeFactor(conditions), specifier: "%.2f"). These start as estimates and can be tuned from your logged drives.")
+                    Text("\(inches, specifier: "%.1f") inches")
+                    Text("Sites whose trigger depth is reached are listed below, ordered by priority and then by drive time.")
                         .font(.footnote).foregroundStyle(.secondary)
                     Stepper("Keep first \(frozen) stops fixed", value: $frozen, in: 0...20)
                 }
@@ -152,10 +136,10 @@ struct StormView: View {
                     return
                 }
                 planNote = "Asking \(chosen.label)..."
-                let live = await chosen.planner.plan(stops: stops, start: start, conditions: conditions, frozenPrefix: frozen)
+                let live = await chosen.planner.plan(stops: stops, start: start, frozenPrefix: frozen)
                 if Task.isCancelled { return }
                 livePlan = live
-                planNote = "Drive times from \(chosen.label), adjusted for the weather."
+                planNote = "Drive times from \(chosen.label)."
             }
         }
     }

@@ -20,6 +20,9 @@ public struct WeatherConditions: Equatable, Codable, Sendable {
     public static let clear = WeatherConditions()
 }
 
+/// NOT USED BY THE APP'S ROUTING (decision: routes are ordered by drive time only; see PLAN.md).
+/// Kept, tested, in case weather-adjusted routes are wanted later.
+///
 /// Turns weather into a driving-speed factor and a service-time factor.
 ///
 /// IMPORTANT: every number here is a starting guess, not a validated model. Owners can edit the values, and

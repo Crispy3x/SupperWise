@@ -72,7 +72,7 @@ public struct WeatherWindowSummary: Equatable, Sendable {
     public var maxGustMph: Double?
     public var minVisibilityMiles: Double?
 
-    /// Inputs for the route weather model.
+    /// Weather as numbers. The app currently uses only the snowfall total; the rest is available if weather-based routing is ever wanted.
     public var conditions: WeatherConditions {
         WeatherConditions(snowfallRateInPerHour: peakSnowRateInPerHour, accumulationInches: snowfallInches,
                           temperatureF: temperatureF ?? 30, windMph: maxWindMph ?? 0, visibilityMiles: minVisibilityMiles ?? 10)

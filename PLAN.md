@@ -132,7 +132,7 @@ Example monthly totals:
 
 **Pro:** CRM, scheduling, quotes/invoices, offline crew app, time clock, Stripe payments, snow billing (per-push, seasonal, trigger, hybrid), GPS and photo proof of service, basic route ordering by drive time, "service complete" texts.
 
-**Max (everything in Pro, plus):** conditions-aware route optimizer (traffic, storm speed factors, priorities, time windows), storm events with weather triggers and 3am dispatch, sub management (COI expiry, pay rules, no-photo/no-pay), QuickBooks two-way sync, marketing (review requests, renewal campaigns), roles/permissions, advanced reports.
+**Max (everything in Pro, plus):** route optimizer (drive time, priorities, fixed stops, deadlines), storm events with weather triggers and 3am dispatch, sub management (COI expiry, pay rules, no-photo/no-pay), QuickBooks two-way sync, marketing (review requests, renewal campaigns), roles/permissions, advanced reports.
 
 **Trial:** 14 days with Max features unlocked so owners see the storm and routing wedge, then they pick a plan. Month-to-month with one-tap cancel.
 
@@ -179,7 +179,7 @@ Notes:
 | Marketing (review requests, renewals) | $99/mo add-on | Included in Max |
 | Snow billing (per-push, seasonal, trigger, hybrid) | Not found in their pages | Included in Pro |
 | GPS and photo proof of service | Not found as a built-in snow feature | Included in Pro |
-| Storm triggers and conditions-aware routing | Not found | Max |
+| Storm triggers and a route optimizer | Not found | Max |
 | Cancellation | Complaints about annual plans | Month-to-month, one-tap cancel, data export |
 
 ("Not found" means absent from Jobber's own pages and the sources we saw, not proof it's missing. Re-check Jobber's current feature list before putting it in marketing.)
@@ -384,3 +384,8 @@ All screens (Crew, Storm, Customers, Quotes, Invoices, Routes, Time clock, Job c
 
 # Decision: Apple Maps is the default drive-time source
 Apple MapKit on the device (free, live traffic, no key). Because Apple answers one leg per request and throttles, the app measures the most important legs and estimates the rest, and reports how many were measured. Google via the routing server stays as an option, and the offline estimate as a fallback. Apple's terms were read in part: the fleet management ban is worded for MapKit JS on non-Apple hardware, results may be kept only briefly, and Apple can limit access at any time. Open: confirm with Apple developer support or a lawyer that crew route planning in a native app is allowed. 160 tests.
+
+---
+
+# Decision: routes use drive time only, not weather
+Routes are ordered by drive time (Apple Maps, or the routing server, or the offline estimate), with strict priorities, fixed stops and deadlines. They are **not** adjusted for weather. Weather still decides which sites need service: the forecast fills the snowfall slider, and each site's trigger depth decides who is listed. The weather model stays in the code, tested but unused, in case it is wanted later. Reasons: no maps service has snow-aware routing, the slowdown factors were unvalidated guesses, and owners in the research distrusted automatic routing. Earlier mentions of "conditions-aware routing" in this file, including the pitch and the competitor comparison, are superseded by this decision. Apple's live traffic still reflects slowdowns that appear in traffic data.

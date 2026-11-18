@@ -44,7 +44,7 @@ Drive times now come from **Apple Maps on the device** by default (free, no key,
 
 ## How routing works
 1. **Drive times** come from a `MatrixSource`: Google Routes API (traffic-aware, batch, through your own server) first, then the offline estimate if it fails. `GoogleRoutesMatrix` builds the request, splits big jobs into allowed-size blocks and reads the response. The Google key must stay on the server.
-2. **Weather layer** (`ConditionsModel`): snow on the ground, snowfall rate, temperature, wind and visibility become a driving-speed factor and a time-per-site factor. Google and Apple drive times know traffic but have no snow logic, so this sits on top. The numbers are starting guesses; `SpeedCalibrator` replaces them with what your trucks actually did (median of expected vs actual drive time from the visit log).
+2. **Weather does not change routes.** Decision: routes are ordered by drive time only. The weather model (`ConditionsModel`, `SpeedCalibrator`) is still in the code and tested, but the app does not use it. Weather decides which sites need service (snowfall against each site's trigger depth), not how long a drive takes. Apple's live traffic already reflects slowdowns that show up in traffic data.
 3. **Ordering** (`RouteOptimizer`): frozen first stops never move, priority tiers are strict (hospital before driveway), inside a tier nearest-next then 2-opt improvement (never longer than nearest-next). Deadlines are checked and late stops reported, not forced. Crews are assigned by sweeping around the depot into balanced groups.
 4. **Live refresh**: Apple MapKit gives a live ETA per leg on the device (`MapKitETASource`, one leg per request, so only the next few legs via `LegRefiner`).
 5. **Navigation**: the driver taps through to Apple Maps (next stop) or Google Maps (whole route in linked parts, about 9 waypoints each) for turn-by-turn.
@@ -60,7 +60,7 @@ Drive times now come from **Apple Maps on the device** by default (free, no key,
 See `SETUP.md`: steps for you (Mac and Xcode, accounts, Google, legal) and what to send me.
 
 ## Weather feed (National Weather Service)
-`NWSClient` loads the free NWS forecast and winter alerts for the yard location (rounded to about 1 km; customer addresses are never sent). `NWSForecast.summary(from:to:)` turns it into storm total snow (inches), peak rate, temperature, wind and visibility for a time window, and `.conditions` feeds the route weather model. It was checked against the live NWS service (forecast read, alerts read, location rounding accepted); there was no snow in the forecast that day, so a real snowfall total has not yet been seen end to end. Set a real app name and contact address in `AppModel.weatherUserAgent` before release, as NWS asks. US only. NWS snowfall forecasts are estimates and can be wrong, so the dispatcher can still override every number.
+`NWSClient` loads the free NWS forecast and winter alerts for the yard location (rounded to about 1 km; customer addresses are never sent). `NWSForecast.summary(from:to:)` turns it into storm total snow (inches) and other numbers for a time window. The Storm screen uses only the snowfall total, to fill in the snowfall slider that decides which sites reach their trigger depth.
 
 ## Use the server from the app
 ```swift

@@ -306,3 +306,19 @@ final class NavigationLinksTests: XCTestCase {
         XCTAssertFalse(urls[0].absoluteString.contains("waypoints"))
     }
 }
+
+final class DriveTimeOnlyPlanningTests: XCTestCase {
+    func testPlanningWithoutWeatherUsesPureDriveTimes() async {
+        struct Fixed: MatrixSource {
+            func matrix(for points: [Coordinate]) async throws -> DriveTimeMatrix {
+                DriveTimeMatrix(points: points, seconds: points.indices.map { i in points.indices.map { j in i == j ? 0 : 600 } })
+            }
+        }
+        let start = Coordinate(latitude: 45, longitude: -93)
+        let stops = [Stop(id: UUID(), name: "a", coordinate: Coordinate(latitude: 45.01, longitude: -93), priority: 1, serviceMinutes: 0),
+                     Stop(id: UUID(), name: "b", coordinate: Coordinate(latitude: 45.02, longitude: -93), priority: 1, serviceMinutes: 0)]
+        let r = await RoutePlanner(matrixSource: Fixed()).plan(stops: stops, start: start)     // no conditions given
+        XCTAssertEqual(r.totalDriveSeconds, 1200, accuracy: 0.001)
+        XCTAssertEqual(r.planned[1].arrivalOffsetSeconds, 1200, accuracy: 0.001)
+    }
+}

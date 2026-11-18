@@ -152,7 +152,7 @@ public struct RoutePlanner: Sendable {
 
     /// - Parameters:
     ///   - observedSpeedFactor: from `SpeedCalibrator.observedFactor`, blended into the model's guess.
-    public func plan(stops: [Stop], start: Coordinate, conditions: WeatherConditions, frozenPrefix: Int = 0,
+    public func plan(stops: [Stop], start: Coordinate, conditions: WeatherConditions = .clear, frozenPrefix: Int = 0,
                      observedSpeedFactor: Double? = nil) async -> RoutePlanResult {
         let points = [start] + stops.map(\.coordinate)
         let matrix = (try? await matrixSource.matrix(for: points))
