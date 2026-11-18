@@ -19,6 +19,15 @@ Send me: the build errors, then screenshots of each tab once it runs.
 - Add the app in App Store Connect with your bundle ID.
 - For testers: archive and upload to TestFlight (Product > Archive > Distribute).
 
+### Getting onto TestFlight (after step 1 builds cleanly)
+What to have ready: Apple Developer Program membership; your bundle ID and team ID in `project.yml`; the app name (App Store names are unique, "Ridgeline Ops" may be taken, so have a second choice); a support email; a privacy policy web address (only for outside testers); the testers' email addresses.
+1. App Store Connect > Apps > New App: platform iOS, name, language, bundle ID (it appears once the ID is registered, Xcode registers it with automatic signing), SKU (any text you like).
+2. In Xcode choose "Any iOS Device (arm64)", then Product > Archive, then Distribute App > App Store Connect > Upload. The build shows in TestFlight after Apple finishes processing (minutes to an hour).
+3. Internal testers (up to 100 people you add as App Store Connect users): no review, they can install as soon as processing ends. Start with these.
+4. External testers (anyone with an email or a public link): needs a short Beta App Review (usually a day or two), a privacy policy address, a contact email, and notes on what to test. Add the group after internal testing works.
+5. Testers install the TestFlight app, accept the invite, and need iOS 17 or newer.
+The app icon is in `App/Assets.xcassets` (a first draft, replace it whenever you have a real logo; it must stay 1024 by 1024 with no transparency).
+
 ## 3. Subscriptions (the 14-day free trial and Pro and Max)
 **Not built yet: buying a plan.** The trial clock runs on the device only. To finish it I need these decisions from you:
 - **Where to bill:** the App Store (Apple takes 15% to 30%, the trial is an "introductory offer") or your own website with Stripe (you keep more, Apple's rules for linking out are still changing). I suggested web billing as the main route.
