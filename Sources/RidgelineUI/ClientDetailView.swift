@@ -52,6 +52,19 @@ struct ClientDetailView: View {
             } footer: {
                 Text("Only turn this on if the client said yes. They can stop at any time.")
             }
+            ForEach(sites) { site in
+                if let st = SeasonStatement.build(data: model.data, siteID: site.id, now: Date()) {
+                    Section("This winter: \(site.address)") {
+                        Text(st.contractSummary).font(.footnote).foregroundStyle(.secondary)
+                        LabeledContent("Storms serviced") { Text("\(st.stormsServiced)") }
+                        if st.skippedVisits > 0 { LabeledContent("Visits skipped") { Text("\(st.skippedVisits)") } }
+                        if let cap = st.capLine { Text(cap).font(.subheadline) }
+                        LabeledContent("Billed") { Text(st.billed.formatted) }
+                        LabeledContent("Paid") { Text(st.paid.formatted) }
+                        LabeledContent("Still owed") { Text(st.outstanding.formatted).foregroundStyle(st.outstanding.cents > 0 ? .orange : .secondary) }
+                    }
+                }
+            }
             Section("Sites and client pages") {
                 ForEach(sites) { site in
                     VStack(alignment: .leading, spacing: 4) {

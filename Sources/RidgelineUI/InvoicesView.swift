@@ -6,6 +6,7 @@ import RidgelineCore
 struct InvoicesView: View {
     @Environment(AppModel.self) private var model
     @State private var message: String?
+    @State private var sendingReminders = false
 
     var body: some View {
         ScreenStack {
@@ -41,6 +42,23 @@ struct InvoicesView: View {
                                     .font(.footnote).foregroundStyle(.secondary)
                             }
                         }
+                    }
+                }
+                let reminders = model.reminderPlan()
+                if !reminders.messages.isEmpty {
+                    Section {
+                        Button(sendingReminders ? "Sending..." : "Send \(reminders.messages.count) friendly reminder\(reminders.messages.count == 1 ? "" : "s")") {
+                            Task {
+                                sendingReminders = true
+                                message = await model.sendReminders()
+                                sendingReminders = false
+                            }
+                        }
+                        .disabled(sendingReminders)
+                    } header: {
+                        Text("Overdue")
+                    } footer: {
+                        Text("Only clients who agreed to messages get one. Each invoice gets at most three, a week apart.")
                     }
                 }
                 Section("Saved invoices") {

@@ -105,8 +105,8 @@ struct WelcomeFlowView: View {
             Stepper("\(answers.crewCount) crew\(answers.crewCount == 1 ? "" : "s") or truck\(answers.crewCount == 1 ? "" : "s")", value: $answers.crewCount, in: 1...50)
             Text("Pricing is per crew. Office staff are always free.").font(.footnote).foregroundStyle(.secondary)
         case .importClients:
-            Label("Add clients one at a time from the Clients tab.", systemImage: "person.badge.plus")
-            Text("Importing a whole list is not available yet.").font(.footnote).foregroundStyle(.secondary)
+            Label("Add clients one at a time, or import a spreadsheet saved as CSV, from the Clients tab.", systemImage: "person.badge.plus")
+            Text("Nobody is imported as having agreed to messages.").font(.footnote).foregroundStyle(.secondary)
         case .payment:
             Stepper("Clients have \(answers.netDays) days to pay", value: $answers.netDays, in: 0...60)
             TextField("How should clients pay you? This goes on invoices.", text: $answers.paymentInstructions, axis: .vertical)

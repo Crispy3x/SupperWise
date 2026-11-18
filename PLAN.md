@@ -422,3 +422,8 @@ Written, never compiled: five-tab layout with a shared design layer, ten-step we
 
 # Review round 4 fixes (latest)
 Fixed: client links in storm emails now match saved, published pages (links are created up front and saved before anything is planned); the "data was set aside" notice is no longer hidden behind the welcome screen; answers that did not reach a client's page are sent again the next time you check for requests; deleting an account also removes the crew name, temporary export folders and an unreadable data file; consent follows the email address (a new address needs a fresh yes) and an opted-out client is never changed from the detail screen; each storm has a unique name and a "Start a new storm" button; the message footers no longer promise that a reply reaches you; welcome and settings wording matches what the app really does (storm messaging is an option you review, not automatic). One reviewer finding (a duplicated longitude field) was wrong and was left alone.
+
+---
+
+# Added features (latest)
+Today home with attention list and setup checklist; season statement per client; overdue reminders with consent, spacing and a limit of three; client import from CSV. 250 Swift tests, 33 server tests. Ideas not built yet: recurring landscaping visits with their own billing (a site can have only one contract today), card-on-file and payment links (payments are deliberately out of scope), live crew tracking, receipts by email when you record a payment, text messages, accounts and sync on a server.

@@ -4,7 +4,7 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 
 ## What exists so far
 
-**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 233 unit tests, all passing.
+**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 250 unit tests, all passing.
 - `Pricing`, `Entitlements`: Pro and Max per-crew prices, annual 20% off, 14-day trial (all features unlocked), feature gating, read-only after trial.
 - `SnowBilling`: per-push, seasonal, per-inch, hybrid (base, cap, overage) and time-and-materials. One invoice line per storm, skipped visits never billed, per-contract push counting (default one push per storm).
 - `Storm`: trigger depth per site, near-trigger warnings.
@@ -47,6 +47,12 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 - **Requests inbox**: client requests arrive from the portal server; Accept or Decline, and the client's page shows the answer. An accepted urgent request moves the site to the top of the list for that storm only.
 - **Client page**: status, estimated arrival window, this winter's visits, bills (amounts can be hidden in Settings), and request buttons.
 - **Automatic invoices**: when a visit is saved the app creates a draft invoice (default), or emails it, per Settings.
+
+## More features (screens written, never compiled)
+- **Today** is a real home: what needs your attention (client requests, draft invoices, overdue invoices) and a "Finish setup" checklist for the heavy steps that do not belong in the welcome questions.
+- **Season statement** per client (Client details): storms serviced, visits skipped, pushes used against the cap, billed, paid and still owed.
+- **Overdue reminders** (Invoices): friendly, only to clients who agreed to messages, a week apart, at most three per invoice, never in quiet hours, and each includes how to pay and a link to their bills.
+- **Import clients from a spreadsheet** (Clients > Add > Import): finds the Name and Address columns in any order, skips duplicates and incomplete rows, drops an email that cannot work, and never marks anyone as having agreed to messages.
 
 ## Welcome flow and automatic invoices (logic)
 - **`Onboarding`**: the ten welcome steps (business name, services, clients, snow billing and trigger depth, home base, crews, import clients, payment terms, messages and invoice automation, color). Only the business name is required; everything else has a default and can be skipped. `finishOnboarding` applies the answers (profile, company name, crews, home base). It is safe to run twice and never deletes crews.

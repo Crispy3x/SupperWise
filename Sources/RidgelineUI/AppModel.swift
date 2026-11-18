@@ -428,6 +428,39 @@ public final class AppModel {
         return text
     }
 
+    // MARK: reminders and imports
+
+    public func reminderPlan() -> ReminderPlan { ReminderPlanner.plan(data: data, now: Date()) }
+
+    /// Sends the reminders that are due now. Only reminders that really went out are recorded, which also enforces the pause between them.
+    public func sendReminders() async -> String {
+        guard let client = portalClient() else { return "Set up your server in Settings first." }
+        let plan = reminderPlan()
+        let now = Date()
+        let due = zip(plan.messages, plan.invoiceNumbers).filter { $0.0.sendAfter <= now }
+        if due.isEmpty { return plan.messages.isEmpty ? "No reminders are due." : "Reminders are waiting for quiet hours to end." }
+        do {
+            let ok = try await client.sendEmails(due.map { $0.0 })
+            let sent = zip(due, ok).filter { $0.1 }.map { $0.0.1 }
+            edit { $0.recordReminders(sent, at: Date()) }
+            var text = "Sent \(sent.count) reminder\(sent.count == 1 ? "" : "s")."
+            if sent.count < due.count { text += " \(due.count - sent.count) failed and can be tried again." }
+            return text
+        } catch {
+            return "Could not send reminders. Nothing was recorded as sent."
+        }
+    }
+
+    /// Reads a chosen spreadsheet file (CSV) for client import. Returns the report, or a message if the file cannot be read.
+    public func readImportFile(at url: URL) -> (report: ImportReport?, problem: String?) {
+        let scoped = url.startAccessingSecurityScopedResource()
+        defer { if scoped { url.stopAccessingSecurityScopedResource() } }
+        guard let data = try? Data(contentsOf: url) else { return (nil, "Could not read that file.") }
+        guard data.count <= 2_000_000 else { return (nil, "That file is larger than 2 MB. Split it and import in parts.") }
+        guard let text = String(data: data, encoding: .utf8) ?? String(data: data, encoding: .isoLatin1) else { return (nil, "That file is not text.") }
+        return (ClientImport.clients(from: text, existing: self.data), nil)
+    }
+
     // MARK: routing server
 
     public static let routingTokenKey = "routingToken"

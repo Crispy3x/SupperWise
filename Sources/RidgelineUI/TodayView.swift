@@ -9,11 +9,58 @@ struct TodayView: View {
 
     private var stormNameBinding: Binding<String> { Binding(get: { model.stormName }, set: { model.stormName = $0 }) }
 
+    private var pendingRequests: Int { model.data.serviceRequests.filter { $0.status == .pending }.count }
+    private var drafts: Int { model.data.invoices.filter { $0.sentAt == nil && !$0.isVoid }.count }
+    private var overdue: Int { model.data.invoices.filter { $0.status(now: Date()) == .overdue }.count }
+
+    @ViewBuilder private var attentionSection: some View {
+        if pendingRequests + drafts + overdue > 0 {
+            Section("Needs your attention") {
+                if pendingRequests > 0 {
+                    NavigationLink { RequestsView().environment(\.embeddedInStack, true) } label: {
+                        HubRow(icon: "tray.full.fill", title: "\(pendingRequests) client request\(pendingRequests == 1 ? "" : "s")", subtitle: "Waiting for your answer", badge: pendingRequests, tint: .orange)
+                    }
+                }
+                if drafts > 0 {
+                    NavigationLink { InvoicesView().environment(\.embeddedInStack, true) } label: {
+                        HubRow(icon: "doc.text.fill", title: "\(drafts) draft invoice\(drafts == 1 ? "" : "s")", subtitle: "Look them over and send", badge: drafts)
+                    }
+                }
+                if overdue > 0 {
+                    NavigationLink { InvoicesView().environment(\.embeddedInStack, true) } label: {
+                        HubRow(icon: "exclamationmark.circle.fill", title: "\(overdue) overdue invoice\(overdue == 1 ? "" : "s")", subtitle: "You can send friendly reminders", badge: overdue, tint: .red)
+                    }
+                }
+            }
+        }
+    }
+
+    @ViewBuilder private var setupSection: some View {
+        let items = SetupChecklist.items(for: model.data, serverConfigured: model.portalClient() != nil)
+        let progress = SetupChecklist.progress(items)
+        let remaining = items.filter { !$0.done }
+        if progress.done < progress.total || remaining.contains(where: { $0.optional }) {
+            Section {
+                ProgressView(value: Double(progress.done), total: Double(max(progress.total, 1)))
+                ForEach(remaining) { item in
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(item.title + (item.optional ? " (optional)" : "")).font(.subheadline.bold())
+                        Text(item.detail).font(.footnote).foregroundStyle(.secondary)
+                    }
+                }
+            } header: {
+                Text("Finish setup: \(progress.done) of \(progress.total)")
+            }
+        }
+    }
+
     private var sites: [Site] { model.data.sites.sorted { ($0.priority, $0.address) < ($1.priority, $1.address) } }
 
     var body: some View {
         ScreenStack {
             List {
+                attentionSection
+                setupSection
                 Section { TextField("Storm name", text: stormNameBinding) }
                 Section("Sites") {
                     ForEach(sites) { site in
