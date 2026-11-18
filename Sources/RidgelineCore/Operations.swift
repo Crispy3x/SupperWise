@@ -9,6 +9,11 @@ public enum OperationError: Error, Equatable {
 
 /// Everyday actions on the saved data. They live here, not in the screens, so they can be tested.
 extension AppData {
+    /// Addresses match ignoring case, extra spaces and line breaks.
+    static func normalizedAddress(_ text: String) -> String {
+        text.lowercased().split(whereSeparator: { $0.isWhitespace }).joined(separator: " ")
+    }
+
     // MARK: quotes
 
     /// Accepts a quote and creates the site (if this customer has none at that address) and the contract.
@@ -18,12 +23,12 @@ extension AppData {
         guard let i = quotes.firstIndex(where: { $0.id == id }) else { throw OperationError.notFound }
         var quote = quotes[i]
         if quote.status(now: now) == .accepted,
-           let existing = contracts.first(where: { c in sites.first { $0.id == c.siteID }.map { $0.customerID == quote.customerID && $0.address == quote.address && c.season == quote.season } ?? false }) {
+           let existing = contracts.first(where: { c in sites.first { $0.id == c.siteID }.map { $0.customerID == quote.customerID && Self.normalizedAddress($0.address) == Self.normalizedAddress(quote.address) && c.season == quote.season } ?? false }) {
             return existing
         }
         try quote.accept(at: now)
         let siteID: UUID
-        if let site = sites.first(where: { $0.customerID == quote.customerID && $0.address == quote.address }) {
+        if let site = sites.first(where: { $0.customerID == quote.customerID && Self.normalizedAddress($0.address) == Self.normalizedAddress(quote.address) }) {
             siteID = site.id
         } else {
             let site = Site(customerID: quote.customerID, address: quote.address)
@@ -67,11 +72,17 @@ extension AppData {
 
     // MARK: costs
 
-    /// Margin for one site from invoices, time entries on that site and salt logged in visits.
+    /// Hours of crew time not tied to any site, so reports can say what they leave out.
+    public func unassignedHours(now: Date) -> Double {
+        timeEntries.filter { $0.siteID == nil }.reduce(0) { $0 + $1.hours(now: now) }
+    }
+
+    /// Margin for one site from sent invoices (drafts are not revenue yet), time entries on that site and salt
+    /// logged in visits. Subcontractor pay is not included.
     public func jobCost(for site: Site, now: Date) -> JobCost {
         let entries = timeEntries.filter { $0.siteID == site.id }
         let salt = visitLog.records(forSite: site.id).reduce(0) { $0 + $1.saltPounds }
-        return JobCosting.site(revenue: JobCosting.invoicedRevenue(siteID: site.id, invoices: invoices),
+        return JobCosting.site(revenue: JobCosting.invoicedRevenue(siteID: site.id, invoices: invoices.filter { $0.sentAt != nil }),
                                timeEntries: entries, laborCostPerHour: laborCostPerHour, now: now,
                                saltPounds: salt, saltCostPerPound: saltCostPerPound)
     }

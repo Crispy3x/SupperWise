@@ -5,7 +5,7 @@ import RidgelineCore
 /// Crew view: tap a site to log the visit.
 struct TodayView: View {
     @Environment(AppModel.self) private var model
-    @State private var stormName = "Today"
+    @State private var stormName = Date().formatted(.dateTime.month(.abbreviated).day())
     @State private var selected: Site?
 
     private var sites: [Site] { model.data.sites.sorted { ($0.priority, $0.address) < ($1.priority, $1.address) } }
@@ -56,6 +56,8 @@ struct VisitSheet: View {
     @State private var note = ""
     @State private var arrival = Date()
     @State private var geofence: GeofenceStatus = .unknown
+    @State private var locationProblem = ""
+    @AppStorage("crewMemberName") private var crewName = ""
     @State private var findingLocation = false
     #if canImport(CoreLocation)
     @State private var locator = LocationFetcher()
@@ -84,7 +86,8 @@ struct VisitSheet: View {
                     Toggle("Could not service this visit", isOn: $skipped)
                     if skipped { TextField("Reason (customer will see this)", text: $reason) }
                 }
-                Section("Arrival") {
+                Section("Who and where") {
+                    TextField("Your name", text: $crewName)
                     HStack {
                         Text(locationText)
                         Spacer()
@@ -99,22 +102,25 @@ struct VisitSheet: View {
                         Text("This site has no map location, so arrival cannot be checked.")
                             .font(.footnote).foregroundStyle(.secondary)
                     }
+                    if !locationProblem.isEmpty {
+                        Text(locationProblem).font(.footnote).foregroundStyle(.secondary)
+                    }
                 }
                 if !skipped {
                     Section("Work") {
                         Stepper("Snow depth: \(depth, specifier: "%.1f") in", value: $depth, in: 0...36, step: 0.5)
                         Stepper("Salt: \(Int(salt)) lb", value: $salt, in: 0...500, step: 10)
                     }
-                    Section("Photos") {
-                        PhotoCaptureRow(title: "Before", kind: .before, photos: $beforePhotos)
-                        PhotoCaptureRow(title: "After", kind: .after, photos: $afterPhotos)
-                    }
+                }
+                Section(skipped ? "Photos of the problem" : "Photos") {
+                    PhotoCaptureRow(title: skipped ? "What blocked the visit" : "Before", kind: skipped ? .other : .before, photos: $beforePhotos)
+                    if !skipped { PhotoCaptureRow(title: "After", kind: .after, photos: $afterPhotos) }
                 }
                 Section("Note") { TextField("Optional note", text: $note) }
-                Section("Message to customer") {
+                Section("Message to customer (preview only, messages are not sent yet)") {
                     Text(preview).font(.footnote)
                     if !skipped && afterPhotos.isEmpty {
-                        Text("Add an after photo before the customer is told the work is done.")
+                        Text("No after photo yet. The proof of service is stronger with one.")
                             .font(.footnote).foregroundStyle(.orange)
                     }
                 }
@@ -135,6 +141,7 @@ struct VisitSheet: View {
         Task {
             let here = await locator.currentLocation()
             geofence = ArrivalCheck.status(device: here, site: site)
+            locationProblem = here == nil ? "Could not get your location. Check the location permission in Settings." : ""
             findingLocation = false
         }
         #endif
@@ -142,11 +149,11 @@ struct VisitSheet: View {
 
     private func save() {
         let now = Date()
-        let record = VisitRecord(siteID: site.id, crewMemberName: "Crew", stormID: stormID, arrival: arrival, departure: now,
+        let record = VisitRecord(siteID: site.id, crewMemberName: crewName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "Name not entered" : crewName.trimmingCharacters(in: .whitespacesAndNewlines), stormID: stormID, arrival: arrival, departure: now,
                                  geofence: geofence,
                                  status: skipped ? .skipped(reason: reason) : .completed,
                                  snowDepthInches: skipped ? 0 : depth, saltPounds: skipped ? 0 : salt,
-                                 photos: skipped ? [] : beforePhotos + afterPhotos, note: note)
+                                 photos: beforePhotos + afterPhotos, note: note)
         model.record(record)
         dismiss()
     }

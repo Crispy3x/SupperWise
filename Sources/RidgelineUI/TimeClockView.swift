@@ -12,8 +12,11 @@ struct TimeClockView: View {
         model.data.timeEntries.first { $0.memberName == name.trimmingCharacters(in: .whitespacesAndNewlines) && $0.end == nil }
     }
 
+    /// Open shifts first, so one never scrolls out of view, then the most recent.
     private var recent: [TimeEntry] {
-        Array(model.data.timeEntries.sorted { $0.start > $1.start }.prefix(20))
+        let open = model.data.timeEntries.filter { $0.end == nil }.sorted { $0.start > $1.start }
+        let closed = model.data.timeEntries.filter { $0.end != nil }.sorted { $0.start > $1.start }
+        return Array((open + closed).prefix(20))
     }
 
     private func siteName(_ id: UUID?) -> String { model.data.sites.first { $0.id == id }?.address ?? "General" }
@@ -29,11 +32,11 @@ struct TimeClockView: View {
                     }
                     if openEntry == nil {
                         Button("Clock in") { message = model.edit { try $0.clockIn(member: name, siteID: siteID, now: Date()) } }
-                            .disabled(name.isEmpty)
+                            .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                     } else {
                         Button("Clock out") { message = model.edit { try $0.clockOut(member: name, now: Date()) } }
                     }
-                    if let message { Text(message).font(.footnote).foregroundStyle(.orange) }
+                    if let message { Text(message).font(.footnote).foregroundStyle(.secondary) }
                 }
                 Section("Recent") {
                     if recent.isEmpty { Text("No time recorded yet.").foregroundStyle(.secondary) }
@@ -42,7 +45,9 @@ struct TimeClockView: View {
                             HStack {
                                 Text(entry.memberName).font(.headline)
                                 Spacer()
-                                Text("\(entry.hours(now: Date()), specifier: "%.2f") h")
+                                TimelineView(.periodic(from: Date(), by: 60)) { context in
+                                    Text("\(entry.hours(now: context.date), specifier: "%.2f") h")
+                                }
                             }
                             Text("\(siteName(entry.siteID)), \(entry.start.formatted(date: .abbreviated, time: .shortened))")
                                 .font(.footnote).foregroundStyle(.secondary)

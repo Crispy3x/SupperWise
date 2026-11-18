@@ -8,6 +8,9 @@ import RidgelineCore
 public final class AppModel {
     public var data: AppData
     public var saveError: String?
+    /// Set when the saved file could not be read: the app started empty and the old file was kept.
+    public var loadNotice: String?
+    private var savingBlocked = false
     /// Latest forecast summary for the depot, from the National Weather Service.
     public var forecast: WeatherWindowSummary?
     public var winterAlerts: [WinterAlert] = []
@@ -21,7 +24,10 @@ public final class AppModel {
     public init(store: FileStore? = AppModel.defaultStore(), photoStorage: PhotoStorage? = AppModel.defaultPhotoStorage()) {
         self.store = store
         self.photoStorage = photoStorage
-        self.data = (try? store?.load()) ?? AppData()
+        let recovery = store?.loadOrRecover()
+        self.data = recovery?.data ?? AppData()
+        self.loadNotice = recovery?.notice
+        self.savingBlocked = !(recovery?.safeToSave ?? true)
         // The 14-day free trial starts on first launch, with every feature unlocked.
         if data.subscription.trialStart == nil && data.subscription.plan == nil {
             data.subscription = .startTrial(at: Date())
@@ -65,6 +71,10 @@ public final class AppModel {
     }
 
     public func save() {
+        guard !savingBlocked else {
+            saveError = "Changes are not being saved because the existing data file could not be read or set aside."
+            return
+        }
         do {
             try store?.save(data)
             saveError = nil
@@ -152,8 +162,17 @@ public final class AppModel {
         return (RoutePlanner(), false)
     }
 
-    /// Saves the server address and token. Returns a message for the user, or nil on success.
-    public func saveRoutingServer(address: String, token: String) -> String? {
+    public var hasRoutingToken: Bool {
+        #if canImport(Security)
+        return !(KeychainStore.load(Self.routingTokenKey) ?? "").isEmpty
+        #else
+        return false
+        #endif
+    }
+
+    /// Saves the server address and token. A blank token keeps the one already stored.
+    /// Returns a message for the user.
+    public func saveRoutingServer(address: String, token: String) -> String {
         let trimmed = address.trimmingCharacters(in: .whitespacesAndNewlines)
         if trimmed.isEmpty {
             data.routingServerURL = ""
@@ -161,15 +180,20 @@ public final class AppModel {
             KeychainStore.save("", for: Self.routingTokenKey)
             #endif
             save()
-            return nil
+            return "Routing server removed."
         }
         guard RoutingServerSettings.validatedURL(trimmed) != nil else { return "The address must start with https://." }
+        let newToken = token.trimmingCharacters(in: .whitespacesAndNewlines)
         #if canImport(Security)
-        guard KeychainStore.save(token, for: Self.routingTokenKey) else { return "Could not store the token securely." }
+        if newToken.isEmpty {
+            guard hasRoutingToken else { return "Enter the access token." }
+        } else if !KeychainStore.save(newToken, for: Self.routingTokenKey) {
+            return "Could not store the token securely."
+        }
         #endif
         data.routingServerURL = trimmed
         save()
-        return nil
+        return "Saved."
     }
 
     public func setDepot(latitude: Double, longitude: Double) {
@@ -197,12 +221,12 @@ public final class AppModel {
     }
 
     public func loadDemoData() {
-        var d = AppData()
-        d.companyName = "Demo Plowing"
-        d.subscription = data.subscription
-        d.depot = Coordinate(latitude: 44.9778, longitude: -93.2650)
-        let crew = Crew(name: "Truck 1")
-        d.crews = [crew]
+        // Adds sample customers only while there are none, and never removes anything else.
+        guard data.customers.isEmpty, data.sites.isEmpty, data.contracts.isEmpty else { return }
+        var d = data
+        if d.companyName.isEmpty { d.companyName = "Demo Plowing" }
+        if d.depot == nil { d.depot = Coordinate(latitude: 44.9778, longitude: -93.2650) }
+        if d.crews.isEmpty { d.crews = [Crew(name: "Truck 1")] }
         func add(_ name: String, _ address: String, _ dLat: Double, _ dLon: Double, _ priority: Int,
                  _ trigger: Double, _ terms: ContractTerms) {
             let c = Customer(name: name, phone: "555-0100")

@@ -13,7 +13,7 @@ func jpegData(from data: Data) -> Data? {
     #if canImport(UIKit)
     return UIImage(data: data)?.jpegData(compressionQuality: 0.8)
     #elseif canImport(AppKit)
-    guard let rep = NSBitmapImageRep(data: data) else { return nil }
+    guard let tiff = NSImage(data: data)?.tiffRepresentation, let rep = NSBitmapImageRep(data: tiff) else { return nil }
     return rep.representation(using: .jpeg, properties: [.compressionFactor: 0.8])
     #else
     return nil

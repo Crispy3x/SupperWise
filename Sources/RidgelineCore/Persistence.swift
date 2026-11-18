@@ -68,6 +68,35 @@ public struct FileStore: Sendable {
         try data.write(to: url, options: .atomic)
     }
 
+    public struct Recovery: Sendable {
+        public let data: AppData
+        /// Shown to the user when the saved file could not be read.
+        public let notice: String?
+        /// False when the unreadable file could not be set aside: saving then would overwrite it.
+        public let safeToSave: Bool
+    }
+
+    /// Moves an unreadable data file out of the way (kept for recovery) and returns where it went.
+    public func moveAsideUnreadable(now: Date = Date()) throws -> URL? {
+        guard FileManager.default.fileExists(atPath: url.path) else { return nil }
+        let name = "\(url.deletingPathExtension().lastPathComponent).unreadable-\(Int(now.timeIntervalSince1970)).json"
+        let dest = url.deletingLastPathComponent().appendingPathComponent(name)
+        try FileManager.default.moveItem(at: url, to: dest)
+        return dest
+    }
+
+    /// Loads the data. If the file cannot be read it is set aside, never overwritten, and the app starts empty with a notice.
+    public func loadOrRecover(now: Date = Date()) -> Recovery {
+        do {
+            return Recovery(data: try load(), notice: nil, safeToSave: true)
+        } catch {
+            if let kept = try? moveAsideUnreadable(now: now) {
+                return Recovery(data: AppData(), notice: "Your saved data could not be read, so the app started empty. The unreadable file was kept as \(kept.lastPathComponent) so it can be recovered.", safeToSave: true)
+            }
+            return Recovery(data: AppData(), notice: "Your saved data could not be read and could not be set aside. Changes will not be saved until this is fixed.", safeToSave: false)
+        }
+    }
+
     static var encoder: JSONEncoder {
         let e = JSONEncoder()
         e.dateEncodingStrategy = .iso8601

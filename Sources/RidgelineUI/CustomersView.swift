@@ -13,7 +13,7 @@ struct CustomersView: View {
                     Section {
                         Text("No customers yet. Add one, or load demo data to try the app.")
                             .foregroundStyle(.secondary)
-                        Button("Load demo data") { model.loadDemoData() }
+                        Button("Load demo data (adds sample customers)") { model.loadDemoData() }
                     }
                 }
                 ForEach(model.data.sites) { site in
@@ -73,6 +73,11 @@ struct AddCustomerSheet: View {
                     Stepper("Trigger: \(trigger, specifier: "%.1f") in", value: $trigger, in: 0.5...12, step: 0.5)
                     Stepper("Price per push: $\(rate)", value: $rate, in: 10...1000, step: 5)
                 }
+            }
+            .onChange(of: address) {
+                // A map location belongs to the address it was found for.
+                coordinate = nil
+                locationNote = ""
             }
             .navigationTitle("New customer")
             .toolbar {

@@ -14,6 +14,7 @@ struct QuotesView: View {
                     Section {
                         Text("No quotes yet. Add one to send a price to a customer.")
                             .foregroundStyle(.secondary)
+                        Button("New quote") { showingNew = true }
                     }
                 }
                 ForEach(model.data.quotes) { quote in
@@ -28,21 +29,31 @@ struct QuotesView: View {
                         Text(quote.terms.summary).font(.footnote).foregroundStyle(.secondary)
                         HStack {
                             if quote.status(now: Date()) == .draft {
-                                Button("Mark sent") { message = model.edit { data in data.quotes = data.quotes.map { q in
-                                    var copy = q; if q.id == quote.id { copy.markSent(at: Date()) }; return copy } } }
+                                Button("Mark sent") {
+                                    message = model.edit { data in
+                                        guard let i = data.quotes.firstIndex(where: { $0.id == quote.id }) else { throw OperationError.notFound }
+                                        data.quotes[i].markSent(at: Date())
+                                    }
+                                }
                             }
                             if [.draft, .sent].contains(quote.status(now: Date())) {
-                                Button("Accept") { message = model.edit { try $0.acceptQuote(id: quote.id, now: Date()) } }
-                                Button("Decline") { message = model.edit { data in
-                                    guard let i = data.quotes.firstIndex(where: { $0.id == quote.id }) else { throw OperationError.notFound }
-                                    try data.quotes[i].decline(at: Date()) } }
+                                Button("Accept") {
+                                    message = model.edit { data in _ = try data.acceptQuote(id: quote.id, now: Date()) }
+                                        ?? "Accepted. A site and a contract were created for this customer."
+                                }
+                                Button("Decline") {
+                                    message = model.edit { data in
+                                        guard let i = data.quotes.firstIndex(where: { $0.id == quote.id }) else { throw OperationError.notFound }
+                                        try data.quotes[i].decline(at: Date())
+                                    } ?? "Quote declined."
+                                }
                             }
                         }
                         .buttonStyle(.bordered)
                         .font(.footnote)
                     }
                 }
-                if let message { Section { Text(message).font(.footnote) } }
+                if let message { Section { Text(message).font(.footnote).foregroundStyle(.secondary) } }
             }
             .navigationTitle("Quotes")
             .toolbar {
@@ -120,7 +131,7 @@ struct NewQuoteSheet: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") { save() }.disabled(customerID == nil || address.isEmpty)
+                    Button("Save") { save() }.disabled(customerID == nil || address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
             }
         }
@@ -130,7 +141,7 @@ struct NewQuoteSheet: View {
         guard let customerID else { return }
         _ = model.edit { data in
             let number = InvoiceNumbering.next(existing: data.quotes.map(\.number), prefix: "Q-")
-            data.quotes.append(Quote(number: number, customerID: customerID, address: address, season: AppModel.currentSeason(),
+            data.quotes.append(Quote(number: number, customerID: customerID, address: address.trimmingCharacters(in: .whitespacesAndNewlines), season: AppModel.currentSeason(),
                                      terms: terms, createdAt: Date(), validDays: validDays, notes: notes))
         }
         dismiss()

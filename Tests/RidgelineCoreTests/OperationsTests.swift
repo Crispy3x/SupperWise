@@ -123,6 +123,64 @@ final class OperationsTests: XCTestCase {
         XCTAssertEqual(cost.margin, Money(dollars: 130))
     }
 
+    func testUnreadableFileIsKeptNotOverwritten() throws {
+        let dir = FileManager.default.temporaryDirectory.appendingPathComponent("ridgeline-bad-\(UUID().uuidString)")
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: dir) }
+        let file = dir.appendingPathComponent("data.json")
+        let garbage = Data("{ this is not valid json".utf8)
+        try garbage.write(to: file)
+        let store = FileStore(url: file)
+        XCTAssertThrowsError(try store.load())
+        let r = store.loadOrRecover(now: Date(timeIntervalSince1970: 1_800_000_000))
+        XCTAssertEqual(r.data, AppData())
+        XCTAssertNotNil(r.notice)
+        XCTAssertTrue(r.safeToSave)
+        XCTAssertFalse(FileManager.default.fileExists(atPath: file.path))
+        let kept = dir.appendingPathComponent("data.unreadable-1800000000.json")
+        XCTAssertEqual(try Data(contentsOf: kept), garbage)               // the bytes are still there
+        let again = store.loadOrRecover()                                  // nothing left to fail on
+        XCTAssertNil(again.notice)
+    }
+
+    func testGoodFileHasNoNotice() throws {
+        let dir = FileManager.default.temporaryDirectory.appendingPathComponent("ridgeline-ok-\(UUID().uuidString)")
+        defer { try? FileManager.default.removeItem(at: dir) }
+        let store = FileStore(url: dir.appendingPathComponent("data.json"))
+        var data = AppData(); data.companyName = "Ridge"
+        try store.save(data)
+        let r = store.loadOrRecover()
+        XCTAssertEqual(r.data, data)
+        XCTAssertNil(r.notice)
+    }
+
+    func testAcceptQuoteMatchesAddressIgnoringCaseAndSpaces() throws {
+        var data = AppData()
+        let customer = Customer(name: "Pat")
+        data.customers = [customer]
+        data.sites = [Site(customerID: customer.id, address: "5 pine  street")]
+        let q = Quote(number: "Q-1", customerID: customer.id, address: " 5 Pine Street ", season: "2026-27",
+                      terms: .seasonal(total: Money(dollars: 500)), createdAt: t0)
+        data.quotes = [q]
+        try data.acceptQuote(id: q.id, now: t0 + day)
+        XCTAssertEqual(data.sites.count, 1)       // no duplicate site for the same place
+    }
+
+    func testDraftInvoicesAreNotRevenueAndUnassignedTimeIsCounted() throws {
+        var data = AppData()
+        let site = Site(customerID: UUID(), address: "1 Main")
+        data.sites = [site]
+        let draft = Invoice(number: "I-1", customerID: site.customerID, siteID: site.id, issueDate: t0, dueDate: t0,
+                            lines: [InvoiceLineItem(description: "x", amount: Money(dollars: 100))])
+        var sent = Invoice(number: "I-2", customerID: site.customerID, siteID: site.id, issueDate: t0, dueDate: t0,
+                           lines: [InvoiceLineItem(description: "y", amount: Money(dollars: 40))])
+        try sent.markSent(at: t0)
+        data.invoices = [draft, sent]
+        XCTAssertEqual(data.jobCost(for: site, now: t0).revenue, Money(dollars: 40))
+        data.timeEntries = [TimeEntry(memberName: "Sam", start: t0, end: t0 + 5400), TimeEntry(memberName: "Sam", start: t0, end: t0 + 3600, siteID: site.id)]
+        XCTAssertEqual(data.unassignedHours(now: t0 + 99_999), 1.5, accuracy: 0.0001)
+    }
+
     func testNewFieldsSurviveSaveAndLoad() throws {
         var data = AppData()
         data.laborCostPerHour = Money(dollars: 28)

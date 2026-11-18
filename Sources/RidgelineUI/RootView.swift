@@ -11,6 +11,10 @@ public struct RidgelineRootView: View {
 
     public var body: some View {
         VStack(spacing: 0) {
+            if let notice = model.loadNotice {
+                Text(notice)
+                    .font(.footnote).frame(maxWidth: .infinity).padding(6).background(.red.opacity(0.2))
+            }
             SubscriptionBanner()
             TabView {
                 TodayView().tabItem { Label("Crew", systemImage: "snowflake") }
@@ -39,7 +43,7 @@ struct SubscriptionBanner: View {
             Text("Free trial: \(days) day\(days == 1 ? "" : "s") left. All features unlocked.")
                 .font(.footnote).frame(maxWidth: .infinity).padding(6).background(.blue.opacity(0.15))
         case .expired:
-            Text("Trial ended. Pick a plan to keep editing. Your data is safe and exportable.")
+            Text("Trial ended. Buying a plan is not connected in this build yet, so nothing is locked. Your data stays on this device.")
                 .font(.footnote).frame(maxWidth: .infinity).padding(6).background(.orange.opacity(0.2))
         case .active:
             EmptyView()
