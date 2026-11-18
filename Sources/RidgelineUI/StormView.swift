@@ -117,11 +117,18 @@ struct StormView: View {
                             .font(.footnote).foregroundStyle(r.stoppedEarly ? .orange : .secondary)
                     }
                 }
-                Section("Clients") {
-                    DatePicker("Crews start at", selection: $routeStart, displayedComponents: [.date, .hourAndMinute])
-                    Button("Message clients about this storm") { showingMessage = true }
-                    Text("Each client's page shows an estimated arrival window from this start time and your route. You review the messages before anything is sent.")
+                Section("This storm: \(model.stormName)") {
+                    Button("Start a new storm") { model.startNewStorm() }
+                    Text("Each storm keeps its own messages, requests and visits. Renaming a storm makes it a new one, so clients could be messaged again.")
                         .font(.footnote).foregroundStyle(.secondary)
+                }
+                if model.data.profile.stormMessagesOn {
+                    Section("Clients") {
+                        DatePicker("Crews start at", selection: $routeStart, displayedComponents: [.date, .hourAndMinute])
+                        Button("Message clients about this storm") { showingMessage = true }
+                        Text("Each client's page shows an estimated arrival window from this start time and your route. You review the messages before anything is sent.")
+                            .font(.footnote).foregroundStyle(.secondary)
+                    }
                 }
                 if let first = plan.stops.first {
                     Section("Navigate") {

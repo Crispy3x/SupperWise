@@ -417,3 +417,8 @@ Built and tested: welcome-flow logic (10 steps), automatic invoice at stop compl
 
 # Build status: redesign (latest)
 Written, never compiled: five-tab layout with a shared design layer, ten-step welcome with optional Sign in with Apple, profile with account deletion, requests inbox, storm message sheet, client detail with consent, invoice and message settings, automatic invoice on visit save. Tested: portal bills, arrival windows, season line, accounts, erasure (228 Swift tests, 33 server tests). **Open:** your own email provider account for sending, text messages, accounts and sync on a server, real screenshots (the mockups predate this redesign). **Decisions taken for you, change any:** Apple sign-in only and optional; portal shows amounts (switch in Settings); automatic invoices default to draft.
+
+---
+
+# Review round 4 fixes (latest)
+Fixed: client links in storm emails now match saved, published pages (links are created up front and saved before anything is planned); the "data was set aside" notice is no longer hidden behind the welcome screen; answers that did not reach a client's page are sent again the next time you check for requests; deleting an account also removes the crew name, temporary export folders and an unreadable data file; consent follows the email address (a new address needs a fresh yes) and an opted-out client is never changed from the detail screen; each storm has a unique name and a "Start a new storm" button; the message footers no longer promise that a reply reaches you; welcome and settings wording matches what the app really does (storm messaging is an option you review, not automatic). One reviewer finding (a duplicated longitude field) was wrong and was left alone.

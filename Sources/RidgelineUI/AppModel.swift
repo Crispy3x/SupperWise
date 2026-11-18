@@ -42,6 +42,10 @@ public final class AppModel {
         self.data = recovery?.data ?? AppData()
         self.loadNotice = recovery?.notice
         self.savingBlocked = !(recovery?.safeToSave ?? true)
+        // Every site gets its private page link up front, so a link in a message always matches a saved one.
+        let before = data.portalLinks.count
+        data.ensurePortalLinks(now: Date())
+        if data.portalLinks.count != before { save() }
         // The 14-day free trial starts on first launch, with every feature unlocked.
         if data.subscription.trialStart == nil && data.subscription.plan == nil {
             data.subscription = .startTrial(at: Date())
@@ -268,6 +272,16 @@ public final class AppModel {
     /// The trial or plan stays, because it belongs to the device's Apple account.
     public func deleteAccountAndData() {
         try? photoStorage?.deleteAll()
+        UserDefaults.standard.removeObject(forKey: "crewMemberName")
+        let temp = FileManager.default.temporaryDirectory
+        if let names = try? FileManager.default.contentsOfDirectory(atPath: temp.path) {
+            for name in names where name.hasPrefix("RidgelineExport-") { try? FileManager.default.removeItem(at: temp.appendingPathComponent(name)) }
+        }
+        if savingBlocked, let file = store?.url {          // the person chose to delete everything, so an unreadable file goes too
+            try? FileManager.default.removeItem(at: file)
+            savingBlocked = false
+            loadNotice = nil
+        }
         #if canImport(Security)
         KeychainStore.save("", for: Self.routingTokenKey)
         #endif
@@ -308,14 +322,37 @@ public final class AppModel {
     /// Fetches new client requests from the server and adds them to the inbox.
     public func refreshRequests() async -> String {
         guard let client = portalClient() else { return "Set up your server in Settings to receive client requests." }
+        let resent = await retryUnsyncedDecisions()
         do {
             let incoming = try await client.fetchRequests()
             var added = 0
             edit { added = $0.importRequests(incoming) }
-            return added == 0 ? "No new requests." : "\(added) new request\(added == 1 ? "" : "s")."
+            var text = added == 0 ? "No new requests." : "\(added) new request\(added == 1 ? "" : "s")."
+            if resent > 0 { text += " Sent \(resent) earlier answer\(resent == 1 ? "" : "s") to client pages." }
+            return text
         } catch {
             return "Could not reach your server."
         }
+    }
+
+    /// Answers given here that the client's page has not been told about yet (for example the server was unreachable).
+    func retryUnsyncedDecisions() async -> Int {
+        guard let client = portalClient() else { return 0 }
+        var done = 0
+        for r in data.unsyncedDecisions {
+            guard let remote = r.remoteID else { continue }
+            do {
+                try await client.decide(remoteRequestID: remote, accept: r.status == .accepted, message: r.responseMessage)
+                edit { $0.markDecisionSynced(id: r.id) }
+                done += 1
+            } catch {
+                if (error as? PortalError) == .server(409) {          // the server already has an answer for it
+                    edit { $0.markDecisionSynced(id: r.id) }
+                    done += 1
+                }
+            }
+        }
+        return done
     }
 
     /// Accepts or declines a request. The answer is saved here first, then shown on the client's page.
@@ -325,17 +362,24 @@ public final class AppModel {
         guard let remote = request.remoteID, let client = portalClient() else { return accept ? "Accepted." : "Declined." }
         do {
             try await client.decide(remoteRequestID: remote, accept: accept, message: message)
+            edit { $0.markDecisionSynced(id: id) }
             _ = await republishPortal()
             return accept ? "Accepted. The client can see your answer." : "Declined. The client can see your answer."
         } catch {
-            return "Saved here, but the client's page was not updated."
+            return "Saved here, but the client's page was not updated. It will be sent the next time you check for requests."
         }
     }
 
+    /// Plans from the saved data. Page links are saved before this is called, so a link in a message is a real one.
     public func broadcastPlan(storm: StormEvent, inches: Double, urgent: Bool) -> BroadcastPlan {
-        var copy = data
-        copy.ensurePortalLinks(now: Date())
-        return StormBroadcast.plan(data: copy, storm: storm, forecastInches: inches, now: Date(), urgent: urgent)
+        StormBroadcast.plan(data: data, storm: storm, forecastInches: inches, now: Date(), urgent: urgent)
+    }
+
+    public func prepareClientPages() { edit { $0.ensurePortalLinks(now: Date()) } }
+
+    /// A fresh storm name for today that no earlier storm uses.
+    public func startNewStorm() {
+        stormName = StormNaming.uniqueName(base: Date().formatted(.dateTime.month(.abbreviated).day()), existing: data.storms.map(\.name))
     }
 
     func portalSnapshot(storm: StormEvent, inches: Double, routeStart: Date?, offsets: [UUID: Double]) -> PortalSnapshot {
@@ -447,16 +491,18 @@ public final class AppModel {
     // MARK: edits
 
     public func addCustomerWithSite(name: String, phone: String, email: String = "", emailConsent: Bool = false, address: String, priority: Int,
-                                    triggerInches: Double, perPushRate: Money, coordinate: Coordinate?) {
-        let customer = Customer(name: name, phone: phone, email: email, emailConsent: emailConsent && ContactValidation.isValidEmail(email),
-                                consentRecordedAt: emailConsent ? Date() : nil,
-                                consentSource: emailConsent ? "Owner confirmed the client agreed when adding them" : "")
+                                    triggerInches: Double, perPushRate: Money, seasonPrice: Money? = nil, coordinate: Coordinate?) {
+        let consent = emailConsent && ContactValidation.isValidEmail(email)
+        let customer = Customer(name: name, phone: phone, email: email, emailConsent: consent,
+                                consentRecordedAt: consent ? Date() : nil,
+                                consentSource: consent ? "Owner confirmed the client agreed when adding them" : "")
         let site = Site(customerID: customer.id, address: address, latitude: coordinate?.latitude,
                         longitude: coordinate?.longitude, priority: priority, triggerInches: triggerInches)
         data.customers.append(customer)
         data.sites.append(site)
         data.contracts.append(SnowContract(siteID: site.id, season: Self.currentSeason(),
-                                           terms: .perPush(rate: perPushRate)))
+                                           terms: seasonPrice.map { .seasonal(total: $0) } ?? .perPush(rate: perPushRate)))
+        data.ensurePortalLinks(now: Date())
         save()
     }
 

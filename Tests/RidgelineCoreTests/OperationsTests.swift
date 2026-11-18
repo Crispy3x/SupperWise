@@ -233,3 +233,62 @@ final class RoutingServerSettingsTests: XCTestCase {
         XCTAssertNil(RoutingServerSettings.validatedURL("http://localhost.evil.com"))
     }
 }
+
+final class FollowUpFixesTests: XCTestCase {
+    private let t0 = Date(timeIntervalSince1970: 1_800_000_000)
+
+    func testAcceptingAQuoteGivesTheNewSiteItsPageLink() throws {
+        var d = AppData()
+        let c = Customer(name: "Pat"); d.customers = [c]
+        let q = Quote(number: "Q-1", customerID: c.id, address: "5 Pine", season: "x", terms: .seasonal(total: Money(dollars: 500)), createdAt: t0)
+        d.quotes = [q]
+        let contract = try d.acceptQuote(id: q.id, now: t0 + 1)
+        XCTAssertEqual(d.portalLinks.map(\.siteID), [contract.siteID])
+    }
+
+    func testDecisionsNotYetShownToTheClientCanBeFoundAndMarkedDone() throws {
+        var d = AppData()
+        let site = Site(customerID: UUID(), address: "x")
+        d.sites = [site]
+        d.serviceRequests = [ServiceRequest(remoteID: "r1", siteID: site.id, kind: .urgent, createdAt: t0),
+                             ServiceRequest(remoteID: "r2", siteID: site.id, kind: .service, createdAt: t0),
+                             ServiceRequest(siteID: site.id, kind: .service, createdAt: t0)]        // never came from the server
+        XCTAssertTrue(d.unsyncedDecisions.isEmpty)                                                   // still pending
+        try d.decideRequest(id: d.serviceRequests[0].id, accept: true, message: "ok", now: t0)
+        try d.decideRequest(id: d.serviceRequests[2].id, accept: true, message: "ok", now: t0)
+        XCTAssertEqual(d.unsyncedDecisions.map { $0.remoteID }, ["r1"])                              // local-only requests have nothing to send
+        d.markDecisionSynced(id: d.serviceRequests[0].id)
+        XCTAssertTrue(d.unsyncedDecisions.isEmpty)
+        d.markDecisionSynced(id: UUID())                                                             // an unknown id is ignored
+    }
+
+    func testOlderSavedRequestsStillLoad() throws {
+        var d = AppData()
+        d.serviceRequests = [ServiceRequest(remoteID: "r1", siteID: UUID(), kind: .skip, createdAt: t0)]
+        let json = String(data: try FileStore.encoder.encode(d), encoding: .utf8)!
+        XCTAssertFalse(json.contains("syncedToPortal"))                                              // nil is not written
+        XCTAssertNil(try FileStore.decoder.decode(AppData.self, from: Data(json.utf8)).serviceRequests[0].syncedToPortal)
+    }
+
+    func testStormNamesAreUnique() {
+        XCTAssertEqual(StormNaming.uniqueName(base: "Nov 18", existing: []), "Nov 18")
+        XCTAssertEqual(StormNaming.uniqueName(base: "Nov 18", existing: ["Nov 18"]), "Nov 18 (2)")
+        XCTAssertEqual(StormNaming.uniqueName(base: "Nov 18", existing: ["Nov 18", "Nov 18 (2)", "Nov 18 (3)"]), "Nov 18 (4)")
+        XCTAssertEqual(StormNaming.uniqueName(base: "  ", existing: []), "Storm")
+        XCTAssertEqual(StormNaming.uniqueName(base: " Nov 18 ", existing: ["Nov 18"]), "Nov 18 (2)")
+    }
+
+    func testMessagesNoLongerPromiseThatAReplyReachesTheOwner() {
+        var d = AppData()
+        d.companyName = "Ridge Plow"
+        d.broadcastSettings.portalBaseURL = "https://p.example.com"
+        let c = Customer(name: "Pat", email: "pat@example.com", emailConsent: true)
+        let s = Site(customerID: c.id, address: "1 Elm")
+        d.customers = [c]; d.sites = [s]
+        d.contracts = [SnowContract(siteID: s.id, season: "x", terms: .perPush(rate: Money(dollars: 60)))]
+        d.ensurePortalLinks(now: t0)
+        let m = StormBroadcast.plan(data: d, storm: StormEvent(name: "S", start: t0, forecastInches: 4), forecastInches: 4, now: t0, urgent: true).messages[0]
+        XCTAssertFalse(m.body.contains("reply to this message"))
+        XCTAssertTrue(m.body.contains("tell Ridge Plow and they will turn them off"))
+    }
+}

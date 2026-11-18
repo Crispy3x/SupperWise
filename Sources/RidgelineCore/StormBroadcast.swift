@@ -153,7 +153,7 @@ public enum StormBroadcast {
                 let serveLine = willServe
                     ? "We expect to service your property."
                     : "The forecast is under your \(String(format: "%g", site.triggerInches)) inch trigger, so we may not come unless it snows more. You can ask for service on your page."
-                let optOut = "You are getting this because you agreed to storm updates from \(company). To stop them, reply to this message or tell us and we will turn them off."
+                let optOut = "You are getting this because you agreed to storm updates from \(company). To stop them, tell \(company) and they will turn them off."
                 let body = [
                     "Hello \(customer.name),",
                     "",

@@ -46,7 +46,7 @@ struct ProfileView: View {
             Section {
                 Button("Delete my account and data", role: .destructive) { confirmDelete = true }
             } footer: {
-                Text("Removes everything stored on this device: clients, invoices, visits, photos and the saved server token. Back up your data first in Settings. Client pages and requests on your server expire on their own within 14 to 30 days. To also remove Apple sign-in for this app, use Settings > your name > Sign in with Apple on your iPhone.")
+                Text("Removes everything stored on this device: clients, invoices, visits, photos and the saved server token. Back up your data first in Settings. Backups you saved or shared elsewhere are not removed. Client pages and requests on your server expire on their own (after 14 and 30 days unless you changed your server's settings). To also remove Apple sign-in for this app, use Settings > your name > Sign in with Apple on your iPhone.")
             }
         }
         .navigationTitle("Profile")

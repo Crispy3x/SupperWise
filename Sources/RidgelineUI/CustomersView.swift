@@ -50,6 +50,8 @@ struct AddCustomerSheet: View {
     @State private var priority = 3
     @State private var trigger = 2.0
     @State private var rate = 60
+    @State private var seasonal = false
+    @State private var season = 900
     @State private var coordinate: Coordinate?
     @State private var locationNote = ""
     @State private var searching = false
@@ -83,10 +85,19 @@ struct AddCustomerSheet: View {
                 Section("Service") {
                     Stepper("Priority: \(priority) (1 is first)", value: $priority, in: 1...5)
                     Stepper("Trigger: \(trigger, specifier: "%.1f") in", value: $trigger, in: 0.5...12, step: 0.5)
-                    Stepper("Price per push: $\(rate)", value: $rate, in: 10...1000, step: 5)
+                    Picker("Billing", selection: $seasonal) {
+                        Text("Per push").tag(false)
+                        Text("Season").tag(true)
+                    }
+                    .pickerStyle(.segmented)
+                    if seasonal {
+                        Stepper("Season price: $\(season)", value: $season, in: 50...50_000, step: 50)
+                    } else {
+                        Stepper("Price per push: $\(rate)", value: $rate, in: 10...1000, step: 5)
+                    }
                 }
             }
-            .onAppear { trigger = model.data.profile.defaultTriggerInches }
+            .onAppear { trigger = model.data.profile.defaultTriggerInches; seasonal = model.data.profile.defaultSnowBilling == .seasonal }
             .onChange(of: address) {
                 // A map location belongs to the address it was found for.
                 coordinate = nil
@@ -98,7 +109,7 @@ struct AddCustomerSheet: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
                         model.addCustomerWithSite(name: name, phone: phone, email: email, emailConsent: agreed, address: address, priority: priority,
-                                                  triggerInches: trigger, perPushRate: Money(dollars: rate), coordinate: coordinate)
+                                                  triggerInches: trigger, perPushRate: Money(dollars: rate), seasonPrice: seasonal ? Money(dollars: season) : nil, coordinate: coordinate)
                         dismiss()
                     }
                     .disabled(name.isEmpty || address.isEmpty)

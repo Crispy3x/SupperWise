@@ -77,17 +77,25 @@ struct ClientDetailView: View {
     }
 
     private func save() {
-        let changedConsent = agreed != (customer?.emailConsent ?? false)
+        let trimmedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
+        let emailChanged = trimmedEmail != (customer?.email ?? "")
+        let wasConsenting = customer?.emailConsent ?? false
+        let optedOut = customer?.optedOutAt != nil
+        let wantsConsent = agreed && ContactValidation.isValidEmail(trimmedEmail) && !optedOut
+        // Consent was given for a particular address, so a new address needs a fresh yes.
+        let keepConsent = wantsConsent && !(emailChanged && wasConsenting)
         note = model.edit { data in
             guard let i = data.customers.firstIndex(where: { $0.id == customerID }) else { throw OperationError.notFound }
             data.customers[i].name = name.trimmingCharacters(in: .whitespacesAndNewlines)
             data.customers[i].phone = phone
-            data.customers[i].email = email.trimmingCharacters(in: .whitespacesAndNewlines)
-            if changedConsent {
-                try data.recordConsent(customerID: customerID, email: agreed && ContactValidation.isValidEmail(email), sms: false,
-                                       source: "Owner confirmed the client agreed", now: Date())
+            data.customers[i].email = trimmedEmail
+            guard !optedOut else { return }                       // a client who asked to stop is never changed here
+            if keepConsent != wasConsenting {
+                try data.recordConsent(customerID: customerID, email: keepConsent, sms: false,
+                                       source: keepConsent ? "Owner confirmed the client agreed" : "Owner turned messages off", now: Date())
             }
-        } ?? "Saved."
+        } ?? ((emailChanged && wasConsenting && agreed) ? "Saved. The email changed, so confirm the client agreed to messages at the new address." : "Saved.")
+        if emailChanged && wasConsenting { agreed = false }
     }
 }
 #endif

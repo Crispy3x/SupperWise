@@ -113,7 +113,8 @@ struct WelcomeFlowView: View {
                 .lineLimit(2...4)
                 .textFieldStyle(.roundedBorder)
         case .messages:
-            Toggle("Message clients at the start of each storm", isOn: $answers.stormMessagesOn)
+            Toggle("Show the message-clients option on the Storm screen", isOn: $answers.stormMessagesOn)
+            Text("Nothing is sent by itself. You review every message before it goes.").font(.footnote).foregroundStyle(.secondary)
             Text("When a stop is done, an invoice should be:").font(.subheadline)
             Picker("When a stop is done", selection: $answers.invoiceAutomation) {
                 ForEach(InvoiceAutomation.allCases, id: \.self) { Text($0.title).tag($0) }
@@ -156,7 +157,7 @@ struct WelcomeFlowView: View {
         Binding(
             get: { answers[keyPath: keyPath].contains(item) },
             set: { on in
-                if on { answers[keyPath: keyPath].insert(item) } else { answers[keyPath: keyPath].remove(item) }
+                if on { _ = answers[keyPath: keyPath].insert(item) } else { _ = answers[keyPath: keyPath].remove(item) }
             })
     }
 

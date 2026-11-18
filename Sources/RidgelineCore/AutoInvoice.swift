@@ -26,7 +26,7 @@ public enum InvoiceMessage {
         if let portalURL { lines.append(""); lines.append("See all your bills and this winter's visits: \(portalURL)") }
         lines.append("")
         lines.append(company)
-        lines.append("You are getting this because you agreed to messages from \(company). To stop them, reply to this message or tell us and we will turn them off.")
+        lines.append("You are getting this because you agreed to messages from \(company). To stop them, tell \(company) and they will turn them off.")
         let subject = StormBroadcast.clean("Invoice \(invoice.number) from \(company): \(invoice.total.formatted) due \(f.string(from: invoice.dueDate))")
         return PlannedMessage(siteID: site.id, customerID: customer.id, channel: .email, to: customer.email, subject: subject,
                               body: lines.joined(separator: "\n"), sendAfter: Date())

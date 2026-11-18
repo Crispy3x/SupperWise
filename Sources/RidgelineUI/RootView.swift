@@ -11,7 +11,7 @@ public struct RidgelineRootView: View {
 
     /// The welcome questions show once, for a new install. An install that already has clients skips them.
     private var needsWelcome: Bool {
-        model.data.profile.onboardingCompletedAt == nil && model.data.customers.isEmpty
+        model.data.profile.onboardingCompletedAt == nil && model.data.customers.isEmpty && model.loadNotice == nil
     }
 
     public var body: some View {

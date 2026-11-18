@@ -70,7 +70,10 @@ struct StormMessageSheet: View {
             }
             .navigationTitle("Message clients")
             .toolbar { ToolbarItem(placement: .cancellationAction) { Button("Close") { dismiss() } } }
-            .onAppear { storm = model.ensureStorm(inches: inches) }
+            .onAppear {
+                model.prepareClientPages()
+                storm = model.ensureStorm(inches: inches)
+            }
         }
     }
 

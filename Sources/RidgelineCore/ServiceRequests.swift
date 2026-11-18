@@ -37,6 +37,8 @@ public struct ServiceRequest: Identifiable, Equatable, Codable, Sendable {
     public private(set) var decidedAt: Date?
     /// What the client sees, for example why a request was declined.
     public private(set) var responseMessage: String
+    /// Whether the client's page has been told the answer. nil in older saved files, which counts as not yet.
+    public var syncedToPortal: Bool?
 
     public init(id: UUID = UUID(), remoteID: String? = nil, siteID: UUID, stormID: UUID? = nil, kind: RequestKind,
                 urgentReason: UrgentReason? = nil, note: String = "", createdAt: Date) {
@@ -108,6 +110,15 @@ extension AppData {
             added += 1
         }
         return added
+    }
+
+    /// Decisions made here that the client's page has not been told about yet.
+    public var unsyncedDecisions: [ServiceRequest] {
+        serviceRequests.filter { $0.status != .pending && $0.remoteID != nil && $0.syncedToPortal != true }
+    }
+
+    public mutating func markDecisionSynced(id: UUID) {
+        if let i = serviceRequests.firstIndex(where: { $0.id == id }) { serviceRequests[i].syncedToPortal = true }
     }
 
     public mutating func decideRequest(id: UUID, accept: Bool, message: String, now: Date) throws {
