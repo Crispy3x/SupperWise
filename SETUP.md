@@ -43,7 +43,7 @@ The routing server is built and tested against a stand-in, never against real Go
 2. Turn on the **Routes API**.
 3. Create an API key, restrict it to the Routes API only, and (if your host has a fixed address) restrict it by IP.
 4. Read Google's current Maps Platform terms on caching and on using results without a Google map. If unsure, ask a lawyer. A free alternative (Valhalla) is possible; ask me.
-5. Host `server/` somewhere that gives you HTTPS (Render, Fly.io, Railway, a small VPS). Set these as secrets there: `GOOGLE_MAPS_API_KEY`, `API_TOKENS` (make up a long random token per customer), and set `DAILY_ELEMENT_CAP` to what you can afford. Details are in `server/README.md`.
+5. Host `server/` somewhere that gives you HTTPS (Render, Fly.io, Railway, a small VPS). Set these as secrets there: `GOOGLE_MAPS_API_KEY`, `API_TOKENS` (make up a long random token per customer), and set `DAILY_ELEMENT_CAP` to what you can afford (the default is 3000 lookups a day, about $30 a day at the list price I found, so lower it for a quiet beta). Details are in `server/README.md`.
 6. In the app: Settings > Live traffic routing > enter the server address and a token.
 7. Test with a small route and check Google's billing page the next day.
 Send me: any error from the server logs, and a screenshot of the Storm tab saying "Drive times from your routing server".

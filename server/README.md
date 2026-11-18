@@ -23,11 +23,11 @@ Put it behind HTTPS (any host that terminates TLS for you). Never send tokens ov
 | `GOOGLE_MAPS_API_KEY` | none | Required for real answers. Without it requests get 503. |
 | `API_TOKENS` | none | Comma-separated accepted tokens. The server refuses to start with none. |
 | `PORT` | 8080 | Port to listen on. |
-| `MAX_POINTS` | 50 | Most points (depot plus stops) per request. A 50-point matrix is 2,500 elements. |
+| `MAX_POINTS` | 30 | Most points (depot plus stops) per request. A 30-point matrix is 900 elements, about $9 at the list price I found earlier (check current pricing). |
 | `MAX_ELEMENTS_PER_REQUEST` | 100 | Size of each upstream request. Raise to 625 only after confirming the current Google limit for traffic-aware requests. |
 | `CACHE_TTL_SECONDS` | 300 | How long an identical request is served from memory. Confirm Google's terms on caching before raising it. |
 | `RATE_LIMIT_PER_MIN` | 30 | Requests per token per minute. |
-| `DAILY_ELEMENT_CAP` | 20000 | Matrix elements per token per UTC day. Set from your budget (Google bills per element). |
+| `DAILY_ELEMENT_CAP` | 3000 | Matrix elements per token per UTC day. At about $10 per 1,000 elements that is at most about $30 a day per token before any free allowance. Set it from your own budget. |
 | `MAX_BODY_BYTES` | 1000000 | Largest request body. |
 | `UPSTREAM_URL` | Google | Only for tests. |
 

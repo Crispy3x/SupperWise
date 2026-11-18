@@ -36,14 +36,15 @@ You are helping me set up the accounts and settings for an iPhone, iPad and Mac 
 2. Create a new project named ridgeline-routing.
 3. **Before enabling any API**, open Billing > Budgets & alerts and create a budget of [ASK ME FOR THE DOLLAR AMOUNT] per month with email alerts at 50%, 90% and 100%. Tell me the amount you used.
 4. Enable the **Routes API** only.
-5. Create an API key and restrict it to the **Routes API** only. Do not copy it anywhere. Tell me it is created and where I can see it.
-6. Open the Maps Platform terms of service and tell me, in plain words, anything it says about storing or caching results and about showing results on a non-Google map. Quote the section number. Do not accept anything.
+5. If the console lets you lower a daily quota for the Routes API (APIs & Services > Routes API > Quotas), set one that matches my budget and tell me the number. If it does not, skip this.
+6. Create an API key and restrict it to the **Routes API** only. Do not copy it anywhere. Tell me it is created and where I can see it.
+7. Open the Maps Platform terms of service and tell me, in plain words, anything it says about storing or caching results and about showing results on a non-Google map. Quote the section number. Do not accept anything.
 
 ## Task 4: Host the routing server
 Ask me which host I prefer (Render, Fly.io or Railway) before starting. Then:
 1. Connect to my GitHub repository snow-app (branch claude/nifty-euler-9sa8xb). If it asks for permissions, stop and tell me what it asks for.
 2. Create a web service: root directory `server`, start command `node index.mjs`, health check path `/health`.
-3. Add environment variables: `API_TOKENS` (generate one random 40-character token and show it to me once, here in the chat, so I can save it in my password manager), `DAILY_ELEMENT_CAP` = 20000, `RATE_LIMIT_PER_MIN` = 30. For `GOOGLE_MAPS_API_KEY`, leave the field empty and tell me: I will paste it myself.
+3. Add environment variables: `API_TOKENS` (generate one random 40-character token and show it to me once, here in the chat, so I can save it in my password manager), `DAILY_ELEMENT_CAP` = 3000, `RATE_LIMIT_PER_MIN` = 30. For `GOOGLE_MAPS_API_KEY`, leave the field empty and tell me: I will paste it myself.
 4. Do not choose a paid plan without asking me. Tell me the price of the plan you suggest.
 5. After I add the key and it deploys, open the service address plus `/health` and tell me the result. Give me the service address (it must start with https://).
 

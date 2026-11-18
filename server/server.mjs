@@ -14,11 +14,11 @@ export function loadConfig(env = process.env) {
     googleKey: env.GOOGLE_MAPS_API_KEY || '',
     upstreamUrl: env.UPSTREAM_URL || GOOGLE_ENDPOINT,
     tokens: (env.API_TOKENS || '').split(',').map((t) => t.trim()).filter(Boolean),
-    maxPoints: num(env.MAX_POINTS, 50),
+    maxPoints: num(env.MAX_POINTS, 30),
     maxElementsPerRequest: num(env.MAX_ELEMENTS_PER_REQUEST, 100),
     cacheTtlSeconds: num(env.CACHE_TTL_SECONDS, 300),
     rateLimitPerMinute: num(env.RATE_LIMIT_PER_MIN, 30),
-    dailyElementCap: num(env.DAILY_ELEMENT_CAP, 20000),
+    dailyElementCap: num(env.DAILY_ELEMENT_CAP, 3000),
     maxBodyBytes: num(env.MAX_BODY_BYTES, 1_000_000),
   };
 }
