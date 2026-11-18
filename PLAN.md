@@ -374,3 +374,8 @@ Built editable invoices, manual payments, late fees applied only on the owner's 
 
 # Build status: quotes and job costing
 Quotes (expiry, accept or decline once, contract from accepted quote), season-cost estimates with a mild-to-heavy range, and per-site job costing. 130 tests. Core only, no screens yet.
+
+---
+
+# Build status: app complete as code, awaiting a Mac
+All screens (Crew, Storm, Customers, Quotes, Invoices, Routes, Time clock, Job costs, Proof, Plans, Settings), camera and location and address lookup, Keychain token, live-route wiring, Xcode project generator and App target are written. Core logic has 144 tests; the screens and Apple-only code have never been compiled. `SETUP.md` lists what the owner must do.

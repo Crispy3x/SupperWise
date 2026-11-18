@@ -44,6 +44,9 @@ struct AddCustomerSheet: View {
     @State private var priority = 3
     @State private var trigger = 2.0
     @State private var rate = 60
+    @State private var coordinate: Coordinate?
+    @State private var locationNote = ""
+    @State private var searching = false
 
     var body: some View {
         NavigationStack {
@@ -52,6 +55,18 @@ struct AddCustomerSheet: View {
                     TextField("Name", text: $name)
                     TextField("Phone", text: $phone)
                     TextField("Service address", text: $address)
+                    #if canImport(CoreLocation)
+                    Button(searching ? "Looking up..." : "Find map location") {
+                        searching = true
+                        Task {
+                            coordinate = await AddressGeocoder.coordinate(for: address)
+                            locationNote = coordinate == nil ? "Address not found. The site will be left out of route ordering." : "Map location found."
+                            searching = false
+                        }
+                    }
+                    .disabled(searching || address.isEmpty)
+                    if !locationNote.isEmpty { Text(locationNote).font(.footnote).foregroundStyle(.secondary) }
+                    #endif
                 }
                 Section("Service") {
                     Stepper("Priority: \(priority) (1 is first)", value: $priority, in: 1...5)
@@ -65,7 +80,7 @@ struct AddCustomerSheet: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
                         model.addCustomerWithSite(name: name, phone: phone, address: address, priority: priority,
-                                                  triggerInches: trigger, perPushRate: Money(dollars: rate), coordinate: nil)
+                                                  triggerInches: trigger, perPushRate: Money(dollars: rate), coordinate: coordinate)
                         dismiss()
                     }
                     .disabled(name.isEmpty || address.isEmpty)

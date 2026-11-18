@@ -1,0 +1,51 @@
+# Generates the Xcode project: install XcodeGen once (brew install xcodegen), then run `xcodegen` in this folder.
+# NOT YET RUN: written without access to a Mac. If xcodegen reports an error, send it to me.
+name: RidgelineOps
+options:
+  bundleIdPrefix: com.example          # CHANGE to your own, for example com.yourbusiness
+  deploymentTarget:
+    iOS: "17.0"
+    macOS: "14.0"
+packages:
+  RidgelineOps:
+    path: .
+targets:
+  RidgelineOps:
+    type: application
+    supportedDestinations: [iOS, macOS]
+    sources:
+      - path: App
+        excludes:
+          - "*.md"
+    dependencies:
+      - package: RidgelineOps
+        product: RidgelineUI
+    entitlements:
+      path: App/RidgelineOps.entitlements
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Ridgeline Ops
+        LSApplicationCategoryType: public.app-category.business
+        ITSAppUsesNonExemptEncryption: false   # the app only uses standard HTTPS; confirm before submitting
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        NSLocationWhenInUseUsageDescription: Ridgeline Ops uses your location to check that your crew arrived at a job site, to set your yard location, and to get the weather for it.
+        NSCameraUsageDescription: Ridgeline Ops uses the camera to take before and after photos as proof of service.
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.ridgelineops   # CHANGE to match your bundle ID prefix
+        MARKETING_VERSION: 0.1.0
+        CURRENT_PROJECT_VERSION: 1
+        SWIFT_VERSION: "5.9"
+        DEVELOPMENT_TEAM: ""               # CHANGE: your Apple Developer team ID
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ENABLE_PREVIEWS: YES

@@ -21,6 +21,8 @@ public struct AppData: Equatable, Codable, Sendable {
     /// What an hour of crew time costs you (wages and burden), for job costing. Zero until you set it.
     public var laborCostPerHour: Money = .zero
     public var saltCostPerPound: Money = .zero
+    /// Address of the routing server (not secret). The access token lives in the Keychain, never in this file.
+    public var routingServerURL: String = ""
 
     public init() {}
 
@@ -44,6 +46,7 @@ public struct AppData: Equatable, Codable, Sendable {
         quotes = try c.decodeIfPresent([Quote].self, forKey: .quotes) ?? []
         laborCostPerHour = try c.decodeIfPresent(Money.self, forKey: .laborCostPerHour) ?? .zero
         saltCostPerPound = try c.decodeIfPresent(Money.self, forKey: .saltCostPerPound) ?? .zero
+        routingServerURL = try c.decodeIfPresent(String.self, forKey: .routingServerURL) ?? ""
     }
 }
 

@@ -70,3 +70,15 @@ public struct ProxyMatrixSource: MatrixSource {
         return matrix
     }
 }
+
+public enum RoutingServerSettings {
+    /// The server address the app may use. Anything but https is refused, except a server on this same device
+    /// for testing, because the access token travels with every request.
+    public static func validatedURL(_ text: String) -> URL? {
+        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let url = URL(string: trimmed), let scheme = url.scheme?.lowercased(), let host = url.host?.lowercased(), !host.isEmpty else { return nil }
+        if scheme == "https" { return url }
+        if scheme == "http", ["localhost", "127.0.0.1", "::1"].contains(host) { return url }
+        return nil
+    }
+}

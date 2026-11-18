@@ -15,9 +15,12 @@ public final class AppModel {
     /// NWS asks apps to identify themselves. Put your app name and a contact address here before release.
     public var weatherUserAgent = "RidgelineOpsApp"
     private let store: FileStore?
+    /// Where photos are kept, next to the data file. nil when there is no place to save (previews, tests).
+    public let photoStorage: PhotoStorage?
 
-    public init(store: FileStore? = AppModel.defaultStore()) {
+    public init(store: FileStore? = AppModel.defaultStore(), photoStorage: PhotoStorage? = AppModel.defaultPhotoStorage()) {
         self.store = store
+        self.photoStorage = photoStorage
         self.data = (try? store?.load()) ?? AppData()
         // The 14-day free trial starts on first launch, with every feature unlocked.
         if data.subscription.trialStart == nil && data.subscription.plan == nil {
@@ -29,6 +32,36 @@ public final class AppModel {
     nonisolated public static func defaultStore() -> FileStore? {
         guard let base = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first else { return nil }
         return FileStore(url: base.appendingPathComponent("RidgelineOps/data.json"))
+    }
+
+    nonisolated public static func defaultPhotoStorage() -> PhotoStorage? {
+        guard let base = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first else { return nil }
+        return PhotoStorage(directory: base.appendingPathComponent("RidgelineOps/Photos"))
+    }
+
+    /// Applies a change to a copy and keeps it only if it worked. Returns a message to show, or nil on success.
+    @discardableResult
+    public func edit(_ change: (inout AppData) throws -> Void) -> String? {
+        var copy = data
+        do { try change(&copy) } catch { return Self.describe(error) }
+        data = copy
+        save()
+        return nil
+    }
+
+    static func describe(_ error: Error) -> String {
+        switch error {
+        case OperationError.notFound: return "That item no longer exists."
+        case OperationError.alreadyClockedIn: return "Already clocked in."
+        case OperationError.notClockedIn: return "Not clocked in."
+        case OperationError.emptyName: return "Enter a name first."
+        case QuoteError.expired: return "This quote has expired."
+        case QuoteError.alreadyDecided: return "This quote was already accepted or declined."
+        case QuoteError.notAccepted: return "Accept the quote first."
+        case InvoiceError.notEditable: return "This invoice can no longer be edited."
+        case InvoiceError.exceedsBalance: return "That is more than the balance due."
+        default: return "Something went wrong: \(error.localizedDescription)"
+        }
     }
 
     public func save() {
@@ -101,6 +134,42 @@ public final class AppModel {
 
     public func invoicesCSV() -> String {
         InvoiceCSV.export(data.invoices, customerName: { id in data.customers.first { $0.id == id }?.name ?? "" }, now: Date())
+    }
+
+    // MARK: routing server
+
+    public static let routingTokenKey = "routingToken"
+
+    /// The planner to use: the routing server (live traffic) when it is set up, otherwise the offline estimate.
+    /// The second value says which one, for showing to the user.
+    func routePlanner() -> (planner: RoutePlanner, usingServer: Bool) {
+        #if canImport(Security)
+        if let url = RoutingServerSettings.validatedURL(data.routingServerURL), let token = KeychainStore.load(Self.routingTokenKey), !token.isEmpty {
+            let source = FallbackMatrixSource(primary: ProxyMatrixSource(baseURL: url, token: token), secondary: ProviderMatrixSource())
+            return (RoutePlanner(matrixSource: source), true)
+        }
+        #endif
+        return (RoutePlanner(), false)
+    }
+
+    /// Saves the server address and token. Returns a message for the user, or nil on success.
+    public func saveRoutingServer(address: String, token: String) -> String? {
+        let trimmed = address.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmed.isEmpty {
+            data.routingServerURL = ""
+            #if canImport(Security)
+            KeychainStore.save("", for: Self.routingTokenKey)
+            #endif
+            save()
+            return nil
+        }
+        guard RoutingServerSettings.validatedURL(trimmed) != nil else { return "The address must start with https://." }
+        #if canImport(Security)
+        guard KeychainStore.save(token, for: Self.routingTokenKey) else { return "Could not store the token securely." }
+        #endif
+        data.routingServerURL = trimmed
+        save()
+        return nil
     }
 
     public func setDepot(latitude: Double, longitude: Double) {

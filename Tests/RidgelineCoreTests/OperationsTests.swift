@@ -134,3 +134,32 @@ final class OperationsTests: XCTestCase {
         XCTAssertEqual(try store.load(), data)
     }
 }
+
+final class TermsSummaryTests: XCTestCase {
+    func testSummaries() {
+        XCTAssertEqual(ContractTerms.perPush(rate: Money(dollars: 60)).summary, "Per push $60.00 (one push per storm)")
+        XCTAssertEqual(ContractTerms.perPush(rate: Money(dollars: 50), counting: .perVisit).summary, "Per push $50.00 (every visit is a push)")
+        XCTAssertEqual(ContractTerms.seasonal(total: Money(dollars: 1400)).summary, "Seasonal $1,400.00 for the whole season")
+        XCTAssertEqual(ContractTerms.hybrid(seasonalBase: Money(dollars: 900), includedPushes: 8, overagePerPush: Money(dollars: 85)).summary,
+                       "Seasonal $900.00 covers 8 pushes, then $85.00 per push (one push per storm)")
+        XCTAssertEqual(ContractTerms.perInch(tiers: [DepthTier(minInches: 6, rate: Money(dollars: 70)), DepthTier(minInches: 2.5, rate: Money(dollars: 40))]).summary,
+                       "By depth: $40.00 from 2.5 in, $70.00 from 6 in")
+        XCTAssertEqual(ContractTerms.timeAndMaterials(hourly: Money(dollars: 95), materialsMarkupPercent: 15).summary,
+                       "Time and materials at $95.00 per hour, materials plus 15%")
+    }
+}
+
+final class RoutingServerSettingsTests: XCTestCase {
+    func testOnlyHTTPSOrLocalTestingAllowed() {
+        XCTAssertNotNil(RoutingServerSettings.validatedURL("https://routes.example.com"))
+        XCTAssertNotNil(RoutingServerSettings.validatedURL("  https://routes.example.com/  "))
+        XCTAssertNotNil(RoutingServerSettings.validatedURL("http://localhost:8080"))
+        XCTAssertNotNil(RoutingServerSettings.validatedURL("http://127.0.0.1:8080"))
+        XCTAssertNil(RoutingServerSettings.validatedURL("http://routes.example.com"))      // token would travel unencrypted
+        XCTAssertNil(RoutingServerSettings.validatedURL("ftp://routes.example.com"))
+        XCTAssertNil(RoutingServerSettings.validatedURL("routes.example.com"))
+        XCTAssertNil(RoutingServerSettings.validatedURL(""))
+        XCTAssertNil(RoutingServerSettings.validatedURL("https://"))
+        XCTAssertNil(RoutingServerSettings.validatedURL("http://localhost.evil.com"))
+    }
+}

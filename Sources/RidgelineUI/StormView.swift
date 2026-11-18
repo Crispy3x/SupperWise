@@ -14,6 +14,8 @@ struct StormView: View {
     @State private var depotLat = ""
     @State private var depotLon = ""
     @State private var loading = false
+    @State private var livePlan: RoutePlanResult?
+    @State private var planNote = "Offline estimate of drive times."
 
     private let conditionsModel = ConditionsModel()
 
@@ -40,8 +42,13 @@ struct StormView: View {
                                        serviceTimeFactor: conditionsModel.serviceTimeFactor(conditions))
     }
 
+    /// Changes whenever anything that affects the route changes, so the live plan is refreshed.
+    private var planKey: String {
+        "\(hits.map(\.id))|\(inches)|\(ratePerHour)|\(tempF)|\(windMph)|\(frozen)|\(model.data.routingServerURL)"
+    }
+
     var body: some View {
-        let plan = result
+        let plan = livePlan ?? result
         NavigationStack {
             Form {
                 Section("Forecast (National Weather Service, US)") {
@@ -106,6 +113,7 @@ struct StormView: View {
                             .font(.footnote).foregroundStyle(.orange)
                     }
                 }
+                Section { Text(planNote).font(.footnote).foregroundStyle(.secondary) }
                 if let first = plan.stops.first {
                     Section("Navigate") {
                         if let url = NavigationLinks.appleMaps(to: first.coordinate, from: start) {
@@ -128,6 +136,17 @@ struct StormView: View {
                 }
             }
             .navigationTitle("Storm")
+            .task(id: planKey) {
+                let chosen = model.routePlanner()
+                guard chosen.usingServer, !stops.isEmpty else {
+                    livePlan = nil
+                    planNote = "Offline estimate of drive times."
+                    return
+                }
+                let live = await chosen.planner.plan(stops: stops, start: start, conditions: conditions, frozenPrefix: frozen)
+                livePlan = live
+                planNote = "Drive times from your routing server, adjusted for the weather."
+            }
         }
     }
 }

@@ -51,14 +51,29 @@ struct VisitSheet: View {
     @State private var reason = ""
     @State private var depth = 3.0
     @State private var salt = 0.0
-    @State private var before = false
-    @State private var after = false
+    @State private var beforePhotos: [PhotoRef] = []
+    @State private var afterPhotos: [PhotoRef] = []
     @State private var note = ""
     @State private var arrival = Date()
+    @State private var geofence: GeofenceStatus = .unknown
+    @State private var findingLocation = false
+    #if canImport(CoreLocation)
+    @State private var locator = LocationFetcher()
+    #endif
+
+    private var company: String { model.data.companyName.isEmpty ? "Your crew" : model.data.companyName }
 
     private var preview: String {
-        if skipped { return NoticeTemplates.message(.skipped, company: model.data.companyName, address: site.address, reason: reason.isEmpty ? nil : reason) }
-        return NoticeTemplates.message(.complete, company: model.data.companyName, address: site.address)
+        if skipped { return NoticeTemplates.message(.skipped, company: company, address: site.address, reason: reason.isEmpty ? nil : reason) }
+        return NoticeTemplates.message(.complete, company: company, address: site.address)
+    }
+
+    private var locationText: String {
+        switch geofence {
+        case .inside: return "At the site"
+        case .outside: return "Not at the site"
+        case .unknown: return "Location not checked"
+        }
     }
 
     var body: some View {
@@ -69,18 +84,40 @@ struct VisitSheet: View {
                     Toggle("Could not service this visit", isOn: $skipped)
                     if skipped { TextField("Reason (customer will see this)", text: $reason) }
                 }
+                Section("Arrival") {
+                    HStack {
+                        Text(locationText)
+                        Spacer()
+                        #if canImport(CoreLocation)
+                        Button(findingLocation ? "Finding..." : "Check location") { checkLocation() }
+                            .buttonStyle(.bordered)
+                            .font(.footnote)
+                            .disabled(findingLocation)
+                        #endif
+                    }
+                    if site.latitude == nil {
+                        Text("This site has no map location, so arrival cannot be checked.")
+                            .font(.footnote).foregroundStyle(.secondary)
+                    }
+                }
                 if !skipped {
                     Section("Work") {
                         Stepper("Snow depth: \(depth, specifier: "%.1f") in", value: $depth, in: 0...36, step: 0.5)
                         Stepper("Salt: \(Int(salt)) lb", value: $salt, in: 0...500, step: 10)
-                        Toggle("Before photo taken", isOn: $before)
-                        Toggle("After photo taken", isOn: $after)
-                        Text("Photo capture is a placeholder in this build. These toggles log that a photo was taken.")
-                            .font(.footnote).foregroundStyle(.secondary)
+                    }
+                    Section("Photos") {
+                        PhotoCaptureRow(title: "Before", kind: .before, photos: $beforePhotos)
+                        PhotoCaptureRow(title: "After", kind: .after, photos: $afterPhotos)
                     }
                 }
                 Section("Note") { TextField("Optional note", text: $note) }
-                Section("Message to customer") { Text(preview).font(.footnote) }
+                Section("Message to customer") {
+                    Text(preview).font(.footnote)
+                    if !skipped && afterPhotos.isEmpty {
+                        Text("Add an after photo before the customer is told the work is done.")
+                            .font(.footnote).foregroundStyle(.orange)
+                    }
+                }
             }
             .navigationTitle("Log visit")
             .toolbar {
@@ -92,16 +129,24 @@ struct VisitSheet: View {
         }
     }
 
+    private func checkLocation() {
+        #if canImport(CoreLocation)
+        findingLocation = true
+        Task {
+            let here = await locator.currentLocation()
+            geofence = ArrivalCheck.status(device: here, site: site)
+            findingLocation = false
+        }
+        #endif
+    }
+
     private func save() {
         let now = Date()
-        var photos: [PhotoRef] = []
-        if before && !skipped { photos.append(PhotoRef(kind: .before, filename: "placeholder-before.jpg", capturedAt: arrival, sha256: SHA256.hex(UUID().uuidString))) }
-        if after && !skipped { photos.append(PhotoRef(kind: .after, filename: "placeholder-after.jpg", capturedAt: now, sha256: SHA256.hex(UUID().uuidString))) }
         let record = VisitRecord(siteID: site.id, crewMemberName: "Crew", stormID: stormID, arrival: arrival, departure: now,
                                  geofence: geofence,
                                  status: skipped ? .skipped(reason: reason) : .completed,
                                  snowDepthInches: skipped ? 0 : depth, saltPounds: skipped ? 0 : salt,
-                                 photos: photos, note: note)
+                                 photos: skipped ? [] : beforePhotos + afterPhotos, note: note)
         model.record(record)
         dismiss()
     }

@@ -183,3 +183,23 @@ public enum SnowBilling {
         d == d.rounded() ? String(Int(d)) : String(format: "%.1f", d)
     }
 }
+
+extension ContractTerms {
+    /// One plain sentence describing the contract, for lists and quotes.
+    public var summary: String {
+        func counting(_ c: PushCounting) -> String { c == .perStorm ? "one push per storm" : "every visit is a push" }
+        switch self {
+        case .perPush(let rate, let c):
+            return "Per push \(rate.formatted) (\(counting(c)))"
+        case .seasonal(let total):
+            return "Seasonal \(total.formatted) for the whole season"
+        case .perInch(let tiers):
+            let parts = tiers.sorted { $0.minInches < $1.minInches }.map { "\($0.rate.formatted) from \(String(format: "%g", $0.minInches)) in" }
+            return "By depth: " + parts.joined(separator: ", ")
+        case .hybrid(let base, let included, let overage, let c):
+            return "Seasonal \(base.formatted) covers \(included) pushes, then \(overage.formatted) per push (\(counting(c)))"
+        case .timeAndMaterials(let hourly, let markup):
+            return "Time and materials at \(hourly.formatted) per hour, materials plus \(markup)%"
+        }
+    }
+}

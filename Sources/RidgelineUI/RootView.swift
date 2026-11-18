@@ -16,9 +16,14 @@ public struct RidgelineRootView: View {
                 TodayView().tabItem { Label("Crew", systemImage: "snowflake") }
                 StormView().tabItem { Label("Storm", systemImage: "cloud.snow") }
                 CustomersView().tabItem { Label("Customers", systemImage: "person.2") }
+                QuotesView().tabItem { Label("Quotes", systemImage: "text.badge.plus") }
                 InvoicesView().tabItem { Label("Invoices", systemImage: "doc.text") }
+                RoutesView().tabItem { Label("Routes", systemImage: "point.topleft.down.curvedto.point.bottomright.up") }
+                TimeClockView().tabItem { Label("Time clock", systemImage: "clock") }
+                ReportsView().tabItem { Label("Job costs", systemImage: "chart.bar") }
                 ProofView().tabItem { Label("Proof", systemImage: "checkmark.seal") }
                 PricingCalculatorView().tabItem { Label("Plans", systemImage: "dollarsign.circle") }
+                SettingsView().tabItem { Label("Settings", systemImage: "gearshape") }
             }
         }
         .environment(model)

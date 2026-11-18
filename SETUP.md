@@ -1,0 +1,61 @@
+# What you need to do
+
+I built everything I could without a Mac, accounts or keys. These steps need you. Do them in order; each one says what to send me if it goes wrong.
+
+## 1. Run the app on your Mac (about 30 minutes)
+You need a Mac with **Xcode 16 or newer** (free in the Mac App Store).
+1. `brew install xcodegen` (or download it from the XcodeGen GitHub page).
+2. In this folder, edit `project.yml`: change `com.example` to your own identifier (two places) and put your Apple Developer team ID in `DEVELOPMENT_TEAM`. A free Apple ID works for running on your own devices.
+3. Run `xcodegen`, then open `RidgelineOps.xcodeproj`.
+4. Pick an iPhone simulator and press Run (Cmd+R). Then try "My Mac".
+5. **Expect compile errors the first time.** The screens were written and reviewed but never compiled, because SwiftUI only builds on Apple platforms. **Copy the full list of errors (or a screenshot) and send it to me. I fix them and you pull again.**
+6. On the Customers tab tap **Load demo data**, then try Storm, Crew, Invoices, Quotes, Routes, Time clock, Job costs, Proof.
+7. Run the logic tests too: `swift test` (143+ should pass).
+Send me: the build errors, then screenshots of each tab once it runs.
+
+## 2. Apple Developer account (needed to put it on other phones and the App Store)
+- Join the Apple Developer Program ($99 per year).
+- In Xcode, Signing & Capabilities: pick your team. Turn on automatic signing.
+- Add the app in App Store Connect with your bundle ID.
+- For testers: archive and upload to TestFlight (Product > Archive > Distribute).
+
+## 3. Subscriptions (the 14-day free trial and Pro and Max)
+**Not built yet: buying a plan.** The trial clock runs on the device only. To finish it I need these decisions from you:
+- **Where to bill:** the App Store (Apple takes 15% to 30%, the trial is an "introductory offer") or your own website with Stripe (you keep more, Apple's rules for linking out are still changing). I suggested web billing as the main route.
+- **App Store subscriptions are fixed products**, so per-crew pricing needs bundles: for example Pro for 1, 3, 5 and 10 crews, and the same for Max. Tell me which crew counts you want.
+- Create the products in App Store Connect with a **14-day free introductory offer**, then send me the product IDs.
+- Optional: RevenueCat can tie App Store and web purchases together.
+
+## 4. Live traffic routing (Google)
+The routing server is built and tested against a stand-in, never against real Google.
+1. Create a Google Cloud account and a project. **Set a budget alert first** (Billing > Budgets) so a mistake cannot run up a bill.
+2. Turn on the **Routes API**.
+3. Create an API key, restrict it to the Routes API only, and (if your host has a fixed address) restrict it by IP.
+4. Read Google's current Maps Platform terms on caching and on using results without a Google map. If unsure, ask a lawyer. A free alternative (Valhalla) is possible; ask me.
+5. Host `server/` somewhere that gives you HTTPS (Render, Fly.io, Railway, a small VPS). Set these as secrets there: `GOOGLE_MAPS_API_KEY`, `API_TOKENS` (make up a long random token per customer), and set `DAILY_ELEMENT_CAP` to what you can afford. Details are in `server/README.md`.
+6. In the app: Settings > Live traffic routing > enter the server address and a token.
+7. Test with a small route and check Google's billing page the next day.
+Send me: any error from the server logs, and a screenshot of the Storm tab saying "Drive times from your routing server".
+
+## 5. Weather
+The free National Weather Service feed works with no key (US only). Before release open `Sources/RidgelineUI/AppModel.swift`, find `weatherUserAgent`, and put your app name and a contact email there, as the NWS asks. Do not use a personal email you want kept private; use a support address.
+
+## 6. Legal, brand and store pages (before any customer pays)
+- **Name:** run a trademark search for "Ridgeline Ops" (USPTO.gov, free) and check the domain and the App Store name. My web search found no software with that exact name, but that is not clearance.
+- **Privacy policy and terms of service** pages (required by the App Store). Say plainly that: customer site locations go to your routing server and to Google; the yard location goes to the weather service; typed addresses go to Apple's lookup; photos stay on the device for now.
+- **App Store privacy answers** (App Store Connect > App Privacy) and `App/PrivacyInfo.xcprivacy`: they must match what the app really does. I left the collected-data list empty on purpose. Fill it in with a lawyer or the App Store's own guide.
+- **Founding-member promise** (free payments feature later): settle the wording, who qualifies, and for how long, then have a lawyer glance at it. Draft is in `PLAN.md`.
+- **Support email and a way to cancel**: the plan promises one-tap cancel and data export. Cancel and export screens are not built yet.
+
+## 7. Talk to owners (this decides what I build next)
+Use `research/INTERVIEW-SCRIPT.md`. Aim for 10 to 15 snow and landscaping owners. Send me the notes or your top findings: which phone crews use, what they pay now, what they hate, what they would pay.
+
+## What I still need from you, in one list
+1. Xcode build errors and screenshots (step 1).
+2. Your bundle ID and team ID (step 2), if you want me to set them in the files.
+3. Billing choice and crew bundles (step 3).
+4. Result of a real Google test (step 4).
+5. Interview notes (step 7).
+
+## Known gaps in the code
+Buying a plan; cancel and export screens; PDF and emailed invoices; payment links; uploading photos to a server or cloud sync; accounts and teams; push notifications; Android. Photos stay on the phone.
