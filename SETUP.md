@@ -1,5 +1,7 @@
 # What you need to do
 
+**Shortcut for the browser steps:** `CHROME-BRIEF.md` is a ready-to-paste brief for Claude in Chrome. It does the account clicking (Apple Developer, App Store Connect, Google Cloud, hosting, build results, name checks) but stops for payments, passwords, identity and legal agreements, which only you can do.
+
 I built everything I could without a Mac, accounts or keys. These steps need you. Do them in order; each one says what to send me if it goes wrong.
 
 ## 1. Run the app on your Mac (about 30 minutes)
