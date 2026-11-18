@@ -38,14 +38,11 @@ for attempt in range(2):
             print("::error::This API key can't create certificates. Make a Team Key with **Admin** access in App Store Connect "
                   "(Users and Access → Integrations → App Store Connect API) and put its Key ID and .p8 in the ASC_KEY_ID / ASC_KEY_P8 secrets.")
             sys.exit(1)
-        if attempt == 0 and ("maximum" in msg.lower() or "limit" in msg.lower() or "already" in msg.lower()):
-            existing = [c for c in all_pages("/v1/certificates", {"filter[certificateType]": "DISTRIBUTION,IOS_DISTRIBUTION"})]
-            existing.sort(key=lambda c: c["attributes"].get("expirationDate") or "")
-            if existing:
-                old = existing[0]
-                call("DELETE", f"/v1/certificates/{old['id']}")
-                print(f"revoked the oldest distribution certificate ({old['attributes'].get('name')}, expiring {old['attributes'].get('expirationDate')}) to make room")
-                continue
+        if "maximum" in msg.lower() or "limit" in msg.lower() or "already" in msg.lower():
+            print("::error::Your team already has the maximum number of distribution certificates. This build never revokes "
+                  "one automatically (another app, such as an EAS build, may depend on it). Revoke an unused one at "
+                  "developer.apple.com > Certificates, then run again.")
+            sys.exit(1)
         raise
 certificate = x509.load_der_x509_certificate(base64.b64decode(cert["attributes"]["certificateContent"]))
 # The older PKCS#12 encryption, which the macOS keychain imports reliably.
@@ -62,4 +59,5 @@ profile = call("POST", "/v1/profiles", {"data": {"type": "profiles", "attributes
                                  "certificates": {"data": [{"type": "certificates", "id": cert["id"]}]}}}})["data"]
 open(os.path.join(OUT, "profile.mobileprovision"), "wb").write(base64.b64decode(profile["attributes"]["profileContent"]))
 open(os.path.join(OUT, "profile_name.txt"), "w").write(name)
+open(os.path.join(OUT, "cert_id.txt"), "w").write(cert["id"])
 print(f"created profile '{name}'")

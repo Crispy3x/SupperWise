@@ -152,6 +152,16 @@ jobs:
           name: archive-log
           path: ${{ runner.temp }}/archive.log
 
+      - name: Revoke the certificate this run created
+        if: always()
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          [ -x "$RUNNER_TEMP/venv/bin/python" ] || exit 0
+          OUT_DIR="$RUNNER_TEMP/signing" "$RUNNER_TEMP/venv/bin/python" tools/asc/asc_revoke.py
+
       - name: Remove the keys
         if: always()
         run: rm -rf "$RUNNER_TEMP/keys" "$RUNNER_TEMP/signing" "$RUNNER_TEMP/build.keychain-db"
