@@ -4,7 +4,7 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 
 ## What exists so far
 
-**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 168 unit tests, all passing.
+**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 202 unit tests, all passing.
 - `Pricing`, `Entitlements`: Pro and Max per-crew prices, annual 20% off, 14-day trial (all features unlocked), feature gating, read-only after trial.
 - `SnowBilling`: per-push, seasonal, per-inch, hybrid (base, cap, overage) and time-and-materials. One invoice line per storm, skipped visits never billed, per-contract push counting (default one push per storm).
 - `Storm`: trigger depth per site, near-trigger warnings.
@@ -32,6 +32,12 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 - No map geocoding: addresses added in the app have no coordinates, so they are left out of route order until coordinates exist. Demo data has coordinates.
 - Drive times in the app are still the straight-line estimate. The Google server call and the live Apple ETAs are written (Apple) or specified (Google) but not wired in.
 - No weather feed (snowfall is entered by hand), no sync, no accounts, no payments, no push notifications, no real StoreKit or web billing. The trial clock runs locally.
+
+## Storm broadcast and client portal (built, not in the screens yet)
+- **Core (`StormBroadcast`, `ServiceRequests`, `Portal`)**: plans a storm-start message for every client (expected snow as a range, whether service is expected, what it means for their bill by contract type, a private page link), with consent rules: no message without recorded consent, an opt-out always wins, quiet hours push non-urgent messages to morning, nothing is sent twice for the same storm, and each skipped client comes back with a reason. Clients can ask for service, urgent service (with a reason) or a skip; nothing changes the route until you accept, and an accepted urgent request moves that site to the top priority tier for that storm only.
+- **Server (`server/portal.mjs`)**: the private client page (no login, 24-character random link, no scripts, strict security headers, same plain answer for wrong, old or malformed links), the owner's request inbox, and email sending through an email provider (the code is written for Resend's API and tested against a stand-in). The server stores no phone numbers or email addresses: only the page link, the address label, a status sentence and the requests; snapshots are deleted after 14 days and requests after 30.
+- **Tested together**: the real Swift client was run against the real server: send the email, publish the page, the client submits an urgent request from the page, the owner imports it, accepts it, and the client's page shows the answer.
+- **Not built yet**: the screens for it (send the storm message, the request inbox, collecting consent), real email sending with your own provider account, and text messages (they need carrier registration first).
 
 ## Apple Maps routing (default)
 Drive times now come from **Apple Maps on the device** by default (free, no key, includes live traffic). Apple answers one origin and destination per request and slows heavy use down, so `SampledMatrixSource` measures only the legs that matter most (yard to every stop, then each stop to its 3 nearest neighbours, capped at 150 requests, 3 at a time with short pauses), scales the straight-line estimate for every other pair by how the measured legs compared, and stops asking and finishes with estimates if Apple stops answering. The Storm screen says how many legs were measured. Answers are cached in memory only, for 10 minutes (`CachedETASource`), so changing the weather sliders does not ask Apple again. Settings lets you pick Apple Maps, your own Google routing server, or the offline estimate.

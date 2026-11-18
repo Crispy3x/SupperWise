@@ -39,11 +39,32 @@ Returns `{"seconds":[[0,100,...],...], "cached":false, "elements":9}`. `null` me
 Errors: 400 bad input, 401 bad token, 413 too large, 429 rate or daily limit, 502 Google failed, 503 not configured.
 `GET /health` returns `{"ok":true}`.
 
+## Client portal, requests and email (`portal.mjs`)
+Run by the same server. Owner endpoints use the same `API_TOKENS` bearer token.
+- `PUT /v1/portal/snapshot`: the app publishes what each client page shows (address label, status, one sentence).
+- `GET /v1/portal/requests?since=<ISO date>`: new client requests.
+- `POST /v1/portal/decisions`: accept or decline a request, with a message the client sees.
+- `POST /v1/send/email`: up to 100 messages per call, sent through the email provider.
+- `GET /c/<token>` and `POST /c/<token>/request`: the client's page and request form (public, no login).
+
+| Variable | Default | What it does |
+|---|---|---|
+| `PORTAL_DATA_FILE` | none | Where pages and requests are saved. Without it they are lost on restart. Use a persistent disk. |
+| `RESEND_API_KEY` | none | Your email provider key (Resend). Without it sending returns 503. |
+| `FROM_EMAIL` | none | The sender address. The provider needs to verify your domain first. |
+| `REPLY_TO_EMAIL` | none | Where client replies go: your support address. |
+| `EMAIL_DAILY_CAP` | 300 | Emails per day for the whole server. |
+| `PORTAL_REQUESTS_PER_HOUR` | 3 | Requests one client page may send per hour. |
+| `PORTAL_MAX_PENDING` | 5 | Unanswered requests one page may hold. |
+| `PORTAL_IP_LIMIT_PER_MIN` | 120 | Client page loads per connection per minute. Set `TRUST_PROXY=1` only behind a proxy that sets `X-Forwarded-For` honestly. |
+
+Privacy: the server never stores phone numbers, email addresses or customer names. Email addresses and message text pass through to the provider and are not logged (only counts). Unreadable data files are set aside, never overwritten.
+
 ## Tests
 ```
 cd server && npm test
 ```
-16 tests against a stand-in for Google (no real key, no real calls): auth, validation, request splitting, caching and expiry, rate and daily caps, missing routes, upstream failure without leaking the key, oversized bodies.
+30 tests (16 routing, 14 portal) against stand-ins for Google and the email provider (no real key, no real calls): auth, validation, request splitting, caching and expiry, rate and daily caps, missing routes, upstream failure without leaking the key, oversized bodies.
 
 ## Before you rely on it
 - **Not run against real Google yet.** The request and response shapes follow Google's documented Routes API, but they have only been exercised against a stand-in. Test with a real key and a small matrix first.

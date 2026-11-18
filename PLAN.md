@@ -389,3 +389,11 @@ Apple MapKit on the device (free, live traffic, no key). Because Apple answers o
 
 # Decision: routes use drive time only, not weather
 Routes are ordered by drive time (Apple Maps, or the routing server, or the offline estimate), with strict priorities, fixed stops and deadlines. They are **not** adjusted for weather. Weather still decides which sites need service: the forecast fills the snowfall slider, and each site's trigger depth decides who is listed. The weather model stays in the code, tested but unused, in case it is wanted later. Reasons: no maps service has snow-aware routing, the slowdown factors were unvalidated guesses, and owners in the research distrusted automatic routing. Earlier mentions of "conditions-aware routing" in this file, including the pitch and the competitor comparison, are superseded by this decision. Apple's live traffic still reflects slowdowns that appear in traffic data.
+
+---
+
+# Decision: storm broadcast, client portal and service requests
+Email first (no carrier registration), text messages later. Rush requests are a flag the owner accepts or declines; an accepted urgent request moves the site to the top priority tier for that storm only. Clients must have recorded consent; an opt-out always wins; non-urgent messages wait out quiet hours; nothing is sent twice per storm. The portal server stores no contact details. Built and tested: core (202 tests), portal server (14 tests), Swift client against the real server. Not built: the screens, the owner's own email provider account, text messages.
+
+# New requests from the owner (in progress)
+Clean, sleek interface; automatic invoice when a stop is completed; a winter portal showing bills and estimated arrival before each storm; automatic storm information; landscaping version of the portal; profile and settings; sign-in; a roughly 10-step welcome that asks questions. Two research tasks are comparing what competitors offer for portals and onboarding (`research/12`, `research/13`).
