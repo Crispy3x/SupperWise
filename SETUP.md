@@ -37,7 +37,7 @@ The app icon is in `App/Assets.xcassets` (a first draft, replace it whenever you
 
 Before the first run you need (in this order):
 1. **Apple Developer Program membership** (step 2 above) and your **Team ID**.
-2. **Register your bundle ID**: developer.apple.com > Certificates, Identifiers & Profiles > Identifiers > + > App IDs. Use the prefix you chose plus `.ridgelineops` (for example `com.yourbusiness.ridgelineops`).
+2. **Register your bundle ID**: developer.apple.com > Certificates, Identifiers & Profiles > Identifiers > + > App IDs. Use the prefix you chose plus `.ridgelineops` (for example `com.yourbusiness.ridgelineops`). **Tick the "Sign in with Apple" capability** for it: the app now offers it, so signing fails without it.
 3. **Create the app in App Store Connect** (New App) with that bundle ID. The upload fails if this record does not exist.
 4. **Create an App Store Connect API key**: appstoreconnect.apple.com > Users and Access > Integrations > App Store Connect API > Team Keys > Generate. Name it "GitHub builds" and give it the **Admin** role (it needs permission to manage signing certificates). Download the `.p8` file (Apple shows it **only once**) and note the **Key ID** and the **Issuer ID** shown at the top of that page. **This key can manage your Apple account: only ever put it in GitHub secrets, never in a chat, email or file in this repository, and never give it to me or to Claude in Chrome.** Delete the key in App Store Connect when you no longer need it.
 5. **Add five secrets** in GitHub: your repository > Settings > Secrets and variables > Actions > New repository secret:

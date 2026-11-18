@@ -19,7 +19,7 @@ struct ReportsView: View {
     }
 
     var body: some View {
-        NavigationStack {
+        ScreenStack {
             List {
                 if model.data.laborCostPerHour.cents == 0 || model.data.saltCostPerPound.cents == 0 {
                     Section {

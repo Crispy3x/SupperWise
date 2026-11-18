@@ -8,7 +8,7 @@ struct QuotesView: View {
     @State private var message: String?
 
     var body: some View {
-        NavigationStack {
+        ScreenStack {
             List {
                 if model.data.quotes.isEmpty {
                     Section {

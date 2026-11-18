@@ -7,7 +7,7 @@ struct CustomersView: View {
     @State private var showingAdd = false
 
     var body: some View {
-        NavigationStack {
+        ScreenStack {
             List {
                 if model.data.sites.isEmpty {
                     Section {
@@ -19,12 +19,14 @@ struct CustomersView: View {
                     }
                 }
                 ForEach(model.data.sites) { site in
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(model.customerName(for: site)).font(.headline)
-                        Text(site.address).font(.subheadline)
-                        Text("Priority \(site.priority), trigger \(site.triggerInches, specifier: "%.1f") in")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                    NavigationLink { ClientDetailView(customerID: site.customerID) } label: {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(model.customerName(for: site)).font(.headline)
+                            Text(site.address).font(.subheadline)
+                            Text("Priority \(site.priority), trigger \(site.triggerInches, specifier: "%.1f") in")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
                     }
                 }
             }
@@ -42,6 +44,8 @@ struct AddCustomerSheet: View {
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
     @State private var phone = ""
+    @State private var email = ""
+    @State private var agreed = false
     @State private var address = ""
     @State private var priority = 3
     @State private var trigger = 2.0
@@ -56,6 +60,9 @@ struct AddCustomerSheet: View {
                 Section("Customer") {
                     TextField("Name", text: $name)
                     TextField("Phone", text: $phone)
+                    TextField("Email (for storm updates and invoices)", text: $email)
+                    Toggle("This client agreed to storm and invoice emails", isOn: $agreed)
+                        .disabled(!ContactValidation.isValidEmail(email))
                     TextField("Service address", text: $address)
                     #if canImport(CoreLocation)
                     Button(searching ? "Looking up..." : "Find map location") {
@@ -79,6 +86,7 @@ struct AddCustomerSheet: View {
                     Stepper("Price per push: $\(rate)", value: $rate, in: 10...1000, step: 5)
                 }
             }
+            .onAppear { trigger = model.data.profile.defaultTriggerInches }
             .onChange(of: address) {
                 // A map location belongs to the address it was found for.
                 coordinate = nil
@@ -89,7 +97,7 @@ struct AddCustomerSheet: View {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
-                        model.addCustomerWithSite(name: name, phone: phone, address: address, priority: priority,
+                        model.addCustomerWithSite(name: name, phone: phone, email: email, emailConsent: agreed, address: address, priority: priority,
                                                   triggerInches: trigger, perPushRate: Money(dollars: rate), coordinate: coordinate)
                         dismiss()
                     }

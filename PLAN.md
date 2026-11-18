@@ -412,3 +412,8 @@ Evidence is thinner than it looks: vendor marketing, competitor blogs and search
 
 # Build status
 Built and tested: welcome-flow logic (10 steps), automatic invoice at stop completion, storm broadcast and consent, request queue, client portal server, email sending, Apple Maps routing, backup and restore. **Not built:** the redesigned screens (a clean layout, profile and settings, the welcome screens, sign-in), client portal bills and arrival estimates, accounts and sync, real email provider setup, text messages.
+
+---
+
+# Build status: redesign (latest)
+Written, never compiled: five-tab layout with a shared design layer, ten-step welcome with optional Sign in with Apple, profile with account deletion, requests inbox, storm message sheet, client detail with consent, invoice and message settings, automatic invoice on visit save. Tested: portal bills, arrival windows, season line, accounts, erasure (228 Swift tests, 33 server tests). **Open:** your own email provider account for sending, text messages, accounts and sync on a server, real screenshots (the mockups predate this redesign). **Decisions taken for you, change any:** Apple sign-in only and optional; portal shows amounts (switch in Settings); automatic invoices default to draft.

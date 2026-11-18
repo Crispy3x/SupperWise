@@ -14,6 +14,8 @@ struct StormView: View {
     @Environment(AppModel.self) private var model
     @State private var inches = 4.0
     @State private var frozen = 0
+    @State private var routeStart = Calendar.current.nextDate(after: Date(), matching: DateComponents(minute: 0), matchingPolicy: .nextTime) ?? Date()
+    @State private var showingMessage = false
     @State private var depotLat = ""
     @State private var depotLon = ""
     @State private var loading = false
@@ -21,7 +23,11 @@ struct StormView: View {
     @State private var planReport: SampledReport?
     @State private var planNote = "Offline estimate of drive times."
 
-    private var hits: [Site] { TriggerEvaluator.sitesToServe(sites: model.data.sites, inches: inches) }
+    /// Sites at their trigger depth, plus sites with an accepted request, minus sites whose skip was accepted.
+    private var hits: [Site] {
+        let stormID = model.data.storms.first { $0.name == model.stormName }?.id
+        return DispatchRules.effectiveSites(sites: model.data.sites, inches: inches, stormID: stormID, requests: model.data.serviceRequests)
+    }
     private var warnings: [Site] { TriggerEvaluator.sitesNearTrigger(sites: model.data.sites, inches: inches, within: 1.5) }
 
     private var stops: [Stop] {
@@ -45,7 +51,8 @@ struct StormView: View {
 
     var body: some View {
         let plan = livePlan ?? result
-        NavigationStack {
+        let offsets = Dictionary(plan.planned.map { ($0.stop.id, $0.arrivalOffsetSeconds) }, uniquingKeysWith: { first, _ in first })
+        ScreenStack {
             Form {
                 Section("Forecast (National Weather Service, US)") {
                     if model.data.depot == nil {
@@ -110,6 +117,12 @@ struct StormView: View {
                             .font(.footnote).foregroundStyle(r.stoppedEarly ? .orange : .secondary)
                     }
                 }
+                Section("Clients") {
+                    DatePicker("Crews start at", selection: $routeStart, displayedComponents: [.date, .hourAndMinute])
+                    Button("Message clients about this storm") { showingMessage = true }
+                    Text("Each client's page shows an estimated arrival window from this start time and your route. You review the messages before anything is sent.")
+                        .font(.footnote).foregroundStyle(.secondary)
+                }
                 if let first = plan.stops.first {
                     Section("Navigate") {
                         if let url = NavigationLinks.appleMaps(to: first.coordinate, from: start) {
@@ -132,6 +145,7 @@ struct StormView: View {
                 }
             }
             .navigationTitle("Storm")
+            .sheet(isPresented: $showingMessage) { StormMessageSheet(inches: inches, routeStart: routeStart, offsets: offsets) }
             .task(id: planKey) {
                 // Drop the old plan at once so the list never shows an order that belongs to other sites.
                 livePlan = nil

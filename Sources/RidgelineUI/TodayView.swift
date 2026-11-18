@@ -5,18 +5,19 @@ import RidgelineCore
 /// Crew view: tap a site to log the visit.
 struct TodayView: View {
     @Environment(AppModel.self) private var model
-    @State private var stormName = Date().formatted(.dateTime.month(.abbreviated).day())
     @State private var selected: Site?
+
+    private var stormNameBinding: Binding<String> { Binding(get: { model.stormName }, set: { model.stormName = $0 }) }
 
     private var sites: [Site] { model.data.sites.sorted { ($0.priority, $0.address) < ($1.priority, $1.address) } }
 
     var body: some View {
-        NavigationStack {
+        ScreenStack {
             List {
-                Section { TextField("Storm name", text: $stormName) }
+                Section { TextField("Storm name", text: stormNameBinding) }
                 Section("Sites") {
                     ForEach(sites) { site in
-                        let visits = model.data.visitLog.records(forSite: site.id).filter { $0.stormID == stormName }
+                        let visits = model.data.visitLog.records(forSite: site.id).filter { $0.stormID == model.stormName }
                         Button { selected = site } label: {
                             HStack {
                                 VStack(alignment: .leading) {
@@ -36,7 +37,7 @@ struct TodayView: View {
                 }
             }
             .navigationTitle("Crew")
-            .sheet(item: $selected) { site in VisitSheet(site: site, stormID: stormName) }
+            .sheet(item: $selected) { site in VisitSheet(site: site, stormID: model.stormName) }
         }
     }
 }

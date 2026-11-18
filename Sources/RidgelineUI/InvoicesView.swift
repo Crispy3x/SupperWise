@@ -8,7 +8,7 @@ struct InvoicesView: View {
     @State private var message: String?
 
     var body: some View {
-        NavigationStack {
+        ScreenStack {
             List {
                 if model.data.contracts.isEmpty {
                     Text("No contracts yet.").foregroundStyle(.secondary)

@@ -18,14 +18,22 @@ struct SettingsView: View {
     @State private var locator = LocationFetcher()
     #endif
 
+    private func hourText(_ hour: Int) -> String {
+        let d = Calendar.current.date(bySettingHour: min(max(hour, 0), 23), minute: 0, second: 0, of: Date()) ?? Date()
+        return d.formatted(date: .omitted, time: .shortened)
+    }
+
     private func binding<T>(_ get: @escaping () -> T, _ set: @escaping (T) -> Void) -> Binding<T> {
         Binding(get: get, set: { set($0); model.save() })
     }
 
     var body: some View {
-        NavigationStack {
+        ScreenStack {
             Form {
                 Section("Business") {
+                    Picker("Color", selection: binding({ model.data.profile.accentColor }, { model.data.profile.accentColor = $0 })) {
+                        ForEach(AppData.accentColors, id: \.self) { Text($0.capitalized).tag($0) }
+                    }
                     TextField("Business name (shown to customers)", text: binding({ model.data.companyName }, { model.data.companyName = $0 }))
                 }
                 Section("Yard location") {
@@ -50,6 +58,36 @@ struct SettingsView: View {
                     .disabled(findingLocation)
                     #endif
                     if !locationNote.isEmpty { Text(locationNote).font(.footnote).foregroundStyle(.secondary) }
+                }
+                Section {
+                    Picker("When a stop is done", selection: binding({ model.data.profile.invoiceAutomation }, { model.data.profile.invoiceAutomation = $0 })) {
+                        ForEach(InvoiceAutomation.allCases, id: \.self) { Text($0.title).tag($0) }
+                    }
+                    Text(model.data.profile.invoiceAutomation.explanation).font(.footnote).foregroundStyle(.secondary)
+                    Stepper("Clients have \(model.data.profile.netDays) days to pay",
+                            value: binding({ model.data.profile.netDays }, { model.data.profile.netDays = $0 }), in: 0...120)
+                    TextField("How clients should pay (shown on invoices)",
+                              text: binding({ model.data.profile.paymentInstructions }, { model.data.profile.paymentInstructions = String($0.prefix(300)) }),
+                              axis: .vertical)
+                        .lineLimit(2...4)
+                    Toggle("Message clients at the start of each storm",
+                           isOn: binding({ model.data.profile.stormMessagesOn }, { model.data.profile.stormMessagesOn = $0 }))
+                    Toggle("Show invoice amounts on client pages",
+                           isOn: binding({ model.data.profile.portalShowsAmounts }, { model.data.profile.portalShowsAmounts = $0 }))
+                    TextField("Client page address (https://...)",
+                              text: binding({ model.data.broadcastSettings.portalBaseURL }, { model.data.broadcastSettings.portalBaseURL = $0 }))
+                    if !model.data.routingServerURL.isEmpty && model.data.broadcastSettings.portalBaseURL.isEmpty {
+                        Button("Use my server's address") { model.data.broadcastSettings.portalBaseURL = model.data.routingServerURL; model.save() }
+                            .font(.footnote)
+                    }
+                    Stepper("Quiet from \(hourText(model.data.broadcastSettings.quietHours.startHour))",
+                            value: binding({ model.data.broadcastSettings.quietHours.startHour }, { model.data.broadcastSettings.quietHours.startHour = $0 }), in: 0...23)
+                    Stepper("Quiet until \(hourText(model.data.broadcastSettings.quietHours.endHour))",
+                            value: binding({ model.data.broadcastSettings.quietHours.endHour }, { model.data.broadcastSettings.quietHours.endHour = $0 }), in: 0...23)
+                } header: {
+                    Text("Invoices and client messages")
+                } footer: {
+                    Text("Messages and client pages need your server (below) and clients who agreed to messages. Storm messages wait out quiet hours unless you mark them urgent.")
                 }
                 Section("Drive times") {
                     Picker("Source", selection: binding({ model.data.routingProvider }, { model.setRoutingProvider($0) })) {

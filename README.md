@@ -4,7 +4,7 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 
 ## What exists so far
 
-**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 219 unit tests, all passing.
+**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 228 unit tests, all passing.
 - `Pricing`, `Entitlements`: Pro and Max per-crew prices, annual 20% off, 14-day trial (all features unlocked), feature gating, read-only after trial.
 - `SnowBilling`: per-push, seasonal, per-inch, hybrid (base, cap, overage) and time-and-materials. One invoice line per storm, skipped visits never billed, per-contract push counting (default one push per storm).
 - `Storm`: trigger depth per site, near-trigger warnings.
@@ -39,7 +39,16 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 - **Tested together**: the real Swift client was run against the real server: send the email, publish the page, the client submits an urgent request from the page, the owner imports it, accepts it, and the client's page shows the answer.
 - **Not built yet**: the screens for it (send the storm message, the request inbox, collecting consent), real email sending with your own provider account, and text messages (they need carrier registration first).
 
-## Welcome flow and automatic invoices (logic built, screens not yet)
+## The redesigned app (screens written, never compiled)
+- **Five tabs**: Today (log visits), Storm (snowfall, who gets served, message clients), Clients (requests inbox, clients, quotes, crews and routes), Money (what is waiting to be paid, invoices, job costs, plans) and More (profile, time clock, proof of service, settings). A shared design layer (`Theme.swift`) gives every screen the same icon tiles, status pills and the accent color the owner picked.
+- **Welcome flow** (`WelcomeFlowView`): shown once on a new install, an intro with optional Sign in with Apple, then the ten questions with progress, Back and Skip. Only the business name is required.
+- **Sign in with Apple is optional** and local: it identifies the owner, with no cloud copy yet. The profile screen has Sign out and **Delete my account and data** (wipes records, photos, the saved server token and safety copies; keeps only the device's trial or plan so deleting cannot restart a free trial). Apple requires in-app deletion if accounts can be created, and an equivalent privacy-preserving login if other logins are offered.
+- **Storm messages**: Storm > "Message clients about this storm" shows who will get one, who will not and why, and a preview, before anything is sent. Clients need recorded consent (client detail screen); an opt-out always wins.
+- **Requests inbox**: client requests arrive from the portal server; Accept or Decline, and the client's page shows the answer. An accepted urgent request moves the site to the top of the list for that storm only.
+- **Client page**: status, estimated arrival window, this winter's visits, bills (amounts can be hidden in Settings), and request buttons.
+- **Automatic invoices**: when a visit is saved the app creates a draft invoice (default), or emails it, per Settings.
+
+## Welcome flow and automatic invoices (logic)
 - **`Onboarding`**: the ten welcome steps (business name, services, clients, snow billing and trigger depth, home base, crews, import clients, payment terms, messages and invoice automation, color). Only the business name is required; everything else has a default and can be skipped. `finishOnboarding` applies the answers (profile, company name, crews, home base). It is safe to run twice and never deletes crews.
 - **`AutoInvoice`**: when a visit is completed the app can create a draft invoice, or create it and prepare the email. It bills each storm once, never bills a skipped visit, never bills the season base at the first push, and leaves a draft (with a plain explanation) for clients who have not agreed to messages. The invoice is marked sent only after the email really went out. Default is draft.
 
