@@ -10,6 +10,8 @@ const REASONS = new Set(['leavingSoon', 'medical', 'visitorOrDelivery', 'other']
 const KIND_TEXT = { service: 'Please service my property', urgent: 'I need to get out soon (urgent)', skip: 'Skip my property this storm' };
 const REASON_TEXT = { leavingSoon: 'I need to leave soon', medical: 'Medical or care visit', visitorOrDelivery: 'Visitor or delivery coming', other: 'Other (explain below)' };
 const STATUS_TEXT = { planned: 'Planned for this storm', done: 'Done', skipped: 'Not serviced this visit', notExpected: 'No service expected yet' };
+const BILL_STATUSES = new Set(['Paid', 'Due', 'Overdue']);
+const MAX_BILLS = 30;
 const DAY = 86_400_000;
 
 export function loadPortalConfig(env = process.env) {
@@ -154,7 +156,8 @@ body{font-family:-apple-system,Helvetica,Arial,sans-serif;margin:0;background:#f
 .card{background:#fff;border-radius:12px;padding:1rem;margin:0 0 .8rem}h1{font-size:1.3rem;margin:.2rem 0 .6rem;color:#0d2540}h2{font-size:1rem;margin:0 0 .5rem}
 .status{display:inline-block;padding:.25rem .6rem;border-radius:8px;background:#eaf3fc;color:#1d5fb4;font-weight:600}.done{background:#e3f4ea;color:#1f7a45}.skipped{background:#fde8d2;color:#b8610f}
 label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;padding:.4rem;box-sizing:border-box}button{font:inherit;padding:.6rem 1rem;border:0;border-radius:8px;background:#2f7de1;color:#fff;margin-top:.6rem}
-.small{font-size:.85rem;color:#5b6b7e}</style></head><body><main>${inner}</main></body></html>`;
+.small{font-size:.85rem;color:#5b6b7e}table{width:100%;border-collapse:collapse}td{padding:.35rem 0;border-top:1px solid #e3e9f0;vertical-align:top}td.r{text-align:right}
+.pill{font-size:.8rem;font-weight:600;padding:.1rem .45rem;border-radius:6px;background:#eaf3fc;color:#1d5fb4}.pill.paid{background:#e3f4ea;color:#1f7a45}.pill.overdue{background:#fde8d2;color:#b8610f}</style></head><body><main>${inner}</main></body></html>`;
   }
   const notFound = (res) => sendHtml(res, 404, page('Page not available', '<div class="card"><h1>This page is not available</h1><p>The link may be old or mistyped. Please contact your snow service provider.</p></div>'));
 
@@ -166,7 +169,17 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
     if (s.stormName) html += `<p>${escapeHtml(s.stormName)}${s.expected ? ': ' + escapeHtml(s.expected) : ''}</p>`;
     html += `<p><span class="status ${statusClass}">${escapeHtml(STATUS_TEXT[s.status])}</span></p>`;
     if (s.detail) html += `<p>${escapeHtml(s.detail)}</p>`;
+    if (s.eta) html += `<p><strong>Estimated arrival</strong><br>${escapeHtml(s.eta)}</p>`;
+    if (s.summary) html += `<p class="small">${escapeHtml(s.summary)}</p>`;
     html += `<p class="small">Updated ${escapeHtml(new Date(s.updatedAt).toUTCString())}. Forecasts can change.</p></div>`;
+    if (s.bills && s.bills.length) {
+      html += '<div class="card"><h2>Your bills this winter</h2><table>';
+      for (const b of s.bills) {
+        const cls = b.status === 'Paid' ? 'paid' : b.status === 'Overdue' ? 'overdue' : '';
+        html += `<tr><td>${escapeHtml(b.number)}<br><span class="small">${escapeHtml(b.label)}${b.due ? ' · ' + escapeHtml(b.due) : ''}</span></td><td class="r">${b.total ? escapeHtml(b.total) + '<br>' : ''}<span class="pill ${cls}">${escapeHtml(b.status)}</span></td></tr>`;
+      }
+      html += '</table><p class="small">To pay, use the method your snow service gave you.</p></div>';
+    }
     if (sentFlag) html += '<div class="card"><p><strong>Request sent.</strong> Your snow service will review it. This page shows their answer.</p></div>';
     if (mine.length) {
       html += '<div class="card"><h2>Your requests</h2>';
@@ -202,8 +215,17 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
     const next = [];
     for (const s of body.sites) {
       if (!s || !TOKEN_RE.test(String(s.token)) || !STATUSES.has(s.status)) return sendJson(res, 400, { error: 'each site needs a valid token and status' });
+      let bills = [];
+      if (s.bills !== undefined) {
+        if (!Array.isArray(s.bills) || s.bills.length > MAX_BILLS) return sendJson(res, 400, { error: `bills must be a list of at most ${MAX_BILLS}` });
+        for (const b of s.bills) {
+          if (!b || !BILL_STATUSES.has(b.status)) return sendJson(res, 400, { error: 'each bill needs a status of Paid, Due or Overdue' });
+          bills.push({ number: cleanText(b.number, 24), label: cleanText(b.label, 120), total: cleanText(b.total, 24), status: b.status, due: cleanText(b.due, 40) });
+        }
+      }
       next.push([s.token, { company, stormId, stormName, expected, label: cleanText(s.label, 120) || 'Your property', status: s.status,
-        detail: cleanText(s.detail, 200), canRequest: s.canRequest === true, updatedAt: now() }]);
+        detail: cleanText(s.detail, 200), eta: cleanText(s.eta, 120), summary: cleanText(s.summary, 160), bills,
+        canRequest: s.canRequest === true, updatedAt: now() }]);
     }
     for (const [token, snap] of next) state.snapshots[token] = snap;
     save();

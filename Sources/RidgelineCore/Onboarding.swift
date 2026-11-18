@@ -36,6 +36,8 @@ public struct BusinessProfile: Equatable, Codable, Sendable {
     public var stormMessagesOn: Bool = true
     public var invoiceAutomation: InvoiceAutomation = .draft
     public var accentColor: String = "blue"
+    /// Whether the client page shows invoice amounts (otherwise only paid or due).
+    public var portalShowsAmounts: Bool = true
     public var onboardingCompletedAt: Date?
     public var skippedSteps: [String] = []
 

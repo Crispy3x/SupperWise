@@ -136,3 +136,138 @@ final class PortalClientTests: XCTestCase {
         catch { XCTAssertEqual(error as? PortalError, .unreadable) }
     }
 }
+
+final class PortalBillsAndEtaTests: XCTestCase {
+    private let t0 = Date(timeIntervalSince1970: 1_800_000_000)   // 2027-01-15 08:00 UTC
+    private var utcCal: Calendar { var c = Calendar(identifier: .gregorian); c.timeZone = TimeZone(identifier: "UTC")!; return c }
+    private let utc = TimeZone(identifier: "UTC")!
+
+    func testArrivalWindowIsARangeOnQuarterHours() {
+        // Crews start at 08:00, this stop is 50 minutes in: arrival 08:50, window 08:05 to 09:35 widened to 08:00 and 09:45.
+        XCTAssertEqual(ArrivalWindow.describe(routeStart: t0, offsetSeconds: 50 * 60, calendar: utcCal), "Expected between 8:00 AM and 9:45 AM.")
+        XCTAssertEqual(ArrivalWindow.describe(routeStart: t0, offsetSeconds: 0, spreadMinutes: 30, calendar: utcCal), "Expected between 7:30 AM and 8:30 AM.")
+        XCTAssertEqual(ArrivalWindow.describe(routeStart: t0, offsetSeconds: -500, spreadMinutes: 30, calendar: utcCal), "Expected between 7:30 AM and 8:30 AM.")
+        let late = utcCal.date(from: DateComponents(year: 2027, month: 1, day: 15, hour: 23, minute: 30))!
+        XCTAssertEqual(ArrivalWindow.describe(routeStart: late, offsetSeconds: 3600, spreadMinutes: 30, calendar: utcCal), "Expected between 12:00 AM and 1:00 AM.")
+    }
+
+    private func world() -> (AppData, Site, StormEvent) {
+        var d = AppData()
+        d.companyName = "Ridge Plow"
+        let c = Customer(name: "Pat", email: "pat@example.com", emailConsent: true)
+        let s = Site(customerID: c.id, address: "14 Elm Ave", triggerInches: 2)
+        d.customers = [c]; d.sites = [s]
+        d.contracts = [SnowContract(siteID: s.id, season: "x", terms: .perPush(rate: Money(dollars: 60)))]
+        d.ensurePortalLinks(now: t0)
+        return (d, s, StormEvent(name: "Nov 18", start: t0, forecastInches: 4))
+    }
+
+    private func snapshot(_ d: AppData, _ s: Site, _ storm: StormEvent, offsets: [UUID: Double] = [:]) -> PortalSiteSnapshot {
+        PortalSnapshotBuilder.build(data: d, storm: storm, forecastInches: 4, servedSiteIDs: [s.id], visitStormName: "Nov 18", routeStart: t0,
+                                    arrivalOffsets: offsets, now: t0 + 86_400, timeZone: utc).sites[0]
+    }
+
+    func testPlannedSiteGetsAnArrivalWindowOnlyWhenItHasAnOffset() {
+        let (d, s, storm) = world()
+        XCTAssertTrue(snapshot(d, s, storm).eta.isEmpty)
+        XCTAssertTrue(snapshot(d, s, storm, offsets: [s.id: 3000]).eta.hasPrefix("Expected between"))
+    }
+
+    func testBillsShowSentInvoicesOnlyWithStatusAndAmounts() throws {
+        var (d, s, storm) = world()
+        func inv(_ n: String, _ dollars: Int, due: Double) -> Invoice {
+            Invoice(number: n, customerID: s.customerID, siteID: s.id, issueDate: t0, dueDate: t0 + due * 86_400,
+                    lines: [InvoiceLineItem(description: "Storm \(n)", amount: Money(dollars: dollars))])
+        }
+        var paid = inv("INV-0001", 60, due: 14); try paid.markSent(at: t0); try paid.record(ManualPayment(amount: Money(dollars: 60), date: t0, method: .check))
+        var due = inv("INV-0002", 60, due: 400); try due.markSent(at: t0)
+        var overdue = inv("INV-0003", 90, due: -30); try overdue.markSent(at: t0 - 90 * 86_400)
+        let draft = inv("INV-0004", 70, due: 14)
+        var voided = inv("INV-0005", 80, due: 14); try voided.markSent(at: t0); voided.void()
+        d.invoices = [paid, due, overdue, draft, voided]
+        let bills = snapshot(d, s, storm).bills
+        XCTAssertEqual(Set(bills.map(\.number)), ["INV-0001", "INV-0002", "INV-0003"])          // no draft, no voided
+        XCTAssertEqual(bills.first { $0.number == "INV-0001" }?.status, "Paid")
+        XCTAssertEqual(bills.first { $0.number == "INV-0003" }?.status, "Overdue")
+        XCTAssertEqual(bills.first { $0.number == "INV-0002" }?.total, "$60.00")
+        XCTAssertEqual(bills.first { $0.number == "INV-0001" }?.due, "")                        // nothing "due" on a paid bill
+        d.profile.portalShowsAmounts = false
+        XCTAssertTrue(snapshot(d, s, storm).bills.allSatisfy { $0.total.isEmpty })              // status only, no amounts
+        _ = storm
+    }
+
+    func testWinterSummaryCountsStormsAndExplainsTheCap() {
+        var (d, s, storm) = world()
+        XCTAssertEqual(snapshot(d, s, storm).summary, "")
+        for (i, name) in ["S1", "S2", "S2"].enumerated() {
+            d.visitLog.append(VisitRecord(siteID: s.id, crewMemberName: "Sam", stormID: name, arrival: t0 - Double(i + 1) * 86_400))
+        }
+        XCTAssertEqual(snapshot(d, s, storm).summary, "2 storms serviced so far this winter.")      // two visits in one storm count once
+        d.contracts = [SnowContract(siteID: s.id, season: "x", terms: .hybrid(seasonalBase: Money(dollars: 500), includedPushes: 1, overagePerPush: Money(dollars: 40)))]
+        XCTAssertEqual(snapshot(d, s, storm).summary, "Seasonal contract: 1 of 1 included pushes used, 1 beyond that.")
+        d.visitLog.append(VisitRecord(siteID: s.id, crewMemberName: "Sam", stormID: "Old", arrival: t0 - 300 * 86_400))   // last winter is not counted
+        XCTAssertEqual(snapshot(d, s, storm).summary, "Seasonal contract: 1 of 1 included pushes used, 1 beyond that.")
+        _ = storm
+    }
+}
+
+final class AccountTests: XCTestCase {
+    private let t0 = Date(timeIntervalSince1970: 1_800_000_000)
+
+    func testSignInKeepsNameAndEmailThatAppleOnlyGivesOnce() throws {
+        var d = AppData()
+        try d.signIn(appleUserID: "001.abc", displayName: "Pat Miller", email: "pat@privaterelay.appleid.com", now: t0)
+        XCTAssertEqual(d.account?.displayName, "Pat Miller")
+        try d.signIn(appleUserID: "001.abc", displayName: "", email: "", now: t0 + 100)           // second sign-in has no name or email
+        XCTAssertEqual(d.account?.displayName, "Pat Miller")
+        XCTAssertEqual(d.account?.email, "pat@privaterelay.appleid.com")
+        XCTAssertEqual(d.account?.createdAt, t0)
+    }
+
+    func testBadAndDifferentAccountsAreRefused() throws {
+        var d = AppData()
+        XCTAssertThrowsError(try d.signIn(appleUserID: "  ", displayName: "x", email: "", now: t0)) { XCTAssertEqual($0 as? AccountError, .missingIdentifier) }
+        try d.signIn(appleUserID: "001.abc", displayName: "Pat", email: "", now: t0)
+        XCTAssertThrowsError(try d.signIn(appleUserID: "002.zzz", displayName: "Sam", email: "", now: t0)) { XCTAssertEqual($0 as? AccountError, .differentAccount) }
+        XCTAssertEqual(d.account?.appleUserID, "001.abc")                                          // the first account is untouched
+        d.signOut()
+        XCTAssertNil(d.account)
+    }
+
+    func testDeletingEverythingKeepsOnlyTheDevicesTrialAndPlan() throws {
+        var d = AppData()
+        d.subscription = .startTrial(at: t0)
+        d.companyName = "Ridge"
+        d.customers = [Customer(name: "Pat", email: "p@x.com", emailConsent: true)]
+        d.portalLinks = [PortalLink(siteID: UUID(), token: PortalToken.generate(), createdAt: t0)]
+        try d.signIn(appleUserID: "001.abc", displayName: "Pat", email: "p@x.com", now: t0)
+        d.profile.onboardingCompletedAt = t0
+        let fresh = d.erasedCopy()
+        XCTAssertEqual(fresh.subscription, d.subscription)         // deleting an account must not hand out a new free trial
+        XCTAssertTrue(fresh.customers.isEmpty); XCTAssertTrue(fresh.portalLinks.isEmpty)
+        XCTAssertNil(fresh.account); XCTAssertEqual(fresh.companyName, "")
+        XCTAssertNil(fresh.profile.onboardingCompletedAt)          // so the welcome flow starts again
+    }
+
+    func testAccountSurvivesSaveAndOldFilesHaveNone() throws {
+        var d = AppData()
+        try d.signIn(appleUserID: "001.abc", displayName: "Pat", email: "", now: t0)
+        let dir = FileManager.default.temporaryDirectory.appendingPathComponent("ridgeline-acct-\(UUID().uuidString)")
+        defer { try? FileManager.default.removeItem(at: dir) }
+        let store = FileStore(url: dir.appendingPathComponent("data.json"))
+        try store.save(d)
+        XCTAssertEqual(try store.load().account?.appleUserID, "001.abc")
+        XCTAssertNil(try FileStore.decoder.decode(AppData.self, from: Data(#"{"companyName":"Old"}"#.utf8)).account)
+    }
+
+    func testPhotoDeleteAllRemovesFilesAndIsSafeWhenEmpty() throws {
+        let dir = FileManager.default.temporaryDirectory.appendingPathComponent("ridgeline-ph-\(UUID().uuidString)")
+        defer { try? FileManager.default.removeItem(at: dir) }
+        let store = PhotoStorage(directory: dir)
+        XCTAssertNoThrow(try store.deleteAll())                    // nothing there yet
+        let ref = try store.save(Data("x".utf8), kind: .after, capturedAt: t0)
+        try store.deleteAll()
+        XCTAssertFalse(store.isIntact(ref))
+        XCTAssertFalse(FileManager.default.fileExists(atPath: dir.path))
+    }
+}

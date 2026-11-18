@@ -120,6 +120,43 @@ test('full request flow: client asks, owner polls, owner decides, client sees th
   assert.equal((await s.owner('POST', '/v1/portal/decisions', { id: r.id, status: 'maybe' })).status, 400);
 });
 
+test('the page shows the arrival window, the winter summary and the bills, with amounts only if the app sent them', async (t) => {
+  const s = await boot(); t.after(s.close);
+  const bills = [
+    { number: 'INV-0003', label: 'Storm Nov 18', total: '$60.00', status: 'Due', due: 'Due Dec 2, 2026' },
+    { number: 'INV-0002', label: 'Storm Nov 3', total: '$60.00', status: 'Paid', due: '' },
+    { number: 'INV-0001', label: '2 items', total: '', status: 'Overdue', due: 'Due Nov 1, 2026' },
+  ];
+  assert.equal((await s.publish([{ token: TOKEN, label: '14 Elm Ave', status: 'planned', detail: 'We expect to come.', canRequest: true,
+    eta: 'Expected between 7:15 AM and 8:45 AM.', summary: '3 storms serviced so far this winter.', bills }])).status, 200);
+  const html = await (await fetch(`${s.base}/c/${TOKEN}`)).text();
+  assert.ok(html.includes('Estimated arrival')); assert.ok(html.includes('Expected between 7:15 AM and 8:45 AM.'));
+  assert.ok(html.includes('3 storms serviced so far this winter.'));
+  assert.ok(html.includes('Your bills this winter')); assert.ok(html.includes('INV-0003')); assert.ok(html.includes('$60.00'));
+  assert.ok(html.includes('pill paid')); assert.ok(html.includes('pill overdue')); assert.ok(html.includes('Due Dec 2, 2026'));
+  assert.ok(html.includes('To pay, use the method your snow service gave you.'));
+});
+
+test('a page with no bills or estimate shows neither section', async (t) => {
+  const s = await boot(); t.after(s.close);
+  await s.publish();
+  const html = await (await fetch(`${s.base}/c/${TOKEN}`)).text();
+  assert.ok(!html.includes('Your bills this winter')); assert.ok(!html.includes('Estimated arrival'));
+});
+
+test('bills are validated and hostile text in them is escaped', async (t) => {
+  const s = await boot(); t.after(s.close);
+  const site = (bills) => [{ token: TOKEN, label: 'x', status: 'planned', canRequest: true, bills }];
+  assert.equal((await s.publish(site([{ number: 'x', status: 'Free money' }]))).status, 400);
+  assert.equal((await s.publish(site('nope'))).status, 400);
+  assert.equal((await s.publish(site(Array.from({ length: 31 }, () => ({ number: 'x', status: 'Due' }))))).status, 400);
+  assert.equal((await s.publish(site(Array.from({ length: 30 }, () => ({ number: 'x', status: 'Due' }))))).status, 200);
+  await s.publish([{ token: TOKEN, label: 'x', status: 'planned', canRequest: false, eta: '<script>alert(1)</script>', summary: '"><img src=x>',
+    bills: [{ number: '<b>1</b>', label: '<i>l</i>', total: '$<u>1</u>', status: 'Due', due: '<s>d</s>' }] }]);
+  const html = await (await fetch(`${s.base}/c/${TOKEN}`)).text();
+  for (const bad of ['<script>alert', '<img src=x>', '<b>1</b>', '<i>l</i>', '<u>1</u>', '<s>d</s>']) assert.ok(!html.includes(bad), bad);
+});
+
 test('request validation', async (t) => {
   const s = await boot(); t.after(s.close);
   await s.publish();
