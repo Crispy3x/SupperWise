@@ -53,6 +53,9 @@ jobs:
 
       - name: Build the archive
         run: |
+          # TestFlight only accepts a build number higher than every earlier build of the app. A UTC timestamp always is.
+          BUILD_NUMBER="$(date -u +%y%m%d%H%M)"
+          echo "Build number: $BUILD_NUMBER"
           xcodebuild archive \
             -project RidgelineOps.xcodeproj \
             -scheme RidgelineOps \
@@ -63,7 +66,7 @@ jobs:
             -authenticationKeyPath "$RUNNER_TEMP/keys/AuthKey_${ASC_KEY_ID}.p8" \
             -authenticationKeyID "$ASC_KEY_ID" \
             -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
-            CURRENT_PROJECT_VERSION="${{ github.run_number }}"
+            CURRENT_PROJECT_VERSION="$BUILD_NUMBER"
 
       - name: Upload to TestFlight
         run: |
