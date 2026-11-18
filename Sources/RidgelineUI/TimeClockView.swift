@@ -22,7 +22,7 @@ struct TimeClockView: View {
     private func siteName(_ id: UUID?) -> String { model.data.sites.first { $0.id == id }?.address ?? "General" }
 
     var body: some View {
-        NavigationStack {
+        ScreenStack {
             Form {
                 Section("Who is working") {
                     TextField("Your name", text: $name)

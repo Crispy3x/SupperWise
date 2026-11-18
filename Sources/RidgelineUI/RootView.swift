@@ -9,7 +9,25 @@ public struct RidgelineRootView: View {
 
     public init() {}
 
+    /// The welcome questions show once, for a new install. An install that already has clients skips them.
+    private var needsWelcome: Bool {
+        model.data.profile.onboardingCompletedAt == nil && model.data.customers.isEmpty && model.loadNotice == nil
+    }
+
     public var body: some View {
+        Group {
+            if needsWelcome {
+                WelcomeFlowView()
+            } else {
+                mainApp
+            }
+        }
+        .environment(model)
+        .tint(Theme.accent(model.data.profile.accentColor))
+        .task { await model.checkAppleCredential() }
+    }
+
+    private var mainApp: some View {
         VStack(spacing: 0) {
             if let notice = model.loadNotice {
                 VStack(spacing: 4) {
@@ -24,26 +42,23 @@ public struct RidgelineRootView: View {
                 Text(problem)
                     .font(.footnote).frame(maxWidth: .infinity).padding(6).background(.red.opacity(0.2))
             }
+            if let note = model.notice {
+                HStack {
+                    Text(note).font(.footnote)
+                    Spacer()
+                    Button("OK") { model.notice = nil }.font(.footnote).buttonStyle(.bordered)
+                }
+                .padding(8).background(.green.opacity(0.15))
+            }
             SubscriptionBanner()
             TabView {
-                Group {
-                    TodayView().tabItem { Label("Crew", systemImage: "snowflake") }
-                    StormView().tabItem { Label("Storm", systemImage: "cloud.snow") }
-                    CustomersView().tabItem { Label("Customers", systemImage: "person.2") }
-                    QuotesView().tabItem { Label("Quotes", systemImage: "text.badge.plus") }
-                    InvoicesView().tabItem { Label("Invoices", systemImage: "doc.text") }
-                }
-                Group {
-                    RoutesView().tabItem { Label("Routes", systemImage: "point.topleft.down.curvedto.point.bottomright.up") }
-                    TimeClockView().tabItem { Label("Time clock", systemImage: "clock") }
-                    ReportsView().tabItem { Label("Job costs", systemImage: "chart.bar") }
-                    ProofView().tabItem { Label("Proof", systemImage: "checkmark.seal") }
-                    PricingCalculatorView().tabItem { Label("Plans", systemImage: "dollarsign.circle") }
-                    SettingsView().tabItem { Label("Settings", systemImage: "gearshape") }
-                }
+                TodayView().tabItem { Label("Today", systemImage: "snowflake") }
+                StormView().tabItem { Label("Storm", systemImage: "cloud.snow") }
+                ClientsHubView().tabItem { Label("Clients", systemImage: "person.2") }
+                MoneyHubView().tabItem { Label("Money", systemImage: "dollarsign.circle") }
+                MoreView().tabItem { Label("More", systemImage: "ellipsis.circle") }
             }
         }
-        .environment(model)
     }
 }
 

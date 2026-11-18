@@ -30,4 +30,9 @@ public struct PhotoStorage: Sendable {
     }
 
     public func isIntact(_ ref: PhotoRef) -> Bool { (try? data(for: ref)) != nil }
+
+    /// Deletes every stored photo (for "Delete my account and data").
+    public func deleteAll() throws {
+        if FileManager.default.fileExists(atPath: directory.path) { try FileManager.default.removeItem(at: directory) }
+    }
 }

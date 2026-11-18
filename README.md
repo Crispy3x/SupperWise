@@ -4,7 +4,7 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 
 ## What exists so far
 
-**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 168 unit tests, all passing.
+**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 250 unit tests, all passing.
 - `Pricing`, `Entitlements`: Pro and Max per-crew prices, annual 20% off, 14-day trial (all features unlocked), feature gating, read-only after trial.
 - `SnowBilling`: per-push, seasonal, per-inch, hybrid (base, cap, overage) and time-and-materials. One invoice line per storm, skipped visits never billed, per-contract push counting (default one push per storm).
 - `Storm`: trigger depth per site, near-trigger warnings.
@@ -33,7 +33,31 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 - Drive times in the app are still the straight-line estimate. The Google server call and the live Apple ETAs are written (Apple) or specified (Google) but not wired in.
 - No weather feed (snowfall is entered by hand), no sync, no accounts, no payments, no push notifications, no real StoreKit or web billing. The trial clock runs locally.
 
-## Apple Maps routing (default)
+## Storm broadcast and client portal (built, not in the screens yet)
+- **Core (`StormBroadcast`, `ServiceRequests`, `Portal`)**: plans a storm-start message for every client (expected snow as a range, whether service is expected, what it means for their bill by contract type, a private page link), with consent rules: no message without recorded consent, an opt-out always wins, quiet hours push non-urgent messages to morning, nothing is sent twice for the same storm, and each skipped client comes back with a reason. Clients can ask for service, urgent service (with a reason) or a skip; nothing changes the route until you accept, and an accepted urgent request moves that site to the top priority tier for that storm only.
+- **Server (`server/portal.mjs`)**: the private client page (no login, 24-character random link, no scripts, strict security headers, same plain answer for wrong, old or malformed links), the owner's request inbox, and email sending through an email provider (the code is written for Resend's API and tested against a stand-in). The server stores no phone numbers or email addresses: only the page link, the address label, a status sentence and the requests; snapshots are deleted after 14 days and requests after 30.
+- **Tested together**: the real Swift client was run against the real server: send the email, publish the page, the client submits an urgent request from the page, the owner imports it, accepts it, and the client's page shows the answer.
+- **Not built yet**: the screens for it (send the storm message, the request inbox, collecting consent), real email sending with your own provider account, and text messages (they need carrier registration first).
+
+## The redesigned app (screens written, never compiled)
+- **Five tabs**: Today (log visits), Storm (snowfall, who gets served, message clients), Clients (requests inbox, clients, quotes, crews and routes), Money (what is waiting to be paid, invoices, job costs, plans) and More (profile, time clock, proof of service, settings). A shared design layer (`Theme.swift`) gives every screen the same icon tiles, status pills and the accent color the owner picked.
+- **Welcome flow** (`WelcomeFlowView`): shown once on a new install, an intro with optional Sign in with Apple, then the ten questions with progress, Back and Skip. Only the business name is required.
+- **Sign in with Apple is optional** and local: it identifies the owner, with no cloud copy yet. The profile screen has Sign out and **Delete my account and data** (wipes records, photos, the saved server token and safety copies; keeps only the device's trial or plan so deleting cannot restart a free trial). Apple requires in-app deletion if accounts can be created, and an equivalent privacy-preserving login if other logins are offered.
+- **Storm messages**: Storm > "Message clients about this storm" shows who will get one, who will not and why, and a preview, before anything is sent. Clients need recorded consent (client detail screen); an opt-out always wins.
+- **Requests inbox**: client requests arrive from the portal server; Accept or Decline, and the client's page shows the answer. An accepted urgent request moves the site to the top of the list for that storm only.
+- **Client page**: status, estimated arrival window, this winter's visits, bills (amounts can be hidden in Settings), and request buttons.
+- **Automatic invoices**: when a visit is saved the app creates a draft invoice (default), or emails it, per Settings.
+
+## More features (screens written, never compiled)
+- **Today** is a real home: what needs your attention (client requests, draft invoices, overdue invoices) and a "Finish setup" checklist for the heavy steps that do not belong in the welcome questions.
+- **Season statement** per client (Client details): storms serviced, visits skipped, pushes used against the cap, billed, paid and still owed.
+- **Overdue reminders** (Invoices): friendly, only to clients who agreed to messages, a week apart, at most three per invoice, never in quiet hours, and each includes how to pay and a link to their bills.
+- **Import clients from a spreadsheet** (Clients > Add > Import): finds the Name and Address columns in any order, skips duplicates and incomplete rows, drops an email that cannot work, and never marks anyone as having agreed to messages.
+
+## Welcome flow and automatic invoices (logic)
+- **`Onboarding`**: the ten welcome steps (business name, services, clients, snow billing and trigger depth, home base, crews, import clients, payment terms, messages and invoice automation, color). Only the business name is required; everything else has a default and can be skipped. `finishOnboarding` applies the answers (profile, company name, crews, home base). It is safe to run twice and never deletes crews.
+- **`AutoInvoice`**: when a visit is completed the app can create a draft invoice, or create it and prepare the email. It bills each storm once, never bills a skipped visit, never bills the season base at the first push, and leaves a draft (with a plain explanation) for clients who have not agreed to messages. The invoice is marked sent only after the email really went out. Default is draft.
+
 Drive times now come from **Apple Maps on the device** by default (free, no key, includes live traffic). Apple answers one origin and destination per request and slows heavy use down, so `SampledMatrixSource` measures only the legs that matter most (yard to every stop, then each stop to its 3 nearest neighbours, capped at 150 requests, 3 at a time with short pauses), scales the straight-line estimate for every other pair by how the measured legs compared, and stops asking and finishes with estimates if Apple stops answering. The Storm screen says how many legs were measured. Answers are cached in memory only, for 10 minutes (`CachedETASource`), so changing the weather sliders does not ask Apple again. Settings lets you pick Apple Maps, your own Google routing server, or the offline estimate.
 
 **Apple's terms (read from the Apple Developer Program License Agreement, Attachment 6, version date not visible in what I read; I did not read the whole agreement):**

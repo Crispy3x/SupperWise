@@ -5,18 +5,66 @@ import RidgelineCore
 /// Crew view: tap a site to log the visit.
 struct TodayView: View {
     @Environment(AppModel.self) private var model
-    @State private var stormName = Date().formatted(.dateTime.month(.abbreviated).day())
     @State private var selected: Site?
+
+    private var stormNameBinding: Binding<String> { Binding(get: { model.stormName }, set: { model.stormName = $0 }) }
+
+    private var pendingRequests: Int { model.data.serviceRequests.filter { $0.status == .pending }.count }
+    private var drafts: Int { model.data.invoices.filter { $0.sentAt == nil && !$0.isVoid }.count }
+    private var overdue: Int { model.data.invoices.filter { $0.status(now: Date()) == .overdue }.count }
+
+    @ViewBuilder private var attentionSection: some View {
+        if pendingRequests + drafts + overdue > 0 {
+            Section("Needs your attention") {
+                if pendingRequests > 0 {
+                    NavigationLink { RequestsView().environment(\.embeddedInStack, true) } label: {
+                        HubRow(icon: "tray.full.fill", title: "\(pendingRequests) client request\(pendingRequests == 1 ? "" : "s")", subtitle: "Waiting for your answer", badge: pendingRequests, tint: .orange)
+                    }
+                }
+                if drafts > 0 {
+                    NavigationLink { InvoicesView().environment(\.embeddedInStack, true) } label: {
+                        HubRow(icon: "doc.text.fill", title: "\(drafts) draft invoice\(drafts == 1 ? "" : "s")", subtitle: "Look them over and send", badge: drafts)
+                    }
+                }
+                if overdue > 0 {
+                    NavigationLink { InvoicesView().environment(\.embeddedInStack, true) } label: {
+                        HubRow(icon: "exclamationmark.circle.fill", title: "\(overdue) overdue invoice\(overdue == 1 ? "" : "s")", subtitle: model.reminderPlan().messages.isEmpty ? "Past their due date" : "You can send friendly reminders", badge: overdue, tint: .red)
+                    }
+                }
+            }
+        }
+    }
+
+    @ViewBuilder private var setupSection: some View {
+        let items = SetupChecklist.items(for: model.data, serverConfigured: model.serverConfigured)
+        let progress = SetupChecklist.progress(items)
+        let remaining = items.filter { !$0.done }
+        if progress.done < progress.total {
+            Section {
+                ProgressView(value: Double(progress.done), total: Double(max(progress.total, 1)))
+                ForEach(remaining) { item in
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(item.title + (item.optional ? " (optional)" : "")).font(.subheadline.bold())
+                        Text(item.detail).font(.footnote).foregroundStyle(.secondary)
+                    }
+                }
+            } header: {
+                Text("Finish setup: \(progress.done) of \(progress.total)")
+            }
+        }
+    }
 
     private var sites: [Site] { model.data.sites.sorted { ($0.priority, $0.address) < ($1.priority, $1.address) } }
 
     var body: some View {
-        NavigationStack {
+        ScreenStack {
             List {
-                Section { TextField("Storm name", text: $stormName) }
+                attentionSection
+                setupSection
+                Section { TextField("Storm name", text: stormNameBinding) }
                 Section("Sites") {
                     ForEach(sites) { site in
-                        let visits = model.data.visitLog.records(forSite: site.id).filter { $0.stormID == stormName }
+                        let visits = model.data.visitLog.records(forSite: site.id).filter { $0.stormID == model.stormName }
                         Button { selected = site } label: {
                             HStack {
                                 VStack(alignment: .leading) {
@@ -36,7 +84,7 @@ struct TodayView: View {
                 }
             }
             .navigationTitle("Crew")
-            .sheet(item: $selected) { site in VisitSheet(site: site, stormID: stormName) }
+            .sheet(item: $selected) { site in VisitSheet(site: site, stormID: model.stormName) }
         }
     }
 }

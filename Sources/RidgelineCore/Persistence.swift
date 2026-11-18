@@ -25,6 +25,13 @@ public struct AppData: Equatable, Codable, Sendable {
     public var routingServerURL: String = ""
     /// Where drive times come from. Apple Maps on the device by default (free, no key).
     public var routingProvider: RoutingProvider = .appleMaps
+    public var portalLinks: [PortalLink] = []
+    public var broadcastLog: [BroadcastRecord] = []
+    public var serviceRequests: [ServiceRequest] = []
+    public var broadcastSettings = BroadcastSettings()
+    public var profile = BusinessProfile()
+    public var account: AccountProfile?
+    public var reminderLog: [ReminderRecord] = []
 
     public init() {}
 
@@ -50,6 +57,13 @@ public struct AppData: Equatable, Codable, Sendable {
         saltCostPerPound = try c.decodeIfPresent(Money.self, forKey: .saltCostPerPound) ?? .zero
         routingServerURL = try c.decodeIfPresent(String.self, forKey: .routingServerURL) ?? ""
         routingProvider = try c.decodeIfPresent(RoutingProvider.self, forKey: .routingProvider) ?? .appleMaps
+        portalLinks = try c.decodeIfPresent([PortalLink].self, forKey: .portalLinks) ?? []
+        broadcastLog = try c.decodeIfPresent([BroadcastRecord].self, forKey: .broadcastLog) ?? []
+        serviceRequests = try c.decodeIfPresent([ServiceRequest].self, forKey: .serviceRequests) ?? []
+        broadcastSettings = try c.decodeIfPresent(BroadcastSettings.self, forKey: .broadcastSettings) ?? BroadcastSettings()
+        profile = try c.decodeIfPresent(BusinessProfile.self, forKey: .profile) ?? BusinessProfile()
+        account = try c.decodeIfPresent(AccountProfile.self, forKey: .account)
+        reminderLog = try c.decodeIfPresent([ReminderRecord].self, forKey: .reminderLog) ?? []
     }
 }
 

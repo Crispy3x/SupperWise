@@ -34,6 +34,7 @@ extension AppData {
             let site = Site(customerID: quote.customerID, address: quote.address)
             sites.append(site)
             siteID = site.id
+            ensurePortalLinks(now: now)
         }
         let contract = try quote.makeContract(siteID: siteID)
         contracts.append(contract)

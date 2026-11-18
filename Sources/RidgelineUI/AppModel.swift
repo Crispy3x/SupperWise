@@ -2,12 +2,21 @@
 import SwiftUI
 import Observation
 import RidgelineCore
+#if canImport(AuthenticationServices)
+import AuthenticationServices
+#endif
 
 /// App-wide state. Everything is saved to one local file after each change, so the app works with no signal.
 @MainActor @Observable
 public final class AppModel {
     public var data: AppData
     public var saveError: String?
+    /// Whether a server address and token are saved. Kept as a value so screens do not read the Keychain on every redraw.
+    public private(set) var serverConfigured = false
+    /// A short message about something that just happened (for example an invoice was created). The user can dismiss it.
+    public var notice: String?
+    /// The storm the crew is logging visits under. Both the Today and Storm screens use it.
+    public var stormName: String = Date().formatted(.dateTime.month(.abbreviated).day())
     /// True while saving is switched off to protect an unreadable data file.
     public var savingIsBlocked: Bool { savingBlocked }
     public func dismissLoadNotice() { if !savingBlocked { loadNotice = nil } }
@@ -35,6 +44,11 @@ public final class AppModel {
         self.data = recovery?.data ?? AppData()
         self.loadNotice = recovery?.notice
         self.savingBlocked = !(recovery?.safeToSave ?? true)
+        refreshServerFlag()
+        // Every site gets its private page link up front, so a link in a message always matches a saved one.
+        let before = data.portalLinks.count
+        data.ensurePortalLinks(now: Date())
+        if data.portalLinks.count != before { save() }
         // The 14-day free trial starts on first launch, with every feature unlocked.
         if data.subscription.trialStart == nil && data.subscription.plan == nil {
             data.subscription = .startTrial(at: Date())
@@ -68,6 +82,10 @@ public final class AppModel {
         case OperationError.alreadyClockedIn: return "Already clocked in."
         case OperationError.notClockedIn: return "Not clocked in."
         case OperationError.emptyName: return "Enter a name first."
+        case AccountError.missingIdentifier: return "Apple did not return an account identifier."
+        case AccountError.differentAccount: return "A different Apple account is already set up here. Delete the account and data first to switch."
+        case RequestError.notFound: return "That request no longer exists."
+        case RequestError.alreadyDecided: return "That request was already answered."
         case QuoteError.expired: return "This quote has expired."
         case QuoteError.alreadyDecided: return "This quote was already accepted or declined."
         case QuoteError.notAccepted: return "Accept the quote first."
@@ -232,6 +250,223 @@ public final class AppModel {
         InvoiceCSV.export(data.invoices, customerName: { id in data.customers.first { $0.id == id }?.name ?? "" }, now: Date())
     }
 
+    // MARK: account
+
+    public func signIn(appleUserID: String, name: String, email: String) -> String? {
+        edit { try $0.signIn(appleUserID: appleUserID, displayName: name, email: email, now: Date()) }
+    }
+
+    public func signOut() { edit { $0.signOut() } }
+
+    /// Signs out if the person removed this app from their Apple sign-in settings.
+    public func checkAppleCredential() async {
+        #if canImport(AuthenticationServices)
+        guard let id = data.account?.appleUserID else { return }
+        let state = try? await ASAuthorizationAppleIDProvider().credentialState(forUserID: id)
+        if state == .revoked || state == .notFound {
+            data.signOut()
+            save()
+            notice = "You were signed out because Apple sign-in was removed for this app."
+        }
+        #endif
+    }
+
+    /// Deletes the account and everything stored on this device: records, photos, the saved server token and safety copies.
+    /// The trial or plan stays, because it belongs to the device's Apple account.
+    public func deleteAccountAndData() {
+        try? photoStorage?.deleteAll()
+        UserDefaults.standard.removeObject(forKey: "crewMemberName")
+        let temp = FileManager.default.temporaryDirectory
+        if let names = try? FileManager.default.contentsOfDirectory(atPath: temp.path) {
+            for name in names where name.hasPrefix("RidgelineExport-") { try? FileManager.default.removeItem(at: temp.appendingPathComponent(name)) }
+        }
+        if savingBlocked, let file = store?.url {          // the person chose to delete everything, so an unreadable file goes too
+            try? FileManager.default.removeItem(at: file)
+            savingBlocked = false
+            loadNotice = nil
+        }
+        #if canImport(Security)
+        KeychainStore.save("", for: Self.routingTokenKey)
+        #endif
+        #if canImport(MapKit)
+        appleETA.clear()
+        #endif
+        if let folder = store?.url.deletingLastPathComponent(),
+           let names = try? FileManager.default.contentsOfDirectory(atPath: folder.path) {
+            for name in names where name.hasPrefix("before-restore-") || name.contains(".unreadable-") {
+                try? FileManager.default.removeItem(at: folder.appendingPathComponent(name))
+            }
+        }
+        data = data.erasedCopy()
+        serverConfigured = false
+        forecast = nil; winterAlerts = []; pendingRestore = nil; lastSafetyCopy = nil; notice = nil
+        save()
+    }
+
+    // MARK: client portal, requests and storm messages
+
+    func refreshServerFlag() { serverConfigured = portalClient() != nil }
+
+    func portalClient() -> PortalClient? {
+        #if canImport(Security)
+        guard let url = RoutingServerSettings.validatedURL(data.routingServerURL),
+              let token = KeychainStore.load(Self.routingTokenKey), !token.isEmpty else { return nil }
+        return PortalClient(baseURL: url, token: token)
+        #else
+        return nil
+        #endif
+    }
+
+    /// The storm the owner is working on, created the first time it is needed.
+    public func ensureStorm(inches: Double) -> StormEvent {
+        if let found = data.storms.first(where: { $0.name == stormName }) { return found }
+        let storm = StormEvent(name: stormName, start: Date(), forecastInches: inches)
+        edit { $0.storms.append(storm) }
+        return storm
+    }
+
+    /// Fetches new client requests from the server and adds them to the inbox.
+    public func refreshRequests() async -> String {
+        guard let client = portalClient() else { return "Set up your server in Settings to receive client requests." }
+        let resent = await retryUnsyncedDecisions()
+        do {
+            let incoming = try await client.fetchRequests()
+            var added = 0
+            edit { added = $0.importRequests(incoming) }
+            var text = added == 0 ? "No new requests." : "\(added) new request\(added == 1 ? "" : "s")."
+            if resent > 0 { text += " Sent \(resent) earlier answer\(resent == 1 ? "" : "s") to client pages." }
+            return text
+        } catch {
+            return "Could not reach your server."
+        }
+    }
+
+    /// Answers given here that the client's page has not been told about yet (for example the server was unreachable).
+    func retryUnsyncedDecisions() async -> Int {
+        guard let client = portalClient() else { return 0 }
+        var done = 0
+        for r in data.unsyncedDecisions {
+            guard let remote = r.remoteID else { continue }
+            do {
+                try await client.decide(remoteRequestID: remote, accept: r.status == .accepted, message: r.responseMessage)
+                edit { $0.markDecisionSynced(id: r.id) }
+                done += 1
+            } catch {
+                if (error as? PortalError) == .server(409) || (error as? PortalError) == .server(404) {   // already answered, or the server no longer has it
+                    edit { $0.markDecisionSynced(id: r.id) }
+                    done += 1
+                }
+            }
+        }
+        return done
+    }
+
+    /// Accepts or declines a request. The answer is saved here first, then shown on the client's page.
+    public func decideRequest(_ id: UUID, accept: Bool, message: String) async -> String {
+        guard let request = data.serviceRequests.first(where: { $0.id == id }) else { return "That request no longer exists." }
+        if let problem = edit({ try $0.decideRequest(id: id, accept: accept, message: message, now: Date()) }) { return problem }
+        guard let remote = request.remoteID, let client = portalClient() else { return accept ? "Accepted." : "Declined." }
+        do {
+            try await client.decide(remoteRequestID: remote, accept: accept, message: message)
+            edit { $0.markDecisionSynced(id: id) }
+            _ = await republishPortal()
+            return accept ? "Accepted. The client can see your answer." : "Declined. The client can see your answer."
+        } catch {
+            return "Saved here, but the client's page was not updated. It will be sent the next time you check for requests."
+        }
+    }
+
+    /// Plans from the saved data. Page links are saved before this is called, so a link in a message is a real one.
+    public func broadcastPlan(storm: StormEvent, inches: Double, urgent: Bool) -> BroadcastPlan {
+        StormBroadcast.plan(data: data, storm: storm, forecastInches: inches, now: Date(), urgent: urgent)
+    }
+
+    public func prepareClientPages() { edit { $0.ensurePortalLinks(now: Date()) } }
+
+    /// A fresh storm name for today that no earlier storm uses.
+    public func startNewStorm() {
+        stormName = StormNaming.uniqueName(base: Date().formatted(.dateTime.month(.abbreviated).day()), existing: data.storms.map(\.name))
+    }
+
+    func portalSnapshot(storm: StormEvent, inches: Double, routeStart: Date?, offsets: [UUID: Double]) -> PortalSnapshot {
+        let served = Set(DispatchRules.effectiveSites(sites: data.sites, inches: inches, stormID: storm.id, requests: data.serviceRequests).map(\.id))
+        return PortalSnapshotBuilder.build(data: data, storm: storm, forecastInches: inches, servedSiteIDs: served,
+                                           visitStormName: storm.name, routeStart: routeStart, arrivalOffsets: offsets)
+    }
+
+    /// Keeps the client pages current (status, bills) after something changes. Does nothing without a server or a storm.
+    public func republishPortal() async -> String? {
+        guard let client = portalClient(), let storm = data.storms.first(where: { $0.name == stormName }) else { return nil }
+        do {
+            try await client.publish(portalSnapshot(storm: storm, inches: storm.effectiveInches, routeStart: nil, offsets: [:]))
+            return nil
+        } catch {
+            return "Could not update client pages."
+        }
+    }
+
+    /// Publishes the client pages, then sends the storm messages that are allowed to go out now. Messages held for
+    /// quiet hours stay unsent and are planned again next time. Only messages that really went out are recorded.
+    public func sendBroadcast(storm: StormEvent, inches: Double, plan: BroadcastPlan, routeStart: Date, offsets: [UUID: Double]) async -> String {
+        guard let client = portalClient() else { return "Set up your server in Settings first." }
+        edit { $0.ensurePortalLinks(now: Date()); if !$0.storms.contains(where: { $0.id == storm.id }) { $0.storms.append(storm) } }
+        let now = Date()
+        let due = plan.messages.filter { $0.sendAfter <= now }
+        let held = plan.messages.count - due.count
+        do {
+            try await client.publish(portalSnapshot(storm: storm, inches: inches, routeStart: routeStart, offsets: offsets))
+        } catch {
+            return "Could not publish the client pages, so no messages were sent."
+        }
+        var sent: [PlannedMessage] = []
+        if !due.isEmpty {
+            do {
+                let ok = try await client.sendEmails(due)
+                sent = zip(due, ok).filter { $0.1 }.map { $0.0 }
+            } catch {
+                return "Client pages are up to date, but the messages could not be sent. Nothing was recorded as sent."
+            }
+        }
+        edit { $0.recordSent(sent, stormID: storm.id, at: Date()) }
+        var text = "Sent \(sent.count) message\(sent.count == 1 ? "" : "s")."
+        if sent.count < due.count { text += " \(due.count - sent.count) failed and can be tried again." }
+        if held > 0 { text += " \(held) are waiting for quiet hours to end." }
+        return text
+    }
+
+    // MARK: reminders and imports
+
+    public func reminderPlan() -> ReminderPlan { ReminderPlanner.plan(data: data, now: Date()) }
+
+    /// Sends the reminders that are due now. Only reminders that really went out are recorded, which also enforces the pause between them.
+    public func sendReminders() async -> String {
+        guard let client = portalClient() else { return "Set up your server in Settings first." }
+        let plan = reminderPlan()
+        let now = Date()
+        let due = zip(plan.messages, plan.invoiceNumbers).filter { $0.0.sendAfter <= now }
+        if due.isEmpty { return plan.messages.isEmpty ? "No reminders are due." : "Reminders are waiting for quiet hours to end." }
+        do {
+            let ok = try await client.sendEmails(due.map { $0.0 })
+            let sent = zip(due, ok).filter { $0.1 }.map { $0.0.1 }
+            edit { $0.recordReminders(sent, at: Date()) }
+            var text = "Sent \(sent.count) reminder\(sent.count == 1 ? "" : "s")."
+            if sent.count < due.count { text += " \(due.count - sent.count) failed and can be tried again." }
+            return text
+        } catch {
+            return "Could not send reminders. Nothing was recorded as sent."
+        }
+    }
+
+    /// Reads a chosen spreadsheet file (CSV) for client import. Returns the report, or a message if the file cannot be read.
+    public func readImportFile(at url: URL) -> (report: ImportReport?, problem: String?) {
+        let scoped = url.startAccessingSecurityScopedResource()
+        defer { if scoped { url.stopAccessingSecurityScopedResource() } }
+        guard let data = try? Data(contentsOf: url) else { return (nil, "Could not read that file.") }
+        guard data.count <= 2_000_000 else { return (nil, "That file is larger than 2 MB. Split it and import in parts.") }
+        guard let text = String(data: data, encoding: .utf8) ?? String(data: data, encoding: .isoLatin1) else { return (nil, "That file is not text.") }
+        return (ClientImport.clients(from: text, existing: self.data), nil)
+    }
+
     // MARK: routing server
 
     public static let routingTokenKey = "routingToken"
@@ -279,6 +514,7 @@ public final class AppModel {
             KeychainStore.save("", for: Self.routingTokenKey)
             #endif
             save()
+            refreshServerFlag()
             return "Routing server removed."
         }
         guard RoutingServerSettings.validatedURL(trimmed) != nil else { return "The address must start with https://." }
@@ -292,6 +528,7 @@ public final class AppModel {
         #endif
         data.routingServerURL = trimmed
         save()
+        refreshServerFlag()
         return "Saved."
     }
 
@@ -302,21 +539,48 @@ public final class AppModel {
 
     // MARK: edits
 
-    public func addCustomerWithSite(name: String, phone: String, address: String, priority: Int,
-                                    triggerInches: Double, perPushRate: Money, coordinate: Coordinate?) {
-        let customer = Customer(name: name, phone: phone)
+    public func addCustomerWithSite(name: String, phone: String, email: String = "", emailConsent: Bool = false, address: String, priority: Int,
+                                    triggerInches: Double, perPushRate: Money, seasonPrice: Money? = nil, coordinate: Coordinate?) {
+        let consent = emailConsent && ContactValidation.isValidEmail(email)
+        let customer = Customer(name: name, phone: phone, email: email, emailConsent: consent,
+                                consentRecordedAt: consent ? Date() : nil,
+                                consentSource: consent ? "Owner confirmed the client agreed when adding them" : "")
         let site = Site(customerID: customer.id, address: address, latitude: coordinate?.latitude,
                         longitude: coordinate?.longitude, priority: priority, triggerInches: triggerInches)
         data.customers.append(customer)
         data.sites.append(site)
         data.contracts.append(SnowContract(siteID: site.id, season: Self.currentSeason(),
-                                           terms: .perPush(rate: perPushRate)))
+                                           terms: seasonPrice.map { ContractTerms.seasonal(total: $0) } ?? ContractTerms.perPush(rate: perPushRate)))
+        data.ensurePortalLinks(now: Date())
         save()
     }
 
+    /// Saves a visit. If automatic invoices are on, it also creates the invoice (and emails it if you chose that and
+    /// the client agreed), then refreshes the client page.
     public func record(_ visit: VisitRecord) {
         data.visitLog.append(visit)
+        let outcome = data.autoInvoice(afterVisit: visit, now: Date())
         save()
+        if outcome.invoice != nil { notice = outcome.note }
+        if let message = outcome.message, let invoice = outcome.invoice {
+            if let client = portalClient() {
+                Task { await sendInvoiceEmail(message, number: invoice.number, client: client) }
+            } else {
+                notice = "Draft invoice \(invoice.number) created. Set up your server in Settings to email it."
+            }
+        }
+        Task { _ = await republishPortal() }
+    }
+
+    private func sendInvoiceEmail(_ message: PlannedMessage, number: String, client: PortalClient) async {
+        let ok = (try? await client.sendEmails([message]))?.first == true
+        if ok {
+            edit { try $0.markInvoiceSent(number: number, at: Date()) }
+            notice = "Invoice \(number) was emailed to the client."
+        } else {
+            notice = "Invoice \(number) was created but could not be emailed. It stays a draft."
+        }
+        _ = await republishPortal()
     }
 
     public func loadDemoData() {

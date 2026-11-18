@@ -37,7 +37,7 @@ The app icon is in `App/Assets.xcassets` (a first draft, replace it whenever you
 
 Before the first run you need (in this order):
 1. **Apple Developer Program membership** (step 2 above) and your **Team ID**.
-2. **Register your bundle ID**: developer.apple.com > Certificates, Identifiers & Profiles > Identifiers > + > App IDs. Use the prefix you chose plus `.ridgelineops` (for example `com.yourbusiness.ridgelineops`).
+2. **Register your bundle ID**: developer.apple.com > Certificates, Identifiers & Profiles > Identifiers > + > App IDs. Use the prefix you chose plus `.ridgelineops` (for example `com.yourbusiness.ridgelineops`). **Tick the "Sign in with Apple" capability** for it: the app now offers it, so signing fails without it.
 3. **Create the app in App Store Connect** (New App) with that bundle ID. The upload fails if this record does not exist.
 4. **Create an App Store Connect API key**: appstoreconnect.apple.com > Users and Access > Integrations > App Store Connect API > Team Keys > Generate. Name it "GitHub builds" and give it the **Admin** role (it needs permission to manage signing certificates). Download the `.p8` file (Apple shows it **only once**) and note the **Key ID** and the **Issuer ID** shown at the top of that page. **This key can manage your Apple account: only ever put it in GitHub secrets, never in a chat, email or file in this repository, and never give it to me or to Claude in Chrome.** Delete the key in App Store Connect when you no longer need it.
 5. **Add five secrets** in GitHub: your repository > Settings > Secrets and variables > Actions > New repository secret:
@@ -48,6 +48,10 @@ Before the first run you need (in this order):
    - `BUNDLE_ID_PREFIX`: for example `com.yourbusiness` (the workflow adds `.ridgelineops`)
 6. Check that the **CI** workflow is green first (the "Build the app project" job compiles the app the same way, without signing). If it is red, send me its log: the TestFlight run would fail the same way.
 7. **Merge this branch into your repository's default branch first.** GitHub only shows the "Run workflow" button for a workflow file that is on the default branch. Then GitHub > Actions > **TestFlight** > Run workflow. It takes roughly 10 to 20 minutes. Then open App Store Connect > your app > TestFlight: the build appears after Apple finishes processing, and you can add internal testers.
+
+If the app already exists in TestFlight, add a `BUNDLE_ID` secret with that app's exact full bundle ID (then `BUNDLE_ID_PREFIX` is not needed), and use that app's exact bundle ID and a version number (`MARKETING_VERSION` in `project.yml`) at or above the one there. The workflow numbers builds with a UTC timestamp, so the build number is always higher than earlier ones.
+
+**Replacing the old Superwise app:** upload Ridgeline Ops as a new version of the existing Superwise app record. Find Superwise's exact bundle ID in App Store Connect > the app > App Information, put it in the `BUNDLE_ID` secret, and add an `APP_VERSION` secret set above Superwise's latest version (for example 2.0.0). You can rename the app in App Store Connect > App Information. Existing testers get the update through TestFlight. The Superwise bundle ID also needs the Sign in with Apple capability ticked.
 
 Cost note: GitHub counts Mac minutes at 10 times the normal rate on private repositories, so a free account's monthly allowance covers only a handful of runs. Check your plan's limits.
 

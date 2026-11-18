@@ -389,3 +389,46 @@ Apple MapKit on the device (free, live traffic, no key). Because Apple answers o
 
 # Decision: routes use drive time only, not weather
 Routes are ordered by drive time (Apple Maps, or the routing server, or the offline estimate), with strict priorities, fixed stops and deadlines. They are **not** adjusted for weather. Weather still decides which sites need service: the forecast fills the snowfall slider, and each site's trigger depth decides who is listed. The weather model stays in the code, tested but unused, in case it is wanted later. Reasons: no maps service has snow-aware routing, the slowdown factors were unvalidated guesses, and owners in the research distrusted automatic routing. Earlier mentions of "conditions-aware routing" in this file, including the pitch and the competitor comparison, are superseded by this decision. Apple's live traffic still reflects slowdowns that appear in traffic data.
+
+---
+
+# Decision: storm broadcast, client portal and service requests
+Email first (no carrier registration), text messages later. Rush requests are a flag the owner accepts or declines; an accepted urgent request moves the site to the top priority tier for that storm only. Clients must have recorded consent; an opt-out always wins; non-urgent messages wait out quiet hours; nothing is sent twice per storm. The portal server stores no contact details. Built and tested: core (202 tests), portal server (14 tests), Swift client against the real server. Not built: the screens, the owner's own email provider account, text messages.
+
+# New requests from the owner (in progress)
+Clean, sleek interface; automatic invoice when a stop is completed; a winter portal showing bills and estimated arrival before each storm; automatic storm information; landscaping version of the portal; profile and settings; sign-in; a roughly 10-step welcome that asks questions. Two research tasks are comparing what competitors offer for portals and onboarding (`research/12`, `research/13`).
+
+---
+
+# Research round 3: portals, notifications and onboarding (`research/12`, `research/13`)
+Evidence is thinner than it looks: vendor marketing, competitor blogs and search summaries, with several pages blocked.
+- **Nearly every competitor has:** online payment, quote approval and service requests, reminders, on-my-way and job-complete notices, overdue reminders, and photo or timestamp proof (the snow tools).
+- **Only one confirmed auto-invoice at completion:** Jobber (recurring jobs only, needs a saved card, select plans). GorillaDesk emails an invoice on completion through an add-on.
+- **Gaps for snow (inference from "not found", verify before claiming):** per-push invoice at stop completion shown to the client with timestamp, photo and depth; a pre-storm arrival window per property; storm-start messages from the forecast; a storm page with skip or request actions; a seasonal view of pushes against the cap with a running bill; one client view for snow and landscaping.
+- **Lesson from a complaint:** do not send reminders for cancelled or skipped stops. The automatic invoice logic skips them.
+- **Onboarding:** Jobber has a 7-step setup and Housecall Pro 7 steps, with heavy items (bank, SMS registration, imports) kept apart from the identity questions. Apple's guidance: keep onboarding fast and optional, give defaults, delay sign-in as long as possible.
+- **Sign-in rules (Apple App Review Guidelines, re-check the live page before submitting):** 4.8 requires an equivalent privacy-preserving login (Sign in with Apple) if other third-party logins are offered; 5.1.1(v) requires in-app account deletion if accounts can be created.
+- **Recommended:** Sign in with Apple, plus a passkey or email one-time code; no Google at launch; crew join by invite; client portal by private link.
+
+# Build status
+Built and tested: welcome-flow logic (10 steps), automatic invoice at stop completion, storm broadcast and consent, request queue, client portal server, email sending, Apple Maps routing, backup and restore. **Not built:** the redesigned screens (a clean layout, profile and settings, the welcome screens, sign-in), client portal bills and arrival estimates, accounts and sync, real email provider setup, text messages.
+
+---
+
+# Build status: redesign (latest)
+Written, never compiled: five-tab layout with a shared design layer, ten-step welcome with optional Sign in with Apple, profile with account deletion, requests inbox, storm message sheet, client detail with consent, invoice and message settings, automatic invoice on visit save. Tested: portal bills, arrival windows, season line, accounts, erasure (228 Swift tests, 33 server tests). **Open:** your own email provider account for sending, text messages, accounts and sync on a server, real screenshots (the mockups predate this redesign). **Decisions taken for you, change any:** Apple sign-in only and optional; portal shows amounts (switch in Settings); automatic invoices default to draft.
+
+---
+
+# Review round 4 fixes (latest)
+Fixed: client links in storm emails now match saved, published pages (links are created up front and saved before anything is planned); the "data was set aside" notice is no longer hidden behind the welcome screen; answers that did not reach a client's page are sent again the next time you check for requests; deleting an account also removes the crew name, temporary export folders and an unreadable data file; consent follows the email address (a new address needs a fresh yes) and an opted-out client is never changed from the detail screen; each storm has a unique name and a "Start a new storm" button; the message footers no longer promise that a reply reaches you; welcome and settings wording matches what the app really does (storm messaging is an option you review, not automatic). One reviewer finding (a duplicated longitude field) was wrong and was left alone.
+
+---
+
+# Added features (latest)
+Today home with attention list and setup checklist; season statement per client; overdue reminders with consent, spacing and a limit of three; client import from CSV. 250 Swift tests, 33 server tests. Ideas not built yet: recurring landscaping visits with their own billing (a site can have only one contract today), card-on-file and payment links (payments are deliberately out of scope), live crew tracking, receipts by email when you record a payment, text messages, accounts and sync on a server.
+
+---
+
+# Review round 5 fixes
+Fixed: the client import sheet no longer rebuilds itself on every redraw; the setup card disappears once the required steps are done (the optional Apple sign-in no longer keeps it on screen); answers for requests the server no longer has are not retried forever; the overdue row only promises reminders when some can actually be sent; the consent record says when consent was cleared because the email changed; the welcome only offers the two billing styles the add-client form supports; import and deletion wording is more exact.

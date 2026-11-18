@@ -53,6 +53,15 @@ print(f"created {cert['attributes'].get('name')} (expires {cert['attributes'].ge
 
 step("App Store provisioning profile")
 bundle = [b for b in call("GET", "/v1/bundleIds", params={"filter[identifier]": BUNDLE_ID})["data"] if b["attributes"]["identifier"] == BUNDLE_ID][0]
+caps = {c["attributes"]["capabilityType"] for c in all_pages(f"/v1/bundleIds/{bundle['id']}/bundleIdCapabilities")}
+if "APPLE_ID_AUTH" in caps:
+    print("Sign in with Apple already on")
+else:
+    call("POST", "/v1/bundleIdCapabilities", {"data": {"type": "bundleIdCapabilities", "attributes": {
+        "capabilityType": "APPLE_ID_AUTH", "settings": [{"key": "APPLE_ID_AUTH_APP_CONSENT",
+        "options": [{"key": "PRIMARY_APP_CONSENT"}]}]},
+        "relationships": {"bundleId": {"data": {"type": "bundleIds", "id": bundle["id"]}}}}})
+    print("Sign in with Apple turned on")
 name = f"Supperwise App Store {time.strftime('%Y%m%d-%H%M%S')}"
 profile = call("POST", "/v1/profiles", {"data": {"type": "profiles", "attributes": {"name": name, "profileType": "IOS_APP_STORE"},
                "relationships": {"bundleId": {"data": {"type": "bundleIds", "id": bundle["id"]}},

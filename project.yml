@@ -52,5 +52,5 @@ targets:
         TARGETED_DEVICE_FAMILY: "1,2"
         ENABLE_PREVIEWS: YES
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
-        "CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]": ""   # the entitlements file is Mac-only (sandbox)
-        "CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]": ""
+        "CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]": App/RidgelineOps-iOS.entitlements   # iPhone: Sign in with Apple only (the main file has Mac sandbox keys)
+        "CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]": App/RidgelineOps-iOS.entitlements

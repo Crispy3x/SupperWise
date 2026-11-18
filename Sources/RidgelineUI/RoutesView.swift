@@ -17,7 +17,7 @@ struct RoutesView: View {
     private func crewName(_ id: UUID?) -> String { model.data.crews.first { $0.id == id }?.name ?? "No crew" }
 
     var body: some View {
-        NavigationStack {
+        ScreenStack {
             Form {
                 Section("Crews") {
                     ForEach(model.data.crews) { Text($0.name) }

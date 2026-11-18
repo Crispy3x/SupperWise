@@ -82,7 +82,7 @@ export function validatePoints(points, maxPoints) {
 
 const digest = (s) => crypto.createHash('sha256').update(s).digest();
 
-export function createApp(config, deps = {}) {
+export function createHandler(config, deps = {}) {
   const fetchImpl = deps.fetch ?? fetch;
   const now = deps.now ?? (() => Date.now());
   const log = deps.log ?? ((line) => console.log(line));
@@ -194,7 +194,7 @@ export function createApp(config, deps = {}) {
     }
   }
 
-  return http.createServer((req, res) => {
+  return (req, res) => {
     const url = (req.url || '').split('?')[0];
     if (req.method === 'GET' && url === '/health') return send(res, 200, { ok: true });
     if (req.method === 'POST' && url === '/v1/matrix') {
@@ -202,5 +202,9 @@ export function createApp(config, deps = {}) {
       return;
     }
     send(res, 404, { error: 'Not found' });
-  });
+  };
+}
+
+export function createApp(config, deps = {}) {
+  return http.createServer(createHandler(config, deps));
 }

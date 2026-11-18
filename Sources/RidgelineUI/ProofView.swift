@@ -12,7 +12,7 @@ struct ProofView: View {
     }
 
     var body: some View {
-        NavigationStack {
+        ScreenStack {
             if let site {
                 let text = DisputePacket.render(site: site, log: model.data.visitLog)
                 ScrollView {

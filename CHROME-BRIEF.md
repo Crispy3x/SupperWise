@@ -27,7 +27,7 @@ You are helping me set up the accounts and settings for an iPhone, iPad and Mac 
 3. If it is already enrolled, open Membership details and tell me my **Team ID** (10 characters) and my membership status.
 
 ## Task 2: App Store Connect (only once membership is active)
-1. In developer.apple.com > Certificates, Identifiers & Profiles > Identifiers, check that my bundle ID is not already used. If free, register it as an iOS App ID with no extra capabilities. Stop if it asks for anything else.
+1. In developer.apple.com > Certificates, Identifiers & Profiles > Identifiers, check that my bundle ID is not already used. If free, register it as an iOS App ID. Turn on the **Sign in with Apple** capability for it (the app offers Sign in with Apple). Stop if it asks for anything else.
 2. In appstoreconnect.apple.com > Apps > New App, create the app: platform iOS, name = my first choice, primary language English (U.S.), the bundle ID above, SKU = ridgelineops-1. If the name is taken, try my second choice and tell me which worked. Do not fill in anything else and do not submit.
 3. Report the exact name that was accepted.
 

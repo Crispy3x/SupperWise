@@ -10,7 +10,7 @@ public struct PricingCalculatorView: View {
     public init() {}
 
     public var body: some View {
-        NavigationStack {
+        ScreenStack {
             Form {
                 Section("Your crews") {
                     Stepper("Crews: \(crews)", value: $crews, in: 1...50)

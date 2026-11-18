@@ -5,6 +5,11 @@
     <!-- Mac only: the Mac App Store requires the sandbox. Ignored on iPhone and iPad. -->
     <key>com.apple.security.app-sandbox</key>
     <true/>
+    <!-- Sign in with Apple. The capability must also be turned on for the App ID (see SETUP.md). -->
+    <key>com.apple.developer.applesignin</key>
+    <array>
+        <string>Default</string>
+    </array>
     <key>com.apple.security.network.client</key>
     <true/>
     <key>com.apple.security.personal-information.location</key>
