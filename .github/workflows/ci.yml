@@ -1,0 +1,54 @@
+name: CI
+on:
+  push:
+  pull_request:
+
+jobs:
+  core-linux:
+    name: Core logic tests (Linux)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: swift-actions/setup-swift@v2
+        with:
+          swift-version: "6.0"
+      - run: swift test
+
+  routing-server:
+    name: Routing server tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm test
+        working-directory: server
+
+  apple:
+    name: Build the screens (macOS and iOS)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      # This is the first place the SwiftUI screens are really compiled. Read any errors in the log.
+      - name: Build for macOS
+        run: swift build
+      - name: Test on macOS
+        run: swift test
+      - name: Build for iOS (compiles the camera and other iPhone-only code)
+        run: xcodebuild -scheme RidgelineUI -destination 'generic/platform=iOS Simulator' build
+
+  app-project:
+    name: Build the app project (iOS simulator)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make the Xcode project and build it without signing
+        run: |
+          brew install xcodegen
+          xcodegen
+          xcodebuild build \
+            -project RidgelineOps.xcodeproj \
+            -scheme RidgelineOps \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO

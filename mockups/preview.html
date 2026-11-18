@@ -1,0 +1,132 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Ridgeline Ops preview</title>
+<style>
+:root{--navy:#0d2540;--blue:#2f7de1;--ice:#eaf3fc;--orange:#f08a24;--green:#2e9e5b;--ink:#14202e;--mute:#6b7a8c;--line:#e3e9f0}
+*{box-sizing:border-box}body{margin:0;background:#c9d6e4;font-family:-apple-system,"SF Pro Text",Helvetica,Arial,sans-serif;color:var(--ink)}
+.wrap{padding:28px 28px 20px}
+h1{margin:0 0 4px;font-size:22px;color:var(--navy)}.sub{margin:0 0 20px;color:#3d5068;font-size:13px}
+.row{display:flex;gap:22px;align-items:flex-start}
+.col{display:flex;flex-direction:column;align-items:center;gap:8px}
+.cap{font-size:12px;font-weight:600;color:var(--navy)}
+.phone{width:300px;height:620px;background:#fff;border-radius:38px;border:9px solid #111;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(0,0,0,.25);display:flex;flex-direction:column}
+.status{height:34px;display:flex;justify-content:space-between;align-items:flex-end;padding:0 22px 4px;font-size:11px;font-weight:600}
+.banner{background:rgba(47,125,225,.15);font-size:10px;text-align:center;padding:5px}
+.nav{padding:6px 16px 4px;font-size:25px;font-weight:700;color:var(--navy)}
+.body{flex:1;overflow:hidden;background:#f4f6f9;padding:8px 10px}
+.card{background:#fff;border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.sec{font-size:10px;text-transform:uppercase;color:var(--mute);margin:8px 6px 4px;letter-spacing:.04em}
+.item{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12px}
+.item:last-child{border:0}.num{width:18px;font-weight:700;color:var(--blue)}.grow{flex:1}.small{font-size:10px;color:var(--mute)}
+.eta{font-size:11px;color:var(--mute)}.tag{font-size:9px;font-weight:700;border-radius:6px;padding:2px 5px;background:var(--ice);color:var(--blue)}
+.tag.p1{background:#fde8d2;color:#b8610f}
+.slider{height:6px;border-radius:3px;background:var(--line);position:relative;margin:10px 4px}
+.slider i{position:absolute;left:0;top:0;height:6px;width:17%;background:var(--blue);border-radius:3px}
+.slider b{position:absolute;left:calc(17% - 9px);top:-6px;width:18px;height:18px;background:#fff;border:1px solid #cdd6e0;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.stepper{display:flex;justify-content:space-between;font-size:12px;padding:4px 0}
+.tabs{height:54px;border-top:1px solid var(--line);background:#fafbfc;display:flex;justify-content:space-around;align-items:center;font-size:8.5px;color:var(--mute)}
+.tabs span{text-align:center}.tabs .on{color:var(--blue);font-weight:700}.tabs em{display:block;font-style:normal;font-size:15px}
+.toggle{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:6px 0}
+.sw{width:34px;height:20px;border-radius:10px;background:var(--line);position:relative}.sw.on{background:var(--green)}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff}.sw.on::after{left:16px}
+.btn{background:var(--blue);color:#fff;text-align:center;border-radius:10px;padding:9px;font-weight:600;font-size:12px;margin-top:6px}
+.line{display:flex;justify-content:space-between;font-size:11px;padding:3px 0}.tot{font-weight:700;border-top:1px solid var(--line);margin-top:4px;padding-top:6px;font-size:12px}
+.warn{font-size:10px;color:#b8610f;margin-top:4px}.ok{color:var(--green);font-weight:600;font-size:11px}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:8.5px;line-height:1.45;white-space:pre-wrap;color:#2a3a4d}
+.seg{display:flex;background:var(--line);border-radius:8px;padding:2px;margin:6px 0}.seg span{flex:1;text-align:center;font-size:11px;padding:4px;border-radius:6px}.seg .on{background:#fff;font-weight:600}
+.plan{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--line)}.plan:last-child{border:0}.plan b{font-size:14px}.plan .pr{font-size:15px;font-weight:700;color:var(--navy)}
+.note{font-size:10px;color:var(--mute);text-align:center;margin-top:14px}
+</style></head><body><div class="wrap">
+<h1>Ridgeline Ops: screen preview</h1>
+<p class="sub">Mockup of the planned SwiftUI screens, filled with real output from the billing, routing and proof code (demo data). Not a screenshot of the running app.</p>
+<div class="row">
+
+<div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div>
+<div class="banner">Free trial: 14 days left. All features unlocked.</div><div class="nav">Storm</div>
+<div class="body">
+<div class="card"><div class="small">SNOWFALL</div><div class="slider"><i></i><b></b></div><div style="font-size:13px;font-weight:600">4.0 inches</div>
+<div class="stepper"><span>Storm driving speed</span><span>70%</span></div><div class="stepper"><span>Keep first 0 stops fixed</span><span>− +</span></div></div>
+<div class="sec">Sites to serve (6)</div>
+<div class="card" style="padding:4px 12px">
+<div class="item"><span class="num">1</span><div class="grow">100 Lake St<div class="small">Priority 1</div></div><span class="eta">ETA 4 min</span></div>
+<div class="item"><span class="num">2</span><div class="grow">900 Maple Blvd<div class="small">Priority 1</div></div><span class="eta">ETA 25 min</span></div>
+<div class="item"><span class="num">3</span><div class="grow">22 Oak Ridge Rd<div class="small">Priority 2</div></div><span class="eta">ETA 47 min</span></div>
+<div class="item"><span class="num">4</span><div class="grow">410 Industrial Pkwy<div class="small">Priority 2</div></div><span class="eta">ETA 77 min</span></div>
+<div class="item"><span class="num">5</span><div class="grow">14 Elm Ave<div class="small">Priority 3</div></div><span class="eta">ETA 98 min</span></div>
+<div class="item"><span class="num">6</span><div class="grow">7 Birch Ct<div class="small">Priority 3</div></div><span class="eta">ETA 117 min</span></div></div>
+</div>
+<div class="tabs"><span><em>❄</em>Crew</span><span class="on"><em>☁</em>Storm</span><span><em>👥</em>Customers</span><span><em>▤</em>Invoices</span><span><em>✔</em>Proof</span><span><em>$</em>Plans</span></div></div>
+<div class="cap">1. Storm: sites at trigger, in order</div></div>
+
+<div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div>
+<div class="banner">Free trial: 14 days left. All features unlocked.</div><div class="nav">Log visit</div>
+<div class="body">
+<div class="sec">410 Industrial Pkwy</div>
+<div class="card"><div class="toggle"><span>Could not service this visit</span><span class="sw on"></span></div>
+<div style="font-size:11px;padding:6px 0;border-top:1px solid var(--line)">Reason: <b>a vehicle blocking the drive</b></div></div>
+<div class="sec">Note</div><div class="card" style="font-size:11px;color:var(--mute)">Optional note</div>
+<div class="sec">Message to customer</div>
+<div class="card" style="font-size:11px;line-height:1.4">Demo Plowing: we couldn't service 410 Industrial Pkwy this visit because of a vehicle blocking the drive. You won't be charged for this visit. We'll be in touch.</div>
+<div class="btn">Save</div>
+<div class="warn" style="margin-top:8px">Standing instruction on other sites, e.g. "Clear fire lane first.", shows at the top of the visit.</div>
+</div>
+<div class="tabs"><span class="on"><em>❄</em>Crew</span><span><em>☁</em>Storm</span><span><em>👥</em>Customers</span><span><em>▤</em>Invoices</span><span><em>✔</em>Proof</span><span><em>$</em>Plans</span></div></div>
+<div class="cap">2. Crew: skipped visit, customer told</div></div>
+
+<div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div>
+<div class="banner">Free trial: 14 days left. All features unlocked.</div><div class="nav">Invoices</div>
+<div class="body">
+<div class="sec">Sam's Auto, 410 Industrial Pkwy</div>
+<div class="card"><div class="line"><span>Storm Dec 3: 4 in</span><span>$120.00</span></div><div class="line"><span>Storm Dec 18: 9 in</span><span>$200.00</span></div>
+<div class="line tot"><span>Total</span><span>$320.00</span></div><div class="small" style="margin-top:4px">1 skipped visit not billed</div></div>
+<div class="sec">Pat Miller, 14 Elm Ave</div>
+<div class="card"><div class="line"><span>Storm Dec 3: 1 push × $55.00</span><span>$55.00</span></div><div class="line"><span>Storm Dec 18: 1 push × $55.00</span><span>$55.00</span></div>
+<div class="line tot"><span>Total</span><span>$110.00</span></div><div class="small" style="margin-top:4px">Two visits in the Dec 3 storm count as one push</div></div>
+<div class="sec">Lakeside Clinic, 100 Lake St</div>
+<div class="card"><div class="line"><span>Seasonal base (8 pushes)</span><span>$900.00</span></div><div class="line tot"><span>Total</span><span>$900.00</span></div><div class="small" style="margin-top:4px">2 of 8 included pushes used</div></div>
+<div class="sec">Maple Plaza, 900 Maple Blvd</div>
+<div class="card"><div class="line"><span>Dec 3: 2.5 h + materials</span><span>$321.00</span></div><div class="line tot"><span>Total</span><span>$321.00</span></div></div>
+</div>
+<div class="tabs"><span><em>❄</em>Crew</span><span><em>☁</em>Storm</span><span><em>👥</em>Customers</span><span class="on"><em>▤</em>Invoices</span><span><em>✔</em>Proof</span><span><em>$</em>Plans</span></div></div>
+<div class="cap">3. Invoices: one line per storm</div></div>
+
+<div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div>
+<div class="banner">Free trial: 14 days left. All features unlocked.</div><div class="nav">Proof</div>
+<div class="body">
+<div class="card"><div style="font-size:12px;font-weight:600;margin-bottom:6px">100 Lake St ▾</div><div class="ok">✔ Log verified: no changes since recording</div></div>
+<div class="card"><div class="mono">PROOF OF SERVICE: 100 Lake St
+Log integrity check: PASSED
+Visits: 2
+
+2024-12-02 22:26 to 23:11
+storm Dec 3 | completed
+  crew: Sam | inside geofence: yes
+  depth: 4.0 in | salt: 60.0 lb
+  weather: Heavy snow, 29F
+  photos: 2 (before: yes, after: yes)
+2024-12-17 22:26 to 23:16
+storm Dec 18 | completed
+  crew: Sam | inside geofence: yes
+  depth: 9.0 in | salt: 80.0 lb
+  weather: Snow ending, 22F
+  photos: 2 (before: yes, after: yes)</div></div>
+<div class="btn">⬆ Share packet</div>
+</div>
+<div class="tabs"><span><em>❄</em>Crew</span><span><em>☁</em>Storm</span><span><em>👥</em>Customers</span><span><em>▤</em>Invoices</span><span class="on"><em>✔</em>Proof</span><span><em>$</em>Plans</span></div></div>
+<div class="cap">4. Proof: packet for insurers</div></div>
+
+<div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div>
+<div class="banner">Free trial: 14 days left. All features unlocked.</div><div class="nav">Ridgeline Ops</div>
+<div class="body">
+<div class="sec">Your crews</div>
+<div class="card"><div class="stepper"><span>Crews: 3</span><span>− +</span></div>
+<div class="seg"><span>Monthly</span><span class="on">Annual (20% off)</span></div></div>
+<div class="sec">Pricing</div>
+<div class="card"><div class="plan"><b>Pro</b><span class="pr">$53.60 / mo</span></div><div class="plan"><b>Max</b><span class="pr">$109.60 / mo</span></div></div>
+<div class="small" style="text-align:center;margin-top:6px">Monthly: Pro $67, Max $137 for 3 crews</div>
+<div class="card" style="margin-top:10px;font-size:10.5px;color:var(--mute)">14-day free trial. Office seats are always free. Cancel any time.</div>
+</div>
+<div class="tabs"><span><em>❄</em>Crew</span><span><em>☁</em>Storm</span><span><em>👥</em>Customers</span><span><em>▤</em>Invoices</span><span><em>✔</em>Proof</span><span class="on"><em>$</em>Plans</span></div></div>
+<div class="cap">5. Plans: price by crews</div></div>
+
+</div>
+<div class="note">Design is a first draft: icy blue and navy with a warm accent. Real screens may differ once built in Xcode.</div>
+</div></body></html>

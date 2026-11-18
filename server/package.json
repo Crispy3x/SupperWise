@@ -1,0 +1,12 @@
+{
+  "name": "ridgeline-routing-proxy",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Small server that holds the Google Maps key and returns traffic-aware drive-time matrices to the Ridgeline Ops app.",
+  "scripts": {
+    "start": "node index.mjs",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=20" }
+}

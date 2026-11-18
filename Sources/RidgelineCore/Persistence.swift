@@ -1,0 +1,115 @@
+import Foundation
+
+/// Everything the app stores. Kept as plain values so it is easy to sync later.
+public struct AppData: Equatable, Codable, Sendable {
+    public var schemaVersion: Int = 1
+    public var companyName: String = ""
+    public var customers: [Customer] = []
+    public var sites: [Site] = []
+    public var contracts: [SnowContract] = []
+    public var crews: [Crew] = []
+    public var routes: [Route] = []
+    public var storms: [StormEvent] = []
+    public var visitLog = VisitLog()
+    public var timeEntries: [TimeEntry] = []
+    public var subscription = Subscription()
+    /// Where trucks start (the yard). Optional so older saved files still load.
+    public var depot: Coordinate?
+    public var invoices: [Invoice] = []
+    public var lateFeePolicy = LateFeePolicy()
+    public var quotes: [Quote] = []
+    /// What an hour of crew time costs you (wages and burden), for job costing. Zero until you set it.
+    public var laborCostPerHour: Money = .zero
+    public var saltCostPerPound: Money = .zero
+    /// Address of the routing server (not secret). The access token lives in the Keychain, never in this file.
+    public var routingServerURL: String = ""
+    /// Where drive times come from. Apple Maps on the device by default (free, no key).
+    public var routingProvider: RoutingProvider = .appleMaps
+
+    public init() {}
+
+    // Older saved files lack newer fields, so every field falls back to its default when missing.
+    public init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        schemaVersion = try c.decodeIfPresent(Int.self, forKey: .schemaVersion) ?? 1
+        companyName = try c.decodeIfPresent(String.self, forKey: .companyName) ?? ""
+        customers = try c.decodeIfPresent([Customer].self, forKey: .customers) ?? []
+        sites = try c.decodeIfPresent([Site].self, forKey: .sites) ?? []
+        contracts = try c.decodeIfPresent([SnowContract].self, forKey: .contracts) ?? []
+        crews = try c.decodeIfPresent([Crew].self, forKey: .crews) ?? []
+        routes = try c.decodeIfPresent([Route].self, forKey: .routes) ?? []
+        storms = try c.decodeIfPresent([StormEvent].self, forKey: .storms) ?? []
+        visitLog = try c.decodeIfPresent(VisitLog.self, forKey: .visitLog) ?? VisitLog()
+        timeEntries = try c.decodeIfPresent([TimeEntry].self, forKey: .timeEntries) ?? []
+        subscription = try c.decodeIfPresent(Subscription.self, forKey: .subscription) ?? Subscription()
+        depot = try c.decodeIfPresent(Coordinate.self, forKey: .depot)
+        invoices = try c.decodeIfPresent([Invoice].self, forKey: .invoices) ?? []
+        lateFeePolicy = try c.decodeIfPresent(LateFeePolicy.self, forKey: .lateFeePolicy) ?? LateFeePolicy()
+        quotes = try c.decodeIfPresent([Quote].self, forKey: .quotes) ?? []
+        laborCostPerHour = try c.decodeIfPresent(Money.self, forKey: .laborCostPerHour) ?? .zero
+        saltCostPerPound = try c.decodeIfPresent(Money.self, forKey: .saltCostPerPound) ?? .zero
+        routingServerURL = try c.decodeIfPresent(String.self, forKey: .routingServerURL) ?? ""
+        routingProvider = try c.decodeIfPresent(RoutingProvider.self, forKey: .routingProvider) ?? .appleMaps
+    }
+}
+
+/// Offline-first local store: one JSON file, written atomically so a crash or low battery never leaves half a file.
+public struct FileStore: Sendable {
+    public let url: URL
+
+    public init(url: URL) { self.url = url }
+
+    public func load() throws -> AppData {
+        guard FileManager.default.fileExists(atPath: url.path) else { return AppData() }
+        let data = try Data(contentsOf: url)
+        return try Self.decoder.decode(AppData.self, from: data)
+    }
+
+    public func save(_ appData: AppData) throws {
+        try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+        let data = try Self.encoder.encode(appData)
+        try data.write(to: url, options: .atomic)
+    }
+
+    public struct Recovery: Sendable {
+        public let data: AppData
+        /// Shown to the user when the saved file could not be read.
+        public let notice: String?
+        /// False when the unreadable file could not be set aside: saving then would overwrite it.
+        public let safeToSave: Bool
+    }
+
+    /// Moves an unreadable data file out of the way (kept for recovery) and returns where it went.
+    public func moveAsideUnreadable(now: Date = Date()) throws -> URL? {
+        guard FileManager.default.fileExists(atPath: url.path) else { return nil }
+        let name = "\(url.deletingPathExtension().lastPathComponent).unreadable-\(Int(now.timeIntervalSince1970)).json"
+        let dest = url.deletingLastPathComponent().appendingPathComponent(name)
+        try FileManager.default.moveItem(at: url, to: dest)
+        return dest
+    }
+
+    /// Loads the data. If the file cannot be read it is set aside, never overwritten, and the app starts empty with a notice.
+    public func loadOrRecover(now: Date = Date()) -> Recovery {
+        do {
+            return Recovery(data: try load(), notice: nil, safeToSave: true)
+        } catch {
+            if let kept = try? moveAsideUnreadable(now: now) {
+                return Recovery(data: AppData(), notice: "Your saved data could not be read, so the app started empty. The unreadable file was kept as \(kept.lastPathComponent) so it can be recovered.", safeToSave: true)
+            }
+            return Recovery(data: AppData(), notice: "Your saved data could not be read and could not be set aside. Changes will not be saved until this is fixed.", safeToSave: false)
+        }
+    }
+
+    static var encoder: JSONEncoder {
+        let e = JSONEncoder()
+        e.dateEncodingStrategy = .iso8601
+        e.outputFormatting = [.prettyPrinted, .sortedKeys]
+        return e
+    }
+
+    static var decoder: JSONDecoder {
+        let d = JSONDecoder()
+        d.dateDecodingStrategy = .iso8601
+        return d
+    }
+}
