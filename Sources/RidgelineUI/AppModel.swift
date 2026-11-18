@@ -20,8 +20,6 @@ public final class AppModel {
     public var weatherStatus: String?
     /// NWS asks apps to identify themselves. Put your app name and a contact address here before release.
     public var weatherUserAgent = "RidgelineOpsApp"
-    /// What the last Apple Maps planning run measured, so screens can say how much is estimated.
-    public var routeReport: SampledReport?
     #if canImport(MapKit)
     /// Kept for the life of the app so repeat planning reuses answers for a few minutes, in memory only.
     private let appleETA = CachedETASource(base: MapKitETASource())
@@ -123,6 +121,8 @@ public final class AppModel {
 
     /// A backup waiting for the user to confirm replacing the data on this device.
     public var pendingRestore: RestoreResult?
+    /// The copy of the data saved just before the last restore, so it can be shared out of the app.
+    public var lastSafetyCopy: URL?
 
     /// Writes a full backup and spreadsheets to a temporary folder so they can be shared. Returns their locations.
     public func prepareExport() -> (backup: URL?, csvs: [URL], problem: String?) {
@@ -164,22 +164,32 @@ public final class AppModel {
     /// Replaces the data on this device with the pending backup, after saving a safety copy of what is there now.
     public func applyPendingRestore() -> String {
         guard let result = pendingRestore else { return "Nothing to restore." }
-        pendingRestore = nil
+        guard !savingBlocked else {
+            pendingRestore = nil
+            return "Saving is switched off because the existing data file could not be read, so nothing was restored."
+        }
+        var safetyNote = ""
         if let folder = store?.url.deletingLastPathComponent() {
             let stamp = Int(Date().timeIntervalSince1970)
             let safety = folder.appendingPathComponent("before-restore-\(stamp).json")
             do {
                 try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
                 try DataExport.backupJSON(data).write(to: safety, options: .atomic)
+                lastSafetyCopy = safety
+                safetyNote = " Your previous data was saved as a safety copy; you can share it below."
             } catch {
+                pendingRestore = nil
                 return "Could not save a safety copy of your current data, so nothing was changed."
             }
+        } else {
+            safetyNote = " No safety copy of your previous data could be made on this device."
         }
+        pendingRestore = nil
         var restored = result.data
         restored.subscription = data.subscription          // a backup never changes this device's trial or plan
         data = restored
         save()
-        var message = "Restored \(result.customerCount) customers, \(result.siteCount) sites, \(result.invoiceCount) invoices and \(result.visitCount) visits. Your previous data was kept as a safety copy."
+        var message = "Restored \(result.customerCount) customers, \(result.siteCount) sites, \(result.invoiceCount) invoices and \(result.visitCount) visits. Settings such as the yard location and drive-time source now come from the backup." + safetyNote
         if !result.visitLogVerified {
             message += " Warning: the proof-of-service log in this backup failed its tamper check, so proof packets will say so."
         }
@@ -227,12 +237,11 @@ public final class AppModel {
     public static let routingTokenKey = "routingToken"
 
     /// The planner for the chosen source. `isLive` is false for the offline estimate; `label` names the source for the user.
-    func routePlanner() -> (planner: RoutePlanner, isLive: Bool, label: String) {
+    /// `onReport` receives what Apple Maps measured for this one planning run.
+    func routePlanner(onReport: (@Sendable (SampledReport) -> Void)? = nil) -> (planner: RoutePlanner, isLive: Bool, label: String) {
         if data.routingProvider == .appleMaps {
             #if canImport(MapKit)
-            let source = SampledMatrixSource(etaSource: appleETA, onReport: { [weak self] report in
-                Task { @MainActor in self?.routeReport = report }
-            })
+            let source = SampledMatrixSource(etaSource: appleETA, onReport: onReport)
             return (RoutePlanner(matrixSource: source), true, "Apple Maps on this device")
             #endif
         }
@@ -249,7 +258,6 @@ public final class AppModel {
 
     public func setRoutingProvider(_ provider: RoutingProvider) {
         data.routingProvider = provider
-        routeReport = nil
         save()
     }
 

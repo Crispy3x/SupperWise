@@ -124,6 +124,31 @@ final class SampledMatrixTests: XCTestCase {
     }
 }
 
+final class SampledCancellationTests: XCTestCase {
+    private final class SlowMaps: ETASource, @unchecked Sendable {
+        private let lock = NSLock()
+        private var count = 0
+        var calls: Int { lock.lock(); defer { lock.unlock() }; return count }
+        private func bump() { lock.lock(); count += 1; lock.unlock() }
+        func etaSeconds(from: Coordinate, to: Coordinate) async throws -> Double {
+            bump()
+            try? await Task.sleep(nanoseconds: 20_000_000)
+            return 100
+        }
+    }
+
+    func testCancelledPlanningStopsAskingAppleEarly() async {
+        let maps = SlowMaps()
+        let pts = (0..<20).map { Coordinate(latitude: 45 + Double($0) * 0.01, longitude: -93) }
+        let source = SampledMatrixSource(etaSource: maps, neighbors: 3, maxMeasurements: 150, concurrency: 2, pauseSeconds: 0)
+        let task = Task { try await source.matrix(for: pts) }
+        try? await Task.sleep(nanoseconds: 70_000_000)
+        task.cancel()
+        _ = try? await task.value
+        XCTAssertLessThan(maps.calls, 30)         // without the check it would run on to about 80 requests
+    }
+}
+
 final class CachedETATests: XCTestCase {
     func testSecondAskIsFreeUntilItExpires() async throws {
         let maps = FakeMaps(factor: 1)

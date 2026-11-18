@@ -57,7 +57,7 @@ struct SettingsView: View {
                         Text("My routing server (Google)").tag(RoutingProvider.server)
                         Text("Offline estimate").tag(RoutingProvider.offline)
                     }
-                    Text("Apple Maps is free and needs no setup. Apple answers one leg at a time and may slow requests down, so Ridgeline measures the most important legs and estimates the rest. Answers are kept in memory for 10 minutes only, because Apple's terms limit how long its map data may be stored.")
+                    Text("Apple Maps needs no key or setup. Apple answers one leg at a time and may slow requests down, so Ridgeline measures the most important legs and estimates the rest. Answers are kept in memory for 10 minutes only, because Apple's terms limit how long its map data may be stored.")
                         .font(.footnote).foregroundStyle(.secondary)
                 }
                 Section("Routing server (only used if chosen above)") {
@@ -67,11 +67,13 @@ struct SettingsView: View {
                         serverNote = model.saveRoutingServer(address: serverAddress, token: serverToken)
                         serverToken = ""
                     }
-                    Text(model.data.routingServerURL.isEmpty
-                         ? "Not set. Routes use an offline estimate of drive times."
-                         : (model.hasRoutingToken
-                            ? "Using live traffic from your routing server. If it cannot be reached, the offline estimate is used."
-                            : "Address saved but there is no token yet, so the offline estimate is used."))
+                    Text(model.data.routingProvider != .server
+                         ? "Only used when \"My routing server\" is chosen above."
+                         : (model.data.routingServerURL.isEmpty
+                            ? "Not set, so routes use an offline estimate of drive times."
+                            : (model.hasRoutingToken
+                               ? "Using live traffic from your routing server. If it cannot be reached, the offline estimate is used."
+                               : "Address saved but there is no token yet, so the offline estimate is used.")))
                         .font(.footnote).foregroundStyle(.secondary)
                     if !serverNote.isEmpty { Text(serverNote).font(.footnote).foregroundStyle(.secondary) }
                 }
@@ -106,6 +108,9 @@ struct SettingsView: View {
                     Text("The backup holds all your records. Photo files are not included: they stay on this device. Restoring replaces the data on this device, after saving a safety copy of what is there now.")
                         .font(.footnote).foregroundStyle(.secondary)
                     if !dataNote.isEmpty { Text(dataNote).font(.footnote).foregroundStyle(.secondary) }
+                    if let safety = model.lastSafetyCopy {
+                        ShareLink(item: safety) { Label("Share the safety copy of your previous data", systemImage: "square.and.arrow.up") }
+                    }
                 }
                 Section("Plan") {
                     switch model.subscriptionState {
@@ -117,6 +122,11 @@ struct SettingsView: View {
                 }
                 if let error = model.saveError { Section { Text(error).font(.footnote).foregroundStyle(.red) } }
             }
+            .onChange(of: model.data) {
+                // Files prepared earlier no longer match the data once it changes.
+                backupURL = nil
+                csvURLs = []
+            }
             .fileImporter(isPresented: $showImporter, allowedContentTypes: [.json]) { result in
                 switch result {
                 case .success(let url): dataNote = model.readBackup(at: url) ?? ""
@@ -124,12 +134,12 @@ struct SettingsView: View {
                 }
             }
             .alert("Replace the data on this device?",
-                   isPresented: Binding(get: { model.pendingRestore != nil }, set: { if !$0 { model.pendingRestore = nil } })) {
+                   isPresented: Binding(get: { model.pendingRestore != nil }, set: { _ in })) {
                 Button("Replace", role: .destructive) { dataNote = model.applyPendingRestore() }
                 Button("Cancel", role: .cancel) { model.pendingRestore = nil }
             } message: {
                 if let r = model.pendingRestore {
-                    Text("This backup has \(r.customerCount) customers, \(r.siteCount) sites, \(r.invoiceCount) invoices and \(r.visitCount) visits. Your current data is saved as a safety copy first.")
+                    Text("This backup has \(r.customerCount) customers, \(r.siteCount) sites, \(r.invoiceCount) invoices and \(r.visitCount) visits. It replaces the data on this device, including settings. A safety copy of your current data is saved first if possible.")
                 }
             }
             .onAppear { serverAddress = model.data.routingServerURL }

@@ -74,6 +74,7 @@ public struct SampledMatrixSource: MatrixSource {
         var stoppedEarly = false
         var index = 0
         while index < pairs.count {
+            if Task.isCancelled { stoppedEarly = true; break }       // the caller moved on, so stop spending requests
             let chunk = Array(pairs[index..<min(index + concurrency, pairs.count)])
             index += chunk.count
             attempted += chunk.count

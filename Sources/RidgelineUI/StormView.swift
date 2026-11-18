@@ -5,6 +5,11 @@ import RidgelineCore
 /// Dispatcher view: set the snowfall, see which sites hit their trigger, and plan the order by drive time.
 /// The dispatcher stays in control: priorities are strict, and the first N stops can be frozen.
 /// Routes are ordered by drive time only. Weather decides which sites need service, not how the route is driven.
+/// Holds what one planning run measured, so it is shown only with the plan it belongs to.
+private final class ReportBox: @unchecked Sendable {
+    var report: SampledReport?
+}
+
 struct StormView: View {
     @Environment(AppModel.self) private var model
     @State private var inches = 4.0
@@ -13,6 +18,7 @@ struct StormView: View {
     @State private var depotLon = ""
     @State private var loading = false
     @State private var livePlan: RoutePlanResult?
+    @State private var planReport: SampledReport?
     @State private var planNote = "Offline estimate of drive times."
 
     private var hits: [Site] { TriggerEvaluator.sitesToServe(sites: model.data.sites, inches: inches) }
@@ -99,7 +105,7 @@ struct StormView: View {
                 }
                 Section {
                     Text(planNote).font(.footnote).foregroundStyle(.secondary)
-                    if model.data.routingProvider == .appleMaps, let r = model.routeReport, livePlan != nil {
+                    if model.data.routingProvider == .appleMaps, let r = planReport, livePlan != nil {
                         Text("Apple Maps measured \(r.measured) of the \(r.totalPairs) legs; the rest are estimated from those.\(r.stoppedEarly ? " Apple Maps stopped answering part way, so more of this is estimated." : "")")
                             .font(.footnote).foregroundStyle(r.stoppedEarly ? .orange : .secondary)
                     }
@@ -127,11 +133,18 @@ struct StormView: View {
             }
             .navigationTitle("Storm")
             .task(id: planKey) {
+                // Drop the old plan at once so the list never shows an order that belongs to other sites.
+                livePlan = nil
+                planReport = nil
+                if stops.isEmpty {
+                    planNote = "No sites to order yet."
+                    return
+                }
                 try? await Task.sleep(nanoseconds: 700_000_000)   // let the sliders settle, so each tweak is not a new lookup
                 if Task.isCancelled { return }
-                let chosen = model.routePlanner()
-                guard chosen.isLive, !stops.isEmpty else {
-                    livePlan = nil
+                let box = ReportBox()
+                let chosen = model.routePlanner(onReport: { box.report = $0 })
+                guard chosen.isLive else {
                     planNote = "Drive times are the offline estimate."
                     return
                 }
@@ -139,7 +152,12 @@ struct StormView: View {
                 let live = await chosen.planner.plan(stops: stops, start: start, frozenPrefix: frozen)
                 if Task.isCancelled { return }
                 livePlan = live
-                planNote = "Drive times from \(chosen.label)."
+                planReport = box.report
+                if let r = box.report, r.measured == 0 {
+                    planNote = "\(chosen.label) gave no answers, so these drive times are the offline estimate."
+                } else {
+                    planNote = "Drive times from \(chosen.label)."
+                }
             }
         }
     }
