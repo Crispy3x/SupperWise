@@ -1,0 +1,109 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Ridgeline Ops: the full layout, part 1 of 2</title><style>
+:root{--navy:#0d2540;--blue:#2f7de1;--ice:#eaf3fc;--orange:#f08a24;--green:#2e9e5b;--ink:#14202e;--mute:#6b7a8c;--line:#e3e9f0}
+*{box-sizing:border-box}body{margin:0;background:#c9d6e4;font-family:-apple-system,"SF Pro Text",Helvetica,Arial,sans-serif;color:var(--ink)}
+.wrap{padding:28px 28px 20px}
+h1{margin:0 0 4px;font-size:22px;color:var(--navy)}.sub{margin:0 0 20px;color:#3d5068;font-size:13px}
+.row{display:flex;gap:22px;align-items:flex-start}
+.col{display:flex;flex-direction:column;align-items:center;gap:8px}
+.cap{font-size:12px;font-weight:600;color:var(--navy)}
+.phone{width:300px;height:620px;background:#fff;border-radius:38px;border:9px solid #111;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(0,0,0,.25);display:flex;flex-direction:column}
+.status{height:34px;display:flex;justify-content:space-between;align-items:flex-end;padding:0 22px 4px;font-size:11px;font-weight:600}
+.banner{background:rgba(47,125,225,.15);font-size:10px;text-align:center;padding:5px}
+.nav{padding:6px 16px 4px;font-size:25px;font-weight:700;color:var(--navy)}
+.body{flex:1;overflow:hidden;background:#f4f6f9;padding:8px 10px}
+.card{background:#fff;border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.sec{font-size:10px;text-transform:uppercase;color:var(--mute);margin:8px 6px 4px;letter-spacing:.04em}
+.item{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12px}
+.item:last-child{border:0}.num{width:18px;font-weight:700;color:var(--blue)}.grow{flex:1}.small{font-size:10px;color:var(--mute)}
+.eta{font-size:11px;color:var(--mute)}.tag{font-size:9px;font-weight:700;border-radius:6px;padding:2px 5px;background:var(--ice);color:var(--blue)}
+.tag.p1{background:#fde8d2;color:#b8610f}
+.slider{height:6px;border-radius:3px;background:var(--line);position:relative;margin:10px 4px}
+.slider i{position:absolute;left:0;top:0;height:6px;width:17%;background:var(--blue);border-radius:3px}
+.slider b{position:absolute;left:calc(17% - 9px);top:-6px;width:18px;height:18px;background:#fff;border:1px solid #cdd6e0;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.stepper{display:flex;justify-content:space-between;font-size:12px;padding:4px 0}
+.tabs{height:54px;border-top:1px solid var(--line);background:#fafbfc;display:flex;justify-content:space-around;align-items:center;font-size:8.5px;color:var(--mute)}
+.tabs span{text-align:center}.tabs .on{color:var(--blue);font-weight:700}.tabs em{display:block;font-style:normal;font-size:15px}
+.toggle{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:6px 0}
+.sw{width:34px;height:20px;border-radius:10px;background:var(--line);position:relative}.sw.on{background:var(--green)}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff}.sw.on::after{left:16px}
+.btn{background:var(--blue);color:#fff;text-align:center;border-radius:10px;padding:9px;font-weight:600;font-size:12px;margin-top:6px}
+.line{display:flex;justify-content:space-between;font-size:11px;padding:3px 0}.tot{font-weight:700;border-top:1px solid var(--line);margin-top:4px;padding-top:6px;font-size:12px}
+.warn{font-size:10px;color:#b8610f;margin-top:4px}.ok{color:var(--green);font-weight:600;font-size:11px}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:8.5px;line-height:1.45;white-space:pre-wrap;color:#2a3a4d}
+.seg{display:flex;background:var(--line);border-radius:8px;padding:2px;margin:6px 0}.seg span{flex:1;text-align:center;font-size:11px;padding:4px;border-radius:6px}.seg .on{background:#fff;font-weight:600}
+.plan{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--line)}.plan:last-child{border:0}.plan b{font-size:14px}.plan .pr{font-size:15px;font-weight:700;color:var(--navy)}
+.note{font-size:10px;color:var(--mute);text-align:center;margin-top:14px}
+
+.card.hl{border:1px solid var(--blue)}
+.btn.sm{display:inline-block;padding:5px 9px;font-size:10.5px;margin:4px 6px 0 0;border-radius:8px;background:var(--ice);color:var(--blue)}
+.btn.red{background:#fdecec;color:#c23030}.btn.pri{background:var(--blue);color:#fff}
+.row2{display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-bottom:1px solid var(--line)}.row2:last-child{border:0}
+.field{font-size:12px;color:var(--mute);padding:6px 0;border-bottom:1px solid var(--line)}.field b{color:var(--ink);font-weight:600}
+.neg{color:#d23b3b;font-weight:700}.pos{color:var(--green);font-weight:700}.org{color:#c06a10;font-weight:700}
+.sheetbar{display:flex;justify-content:space-between;padding:8px 16px;font-size:13px;color:var(--blue)}
+.tile{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;flex:none}
+.hub{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}.hub:last-child{border:0}
+.hub b{font-size:12.5px;display:block}.hub span.s{font-size:10px;color:var(--mute)}
+.badge{margin-left:auto;background:#d23b3b;color:#fff;border-radius:10px;padding:1px 7px;font-size:10px;font-weight:700}
+.prog{height:6px;border-radius:3px;background:var(--line);margin:4px 0 8px}.prog i{display:block;height:6px;border-radius:3px;background:var(--blue)}
+.big{font-size:28px;font-weight:800;color:var(--navy);margin:2px 0}
+.avatar{width:46px;height:46px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;flex:none}
+.web{background:#fff}.urlbar{margin:6px 10px;background:#eef1f5;border-radius:10px;font-size:10px;color:#4a5a6e;text-align:center;padding:6px}
+.wp{background:#f4f6f9;padding:10px;flex:1;overflow:hidden}.wc{background:#fff;border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.wc h1{font-size:15px;margin:2px 0 6px}.wc h2{font-size:12px;margin:0 0 6px}
+.stat{display:inline-block;padding:3px 8px;border-radius:8px;background:#eaf3fc;color:#1d5fb4;font-weight:700;font-size:11px}
+.pill{font-size:9.5px;font-weight:700;padding:1px 6px;border-radius:6px;background:#eaf3fc;color:#1d5fb4}.pill.paid{background:#e3f4ea;color:#1f7a45}.pill.od{background:#fde8d2;color:#b8610f}
+.rad{font-size:11.5px;margin:5px 0}
+.seg span{padding:4px 2px}
+</style></head><body><div class="wrap"><h1>Ridgeline Ops: the full layout, part 1 of 2</h1><p class="sub">Mockups of the SwiftUI screens, not screenshots of the running app (it has not been built on a Mac yet). The numbers for Pat Miller come from running the real core code; other rows are sample data.</p><div class="row"><div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="body">
+<div style="padding:2px 4px"><div class="prog"><i style="width:40%"></i></div><div class="small">Step 4 of 10</div>
+<div style="font-size:10px;font-weight:700;color:var(--blue);margin:10px 0 2px;text-transform:uppercase">Snow pricing</div>
+<div style="font-size:17px;font-weight:800;line-height:1.2;color:var(--navy)">How do you usually bill snow, and at what depth do you start?</div>
+<div class="small" style="margin:6px 0 12px">New clients start with this depth and billing style. You can change any client later.</div>
+<div class="seg"><span class="on">Per push</span><span>Season</span><span>By depth</span><span>Mixed</span></div>
+<div class="stepper" style="margin-top:10px"><span>Start plowing at 2.0 inches</span><span>− +</span></div>
+<div style="display:flex;justify-content:space-between;margin-top:150px;align-items:center"><span class="btn sm">Back</span><span style="font-size:11px;color:var(--mute)">Skip</span><span class="btn pri" style="margin:0;padding:8px 18px">Next</span></div></div></div></div><div class="cap">1. Welcome: step 4 of 10</div></div><div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="banner">Free trial: 11 days left. All features unlocked.</div><div class="nav">Today</div><div class="body">
+<div class="sec">Needs your attention</div>
+<div class="card" style="padding:2px 12px"><div class="hub"><div class="tile" style="background:#f08a24">▤</div><div><b>2 client requests</b><span class="s">Waiting for your answer</span></div><span class="badge">2</span></div><div class="hub"><div class="tile" style="background:#2f7de1">▤</div><div><b>1 draft invoice</b><span class="s">Look them over and send</span></div><span class="badge">1</span></div><div class="hub"><div class="tile" style="background:#d23b3b">!</div><div><b>1 overdue invoice</b><span class="s">You can send friendly reminders</span></div><span class="badge">1</span></div></div>
+<div class="sec">Finish setup: 4 of 6</div>
+<div class="card"><div class="prog"><i style="width:66%"></i></div>
+<div class="row2" style="display:block;border:0;padding:3px 0"><b>Set your yard location</b><div class="small">Routes start here and the forecast is for this spot.</div></div>
+<div class="row2" style="display:block;border:0;padding:3px 0"><b>Connect your server</b><div class="small">Needed for client pages, requests and email.</div></div>
+<div class="row2" style="display:block;border:0;padding:3px 0"><b>Sign in with Apple (optional)</b></div></div>
+<div class="sec">Sites</div>
+<div class="card" style="padding:2px 12px"><div class="item"><div class="grow">100 Lake St<div class="small">Clear fire lane first.</div></div><span class="pos">✔</span></div><div class="item"><div class="grow">22 Oak Ridge Rd</div></div></div></div><div class="tabs"><span class="on"><em>❄</em>Today</span><span class=""><em>☁</em>Storm</span><span class=""><em>👥</em>Clients</span><span class=""><em>$</em>Money</span><span class=""><em>•••</em>More</span></div></div><div class="cap">2. Today: attention and setup</div></div><div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="banner">Free trial: 11 days left. All features unlocked.</div><div class="nav">Storm</div><div class="body">
+<div class="sec">Snowfall</div>
+<div class="card"><div class="slider"><i></i><b></b></div><div style="font-size:13px;font-weight:600">4.0 inches</div>
+<div class="small" style="margin-top:4px">Sites whose trigger depth is reached are listed below, ordered by priority and then by drive time.</div></div>
+<div class="sec">Sites to serve (5)</div>
+<div class="card" style="padding:2px 12px">
+<div class="item"><span class="num">1</span><div class="grow">100 Lake St<div class="small">Priority 1</div></div><span class="eta">ETA 4 min</span></div>
+<div class="item"><span class="num">2</span><div class="grow">22 Oak Ridge Rd<div class="small">Priority 1 · urgent</div></div><span class="eta">ETA 19 min</span></div>
+<div class="item"><span class="num">3</span><div class="grow">14 Elm Ave<div class="small">Priority 3</div></div><span class="eta">ETA 40 min</span></div></div>
+<div class="small" style="padding:0 6px">Drive times from Apple Maps on this device. Apple Maps measured 18 of the 20 legs; the rest are estimated.</div>
+<div class="sec">This storm: Dec 18</div><div class="card"><span class="btn sm">Start a new storm</span></div>
+<div class="sec">Clients</div><div class="card"><div class="stepper"><span>Crews start at</span><span>6:30 AM</span></div><span class="btn sm">Message clients about this storm</span></div></div><div class="tabs"><span class=""><em>❄</em>Today</span><span class="on"><em>☁</em>Storm</span><span class=""><em>👥</em>Clients</span><span class=""><em>$</em>Money</span><span class=""><em>•••</em>More</span></div></div><div class="cap">3. Storm: who is served, in order</div></div><div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="sheetbar"><span>Close</span><b style="color:var(--ink)">Message clients</b><span style="font-weight:700"></span></div><div class="body">
+<div class="sec">Who gets a message</div>
+<div class="card" style="font-size:12px">4 clients will get an email about around 3 to 5 inches.</div>
+<div class="sec">Not getting one</div>
+<div class="card" style="font-size:12px"><div class="row2"><span>1 have not agreed to messages</span></div><div class="row2"><span>1 asked to stop</span></div></div>
+<div class="sec">Preview</div>
+<div class="card" style="font-size:10.5px;line-height:1.45"><b>Snow expected: Ridge Plow will service 14 Elm Ave</b><br><br>Hello Pat Miller,<br>Ridge Plow is watching the snow forecast. We expect around 3 to 5 inches at 14 Elm Ave. Forecasts can change.<br><br>We expect to service your property. This visit is covered by your seasonal contract, which includes 8 pushes.<br><br>Follow progress or ask for service here: portal.ridgeplow.example/c/…</div>
+<div class="card"><div class="row2"><span>Urgent: send now, even in quiet hours</span><span class="sw"></span></div><div class="btn pri">Send now</div></div></div></div><div class="cap">4. Review before any message is sent</div></div><div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="banner">Free trial: 11 days left. All features unlocked.</div><div class="nav">Requests</div><div class="body">
+<div class="card"><span class="btn sm">Check for new requests</span><div class="small">2 new requests.</div></div>
+<div class="sec">Waiting for you</div>
+<div class="card" style="padding:8px 12px">
+<div style="display:flex;justify-content:space-between"><b style="font-size:13px">22 Oak Ridge Rd</b><span class="pill od">Urgent</span></div>
+<div style="font-size:11.5px;margin-top:3px">Urgent request: Needs to leave soon</div><div class="small">"Need to leave by 7"</div><div class="small">Dec 18, 5:10 AM</div>
+<div style="margin-top:6px"><span class="btn pri" style="padding:5px 12px">Accept</span><span class="btn sm">Decline</span></div>
+<div class="small">Accepting moves this site to the top of today's list.</div></div>
+<div class="card" style="padding:8px 12px"><b style="font-size:13px">9 Birch Ct</b><div style="font-size:11.5px;margin-top:3px">Asked for service</div><div class="small">Dec 18, 5:42 AM</div>
+<div style="margin-top:6px"><span class="btn pri" style="padding:5px 12px">Accept</span><span class="btn sm">Decline</span></div></div>
+<div class="sec">Answered</div><div class="card"><div class="row2"><span>14 Elm Ave</span><span class="pill paid">Accepted</span></div></div></div></div><div class="cap">5. Requests inbox</div></div><div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="banner">Free trial: 11 days left. All features unlocked.</div><div class="nav">Pat Miller</div><div class="body">
+<div class="sec">Contact</div><div class="card"><div class="field">Name: <b>Pat Miller</b></div><div class="field">Email: <b>pat@example.com</b></div></div>
+<div class="sec">Messages</div><div class="card"><div class="row2"><span>Agreed to storm and invoice emails</span><span class="sw on"></span></div><div class="small">Agreed Nov 3, 2026. Owner confirmed the client agreed.</div></div>
+<div class="sec">This winter: 14 Elm Ave</div>
+<div class="card"><div class="small">Seasonal $600.00 covers 8 pushes, then $45.00 per push (one push per storm)</div>
+<div class="row2"><span>Storms serviced</span><b>5</b></div><div class="row2"><span>Visits skipped</span><b>1</b></div>
+<div style="font-size:12px;padding:5px 0"><b>5 of 8 included pushes used</b></div>
+<div class="row2"><span>Billed</span><b>$645.00</b></div><div class="row2"><span>Paid</span><b>$600.00</b></div><div class="row2"><span>Still owed</span><span class="org">$45.00</span></div></div></div></div><div class="cap">6. Client: consent and this winter</div></div></div><div class="note">First-draft design. Part 2 has Clients, Money, Invoices, Profile, Settings and the client page.</div></div></body></html>

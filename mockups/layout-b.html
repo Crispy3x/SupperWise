@@ -1,0 +1,89 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Ridgeline Ops: the full layout, part 2 of 2</title><style>
+:root{--navy:#0d2540;--blue:#2f7de1;--ice:#eaf3fc;--orange:#f08a24;--green:#2e9e5b;--ink:#14202e;--mute:#6b7a8c;--line:#e3e9f0}
+*{box-sizing:border-box}body{margin:0;background:#c9d6e4;font-family:-apple-system,"SF Pro Text",Helvetica,Arial,sans-serif;color:var(--ink)}
+.wrap{padding:28px 28px 20px}
+h1{margin:0 0 4px;font-size:22px;color:var(--navy)}.sub{margin:0 0 20px;color:#3d5068;font-size:13px}
+.row{display:flex;gap:22px;align-items:flex-start}
+.col{display:flex;flex-direction:column;align-items:center;gap:8px}
+.cap{font-size:12px;font-weight:600;color:var(--navy)}
+.phone{width:300px;height:620px;background:#fff;border-radius:38px;border:9px solid #111;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(0,0,0,.25);display:flex;flex-direction:column}
+.status{height:34px;display:flex;justify-content:space-between;align-items:flex-end;padding:0 22px 4px;font-size:11px;font-weight:600}
+.banner{background:rgba(47,125,225,.15);font-size:10px;text-align:center;padding:5px}
+.nav{padding:6px 16px 4px;font-size:25px;font-weight:700;color:var(--navy)}
+.body{flex:1;overflow:hidden;background:#f4f6f9;padding:8px 10px}
+.card{background:#fff;border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.sec{font-size:10px;text-transform:uppercase;color:var(--mute);margin:8px 6px 4px;letter-spacing:.04em}
+.item{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12px}
+.item:last-child{border:0}.num{width:18px;font-weight:700;color:var(--blue)}.grow{flex:1}.small{font-size:10px;color:var(--mute)}
+.eta{font-size:11px;color:var(--mute)}.tag{font-size:9px;font-weight:700;border-radius:6px;padding:2px 5px;background:var(--ice);color:var(--blue)}
+.tag.p1{background:#fde8d2;color:#b8610f}
+.slider{height:6px;border-radius:3px;background:var(--line);position:relative;margin:10px 4px}
+.slider i{position:absolute;left:0;top:0;height:6px;width:17%;background:var(--blue);border-radius:3px}
+.slider b{position:absolute;left:calc(17% - 9px);top:-6px;width:18px;height:18px;background:#fff;border:1px solid #cdd6e0;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.stepper{display:flex;justify-content:space-between;font-size:12px;padding:4px 0}
+.tabs{height:54px;border-top:1px solid var(--line);background:#fafbfc;display:flex;justify-content:space-around;align-items:center;font-size:8.5px;color:var(--mute)}
+.tabs span{text-align:center}.tabs .on{color:var(--blue);font-weight:700}.tabs em{display:block;font-style:normal;font-size:15px}
+.toggle{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:6px 0}
+.sw{width:34px;height:20px;border-radius:10px;background:var(--line);position:relative}.sw.on{background:var(--green)}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff}.sw.on::after{left:16px}
+.btn{background:var(--blue);color:#fff;text-align:center;border-radius:10px;padding:9px;font-weight:600;font-size:12px;margin-top:6px}
+.line{display:flex;justify-content:space-between;font-size:11px;padding:3px 0}.tot{font-weight:700;border-top:1px solid var(--line);margin-top:4px;padding-top:6px;font-size:12px}
+.warn{font-size:10px;color:#b8610f;margin-top:4px}.ok{color:var(--green);font-weight:600;font-size:11px}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:8.5px;line-height:1.45;white-space:pre-wrap;color:#2a3a4d}
+.seg{display:flex;background:var(--line);border-radius:8px;padding:2px;margin:6px 0}.seg span{flex:1;text-align:center;font-size:11px;padding:4px;border-radius:6px}.seg .on{background:#fff;font-weight:600}
+.plan{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--line)}.plan:last-child{border:0}.plan b{font-size:14px}.plan .pr{font-size:15px;font-weight:700;color:var(--navy)}
+.note{font-size:10px;color:var(--mute);text-align:center;margin-top:14px}
+
+.card.hl{border:1px solid var(--blue)}
+.btn.sm{display:inline-block;padding:5px 9px;font-size:10.5px;margin:4px 6px 0 0;border-radius:8px;background:var(--ice);color:var(--blue)}
+.btn.red{background:#fdecec;color:#c23030}.btn.pri{background:var(--blue);color:#fff}
+.row2{display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-bottom:1px solid var(--line)}.row2:last-child{border:0}
+.field{font-size:12px;color:var(--mute);padding:6px 0;border-bottom:1px solid var(--line)}.field b{color:var(--ink);font-weight:600}
+.neg{color:#d23b3b;font-weight:700}.pos{color:var(--green);font-weight:700}.org{color:#c06a10;font-weight:700}
+.sheetbar{display:flex;justify-content:space-between;padding:8px 16px;font-size:13px;color:var(--blue)}
+.tile{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;flex:none}
+.hub{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}.hub:last-child{border:0}
+.hub b{font-size:12.5px;display:block}.hub span.s{font-size:10px;color:var(--mute)}
+.badge{margin-left:auto;background:#d23b3b;color:#fff;border-radius:10px;padding:1px 7px;font-size:10px;font-weight:700}
+.prog{height:6px;border-radius:3px;background:var(--line);margin:4px 0 8px}.prog i{display:block;height:6px;border-radius:3px;background:var(--blue)}
+.big{font-size:28px;font-weight:800;color:var(--navy);margin:2px 0}
+.avatar{width:46px;height:46px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;flex:none}
+.web{background:#fff}.urlbar{margin:6px 10px;background:#eef1f5;border-radius:10px;font-size:10px;color:#4a5a6e;text-align:center;padding:6px}
+.wp{background:#f4f6f9;padding:10px;flex:1;overflow:hidden}.wc{background:#fff;border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.wc h1{font-size:15px;margin:2px 0 6px}.wc h2{font-size:12px;margin:0 0 6px}
+.stat{display:inline-block;padding:3px 8px;border-radius:8px;background:#eaf3fc;color:#1d5fb4;font-weight:700;font-size:11px}
+.pill{font-size:9.5px;font-weight:700;padding:1px 6px;border-radius:6px;background:#eaf3fc;color:#1d5fb4}.pill.paid{background:#e3f4ea;color:#1f7a45}.pill.od{background:#fde8d2;color:#b8610f}
+.rad{font-size:11.5px;margin:5px 0}
+.seg span{padding:4px 2px}
+</style></head><body><div class="wrap"><h1>Ridgeline Ops: the full layout, part 2 of 2</h1><p class="sub">Mockups of the SwiftUI screens and the client web page, not screenshots of the running app. Pat Miller's numbers come from the real core code; other rows are sample data.</p><div class="row"><div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="banner">Free trial: 11 days left. All features unlocked.</div><div class="nav">Clients</div><div class="body"><div class="card" style="padding:2px 12px">
+<div class="hub"><div class="tile" style="background:#f08a24">▤</div><div><b>Requests</b><span class="s">Asked for on client pages</span></div><span class="badge">2</span></div><div class="hub"><div class="tile" style="background:#2f7de1">👥</div><div><b>Clients</b><span class="s">6 clients, 6 sites</span></div></div><div class="hub"><div class="tile" style="background:#1fa3a3">＋</div><div><b>Quotes</b><span class="s">3 quotes</span></div></div><div class="hub"><div class="tile" style="background:#5b4bd1">⇢</div><div><b>Crews and routes</b><span class="s">2 crews, 4 routes</span></div></div></div>
+<div class="small" style="padding:8px 6px">Add one client, or import a spreadsheet saved as CSV. Nobody is imported as having agreed to messages.</div></div><div class="tabs"><span class=""><em>❄</em>Today</span><span class=""><em>☁</em>Storm</span><span class="on"><em>👥</em>Clients</span><span class=""><em>$</em>Money</span><span class=""><em>•••</em>More</span></div></div><div class="cap">7. Clients hub</div></div><div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="banner">Free trial: 11 days left. All features unlocked.</div><div class="nav">Money</div><div class="body"><div class="card"><div class="small">Waiting to be paid</div><div class="big">$385.00</div></div>
+<div class="card" style="padding:2px 12px"><div class="hub"><div class="tile" style="background:#2f7de1">▤</div><div><b>Invoices</b><span class="s">1 draft to look at</span></div><span class="badge">1</span></div><div class="hub"><div class="tile" style="background:#2e9e5b">▮</div><div><b>Job costs</b><span class="s">Which sites make money</span></div></div><div class="hub"><div class="tile" style="background:#8a4fd1">$</div><div><b>Plans and pricing</b><span class="s">Pro and Max</span></div></div></div></div><div class="tabs"><span class=""><em>❄</em>Today</span><span class=""><em>☁</em>Storm</span><span class=""><em>👥</em>Clients</span><span class="on"><em>$</em>Money</span><span class=""><em>•••</em>More</span></div></div><div class="cap">8. Money hub</div></div><div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="banner">Free trial: 11 days left. All features unlocked.</div><div class="nav">Invoices</div><div class="body"><div class="sec">Overdue</div>
+<div class="card"><span class="btn sm pri" style="color:#fff">Send 2 friendly reminders</span><div class="small" style="margin-top:4px">Only clients who agreed to messages get one. Each invoice gets at most three, a week apart.</div></div>
+<div class="sec">Saved invoices</div>
+<div class="card" style="padding:2px 12px">
+<div class="item" style="display:block"><div class="line" style="font-size:12px"><b>INV-0011</b><span class="pill od">Overdue</span></div><div class="small">Total $45.00, paid $0.00, balance $45.00</div><span class="btn sm">Record payment in full</span></div>
+<div class="item" style="display:block"><div class="line" style="font-size:12px"><b>INV-0007</b><span class="pill paid">Paid</span></div><div class="small">Total $600.00, paid $600.00, balance $0.00</div></div></div>
+<div class="small" style="padding:0 6px">Late fees are never added automatically. Payment links are not built in yet.</div></div></div><div class="cap">9. Invoices with reminders</div></div><div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="banner">Free trial: 11 days left. All features unlocked.</div><div class="nav">More</div><div class="body"><div class="card" style="display:flex;gap:12px;align-items:center"><div class="avatar">RP</div><div><b style="font-size:14px">Ridge Plow</b><div class="small">Signed in with Apple</div></div></div>
+<div class="card" style="padding:2px 12px"><div class="hub"><div class="tile" style="background:#5b4bd1">◷</div><div><b>Time clock</b><span class="s">Crew hours by job</span></div></div><div class="hub"><div class="tile" style="background:#2e9e5b">✔</div><div><b>Proof of service</b><span class="s">Packets for insurers</span></div></div><div class="hub"><div class="tile" style="background:#7b8794">⚙</div><div><b>Settings</b><span class="s">Invoices, messages, costs, data</span></div></div></div>
+<div class="sec">Profile</div>
+<div class="card"><div class="row2"><span>Plan</span><span>Free trial, 11 days left</span></div><div class="row2"><span>Account</span><span>Sign out</span></div>
+<div class="row2" style="color:#c23030"><span>Delete my account and data</span></div><div class="small">Removes everything stored on this device. Backups you saved elsewhere are not removed.</div></div></div><div class="tabs"><span class=""><em>❄</em>Today</span><span class=""><em>☁</em>Storm</span><span class=""><em>👥</em>Clients</span><span class=""><em>$</em>Money</span><span class="on"><em>•••</em>More</span></div></div><div class="cap">10. More and profile</div></div><div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="banner">Free trial: 11 days left. All features unlocked.</div><div class="nav">Settings</div><div class="body"><div class="sec">Invoices and client messages</div>
+<div class="card"><div class="row2"><span>When a stop is done</span><span class="seg" style="width:120px"><span class="on">Draft</span><span>Send</span></span></div>
+<div class="small">A draft invoice is made for you to look at and send. Nothing goes out without you.</div>
+<div class="stepper"><span>Clients have 14 days to pay</span><span>− +</span></div>
+<div class="field">How clients should pay: <b>E-transfer to pay@ridgeplow.example</b></div>
+<div class="row2"><span>Show the message-clients option on the Storm screen</span><span class="sw on"></span></div>
+<div class="row2"><span>Show invoice amounts on client pages</span><span class="sw on"></span></div>
+<div class="field">Client page address: <b>https://portal.ridgeplow.example</b></div>
+<div class="stepper"><span>Quiet from 9:00 PM</span><span>− +</span></div><div class="stepper"><span>Quiet until 6:00 AM</span><span>− +</span></div></div>
+<div class="sec">Your data</div><div class="card"><span class="btn sm">Prepare a backup and spreadsheets</span><span class="btn sm">Restore from a backup file…</span></div></div></div><div class="cap">11. Invoice and message settings</div></div><div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="body"><div class="web" style="display:flex;flex-direction:column;flex:1"><div class="urlbar">🔒 portal.ridgeplow.example/c/gHebjk1s…</div><div class="wp">
+<div class="wc"><div class="small">Ridge Plow</div><h1>14 Elm Ave</h1><div style="font-size:11.5px">Dec 18: around 3 to 5 inches</div><div style="margin:6px 0"><span class="stat">Planned for this storm</span></div>
+<div style="font-size:11.5px">We expect to service your property.</div><div style="font-size:11.5px;margin-top:6px"><b>Estimated arrival</b><br>Expected between 6:15 AM and 8:00 AM.</div>
+<div class="small" style="margin-top:6px">Seasonal contract: 5 of 8 included pushes used.<br>Forecasts can change.</div></div>
+<div class="wc"><h2>Your bills this winter</h2>
+<div class="line" style="font-size:11px;padding:5px 0;border-top:1px solid #e3e9f0"><span>INV-0011<br><span class="small">Salt top-up · Due Dec 12, 2026</span></span><span style="text-align:right">$45.00<br><span class="pill od">Overdue</span></span></div>
+<div class="line" style="font-size:11px;padding:5px 0;border-top:1px solid #e3e9f0"><span>INV-0007<br><span class="small">Seasonal base (8 pushes)</span></span><span style="text-align:right">$600.00<br><span class="pill paid">Paid</span></span></div>
+<div class="small">To pay, use the method your snow service gave you.</div></div>
+<div class="wc"><h2>Ask for something</h2><div class="rad">◉ Please service my property</div><div class="rad">○ I need to get out soon (urgent)</div><div class="rad">○ Skip my property this storm</div>
+<div class="btn pri" style="margin-top:8px">Send request</div></div></div></div></div></div><div class="cap">12. What the client sees (any browser)</div></div></div><div class="note">First-draft design: icy blue and navy with a warm accent. The client page needs no login and no app.</div></div></body></html>
