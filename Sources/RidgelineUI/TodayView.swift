@@ -98,7 +98,7 @@ struct VisitSheet: View {
         if before && !skipped { photos.append(PhotoRef(kind: .before, filename: "placeholder-before.jpg", capturedAt: arrival, sha256: SHA256.hex(UUID().uuidString))) }
         if after && !skipped { photos.append(PhotoRef(kind: .after, filename: "placeholder-after.jpg", capturedAt: now, sha256: SHA256.hex(UUID().uuidString))) }
         let record = VisitRecord(siteID: site.id, crewMemberName: "Crew", stormID: stormID, arrival: arrival, departure: now,
-                                 arrivedInsideGeofence: true,
+                                 geofence: geofence,
                                  status: skipped ? .skipped(reason: reason) : .completed,
                                  snowDepthInches: skipped ? 0 : depth, saltPounds: skipped ? 0 : salt,
                                  photos: photos, note: note)

@@ -1,5 +1,18 @@
 import Foundation
 
+public enum GeofenceStatus: String, Codable, Sendable {
+    case inside, outside, unknown
+}
+
+public enum ArrivalCheck {
+    /// Compares the device location with the site. Without a site location or a device location the answer is
+    /// `.unknown`, never a guess.
+    public static func status(device: Coordinate?, site: Site, radiusMeters: Double = 75) -> GeofenceStatus {
+        guard let device, let lat = site.latitude, let lon = site.longitude else { return .unknown }
+        return Geo.distanceMeters(device, Coordinate(latitude: lat, longitude: lon)) <= radiusMeters ? .inside : .outside
+    }
+}
+
 public enum PhotoKind: String, Codable, Sendable {
     case before, after, damage, gate, other
 }
@@ -10,6 +23,12 @@ public struct PhotoRef: Equatable, Codable, Sendable {
     public var capturedAt: Date
     /// SHA-256 of the image bytes, so a swapped photo is detectable.
     public var sha256: String
+
+    /// Builds the reference for real image bytes: a unique file name and the SHA-256 of the bytes.
+    public static func make(imageData: Data, kind: PhotoKind, capturedAt: Date, fileExtension: String = "jpg") -> PhotoRef {
+        PhotoRef(kind: kind, filename: "\(UUID().uuidString).\(fileExtension)", capturedAt: capturedAt,
+                 sha256: SHA256.hash(Array(imageData)).map { String(format: "%02x", $0) }.joined())
+    }
 
     public init(kind: PhotoKind, filename: String, capturedAt: Date, sha256: String) {
         self.kind = kind
@@ -27,7 +46,8 @@ public struct VisitRecord: Identifiable, Equatable, Codable, Sendable {
     public var stormID: String
     public var arrival: Date
     public var departure: Date?
-    public var arrivedInsideGeofence: Bool
+    /// Whether the device was at the site when the visit was logged. `.unknown` when no location check was made.
+    public var geofence: GeofenceStatus
     public var status: VisitStatus
     public var snowDepthInches: Double
     public var weatherNote: String
@@ -36,7 +56,7 @@ public struct VisitRecord: Identifiable, Equatable, Codable, Sendable {
     public var note: String
 
     public init(id: UUID = UUID(), siteID: UUID, crewMemberName: String, stormID: String, arrival: Date,
-                departure: Date? = nil, arrivedInsideGeofence: Bool = true, status: VisitStatus = .completed,
+                departure: Date? = nil, geofence: GeofenceStatus = .unknown, status: VisitStatus = .completed,
                 snowDepthInches: Double = 0, weatherNote: String = "", saltPounds: Double = 0,
                 photos: [PhotoRef] = [], note: String = "") {
         self.id = id
@@ -45,7 +65,7 @@ public struct VisitRecord: Identifiable, Equatable, Codable, Sendable {
         self.stormID = stormID
         self.arrival = arrival
         self.departure = departure
-        self.arrivedInsideGeofence = arrivedInsideGeofence
+        self.geofence = geofence
         self.status = status
         self.snowDepthInches = snowDepthInches
         self.weatherNote = weatherNote
@@ -139,7 +159,7 @@ public enum DisputePacket {
             var status = "completed"
             if case .skipped(let reason) = r.status { status = "skipped (\(reason))" }
             lines.append("\(f.string(from: r.arrival)) to \(out) | storm \(r.stormID) | \(status)")
-            lines.append("  crew: \(r.crewMemberName) | inside geofence: \(r.arrivedInsideGeofence ? "yes" : "no") | depth: \(r.snowDepthInches) in | salt: \(r.saltPounds) lb")
+            lines.append("  crew: \(r.crewMemberName) | at site (location check): \(r.geofence.rawValue) | depth: \(r.snowDepthInches) in | salt: \(r.saltPounds) lb")
             if !r.weatherNote.isEmpty { lines.append("  weather: \(r.weatherNote)") }
             lines.append("  photos: \(r.photos.count) (before: \(r.hasBeforePhoto ? "yes" : "no"), after: \(r.hasAfterPhoto ? "yes" : "no"))")
             if !r.note.isEmpty { lines.append("  note: \(r.note)") }

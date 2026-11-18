@@ -17,6 +17,10 @@ public struct AppData: Equatable, Codable, Sendable {
     public var depot: Coordinate?
     public var invoices: [Invoice] = []
     public var lateFeePolicy = LateFeePolicy()
+    public var quotes: [Quote] = []
+    /// What an hour of crew time costs you (wages and burden), for job costing. Zero until you set it.
+    public var laborCostPerHour: Money = .zero
+    public var saltCostPerPound: Money = .zero
 
     public init() {}
 
@@ -37,6 +41,9 @@ public struct AppData: Equatable, Codable, Sendable {
         depot = try c.decodeIfPresent(Coordinate.self, forKey: .depot)
         invoices = try c.decodeIfPresent([Invoice].self, forKey: .invoices) ?? []
         lateFeePolicy = try c.decodeIfPresent(LateFeePolicy.self, forKey: .lateFeePolicy) ?? LateFeePolicy()
+        quotes = try c.decodeIfPresent([Quote].self, forKey: .quotes) ?? []
+        laborCostPerHour = try c.decodeIfPresent(Money.self, forKey: .laborCostPerHour) ?? .zero
+        saltCostPerPound = try c.decodeIfPresent(Money.self, forKey: .saltCostPerPound) ?? .zero
     }
 }
 

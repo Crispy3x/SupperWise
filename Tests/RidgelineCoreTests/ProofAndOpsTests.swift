@@ -67,6 +67,32 @@ final class VisitLogTests: XCTestCase {
         XCTAssertTrue(text.contains("before: yes, after: yes"))
     }
 
+    func testGeofenceNeverGuesses() {
+        let atSite = Site(customerID: UUID(), address: "x", latitude: 45, longitude: -93)
+        let noLocation = Site(customerID: UUID(), address: "y")
+        XCTAssertEqual(ArrivalCheck.status(device: Coordinate(latitude: 45, longitude: -93), site: atSite), .inside)
+        XCTAssertEqual(ArrivalCheck.status(device: Coordinate(latitude: 45.01, longitude: -93), site: atSite), .outside)
+        XCTAssertEqual(ArrivalCheck.status(device: nil, site: atSite), .unknown)
+        XCTAssertEqual(ArrivalCheck.status(device: Coordinate(latitude: 45, longitude: -93), site: noLocation), .unknown)
+    }
+
+    func testUnknownGeofenceIsReportedAsUnknownInThePacket() {
+        let site = Site(customerID: UUID(), address: "3 Fir")
+        var log = VisitLog()
+        log.append(record(site: site.id))   // default geofence is unknown
+        let text = DisputePacket.render(site: site, log: log)
+        XCTAssertTrue(text.contains("location check): unknown"))
+        XCTAssertFalse(text.contains("location check): inside"))
+    }
+
+    func testPhotoRefFromRealBytes() {
+        let data = Data("abc".utf8)
+        let ref = PhotoRef.make(imageData: data, kind: .before, capturedAt: t0)
+        XCTAssertEqual(ref.sha256, "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad")
+        XCTAssertTrue(ref.filename.hasSuffix(".jpg"))
+        XCTAssertNotEqual(PhotoRef.make(imageData: data, kind: .before, capturedAt: t0).filename, ref.filename)
+    }
+
     func testDisputePacketFlagsTamperedLog() {
         let site = Site(customerID: UUID(), address: "9 Elm")
         var log = VisitLog()
