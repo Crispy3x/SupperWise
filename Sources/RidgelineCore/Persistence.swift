@@ -29,6 +29,7 @@ public struct AppData: Equatable, Codable, Sendable {
     public var broadcastLog: [BroadcastRecord] = []
     public var serviceRequests: [ServiceRequest] = []
     public var broadcastSettings = BroadcastSettings()
+    public var profile = BusinessProfile()
 
     public init() {}
 
@@ -58,6 +59,7 @@ public struct AppData: Equatable, Codable, Sendable {
         broadcastLog = try c.decodeIfPresent([BroadcastRecord].self, forKey: .broadcastLog) ?? []
         serviceRequests = try c.decodeIfPresent([ServiceRequest].self, forKey: .serviceRequests) ?? []
         broadcastSettings = try c.decodeIfPresent(BroadcastSettings.self, forKey: .broadcastSettings) ?? BroadcastSettings()
+        profile = try c.decodeIfPresent(BusinessProfile.self, forKey: .profile) ?? BusinessProfile()
     }
 }
 

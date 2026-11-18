@@ -4,7 +4,7 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 
 ## What exists so far
 
-**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 202 unit tests, all passing.
+**Core logic (`Sources/RidgelineCore`)**: platform-neutral Swift, compiled and tested on Linux. 219 unit tests, all passing.
 - `Pricing`, `Entitlements`: Pro and Max per-crew prices, annual 20% off, 14-day trial (all features unlocked), feature gating, read-only after trial.
 - `SnowBilling`: per-push, seasonal, per-inch, hybrid (base, cap, overage) and time-and-materials. One invoice line per storm, skipped visits never billed, per-contract push counting (default one push per storm).
 - `Storm`: trigger depth per site, near-trigger warnings.
@@ -39,7 +39,10 @@ Snow-first crew and route software for iPhone, iPad and Mac. See `PLAN.md` for t
 - **Tested together**: the real Swift client was run against the real server: send the email, publish the page, the client submits an urgent request from the page, the owner imports it, accepts it, and the client's page shows the answer.
 - **Not built yet**: the screens for it (send the storm message, the request inbox, collecting consent), real email sending with your own provider account, and text messages (they need carrier registration first).
 
-## Apple Maps routing (default)
+## Welcome flow and automatic invoices (logic built, screens not yet)
+- **`Onboarding`**: the ten welcome steps (business name, services, clients, snow billing and trigger depth, home base, crews, import clients, payment terms, messages and invoice automation, color). Only the business name is required; everything else has a default and can be skipped. `finishOnboarding` applies the answers (profile, company name, crews, home base). It is safe to run twice and never deletes crews.
+- **`AutoInvoice`**: when a visit is completed the app can create a draft invoice, or create it and prepare the email. It bills each storm once, never bills a skipped visit, never bills the season base at the first push, and leaves a draft (with a plain explanation) for clients who have not agreed to messages. The invoice is marked sent only after the email really went out. Default is draft.
+
 Drive times now come from **Apple Maps on the device** by default (free, no key, includes live traffic). Apple answers one origin and destination per request and slows heavy use down, so `SampledMatrixSource` measures only the legs that matter most (yard to every stop, then each stop to its 3 nearest neighbours, capped at 150 requests, 3 at a time with short pauses), scales the straight-line estimate for every other pair by how the measured legs compared, and stops asking and finishes with estimates if Apple stops answering. The Storm screen says how many legs were measured. Answers are cached in memory only, for 10 minutes (`CachedETASource`), so changing the weather sliders does not ask Apple again. Settings lets you pick Apple Maps, your own Google routing server, or the offline estimate.
 
 **Apple's terms (read from the Apple Developer Program License Agreement, Attachment 6, version date not visible in what I read; I did not read the whole agreement):**

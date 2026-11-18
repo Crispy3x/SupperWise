@@ -250,7 +250,7 @@ public enum InvoicePlanner {
         public let heldBack: [Visit]
     }
 
-    public static func nextBilling(terms: ContractTerms, visits: [Visit], existing: [Invoice]) -> NextBilling {
+    public static func nextBilling(terms: ContractTerms, visits: [Visit], existing: [Invoice], includeSeasonalBase: Bool = true) -> NextBilling {
         let active = existing.filter { !$0.isVoid }
         var invoicedStormIssue: [String: Date] = [:]
         for inv in active {
@@ -264,7 +264,7 @@ public enum InvoicePlanner {
         let earlier = visits.filter { invoicedStormIssue[$0.stormID] != nil }
         let fresh = visits.filter { invoicedStormIssue[$0.stormID] == nil }
         let earlierPushes = SnowBilling.bill(terms: terms, visits: earlier, includeSeasonalBase: false).pushesUsed
-        let result = SnowBilling.bill(terms: terms, visits: fresh, includeSeasonalBase: !baseAlreadyBilled, alreadyUsedPushes: earlierPushes)
+        let result = SnowBilling.bill(terms: terms, visits: fresh, includeSeasonalBase: !baseAlreadyBilled && includeSeasonalBase, alreadyUsedPushes: earlierPushes)
         let held = earlier.filter { v in
             if case .completed = v.status, let issued = invoicedStormIssue[v.stormID] { return v.date > issued }
             return false
