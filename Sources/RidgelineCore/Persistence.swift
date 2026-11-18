@@ -31,6 +31,7 @@ public struct AppData: Equatable, Codable, Sendable {
     public var broadcastSettings = BroadcastSettings()
     public var profile = BusinessProfile()
     public var account: AccountProfile?
+    public var reminderLog: [ReminderRecord] = []
 
     public init() {}
 
@@ -62,6 +63,7 @@ public struct AppData: Equatable, Codable, Sendable {
         broadcastSettings = try c.decodeIfPresent(BroadcastSettings.self, forKey: .broadcastSettings) ?? BroadcastSettings()
         profile = try c.decodeIfPresent(BusinessProfile.self, forKey: .profile) ?? BusinessProfile()
         account = try c.decodeIfPresent(AccountProfile.self, forKey: .account)
+        reminderLog = try c.decodeIfPresent([ReminderRecord].self, forKey: .reminderLog) ?? []
     }
 }
 
