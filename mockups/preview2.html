@@ -1,0 +1,105 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Ridgeline Ops preview 2</title><style>
+:root{--navy:#0d2540;--blue:#2f7de1;--ice:#eaf3fc;--orange:#f08a24;--green:#2e9e5b;--ink:#14202e;--mute:#6b7a8c;--line:#e3e9f0}
+*{box-sizing:border-box}body{margin:0;background:#c9d6e4;font-family:-apple-system,"SF Pro Text",Helvetica,Arial,sans-serif;color:var(--ink)}
+.wrap{padding:28px 28px 20px}
+h1{margin:0 0 4px;font-size:22px;color:var(--navy)}.sub{margin:0 0 20px;color:#3d5068;font-size:13px}
+.row{display:flex;gap:22px;align-items:flex-start}
+.col{display:flex;flex-direction:column;align-items:center;gap:8px}
+.cap{font-size:12px;font-weight:600;color:var(--navy)}
+.phone{width:300px;height:620px;background:#fff;border-radius:38px;border:9px solid #111;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(0,0,0,.25);display:flex;flex-direction:column}
+.status{height:34px;display:flex;justify-content:space-between;align-items:flex-end;padding:0 22px 4px;font-size:11px;font-weight:600}
+.banner{background:rgba(47,125,225,.15);font-size:10px;text-align:center;padding:5px}
+.nav{padding:6px 16px 4px;font-size:25px;font-weight:700;color:var(--navy)}
+.body{flex:1;overflow:hidden;background:#f4f6f9;padding:8px 10px}
+.card{background:#fff;border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.sec{font-size:10px;text-transform:uppercase;color:var(--mute);margin:8px 6px 4px;letter-spacing:.04em}
+.item{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12px}
+.item:last-child{border:0}.num{width:18px;font-weight:700;color:var(--blue)}.grow{flex:1}.small{font-size:10px;color:var(--mute)}
+.eta{font-size:11px;color:var(--mute)}.tag{font-size:9px;font-weight:700;border-radius:6px;padding:2px 5px;background:var(--ice);color:var(--blue)}
+.tag.p1{background:#fde8d2;color:#b8610f}
+.slider{height:6px;border-radius:3px;background:var(--line);position:relative;margin:10px 4px}
+.slider i{position:absolute;left:0;top:0;height:6px;width:17%;background:var(--blue);border-radius:3px}
+.slider b{position:absolute;left:calc(17% - 9px);top:-6px;width:18px;height:18px;background:#fff;border:1px solid #cdd6e0;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.stepper{display:flex;justify-content:space-between;font-size:12px;padding:4px 0}
+.tabs{height:54px;border-top:1px solid var(--line);background:#fafbfc;display:flex;justify-content:space-around;align-items:center;font-size:8.5px;color:var(--mute)}
+.tabs span{text-align:center}.tabs .on{color:var(--blue);font-weight:700}.tabs em{display:block;font-style:normal;font-size:15px}
+.toggle{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:6px 0}
+.sw{width:34px;height:20px;border-radius:10px;background:var(--line);position:relative}.sw.on{background:var(--green)}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff}.sw.on::after{left:16px}
+.btn{background:var(--blue);color:#fff;text-align:center;border-radius:10px;padding:9px;font-weight:600;font-size:12px;margin-top:6px}
+.line{display:flex;justify-content:space-between;font-size:11px;padding:3px 0}.tot{font-weight:700;border-top:1px solid var(--line);margin-top:4px;padding-top:6px;font-size:12px}
+.warn{font-size:10px;color:#b8610f;margin-top:4px}.ok{color:var(--green);font-weight:600;font-size:11px}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:8.5px;line-height:1.45;white-space:pre-wrap;color:#2a3a4d}
+.seg{display:flex;background:var(--line);border-radius:8px;padding:2px;margin:6px 0}.seg span{flex:1;text-align:center;font-size:11px;padding:4px;border-radius:6px}.seg .on{background:#fff;font-weight:600}
+.plan{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--line)}.plan:last-child{border:0}.plan b{font-size:14px}.plan .pr{font-size:15px;font-weight:700;color:var(--navy)}
+.note{font-size:10px;color:var(--mute);text-align:center;margin-top:14px}
+
+.card.hl{border:1px solid var(--blue)}
+.btn.sm{display:inline-block;padding:5px 9px;font-size:10.5px;margin:4px 6px 0 0;border-radius:8px;background:var(--ice);color:var(--blue)}
+.row2{display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-bottom:1px solid var(--line)}.row2:last-child{border:0}
+.field{font-size:12px;color:var(--mute);padding:6px 0;border-bottom:1px solid var(--line)}.field b{color:var(--ink);font-weight:600}
+.neg{color:#d23b3b;font-weight:700}.pos{color:var(--green);font-weight:700}
+.sheetbar{display:flex;justify-content:space-between;padding:8px 16px;font-size:13px;color:var(--blue)}
+</style></head><body><div class="wrap">
+<h1>Ridgeline Ops: more screens</h1>
+<p class="sub">Mockup of the planned SwiftUI screens, filled with real output from the core code (demo data). Not a screenshot of the running app, which has not been built on a Mac yet.</p>
+<div class="row">
+<div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="sheetbar"><span>Cancel</span><b style="color:var(--ink)">Log visit</b><span style="font-weight:700">Save</span></div><div class="body">
+<div class="sec">Who and where</div>
+<div class="card"><div class="field">Your name: <b>Sam</b></div>
+<div class="row2"><span>At the site</span><span class="btn sm" style="margin:0">Check location</span></div></div>
+<div class="sec">Work</div>
+<div class="card"><div class="stepper"><span>Snow depth: 4.0 in</span><span>− +</span></div><div class="stepper"><span>Salt: 60 lb</span><span>− +</span></div></div>
+<div class="sec">Photos</div>
+<div class="card"><div class="row2"><span>Before</span><span class="small">1 saved</span></div><span class="btn sm">Take photo</span><span class="btn sm">Choose photo</span>
+<div class="row2" style="margin-top:6px"><span>After</span><span class="small">1 saved</span></div><span class="btn sm">Take photo</span><span class="btn sm">Choose photo</span></div>
+<div class="sec">Message to customer (preview only, messages are not sent yet)</div>
+<div class="card" style="font-size:10.5px;line-height:1.4">Demo Plowing: 410 Industrial Pkwy is done.</div></div></div><div class="cap">1. Crew: log a visit with photos</div></div>
+<div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="sheetbar"><span>Cancel</span><b style="color:var(--ink)">New quote</b><span style="font-weight:700">Save</span></div><div class="body">
+<div class="sec">Customer</div>
+<div class="card"><div class="field">Customer: <b>Pat Miller</b></div><div class="field">Service address: <b>14 Elm Ave</b></div></div>
+<div class="sec">Price</div>
+<div class="card"><div class="seg"><span class="on">Per push</span><span>Seasonal</span><span>Plus overage</span></div>
+<div class="stepper"><span>Price per push: $60</span><span>− +</span></div><div class="stepper"><span>Valid for 30 days</span><span>− +</span></div></div>
+<div class="sec">What the customer could pay</div>
+<div class="card" style="font-size:11px;line-height:1.45">A mild winter (6 pushes): <b>$360.00</b>. A heavy winter (16 pushes): <b>$960.00</b>.<div class="small" style="margin-top:4px">Estimates only. Real cost depends on how much it snows.</div></div></div></div><div class="cap">2. Quote with a season-cost range</div></div>
+<div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="banner">Free trial: 11 days left. All features unlocked.</div><div class="nav">Routes</div><div class="body">
+<div class="sec">Crews</div>
+<div class="card" style="font-size:12px"><div class="row2"><span>Truck 1</span></div><div class="row2"><span>Truck 2</span></div></div>
+<div class="sec">Routes</div>
+<div class="card" style="padding:4px 12px">
+<div class="item"><span style="color:var(--blue)">✔</span><div class="grow"><b>North</b><div class="small">Truck 1, Monday, 4 stops</div></div></div>
+<div class="item"><span style="color:var(--blue)">✔</span><div class="grow"><b>South</b><div class="small">Truck 1, Monday, 3 stops</div></div></div>
+<div class="item"><span style="color:var(--mute)">○</span><div class="grow"><b>East</b><div class="small">Truck 2, Tuesday, 5 stops</div></div></div></div>
+<div class="sec">Move 2 selected</div>
+<div class="card"><div class="stepper"><span>To crew</span><span>Truck 2 ▾</span></div><span class="btn sm">Move to this crew</span>
+<div class="stepper"><span>To day</span><span>Wednesday ▾</span></div><span class="btn sm">Move to this day</span></div></div><div class="tabs"><span class=""><em>❄</em>Crew</span><span class=""><em>☁</em>Storm</span><span class=""><em>👥</em>Customers</span><span class=""><em>📝</em>Quotes</span><span class="on"><em>•••</em>More</span></div></div><div class="cap">3. Routes: move several at once</div></div>
+<div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="banner">Free trial: 11 days left. All features unlocked.</div><div class="nav">Time clock</div><div class="body">
+<div class="sec">Who is working</div>
+<div class="card"><div class="field">Your name: <b>Sam</b></div><div class="field">Job: <b>410 Industrial Pkwy</b></div>
+<div class="btn" style="background:#d23b3b">Clock out</div></div>
+<div class="sec">Recent</div>
+<div class="card" style="padding:4px 12px">
+<div class="item"><div class="grow"><b>Sam</b><div class="small">410 Industrial Pkwy, Nov 17, 6:05 AM</div></div><span>1.25 h</span></div>
+<div class="item"><div class="grow"><b>Lee</b><div class="small">General, Nov 16, 4:30 PM</div><div class="warn">Still clocked in after 12 hours. Check for a missed clock out.</div></div><span>14.60 h</span></div>
+<div class="item"><div class="grow"><b>Lee</b><div class="small">100 Lake St, Nov 16, 5:10 AM</div></div><span>3.00 h</span></div></div></div><div class="tabs"><span class=""><em>❄</em>Crew</span><span class=""><em>☁</em>Storm</span><span class=""><em>👥</em>Customers</span><span class=""><em>📝</em>Quotes</span><span class="on"><em>•••</em>More</span></div></div><div class="cap">4. Time clock: forgotten punch flagged</div></div>
+<div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="banner">Free trial: 11 days left. All features unlocked.</div><div class="nav">Job costs</div><div class="body">
+<div class="card" style="padding:4px 12px">
+<div class="item" style="display:block"><div class="line" style="font-size:12px"><b>14 Elm Ave</b><span class="neg">-$1.00</span></div><div class="small">Invoiced $110.00, labor $105.00, salt $6.00</div><div class="small">Margin -1%</div></div>
+<div class="item" style="display:block"><div class="line" style="font-size:12px"><b>410 Industrial Pkwy</b><span class="pos">$252.00</span></div><div class="small">Invoiced $320.00, labor $60.00, salt $8.00</div><div class="small">Margin 79%</div></div>
+<div class="item" style="display:block"><div class="line" style="font-size:12px"><b>100 Lake St</b><span class="pos">$696.00</span></div><div class="small">Invoiced $900.00, labor $180.00, salt $24.00</div><div class="small">Margin 77%</div></div></div>
+<div class="card"><div class="small">Only invoices marked sent count as revenue. Subcontractor pay is not included yet.</div>
+<div class="warn" style="margin-top:6px">1.5 hours of crew time are not tied to a site and are not counted above.</div></div></div><div class="tabs"><span class=""><em>❄</em>Crew</span><span class=""><em>☁</em>Storm</span><span class=""><em>👥</em>Customers</span><span class=""><em>📝</em>Quotes</span><span class="on"><em>•••</em>More</span></div></div><div class="cap">5. Job costs: worst margin first</div></div>
+<div class="col"><div class="phone"><div class="status"><span>9:41</span><span>●●●</span></div><div class="banner">Free trial: 11 days left. All features unlocked.</div><div class="nav">Settings</div><div class="body">
+<div class="sec">Business</div><div class="card"><div class="field">Business name: <b>Demo Plowing</b></div></div>
+<div class="sec">Yard location</div><div class="card"><div class="small" style="font-size:11px;color:var(--ink)">Set: 44.978, -93.265</div><span class="btn sm">Use my current location</span></div>
+<div class="sec">Live traffic routing</div>
+<div class="card"><div class="field">https://routes.example.com</div><div class="field">Token saved (leave blank to keep it)</div><span class="btn sm">Save routing server</span>
+<div class="small" style="margin-top:4px">Using live traffic from your routing server. If it cannot be reached, the offline estimate is used.</div></div>
+<div class="sec">Your costs (for job costs)</div>
+<div class="card"><div class="stepper"><span>Crew cost per hour: $30.00</span><span>− +</span></div><div class="stepper"><span>Salt cost per pound: $0.20</span><span>− +</span></div></div>
+<div class="sec">Late fees (never added automatically)</div>
+<div class="card"><div class="stepper"><span>Grace period: 14 days</span><span>− +</span></div><div class="stepper"><span>Flat fee (whole dollars): $25.00</span><span>− +</span></div></div></div><div class="tabs"><span class=""><em>❄</em>Crew</span><span class=""><em>☁</em>Storm</span><span class=""><em>👥</em>Customers</span><span class=""><em>📝</em>Quotes</span><span class="on"><em>•••</em>More</span></div></div><div class="cap">6. Settings: costs, server, late fees</div></div>
+</div>
+<div class="note">First-draft design. The tab bar shows five tabs and a More tab, which is how iPhone handles the eleven screens.</div>
+</div></body></html>
