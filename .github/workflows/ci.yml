@@ -7,19 +7,17 @@ jobs:
   core-linux:
     name: Core logic tests (Linux)
     runs-on: ubuntu-24.04
+    container: swift:6.0-noble   # the official Swift image, so no extra action (setup-swift still runs on Node 20)
     steps:
-      - uses: actions/checkout@v4
-      - uses: swift-actions/setup-swift@v2
-        with:
-          swift-version: "6.0"
+      - uses: actions/checkout@v6
       - run: swift test
 
   routing-server:
     name: Routing server tests
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: "22"
       - run: npm test
@@ -29,7 +27,7 @@ jobs:
     name: Build the screens (macOS and iOS)
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       # This is the first place the SwiftUI screens are really compiled. Read any errors in the log.
       - name: Build for macOS
         run: swift build
@@ -42,7 +40,7 @@ jobs:
     name: Build the app project (iOS simulator)
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Make the Xcode project and build it without signing
         run: |
           brew install xcodegen
@@ -52,3 +50,16 @@ jobs:
             -scheme RidgelineOps \
             -destination 'generic/platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO
+
+  asc-tools:
+    name: Signing scripts (syntax and tests)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - run: pip install --quiet "pyjwt[crypto]" requests pyyaml
+      - name: Every signing script compiles
+        run: python3 -m py_compile tools/asc/*.py
+      - name: The certificate rule only marks CI-made, recent certificates
+        run: python3 tools/asc/test_certs.py
+      - name: Workflow files are valid YAML
+        run: python3 -c "import yaml,glob; [yaml.safe_load(open(f)) for f in glob.glob('.github/workflows/*.yml')]; print('ok')"
