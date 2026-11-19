@@ -2,7 +2,7 @@
 # NOT YET RUN: written without access to a Mac. If xcodegen reports an error, send it to me.
 name: RidgelineOps
 options:
-  bundleIdPrefix: com.example          # CHANGE to your own, for example com.yourbusiness
+  bundleIdPrefix: com.supperwise
   deploymentTarget:
     iOS: "17.0"
     macOS: "14.0"
@@ -26,6 +26,8 @@ targets:
       path: App/Info.plist
       properties:
         CFBundleDisplayName: Ridgeline Ops
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         LSApplicationCategoryType: public.app-category.business
         ITSAppUsesNonExemptEncryption: false   # the app only uses standard HTTPS; confirm before submitting
         UILaunchScreen: {}
@@ -42,11 +44,13 @@ targets:
         NSCameraUsageDescription: Ridgeline Ops uses the camera to take before and after photos as proof of service.
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.example.ridgelineops   # CHANGE to match your bundle ID prefix
-        MARKETING_VERSION: 0.1.0
+        PRODUCT_BUNDLE_IDENTIFIER: com.supperwise.app   # reuses the Supperwise App Store record
+        MARKETING_VERSION: 3.0.0
         CURRENT_PROJECT_VERSION: 1
         SWIFT_VERSION: "5.9"
         DEVELOPMENT_TEAM: ""               # CHANGE: your Apple Developer team ID
         TARGETED_DEVICE_FAMILY: "1,2"
         ENABLE_PREVIEWS: YES
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        "CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]": App/RidgelineOps-iOS.entitlements   # iPhone: Sign in with Apple only (the main file has Mac sandbox keys)
+        "CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]": App/RidgelineOps-iOS.entitlements
