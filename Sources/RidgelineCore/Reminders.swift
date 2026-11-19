@@ -42,6 +42,7 @@ public enum ReminderPlanner {
                          "If you have already paid, thank you, and please ignore this note."]
             let pay = data.profile.paymentInstructions.trimmingCharacters(in: .whitespacesAndNewlines)
             if !pay.isEmpty { lines.append("How to pay: \(pay)") }
+            if let link = data.profile.payLink.flatMap(PayLink.clean) { lines.append("Pay online: \(link)") }
             if baseOK, let token = data.portalLinks.first(where: { $0.siteID == site.id })?.token {
                 lines.append("")
                 lines.append("See all your bills: \(base.hasSuffix("/") ? String(base.dropLast()) : base)/c/\(token)")

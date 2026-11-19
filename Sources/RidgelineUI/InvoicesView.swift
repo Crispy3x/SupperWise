@@ -85,6 +85,14 @@ struct InvoicesView: View {
                             }
                             .buttonStyle(.bordered)
                             .font(.footnote)
+                            if inv.balance.cents > 0 && !inv.isVoid, let link = model.data.profile.payLink.flatMap(PayLink.clean), let url = URL(string: link) {
+                                ShareLink(item: url, message: Text("Invoice \(inv.number), balance \(inv.balance.formatted)")) {
+                                    Label("Share pay link", systemImage: "link")
+                                }
+                                .font(.footnote)
+                            } else if inv.balance.cents > 0 && !inv.isVoid {
+                                Text("Add a payment link in Settings to share a Pay now link.").font(.caption).foregroundStyle(.secondary)
+                            }
                         }
                     }
                     if !model.data.invoices.isEmpty {
@@ -93,7 +101,7 @@ struct InvoicesView: View {
                 }
                 if let message { Section { Text(message).font(.footnote) } }
                 Section {
-                    Text("Late fees are never added automatically. Payment links are not built in yet. Send the invoice and use your own payment account.")
+                    Text("Late fees are never added automatically. Pay links come from your own payment account (set one in Settings). Mark an invoice paid here once the money arrives.")
                         .font(.footnote).foregroundStyle(.secondary)
                 }
             }

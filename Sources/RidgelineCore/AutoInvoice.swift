@@ -10,9 +10,9 @@ public struct AutoInvoiceOutcome: Equatable, Sendable {
 }
 
 public enum InvoiceMessage {
-    /// The invoice email. No payment link: it says how to pay in the owner's own words.
+    /// The invoice email. It says how to pay in the owner's own words and, if set, adds the owner's own payment link.
     public static func compose(invoice: Invoice, customer: Customer, site: Site, company: String, portalURL: String?,
-                               howToPay: String, calendar: Calendar = .current) -> PlannedMessage {
+                               howToPay: String, payLink: String? = nil, calendar: Calendar = .current) -> PlannedMessage {
         let f = DateFormatter()
         f.dateFormat = "MMM d, yyyy"
         f.timeZone = calendar.timeZone
@@ -23,6 +23,7 @@ public enum InvoiceMessage {
         lines.append("Total due: \(invoice.total.formatted) by \(f.string(from: invoice.dueDate)).")
         let pay = howToPay.trimmingCharacters(in: .whitespacesAndNewlines)
         if !pay.isEmpty { lines.append("How to pay: \(pay)") }
+        if let link = payLink.flatMap(PayLink.clean) { lines.append("Pay online: \(link)") }
         if let portalURL { lines.append(""); lines.append("See all your bills and this winter's visits: \(portalURL)") }
         lines.append("")
         lines.append(company)
@@ -65,7 +66,7 @@ extension AppData {
         let portal = (RoutingServerSettings.validatedURL(base) != nil && token != nil) ? "\(base.hasSuffix("/") ? String(base.dropLast()) : base)/c/\(token!)" : nil
         let company = companyName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "Your snow crew" : companyName
         let message = InvoiceMessage.compose(invoice: invoice, customer: customer, site: site, company: company, portalURL: portal,
-                                             howToPay: profile.paymentInstructions, calendar: calendar)
+                                             howToPay: profile.paymentInstructions, payLink: profile.payLink, calendar: calendar)
         return AutoInvoiceOutcome(invoice: invoice, message: message, note: "Invoice \(number) is ready to email to the client.")
     }
 

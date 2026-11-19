@@ -134,7 +134,26 @@ test('the page shows the arrival window, the winter summary and the bills, with 
   assert.ok(html.includes('3 storms serviced so far this winter.'));
   assert.ok(html.includes('Your bills this winter')); assert.ok(html.includes('INV-0003')); assert.ok(html.includes('$60.00'));
   assert.ok(html.includes('pill paid')); assert.ok(html.includes('pill overdue')); assert.ok(html.includes('Due Dec 2, 2026'));
-  assert.ok(html.includes('To pay, use the method your snow service gave you.'));
+  assert.ok(html.includes('We never see your card.'));
+  assert.ok(!html.includes('Pay now'));                                  // no link sent, no button
+});
+
+test('a Pay now button appears only for unpaid bills and only for safe payment links', async (t) => {
+  const s = await boot(); t.after(s.close);
+  const bills = [
+    { number: 'A', label: 'x', total: '$1.00', status: 'Due', due: 'Due soon', payURL: 'https://buy.stripe.com/abc123' },
+    { number: 'B', label: 'x', total: '$1.00', status: 'Paid', due: '', payURL: 'https://buy.stripe.com/paid-one' },
+    { number: 'C', label: 'x', total: '$1.00', status: 'Overdue', due: 'Due before', payURL: 'https://evil.example.com/pay' },
+    { number: 'D', label: 'x', total: '$1.00', status: 'Due', due: 'Due soon', payURL: 'http://paypal.me/plow' },
+    { number: 'E', label: 'x', total: '$1.00', status: 'Due', due: 'Due soon', payURL: 'https://paypal.com@evil.example.com/x' },
+    { number: 'F', label: 'x', total: '$1.00', status: 'Due', due: 'Due soon', payURL: 'https://notstripe.com/x' },
+    { number: 'G', label: 'x', total: '$1.00', status: 'Due', due: 'Due soon', payURL: 'javascript:alert(1)' },
+  ];
+  assert.equal((await s.publish([{ token: TOKEN, label: '14 Elm Ave', status: 'planned', detail: '', canRequest: false, bills }])).status, 200);
+  const html = await (await fetch(`${s.base}/c/${TOKEN}`)).text();
+  assert.equal(html.split('Pay now').length - 1, 1);
+  assert.ok(html.includes('https://buy.stripe.com/abc123'));
+  assert.ok(!html.includes('paid-one')); assert.ok(!html.includes('evil.example.com')); assert.ok(!html.includes('javascript:'));
 });
 
 test('a page with no bills or estimate shows neither section', async (t) => {

@@ -70,6 +70,7 @@ struct SettingsView: View {
                               text: binding({ model.data.profile.paymentInstructions }, { model.data.profile.paymentInstructions = String($0.prefix(300)) }),
                               axis: .vertical)
                         .lineLimit(2...4)
+                    SavedPayLinkField()
                     Toggle("Show the message-clients option on the Storm screen",
                            isOn: binding({ model.data.profile.stormMessagesOn }, { model.data.profile.stormMessagesOn = $0 }))
                     Toggle("Show invoice amounts on client pages",

@@ -21,6 +21,8 @@ public struct PortalBill: Codable, Equatable, Sendable {
     /// "Paid", "Due" or "Overdue". Drafts are never shown to clients.
     public let status: String
     public let due: String
+    /// The owner's own payment link, only on bills that still need paying.
+    public let payURL: String?
 }
 
 public struct PortalSiteSnapshot: Codable, Equatable, Sendable {
@@ -137,7 +139,8 @@ extension PortalSnapshotBuilder {
                 let status = state == .paid ? "Paid" : (state == .overdue ? "Overdue" : "Due")
                 let label = inv.lines.count == 1 ? inv.lines[0].description : "\(inv.lines.count) items"
                 return PortalBill(number: inv.number, label: label, total: data.profile.portalShowsAmounts ? inv.total.formatted : "",
-                                  status: status, due: state == .paid ? "" : "Due \(f.string(from: inv.dueDate))")
+                                  status: status, due: state == .paid ? "" : "Due \(f.string(from: inv.dueDate))",
+                                  payURL: state == .paid ? nil : data.profile.payLink.flatMap(PayLink.clean))
             }
     }
 

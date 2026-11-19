@@ -113,6 +113,7 @@ struct WelcomeFlowView: View {
             TextField("How should clients pay you? This goes on invoices.", text: $answers.paymentInstructions, axis: .vertical)
                 .lineLimit(2...4)
                 .textFieldStyle(.roundedBorder)
+            PayLinkField(link: $answers.payLink)
         case .messages:
             Toggle("Show the message-clients option on the Storm screen", isOn: $answers.stormMessagesOn)
             Text("Nothing is sent by itself. You review every message before it goes.").font(.footnote).foregroundStyle(.secondary)

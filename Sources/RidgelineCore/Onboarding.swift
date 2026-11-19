@@ -33,6 +33,8 @@ public struct BusinessProfile: Equatable, Codable, Sendable {
     public var netDays: Int = 14
     /// Shown on invoice emails, for example "Check or e-transfer to Ridge Plow".
     public var paymentInstructions: String = ""
+    /// A payment link from the owner's own account (optional). Stored only if it passes `PayLink.clean`.
+    public var payLink: String?
     public var stormMessagesOn: Bool = true
     public var invoiceAutomation: InvoiceAutomation = .draft
     public var accentColor: String = "blue"
@@ -94,6 +96,7 @@ public struct OnboardingAnswers: Equatable, Sendable {
     public var crewCount = 1
     public var netDays = 14
     public var paymentInstructions = ""
+    public var payLink = ""
     public var stormMessagesOn = true
     public var invoiceAutomation: InvoiceAutomation = .draft
     public var accentColor = "blue"
@@ -122,6 +125,7 @@ extension AppData {
         p.crewCount = min(max(a.crewCount, 1), 50)
         p.netDays = min(max(a.netDays, 0), 120)
         p.paymentInstructions = String(a.paymentInstructions.trimmingCharacters(in: .whitespacesAndNewlines).prefix(300))
+        p.payLink = PayLink.clean(a.payLink)
         p.stormMessagesOn = a.stormMessagesOn
         p.invoiceAutomation = a.invoiceAutomation
         p.accentColor = Self.accentColors.contains(a.accentColor) ? a.accentColor : "blue"

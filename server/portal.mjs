@@ -11,6 +11,15 @@ const KIND_TEXT = { service: 'Please service my property', urgent: 'I need to ge
 const REASON_TEXT = { leavingSoon: 'I need to leave soon', medical: 'Medical or care visit', visitorOrDelivery: 'Visitor or delivery coming', other: 'Other (explain below)' };
 const STATUS_TEXT = { planned: 'Planned for this storm', done: 'Done', skipped: 'Not serviced this visit', notExpected: 'No service expected yet' };
 const BILL_STATUSES = new Set(['Paid', 'Due', 'Overdue']);
+// Same list as the app's PayLink.allowedHosts. The server never trusts the app: https only, known payment sites only.
+const PAY_HOSTS = ['stripe.com', 'square.link', 'square.site', 'squareup.com', 'paypal.com', 'paypal.me', 'venmo.com', 'cash.app', 'intuit.com', 'quickbooks.com', 'waveapps.com', 'zellepay.com'];
+export function cleanPayUrl(v) {
+  if (typeof v !== 'string' || v.length > 500 || /\s/.test(v)) return '';
+  let u; try { u = new URL(v); } catch { return ''; }
+  if (u.protocol !== 'https:' || u.username || u.password || u.port || u.hash) return '';
+  const host = u.hostname.toLowerCase();
+  return PAY_HOSTS.some((h) => host === h || host.endsWith('.' + h)) ? u.href : '';
+}
 const MAX_BILLS = 30;
 const DAY = 86_400_000;
 
@@ -157,7 +166,7 @@ body{font-family:-apple-system,Helvetica,Arial,sans-serif;margin:0;background:#f
 .status{display:inline-block;padding:.25rem .6rem;border-radius:8px;background:#eaf3fc;color:#1d5fb4;font-weight:600}.done{background:#e3f4ea;color:#1f7a45}.skipped{background:#fde8d2;color:#b8610f}
 label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;padding:.4rem;box-sizing:border-box}button{font:inherit;padding:.6rem 1rem;border:0;border-radius:8px;background:#2f7de1;color:#fff;margin-top:.6rem}
 .small{font-size:.85rem;color:#5b6b7e}table{width:100%;border-collapse:collapse}td{padding:.35rem 0;border-top:1px solid #e3e9f0;vertical-align:top}td.r{text-align:right}
-.pill{font-size:.8rem;font-weight:600;padding:.1rem .45rem;border-radius:6px;background:#eaf3fc;color:#1d5fb4}.pill.paid{background:#e3f4ea;color:#1f7a45}.pill.overdue{background:#fde8d2;color:#b8610f}</style></head><body><main>${inner}</main></body></html>`;
+.pill{font-size:.8rem;font-weight:600;padding:.1rem .45rem;border-radius:6px;background:#eaf3fc;color:#1d5fb4}.pill.paid{background:#e3f4ea;color:#1f7a45}.pill.overdue{background:#fde8d2;color:#b8610f}.paybtn{display:inline-block;margin-top:.35rem;padding:.35rem .8rem;border-radius:8px;background:#1d5fb4;color:#fff;font-weight:600;text-decoration:none}</style></head><body><main>${inner}</main></body></html>`;
   }
   const notFound = (res) => sendHtml(res, 404, page('Page not available', '<div class="card"><h1>This page is not available</h1><p>The link may be old or mistyped. Please contact your snow service provider.</p></div>'));
 
@@ -176,9 +185,10 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
       html += '<div class="card"><h2>Your bills this winter</h2><table>';
       for (const b of s.bills) {
         const cls = b.status === 'Paid' ? 'paid' : b.status === 'Overdue' ? 'overdue' : '';
-        html += `<tr><td>${escapeHtml(b.number)}<br><span class="small">${escapeHtml(b.label)}${b.due ? ' · ' + escapeHtml(b.due) : ''}</span></td><td class="r">${b.total ? escapeHtml(b.total) + '<br>' : ''}<span class="pill ${cls}">${escapeHtml(b.status)}</span></td></tr>`;
+        const pay = b.payUrl ? `<br><a class="paybtn" href="${escapeHtml(b.payUrl)}" rel="noopener noreferrer">Pay now</a>` : '';
+        html += `<tr><td>${escapeHtml(b.number)}<br><span class="small">${escapeHtml(b.label)}${b.due ? ' · ' + escapeHtml(b.due) : ''}</span></td><td class="r">${b.total ? escapeHtml(b.total) + '<br>' : ''}<span class="pill ${cls}">${escapeHtml(b.status)}</span>${pay}</td></tr>`;
       }
-      html += '</table><p class="small">To pay, use the method your snow service gave you.</p></div>';
+      html += '</table><p class="small">Paying goes through your snow service payment page. We never see your card.</p></div>';
     }
     if (sentFlag) html += '<div class="card"><p><strong>Request sent.</strong> Your snow service will review it. This page shows their answer.</p></div>';
     if (mine.length) {
@@ -220,7 +230,8 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
         if (!Array.isArray(s.bills) || s.bills.length > MAX_BILLS) return sendJson(res, 400, { error: `bills must be a list of at most ${MAX_BILLS}` });
         for (const b of s.bills) {
           if (!b || !BILL_STATUSES.has(b.status)) return sendJson(res, 400, { error: 'each bill needs a status of Paid, Due or Overdue' });
-          bills.push({ number: cleanText(b.number, 24), label: cleanText(b.label, 120), total: cleanText(b.total, 24), status: b.status, due: cleanText(b.due, 40) });
+          bills.push({ number: cleanText(b.number, 24), label: cleanText(b.label, 120), total: cleanText(b.total, 24), status: b.status, due: cleanText(b.due, 40),
+            payUrl: b.status === 'Paid' ? '' : cleanPayUrl(b.payURL ?? b.payUrl) });
         }
       }
       next.push([s.token, { company, stormId, stormName, expected, label: cleanText(s.label, 120) || 'Your property', status: s.status,

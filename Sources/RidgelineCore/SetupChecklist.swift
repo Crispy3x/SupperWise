@@ -16,7 +16,7 @@ public enum SetupChecklist {
         return [
             SetupItem(id: "client", title: "Add your first client", detail: "From the Clients tab, by hand or from a spreadsheet.", done: !d.customers.isEmpty, optional: false),
             SetupItem(id: "yard", title: "Set your yard location", detail: "Routes start here and the forecast is for this spot.", done: d.depot != nil, optional: false),
-            SetupItem(id: "pay", title: "Say how clients should pay you", detail: "It goes on every invoice.", done: !d.profile.paymentInstructions.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, optional: false),
+            SetupItem(id: "pay", title: "Say how clients should pay you", detail: "It goes on every invoice.", done: !d.profile.paymentInstructions.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || d.profile.payLink != nil, optional: false),
             SetupItem(id: "consent", title: "Record who agreed to messages", detail: "Open a client and turn on emails only if they said yes.", done: d.customers.contains { $0.emailConsent && $0.optedOutAt == nil }, optional: false),
             SetupItem(id: "server", title: "Connect your server", detail: "Needed for client pages, requests and email. Settings has the steps.", done: serverConfigured, optional: false),
             SetupItem(id: "page", title: "Set your client page address", detail: "The https address clients open. Settings > Invoices and client messages.", done: portalOK, optional: false),
