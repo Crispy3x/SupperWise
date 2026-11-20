@@ -5,6 +5,7 @@ public enum OperationError: Error, Equatable {
     case alreadyClockedIn
     case notClockedIn
     case emptyName
+    case hasInvoices
 }
 
 /// Everyday actions on the saved data. They live here, not in the screens, so they can be tested.
@@ -86,5 +87,22 @@ extension AppData {
         return JobCosting.site(revenue: JobCosting.invoicedRevenue(siteID: site.id, invoices: invoices.filter { $0.sentAt != nil }),
                                timeEntries: entries, laborCostPerHour: laborCostPerHour, now: now,
                                saltPounds: salt, saltCostPerPound: saltCostPerPound)
+    }
+}
+
+extension AppData {
+    /// Removes a client with their sites, contracts, page links, jobs and requests. A client with invoices stays,
+    /// because invoices are your financial records.
+    public mutating func deleteCustomer(_ id: UUID) throws {
+        guard customers.contains(where: { $0.id == id }) else { throw OperationError.notFound }
+        let siteIDs = Set(sites.filter { $0.customerID == id }.map(\.id))
+        if invoices.contains(where: { $0.customerID == id || siteIDs.contains($0.siteID) }) { throw OperationError.hasInvoices }
+        customers.removeAll { $0.id == id }
+        sites.removeAll { siteIDs.contains($0.id) }
+        contracts.removeAll { siteIDs.contains($0.siteID) }
+        portalLinks.removeAll { siteIDs.contains($0.siteID) }
+        serviceRequests.removeAll { siteIDs.contains($0.siteID) }
+        jobs.removeAll { $0.customerID == id || ($0.siteID.map(siteIDs.contains) ?? false) }
+        quotes.removeAll { $0.customerID == id }
     }
 }

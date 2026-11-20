@@ -29,7 +29,7 @@ struct WelcomeRoleView: View {
                         ownerSheet = true
                     }
                     RoleCard(icon: "person.fill", title: "I'm an employee",
-                             message: "Sign in with the username and password your boss made for you. Always free for you.") {
+                             message: "Sign in with the username and password your boss made for you, on the device your boss set up. Always free for you.") {
                         employeeSheet = true
                     }
                     Text("You stay signed in on this device until you sign out.")

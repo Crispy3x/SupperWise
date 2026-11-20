@@ -5,6 +5,8 @@ import RidgelineCore
 /// One client: contact details, whether they agreed to messages, and their private page.
 struct ClientDetailView: View {
     @Environment(AppModel.self) private var model
+    @Environment(\.dismiss) private var dismiss
+    @State private var confirmDelete = false
     let customerID: UUID
 
     @State private var name = ""
@@ -99,10 +101,19 @@ struct ClientDetailView: View {
                 if let note { Text(note).font(.footnote).foregroundStyle(.secondary).frame(maxWidth: .infinity, alignment: .leading) }
                 PrimaryBar(title: "Save changes") { save() }
                     .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                Button("Delete this client", role: .destructive) { confirmDelete = true }
+                    .font(.callout).padding(.top, 4)
             }
             .padding(.horizontal, 16).padding(.top, 8).padding(.bottom, Look.tabBarClearance)
         }
         .background(Look.page.ignoresSafeArea())
+        .confirmationDialog("Delete this client?", isPresented: $confirmDelete, titleVisibility: .visible) {
+            Button("Delete client, sites and jobs", role: .destructive) {
+                if let problem = model.edit({ try $0.deleteCustomer(customerID) }) { note = problem } else { dismiss() }
+            }
+        } message: {
+            Text("Their sites, jobs and requests are removed. Clients with invoices cannot be deleted, because invoices are your records.")
+        }
         .onAppear {
             guard !loaded, let c = customer else { return }
             name = c.name; phone = c.phone; email = c.email; agreed = c.emailConsent && c.optedOutAt == nil; loaded = true

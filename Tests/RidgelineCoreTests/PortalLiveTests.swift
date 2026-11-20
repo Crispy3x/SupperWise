@@ -104,3 +104,31 @@ final class PortalLiveTests: XCTestCase {
         XCTAssertEqual(String(data: http.requests[2].httpBody!, encoding: .utf8), "{\"trucks\":[]}")
     }
 }
+
+final class StoreAndDeleteTests: XCTestCase {
+    func testProductIDsMapBackToPlans() {
+        XCTAssertEqual(StoreProducts.allIDs.count, 4)
+        XCTAssertEqual(Set(StoreProducts.allIDs).count, 4)
+        for tier in PlanTier.allCases {
+            for annual in [false, true] {
+                let plan = StoreProducts.plan(for: StoreProducts.id(tier, annual: annual))
+                XCTAssertEqual(plan?.tier, tier); XCTAssertEqual(plan?.annual, annual)
+            }
+        }
+        XCTAssertNil(StoreProducts.plan(for: "com.other.app.pro.monthly"))
+    }
+
+    func testDeletingAClientRemovesTheirThingsButNotWhenInvoiced() throws {
+        var d = AppData()
+        let c = Customer(name: "A"), other = Customer(name: "B")
+        let s = Site(customerID: c.id, address: "1 Elm"), s2 = Site(customerID: other.id, address: "2 Oak")
+        d.customers = [c, other]; d.sites = [s, s2]
+        d.contracts = [SnowContract(siteID: s.id, season: "2026", terms: ContractTerms.perPush(rate: Money(dollars: 40)))]
+        let job = try d.addJob(title: "Plow", siteID: s.id, start: Date(), now: Date())
+        XCTAssertEqual(d.jobs.count, 1); _ = job
+        try d.deleteCustomer(c.id)
+        XCTAssertEqual(d.customers.map(\.name), ["B"]); XCTAssertEqual(d.sites.count, 1)
+        XCTAssertTrue(d.contracts.isEmpty); XCTAssertTrue(d.jobs.isEmpty)
+        XCTAssertThrowsError(try d.deleteCustomer(c.id))                       // already gone
+    }
+}

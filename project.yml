@@ -40,7 +40,7 @@ targets:
           - UIInterfaceOrientationPortraitUpsideDown
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
-        NSLocationWhenInUseUsageDescription: Ridgeline Ops uses your location to check that your crew arrived at a job site, to set your yard location, and to get the weather for it.
+        NSLocationWhenInUseUsageDescription: Ridgeline Ops uses your location to check that your crew arrived at a job site, to set your yard location, to get the weather for it and, only if you turn it on, to show your clients where your truck is on their page.
         NSMicrophoneUsageDescription: Ridgeline Ops uses the microphone when you tap to talk to the assistant.
         NSSpeechRecognitionUsageDescription: Ridgeline Ops turns what you say into text for the assistant. It uses on-device recognition when your phone supports it.
         NSCameraUsageDescription: Ridgeline Ops uses the camera to take before and after photos as proof of service.

@@ -31,6 +31,9 @@ public final class AppModel {
     public var sharingLabel = "Truck 1"
     #if canImport(CoreLocation)
     public let truckSharer = LiveLocationSharer()
+    #if canImport(StoreKit)
+    let purchases = PurchaseStore()
+    #endif
     #endif
     /// The storm the crew is logging visits under. Both the Today and Storm screens use it.
     public var stormName: String = Date().formatted(.dateTime.month(.abbreviated).day())
@@ -45,7 +48,7 @@ public final class AppModel {
     public var winterAlerts: [WinterAlert] = []
     public var weatherStatus: String?
     /// NWS asks apps to identify themselves. Put your app name and a contact address here before release.
-    public var weatherUserAgent = "RidgelineOpsApp"
+    public var weatherUserAgent = "RidgelineOps/3.0 (support through the App Store page)"
     #if canImport(MapKit)
     /// Kept for the life of the app so repeat planning reuses answers for a few minutes, in memory only.
     private let appleETA = CachedETASource(base: MapKitETASource())
@@ -66,6 +69,13 @@ public final class AppModel {
         let before = data.portalLinks.count
         data.ensurePortalLinks(now: Date())
         if data.portalLinks.count != before { save() }
+        #if canImport(StoreKit)
+        purchases.onEntitlement = { [weak self] tier in
+            guard let self, self.data.subscription.plan != tier else { return }
+            self.data.subscription.plan = tier
+            self.save()
+        }
+        #endif
         // The 14-day free trial starts on first launch, with every feature unlocked.
         if data.subscription.trialStart == nil && data.subscription.plan == nil {
             data.subscription = .startTrial(at: Date())
@@ -99,6 +109,7 @@ public final class AppModel {
         case OperationError.alreadyClockedIn: return "Already clocked in."
         case OperationError.notClockedIn: return "Not clocked in."
         case OperationError.emptyName: return "Enter a name first."
+        case OperationError.hasInvoices: return "This client has invoices, which are your records, so they stay. Void or keep them instead."
         case AccountError.missingIdentifier: return "Apple did not return an account identifier."
         case AccountError.differentAccount: return "A different Apple account is already set up here. Delete the account and data first to switch."
         case TeamError.emptyName: return "Enter a name first."

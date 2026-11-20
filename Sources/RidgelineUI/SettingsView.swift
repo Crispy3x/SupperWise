@@ -36,6 +36,11 @@ struct SettingsView: View {
                         NavigationLink { ProfileView().circleBack() } label: { Label("Profile and sign-in", systemImage: "person.crop.circle") }
                     }
                 }
+                Section("About") {
+                    NavigationLink { LegalView(title: "Privacy Policy", text: LegalText.privacy).circleBack() } label: { Label("Privacy Policy", systemImage: "hand.raised") }
+                    if let url = URL(string: StoreProducts.termsURL) { Link(destination: url) { Label("Terms of Use", systemImage: "doc.text") } }
+                    NavigationLink { LegalView(title: "Support", text: LegalText.support).circleBack() } label: { Label("Support", systemImage: "questionmark.circle") }
+                }
                 Section("Tipping") {
                     Toggle("Let clients tip the crew",
                            isOn: binding({ model.data.profile.tippingIsOn }, { model.data.profile.tippingEnabled = $0 }))

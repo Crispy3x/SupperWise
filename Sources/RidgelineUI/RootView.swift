@@ -39,6 +39,9 @@ public struct RidgelineRootView: View {
         .tint(Theme.accent(model.data.profile.accentColor))
         .preferredColorScheme(colorScheme)
         .task { await model.checkAppleCredential() }
+        #if canImport(StoreKit)
+        .task { model.purchases.start() }
+        #endif
     }
 }
 
@@ -53,7 +56,7 @@ struct SubscriptionBanner: View {
                 Text("Free trial: \(days) day\(days == 1 ? "" : "s") left. All features unlocked.")
                     .font(.footnote).frame(maxWidth: .infinity).padding(6).background(.blue.opacity(0.15))
             case .expired:
-                Text("Trial ended. Buying a plan is not connected in this build yet, so nothing is locked. Your data stays on this device.")
+                Text("Your free trial ended. Open Menu, Settings, Subscription to pick a plan. Your data stays on this device.")
                     .font(.footnote).frame(maxWidth: .infinity).padding(6).background(.orange.opacity(0.2))
             case .active:
                 EmptyView()
