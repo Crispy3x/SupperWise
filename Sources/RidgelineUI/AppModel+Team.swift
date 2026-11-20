@@ -6,27 +6,43 @@ import RidgelineCore
 extension AppModel {
     // MARK: session
 
-    /// The business owner starts (or resumes) using the app. The session is saved, so the app stays signed in.
-    public func startOwnerSession() {
-        edit { $0.session = AppSession(role: .owner, startedAt: Date()) }
+    /// Opens the app as owner with no login. Only possible until the owner adds a login or links Apple.
+    public func startOwnerWithoutAccount() -> String? {
+        edit { try $0.startOwnerSessionWithoutLogin(now: Date()) }
     }
 
-    /// An employee joins with the code the owner gave them. Returns a message when it did not work.
-    public func joinTeam(code: String) -> String? {
-        var failure: String?
-        let problem = edit { data in
-            do { try data.join(code: code, now: Date()) } catch let e as TeamError {
-                switch e {
-                case .invalidCode:
-                    failure = "That code was not found on this device. Ask your boss to add you under Team, then use the 6-letter code they give you."
-                case .disabled:
-                    failure = "Your boss has switched this access off. Ask them to turn it back on."
-                default: failure = "Could not join."
-                }
-                throw e
-            }
+    /// The owner makes their login (email and password) and is signed in. The password is stored only as a salted hash.
+    public func createOwnerLogin(email: String, password: String, signIn: Bool) -> String? {
+        edit { data in
+            try data.createOwnerLogin(email: email, password: password, now: Date())
+            if signIn { data.session = AppSession(role: .owner, startedAt: Date()) }
         }
-        return failure ?? problem
+    }
+
+    public func ownerSignInWithApple(userID: String, name: String, email: String) -> String? {
+        edit { try $0.signInOwnerWithApple(appleUserID: userID, displayName: name, email: email, now: Date()) }
+    }
+
+    /// Signs in with a username and password. `expecting` keeps an owner login out of the employee screen and the other way round.
+    public func signIn(username: String, password: String, expecting: SessionRole) -> String? {
+        var outcome: SignInOutcome = .wrongCredentials
+        let problem = edit { outcome = $0.attemptSignIn(username: username, password: password, now: Date()) }
+        if let problem { return problem }
+        switch outcome {
+        case .signedIn(let role):
+            if role == expecting { return nil }
+            edit { $0.session = nil }
+            return role == .owner
+                ? "That is an owner login. Go back and choose \"I own the business\"."
+                : "That is an employee login. Go back and choose \"I'm an employee\"."
+        case .wrongCredentials:
+            return "That username or password is not right."
+        case .lockedOut(let until):
+            let minutes = max(1, Int((until.timeIntervalSinceNow / 60).rounded(.up)))
+            return "Too many tries. Try again in \(minutes) minute\(minutes == 1 ? "" : "s")."
+        case .accessOff:
+            return "Your boss has switched your access off. Ask them to turn it back on."
+        }
     }
 
     /// Signs out of the app on this device. Business data stays; the next person picks owner or employee again.
@@ -66,8 +82,22 @@ extension AppModel {
     // MARK: team and jobs
 
     @discardableResult
-    public func addTeamMember(name: String, role: TeamRole, phone: String, email: String) -> String? {
-        edit { _ = try $0.addTeamMember(name: name, role: role, phone: phone, email: email, now: Date()) }
+    public func addTeamMember(name: String, role: TeamRole, phone: String, email: String, username: String, password: String) -> String? {
+        edit { _ = try $0.addTeamMember(name: name, role: role, phone: phone, email: email, username: username, password: password, now: Date()) }
+    }
+
+    public func setEmployeePassword(_ password: String, forMember id: UUID) -> String? {
+        edit { try $0.setEmployeePassword(password, forMember: id, now: Date()) }
+    }
+
+    public func changeOwnerPassword(current: String, new: String) -> String? {
+        edit { try $0.changeOwnerPassword(current: current, new: new, now: Date()) }
+    }
+
+    /// A readable password the owner can give to an employee.
+    public func suggestedPassword() -> String {
+        var g = SystemRandomNumberGenerator()
+        return LoginRules.suggestedPassword(using: &g)
     }
 
     public func addJob(title: String, kind: JobKind, customerID: UUID?, siteID: UUID?, start: Date, durationMinutes: Int,

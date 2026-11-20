@@ -19,7 +19,7 @@ public enum Tutorials {
                 TutorialStep(id: "clients", icon: "person.crop.circle.badge.plus", title: "Add clients and jobs",
                              body: "Use New Client and New Job on Home. Clients can also ask for service from their own private page, and it lands in Requests."),
                 TutorialStep(id: "team", icon: "person.2.fill", title: "Build your team",
-                             body: "Open the menu and choose Team. Add people, give each a role, and choose what they can see. Pro includes up to \(TeamRules.employeeLimit(for: .pro)) employees and Max up to \(TeamRules.employeeLimit(for: .max))."),
+                             body: "Open the menu and choose Team. Add people, give each a username and password and a role, and choose what they can see. Pro includes up to \(TeamRules.employeeLimit(for: .pro)) employees and Max up to \(TeamRules.employeeLimit(for: .max))."),
                 TutorialStep(id: "trial", icon: "gift.fill", title: "\(Pricing.trialDays) days free",
                              body: "Everything is unlocked for \(Pricing.trialDays) days. Pick Pro or Max before the trial ends. You pay for the plan. Your employees never pay."),
             ]
@@ -79,8 +79,8 @@ public enum Notifications {
             }
             let waiting = data.team.filter { $0.status == .invited }.count
             if waiting > 0 {
-                out.append(AppNotification(id: "invited", kind: .team, title: "\(waiting) invite\(waiting == 1 ? "" : "s") not used yet",
-                                           detail: "Share each person's code from Team."))
+                out.append(AppNotification(id: "invited", kind: .team, title: "\(waiting) \(waiting == 1 ? "person has" : "people have") not signed in yet",
+                                           detail: "Give each their username and password."))
             }
         }
         return out

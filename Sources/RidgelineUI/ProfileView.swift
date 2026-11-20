@@ -6,6 +6,8 @@ import RidgelineCore
 struct ProfileView: View {
     @Environment(AppModel.self) private var model
     @State private var confirmDelete = false
+    @State private var creatingLogin = false
+    @State private var changingPassword = false
 
     private var business: String {
         let n = model.data.companyName.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -33,11 +35,20 @@ struct ProfileView: View {
                 }
                 .padding(.vertical, 4)
             }
-            Section("Account") {
-                SignInSection()
-                if model.data.account != nil {
-                    Button("Sign out") { model.signOut() }
+            Section {
+                if let email = model.data.ownerEmail {
+                    LabeledContent("Login", value: email)
+                    Button("Change password") { changingPassword = true }
+                } else {
+                    Button("Create a login (email and password)") { creatingLogin = true }
                 }
+                SignInSection()
+            } header: {
+                Text("How you sign in")
+            } footer: {
+                Text(model.data.ownerIsProtected
+                     ? "After you sign out, the owner screen needs your login or Apple again."
+                     : "Without a login, anyone who opens the app on this device can choose \"I own the business\". Add one to protect your records.")
             }
             Section("Business") {
                 NavigationLink("Settings") { SettingsView().environment(\.embeddedInStack, true) }
@@ -50,11 +61,62 @@ struct ProfileView: View {
             }
         }
         .navigationTitle("Profile")
+        .sheet(isPresented: $creatingLogin) { OwnerLoginSheet(mode: .create) }
+        .sheet(isPresented: $changingPassword) { OwnerLoginSheet(mode: .change) }
         .alert("Delete everything?", isPresented: $confirmDelete) {
             Button("Delete", role: .destructive) { model.deleteAccountAndData(); confirmDelete = false }
             Button("Cancel", role: .cancel) { confirmDelete = false }
         } message: {
             Text("This cannot be undone. The app will start again from the welcome questions.")
+        }
+    }
+}
+
+/// Create the owner login after the fact, or change its password.
+struct OwnerLoginSheet: View {
+    enum Mode { case create, change }
+    @Environment(AppModel.self) private var model
+    @Environment(\.dismiss) private var dismiss
+    let mode: Mode
+    @State private var email = ""
+    @State private var current = ""
+    @State private var password = ""
+    @State private var confirm = ""
+    @State private var problem: String?
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section {
+                    if mode == .create {
+                        TextField("Email", text: $email).autocorrectionDisabled()
+                            #if os(iOS)
+                            .textInputAutocapitalization(.never)
+                            .keyboardType(.emailAddress)
+                            #endif
+                    } else {
+                        SecureField("Current password", text: $current)
+                    }
+                    SecureField("New password (at least \(LoginRules.minPasswordLength) characters)", text: $password)
+                    SecureField("Type it again", text: $confirm)
+                } footer: {
+                    Text(mode == .create ? "Your email is your username. Only a scrambled copy of the password is kept on this device." : "")
+                }
+                if let problem { Section { Text(problem).font(.footnote).foregroundStyle(.red) } }
+            }
+            .navigationTitle(mode == .create ? "Create login" : "Change password")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") {
+                        guard password == confirm else { problem = "The two passwords are not the same."; return }
+                        problem = mode == .create ? model.createOwnerLogin(email: email, password: password, signIn: false)
+                                                  : model.changeOwnerPassword(current: current, new: password)
+                        if problem == nil { dismiss() }
+                    }
+                    .disabled(password.isEmpty || confirm.isEmpty || (mode == .create ? email.isEmpty : current.isEmpty))
+                }
+            }
         }
     }
 }

@@ -4,8 +4,6 @@ public enum TeamError: Error, Equatable {
     case emptyName
     case limitReached(limit: Int)
     case notFound
-    case invalidCode
-    case disabled
 }
 
 /// What a person can do in the app. The owner can do everything. Everyone else gets what the owner allows.
@@ -76,7 +74,7 @@ public enum TeamRole: String, Codable, CaseIterable, Sendable {
 }
 
 public enum MemberStatus: String, Codable, Sendable {
-    /// Added by the owner, has not joined yet.
+    /// Added by the owner, has not signed in yet.
     case invited
     case active
     /// Switched off by the owner. They can no longer sign in.
@@ -91,14 +89,11 @@ public struct TeamMember: Identifiable, Equatable, Codable, Sendable {
     public var role: TeamRole
     public var permissions: Set<Permission>
     public var status: MemberStatus
-    /// The one-time code the person types to join, for example "K7M2QX". It identifies them to this business only.
-    public var inviteCode: String
     public var createdAt: Date
     public var joinedAt: Date?
 
     public init(id: UUID = UUID(), name: String, phone: String = "", email: String = "", role: TeamRole,
-                permissions: Set<Permission>? = nil, status: MemberStatus = .invited, inviteCode: String,
-                createdAt: Date, joinedAt: Date? = nil) {
+                permissions: Set<Permission>? = nil, status: MemberStatus = .invited, createdAt: Date, joinedAt: Date? = nil) {
         self.id = id
         self.name = name
         self.phone = phone
@@ -106,7 +101,6 @@ public struct TeamMember: Identifiable, Equatable, Codable, Sendable {
         self.role = role
         self.permissions = permissions ?? role.defaultPermissions
         self.status = status
-        self.inviteCode = inviteCode
         self.createdAt = createdAt
         self.joinedAt = joinedAt
     }
@@ -137,17 +131,6 @@ public enum TeamRules {
         case .max: return 25
         }
     }
-
-    /// Letters and digits that are hard to mix up when read aloud (no 0/O, 1/I/L).
-    static let codeAlphabet = Array("ABCDEFGHJKMNPQRSTUVWXYZ23456789")
-
-    public static func makeCode<G: RandomNumberGenerator>(using generator: inout G) -> String {
-        String((0..<6).map { _ in codeAlphabet.randomElement(using: &generator)! })
-    }
-
-    public static func normalizedCode(_ text: String) -> String {
-        text.uppercased().filter { $0.isLetter || $0.isNumber }
-    }
 }
 
 extension AppData {
@@ -157,24 +140,30 @@ extension AppData {
     /// People who count against the limit: everyone who is not switched off.
     public var employeeCount: Int { team.filter { $0.status != .disabled }.count }
 
+    /// Adds a person and the login (username and password) the owner chose for them, in one step.
+    /// Nothing is added unless everything is valid, and the password is stored only as a salted hash.
     @discardableResult
     public mutating func addTeamMember<G: RandomNumberGenerator>(name: String, role: TeamRole, phone: String = "", email: String = "",
-                                                                 now: Date, using generator: inout G) throws -> TeamMember {
+                                                                 username: String, password: String, now: Date,
+                                                                 iterations: Int = PasswordHasher.defaultIterations,
+                                                                 using generator: inout G) throws -> TeamMember {
         let clean = name.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !clean.isEmpty else { throw TeamError.emptyName }
         guard employeeCount < employeeLimit else { throw TeamError.limitReached(limit: employeeLimit) }
-        var code = TeamRules.makeCode(using: &generator)
-        while team.contains(where: { $0.inviteCode == code }) { code = TeamRules.makeCode(using: &generator) }
+        let user = try LoginRules.checkedUsername(username, existing: logins)
+        try LoginRules.checkPassword(password, username: user)
         let member = TeamMember(name: String(clean.prefix(80)), phone: String(phone.prefix(40)), email: String(email.prefix(120)),
-                                role: role, inviteCode: code, createdAt: now)
+                                role: role, createdAt: now)
         team.append(member)
+        logins.append(LoginCredential.make(username: user, password: password, role: .employee, memberID: member.id, now: now, iterations: iterations, using: &generator))
         return member
     }
 
     @discardableResult
-    public mutating func addTeamMember(name: String, role: TeamRole, phone: String = "", email: String = "", now: Date) throws -> TeamMember {
+    public mutating func addTeamMember(name: String, role: TeamRole, phone: String = "", email: String = "",
+                                       username: String, password: String, now: Date) throws -> TeamMember {
         var g = SystemRandomNumberGenerator()
-        return try addTeamMember(name: name, role: role, phone: phone, email: email, now: now, using: &g)
+        return try addTeamMember(name: name, role: role, phone: phone, email: email, username: username, password: password, now: now, using: &g)
     }
 
     /// Changing the role resets the permissions to that role's starting set. The owner can then adjust them.
@@ -204,20 +193,9 @@ extension AppData {
     public mutating func removeTeamMember(_ id: UUID) throws {
         guard team.contains(where: { $0.id == id }) else { throw TeamError.notFound }
         team.removeAll { $0.id == id }
+        logins.removeAll { $0.memberID == id }
         for i in jobs.indices { jobs[i].assigneeIDs.removeAll { $0 == id } }
         if session?.memberID == id { session = nil }
-    }
-
-    /// An employee joins with the code the owner gave them.
-    @discardableResult
-    public mutating func join(code: String, now: Date) throws -> TeamMember {
-        let wanted = TeamRules.normalizedCode(code)
-        guard wanted.count == 6, let i = team.firstIndex(where: { $0.inviteCode == wanted }) else { throw TeamError.invalidCode }
-        guard team[i].status != .disabled else { throw TeamError.disabled }
-        if team[i].joinedAt == nil { team[i].joinedAt = now }
-        team[i].status = .active
-        session = AppSession(role: .employee, memberID: team[i].id, startedAt: now)
-        return team[i]
     }
 
     public var currentMember: TeamMember? {

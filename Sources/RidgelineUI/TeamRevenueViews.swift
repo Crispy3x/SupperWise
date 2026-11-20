@@ -24,7 +24,7 @@ struct TeamView: View {
             }
             Section("People") {
                 if model.data.team.isEmpty {
-                    Text("No one yet. Add your crew and office staff, then give each person their code.").foregroundStyle(.secondary)
+                    Text("No one yet. Add your crew and office staff. You make each person's username and password.").foregroundStyle(.secondary)
                 }
                 ForEach(model.data.team) { m in
                     NavigationLink { MemberDetailView(memberID: m.id) } label: {
@@ -60,34 +60,126 @@ struct AddMemberSheet: View {
     @State private var name = ""
     @State private var phone = ""
     @State private var email = ""
+    @State private var username = ""
+    @State private var password = ""
     @State private var role: TeamRole = .crewMember
     @State private var problem: String?
+    /// After saving: what to hand to the new person. The password exists only here, never in the saved data.
+    @State private var created: (name: String, username: String, password: String)?
+
+    var body: some View {
+        NavigationStack {
+            if let created {
+                Form {
+                    Section {
+                        LabeledContent("Username", value: created.username)
+                        LabeledContent("Password", value: created.password)
+                    } header: { Text("\(created.name) can sign in with") } footer: {
+                        Text("Give these to \(created.name) now. For safety the app keeps only a scrambled copy of the password, so it cannot show it again. You can set a new one any time.")
+                    }
+                    Section {
+                        ShareLink(item: "Sign in to \(model.data.companyName.isEmpty ? "our team" : model.data.companyName) on Ridgeline Ops. Open the app, choose \"I'm an employee\" and enter. Username: \(created.username)  Password: \(created.password)") {
+                            Label("Share sign-in details", systemImage: "square.and.arrow.up")
+                        }
+                    }
+                }
+                .navigationTitle("Added")
+                .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
+            } else {
+                Form {
+                    Section {
+                        TextField("Name", text: $name)
+                        TextField("Phone (optional)", text: $phone)
+                        TextField("Email (optional)", text: $email)
+                    }
+                    Section {
+                        Picker("Role", selection: $role) { ForEach(TeamRole.allCases, id: \.self) { Text($0.title).tag($0) } }
+                        Text(role.summary).font(.footnote).foregroundStyle(.secondary)
+                    } footer: {
+                        Text("You can change what this person can see and do after you add them.")
+                    }
+                    Section {
+                        TextField("Username", text: $username)
+                            .autocorrectionDisabled()
+                            #if os(iOS)
+                            .textInputAutocapitalization(.never)
+                            #endif
+                        HStack {
+                            TextField("Password", text: $password).autocorrectionDisabled()
+                                #if os(iOS)
+                                .textInputAutocapitalization(.never)
+                                #endif
+                            Button("Suggest") { password = model.suggestedPassword() }.buttonStyle(.bordered)
+                        }
+                    } header: { Text("Their sign-in") } footer: {
+                        Text("You make the username and password. \(LoginRules.minPasswordLength) or more characters for the password. They use these under \"I'm an employee\".")
+                    }
+                    if let problem { Section { Text(problem).font(.footnote).foregroundStyle(.red) } }
+                }
+                .navigationTitle("Add person")
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Add") {
+                            problem = model.addTeamMember(name: name, role: role, phone: phone, email: email, username: username, password: password)
+                            if problem == nil {
+                                created = (name.trimmingCharacters(in: .whitespacesAndNewlines), LoginRules.normalizedUsername(username), password)
+                            }
+                        }
+                        .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || username.isEmpty || password.isEmpty)
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// The owner sets a new password for an employee, for example when they forgot theirs.
+struct ResetPasswordSheet: View {
+    @Environment(AppModel.self) private var model
+    @Environment(\.dismiss) private var dismiss
+    let memberID: UUID
+    @State private var password = ""
+    @State private var problem: String?
+    @State private var done: String?
+
+    private var member: TeamMember? { model.data.team.first { $0.id == memberID } }
 
     var body: some View {
         NavigationStack {
             Form {
-                Section {
-                    TextField("Name", text: $name)
-                    TextField("Phone (optional)", text: $phone)
-                    TextField("Email (optional)", text: $email)
-                }
-                Section {
-                    Picker("Role", selection: $role) { ForEach(TeamRole.allCases, id: \.self) { Text($0.title).tag($0) } }
-                    Text(role.summary).font(.footnote).foregroundStyle(.secondary)
-                } footer: {
-                    Text("You can change what this person can see and do after you add them.")
-                }
-                if let problem { Section { Text(problem).font(.footnote).foregroundStyle(.red) } }
-            }
-            .navigationTitle("Add person")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Add") {
-                        problem = model.addTeamMember(name: name, role: role, phone: phone, email: email)
-                        if problem == nil { dismiss() }
+                if let done, let m = member {
+                    Section {
+                        LabeledContent("Username", value: model.data.username(forMember: m.id) ?? "")
+                        LabeledContent("New password", value: done)
+                    } footer: { Text("Give the new password to \(m.name). The app keeps only a scrambled copy, so it cannot show it again.") }
+                    Section {
+                        ShareLink(item: "Your new Ridgeline Ops password: \(done)") { Label("Share", systemImage: "square.and.arrow.up") }
                     }
-                    .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                } else {
+                    Section {
+                        HStack {
+                            TextField("New password", text: $password).autocorrectionDisabled()
+                                #if os(iOS)
+                                .textInputAutocapitalization(.never)
+                                #endif
+                            Button("Suggest") { password = model.suggestedPassword() }.buttonStyle(.bordered)
+                        }
+                    } footer: { Text("\(LoginRules.minPasswordLength) or more characters. This also lifts a lock from too many wrong tries.") }
+                    if let problem { Section { Text(problem).font(.footnote).foregroundStyle(.red) } }
+                }
+            }
+            .navigationTitle("New password")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) { Button(done == nil ? "Cancel" : "Close") { dismiss() } }
+                if done == nil {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Save") {
+                            problem = model.setEmployeePassword(password, forMember: memberID)
+                            if problem == nil { done = password }
+                        }
+                        .disabled(password.isEmpty)
+                    }
                 }
             }
         }
@@ -100,6 +192,7 @@ struct MemberDetailView: View {
     let memberID: UUID
     @State private var message: String?
     @State private var confirmRemove = false
+    @State private var resetting = false
 
     private var member: TeamMember? { model.data.team.first { $0.id == memberID } }
     private var canEdit: Bool { model.data.can(.manageTeam) }
@@ -134,17 +227,12 @@ struct MemberDetailView: View {
                     if canEdit && !canCustomize { Text("Choosing permissions one by one is part of the Max plan. Roles above work on every plan.") }
                 }
                 Section {
-                    HStack {
-                        Text(m.inviteCode).font(.title2.monospaced().bold())
-                        Spacer()
-                        ShareLink(item: "Join \(model.data.companyName.isEmpty ? "our team" : model.data.companyName) on Ridgeline Ops. Open the app, choose \"I'm an employee\" and type this code: \(m.inviteCode)") {
-                            Label("Share", systemImage: "square.and.arrow.up")
-                        }
-                    }
+                    LabeledContent("Username", value: model.data.username(forMember: m.id) ?? "")
+                    if canEdit { Button("Set a new password") { resetting = true } }
                 } header: {
-                    Text("Sign-in code")
+                    Text("Sign-in")
                 } footer: {
-                    Text(m.status == .invited ? "Not used yet." : "Joined \(m.joinedAt.map { DateFormatter.make("MMM d").string(from: $0) } ?? "").")
+                    Text(m.status == .invited ? "Has not signed in yet." : "Joined \(m.joinedAt.map { DateFormatter.make("MMM d").string(from: $0) } ?? "").")
                 }
                 if canEdit && m.status != .disabled {
                     Section {
@@ -168,6 +256,7 @@ struct MemberDetailView: View {
                 if let message { Section { Text(message).font(.footnote).foregroundStyle(.red) } }
             }
             .navigationTitle(m.name)
+            .sheet(isPresented: $resetting) { ResetPasswordSheet(memberID: m.id) }
             .confirmationDialog("Remove \(m.name)?", isPresented: $confirmRemove, titleVisibility: .visible) {
                 Button("Remove", role: .destructive) {
                     message = model.edit { try $0.removeTeamMember(m.id) }

@@ -38,6 +38,8 @@ public struct AppData: Equatable, Codable, Sendable {
     public var jobs: [Job] = []
     /// Who is signed in on this device. Saved, so the app stays signed in until someone signs out.
     public var session: AppSession?
+    /// Logins: the owner's email and password, and the username and password the owner made for each employee. Hashes only.
+    public var logins: [LoginCredential] = []
     /// Walkthroughs already shown, by role name ("owner", "employee").
     public var tutorialsSeen: [String] = []
     /// Tips the user closed, so they do not come back.
@@ -77,6 +79,7 @@ public struct AppData: Equatable, Codable, Sendable {
         team = try c.decodeIfPresent([TeamMember].self, forKey: .team) ?? []
         jobs = try c.decodeIfPresent([Job].self, forKey: .jobs) ?? []
         session = try c.decodeIfPresent(AppSession.self, forKey: .session)
+        logins = try c.decodeIfPresent([LoginCredential].self, forKey: .logins) ?? []
         tutorialsSeen = try c.decodeIfPresent([String].self, forKey: .tutorialsSeen) ?? []
         dismissedHints = try c.decodeIfPresent([String].self, forKey: .dismissedHints) ?? []
     }
