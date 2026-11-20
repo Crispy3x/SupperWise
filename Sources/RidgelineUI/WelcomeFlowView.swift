@@ -2,7 +2,7 @@
 import SwiftUI
 import RidgelineCore
 
-/// The first-run welcome: an intro with optional sign-in, then ten short questions that set the app up.
+/// The first-run welcome: an intro with optional sign-in, then a few short questions that set the app up for a business owner.
 /// Only the business name is required. Every other step can be skipped and changed later in Settings.
 struct WelcomeFlowView: View {
     @Environment(AppModel.self) private var model
@@ -48,7 +48,7 @@ struct WelcomeFlowView: View {
         VStack(alignment: .leading, spacing: 16) {
             Image(systemName: "snowflake").font(.system(size: 44)).foregroundStyle(.tint)
             Text("Welcome to Ridgeline Ops").font(.largeTitle.bold())
-            Text("Routes, invoices, client updates and proof of service for snow and landscaping crews. Ten quick questions set it up for your business. Only the first is required, and you can change everything later.")
+            Text("Routes, invoices, client updates and proof of service for snow and landscaping crews. A few quick questions set it up for your business. Only the first is required, and you can change everything later.")
             SignInSection()
         }
     }
@@ -105,6 +105,8 @@ struct WelcomeFlowView: View {
         case .team:
             Stepper("\(answers.crewCount) crew\(answers.crewCount == 1 ? "" : "s") or truck\(answers.crewCount == 1 ? "" : "s")", value: $answers.crewCount, in: 1...50)
             Text("Pricing is per crew. Office staff are always free.").font(.footnote).foregroundStyle(.secondary)
+        case .plan:
+            PlanChoiceCards(selection: $answers.plan, crews: answers.crewCount)
         case .importClients:
             Label("Add clients one at a time, or import a spreadsheet saved as CSV, from the Clients tab.", systemImage: "person.badge.plus")
             Text("Nobody is imported as having agreed to messages.").font(.footnote).foregroundStyle(.secondary)
@@ -180,6 +182,44 @@ struct WelcomeFlowView: View {
 
     private func finish() {
         problem = model.edit { try $0.finishOnboarding(answers, now: Date()) }
+    }
+}
+
+/// Pro and Max side by side. The choice sets how many employees the owner can add. Everything is free for 14 days.
+struct PlanChoiceCards: View {
+    @Binding var selection: PlanTier
+    let crews: Int
+
+    var body: some View {
+        VStack(spacing: 12) {
+            card(.pro, name: "Pro", blurb: "Everything to run a crew: clients, jobs, quotes, invoices, time clock and proof of service.",
+                 points: ["Up to \(TeamRules.employeeLimit(for: .pro)) employees", "Smart route planning", "Client pages and storm messages"])
+            card(.max, name: "Max", blurb: "For bigger operations that want more control.",
+                 points: ["Up to \(TeamRules.employeeLimit(for: .max)) employees", "Roles with custom permissions", "Storm automation and subcontractor tools"])
+            Text("Free for \(Pricing.trialDays) days with everything unlocked. You pay for the plan. Your employees never pay.")
+                .font(.footnote).foregroundStyle(.secondary)
+        }
+    }
+
+    private func card(_ tier: PlanTier, name: String, blurb: String, points: [String]) -> some View {
+        let chosen = selection == tier
+        return Button { selection = tier } label: {
+            VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    Text(name).font(.title3.bold())
+                    Spacer()
+                    Text("\(Pricing.monthly(tier, crews: crews).formatted) per month").font(.callout.bold())
+                    Image(systemName: chosen ? "checkmark.circle.fill" : "circle").foregroundStyle(chosen ? Color.accentColor : Color.secondary)
+                }
+                Text(blurb).font(.footnote).foregroundStyle(.secondary)
+                ForEach(points, id: \.self) { Label($0, systemImage: "checkmark").font(.footnote) }
+            }
+            .padding(14)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Look.card, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(chosen ? Color.accentColor : Look.stroke, lineWidth: chosen ? 2 : 1))
+        }
+        .buttonStyle(.plain)
     }
 }
 #endif

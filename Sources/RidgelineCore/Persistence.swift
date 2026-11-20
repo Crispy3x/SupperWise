@@ -32,6 +32,16 @@ public struct AppData: Equatable, Codable, Sendable {
     public var profile = BusinessProfile()
     public var account: AccountProfile?
     public var reminderLog: [ReminderRecord] = []
+    /// People the owner added, with the role and permissions each one has.
+    public var team: [TeamMember] = []
+    /// The schedule: jobs at client sites, plus reminders and tasks.
+    public var jobs: [Job] = []
+    /// Who is signed in on this device. Saved, so the app stays signed in until someone signs out.
+    public var session: AppSession?
+    /// Walkthroughs already shown, by role name ("owner", "employee").
+    public var tutorialsSeen: [String] = []
+    /// Tips the user closed, so they do not come back.
+    public var dismissedHints: [String] = []
 
     public init() {}
 
@@ -64,6 +74,11 @@ public struct AppData: Equatable, Codable, Sendable {
         profile = try c.decodeIfPresent(BusinessProfile.self, forKey: .profile) ?? BusinessProfile()
         account = try c.decodeIfPresent(AccountProfile.self, forKey: .account)
         reminderLog = try c.decodeIfPresent([ReminderRecord].self, forKey: .reminderLog) ?? []
+        team = try c.decodeIfPresent([TeamMember].self, forKey: .team) ?? []
+        jobs = try c.decodeIfPresent([Job].self, forKey: .jobs) ?? []
+        session = try c.decodeIfPresent(AppSession.self, forKey: .session)
+        tutorialsSeen = try c.decodeIfPresent([String].self, forKey: .tutorialsSeen) ?? []
+        dismissedHints = try c.decodeIfPresent([String].self, forKey: .dismissedHints) ?? []
     }
 }
 

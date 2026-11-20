@@ -14,10 +14,12 @@ public struct Customer: Identifiable, Equatable, Codable, Sendable {
     public var consentSource: String
     /// Set when the client asked to stop. Overrides any consent.
     public var optedOutAt: Date?
+    /// Someone who has asked about your service but is not a client yet.
+    public var isLead: Bool
 
     public init(id: UUID = UUID(), name: String, phone: String = "", email: String = "", notes: String = "",
                 emailConsent: Bool = false, smsConsent: Bool = false, consentRecordedAt: Date? = nil,
-                consentSource: String = "", optedOutAt: Date? = nil) {
+                consentSource: String = "", optedOutAt: Date? = nil, isLead: Bool = false) {
         self.id = id
         self.name = name
         self.phone = phone
@@ -28,10 +30,11 @@ public struct Customer: Identifiable, Equatable, Codable, Sendable {
         self.consentRecordedAt = consentRecordedAt
         self.consentSource = consentSource
         self.optedOutAt = optedOutAt
+        self.isLead = isLead
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, name, phone, email, notes, emailConsent, smsConsent, consentRecordedAt, consentSource, optedOutAt
+        case id, name, phone, email, notes, emailConsent, smsConsent, consentRecordedAt, consentSource, optedOutAt, isLead
     }
 
     // Older saved files have no consent fields, so they fall back to "no consent".
@@ -47,6 +50,7 @@ public struct Customer: Identifiable, Equatable, Codable, Sendable {
         consentRecordedAt = try c.decodeIfPresent(Date.self, forKey: .consentRecordedAt)
         consentSource = try c.decodeIfPresent(String.self, forKey: .consentSource) ?? ""
         optedOutAt = try c.decodeIfPresent(Date.self, forKey: .optedOutAt)
+        isLead = try c.decodeIfPresent(Bool.self, forKey: .isLead) ?? false
     }
 }
 

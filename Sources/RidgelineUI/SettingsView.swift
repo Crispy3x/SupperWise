@@ -31,6 +31,11 @@ struct SettingsView: View {
         ScreenStack {
             Form {
                 Section("Business") {
+                    Picker("Appearance", selection: binding({ model.data.profile.appearance ?? "dark" }, { model.data.profile.appearance = $0 })) {
+                        Text("Dark").tag("dark")
+                        Text("Light").tag("light")
+                        Text("Match my device").tag("system")
+                    }
                     Picker("Color", selection: binding({ model.data.profile.accentColor }, { model.data.profile.accentColor = $0 })) {
                         ForEach(AppData.accentColors, id: \.self) { Text($0.capitalized).tag($0) }
                     }

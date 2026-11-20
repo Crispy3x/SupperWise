@@ -35,6 +35,10 @@ public struct BusinessProfile: Equatable, Codable, Sendable {
     public var paymentInstructions: String = ""
     /// A payment link from the owner's own account (optional). Stored only if it passes `PayLink.clean`.
     public var payLink: String?
+    /// The plan the owner picked at sign-up. It sets how many employees they can add. Nil until they choose.
+    public var chosenPlan: PlanTier?
+    /// "dark", "light" or "system". Nil means dark, the app's default look.
+    public var appearance: String?
     public var stormMessagesOn: Bool = true
     public var invoiceAutomation: InvoiceAutomation = .draft
     public var accentColor: String = "blue"
@@ -47,7 +51,7 @@ public struct BusinessProfile: Equatable, Codable, Sendable {
 }
 
 public enum OnboardingStepID: String, CaseIterable, Codable, Sendable {
-    case business, services, clients, snowBilling, homeBase, team, importClients, payment, messages, branding
+    case business, services, clients, snowBilling, homeBase, team, plan, importClients, payment, messages, branding
 }
 
 public struct OnboardingStep: Equatable, Sendable {
@@ -60,7 +64,7 @@ public struct OnboardingStep: Equatable, Sendable {
 }
 
 public enum Onboarding {
-    /// The ten welcome steps, in order. Only the business name is required; everything else has a sensible default
+    /// The eleven welcome steps, in order. Only the business name is required; everything else has a sensible default
     /// and can be skipped or changed later in Settings.
     public static let steps: [OnboardingStep] = [
         OnboardingStep(id: .business, title: "Your business", question: "What is your business called?",
@@ -75,6 +79,8 @@ public enum Onboarding {
                        why: "Routes start here, and the weather forecast is for this spot.", required: false),
         OnboardingStep(id: .team, title: "Your crews", question: "How many crews or trucks do you run?",
                        why: "We set up your crews. Price is per crew.", required: false),
+        OnboardingStep(id: .plan, title: "Your plan", question: "Which plan fits your business?",
+                       why: "Free for 14 days with everything unlocked. You pay for the plan. Your employees never pay.", required: false),
         OnboardingStep(id: .importClients, title: "Your clients list", question: "Do you have clients to bring in?",
                        why: "Skip this and add them as you go.", required: false),
         OnboardingStep(id: .payment, title: "Getting paid", question: "How long do clients have to pay, and how should they pay you?",
@@ -94,6 +100,7 @@ public struct OnboardingAnswers: Equatable, Sendable {
     public var triggerInches: Double = 2
     public var homeBase: Coordinate?
     public var crewCount = 1
+    public var plan: PlanTier = .pro
     public var netDays = 14
     public var paymentInstructions = ""
     public var payLink = ""
@@ -123,6 +130,7 @@ extension AppData {
         p.defaultSnowBilling = a.snowBilling
         p.defaultTriggerInches = min(max(a.triggerInches, 0.5), 24)
         p.crewCount = min(max(a.crewCount, 1), 50)
+        p.chosenPlan = a.plan
         p.netDays = min(max(a.netDays, 0), 120)
         p.paymentInstructions = String(a.paymentInstructions.trimmingCharacters(in: .whitespacesAndNewlines).prefix(300))
         p.payLink = PayLink.clean(a.payLink)

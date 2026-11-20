@@ -5,11 +5,11 @@ final class OnboardingTests: XCTestCase {
     private let t0 = Date(timeIntervalSince1970: 1_800_000_000)
 
     func testTenStepsInOrderAndOnlyTheBusinessNameIsRequired() {
-        XCTAssertEqual(Onboarding.steps.count, 10)
+        XCTAssertEqual(Onboarding.steps.count, 11)
         XCTAssertEqual(Onboarding.steps.map(\.id), OnboardingStepID.allCases)
         XCTAssertEqual(Onboarding.steps.filter(\.required).map(\.id), [.business])
         XCTAssertTrue(Onboarding.steps.allSatisfy { !$0.question.isEmpty && !$0.why.isEmpty && !$0.title.isEmpty })
-        XCTAssertEqual(Set(Onboarding.steps.map(\.id)).count, 10)
+        XCTAssertEqual(Set(Onboarding.steps.map(\.id)).count, 11)
     }
 
     func testCannotFinishWithoutABusinessName() {

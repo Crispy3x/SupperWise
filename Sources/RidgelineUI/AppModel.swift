@@ -15,6 +15,10 @@ public final class AppModel {
     public private(set) var serverConfigured = false
     /// A short message about something that just happened (for example an invoice was created). The user can dismiss it.
     public var notice: String?
+    /// True while the owner is looking at the app as an employee would see it.
+    public var previewingEmployee = false
+    /// The last route worked out for today's jobs, shown as numbers on the Home map. It is checked against today's jobs before use.
+    public var plannedRoute: RoutePlanResult?
     /// The storm the crew is logging visits under. Both the Today and Storm screens use it.
     public var stormName: String = Date().formatted(.dateTime.month(.abbreviated).day())
     /// True while saving is switched off to protect an unreadable data file.
@@ -84,6 +88,10 @@ public final class AppModel {
         case OperationError.emptyName: return "Enter a name first."
         case AccountError.missingIdentifier: return "Apple did not return an account identifier."
         case AccountError.differentAccount: return "A different Apple account is already set up here. Delete the account and data first to switch."
+        case TeamError.emptyName: return "Enter a name first."
+        case TeamError.limitReached(let limit): return "Your plan allows up to \(limit) employees. Switch someone off, or move up to the Max plan."
+        case TeamError.notFound: return "That person no longer exists."
+        case TeamError.invalidCode, TeamError.disabled: return "That code does not work."
         case RequestError.notFound: return "That request no longer exists."
         case RequestError.alreadyDecided: return "That request was already answered."
         case QuoteError.expired: return "This quote has expired."
