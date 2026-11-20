@@ -64,12 +64,17 @@ export function isValidEmail(t) {
   return d.includes('.') && !d.startsWith('.') && !d.endsWith('.') && !d.includes('..');
 }
 
+const ASSET_TYPES = { 'leaflet.js': 'text/javascript; charset=utf-8', 'leaflet.css': 'text/css; charset=utf-8', 'portal.js': 'text/javascript; charset=utf-8' };
+const TRUCK_FRESH_MS = 10 * 60_000;       // a truck position older than this is not shown
+const MAX_TRUCKS = 10;
+
 const SECURITY_HEADERS = {
   'Cache-Control': 'no-store',
   'X-Content-Type-Options': 'nosniff',
   'Referrer-Policy': 'no-referrer',            // the page address contains the token: never pass it on
   'X-Robots-Tag': 'noindex',
-  'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; form-action 'self'; frame-ancestors 'none'",
+  // Scripts only from this server. Map tiles are the one outside request (OpenStreetMap), and only images.
+  'Content-Security-Policy': "default-src 'none'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src https://tile.openstreetmap.org data:; connect-src 'self'; manifest-src 'self'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'",
 };
 
 export function createPortal(config, deps = {}) {
@@ -80,6 +85,12 @@ export function createPortal(config, deps = {}) {
   const ipHits = new Map();
   const emailDaily = new Map();
   let state = { snapshots: {}, requests: [] };
+  // Truck positions are short-lived, so they live in memory only and are never saved to disk.
+  const trucks = new Map();            // label -> { label, latitude, longitude, updatedAt }
+  const assets = new Map();
+  for (const [name, type] of Object.entries(ASSET_TYPES)) {
+    try { assets.set(name, { type, body: fs.readFileSync(new URL(`./assets/${name}`, import.meta.url)) }); } catch { /* the page then simply has no map */ }
+  }
 
   // ---- storage
   function load() {
@@ -159,16 +170,37 @@ export function createPortal(config, deps = {}) {
   }
 
   // ---- the client page
-  function page(title, inner) {
-    return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>${escapeHtml(title)}</title><style>
+  function page(title, inner, extra = {}) {
+    return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#0d2540"><meta name="apple-mobile-web-app-capable" content="yes"><title>${escapeHtml(title)}</title>${extra.head || ''}<style>
 body{font-family:-apple-system,Helvetica,Arial,sans-serif;margin:0;background:#f4f6f9;color:#14202e}main{max-width:34rem;margin:0 auto;padding:1rem}
 .card{background:#fff;border-radius:12px;padding:1rem;margin:0 0 .8rem}h1{font-size:1.3rem;margin:.2rem 0 .6rem;color:#0d2540}h2{font-size:1rem;margin:0 0 .5rem}
 .status{display:inline-block;padding:.25rem .6rem;border-radius:8px;background:#eaf3fc;color:#1d5fb4;font-weight:600}.done{background:#e3f4ea;color:#1f7a45}.skipped{background:#fde8d2;color:#b8610f}
 label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;padding:.4rem;box-sizing:border-box}button{font:inherit;padding:.6rem 1rem;border:0;border-radius:8px;background:#2f7de1;color:#fff;margin-top:.6rem}
 .small{font-size:.85rem;color:#5b6b7e}table{width:100%;border-collapse:collapse}td{padding:.35rem 0;border-top:1px solid #e3e9f0;vertical-align:top}td.r{text-align:right}
-.pill{font-size:.8rem;font-weight:600;padding:.1rem .45rem;border-radius:6px;background:#eaf3fc;color:#1d5fb4}.pill.paid{background:#e3f4ea;color:#1f7a45}.pill.overdue{background:#fde8d2;color:#b8610f}.paybtn{display:inline-block;margin-top:.35rem;padding:.35rem .8rem;border-radius:8px;background:#1d5fb4;color:#fff;font-weight:600;text-decoration:none}</style></head><body><main>${inner}</main></body></html>`;
+.pill{font-size:.8rem;font-weight:600;padding:.1rem .45rem;border-radius:6px;background:#eaf3fc;color:#1d5fb4}.pill.paid{background:#e3f4ea;color:#1f7a45}.pill.overdue{background:#fde8d2;color:#b8610f}.paybtn{display:inline-block;margin-top:.35rem;padding:.35rem .8rem;border-radius:8px;background:#1d5fb4;color:#fff;font-weight:600;text-decoration:none}.tipbtn{display:inline-block;margin:.2rem .4rem 0 0;padding:.5rem .9rem;border-radius:999px;background:#fff3d6;color:#7a4b00;font-weight:600;text-decoration:none;border:1px solid #f0d9a0}#map{height:260px;border-radius:10px}.pin-site{display:block;width:18px;height:18px;border-radius:50%;background:#2f7de1;border:3px solid #fff;box-shadow:0 0 0 2px #2f7de1}.pin-truck{display:block;font-size:22px;line-height:26px;text-align:center}</style></head><body${extra.bodyAttrs || ''}><main>${inner}</main>${extra.tail || ''}</body></html>`;
   }
   const notFound = (res) => sendHtml(res, 404, page('Page not available', '<div class="card"><h1>This page is not available</h1><p>The link may be old or mistyped. Please contact your snow service provider.</p></div>'));
+
+  // ---- map, weather, tips: what the client page adds on top of the status
+  const round = (n, d) => Math.round(n * 10 ** d) / 10 ** d;
+  const validCoord = (c) => c && typeof c === 'object' && Number.isFinite(c.latitude) && Number.isFinite(c.longitude)
+    && Math.abs(c.latitude) <= 90 && Math.abs(c.longitude) <= 180 && !(c.latitude === 0 && c.longitude === 0);
+  const cleanSite = (c) => (validCoord(c) ? { latitude: round(c.latitude, 3), longitude: round(c.longitude, 3) } : null);   // about 100 m: the property, not the doorstep
+  const cleanWeather = (w) => (w && typeof w === 'object' ? { summary: cleanText(w.summary, 160), alerts: (Array.isArray(w.alerts) ? w.alerts : []).slice(0, 3).map((a) => cleanText(a, 120)).filter(Boolean) } : null);
+
+  /** What the page and the live updates show. Trucks appear only for a property that is waiting for service, and only while the position is fresh. */
+  function liveView(token) {
+    const s = state.snapshots[token];
+    const t = now();
+    const live = [...trucks.values()].filter((x) => t - x.updatedAt <= TRUCK_FRESH_MS);
+    return {
+      status: s.status, statusText: STATUS_TEXT[s.status], eta: s.eta || '', stopsAhead: Number.isInteger(s.stopsAhead) ? s.stopsAhead : null,
+      site: s.siteLocation || null,
+      trucks: s.status === 'planned' ? live.map((x) => ({ label: x.label, latitude: x.latitude, longitude: x.longitude })) : [],
+      weather: s.weather || null, updatedAt: s.updatedAt,
+    };
+  }
+  const jsonForScript = (o) => JSON.stringify(o).replace(/</g, '\\u003c').replace(/\u2028|\u2029/g, ' ');
 
   function renderClientPage(token, sentFlag) {
     const s = state.snapshots[token];
@@ -176,11 +208,24 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
     const statusClass = s.status === 'done' ? 'done' : s.status === 'skipped' ? 'skipped' : '';
     let html = `<div class="card"><p class="small">${escapeHtml(s.company)}</p><h1>${escapeHtml(s.label)}</h1>`;
     if (s.stormName) html += `<p>${escapeHtml(s.stormName)}${s.expected ? ': ' + escapeHtml(s.expected) : ''}</p>`;
-    html += `<p><span class="status ${statusClass}">${escapeHtml(STATUS_TEXT[s.status])}</span></p>`;
+    html += `<p><span class="status ${statusClass}" id="status">${escapeHtml(STATUS_TEXT[s.status])}</span></p>`;
     if (s.detail) html += `<p>${escapeHtml(s.detail)}</p>`;
-    if (s.eta) html += `<p><strong>Estimated arrival</strong><br>${escapeHtml(s.eta)}</p>`;
+    html += `<p id="eta"${s.eta ? '' : ' style="display:none"'}>${s.eta ? 'Estimated arrival: ' + escapeHtml(s.eta) : ''}</p><p class="small" id="ahead"></p>`;
     if (s.summary) html += `<p class="small">${escapeHtml(s.summary)}</p>`;
     html += `<p class="small">Updated ${escapeHtml(new Date(s.updatedAt).toUTCString())}. Forecasts can change.</p></div>`;
+    const view = liveView(token);
+    if (view.site && assets.has('leaflet.js')) {
+      html += '<div class="card"><h2>Where is the truck?</h2><div id="map" role="img" aria-label="Map showing your property and the truck"></div><p class="small" id="mapnote"></p></div>';
+    }
+    if (s.weather && (s.weather.summary || s.weather.alerts.length)) {
+      html += `<div class="card"><h2>Weather</h2><p id="wxsummary">${escapeHtml(s.weather.summary)}</p><p class="small" id="wxalerts">${escapeHtml(s.weather.alerts.join(' · '))}</p><p class="small">From the National Weather Service. Forecasts can change.</p></div>`;
+    }
+    if (s.tipUrl || s.coffeeUrl) {
+      html += '<div class="card"><h2>Say thanks</h2><p class="small">Optional. It goes straight to the crew or business, never through this page.</p>';
+      if (s.tipUrl) html += `<a class="tipbtn" href="${escapeHtml(s.tipUrl)}" rel="noopener noreferrer">Tip the crew</a>`;
+      if (s.coffeeUrl) html += `<a class="tipbtn" href="${escapeHtml(s.coffeeUrl)}" rel="noopener noreferrer">Buy us a coffee</a>`;
+      html += '</div>';
+    }
     if (s.bills && s.bills.length) {
       html += '<div class="card"><h2>Your bills this winter</h2><table>';
       for (const b of s.bills) {
@@ -210,10 +255,36 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
 <button type="submit">Send request</button>
 <p class="small">Your snow service decides whether and when to come. Sending a request does not guarantee service.</p></form>`;
     }
-    return page(`${s.label}: snow update`, html);
+    const mapOn = Boolean(view.site && assets.has('leaflet.js'));
+    return page(`${s.label}: snow update`, html, {
+      head: `<link rel="manifest" href="/c/${escapeHtml(token)}/manifest.webmanifest">${mapOn ? '<link rel="stylesheet" href="/assets/leaflet.css">' : ''}`,
+      bodyAttrs: ` data-token="${escapeHtml(token)}"`,
+      tail: `<script type="application/json" id="live">${jsonForScript(view)}</script>${mapOn ? '<script src="/assets/leaflet.js"></script>' : ''}<script src="/assets/portal.js"></script>`,
+    });
   }
 
   // ---- owner API
+  /** A truck's position, sent every half minute while its crew shares location. Each truck is added or updated by its label, so
+   *  several trucks can share at once; `remove` takes a truck off the map when its crew stops. Kept in memory only. */
+  async function putTrucks(req, res) {
+    const body = await jsonBody(req, res); if (body === undefined) return;
+    if (!body || !Array.isArray(body.trucks) || body.trucks.length > MAX_TRUCKS || (body.remove !== undefined && (!Array.isArray(body.remove) || body.remove.length > MAX_TRUCKS))) {
+      return sendJson(res, 400, { error: `trucks and remove must be lists of at most ${MAX_TRUCKS}` });
+    }
+    const incoming = [];
+    for (const x of body.trucks) {
+      if (!validCoord(x)) return sendJson(res, 400, { error: 'each truck needs a valid latitude and longitude' });
+      incoming.push({ label: cleanText(x.label, 24) || 'Truck', latitude: round(x.latitude, 4), longitude: round(x.longitude, 4), updatedAt: now() });
+    }
+    for (const label of body.remove || []) trucks.delete(cleanText(label, 24));
+    for (const x of incoming) trucks.set(x.label, x);
+    if (trucks.size > MAX_TRUCKS) {                          // never grow without bound: drop the stalest
+      const stale = [...trucks.values()].sort((a, b) => a.updatedAt - b.updatedAt).slice(0, trucks.size - MAX_TRUCKS);
+      for (const x of stale) trucks.delete(x.label);
+    }
+    sendJson(res, 200, { stored: incoming.length });
+  }
+
   async function putSnapshot(req, res) {
     const body = await jsonBody(req, res); if (body === undefined) return;
     if (!body || typeof body !== 'object' || !body.storm || !Array.isArray(body.sites)) return sendJson(res, 400, { error: 'company, storm and sites are required' });
@@ -222,6 +293,9 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
     const stormId = cleanText(body.storm.id, 64);
     if (!stormId) return sendJson(res, 400, { error: 'storm.id is required' });
     const stormName = cleanText(body.storm.name, 80); const expected = cleanText(body.storm.expected, 120);
+    const weather = cleanWeather(body.weather);
+    const tipUrl = cleanPayUrl(body.tips?.tipURL ?? body.tips?.tipUrl);
+    const coffeeUrl = cleanPayUrl(body.tips?.coffeeURL ?? body.tips?.coffeeUrl);
     const next = [];
     for (const s of body.sites) {
       if (!s || !TOKEN_RE.test(String(s.token)) || !STATUSES.has(s.status)) return sendJson(res, 400, { error: 'each site needs a valid token and status' });
@@ -236,6 +310,8 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
       }
       next.push([s.token, { company, stormId, stormName, expected, label: cleanText(s.label, 120) || 'Your property', status: s.status,
         detail: cleanText(s.detail, 200), eta: cleanText(s.eta, 120), summary: cleanText(s.summary, 160), bills,
+        siteLocation: cleanSite(s.siteLocation), stopsAhead: Number.isInteger(s.stopsAhead) && s.stopsAhead >= 0 && s.stopsAhead <= 500 ? s.stopsAhead : null,
+        weather, tipUrl, coffeeUrl,
         canRequest: s.canRequest === true, updatedAt: now() }]);
     }
     for (const [token, snap] of next) state.snapshots[token] = snap;
@@ -313,11 +389,30 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
 
   return {
     /** True for the paths this module owns, so another handler can take everything else. */
-    matches(rawUrl) { const p = (rawUrl || '').split('?')[0]; return p.startsWith('/c/') || p.startsWith('/v1/portal/') || p.startsWith('/v1/send/'); },
+    matches(rawUrl) { const p = (rawUrl || '').split('?')[0]; return p.startsWith('/c/') || p.startsWith('/assets/') || p.startsWith('/v1/portal/') || p.startsWith('/v1/send/'); },
     async handle(req, res) {
       const url = new URL(req.url, 'http://localhost');
       const path = url.pathname;
       try {
+        if (path.startsWith('/assets/')) {
+          const name = path.slice('/assets/'.length);
+          const asset = req.method === 'GET' && /^[a-z.]+$/.test(name) ? assets.get(name) : null;      // only the listed files, never a path
+          if (!asset) return notFound(res);
+          res.writeHead(200, { 'content-type': asset.type, 'content-length': asset.body.length, 'cache-control': 'public, max-age=86400', 'x-content-type-options': 'nosniff' });
+          return res.end(asset.body);
+        }
+        const sub = path.match(/^\/c\/([^/]+)\/(live\.json|manifest\.webmanifest)$/);
+        if (sub) {
+          if (req.method !== 'GET') return sendJson(res, 405, { error: 'Method not allowed' });
+          if (!ipAllowed(req)) return sendJson(res, 429, { error: 'Too many requests' });
+          const token = sub[1];
+          if (!TOKEN_RE.test(token) || !state.snapshots[token]) return notFound(res);
+          if (sub[2] === 'live.json') return sendJson(res, 200, liveView(token));
+          const s = state.snapshots[token];
+          const body = JSON.stringify({ name: `${s.company || 'Snow service'}: ${s.label}`.slice(0, 80), short_name: (s.company || 'Snow update').slice(0, 24), start_url: `/c/${token}`, scope: `/c/${token}`, display: 'standalone', background_color: '#f4f6f9', theme_color: '#0d2540' });
+          res.writeHead(200, { 'content-type': 'application/manifest+json', 'content-length': Buffer.byteLength(body), 'cache-control': 'no-store', 'referrer-policy': 'no-referrer' });
+          return res.end(body);
+        }
         const m = path.match(/^\/c\/([^/]+)(\/request)?$/);
         if (m) {
           if (!ipAllowed(req)) return sendHtml(res, 429, page('Slow down', '<div class="card"><p>Too many requests from your connection. Please try again in a minute.</p></div>'));
@@ -329,6 +424,7 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
         }
         if (!isOwner(req)) return sendJson(res, 401, { error: 'Missing or invalid token' });
         if (req.method === 'PUT' && path === '/v1/portal/snapshot') return await putSnapshot(req, res);
+        if (req.method === 'PUT' && path === '/v1/portal/trucks') return await putTrucks(req, res);
         if (req.method === 'GET' && path === '/v1/portal/requests') return getRequests(req, res, url);
         if (req.method === 'POST' && path === '/v1/portal/decisions') return await postDecision(req, res);
         if (req.method === 'POST' && path === '/v1/send/email') return await sendEmail(req, res);

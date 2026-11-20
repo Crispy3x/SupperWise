@@ -73,7 +73,10 @@ test('client page shows the status and has strict security headers', async (t) =
   assert.equal(res.headers.get('x-content-type-options'), 'nosniff');
   assert.match(res.headers.get('content-security-policy'), /default-src 'none'/);
   assert.match(res.headers.get('content-security-policy'), /frame-ancestors 'none'/);
-  assert.ok(!/<script/i.test(html));
+  // No inline code: every script tag is either our own file or inert data.
+  for (const tag of html.match(/<script[^>]*>/gi) || []) assert.ok(/src="\/assets\/[a-z.]+"/.test(tag) || /type="application\/json"/.test(tag), tag);
+  assert.match(res.headers.get('content-security-policy'), /script-src 'self'/);
+  assert.match(res.headers.get('content-security-policy'), /img-src https:\/\/tile\.openstreetmap\.org/);
 });
 
 test('wrong, old and malformed links all get the same plain page', async (t) => {
@@ -294,4 +297,106 @@ test('email: provider failures are reported generically; daily cap stops sending
   assert.equal((await capped.owner('POST', '/v1/send/email', { messages: [msg(3)] })).status, 429);
   capped.clock.advance(86_400_000);
   assert.equal((await capped.owner('POST', '/v1/send/email', { messages: [msg(3)] })).status, 200);
+});
+
+// ---- live map, weather, tips, home-screen manifest
+
+const withMap = (extra = {}) => ({
+  weather: { summary: 'Snow, 28 F. About 4 inches by noon.', alerts: ['Winter Storm Warning until 6 PM', 'b', 'c', 'd'] },
+  tips: { tipURL: 'https://venmo.com/ridgeplow', coffeeURL: 'https://cash.app/$ridgeplow' },
+  sites: [{ token: TOKEN, label: '14 Elm Ave', status: 'planned', canRequest: true, stopsAhead: 3, eta: 'Expected between 7:15 AM and 8:45 AM.',
+    siteLocation: { latitude: 44.97812345, longitude: -93.26512345 } }], ...extra });
+
+test('the page shows the map, weather, tip buttons and stops ahead; the map data is inert JSON', async (t) => {
+  const s = await boot(); t.after(s.close);
+  assert.equal((await s.publish(withMap().sites, { weather: withMap().weather, tips: withMap().tips })).status, 200);
+  const html = await (await fetch(`${s.base}/c/${TOKEN}`)).text();
+  assert.ok(html.includes('Where is the truck?')); assert.ok(html.includes('id="map"'));
+  assert.ok(html.includes('Snow, 28 F. About 4 inches by noon.'));
+  assert.ok(html.includes('Winter Storm Warning until 6 PM'));
+  assert.ok(!html.includes('>d<') || html.split('·').length <= 3);                 // at most three alerts
+  assert.ok(html.includes('Tip the crew') && html.includes('https://venmo.com/ridgeplow'));
+  assert.ok(html.includes('Buy us a coffee') && html.includes('https://cash.app/$ridgeplow'));
+  assert.ok(html.includes('src="/assets/leaflet.js"') && html.includes('src="/assets/portal.js"'));
+  const live = JSON.parse(html.match(/<script type="application\/json" id="live">(.*?)<\/script>/s)[1]);
+  assert.equal(live.stopsAhead, 3);
+  assert.deepEqual(live.site, { latitude: 44.978, longitude: -93.265 });          // rounded to about 100 m
+  assert.ok(html.includes('rel="manifest"'));
+});
+
+test('tip and coffee links must be safe payment links', async (t) => {
+  const s = await boot(); t.after(s.close);
+  await s.publish(withMap().sites, { tips: { tipURL: 'https://evil.example.com/tip', coffeeURL: 'javascript:alert(1)' } });
+  const html = await (await fetch(`${s.base}/c/${TOKEN}`)).text();
+  assert.ok(!html.includes('Tip the crew')); assert.ok(!html.includes('Buy us a coffee')); assert.ok(!html.includes('evil.example.com'));
+});
+
+test('trucks show only for a property waiting for service, only while fresh, and positions are rounded', async (t) => {
+  const s = await boot(); t.after(s.close);
+  await s.publish(withMap().sites);
+  const live = async () => (await (await fetch(`${s.base}/c/${TOKEN}/live.json`)).json());
+  assert.deepEqual((await live()).trucks, []);                                      // nothing shared yet
+  const put = (body, auth = 'Bearer owner-token') => fetch(`${s.base}/v1/portal/trucks`, { method: 'PUT', headers: { authorization: auth, 'content-type': 'application/json' }, body: JSON.stringify(body) });
+  assert.equal((await put({ trucks: [] }, 'Bearer wrong')).status, 401);
+  assert.equal((await put({ trucks: [{ label: 'Truck <b>1</b>', latitude: 44.98012345, longitude: -93.27012345 }] })).status, 200);
+  const l = await live();
+  assert.equal(l.trucks.length, 1);
+  assert.deepEqual([l.trucks[0].latitude, l.trucks[0].longitude], [44.9801, -93.2701]);
+  assert.equal(l.trucks[0].label, 'Truck <b>1</b>');                                // stored as text; the page uses textContent
+  assert.equal(l.stopsAhead, 3); assert.equal(l.statusText, 'Planned for this storm');
+  s.clock.advance(11 * 60_000);
+  assert.deepEqual((await live()).trucks, []);                                      // stale positions disappear
+  await put({ trucks: [{ label: 'T', latitude: 44.98, longitude: -93.27 }] });
+  assert.equal((await live()).trucks.length, 1);                                    // the stale one is gone; this one is fresh
+  await s.publish([{ token: TOKEN, label: '14 Elm Ave', status: 'done', canRequest: true, siteLocation: { latitude: 44.97, longitude: -93.26 } }]);
+  assert.deepEqual((await live()).trucks, []);                                      // once served, no more trucks
+  // Two trucks share at once: each is added by its label, and `remove` takes one off the map.
+  await s.publish(withMap().sites);
+  await put({ trucks: [], remove: ['T'] });
+  await put({ trucks: [{ label: 'Truck 1', latitude: 44.98, longitude: -93.27 }] });
+  await put({ trucks: [{ label: 'Truck 2', latitude: 44.99, longitude: -93.28 }] });
+  assert.deepEqual((await live()).trucks.map((x) => x.label).sort(), ['Truck 1', 'Truck 2']);
+  await put({ trucks: [{ label: 'Truck 1', latitude: 44.981, longitude: -93.271 }] });
+  const moved = (await live()).trucks;
+  assert.equal(moved.length, 2); assert.equal(moved.find((x) => x.label === 'Truck 1').latitude, 44.981);   // updated, not duplicated
+  await put({ trucks: [], remove: ['Truck 1'] });
+  assert.deepEqual((await live()).trucks.map((x) => x.label), ['Truck 2']);
+  assert.equal((await put({ trucks: [], remove: 'x' })).status, 400);
+  for (const bad of [{}, { trucks: 'x' }, { trucks: [{ latitude: 91, longitude: 0 }] }, { trucks: [{ latitude: 'a', longitude: 1 }] },
+    { trucks: [{ latitude: 0, longitude: 0 }] }, { trucks: Array.from({ length: 11 }, () => ({ latitude: 1, longitude: 1 })) }]) {
+    assert.equal((await put(bad)).status, 400, JSON.stringify(bad).slice(0, 50));
+  }
+});
+
+test('live.json follows the same rules as the page: wrong links look alike and no contact details are in it', async (t) => {
+  const s = await boot(); t.after(s.close);
+  await s.publish(withMap().sites, { weather: withMap().weather });
+  assert.equal((await fetch(`${s.base}/c/${TOKEN}/live.json`)).status, 200);
+  assert.equal((await fetch(`${s.base}/c/${'z'.repeat(30)}/live.json`)).status, 404);
+  assert.equal((await fetch(`${s.base}/c/short/live.json`)).status, 404);
+  assert.equal((await fetch(`${s.base}/c/${TOKEN}/live.json`, { method: 'POST' })).status, 405);
+  const text = await (await fetch(`${s.base}/c/${TOKEN}/live.json`)).text();
+  for (const secret of ['owner-token', 'RESEND', '@', 'company', 'Ridge Plow']) assert.ok(!text.includes(secret), secret);
+});
+
+test('the home-screen manifest is per page and the map files are served from this server', async (t) => {
+  const s = await boot(); t.after(s.close);
+  await s.publish(withMap().sites);
+  const m = await (await fetch(`${s.base}/c/${TOKEN}/manifest.webmanifest`)).json();
+  assert.equal(m.start_url, `/c/${TOKEN}`); assert.equal(m.display, 'standalone'); assert.ok(m.name.includes('Ridge Plow'));
+  assert.equal((await fetch(`${s.base}/c/${'z'.repeat(30)}/manifest.webmanifest`)).status, 404);
+  for (const [file, type] of [['leaflet.js', /javascript/], ['leaflet.css', /css/], ['portal.js', /javascript/]]) {
+    const r = await fetch(`${s.base}/assets/${file}`);
+    assert.equal(r.status, 200); assert.match(r.headers.get('content-type'), type);
+  }
+  assert.equal((await fetch(`${s.base}/assets/..%2Fportal.mjs`)).status, 404);        // only the listed files, no path tricks
+  assert.equal((await fetch(`${s.base}/assets/portal.mjs`)).status, 404);
+  assert.equal((await fetch(`${s.base}/assets/secret.js`)).status, 404);
+});
+
+test('without a property location there is no map', async (t) => {
+  const s = await boot(); t.after(s.close);
+  await s.publish();
+  const html = await (await fetch(`${s.base}/c/${TOKEN}`)).text();
+  assert.ok(!html.includes('Where is the truck?')); assert.ok(!html.includes('leaflet.js'));
 });

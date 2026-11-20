@@ -35,9 +35,16 @@ public struct PortalSiteSnapshot: Codable, Equatable, Sendable {
     public let eta: String
     public let summary: String
     public let bills: [PortalBill]
+    /// The property's place on the map, rounded to about 100 metres. Nil when the site has no map location.
+    public let siteLocation: Coordinate?
+    /// How many stops come before this one on the route. Nil when there is no route.
+    public let stopsAhead: Int?
 
     public init(token: String, label: String, status: PortalStatus, detail: String, canRequest: Bool,
-                eta: String = "", summary: String = "", bills: [PortalBill] = []) {
+                eta: String = "", summary: String = "", bills: [PortalBill] = [],
+                siteLocation: Coordinate? = nil, stopsAhead: Int? = nil) {
+        self.siteLocation = siteLocation
+        self.stopsAhead = stopsAhead
         self.token = token
         self.label = label
         self.status = status
@@ -71,6 +78,73 @@ public struct PortalSnapshot: Codable, Equatable, Sendable {
     public let company: String
     public let storm: PortalStormInfo
     public let sites: [PortalSiteSnapshot]
+    /// Conditions shown on every client page.
+    public let weather: PortalWeather?
+    /// The owner's own tip and coffee links. Money goes straight to them, never through this app or the server.
+    public let tips: PortalTips?
+
+    public init(company: String, storm: PortalStormInfo, sites: [PortalSiteSnapshot], weather: PortalWeather? = nil, tips: PortalTips? = nil) {
+        self.company = company
+        self.storm = storm
+        self.sites = sites
+        self.weather = weather
+        self.tips = tips
+    }
+}
+
+public struct PortalWeather: Codable, Equatable, Sendable {
+    public let summary: String
+    public let alerts: [String]
+
+    public init(summary: String, alerts: [String]) {
+        self.summary = summary
+        self.alerts = alerts
+    }
+
+    /// One plain sentence from the forecast, for example "Snow expected: about 4.0 in over the next 24 hours. Low 24 F, wind up to 18 mph."
+    public static func make(from forecast: WeatherWindowSummary?, alerts: [WinterAlert], hours: Int = 24) -> PortalWeather? {
+        var parts: [String] = []
+        if let f = forecast {
+            if f.snowfallInches >= 0.1 { parts.append("Snow expected: about \(String(format: "%.1f", f.snowfallInches)) in over the next \(hours) hours.") }
+            else { parts.append("No significant snow expected in the next \(hours) hours.") }
+            var more: [String] = []
+            if let low = f.minTemperatureF { more.append("Low \(Int(low.rounded())) F") }
+            if let wind = f.maxWindMph, wind >= 10 { more.append("wind up to \(Int(wind.rounded())) mph") }
+            if !more.isEmpty { parts.append(more.joined(separator: ", ") + ".") }
+        }
+        let headlines = alerts.map(\.headline).filter { !$0.isEmpty }.prefix(3)
+        if parts.isEmpty && headlines.isEmpty { return nil }
+        return PortalWeather(summary: parts.joined(separator: " "), alerts: Array(headlines))
+    }
+}
+
+public struct PortalTips: Codable, Equatable, Sendable {
+    public let tipURL: String?
+    public let coffeeURL: String?
+
+    public init(tipURL: String?, coffeeURL: String?) {
+        self.tipURL = tipURL
+        self.coffeeURL = coffeeURL
+    }
+
+    /// Only links that pass the payment-site check are ever sent.
+    public static func make(from profile: BusinessProfile) -> PortalTips? {
+        let tip = profile.tipLink.flatMap(PayLink.clean), coffee = profile.coffeeLink.flatMap(PayLink.clean)
+        return tip == nil && coffee == nil ? nil : PortalTips(tipURL: tip, coffeeURL: coffee)
+    }
+}
+
+/// One truck's position, for the map on client pages.
+public struct PortalTruck: Codable, Equatable, Sendable {
+    public let label: String
+    public let latitude: Double
+    public let longitude: Double
+
+    public init(label: String, latitude: Double, longitude: Double) {
+        self.label = label
+        self.latitude = latitude
+        self.longitude = longitude
+    }
 }
 
 public enum PortalSnapshotBuilder {
@@ -79,7 +153,7 @@ public enum PortalSnapshotBuilder {
     ///   - visitStormName: the storm name the crew logged visits under.
     public static func build(data: AppData, storm: StormEvent, forecastInches: Double, servedSiteIDs: Set<UUID>,
                              visitStormName: String, routeStart: Date? = nil, arrivalOffsets: [UUID: Double] = [:],
-                             now: Date = Date(), timeZone: TimeZone = .current) -> PortalSnapshot {
+                             weather: PortalWeather? = nil, now: Date = Date(), timeZone: TimeZone = .current) -> PortalSnapshot {
         let f = DateFormatter()
         f.dateFormat = "h:mm a"
         f.timeZone = timeZone
@@ -113,13 +187,21 @@ public enum PortalSnapshotBuilder {
                 cal.timeZone = timeZone
                 eta = ArrivalWindow.describe(routeStart: start, offsetSeconds: offset, calendar: cal)
             }
+            // Where this property is, to about 100 metres, and how many stops come first.
+            var place: Coordinate?
+            if let lat = site.latitude, let lon = site.longitude {
+                place = Coordinate(latitude: (lat * 1000).rounded() / 1000, longitude: (lon * 1000).rounded() / 1000)
+            }
+            var ahead: Int?
+            if status == .planned, let mine = arrivalOffsets[site.id] { ahead = arrivalOffsets.values.filter { $0 < mine }.count }
             sites.append(PortalSiteSnapshot(token: link.token, label: site.address, status: status, detail: detail, canRequest: status != .done,
                                             eta: eta, summary: winterSummary(site: site, data: data, now: now),
-                                            bills: bills(for: site, data: data, now: now, timeZone: timeZone)))
+                                            bills: bills(for: site, data: data, now: now, timeZone: timeZone),
+                                            siteLocation: place, stopsAhead: ahead))
         }
         return PortalSnapshot(company: company.isEmpty ? "Your snow crew" : company,
                               storm: PortalStormInfo(id: storm.id.uuidString, name: storm.name, expected: SnowEstimateText.describe(forecastInches: forecastInches)),
-                              sites: sites)
+                              sites: sites, weather: weather, tips: PortalTips.make(from: data.profile))
     }
 }
 
@@ -197,6 +279,13 @@ public struct PortalClient: Sendable {
 
     public func publish(_ snapshot: PortalSnapshot) async throws {
         _ = try await send(request("PUT", "v1/portal/snapshot", body: try JSONEncoder().encode(snapshot)))
+    }
+
+    /// Sends where a truck is right now. Trucks are added or updated by their label, so several can share at once.
+    /// `remove` takes trucks off every client page, for example when a crew stops sharing.
+    public func publishTrucks(_ trucks: [PortalTruck], remove: [String] = []) async throws {
+        struct Body: Encodable { let trucks: [PortalTruck]; let remove: [String]? }
+        _ = try await send(request("PUT", "v1/portal/trucks", body: try JSONEncoder().encode(Body(trucks: trucks, remove: remove.isEmpty ? nil : remove))))
     }
 
     /// New client requests since `date` (or all, if nil). Importing the same request twice is harmless.

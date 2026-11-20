@@ -19,6 +19,19 @@ public final class AppModel {
     public var previewingEmployee = false
     /// The last route worked out for today's jobs, shown as numbers on the Home map. It is checked against today's jobs before use.
     public var plannedRoute: RoutePlanResult?
+    /// The assistant chat on screen, the conversation as the AI service needs it, and what is happening now.
+    public var assistantLines: [AssistantLine] = []
+    var assistantHistory: [AssistantMessage] = []
+    public var assistantBusy = false
+    /// How much of this month's assistant allowance is used, as a percent. Nil until the server says.
+    public var assistantUsedPercent: Int?
+    /// Things that happened outside the chat (the owner tapped Send), told to the assistant with the next question.
+    var assistantUpdates: [String] = []
+    /// The name clients see on the map for this device's truck.
+    public var sharingLabel = "Truck 1"
+    #if canImport(CoreLocation)
+    public let truckSharer = LiveLocationSharer()
+    #endif
     /// The storm the crew is logging visits under. Both the Today and Storm screens use it.
     public var stormName: String = Date().formatted(.dateTime.month(.abbreviated).day())
     /// True while saving is switched off to protect an unreadable data file.
@@ -406,7 +419,8 @@ public final class AppModel {
     func portalSnapshot(storm: StormEvent, inches: Double, routeStart: Date?, offsets: [UUID: Double]) -> PortalSnapshot {
         let served = Set(DispatchRules.effectiveSites(sites: data.sites, inches: inches, stormID: storm.id, requests: data.serviceRequests).map(\.id))
         return PortalSnapshotBuilder.build(data: data, storm: storm, forecastInches: inches, servedSiteIDs: served,
-                                           visitStormName: storm.name, routeStart: routeStart, arrivalOffsets: offsets)
+                                           visitStormName: storm.name, routeStart: routeStart, arrivalOffsets: offsets,
+                                           weather: PortalWeather.make(from: forecast, alerts: winterAlerts))
     }
 
     /// Keeps the client pages current (status, bills) after something changes. Does nothing without a server or a storm.
@@ -587,7 +601,7 @@ public final class AppModel {
         Task { _ = await republishPortal() }
     }
 
-    private func sendInvoiceEmail(_ message: PlannedMessage, number: String, client: PortalClient) async {
+    func sendInvoiceEmail(_ message: PlannedMessage, number: String, client: PortalClient) async {
         let ok = (try? await client.sendEmails([message]))?.first == true
         if ok {
             edit { try $0.markInvoiceSent(number: number, at: Date()) }

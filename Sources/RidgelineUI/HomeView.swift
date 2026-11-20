@@ -52,6 +52,7 @@ struct HomeView: View {
                     BannerRow(icon: "link", title: "Set up your service request form", onClose: nil) { openScreen(.settings) }
                 }
                 JobsMap(points: points, height: 380, onExpand: { showMap = true })
+                if model.serverConfigured && model.data.can(.logVisits) { ShareLocationCard() }
                 if model.data.can(.editJobs) || model.data.can(.editClients) {
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Quick actions").font(.title2.bold())
@@ -181,11 +182,6 @@ private struct FullMapSheet: View {
 
 // MARK: - Smart route
 
-/// What Apple Maps measured while planning, kept so the note under the list can say so.
-private final class SmartRouteReportBox: @unchecked Sendable {
-    var report: SampledReport?
-}
-
 /// Puts today's jobs in the quickest order to drive, using real drive times from Apple Maps on this device.
 /// This is route optimization (nearest stop first, then improved by swapping), not a chat assistant.
 struct SmartRouteSheet: View {
@@ -234,26 +230,37 @@ struct SmartRouteSheet: View {
     }
 
     private func run() async {
-        let stops = self.stops, start = self.start
         guard !stops.isEmpty else { working = false; return }
-        let box = SmartRouteReportBox()
-        let chosen = model.routePlanner(onReport: { box.report = $0 })
-        let result: RoutePlanResult
-        if chosen.isLive {
-            result = await chosen.planner.plan(stops: stops, start: start, frozenPrefix: 0)
-            if let r = box.report, r.measured == 0 {
-                note = "\(chosen.label) gave no answers, so these drive times are an estimate."
-            } else {
-                note = "Drive times from \(chosen.label). Ordered by drive time only."
-            }
-        } else {
-            result = RouteOptimizer.optimize(stops: stops, start: start, frozenPrefix: 0, provider: HaversineDriveTime())
-            note = "Drive times are an offline estimate. Ordered by drive time only."
-        }
+        let result = await model.planRoute(on: Date())
         if Task.isCancelled { return }
-        plan = result
-        model.plannedRoute = result
+        plan = result.plan
+        note = result.note
+        if let p = result.plan { model.plannedRoute = p }
         working = false
+    }
+}
+
+/// Lets clients waiting for service see this truck on their page. It only runs while the app is open.
+struct ShareLocationCard: View {
+    @Environment(AppModel.self) private var model
+
+    var body: some View {
+        #if canImport(CoreLocation)
+        Card(padding: 14) {
+            VStack(alignment: .leading, spacing: 10) {
+                Toggle(isOn: Binding(get: { model.truckSharer.isSharing }, set: { on in if on { model.startSharing() } else { model.stopSharing() } })) {
+                    Label("Show this truck to clients", systemImage: "location.fill").font(.headline)
+                }
+                if !model.truckSharer.isSharing {
+                    TextField("Truck name clients see", text: Binding(get: { model.sharingLabel }, set: { model.sharingLabel = $0 }))
+                        .textFieldStyle(.roundedBorder)
+                }
+                Text(model.truckSharer.isSharing ? model.truckSharer.note
+                     : "Clients still waiting for service see this truck's position on their own page while this is on. Turn it off when the route is done. It works while the app is open.")
+                    .font(.footnote).foregroundStyle(.secondary)
+            }
+        }
+        #endif
     }
 }
 #endif

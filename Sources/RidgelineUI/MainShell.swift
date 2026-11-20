@@ -88,6 +88,7 @@ struct MainShell: View {
     @State private var menuOpen = false
     @State private var showNotifications = false
     @State private var showSmartRoute = false
+    @State private var showAssistant = false
     @State private var showTutorial = false
     @State private var tutorialChecked = false
 
@@ -138,7 +139,7 @@ struct MainShell: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        SparkleButton { showSmartRoute = true }
+                        SparkleButton { showAssistant = true }
                     }
                     .padding(.trailing, 20)
                     FloatingTabBar(tabs: tabs, selection: $tab)
@@ -164,6 +165,7 @@ struct MainShell: View {
             }
         }
         .sheet(isPresented: $showSmartRoute) { SmartRouteSheet() }
+        .sheet(isPresented: $showAssistant) { AssistantView() }
         .onAppear {
             guard !tutorialChecked else { return }
             tutorialChecked = true
@@ -296,7 +298,7 @@ struct FloatingTabBar: View {
     }
 }
 
-/// The round purple button that plans today's route.
+/// The round purple button that opens the assistant.
 struct SparkleButton: View {
     let action: () -> Void
     var body: some View {
@@ -308,7 +310,7 @@ struct SparkleButton: View {
         }
         .buttonStyle(.plain)
         .padding(.bottom, 6)
-        .accessibilityLabel("Smart route")
+        .accessibilityLabel("Assistant")
     }
 }
 

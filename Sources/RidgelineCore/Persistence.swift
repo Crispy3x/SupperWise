@@ -44,6 +44,8 @@ public struct AppData: Equatable, Codable, Sendable {
     public var tutorialsSeen: [String] = []
     /// Tips the user closed, so they do not come back.
     public var dismissedHints: [String] = []
+    /// When the owner agreed that the assistant may send their questions and the business details it looks up to our server and to Anthropic.
+    public var assistantConsentAt: Date?
 
     public init() {}
 
@@ -82,6 +84,7 @@ public struct AppData: Equatable, Codable, Sendable {
         logins = try c.decodeIfPresent([LoginCredential].self, forKey: .logins) ?? []
         tutorialsSeen = try c.decodeIfPresent([String].self, forKey: .tutorialsSeen) ?? []
         dismissedHints = try c.decodeIfPresent([String].self, forKey: .dismissedHints) ?? []
+        assistantConsentAt = try c.decodeIfPresent(Date.self, forKey: .assistantConsentAt)
     }
 }
 

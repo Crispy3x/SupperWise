@@ -47,6 +47,8 @@ extension AppModel {
 
     /// Signs out of the app on this device. Business data stays; the next person picks owner or employee again.
     public func signOutOfApp() {
+        stopSharing()
+        assistantLines = []; assistantHistory = []; assistantUpdates = []
         previewingEmployee = false
         edit { $0.session = nil }
     }
