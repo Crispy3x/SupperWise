@@ -56,7 +56,7 @@ struct InvoiceDetailSheet: View {
                         HStack { Text("Total").font(.headline); Spacer(); Text(inv.total.formatted).font(.headline) }
                         if inv.paid.cents > 0 { HStack { Text("Paid").foregroundStyle(.secondary); Spacer(); Text("-" + inv.paid.formatted).foregroundStyle(.green) } }
                         HStack { Text("Balance due").font(.headline); Spacer(); Text(inv.balance.formatted).font(.headline) }
-                        Text("Due \\(inv.dueDate.formatted(date: .abbreviated, time: .omitted))").font(.footnote).foregroundStyle(.secondary)
+                        Text("Due \(inv.dueDate.formatted(date: .abbreviated, time: .omitted))").font(.footnote).foregroundStyle(.secondary)
                     }
                 }
                 if model.data.profile.payLink == nil {
@@ -72,10 +72,10 @@ struct InvoiceDetailSheet: View {
                                 .frame(maxWidth: .infinity).padding(.vertical, 18).background(Theme.accent(model.data.profile.accentColor), in: Capsule())
                         }
                         .buttonStyle(.plain).disabled(working)
-                        .alert("Email invoice \\(inv.number)?", isPresented: $confirming) {
+                        .alert("Email invoice \(inv.number)?", isPresented: $confirming) {
                             Button("Send") { send(inv.number) }
                             Button("Cancel", role: .cancel) {}
-                        } message: { Text("It goes to \\(m.to) as a PDF with your pay links.") }
+                        } message: { Text("It goes to \(m.to) as a PDF with your pay links.") }
                     case .problem(let why):
                         Label(why, systemImage: "info.circle").font(.callout).foregroundStyle(.orange)
                     }

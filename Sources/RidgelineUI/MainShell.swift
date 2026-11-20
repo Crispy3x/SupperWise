@@ -469,7 +469,7 @@ private struct PageScreen: View {
             VStack(spacing: 0) {
                 ScreenHeader(icon: screen.icon, title: screen.title, trailing: "")
                     .padding(.horizontal, 16).padding(.top, 14).padding(.bottom, 8)
-                existing.pageBackground().padding(.bottom, Look.tabBarClearance - 40)
+                existing.pageBackground()
             }
         }
     }
@@ -571,26 +571,36 @@ struct NotificationsSheet: View {
 
     var body: some View {
         let items = Notifications.items(for: model.data, now: Date())
-        NavigationStack {
-            List {
+        VStack(spacing: 0) {
+            HStack {
+                Text("Notifications").font(.title3.weight(.medium))
+                Spacer()
+                CircleButton(icon: "xmark", label: "Close") { dismiss() }
+            }
+            .padding(.horizontal, 18).padding(.top, 18).padding(.bottom, 6)
+            AppPage(clearTabBar: false) {
                 if items.isEmpty {
-                    Label("You are all caught up.", systemImage: "checkmark.circle").foregroundStyle(.secondary)
+                    EmptyCard(icon: "checkmark.circle", title: "You are all caught up.", message: "New requests, invoices and jobs that need you show up here.")
                 }
                 ForEach(items) { item in
                     Button { onSelect(item.kind) } label: {
-                        HStack(spacing: 12) {
-                            IconTile(icon: icon(item.kind), tint: tint(item.kind), size: 40)
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(item.title).font(.headline).foregroundStyle(.primary)
-                                Text(item.detail).font(.footnote).foregroundStyle(.secondary)
+                        Card(padding: 12) {
+                            HStack(spacing: 14) {
+                                IconTile(icon: icon(item.kind), tint: tint(item.kind), size: 44)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(item.title).font(.title3.weight(.semibold)).foregroundStyle(.primary)
+                                    Text(item.detail).font(.footnote).foregroundStyle(.secondary).multilineTextAlignment(.leading)
+                                }
+                                Spacer(minLength: 0)
+                                Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.secondary)
                             }
                         }
                     }
+                    .buttonStyle(.plain)
                 }
             }
-            .navigationTitle("Notifications")
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
         }
+        .background(Look.sheet.ignoresSafeArea())
     }
 
     private func icon(_ k: AppNotification.Kind) -> String {

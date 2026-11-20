@@ -23,62 +23,46 @@ struct RequestsView: View {
 
     var body: some View {
         ScreenStack {
-            List {
-                Section {
-                    Button(working ? "Checking..." : "Check for new requests") {
-                        Task {
-                            working = true
-                            note = await model.refreshRequests()
-                            working = false
-                        }
+            AppPage(title: "Requests", icon: "tray.full.fill") {
+                SecondaryActionButton(title: working ? "Checking..." : "Check for new requests", icon: "arrow.clockwise") {
+                    Task {
+                        working = true
+                        note = await model.refreshRequests()
+                        working = false
                     }
-                    .disabled(working)
-                    if let note { Text(note).font(.footnote).foregroundStyle(.secondary) }
                 }
-                Section("Waiting for you") {
+                .disabled(working)
+                if let note {
+                    Text(note).font(.footnote).foregroundStyle(.secondary)
+                        .padding(.horizontal, 6).frame(maxWidth: .infinity, alignment: .leading)
+                }
+                CardGroup(title: "Waiting for you") {
                     if pending.isEmpty { Text("Nothing waiting.").foregroundStyle(.secondary) }
-                    ForEach(pending) { r in
-                        VStack(alignment: .leading, spacing: 6) {
-                            HStack {
-                                Text(address(r)).font(.headline)
-                                Spacer()
-                                if r.kind == .urgent { StatusPill(text: "Urgent", color: .orange) }
-                            }
-                            Text(r.kind.title + (r.urgentReason.map { ": " + $0.title } ?? "")).font(.subheadline)
-                            if !r.note.isEmpty { Text("\"\(r.note)\"").font(.footnote).foregroundStyle(.secondary) }
-                            Text(r.createdAt.formatted(date: .abbreviated, time: .shortened)).font(.caption).foregroundStyle(.secondary)
-                            if r.kind == .thanks {
-                                Button("Mark read") { accept(r) }.buttonStyle(.borderedProminent).font(.footnote)
-                            } else {
-                                HStack {
-                                    Button("Accept") { accept(r) }.buttonStyle(.borderedProminent)
-                                    Button("Decline") { declineText = ""; decliningID = r.id }.buttonStyle(.bordered)
-                                }
-                                .font(.footnote)
-                            }
-                            if r.kind == .urgent {
-                                Text("Accepting moves this site to the top of today's list.").font(.caption).foregroundStyle(.secondary)
-                            }
+                    ForEach(Array(pending.enumerated()), id: \.offset) { index, r in
+                        VStack(alignment: .leading, spacing: 14) {
+                            if index > 0 { RowDivider() }
+                            pendingRow(r)
                         }
-                        .padding(.vertical, 2)
                     }
                 }
                 if !answered.isEmpty {
-                    Section("Answered") {
-                        ForEach(answered.prefix(20)) { r in
-                            VStack(alignment: .leading, spacing: 2) {
-                                HStack {
-                                    Text(address(r))
-                                    Spacer()
-                                    StatusPill(text: r.status == .accepted ? "Accepted" : "Declined", color: r.status == .accepted ? .green : .gray)
+                    CardGroup(title: "Answered") {
+                        ForEach(Array(answered.prefix(20).enumerated()), id: \.offset) { index, r in
+                            VStack(alignment: .leading, spacing: 14) {
+                                if index > 0 { RowDivider() }
+                                VStack(alignment: .leading, spacing: 4) {
+                                    HStack {
+                                        Text(address(r)).font(.headline)
+                                        Spacer()
+                                        StatusPill(text: r.status == .accepted ? "Accepted" : "Declined", color: r.status == .accepted ? .green : .gray)
+                                    }
+                                    Text(r.kind.title).font(.footnote).foregroundStyle(.secondary)
                                 }
-                                Text(r.kind.title).font(.footnote).foregroundStyle(.secondary)
                             }
                         }
                     }
                 }
             }
-            .navigationTitle("Requests")
             .alert("Decline this request?", isPresented: Binding(get: { decliningID != nil }, set: { _ in })) {
                 TextField("Message to the client (optional)", text: $declineText)
                 Button("Decline", role: .destructive) {
@@ -89,6 +73,31 @@ struct RequestsView: View {
                     }
                 }
                 Button("Cancel", role: .cancel) { decliningID = nil }
+            }
+        }
+    }
+
+    @ViewBuilder private func pendingRow(_ r: ServiceRequest) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text(address(r)).font(.headline)
+                Spacer()
+                if r.kind == .urgent { StatusPill(text: "Urgent", color: .orange) }
+            }
+            Text(r.kind.title + (r.urgentReason.map { ": " + $0.title } ?? "")).font(.subheadline)
+            if !r.note.isEmpty { Text("\"\(r.note)\"").font(.footnote).foregroundStyle(.secondary) }
+            Text(r.createdAt.formatted(date: .abbreviated, time: .shortened)).font(.caption).foregroundStyle(.secondary)
+            if r.kind == .thanks {
+                PrimaryActionButton(title: "Mark read") { accept(r) }.padding(.top, 4)
+            } else {
+                HStack(spacing: 10) {
+                    PrimaryActionButton(title: "Accept") { accept(r) }
+                    SecondaryActionButton(title: "Decline") { declineText = ""; decliningID = r.id }
+                }
+                .padding(.top, 4)
+            }
+            if r.kind == .urgent {
+                Text("Accepting moves this site to the top of today's list.").font(.caption).foregroundStyle(.secondary)
             }
         }
     }

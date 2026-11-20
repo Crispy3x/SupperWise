@@ -45,74 +45,96 @@ struct JobRow: View {
 struct JobDetailSheet: View {
     @Environment(AppModel.self) private var model
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.openURL) private var openURL
     let jobID: UUID
     @State private var message: String?
 
     private var job: Job? { model.data.jobs.first { $0.id == jobID } }
 
     var body: some View {
-        NavigationStack {
-            Group {
+        VStack(spacing: 0) {
+            HStack {
+                Text(job?.title ?? "Job").font(.title3.weight(.medium)).lineLimit(1)
+                Spacer()
+                CircleButton(icon: "xmark", label: "Close") { dismiss() }
+            }
+            .padding(.horizontal, 18).padding(.top, 18).padding(.bottom, 6)
             if let job {
-                List {
-                    Section {
-                        LabeledContent("When", value: DateFormatter.make("EEEE, MMM d, h:mm a").string(from: job.start))
-                        LabeledContent("Length", value: "\(job.durationMinutes) min")
-                        LabeledContent("Type", value: job.isTask ? "Reminder or task" : job.kind.title)
+                AppPage(clearTabBar: false) {
+                    CardGroup {
+                        FactRow(label: "When", value: DateFormatter.make("EEEE, MMM d, h:mm a").string(from: job.start))
+                        RowDivider()
+                        FactRow(label: "Length", value: "\(job.durationMinutes) min")
+                        RowDivider()
+                        FactRow(label: "Type", value: job.isTask ? "Reminder or task" : job.kind.title)
                         let who = model.data.customerName(forJob: job)
-                        if !who.isEmpty { LabeledContent("Client", value: who) }
+                        if !who.isEmpty {
+                            RowDivider()
+                            FactRow(label: "Client", value: who)
+                        }
                         let place = model.data.address(forJob: job)
-                        if !place.isEmpty { LabeledContent("Place", value: place) }
+                        if !place.isEmpty {
+                            RowDivider()
+                            FactRow(label: "Place", value: place)
+                        }
                         if let site = model.data.sites.first(where: { $0.id == job.siteID }), !site.instructions.isEmpty {
+                            RowDivider()
                             Text(site.instructions).font(.footnote)
                         }
-                        if !job.notes.isEmpty { Text(job.notes).font(.footnote) }
+                        if !job.notes.isEmpty {
+                            RowDivider()
+                            Text(job.notes).font(.footnote)
+                        }
                     }
                     let people = model.data.team.filter { job.assigneeIDs.contains($0.id) }
                     if !people.isEmpty {
-                        Section("Assigned to") { ForEach(people) { Text($0.name) } }
+                        CardGroup(title: "Assigned to") {
+                            ForEach(Array(people.enumerated()), id: \.element.id) { index, person in
+                                if index > 0 { RowDivider() }
+                                Text(person.name).font(.title3)
+                            }
+                        }
                     }
                     if let site = model.data.sites.first(where: { $0.id == job.siteID }),
                        let lat = site.latitude, let lon = site.longitude,
                        let url = NavigationLinks.appleMaps(to: Coordinate(latitude: lat, longitude: lon), from: model.data.depot) {
-                        Section { Link(destination: url) { Label("Navigate in Apple Maps", systemImage: "location.fill") } }
+                        SecondaryActionButton(title: "Navigate in Apple Maps", icon: "location.fill") { openURL(url) }
                     }
                     if !job.isTask && (model.data.can(.editJobs) || model.data.can(.logVisits)) {
-                        Section("Status") {
-                            ForEach(JobStatus.allCases, id: \.self) { s in
+                        CardGroup(title: "Status") {
+                            ForEach(Array(JobStatus.allCases.enumerated()), id: \.offset) { index, s in
+                                if index > 0 { RowDivider() }
                                 Button { message = model.setJobStatus(s, id: job.id) } label: {
                                     HStack {
-                                        Text(s.title).foregroundStyle(.primary)
+                                        Text(s.title).font(.title3).foregroundStyle(.primary)
                                         Spacer()
                                         if job.status == s { Image(systemName: "checkmark").foregroundStyle(s.color) }
                                     }
+                                    .contentShape(Rectangle())
                                 }
+                                .buttonStyle(.plain)
                             }
                         }
                     } else if job.isTask {
-                        Section {
-                            Button(job.status == .done ? "Mark not done" : "Mark done") {
-                                message = model.setJobStatus(job.status == .done ? .scheduled : .done, id: job.id)
-                            }
+                        SecondaryActionButton(title: job.status == .done ? "Mark not done" : "Mark done", icon: job.status == .done ? "arrow.uturn.backward" : "checkmark") {
+                            message = model.setJobStatus(job.status == .done ? .scheduled : .done, id: job.id)
                         }
                     }
-                    if let message { Section { Text(message).font(.footnote).foregroundStyle(.red) } }
+                    if let message { Text(message).font(.footnote).foregroundStyle(.red).frame(maxWidth: .infinity, alignment: .leading) }
                     if model.data.can(.editJobs) {
-                        Section {
-                            Button("Delete", role: .destructive) {
-                                message = model.deleteJob(job.id)
-                                if message == nil { dismiss() }
-                            }
+                        PrimaryActionButton(title: "Delete", icon: "trash", destructive: true) {
+                            message = model.deleteJob(job.id)
+                            if message == nil { dismiss() }
                         }
                     }
                 }
-                .navigationTitle(job.title)
             } else {
-                Text("This job no longer exists.").foregroundStyle(.secondary)
+                AppPage(clearTabBar: false) {
+                    EmptyCard(icon: "briefcase", title: "Job not found", message: "This job no longer exists.")
+                }
             }
-            }
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
         }
+        .background(Look.sheet.ignoresSafeArea())
     }
 }
 

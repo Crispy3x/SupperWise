@@ -451,4 +451,125 @@ struct WizardScaffold<Content: View>: View {
         .background(Look.sheet.ignoresSafeArea())
     }
 }
+
+// MARK: - Page kit: every screen is built from these, so the whole app looks and acts the same
+
+/// A full page in the app's style: an optional big title, then cards, on the page color, clear of the floating tab bar.
+struct AppPage<Content: View>: View {
+    var title: String?
+    var icon: String?
+    var trailing: String = ""
+    var clearTabBar = true
+    @ViewBuilder var content: Content
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 16) {
+                if let title, let icon { ScreenHeader(icon: icon, title: title, trailing: trailing) }
+                content
+            }
+            .padding(.horizontal, 16).padding(.top, 8).padding(.bottom, clearTabBar ? Look.tabBarClearance : 24)
+            .frame(maxWidth: 720)
+            .frame(maxWidth: .infinity)
+        }
+        .scrollDismissesKeyboard(.interactively)
+        .background(Look.page.ignoresSafeArea())
+    }
+}
+
+/// A titled card that holds rows, fields or buttons. Put `RowDivider()` between rows.
+struct CardGroup<Content: View>: View {
+    var title: String?
+    var footer: String?
+    @ViewBuilder var content: Content
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            if let title { SectionLabel(text: title).padding(.leading, 4) }
+            Card { VStack(alignment: .leading, spacing: 14) { content } }
+            if let footer { Text(footer).font(.footnote).foregroundStyle(.secondary).padding(.horizontal, 6) }
+        }
+    }
+}
+
+struct RowDivider: View {
+    var body: some View { Divider().overlay(Look.stroke) }
+}
+
+/// A tappable row inside a card or on its own: colored icon tile, title, optional detail line and a chevron.
+/// Use inside a NavigationLink or Button label.
+struct CardLinkRow: View {
+    let icon: String
+    var tint: Color = .accentColor
+    let title: String
+    var detail: String?
+    var badge: Int = 0
+    var body: some View {
+        HStack(spacing: 14) {
+            IconTile(icon: icon, tint: tint, size: 44)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title).font(.title3.weight(.semibold)).foregroundStyle(.primary)
+                if let detail, !detail.isEmpty { Text(detail).font(.footnote).foregroundStyle(.secondary).lineLimit(2) }
+            }
+            Spacer()
+            if badge > 0 {
+                Text("\(badge)").font(.footnote.bold()).foregroundStyle(.white)
+                    .padding(.horizontal, 8).padding(.vertical, 2).background(Color.red, in: Capsule())
+            }
+            Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.secondary)
+        }
+        .contentShape(Rectangle())
+    }
+}
+
+/// A label with a value on the right, for facts inside a card.
+struct FactRow: View {
+    let label: String
+    let value: String
+    var valueColor: Color = .primary
+    var body: some View {
+        HStack(alignment: .firstTextBaseline) {
+            Text(label).foregroundStyle(.secondary)
+            Spacer()
+            Text(value).fontWeight(.semibold).foregroundStyle(valueColor).multilineTextAlignment(.trailing)
+        }
+    }
+}
+
+/// The main action at the bottom of a card or page: a filled capsule.
+struct PrimaryActionButton: View {
+    let title: String
+    var icon: String?
+    var destructive = false
+    let action: () -> Void
+    @Environment(AppModel.self) private var model
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 8) {
+                if let icon { Image(systemName: icon) }
+                Text(title).font(.title3.weight(.semibold))
+            }
+            .foregroundStyle(.white).frame(maxWidth: .infinity).padding(.vertical, 16)
+            .background(destructive ? Color.red : Theme.accent(model.data.profile.accentColor), in: Capsule())
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+/// A quieter button: a pill with a tinted outline.
+struct SecondaryActionButton: View {
+    let title: String
+    var icon: String?
+    let action: () -> Void
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 8) {
+                if let icon { Image(systemName: icon) }
+                Text(title).font(.title3.weight(.medium))
+            }
+            .foregroundStyle(.primary).frame(maxWidth: .infinity).padding(.vertical, 14)
+            .background(Look.pill, in: Capsule())
+        }
+        .buttonStyle(.plain)
+    }
+}
+
 #endif

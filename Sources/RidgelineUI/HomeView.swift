@@ -195,19 +195,24 @@ struct SmartRouteSheet: View {
     private var stops: [Stop] { model.data.routeStops(on: day) }
     private var start: Coordinate { model.data.depot ?? stops.first?.coordinate ?? Coordinate(latitude: 0, longitude: 0) }
 
+    @Environment(\.openURL) private var openURL
+
     var body: some View {
-        NavigationStack {
-            List {
+        VStack(spacing: 0) {
+            HStack {
+                Text("Smart route").font(.title3.weight(.medium))
+                Spacer()
+                CircleButton(icon: "xmark", label: "Close") { dismiss() }
+            }
+            .padding(.horizontal, 18).padding(.top, 18).padding(.bottom, 6)
+            AppPage(clearTabBar: false) {
                 if working && plan == nil {
-                    Section { HStack { ProgressView(); Text("Finding the quickest order...") } }
+                    Card { HStack(spacing: 12) { ProgressView(); Text("Finding the quickest order...") } }
                 } else if stops.isEmpty {
-                    Section {
-                        Label("No route yet.", systemImage: "map").foregroundStyle(.secondary)
-                        Text("Create a job for a client with an address, and it will show up here. If you just added one, check the client's address.")
-                            .font(.footnote).foregroundStyle(.secondary)
-                    }
+                    EmptyCard(icon: "map", title: "No route yet",
+                              message: "Create a job for a client with an address, and it will show up here. If you just added one, check the client's address.")
                 } else if let plan {
-                    Section(Calendar.current.isDateInToday(day) ? "Drive in this order, today" : "Drive in this order, \(day.formatted(.dateTime.weekday(.wide).month().day()))") {
+                    CardGroup(title: Calendar.current.isDateInToday(day) ? "Drive in this order, today" : "Drive in this order, \(day.formatted(.dateTime.weekday(.wide).month().day()))") {
                         ForEach(Array(plan.planned.enumerated()), id: \.offset) { i, p in
                             HStack {
                                 Text("\(i + 1).").monospacedDigit().foregroundStyle(.secondary)
@@ -215,19 +220,19 @@ struct SmartRouteSheet: View {
                                 Spacer()
                                 Text("\(Int(p.arrivalOffsetSeconds / 60)) min").foregroundStyle(.secondary).monospacedDigit()
                             }
+                            RowDivider()
                         }
-                        LabeledContent("Total driving", value: "\(Int(plan.totalDriveSeconds / 60)) min")
+                        FactRow(label: "Total driving", value: "\(Int(plan.totalDriveSeconds / 60)) min")
                     }
                     if let first = plan.stops.first, let url = NavigationLinks.appleMaps(to: first.coordinate, from: start) {
-                        Section("Go") { Link(destination: url) { Label("Start in Apple Maps", systemImage: "location.fill") } }
+                        PrimaryActionButton(title: "Start in Apple Maps", icon: "location.fill") { openURL(url) }
                     }
                 }
-                Section { Text(note).font(.footnote).foregroundStyle(.secondary) }
+                Text(note).font(.footnote).foregroundStyle(.secondary).frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
             }
-            .navigationTitle("Smart route")
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
-            .task { await run() }
         }
+        .background(Look.sheet.ignoresSafeArea())
+        .task { await run() }
     }
 
     private func run() async {

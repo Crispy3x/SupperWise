@@ -12,34 +12,41 @@ struct CustomersView: View {
 
     var body: some View {
         ScreenStack {
-            List {
-                if model.data.sites.isEmpty {
-                    Section {
-                        Text("No customers yet. Add one, or load demo data to try the app.")
-                            .foregroundStyle(.secondary)
-                        if model.data.customers.isEmpty && model.data.contracts.isEmpty {
-                            Button("Load demo data (adds sample customers)") { model.loadDemoData() }
-                        }
-                    }
-                }
-                ForEach(model.data.sites) { site in
-                    NavigationLink { ClientDetailView(customerID: site.customerID) } label: {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(model.customerName(for: site)).font(.headline)
-                            Text(site.address).font(.subheadline)
-                            Text("Priority \(site.priority), trigger \(site.triggerInches, specifier: "%.1f") in")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                }
-            }
-            .navigationTitle("Customers")
-            .toolbar {
+            AppPage(title: "Customers", icon: "person.2.fill") {
                 Menu {
                     Button("Add one client") { showingAdd = true }
                     Button("Import from a spreadsheet (CSV)") { showingImporter = true }
-                } label: { Label("Add", systemImage: "plus") }
+                } label: {
+                    Label("Add", systemImage: "plus").font(.title3.weight(.semibold)).foregroundStyle(.white)
+                        .frame(maxWidth: .infinity).padding(.vertical, 16)
+                        .background(Theme.accent(model.data.profile.accentColor), in: Capsule())
+                }
+                .buttonStyle(.plain)
+                if model.data.sites.isEmpty {
+                    EmptyCard(icon: "person.2", title: "No customers yet", message: "Add one, or load demo data to try the app.")
+                    if model.data.customers.isEmpty && model.data.contracts.isEmpty {
+                        SecondaryActionButton(title: "Load demo data (adds sample customers)") { model.loadDemoData() }
+                    }
+                }
+                ForEach(model.data.sites) { site in
+                    NavigationLink { ClientDetailView(customerID: site.customerID).circleBack().pageBackground() } label: {
+                        Card(padding: 14) {
+                            HStack(spacing: 12) {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(model.customerName(for: site)).font(.title3.weight(.semibold)).foregroundStyle(.primary)
+                                    Text(site.address).font(.subheadline).foregroundStyle(.primary)
+                                    Text("Priority \(site.priority), trigger \(site.triggerInches, specifier: "%.1f") in")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                                Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.secondary)
+                            }
+                            .contentShape(Rectangle())
+                        }
+                    }
+                    .buttonStyle(.plain)
+                }
             }
             .sheet(isPresented: $showingAdd) { AddCustomerSheet() }
             .sheet(isPresented: Binding(get: { importReport != nil }, set: { if !$0 { importReport = nil } })) {
@@ -71,46 +78,55 @@ struct ImportClientsSheet: View {
     let report: ImportReport
     @State private var rate = 0
 
+    private func asDouble(_ value: Binding<Int>) -> Binding<Double> {
+        Binding(get: { Double(value.wrappedValue) }, set: { value.wrappedValue = Int($0) })
+    }
+
     var body: some View {
-        NavigationStack {
-            Form {
-                Section {
+        VStack(spacing: 0) {
+            HStack {
+                Text("Import clients").font(.title3.weight(.medium))
+                Spacer()
+                CircleButton(icon: "xmark", label: "Close") { dismiss() }
+            }
+            .padding(.horizontal, 18).padding(.top, 18).padding(.bottom, 6)
+            AppPage(clearTabBar: false) {
+                CardGroup {
                     Text("\(report.clients.count) client\(report.clients.count == 1 ? "" : "s") will be added.").font(.headline)
                     if !report.skipped.isEmpty { Text("\(report.skipped.count) row\(report.skipped.count == 1 ? "" : "s") skipped.").foregroundStyle(.orange) }
                 }
-                Section("Price") {
-                    Stepper(rate == 0 ? "No price yet" : "Price per push: $\(rate)", value: $rate, in: 0...1000, step: 5)
+                CardGroup(title: "Price") {
+                    PillStepper(label: "Price per push", value: asDouble($rate), range: 0...1000, step: 5, format: { $0 == 0 ? "None yet" : "$\(Int($0))" })
                     Text("With a price, each client also gets a per-push contract. With none you can add a quote later.").font(.footnote).foregroundStyle(.secondary)
                 }
-                Section("First few") {
-                    ForEach(Array(report.clients.prefix(5).enumerated()), id: \.offset) { _, c in
-                        VStack(alignment: .leading) { Text(c.name); Text(c.address).font(.footnote).foregroundStyle(.secondary) }
+                CardGroup(title: "First few") {
+                    ForEach(Array(report.clients.prefix(5).enumerated()), id: \.offset) { index, c in
+                        VStack(alignment: .leading, spacing: 14) {
+                            if index > 0 { RowDivider() }
+                            VStack(alignment: .leading, spacing: 2) { Text(c.name); Text(c.address).font(.footnote).foregroundStyle(.secondary) }
+                        }
                     }
                 }
                 if !report.skipped.isEmpty {
-                    Section("Skipped") {
+                    CardGroup(title: "Skipped") {
                         ForEach(Array(report.skipped.prefix(8).enumerated()), id: \.offset) { _, s in
                             Text("Row \(s.row): \(s.reason)").font(.footnote)
                         }
                     }
                 }
-                Section {
+                CardGroup {
                     Text("Nobody is marked as having agreed to messages. Open each client to record that, only if they said yes.").font(.footnote).foregroundStyle(.secondary)
+                    RowDivider()
                     Text("A client without a price has no contract, so they are not billed or messaged until you add one (for example by accepting a quote).").font(.footnote).foregroundStyle(.secondary)
                 }
-            }
-            .navigationTitle("Import clients")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Import") {
-                        model.edit { _ = $0.importClients(report.clients, perPush: rate > 0 ? Money(dollars: rate) : nil, now: Date()) }
-                        dismiss()
-                    }
-                    .disabled(report.clients.isEmpty)
+                PrimaryActionButton(title: "Import") {
+                    model.edit { _ = $0.importClients(report.clients, perPush: rate > 0 ? Money(dollars: rate) : nil, now: Date()) }
+                    dismiss()
                 }
+                .disabled(report.clients.isEmpty).opacity(report.clients.isEmpty ? 0.4 : 1)
             }
         }
+        .background(Look.sheet.ignoresSafeArea())
     }
 }
 #endif

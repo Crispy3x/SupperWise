@@ -171,7 +171,11 @@ struct AddMemberSheet: View {
                                 #endif
                                 .padding(.horizontal, 22).padding(.vertical, 16)
                                 .background(Look.field, in: Capsule()).overlay(Capsule().stroke(Look.fieldStroke, lineWidth: 1))
-                            Button("Suggest") { password = model.suggestedPassword() }.buttonStyle(.bordered).controlSize(.large)
+                            Button { password = model.suggestedPassword() } label: {
+                                Text("Suggest").font(.title3.weight(.medium)).foregroundStyle(.primary)
+                                    .padding(.horizontal, 18).padding(.vertical, 16).background(Look.pill, in: Capsule())
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
                     Text("You make the username and password. They use them under \"I'm an employee\". Give them to the person after you save.").font(.footnote).foregroundStyle(.secondary)
@@ -229,43 +233,60 @@ struct ResetPasswordSheet: View {
     private var member: TeamMember? { model.data.team.first { $0.id == memberID } }
 
     var body: some View {
-        NavigationStack {
-            Form {
-                if let done, let m = member {
-                    Section {
-                        LabeledContent("Username", value: model.data.username(forMember: m.id) ?? "")
-                        LabeledContent("New password", value: done)
-                    } footer: { Text("Give the new password to \(m.name). The app keeps only a scrambled copy, so it cannot show it again.") }
-                    Section {
-                        ShareLink(item: "Your new Ridgeline Ops password: \(done)") { Label("Share", systemImage: "square.and.arrow.up") }
-                    }
-                } else {
-                    Section {
-                        HStack {
-                            TextField("New password", text: $password).autocorrectionDisabled()
-                                #if os(iOS)
-                                .textInputAutocapitalization(.never)
-                                #endif
-                            Button("Suggest") { password = model.suggestedPassword() }.buttonStyle(.bordered)
-                        }
-                    } footer: { Text("\(LoginRules.minPasswordLength) or more characters. This also lifts a lock from too many wrong tries.") }
-                    if let problem { Section { Text(problem).font(.footnote).foregroundStyle(.red) } }
-                }
+        VStack(spacing: 0) {
+            HStack {
+                Text("New password").font(.title3.weight(.medium))
+                Spacer()
+                CircleButton(icon: "xmark", label: done == nil ? "Cancel" : "Close") { dismiss() }
             }
-            .navigationTitle("New password")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button(done == nil ? "Cancel" : "Close") { dismiss() } }
-                if done == nil {
-                    ToolbarItem(placement: .confirmationAction) {
-                        Button("Save") {
+            .padding(.horizontal, 18).padding(.top, 18).padding(.bottom, 6)
+            AppPage(clearTabBar: false) {
+                if let done, let m = member {
+                    CardGroup(footer: "Give the new password to \(m.name). The app keeps only a scrambled copy, so it cannot show it again.") {
+                        FactRow(label: "Username", value: model.data.username(forMember: m.id) ?? "")
+                        RowDivider()
+                        FactRow(label: "New password", value: done)
+                    }
+                    ShareLink(item: "Your new Ridgeline Ops password: \(done)") {
+                        Label("Share", systemImage: "square.and.arrow.up").font(.title3.weight(.medium)).foregroundStyle(.primary)
+                            .frame(maxWidth: .infinity).padding(.vertical, 14)
+                            .background(Look.pill, in: Capsule())
+                    }
+                    .buttonStyle(.plain)
+                } else {
+                    CardGroup(footer: "\(LoginRules.minPasswordLength) or more characters. This also lifts a lock from too many wrong tries.") {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("New password").font(.title3.weight(.medium))
+                            HStack(spacing: 10) {
+                                TextField("New password", text: $password)
+                                    .font(.title3)
+                                    .autocorrectionDisabled()
+                                    #if os(iOS)
+                                    .textInputAutocapitalization(.never)
+                                    #endif
+                                    .padding(.horizontal, 22).padding(.vertical, 16)
+                                    .background(Look.field, in: Capsule()).overlay(Capsule().stroke(Look.fieldStroke, lineWidth: 1))
+                                Button { password = model.suggestedPassword() } label: {
+                                    Text("Suggest").font(.title3.weight(.medium)).foregroundStyle(.primary)
+                                        .padding(.horizontal, 18).padding(.vertical, 16).background(Look.pill, in: Capsule())
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        }
+                        PrimaryActionButton(title: "Save") {
                             problem = model.setEmployeePassword(password, forMember: memberID)
                             if problem == nil { done = password }
                         }
                         .disabled(password.isEmpty)
+                        .opacity(password.isEmpty ? 0.4 : 1)
+                    }
+                    if let problem {
+                        Text(problem).font(.footnote).foregroundStyle(.red).frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
                     }
                 }
             }
         }
+        .background(Look.sheet.ignoresSafeArea())
     }
 }
 
@@ -284,67 +305,61 @@ struct MemberDetailView: View {
 
     var body: some View {
         if let m = member {
-            Form {
-                Section {
-                    LabeledContent("Name", value: m.name)
-                    if !m.phone.isEmpty { LabeledContent("Phone", value: m.phone) }
-                    if !m.email.isEmpty { LabeledContent("Email", value: m.email) }
-                    Picker("Role", selection: Binding(get: { m.role }, set: { new in
+            AppPage(title: m.name, icon: "person.fill", trailing: m.role.title) {
+                CardGroup {
+                    FactRow(label: "Name", value: m.name)
+                    if !m.phone.isEmpty { RowDivider(); FactRow(label: "Phone", value: m.phone) }
+                    if !m.email.isEmpty { RowDivider(); FactRow(label: "Email", value: m.email) }
+                    RowDivider()
+                    PillMenu(label: "Role", options: TeamRole.allCases.map { ($0, $0.title) }, selection: Binding(get: { m.role }, set: { new in
                         message = model.edit { try $0.setRole(new, forMember: m.id) }
-                    })) {
-                        ForEach(TeamRole.allCases, id: \.self) { Text($0.title).tag($0) }
-                    }
+                    }))
                     .disabled(!canEdit)
                     Text(m.role.summary).font(.footnote).foregroundStyle(.secondary)
                 }
-                Section {
-                    Stepper("Hourly pay: \(m.hourlyRate.map { $0.formatted } ?? "not set")", value: Binding(get: { (m.hourlyRate?.cents ?? 0) / 100 }, set: { v in
-                        message = model.edit { try $0.setHourlyRate(v == 0 ? nil : Money(dollars: v), forMember: m.id) }
-                    }), in: 0...500)
+                CardGroup(title: "Pay", footer: "Used for the pay-owed total on timesheets.") {
+                    PillStepper(label: "Hourly pay", value: Binding(get: { Double((m.hourlyRate?.cents ?? 0) / 100) }, set: { v in
+                        message = model.edit { try $0.setHourlyRate(Int(v) == 0 ? nil : Money(dollars: Int(v)), forMember: m.id) }
+                    }), range: 0...500, step: 1, format: { $0 == 0 ? "not set" : Money(dollars: Int($0)).formatted })
                     .disabled(!canEdit)
-                } header: { Text("Pay") } footer: { Text("Used for the pay-owed total on timesheets.") }
-                Section {
-                    ForEach(Permission.allCases, id: \.self) { p in
+                }
+                CardGroup(title: "What they can see and do",
+                          footer: (canEdit && !canCustomize) ? "Choosing permissions one by one is part of the Max plan. Roles above work on every plan." : nil) {
+                    ForEach(Array(Permission.allCases.enumerated()), id: \.offset) { i, p in
+                        if i > 0 { RowDivider() }
                         Toggle(p.title, isOn: Binding(get: { m.permissions.contains(p) }, set: { on in
                             message = model.edit { try $0.setPermission(p, allowed: on, forMember: m.id) }
                         }))
                         .disabled(!canCustomize)
                     }
-                } header: {
-                    Text("What they can see and do")
-                } footer: {
-                    if canEdit && !canCustomize { Text("Choosing permissions one by one is part of the Max plan. Roles above work on every plan.") }
                 }
-                Section {
-                    LabeledContent("Username", value: model.data.username(forMember: m.id) ?? "")
-                    if canEdit { Button("Set a new password") { resetting = true } }
-                } header: {
-                    Text("Sign-in")
-                } footer: {
-                    Text(m.status == .invited ? "Has not signed in yet." : "Joined \(m.joinedAt.map { DateFormatter.make("MMM d").string(from: $0) } ?? "").")
+                CardGroup(title: "Sign-in",
+                          footer: m.status == .invited ? "Has not signed in yet." : "Joined \(m.joinedAt.map { DateFormatter.make("MMM d").string(from: $0) } ?? "").") {
+                    FactRow(label: "Username", value: model.data.username(forMember: m.id) ?? "")
+                    if canEdit {
+                        RowDivider()
+                        SecondaryActionButton(title: "Set a new password") { resetting = true }
+                    }
                 }
                 if canEdit && m.status != .disabled {
-                    Section {
-                        Button("Preview the app as \(m.name)") {
+                    CardGroup(footer: "See exactly what this person sees. Nothing changes for them.") {
+                        SecondaryActionButton(title: "Preview the app as \(m.name)") {
                             model.previewAsEmployee(m.id)
                         }
-                    } footer: {
-                        Text("See exactly what this person sees. Nothing changes for them.")
                     }
                 }
                 if canEdit {
-                    Section {
-                        Button(m.status == .disabled ? "Switch access back on" : "Switch access off") {
+                    CardGroup(footer: "Switching access off keeps their history and frees their seat.") {
+                        SecondaryActionButton(title: m.status == .disabled ? "Switch access back on" : "Switch access off") {
                             message = model.edit { try $0.setMemberEnabled(m.status == .disabled, forMember: m.id) }
                         }
-                        Button("Remove from team", role: .destructive) { confirmRemove = true }
-                    } footer: {
-                        Text("Switching access off keeps their history and frees their seat.")
+                        PrimaryActionButton(title: "Remove from team", destructive: true) { confirmRemove = true }
                     }
                 }
-                if let message { Section { Text(message).font(.footnote).foregroundStyle(.red) } }
+                if let message {
+                    Text(message).font(.footnote).foregroundStyle(.red).frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
+                }
             }
-            .navigationTitle(m.name)
             .sheet(isPresented: $resetting) { ResetPasswordSheet(memberID: m.id) }
             .confirmationDialog("Remove \(m.name)?", isPresented: $confirmRemove, titleVisibility: .visible) {
                 Button("Remove", role: .destructive) {
@@ -353,7 +368,9 @@ struct MemberDetailView: View {
                 }
             } message: { Text("Their jobs become unassigned.") }
         } else {
-            Text("This person is no longer on the team.").foregroundStyle(.secondary)
+            AppPage {
+                Text("This person is no longer on the team.").foregroundStyle(.secondary).frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
+            }
         }
     }
 }

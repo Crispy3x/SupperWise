@@ -66,22 +66,28 @@ struct PhotoCaptureRow: View {
     @State private var problem: String?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text(title)
+                Text(title).font(.title3.weight(.medium))
                 Spacer()
                 Text("\(photos.count) saved").font(.footnote).foregroundStyle(.secondary)
             }
-            HStack {
+            HStack(spacing: 10) {
                 #if os(iOS)
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                    Button("Take photo") { showingCamera = true }
+                    Button { showingCamera = true } label: {
+                        Label("Take photo", systemImage: "camera.fill").font(.callout.weight(.medium)).frame(maxWidth: .infinity).padding(.vertical, 12)
+                            .background(Look.pill, in: Capsule())
+                    }
+                    .buttonStyle(.plain)
                 }
                 #endif
-                PhotosPicker("Choose photo", selection: $pickerItem, matching: .images)
+                PhotosPicker(selection: $pickerItem, matching: .images) {
+                    Label("Choose photo", systemImage: "photo.on.rectangle").font(.callout.weight(.medium)).frame(maxWidth: .infinity).padding(.vertical, 12)
+                        .background(Look.pill, in: Capsule())
+                }
+                .buttonStyle(.plain)
             }
-            .buttonStyle(.bordered)
-            .font(.footnote)
             if let problem { Text(problem).font(.footnote).foregroundStyle(.red) }
         }
         .onChange(of: pickerItem) {

@@ -23,37 +23,38 @@ struct TimeClockView: View {
 
     var body: some View {
         ScreenStack {
-            Form {
-                Section("Who is working") {
-                    TextField("Your name", text: $name)
-                    Picker("Job", selection: $siteID) {
-                        Text("General").tag(UUID?.none)
-                        ForEach(model.data.sites) { Text($0.address).tag(Optional($0.id)) }
-                    }
+            AppPage {
+                CardGroup(title: "Who is working", footer: message) {
+                    PillField(label: "Your name", placeholder: "Name", text: $name)
+                    PillMenu(label: "Job", options: [(UUID?.none, "General")] + model.data.sites.map { (UUID?.some($0.id), $0.address) }, selection: $siteID)
                     if openEntry == nil {
-                        Button("Clock in") { message = model.edit { try $0.clockIn(member: name, siteID: siteID, now: Date()) } }
+                        PrimaryActionButton(title: "Clock in", icon: "play.fill") { message = model.edit { try $0.clockIn(member: name, siteID: siteID, now: Date()) } }
                             .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                            .opacity(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? 0.5 : 1)
                     } else {
-                        Button("Clock out") { message = model.edit { try $0.clockOut(member: name, now: Date()) } }
+                        PrimaryActionButton(title: "Clock out", icon: "stop.fill") { message = model.edit { try $0.clockOut(member: name, now: Date()) } }
                     }
-                    if let message { Text(message).font(.footnote).foregroundStyle(.secondary) }
                 }
-                Section("Recent") {
-                    if recent.isEmpty { Text("No time recorded yet.").foregroundStyle(.secondary) }
-                    ForEach(recent) { entry in
-                        VStack(alignment: .leading, spacing: 4) {
-                            HStack {
-                                Text(entry.memberName).font(.headline)
-                                Spacer()
-                                TimelineView(.periodic(from: Date(), by: 60)) { context in
-                                    Text("\(entry.hours(now: context.date), specifier: "%.2f") h")
+                if recent.isEmpty {
+                    EmptyCard(icon: "clock", title: "No time recorded yet", message: "Clock in to start your first shift.")
+                } else {
+                    CardGroup(title: "Recent") {
+                        ForEach(Array(recent.enumerated()), id: \.element.id) { index, entry in
+                            if index > 0 { RowDivider() }
+                            VStack(alignment: .leading, spacing: 4) {
+                                HStack {
+                                    Text(entry.memberName).font(.headline)
+                                    Spacer()
+                                    TimelineView(.periodic(from: Date(), by: 60)) { context in
+                                        Text("\(entry.hours(now: context.date), specifier: "%.2f") h").fontWeight(.semibold)
+                                    }
                                 }
-                            }
-                            Text("\(siteName(entry.siteID)), \(entry.start.formatted(date: .abbreviated, time: .shortened))")
-                                .font(.footnote).foregroundStyle(.secondary)
-                            if entry.end == nil && entry.hours(now: Date()) > 12 {
-                                Text("Still clocked in after 12 hours. Check for a missed clock out.")
-                                    .font(.footnote).foregroundStyle(.orange)
+                                Text("\(siteName(entry.siteID)), \(entry.start.formatted(date: .abbreviated, time: .shortened))")
+                                    .font(.footnote).foregroundStyle(.secondary)
+                                if entry.end == nil && entry.hours(now: Date()) > 12 {
+                                    Text("Still clocked in after 12 hours. Check for a missed clock out.")
+                                        .font(.footnote).foregroundStyle(.orange)
+                                }
                             }
                         }
                     }

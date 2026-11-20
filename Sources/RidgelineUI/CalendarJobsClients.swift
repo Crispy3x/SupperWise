@@ -346,28 +346,25 @@ struct LeadsView: View {
     private var leads: [Customer] { model.data.customers.filter { $0.isLead } }
 
     var body: some View {
-        List {
+        AppPage(title: "Leads", icon: "leaf.fill", trailing: "\(leads.count) total") {
+            SecondaryActionButton(title: "Add lead", icon: "plus") { showNew = true }
             if leads.isEmpty {
-                Text("No leads yet. Add someone who has asked about your service.").foregroundStyle(.secondary)
+                EmptyCard(icon: "leaf", title: "No leads yet", message: "Add someone who has asked about your service.")
             }
             ForEach(leads) { lead in
-                VStack(alignment: .leading, spacing: 6) {
-                    Text(lead.name).font(.headline)
-                    if !lead.phone.isEmpty || !lead.email.isEmpty { Text([lead.phone, lead.email].filter { !$0.isEmpty }.joined(separator: " · ")).font(.footnote).foregroundStyle(.secondary) }
-                    if !lead.notes.isEmpty { Text(lead.notes).font(.footnote) }
-                    HStack {
-                        Button("Make a client") { model.edit { d in if let i = d.customers.firstIndex(where: { $0.id == lead.id }) { d.customers[i].isLead = false } } }
-                            .buttonStyle(.borderedProminent)
-                        Button("Remove", role: .destructive) { model.edit { d in d.customers.removeAll { $0.id == lead.id } } }
-                            .buttonStyle(.bordered)
+                Card {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(lead.name).font(.headline)
+                        if !lead.phone.isEmpty || !lead.email.isEmpty { Text([lead.phone, lead.email].filter { !$0.isEmpty }.joined(separator: " \u{B7} ")).font(.footnote).foregroundStyle(.secondary) }
+                        if !lead.notes.isEmpty { Text(lead.notes).font(.footnote) }
+                        HStack(spacing: 12) {
+                            PrimaryActionButton(title: "Make a client") { model.edit { d in if let i = d.customers.firstIndex(where: { $0.id == lead.id }) { d.customers[i].isLead = false } } }
+                            SecondaryActionButton(title: "Remove", icon: "trash") { model.edit { d in d.customers.removeAll { $0.id == lead.id } } }
+                        }
                     }
-                    .font(.footnote)
                 }
-                .padding(.vertical, 4)
             }
         }
-        .navigationTitle("Leads")
-        .toolbar { ToolbarItem(placement: .primaryAction) { Button { showNew = true } label: { Label("Add lead", systemImage: "plus") } } }
         .sheet(isPresented: $showNew) { AddLeadSheet() }
     }
 }
@@ -380,28 +377,36 @@ struct AddLeadSheet: View {
     @State private var email = ""
     @State private var notes = ""
 
+    private var canSave: Bool { !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+
     var body: some View {
-        NavigationStack {
-            Form {
-                TextField("Name", text: $name)
-                TextField("Phone", text: $phone)
-                TextField("Email", text: $email)
-                TextField("What they asked for", text: $notes, axis: .vertical).lineLimit(2...5)
+        VStack(spacing: 0) {
+            HStack {
+                Text("New lead").font(.title3.weight(.medium))
+                Spacer()
+                CircleButton(icon: "xmark", label: "Close") { dismiss() }
             }
-            .navigationTitle("New lead")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
-                        let clean = name.trimmingCharacters(in: .whitespacesAndNewlines)
-                        model.edit { $0.customers.append(Customer(name: String(clean.prefix(80)), phone: String(phone.prefix(40)),
-                                                                  email: String(email.prefix(120)), notes: String(notes.prefix(500)), isLead: true)) }
-                        dismiss()
-                    }
-                    .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            .padding(.horizontal, 18).padding(.top, 18).padding(.bottom, 6)
+            AppPage(clearTabBar: false) {
+                CardGroup(title: "Contact") {
+                    PillField(label: "Name", required: true, placeholder: "Lead name", text: $name)
+                    PillField(label: "Phone", optional: true, placeholder: "Phone number", text: $phone, kind: .phone)
+                    PillField(label: "Email", optional: true, placeholder: "name@email.com", text: $email, kind: .email)
                 }
+                CardGroup {
+                    PillNotes(label: "What they asked for", placeholder: "Details", text: $notes)
+                }
+                PrimaryActionButton(title: "Save", icon: "checkmark") {
+                    let clean = name.trimmingCharacters(in: .whitespacesAndNewlines)
+                    model.edit { $0.customers.append(Customer(name: String(clean.prefix(80)), phone: String(phone.prefix(40)),
+                                                              email: String(email.prefix(120)), notes: String(notes.prefix(500)), isLead: true)) }
+                    dismiss()
+                }
+                .disabled(!canSave)
+                .opacity(canSave ? 1 : 0.5)
             }
         }
+        .background(Look.sheet.ignoresSafeArea())
     }
 }
 #endif

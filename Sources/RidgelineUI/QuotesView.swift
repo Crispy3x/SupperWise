@@ -9,57 +9,58 @@ struct QuotesView: View {
 
     var body: some View {
         ScreenStack {
-            List {
+            AppPage {
+                PrimaryActionButton(title: "New quote", icon: "plus") { showingNew = true }
                 if model.data.quotes.isEmpty {
-                    Section {
-                        Text("No quotes yet. Add one to send a price to a customer.")
-                            .foregroundStyle(.secondary)
-                        Button("New quote") { showingNew = true }
-                    }
+                    EmptyCard(icon: "doc.text", title: "No quotes yet", message: "Add one to send a price to a customer.")
                 }
                 ForEach(model.data.quotes) { quote in
-                    VStack(alignment: .leading, spacing: 4) {
-                        HStack {
-                            Text(quote.number).font(.headline)
-                            Spacer()
-                            Text(quote.status(now: Date()).rawValue.capitalized).font(.caption).foregroundStyle(.secondary)
-                        }
-                        Text(model.data.customers.first { $0.id == quote.customerID }?.name ?? "Unknown customer").font(.subheadline)
-                        Text(quote.address).font(.subheadline)
-                        Text(quote.terms.summary).font(.footnote).foregroundStyle(.secondary)
-                        HStack {
-                            if quote.status(now: Date()) == .draft {
-                                Button("Mark sent") {
-                                    message = model.edit { data in
-                                        guard let i = data.quotes.firstIndex(where: { $0.id == quote.id }) else { throw OperationError.notFound }
-                                        data.quotes[i].markSent(at: Date())
-                                    }
-                                }
-                            }
-                            if [.draft, .sent].contains(quote.status(now: Date())) {
-                                Button("Accept") {
-                                    message = model.edit { data in _ = try data.acceptQuote(id: quote.id, now: Date()) }
-                                        ?? "Accepted. A site and a contract were created for this customer."
-                                }
-                                Button("Decline") {
-                                    message = model.edit { data in
-                                        guard let i = data.quotes.firstIndex(where: { $0.id == quote.id }) else { throw OperationError.notFound }
-                                        try data.quotes[i].decline(at: Date())
-                                    } ?? "Quote declined."
-                                }
-                            }
-                        }
-                        .buttonStyle(.bordered)
-                        .font(.footnote)
-                    }
+                    quoteCard(quote)
                 }
-                if let message { Section { Text(message).font(.footnote).foregroundStyle(.secondary) } }
-            }
-            .navigationTitle("Quotes")
-            .toolbar {
-                Button { showingNew = true } label: { Label("New quote", systemImage: "plus") }
+                if let message {
+                    Card { Text(message).font(.footnote).foregroundStyle(.secondary) }
+                }
             }
             .sheet(isPresented: $showingNew) { NewQuoteSheet() }
+        }
+    }
+
+    @ViewBuilder private func quoteCard(_ quote: Quote) -> some View {
+        let status = quote.status(now: Date())
+        Card {
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    Text(quote.number).font(.title3.weight(.semibold))
+                    Spacer()
+                    StatusPill(text: status.rawValue.capitalized)
+                }
+                Text(model.data.customers.first { $0.id == quote.customerID }?.name ?? "Unknown customer").font(.headline)
+                Text(quote.address).font(.subheadline)
+                Text(quote.terms.summary).font(.footnote).foregroundStyle(.secondary)
+                if [.draft, .sent].contains(status) {
+                    RowDivider()
+                    PrimaryActionButton(title: "Accept") {
+                        message = model.edit { data in _ = try data.acceptQuote(id: quote.id, now: Date()) }
+                            ?? "Accepted. A site and a contract were created for this customer."
+                    }
+                    HStack(spacing: 10) {
+                        if status == .draft {
+                            SecondaryActionButton(title: "Mark sent") {
+                                message = model.edit { data in
+                                    guard let i = data.quotes.firstIndex(where: { $0.id == quote.id }) else { throw OperationError.notFound }
+                                    data.quotes[i].markSent(at: Date())
+                                }
+                            }
+                        }
+                        SecondaryActionButton(title: "Decline") {
+                            message = model.edit { data in
+                                guard let i = data.quotes.firstIndex(where: { $0.id == quote.id }) else { throw OperationError.notFound }
+                                try data.quotes[i].decline(at: Date())
+                            } ?? "Quote declined."
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -95,46 +96,67 @@ struct NewQuoteSheet: View {
         SeasonEstimate.range(terms, mild: .init(pushes: 6), heavy: .init(pushes: 16))
     }
 
+    private var canSave: Bool {
+        customerID != nil && !address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    private var customerOptions: [(UUID?, String)] {
+        var options: [(UUID?, String)] = [(nil, "Choose")]
+        options += model.data.customers.map { (c: Customer) -> (UUID?, String) in (c.id, c.name) }
+        return options
+    }
+
+    private var kindOptions: [(Kind, String)] {
+        Kind.allCases.map { (k: Kind) -> (Kind, String) in (k, k.rawValue) }
+    }
+
+    private func asDouble(_ value: Binding<Int>) -> Binding<Double> {
+        Binding(get: { Double(value.wrappedValue) }, set: { value.wrappedValue = Int($0) })
+    }
+
     var body: some View {
-        NavigationStack {
-            Form {
-                Section("Customer") {
+        VStack(spacing: 0) {
+            HStack {
+                Text("New quote").font(.title3.weight(.medium))
+                Spacer()
+                CircleButton(icon: "xmark", label: "Close") { dismiss() }
+            }
+            .padding(.horizontal, 18).padding(.top, 18).padding(.bottom, 6)
+            AppPage(clearTabBar: false) {
+                CardGroup(title: "Customer") {
                     if model.data.customers.isEmpty {
                         Text("Add a customer first.").foregroundStyle(.secondary)
                     } else {
-                        Picker("Customer", selection: $customerID) {
-                            Text("Choose").tag(UUID?.none)
-                            ForEach(model.data.customers) { Text($0.name).tag(Optional($0.id)) }
-                        }
+                        PillMenu(label: "Customer", required: true, options: customerOptions, selection: $customerID)
                     }
-                    TextField("Service address", text: $address)
+                    PillField(label: "Service address", required: true, placeholder: "14 Elm Ave, Minneapolis", text: $address)
                 }
-                Section("Price") {
-                    Picker("Type", selection: $kind) {
-                        ForEach(Kind.allCases) { Text($0.rawValue).tag($0) }
+                CardGroup(title: "Price") {
+                    PillMenu(label: "Type", options: kindOptions, selection: $kind)
+                    if kind == .perPush {
+                        PillStepper(label: "Price per push", value: asDouble($rate), range: 10...2000, step: 5, format: { "$\(Int($0))" })
                     }
-                    if kind == .perPush { Stepper("Price per push: $\(rate)", value: $rate, in: 10...2000, step: 5) }
-                    if kind != .perPush { Stepper("Season price: $\(season)", value: $season, in: 50...50_000, step: 50) }
+                    if kind != .perPush {
+                        PillStepper(label: "Season price", value: asDouble($season), range: 50...50_000, step: 50, format: { "$\(Int($0))" })
+                    }
                     if kind == .hybrid {
-                        Stepper("Pushes included: \(included)", value: $included, in: 1...60)
-                        Stepper("Each push after that: $\(overage)", value: $overage, in: 10...2000, step: 5)
+                        PillStepper(label: "Pushes included", value: asDouble($included), range: 1...60, step: 1, format: { "\(Int($0))" })
+                        PillStepper(label: "Each push after that", value: asDouble($overage), range: 10...2000, step: 5, format: { "$\(Int($0))" })
                     }
-                    Stepper("Valid for \(validDays) days", value: $validDays, in: 1...120)
+                    PillStepper(label: "Valid for", value: asDouble($validDays), range: 1...120, step: 1, format: { "\(Int($0)) days" })
                 }
-                Section("What the customer could pay") {
+                CardGroup(title: "What the customer could pay") {
                     Text("A mild winter (6 pushes): \(range.low.formatted). A heavy winter (16 pushes): \(range.high.formatted).")
                     Text("Estimates only. Real cost depends on how much it snows.").font(.footnote).foregroundStyle(.secondary)
                 }
-                Section("Notes") { TextField("Optional note", text: $notes) }
-            }
-            .navigationTitle("New quote")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") { save() }.disabled(customerID == nil || address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                CardGroup(title: "Notes") {
+                    PillNotes(label: "Note", placeholder: "Optional note", text: $notes)
                 }
+                PrimaryActionButton(title: "Save quote") { save() }
+                    .disabled(!canSave).opacity(canSave ? 1 : 0.4)
             }
         }
+        .background(Look.sheet.ignoresSafeArea())
     }
 
     private func save() {

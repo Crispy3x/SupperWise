@@ -53,18 +53,18 @@ struct StormView: View {
         let plan = livePlan ?? result
         let offsets = Dictionary(plan.planned.map { ($0.stop.id, $0.arrivalOffsetSeconds) }, uniquingKeysWith: { first, _ in first })
         ScreenStack {
-            Form {
-                Section("Forecast (National Weather Service, US)") {
+            AppPage {
+                CardGroup(title: "Forecast (National Weather Service, US)") {
                     if model.data.depot == nil {
-                        TextField("Yard latitude, e.g. 44.98", text: $depotLat)
-                        TextField("Yard longitude, e.g. -93.27", text: $depotLon)
-                        Button("Save yard location") {
+                        PillField(label: "Yard latitude", placeholder: "e.g. 44.98", text: $depotLat)
+                        PillField(label: "Yard longitude", placeholder: "e.g. -93.27", text: $depotLon)
+                        SecondaryActionButton(title: "Save yard location", icon: "mappin.and.ellipse") {
                             if let la = Double(depotLat), let lo = Double(depotLon), (-90...90).contains(la), (-180...180).contains(lo) {
                                 model.setDepot(latitude: la, longitude: lo)
                             }
                         }
                     } else {
-                        Button(loading ? "Loading..." : "Load forecast for the next 24 hours") {
+                        SecondaryActionButton(title: loading ? "Loading..." : "Load forecast for the next 24 hours", icon: "cloud.sun") {
                             loading = true
                             Task {
                                 await model.refreshWeather(hours: 24)
@@ -82,27 +82,31 @@ struct StormView: View {
                             .font(.footnote).foregroundStyle(.orange)
                     }
                 }
-                Section("Snowfall") {
+                CardGroup(title: "Snowfall",
+                          footer: "Sites whose trigger depth is reached are listed below, ordered by priority and then by drive time.") {
                     Slider(value: $inches, in: 0...24, step: 0.5)
-                    Text("\(inches, specifier: "%.1f") inches")
-                    Text("Sites whose trigger depth is reached are listed below, ordered by priority and then by drive time.")
-                        .font(.footnote).foregroundStyle(.secondary)
-                    Stepper("Keep first \(frozen) stops fixed", value: $frozen, in: 0...20)
+                    Text("\(inches, specifier: "%.1f") inches").font(.title3.weight(.semibold))
+                    PillStepper(label: "Keep first stops fixed",
+                                value: Binding(get: { Double(frozen) }, set: { frozen = Int($0.rounded()) }),
+                                range: 0...20, step: 1, format: { "\(Int($0))" })
                 }
-                Section("Sites to serve (\(hits.count))") {
+                CardGroup(title: "Sites to serve (\(hits.count))") {
                     if hits.isEmpty { Text("No site has reached its trigger depth.").foregroundStyle(.secondary) }
                     ForEach(Array(plan.planned.enumerated()), id: \.offset) { index, p in
-                        HStack {
-                            Text("\(index + 1).").monospacedDigit()
-                            VStack(alignment: .leading) {
-                                Text(p.stop.name)
-                                Text("Priority \(p.stop.priority)").font(.caption).foregroundStyle(.secondary)
+                        VStack(alignment: .leading, spacing: 14) {
+                            if index > 0 { RowDivider() }
+                            HStack(spacing: 10) {
+                                Text("\(index + 1).").monospacedDigit().foregroundStyle(.secondary)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(p.stop.name).font(.headline)
+                                    Text("Priority \(p.stop.priority)").font(.caption).foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                                if plan.lateStopIDs.contains(p.stop.id) {
+                                    StatusPill(text: "Late", color: .red)
+                                }
+                                Text("ETA \(Int(p.arrivalOffsetSeconds / 60)) min").foregroundStyle(.secondary)
                             }
-                            Spacer()
-                            if plan.lateStopIDs.contains(p.stop.id) {
-                                Text("Late").font(.caption).foregroundStyle(.red)
-                            }
-                            Text("ETA \(Int(p.arrivalOffsetSeconds / 60)) min").foregroundStyle(.secondary)
                         }
                     }
                     if hits.count != stops.count {
@@ -110,48 +114,57 @@ struct StormView: View {
                             .font(.footnote).foregroundStyle(.orange)
                     }
                 }
-                Section {
-                    Text(planNote).font(.footnote).foregroundStyle(.secondary)
-                    if model.data.routingProvider == .appleMaps, let r = planReport, livePlan != nil {
-                        Text("Apple Maps measured \(r.measured) of the \(r.totalPairs) legs; the rest are estimated from those.\(r.stoppedEarly ? " Apple Maps stopped answering part way, so more of this is estimated." : "")")
-                            .font(.footnote).foregroundStyle(r.stoppedEarly ? .orange : .secondary)
+                Card {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(planNote).font(.footnote).foregroundStyle(.secondary)
+                        if model.data.routingProvider == .appleMaps, let r = planReport, livePlan != nil {
+                            Text("Apple Maps measured \(r.measured) of the \(r.totalPairs) legs; the rest are estimated from those.\(r.stoppedEarly ? " Apple Maps stopped answering part way, so more of this is estimated." : "")")
+                                .font(.footnote).foregroundStyle(r.stoppedEarly ? .orange : .secondary)
+                        }
                     }
                 }
-                Section("This storm: \(model.stormName)") {
-                    Button("Start a new storm") { model.startNewStorm() }
-                    Text("Each storm keeps its own messages, requests and visits. Renaming a storm makes it a new one, so clients could be messaged again.")
-                        .font(.footnote).foregroundStyle(.secondary)
+                CardGroup(title: "This storm: \(model.stormName)",
+                          footer: "Each storm keeps its own messages, requests and visits. Renaming a storm makes it a new one, so clients could be messaged again.") {
+                    SecondaryActionButton(title: "Start a new storm", icon: "plus.circle") { model.startNewStorm() }
                 }
                 if model.data.profile.stormMessagesOn {
-                    Section("Clients") {
+                    CardGroup(title: "Clients",
+                              footer: "Each client's page shows an estimated arrival window from this start time and your route. You review the messages before anything is sent.") {
                         DatePicker("Crews start at", selection: $routeStart, displayedComponents: [.date, .hourAndMinute])
-                        Button("Message clients about this storm") { showingMessage = true }
-                        Text("Each client's page shows an estimated arrival window from this start time and your route. You review the messages before anything is sent.")
-                            .font(.footnote).foregroundStyle(.secondary)
+                        SecondaryActionButton(title: "Message clients about this storm", icon: "envelope") { showingMessage = true }
                     }
                 }
                 if let first = plan.stops.first {
-                    Section("Navigate") {
-                        if let url = NavigationLinks.appleMaps(to: first.coordinate, from: start) {
-                            Link("Next stop in Apple Maps", destination: url)
+                    let appleURL = NavigationLinks.appleMaps(to: first.coordinate, from: start)
+                    CardGroup(title: "Navigate") {
+                        if let url = appleURL {
+                            Link(destination: url) {
+                                CardLinkRow(icon: "map", tint: .blue, title: "Next stop in Apple Maps")
+                            }
+                            .buttonStyle(.plain)
                         }
                         ForEach(Array(NavigationLinks.googleMaps(stops: plan.stops.map(\.coordinate), origin: start).enumerated()), id: \.offset) { i, url in
-                            Link("Route part \(i + 1) in Google Maps", destination: url)
+                            VStack(alignment: .leading, spacing: 14) {
+                                if i > 0 || appleURL != nil { RowDivider() }
+                                Link(destination: url) {
+                                    CardLinkRow(icon: "arrow.triangle.turn.up.right.diamond", tint: .green, title: "Route part \(i + 1) in Google Maps")
+                                }
+                                .buttonStyle(.plain)
+                            }
                         }
                     }
                 }
                 if !warnings.isEmpty {
-                    Section("Close to trigger") {
+                    CardGroup(title: "Close to trigger") {
                         ForEach(warnings) { s in
                             Text("\(s.address) triggers at \(s.triggerInches, specifier: "%.1f") in")
                         }
                     }
                 }
                 if !model.canUse(.stormAutomation) {
-                    Section { Text("Storm automation (weather-triggered dispatch) is part of the Max plan.").font(.footnote) }
+                    Card { Text("Storm automation (weather-triggered dispatch) is part of the Max plan.").font(.footnote) }
                 }
             }
-            .navigationTitle("Storm")
             .sheet(isPresented: $showingMessage) { StormMessageSheet(inches: inches, routeStart: routeStart, offsets: offsets) }
             .task(id: planKey) {
                 // Drop the old plan at once so the list never shows an order that belongs to other sites.

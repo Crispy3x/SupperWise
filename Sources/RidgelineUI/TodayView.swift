@@ -15,21 +15,26 @@ struct TodayView: View {
 
     @ViewBuilder private var attentionSection: some View {
         if pendingRequests + drafts + overdue > 0 {
-            Section("Needs your attention") {
+            CardGroup(title: "Needs your attention") {
                 if pendingRequests > 0 {
-                    NavigationLink { RequestsView().environment(\.embeddedInStack, true) } label: {
-                        HubRow(icon: "tray.full.fill", title: "\(pendingRequests) client request\(pendingRequests == 1 ? "" : "s")", subtitle: "Waiting for your answer", badge: pendingRequests, tint: .orange)
+                    NavigationLink { RequestsView().environment(\.embeddedInStack, true).circleBack().pageBackground() } label: {
+                        CardLinkRow(icon: "tray.full.fill", tint: .orange, title: "\(pendingRequests) client request\(pendingRequests == 1 ? "" : "s")", detail: "Waiting for your answer", badge: pendingRequests)
                     }
+                    .buttonStyle(.plain)
                 }
                 if drafts > 0 {
-                    NavigationLink { InvoicesView().environment(\.embeddedInStack, true) } label: {
-                        HubRow(icon: "doc.text.fill", title: "\(drafts) draft invoice\(drafts == 1 ? "" : "s")", subtitle: "Look them over and send", badge: drafts)
+                    if pendingRequests > 0 { RowDivider() }
+                    NavigationLink { InvoicesView().environment(\.embeddedInStack, true).circleBack().pageBackground() } label: {
+                        CardLinkRow(icon: "doc.text.fill", title: "\(drafts) draft invoice\(drafts == 1 ? "" : "s")", detail: "Look them over and send", badge: drafts)
                     }
+                    .buttonStyle(.plain)
                 }
                 if overdue > 0 {
-                    NavigationLink { InvoicesView().environment(\.embeddedInStack, true) } label: {
-                        HubRow(icon: "exclamationmark.circle.fill", title: "\(overdue) overdue invoice\(overdue == 1 ? "" : "s")", subtitle: model.reminderPlan().messages.isEmpty ? "Past their due date" : "You can send friendly reminders", badge: overdue, tint: .red)
+                    if pendingRequests + drafts > 0 { RowDivider() }
+                    NavigationLink { InvoicesView().environment(\.embeddedInStack, true).circleBack().pageBackground() } label: {
+                        CardLinkRow(icon: "exclamationmark.circle.fill", tint: .red, title: "\(overdue) overdue invoice\(overdue == 1 ? "" : "s")", detail: model.reminderPlan().messages.isEmpty ? "Past their due date" : "You can send friendly reminders", badge: overdue)
                     }
+                    .buttonStyle(.plain)
                 }
             }
         }
@@ -40,48 +45,61 @@ struct TodayView: View {
         let progress = SetupChecklist.progress(items)
         let remaining = items.filter { !$0.done }
         if progress.done < progress.total {
-            Section {
+            CardGroup(title: "Finish setup: \(progress.done) of \(progress.total)") {
                 ProgressView(value: Double(progress.done), total: Double(max(progress.total, 1)))
                 ForEach(remaining) { item in
+                    RowDivider()
                     VStack(alignment: .leading, spacing: 2) {
                         Text(item.title + (item.optional ? " (optional)" : "")).font(.subheadline.bold())
                         Text(item.detail).font(.footnote).foregroundStyle(.secondary)
                     }
                 }
-            } header: {
-                Text("Finish setup: \(progress.done) of \(progress.total)")
             }
         }
     }
 
     private var sites: [Site] { model.data.sites.sorted { ($0.priority, $0.address) < ($1.priority, $1.address) } }
 
-    var body: some View {
-        ScreenStack {
-            List {
-                attentionSection
-                setupSection
-                Section { TextField("Storm name", text: stormNameBinding) }
-                Section("Sites") {
-                    ForEach(sites) { site in
-                        let visits = model.data.visitLog.records(forSite: site.id).filter { $0.stormID == model.stormName }
-                        Button { selected = site } label: {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(site.address).foregroundStyle(.primary)
-                                    if !site.instructions.isEmpty {
-                                        Text(site.instructions).font(.caption).foregroundStyle(.orange)
-                                    }
-                                }
-                                Spacer()
-                                if let last = visits.last {
-                                    Image(systemName: last.status == .completed ? "checkmark.circle.fill" : "minus.circle.fill")
-                                        .foregroundStyle(last.status == .completed ? .green : .orange)
+    @ViewBuilder private var sitesSection: some View {
+        if sites.isEmpty {
+            EmptyCard(icon: "mappin.and.ellipse", title: "No sites yet", message: "Add a client with an address to start logging visits.")
+        } else {
+            CardGroup(title: "Sites") {
+                ForEach(Array(sites.enumerated()), id: \.element.id) { index, site in
+                    let visits = model.data.visitLog.records(forSite: site.id).filter { $0.stormID == model.stormName }
+                    if index > 0 { RowDivider() }
+                    Button { selected = site } label: {
+                        HStack(spacing: 12) {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(site.address).font(.title3.weight(.semibold)).foregroundStyle(.primary)
+                                if !site.instructions.isEmpty {
+                                    Text(site.instructions).font(.footnote).foregroundStyle(.orange)
                                 }
                             }
+                            Spacer()
+                            if let last = visits.last {
+                                Image(systemName: last.status == .completed ? "checkmark.circle.fill" : "minus.circle.fill")
+                                    .foregroundStyle(last.status == .completed ? .green : .orange)
+                            }
+                            Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.secondary)
                         }
+                        .contentShape(Rectangle())
                     }
+                    .buttonStyle(.plain)
                 }
+            }
+        }
+    }
+
+    var body: some View {
+        ScreenStack {
+            AppPage {
+                attentionSection
+                setupSection
+                CardGroup(title: "Storm") {
+                    PillField(label: "Storm name", placeholder: "Storm name", text: stormNameBinding)
+                }
+                sitesSection
             }
             .navigationTitle("Crew")
             .sheet(item: $selected) { site in VisitSheet(site: site, stormID: model.stormName) }
@@ -128,25 +146,27 @@ struct VisitSheet: View {
     }
 
     var body: some View {
-        NavigationStack {
-            Form {
-                Section(site.address) {
+        VStack(spacing: 0) {
+            HStack {
+                Text("Log visit").font(.title3.weight(.medium))
+                Spacer()
+                CircleButton(icon: "xmark", label: "Close") { dismiss() }
+            }
+            .padding(.horizontal, 18).padding(.top, 18).padding(.bottom, 6)
+            AppPage(clearTabBar: false) {
+                CardGroup(title: site.address, footer: skipped ? "The reason is saved in the proof record and the message preview." : nil) {
                     if !site.instructions.isEmpty { Text(site.instructions).foregroundStyle(.orange) }
                     Toggle("Could not service this visit", isOn: $skipped)
-                    if skipped { TextField("Reason (saved in the proof record and the message preview)", text: $reason) }
+                    if skipped { PillField(label: "Reason", required: true, placeholder: "Why the visit was skipped", text: $reason) }
                 }
-                Section("Who and where") {
-                    TextField("Your name", text: $crewName)
-                    HStack {
-                        Text(locationText)
-                        Spacer()
-                        #if canImport(CoreLocation)
-                        Button(findingLocation ? "Finding..." : "Check location") { checkLocation() }
-                            .buttonStyle(.bordered)
-                            .font(.footnote)
-                            .disabled(findingLocation)
-                        #endif
-                    }
+                CardGroup(title: "Who and where") {
+                    PillField(label: "Your name", placeholder: "Name", text: $crewName)
+                    FactRow(label: "Arrival", value: locationText)
+                    #if canImport(CoreLocation)
+                    SecondaryActionButton(title: findingLocation ? "Finding..." : "Check location", icon: "location") { checkLocation() }
+                        .disabled(findingLocation)
+                        .opacity(findingLocation ? 0.5 : 1)
+                    #endif
                     if site.latitude == nil {
                         Text("This site has no map location, so arrival cannot be checked.")
                             .font(.footnote).foregroundStyle(.secondary)
@@ -156,36 +176,36 @@ struct VisitSheet: View {
                     }
                 }
                 if !skipped {
-                    Section("Work") {
-                        Stepper("Snow depth: \(depth, specifier: "%.1f") in", value: $depth, in: 0...36, step: 0.5)
-                        Stepper("Salt: \(Int(salt)) lb", value: $salt, in: 0...500, step: 10)
+                    CardGroup(title: "Work") {
+                        PillStepper(label: "Snow depth", value: $depth, range: 0...36, step: 0.5, format: { String(format: "%.1f in", $0) })
+                        PillStepper(label: "Salt", value: $salt, range: 0...500, step: 10, format: { "\(Int($0)) lb" })
                     }
                 }
-                Section(skipped ? "Photos of the problem" : "Photos") {
+                CardGroup(title: skipped ? "Photos of the problem" : "Photos") {
                     if skipped {
                         PhotoCaptureRow(title: "What blocked the visit", kind: .other, photos: $problemPhotos)
                     } else {
                         PhotoCaptureRow(title: "Before", kind: .before, photos: $beforePhotos)
+                        RowDivider()
                         PhotoCaptureRow(title: "After", kind: .after, photos: $afterPhotos)
                     }
                 }
-                Section("Note") { TextField("Optional note", text: $note) }
-                Section("Message to customer (preview only, messages are not sent yet)") {
+                CardGroup {
+                    PillNotes(label: "Note", placeholder: "Optional note", text: $note)
+                }
+                CardGroup(title: "Message to customer", footer: "Preview only, messages are not sent yet.") {
                     Text(preview).font(.footnote)
                     if !skipped && afterPhotos.isEmpty {
                         Text("No after photo yet. The proof of service is stronger with one.")
                             .font(.footnote).foregroundStyle(.orange)
                     }
                 }
-            }
-            .navigationTitle("Log visit")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") { save() }.disabled(skipped && reason.isEmpty)
-                }
+                PrimaryActionButton(title: "Save", icon: "checkmark") { save() }
+                    .disabled(skipped && reason.isEmpty)
+                    .opacity(skipped && reason.isEmpty ? 0.5 : 1)
             }
         }
+        .background(Look.sheet.ignoresSafeArea())
     }
 
     private func checkLocation() {
