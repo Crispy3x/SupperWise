@@ -568,8 +568,9 @@ public final class AppModel {
 
     // MARK: edits
 
+    @discardableResult
     public func addCustomerWithSite(name: String, phone: String, email: String = "", emailConsent: Bool = false, address: String, priority: Int,
-                                    triggerInches: Double, perPushRate: Money, seasonPrice: Money? = nil, coordinate: Coordinate?) {
+                                    triggerInches: Double, perPushRate: Money, seasonPrice: Money? = nil, coordinate: Coordinate?) -> UUID {
         let consent = emailConsent && ContactValidation.isValidEmail(email)
         let customer = Customer(name: name, phone: phone, email: email, emailConsent: consent,
                                 consentRecordedAt: consent ? Date() : nil,
@@ -582,6 +583,7 @@ public final class AppModel {
                                            terms: seasonPrice.map { ContractTerms.seasonal(total: $0) } ?? ContractTerms.perPush(rate: perPushRate)))
         data.ensurePortalLinks(now: Date())
         save()
+        return customer.id
     }
 
     /// Saves a visit. If automatic invoices are on, it also creates the invoice (and emails it if you chose that and

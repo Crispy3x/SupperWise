@@ -76,10 +76,14 @@ struct SettingsView: View {
                               axis: .vertical)
                         .lineLimit(2...4)
                     SavedPayLinkField()
-                    SavedProfileLinkField(placeholder: "Tip link for the crew (optional), https://...",
-                                          note: "Adds a Tip the crew button on client pages. Use your own Venmo, Cash App, PayPal or Stripe link.", keyPath: \.tipLink)
-                    SavedProfileLinkField(placeholder: "Buy us a coffee link (optional), https://...",
-                                          note: "Adds a Buy us a coffee button on client pages.", keyPath: \.coffeeLink)
+                    SavedProfileLinkField(placeholder: "Tip the driver link (optional), https://...",
+                                          note: "Adds a Tip the driver button on client pages. Use your own Venmo, Cash App, PayPal or Stripe link.", keyPath: \.tipLink)
+                    SavedProfileLinkField(placeholder: "Send a coffee link (optional), https://...",
+                                          note: "Adds a Send a coffee button on client pages. A link with $3 filled in works well.", keyPath: \.coffeeLink)
+                    SavedProfileLinkField(placeholder: "Buy a donut link (optional), https://...",
+                                          note: "Adds a Buy a donut button on client pages.", keyPath: \.donutLink)
+                    SavedProfileLinkField(placeholder: "Buy lunch link (optional), https://...",
+                                          note: "Adds a Buy lunch button on client pages.", keyPath: \.lunchLink)
                     Toggle("Show the message-clients option on the Storm screen",
                            isOn: binding({ model.data.profile.stormMessagesOn }, { model.data.profile.stormMessagesOn = $0 }))
                     Toggle("Show invoice amounts on client pages",

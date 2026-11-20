@@ -9,7 +9,7 @@ struct TodayView: View {
 
     private var stormNameBinding: Binding<String> { Binding(get: { model.stormName }, set: { model.stormName = $0 }) }
 
-    private var pendingRequests: Int { model.data.serviceRequests.filter { $0.status == .pending }.count }
+    private var pendingRequests: Int { model.data.serviceRequests.filter { $0.status == .pending && $0.kind != .thanks }.count }
     private var drafts: Int { model.data.invoices.filter { $0.sentAt == nil && !$0.isVoid }.count }
     private var overdue: Int { model.data.invoices.filter { $0.status(now: Date()) == .overdue }.count }
 

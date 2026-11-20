@@ -61,6 +61,7 @@ extension RequestKind {
         case .service: return "Asked for service"
         case .urgent: return "Urgent request"
         case .skip: return "Asked to skip this storm"
+        case .thanks: return "Kind message for the driver"
         }
     }
 }

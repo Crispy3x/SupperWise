@@ -70,7 +70,9 @@ final class AssistantTests: XCTestCase {
     func testEachPersonIsOfferedOnlyTheToolsTheyMayUse() throws {
         var d = world()
         XCTAssertEqual(Set(AssistantTools.definitions(for: d).map(\.name)),
-                       ["get_schedule", "list_clients", "add_client", "create_job", "update_job_status", "list_invoices", "create_invoice", "send_invoice", "plan_route", "get_weather"])
+                       ["get_schedule", "list_clients", "add_client", "create_job", "update_job_status", "list_invoices", "create_invoice", "send_invoice", "plan_route", "get_weather",
+                        "record_payment", "get_revenue", "send_reminders", "list_requests", "answer_request", "send_season_links"])
+        XCTAssertLessThanOrEqual(AssistantTools.definitions(for: d).count, 20)
         let crew = try addMember(&d, "Dana")
         d.session = AppSession(role: .employee, memberID: crew.id, startedAt: now)
         XCTAssertEqual(Set(AssistantTools.definitions(for: d).map(\.name)), ["get_schedule", "update_job_status", "plan_route", "get_weather"])
@@ -216,7 +218,7 @@ final class AssistantTests: XCTestCase {
 
     func testHostToolsAreLeftToTheScreen() {
         var d = world()
-        for n in ["plan_route", "get_weather", "create_invoice"] { XCTAssertEqual(run(n, [:], &d), .hostTool, n) }
+        for n in ["plan_route", "get_weather", "create_invoice", "send_reminders", "answer_request", "send_season_links"] { XCTAssertEqual(run(n, [:], &d), .hostTool, n) }
     }
 
     // MARK: the conversation loop
@@ -343,6 +345,60 @@ final class AssistantTests: XCTestCase {
         http.body = Data(#"{"enabled":true,"model":"x","usedPercent":42}"#.utf8)
         let s = try await ServerAssistantTransport(baseURL: URL(string: "https://example.com")!, token: "t", client: http).status()
         XCTAssertTrue(s.enabled); XCTAssertEqual(s.usedPercent, 42)
+    }
+
+    // MARK: money, requests
+
+    private func invoiced(_ d: inout AppData, number: String = "INV-5", cents: Int = 10_000) throws {
+        d.invoices.append(Invoice(number: number, customerID: d.customers[0].id, siteID: d.sites[0].id, issueDate: now, dueDate: now.addingTimeInterval(86_400),
+                                  lines: [InvoiceLineItem(description: "Push", amount: Money(cents: cents))]))
+    }
+
+    func testRecordingAPaymentChecksTheAmountAndTheInvoice() throws {
+        var d = world(); try invoiced(&d)
+        guard case .text(let part) = run("record_payment", ["invoice_number": .string("inv-5"), "amount": .number(40.5), "method": .string("check")], &d) else { return XCTFail() }
+        XCTAssertTrue(part.contains("$40.50")); XCTAssertTrue(part.contains("$59.50 is still owed"))
+        XCTAssertEqual(d.invoices[0].payments.count, 1); XCTAssertEqual(d.invoices[0].payments[0].method, .check)
+        guard case .error(let over) = run("record_payment", ["invoice_number": .string("INV-5"), "amount": .number(100)], &d) else { return XCTFail() }
+        XCTAssertTrue(over.contains("$59.50"))
+        guard case .error = run("record_payment", ["invoice_number": .string("INV-5"), "amount": .number(0)], &d) else { return XCTFail() }
+        guard case .error = run("record_payment", ["invoice_number": .string("INV-5"), "amount": .number(-5)], &d) else { return XCTFail() }
+        guard case .text(let full) = run("record_payment", ["invoice_number": .string("INV-5"), "method": .string("nonsense")], &d) else { return XCTFail() }
+        XCTAssertTrue(full.contains("paid in full")); XCTAssertEqual(d.invoices[0].payments.last?.method, .other)
+        guard case .error(let again) = run("record_payment", ["invoice_number": .string("INV-5")], &d) else { return XCTFail() }
+        XCTAssertTrue(again.contains("already paid"))
+        guard case .error = run("record_payment", ["invoice_number": .string("INV-404")], &d) else { return XCTFail() }
+        var v = world(); try invoiced(&v); v.invoices[0].void()
+        guard case .error(let voided) = run("record_payment", ["invoice_number": .string("INV-5")], &v) else { return XCTFail() }
+        XCTAssertTrue(voided.contains("void"))
+    }
+
+    func testRevenueAnswersInPlainText() throws {
+        var d = world(); try invoiced(&d)
+        _ = run("record_payment", ["invoice_number": .string("INV-5"), "amount": .number(25)], &d)
+        guard case .text(let t) = run("get_revenue", ["period": .string("allTime")], &d) else { return XCTFail() }
+        XCTAssertTrue(t.contains("$25.00")); XCTAssertTrue(t.contains("INV-5"))
+        guard case .text(let none) = run("get_revenue", ["period": .string("garbage")], &d) else { return XCTFail() }
+        XCTAssertTrue(none.contains("This Month"))                                                          // an unknown period falls back to this month
+    }
+
+    func testRequestsAreListedWithTheirIds() {
+        var d = world()
+        guard case .text(let empty) = run("list_requests", [:], &d) else { return XCTFail() }
+        XCTAssertEqual(empty, "Nothing is waiting.")
+        let r = ServiceRequest(siteID: d.sites[0].id, kind: .thanks, note: "Thanks for the early plow!", createdAt: now)
+        d.serviceRequests = [r]
+        guard case .text(let t) = run("list_requests", [:], &d) else { return XCTFail() }
+        XCTAssertTrue(t.contains("thanks")); XCTAssertTrue(t.contains("14 Elm Ave")); XCTAssertTrue(t.contains(r.id.uuidString))
+    }
+
+    func testRecordingPaymentsNeedsRevenuePermission() throws {
+        var d = world(); try invoiced(&d)
+        let crew = try addMember(&d, "Dana")
+        d.session = AppSession(role: .employee, memberID: crew.id, startedAt: now)
+        guard case .error = run("record_payment", ["invoice_number": .string("INV-5")], &d) else { return XCTFail() }
+        XCTAssertTrue(d.invoices[0].payments.isEmpty)
+        XCTAssertEqual(run("send_reminders", [:], &d), .error("This person is not allowed to do that. Say so and do not try another way."))
     }
 
     // MARK: consent

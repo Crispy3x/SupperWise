@@ -121,16 +121,21 @@ public struct PortalWeather: Codable, Equatable, Sendable {
 public struct PortalTips: Codable, Equatable, Sendable {
     public let tipURL: String?
     public let coffeeURL: String?
+    public let donutURL: String?
+    public let lunchURL: String?
 
-    public init(tipURL: String?, coffeeURL: String?) {
+    public init(tipURL: String?, coffeeURL: String?, donutURL: String? = nil, lunchURL: String? = nil) {
         self.tipURL = tipURL
         self.coffeeURL = coffeeURL
+        self.donutURL = donutURL
+        self.lunchURL = lunchURL
     }
 
     /// Only links that pass the payment-site check are ever sent.
     public static func make(from profile: BusinessProfile) -> PortalTips? {
         let tip = profile.tipLink.flatMap(PayLink.clean), coffee = profile.coffeeLink.flatMap(PayLink.clean)
-        return tip == nil && coffee == nil ? nil : PortalTips(tipURL: tip, coffeeURL: coffee)
+        let donut = profile.donutLink.flatMap(PayLink.clean), lunch = profile.lunchLink.flatMap(PayLink.clean)
+        return [tip, coffee, donut, lunch].allSatisfy { $0 == nil } ? nil : PortalTips(tipURL: tip, coffeeURL: coffee, donutURL: donut, lunchURL: lunch)
     }
 }
 
@@ -312,11 +317,14 @@ public struct PortalClient: Sendable {
     /// that really went out are recorded as sent.
     public func sendEmails(_ messages: [PlannedMessage]) async throws -> [Bool] {
         guard !messages.isEmpty else { return [] }
-        struct Out: Encodable { let to: String; let subject: String; let text: String }
+        struct Attachment: Encodable { let filename: String; let content: String }
+        struct Out: Encodable { let to: String; let subject: String; let text: String; let attachments: [Attachment]? }
         struct Body: Encodable { let messages: [Out] }
         struct Result: Decodable { let index: Int; let ok: Bool }
         struct Wire: Decodable { let results: [Result] }
-        let body = try JSONEncoder().encode(Body(messages: messages.map { Out(to: $0.to, subject: $0.subject, text: $0.body) }))
+        let body = try JSONEncoder().encode(Body(messages: messages.map { m in
+            Out(to: m.to, subject: m.subject, text: m.body, attachments: m.attachment.map { [Attachment(filename: $0.filename, content: $0.data.base64EncodedString())] })
+        }))
         let data = try await send(request("POST", "v1/send/email", body: body))
         guard let wire = try? JSONDecoder().decode(Wire.self, from: data) else { throw PortalError.unreadable }
         var ok = [Bool](repeating: false, count: messages.count)

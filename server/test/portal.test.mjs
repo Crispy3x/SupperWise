@@ -196,7 +196,7 @@ test('pages that cannot request refuse requests', async (t) => {
   const s = await boot(); t.after(s.close);
   await s.publish([{ token: TOKEN, label: 'x', status: 'done', canRequest: false }]);
   assert.equal((await s.form(TOKEN, { kind: 'service' })).status, 403);
-  assert.ok(!(await (await fetch(`${s.base}/c/${TOKEN}`)).text()).includes('<form'));
+  assert.ok(!(await (await fetch(`${s.base}/c/${TOKEN}`)).text()).includes(`action="/c/${TOKEN}/request"`));      // no request form (the thank-you message box stays)
 });
 
 test('limits: per page per hour, pending cap, per connection, and body size', async (t) => {
@@ -223,8 +223,8 @@ test('limits: per page per hour, pending cap, per connection, and body size', as
   assert.equal((await fetch(`${sm.base}/v1/portal/snapshot`, { method: 'PUT', headers: { authorization: 'Bearer owner-token' }, body: 'x'.repeat(5000) })).status, 413);
 });
 
-test('old data is deleted: snapshots after 14 days, requests after 30', async (t) => {
-  const s = await boot(); t.after(s.close);
+test('old data is deleted: snapshots after their limit (14 days here), requests after 30', async (t) => {
+  const s = await boot({ snapshotTtlDays: 14 }); t.after(s.close);
   await s.publish();
   await s.form(TOKEN, { kind: 'service' });
   s.clock.advance(15 * 86_400_000);
@@ -303,7 +303,7 @@ test('email: provider failures are reported generically; daily cap stops sending
 
 const withMap = (extra = {}) => ({
   weather: { summary: 'Snow, 28 F. About 4 inches by noon.', alerts: ['Winter Storm Warning until 6 PM', 'b', 'c', 'd'] },
-  tips: { tipURL: 'https://venmo.com/ridgeplow', coffeeURL: 'https://cash.app/$ridgeplow' },
+  tips: { tipURL: 'https://venmo.com/ridgeplow', coffeeURL: 'https://cash.app/$ridgeplow', donutURL: 'https://cash.app/$ridgeplow/2' },
   sites: [{ token: TOKEN, label: '14 Elm Ave', status: 'planned', canRequest: true, stopsAhead: 3, eta: 'Expected between 7:15 AM and 8:45 AM.',
     siteLocation: { latitude: 44.97812345, longitude: -93.26512345 } }], ...extra });
 
@@ -315,8 +315,11 @@ test('the page shows the map, weather, tip buttons and stops ahead; the map data
   assert.ok(html.includes('Snow, 28 F. About 4 inches by noon.'));
   assert.ok(html.includes('Winter Storm Warning until 6 PM'));
   assert.ok(!html.includes('>d<') || html.split('·').length <= 3);                 // at most three alerts
-  assert.ok(html.includes('Tip the crew') && html.includes('https://venmo.com/ridgeplow'));
-  assert.ok(html.includes('Buy us a coffee') && html.includes('https://cash.app/$ridgeplow'));
+  assert.ok(html.includes('Tip the driver') && html.includes('https://venmo.com/ridgeplow'));
+  assert.ok(html.includes('Send a coffee') && html.includes('https://cash.app/$ridgeplow'));
+  assert.ok(html.includes('Buy a donut') && html.includes('https://cash.app/$ridgeplow/2'));
+  assert.ok(!html.includes('Buy lunch'));                                              // only the buttons the owner set up
+  assert.ok(html.includes('Request service') && html.includes('Send a kind message to your driver'));
   assert.ok(html.includes('src="/assets/leaflet.js"') && html.includes('src="/assets/portal.js"'));
   const live = JSON.parse(html.match(/<script type="application\/json" id="live">(.*?)<\/script>/s)[1]);
   assert.equal(live.stopsAhead, 3);
@@ -328,7 +331,8 @@ test('tip and coffee links must be safe payment links', async (t) => {
   const s = await boot(); t.after(s.close);
   await s.publish(withMap().sites, { tips: { tipURL: 'https://evil.example.com/tip', coffeeURL: 'javascript:alert(1)' } });
   const html = await (await fetch(`${s.base}/c/${TOKEN}`)).text();
-  assert.ok(!html.includes('Tip the crew')); assert.ok(!html.includes('Buy us a coffee')); assert.ok(!html.includes('evil.example.com'));
+  assert.ok(!html.includes('Tip the driver')); assert.ok(!html.includes('Send a coffee')); assert.ok(!html.includes('evil.example.com'));
+  assert.ok(html.includes('Send a kind message to your driver'));                      // the message box does not need any payment link
 });
 
 test('trucks show only for a property waiting for service, only while fresh, and positions are rounded', async (t) => {
@@ -399,4 +403,73 @@ test('without a property location there is no map', async (t) => {
   await s.publish();
   const html = await (await fetch(`${s.base}/c/${TOKEN}`)).text();
   assert.ok(!html.includes('Where is the truck?')); assert.ok(!html.includes('leaflet.js'));
+});
+
+// ---- kind messages for the driver, season-long links, invoice PDFs by email
+
+test('a client can send a kind message to the driver, and the owner sees it as a message, not a request', async (t) => {
+  const s = await boot(); t.after(s.close);
+  await s.publish([{ token: TOKEN, label: '14 Elm Ave', status: 'done', canRequest: false }]);         // even after the visit is done
+  const post = (fields) => fetch(`${s.base}/c/${TOKEN}/thanks`, { method: 'POST', redirect: 'manual', headers: { 'content-type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(fields).toString() });
+  const r = await post({ message: 'Thank you for clearing the drive so early! <b>x</b>', from: 'Pat' });
+  assert.equal(r.status, 303); assert.equal(r.headers.get('location'), `/c/${TOKEN}?sent=thanks`);
+  const page = await (await fetch(`${s.base}/c/${TOKEN}?sent=thanks`)).text();
+  assert.ok(page.includes('Message sent')); assert.ok(page.includes('Message to your driver')); assert.ok(page.includes('Sent'));
+  assert.ok(!page.includes('<b>x</b>'));                                                               // shown as text
+  const polled = await (await s.owner('GET', '/v1/portal/requests')).json();
+  assert.equal(polled.requests.length, 1);
+  assert.equal(polled.requests[0].kind, 'thanks');
+  assert.equal(polled.requests[0].note, 'From Pat: Thank you for clearing the drive so early! <b>x</b>');
+  assert.equal((await post({ message: '   ' })).status, 400);
+  assert.equal((await post({ message: 'x'.repeat(5000) })).status, 303);
+  const long = (await (await s.owner('GET', '/v1/portal/requests')).json()).requests.find((x) => x.note.length > 100 && x.note.length < 300);
+  assert.ok(long.note.length <= 200);                                                                   // cut to 200 characters
+  assert.equal((await post({ message: 'third' })).status, 303);
+  assert.equal((await post({ message: 'fourth' })).status, 429);                                       // three an hour per page
+  assert.equal((await fetch(`${s.base}/c/${'z'.repeat(30)}/thanks`, { method: 'POST' })).status, 404);
+});
+
+test('a client page link lasts the whole season', async (t) => {
+  const s = await boot(); t.after(s.close);
+  await s.publish();
+  s.clock.advance(100 * 86_400_000);
+  assert.equal((await fetch(`${s.base}/c/${TOKEN}`)).status, 200);                                     // 100 days later
+  s.clock.advance(200 * 86_400_000);
+  await s.publish([{ token: 'B'.repeat(24), label: 'x', status: 'planned', canRequest: true }]);        // saving purges anything older than the limit
+  assert.equal((await fetch(`${s.base}/c/${TOKEN}`)).status, 404);                                     // 300 days with no update
+  assert.equal(loadPortalConfig({}).snapshotTtlDays, 240);
+});
+
+const PDF = Buffer.from('%PDF-1.4\n1 0 obj\n<< >>\nendobj\n%%EOF\n').toString('base64');
+const msg = (extra = {}) => ({ to: 'pat@example.com', subject: 'Invoice INV-7', text: 'Here is your invoice.', ...extra });
+
+test('an invoice PDF can be attached to an email, and only a real PDF of reasonable size', async (t) => {
+  const s = await boot(); t.after(s.close);
+  const send = (messages) => s.owner('POST', '/v1/send/email', { messages });
+  const r = await (await send([msg({ attachments: [{ filename: 'Invoice-INV-7.pdf', content: PDF }] })])).json();
+  assert.deepEqual(r.results, [{ index: 0, ok: true }]);
+  const sent = s.emailCalls[0].body;
+  assert.deepEqual(sent.attachments, [{ filename: 'Invoice-INV-7.pdf', content: PDF }]);
+  assert.deepEqual(sent.to, ['pat@example.com']);
+  const bad = [
+    [{ filename: '../x.pdf', content: PDF }], [{ filename: 'x.exe', content: PDF }], [{ filename: 'x.pdf', content: Buffer.from('MZ not a pdf').toString('base64') }],
+    [{ filename: 'x.pdf', content: 'not base64!!' }], [{ filename: 'x.pdf', content: PDF.slice(0, -1) }],
+    [{ filename: 'x.pdf', content: 'JVBERi0' + 'A'.repeat(1_600_000) }],
+    [], [{ filename: 'a.pdf', content: PDF }, { filename: 'b.pdf', content: PDF }], 'nope',
+  ];
+  for (const attachments of bad) {
+    const out = await (await send([msg({ attachments })])).json();
+    assert.deepEqual(out.results, [{ index: 0, ok: false, error: 'invalid_attachment' }], JSON.stringify(attachments).slice(0, 60));
+  }
+  assert.equal(s.emailCalls.length, 1);                                                                // none of the bad ones were sent
+});
+
+test('the email endpoint takes a larger body than the public pages do', async (t) => {
+  const s = await boot({ maxEmailBodyBytes: 3_000_000, maxBodyBytes: 500_000 }); t.after(s.close);
+  const big = 'JVBERi0' + 'A'.repeat(1_000_000 - 7 - (1_000_000 % 4) + 1 - 1);
+  const content = big.slice(0, big.length - (big.length % 4));
+  const ok = await s.owner('POST', '/v1/send/email', { messages: [msg({ attachments: [{ filename: 'big.pdf', content }] })] });
+  assert.equal(ok.status, 200);
+  const publish = await s.owner('PUT', '/v1/portal/snapshot', { company: 'x', storm: { id: 's', name: 'n' }, sites: [], pad: 'x'.repeat(600_000) });
+  assert.equal(publish.status, 413);                                                                   // the normal limit still applies elsewhere
 });

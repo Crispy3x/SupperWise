@@ -47,11 +47,15 @@ struct RequestsView: View {
                             Text(r.kind.title + (r.urgentReason.map { ": " + $0.title } ?? "")).font(.subheadline)
                             if !r.note.isEmpty { Text("\"\(r.note)\"").font(.footnote).foregroundStyle(.secondary) }
                             Text(r.createdAt.formatted(date: .abbreviated, time: .shortened)).font(.caption).foregroundStyle(.secondary)
-                            HStack {
-                                Button("Accept") { accept(r) }.buttonStyle(.borderedProminent)
-                                Button("Decline") { declineText = ""; decliningID = r.id }.buttonStyle(.bordered)
+                            if r.kind == .thanks {
+                                Button("Mark read") { accept(r) }.buttonStyle(.borderedProminent).font(.footnote)
+                            } else {
+                                HStack {
+                                    Button("Accept") { accept(r) }.buttonStyle(.borderedProminent)
+                                    Button("Decline") { declineText = ""; decliningID = r.id }.buttonStyle(.bordered)
+                                }
+                                .font(.footnote)
                             }
-                            .font(.footnote)
                             if r.kind == .urgent {
                                 Text("Accepting moves this site to the top of today's list.").font(.caption).foregroundStyle(.secondary)
                             }
@@ -90,7 +94,7 @@ struct RequestsView: View {
     }
 
     private func accept(_ r: ServiceRequest) {
-        let text = r.kind == .urgent ? "You are near the top of our list." : (r.kind == .skip ? "We will skip your property this storm." : "We will come as soon as we can.")
+        let text = r.kind == .thanks ? "" : r.kind == .urgent ? "You are near the top of our list." : (r.kind == .skip ? "We will skip your property this storm." : "We will come as soon as we can.")
         Task { note = await model.decideRequest(r.id, accept: true, message: text) }
     }
 }

@@ -46,6 +46,8 @@ public struct AppData: Equatable, Codable, Sendable {
     public var dismissedHints: [String] = []
     /// When the owner agreed that the assistant may send their questions and the business details it looks up to our server and to Anthropic.
     public var assistantConsentAt: Date?
+    /// Which clients were sent their season link, so nobody gets it twice in one season.
+    public var seasonLinkLog: [SeasonLinkRecord] = []
 
     public init() {}
 
@@ -85,6 +87,7 @@ public struct AppData: Equatable, Codable, Sendable {
         tutorialsSeen = try c.decodeIfPresent([String].self, forKey: .tutorialsSeen) ?? []
         dismissedHints = try c.decodeIfPresent([String].self, forKey: .dismissedHints) ?? []
         assistantConsentAt = try c.decodeIfPresent(Date.self, forKey: .assistantConsentAt)
+        seasonLinkLog = try c.decodeIfPresent([SeasonLinkRecord].self, forKey: .seasonLinkLog) ?? []
     }
 }
 

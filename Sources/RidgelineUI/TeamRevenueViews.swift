@@ -1,5 +1,6 @@
 #if canImport(SwiftUI)
 import SwiftUI
+import Charts
 import RidgelineCore
 
 // MARK: - Team
@@ -8,129 +9,211 @@ import RidgelineCore
 struct TeamView: View {
     @Environment(AppModel.self) private var model
     @State private var showAdd = false
+    @State private var showInvites = false
 
+    private var invited: [TeamMember] { model.data.team.filter { $0.status == .invited } }
     private var planName: String { model.data.seatPlan == .max ? "Max" : "Pro" }
 
     var body: some View {
-        List {
-            Section {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("\(model.data.employeeCount) of \(model.data.employeeLimit) employees").font(.headline)
-                    ProgressView(value: Double(min(model.data.employeeCount, model.data.employeeLimit)), total: Double(max(model.data.employeeLimit, 1)))
-                    Text("Your \(planName) plan allows up to \(model.data.employeeLimit) employees. Employees never pay: you pay for the plan.")
-                        .font(.footnote).foregroundStyle(.secondary)
-                }
-                .padding(.vertical, 4)
-            }
-            Section("People") {
-                if model.data.team.isEmpty {
-                    Text("No one yet. Add your crew and office staff. You make each person's username and password.").foregroundStyle(.secondary)
-                }
-                ForEach(model.data.team) { m in
-                    NavigationLink { MemberDetailView(memberID: m.id) } label: {
-                        HStack(spacing: 12) {
-                            AvatarView(name: m.name, size: 40)
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(m.name).font(.headline)
-                                Text(m.role.title).font(.footnote).foregroundStyle(.secondary)
-                            }
-                            Spacer()
-                            switch m.status {
-                            case .invited: StatusPill(text: "Invited", color: .orange)
-                            case .active: StatusPill(text: "Active", color: .green)
-                            case .disabled: StatusPill(text: "Off", color: .gray)
+        VStack(spacing: 0) {
+            ScrollView {
+                VStack(spacing: 14) {
+                    ScreenHeader(icon: "person.2.fill", title: "Team", trailing: "\(model.data.team.count) member\(model.data.team.count == 1 ? "" : "s")")
+                    NavigationLink { TimesheetsView().environment(\.embeddedInStack, true).circleBack() } label: {
+                        TeamRowCard(icon: "clock", tint: .green, title: "Timesheets", badge: 0, chevron: "chevron.right")
+                    }
+                    .buttonStyle(.plain)
+                    Button { withAnimation { showInvites.toggle() } } label: {
+                        TeamRowCard(icon: "person.badge.plus", tint: Theme.accent(model.data.profile.accentColor), title: "Pending invites", badge: invited.count,
+                                    chevron: showInvites ? "chevron.up" : "chevron.down", showZero: true)
+                    }
+                    .buttonStyle(.plain)
+                    if showInvites {
+                        if invited.isEmpty {
+                            Text("No one is waiting to sign in.").font(.callout).foregroundStyle(.secondary).frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
+                        }
+                        ForEach(invited) { m in
+                            Card(padding: 12) {
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(m.name).font(.headline)
+                                    Text("\(m.role.title) · username \(model.data.username(forMember: m.id) ?? "") · not signed in yet").font(.footnote).foregroundStyle(.secondary)
+                                }
                             }
                         }
                     }
+                    if model.data.team.isEmpty {
+                        EmptyCard(icon: "person.2", title: "No team members yet", message: "Add your first employee to this business.")
+                    } else {
+                        ForEach(model.data.team) { m in
+                            NavigationLink { MemberDetailView(memberID: m.id).environment(\.embeddedInStack, true).circleBack() } label: {
+                                Card(padding: 12) {
+                                    HStack(spacing: 14) {
+                                        AvatarView(name: m.name, size: 46)
+                                        VStack(alignment: .leading, spacing: 2) {
+                                            Text(m.name).font(.headline).foregroundStyle(.primary)
+                                            Text(m.role.title).font(.footnote).foregroundStyle(.secondary)
+                                        }
+                                        Spacer()
+                                        switch m.status {
+                                        case .invited: StatusPill(text: "Invited", color: .orange)
+                                        case .active: StatusPill(text: "Active", color: .green)
+                                        case .disabled: StatusPill(text: "Off", color: .gray)
+                                        }
+                                        Image(systemName: "chevron.right").foregroundStyle(.secondary)
+                                    }
+                                }
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                    Text("\(model.data.employeeCount) of \(model.data.employeeLimit) employees on your \(planName) plan. Employees never pay: you pay for the plan.")
+                        .font(.footnote).foregroundStyle(.secondary).frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
                 }
+                .padding(.horizontal, 16).padding(.top, 14).padding(.bottom, 20)
             }
-        }
-        .toolbar {
             if model.data.can(.manageTeam) {
-                ToolbarItem(placement: .primaryAction) { Button { showAdd = true } label: { Label("Add person", systemImage: "person.badge.plus") } }
+                PrimaryBar(title: "Add team member") { showAdd = true }
+                    .padding(.horizontal, 16).padding(.bottom, Look.tabBarClearance)
+            } else {
+                Color.clear.frame(height: Look.tabBarClearance)
             }
         }
         .sheet(isPresented: $showAdd) { AddMemberSheet() }
     }
 }
 
+private struct TeamRowCard: View {
+    let icon: String
+    let tint: Color
+    let title: String
+    let badge: Int
+    let chevron: String
+    var showZero = false
+    var body: some View {
+        Card(padding: 12) {
+            HStack(spacing: 14) {
+                IconTile(icon: icon, tint: tint, size: 52)
+                Text(title).font(.title3.weight(.semibold)).foregroundStyle(.primary)
+                Spacer()
+                if badge > 0 || showZero {
+                    Text("\(badge)").font(.headline).foregroundStyle(tint).padding(.horizontal, 14).padding(.vertical, 6).background(tint.opacity(0.18), in: Capsule())
+                }
+                Image(systemName: chevron).foregroundStyle(.secondary)
+            }
+        }
+    }
+}
+
+/// Add a person in three steps: who they are, their role, and the username and password you make for them.
 struct AddMemberSheet: View {
     @Environment(AppModel.self) private var model
     @Environment(\.dismiss) private var dismiss
+    @State private var step = 0
     @State private var name = ""
     @State private var phone = ""
     @State private var email = ""
+    @State private var rate = ""
+    @State private var role: TeamRole = .crewMember
     @State private var username = ""
     @State private var password = ""
-    @State private var role: TeamRole = .crewMember
     @State private var problem: String?
     /// After saving: what to hand to the new person. The password exists only here, never in the saved data.
     @State private var created: (name: String, username: String, password: String)?
 
+    private var canAdvance: Bool {
+        switch step {
+        case 0: return !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        case 2: return !username.isEmpty && !password.isEmpty
+        default: return true
+        }
+    }
+
     var body: some View {
-        NavigationStack {
-            if let created {
-                Form {
-                    Section {
-                        LabeledContent("Username", value: created.username)
-                        LabeledContent("Password", value: created.password)
-                    } header: { Text("\(created.name) can sign in with") } footer: {
-                        Text("Give these to \(created.name) now. For safety the app keeps only a scrambled copy of the password, so it cannot show it again. You can set a new one any time.")
-                    }
-                    Section {
-                        ShareLink(item: "Sign in to \(model.data.companyName.isEmpty ? "our team" : model.data.companyName) on Ridgeline Ops. Open the app, choose \"I'm an employee\" and enter. Username: \(created.username)  Password: \(created.password)") {
-                            Label("Share sign-in details", systemImage: "square.and.arrow.up")
+        if let created { createdPage(created) } else {
+            WizardScaffold(title: "Add Team Member", steps: ["Person", "Role", "Sign-in"], step: $step, canAdvance: canAdvance, onClose: { dismiss() }, onFinish: save) {
+                switch step {
+                case 0:
+                    SectionLabel(text: "Who is joining")
+                    PillField(label: "Name", required: true, placeholder: "Dana Cole", text: $name)
+                    PillField(label: "Phone Number", optional: true, placeholder: "(555) 555-1234", text: $phone, kind: .phone)
+                    PillField(label: "Email", optional: true, placeholder: "dana@company.com", text: $email, kind: .email)
+                    PillField(label: "Hourly pay", optional: true, placeholder: "20", text: $rate, kind: .number)
+                    Text("Pay is only used for the pay-owed total on timesheets.").font(.footnote).foregroundStyle(.secondary)
+                case 1:
+                    SectionLabel(text: "Their role")
+                    ForEach(TeamRole.allCases, id: \.self) { r in
+                        Button { role = r } label: {
+                            HStack(spacing: 14) {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(r.title).font(.title3.weight(.semibold)).foregroundStyle(.primary)
+                                    Text(r.summary).font(.callout).foregroundStyle(.secondary).multilineTextAlignment(.leading)
+                                }
+                                Spacer()
+                                Image(systemName: role == r ? "checkmark.circle.fill" : "circle").font(.title2)
+                                    .foregroundStyle(role == r ? Theme.accent(model.data.profile.accentColor) : Color.secondary)
+                            }
+                            .padding(16)
+                            .background(Look.field, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+                            .overlay(RoundedRectangle(cornerRadius: 22, style: .continuous).stroke(role == r ? Theme.accent(model.data.profile.accentColor) : Look.fieldStroke, lineWidth: role == r ? 2 : 1))
                         }
+                        .buttonStyle(.plain)
                     }
-                }
-                .navigationTitle("Added")
-                .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
-            } else {
-                Form {
-                    Section {
-                        TextField("Name", text: $name)
-                        TextField("Phone (optional)", text: $phone)
-                        TextField("Email (optional)", text: $email)
-                    }
-                    Section {
-                        Picker("Role", selection: $role) { ForEach(TeamRole.allCases, id: \.self) { Text($0.title).tag($0) } }
-                        Text(role.summary).font(.footnote).foregroundStyle(.secondary)
-                    } footer: {
-                        Text("You can change what this person can see and do after you add them.")
-                    }
-                    Section {
-                        TextField("Username", text: $username)
-                            .autocorrectionDisabled()
-                            #if os(iOS)
-                            .textInputAutocapitalization(.never)
-                            #endif
-                        HStack {
-                            TextField("Password", text: $password).autocorrectionDisabled()
+                    Text("You can change what this person can see and do after you add them.").font(.footnote).foregroundStyle(.secondary)
+                default:
+                    SectionLabel(text: "Their sign-in")
+                    PillField(label: "Username", required: true, placeholder: "dana", text: $username, kind: .email)
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack(spacing: 6) { Text("Password").font(.title3.weight(.medium)); Text("*").font(.title3) }
+                        HStack(spacing: 10) {
+                            TextField("At least \(LoginRules.minPasswordLength) characters", text: $password).font(.title3).autocorrectionDisabled()
                                 #if os(iOS)
                                 .textInputAutocapitalization(.never)
                                 #endif
-                            Button("Suggest") { password = model.suggestedPassword() }.buttonStyle(.bordered)
+                                .padding(.horizontal, 22).padding(.vertical, 16)
+                                .background(Look.field, in: Capsule()).overlay(Capsule().stroke(Look.fieldStroke, lineWidth: 1))
+                            Button("Suggest") { password = model.suggestedPassword() }.buttonStyle(.bordered).controlSize(.large)
                         }
-                    } header: { Text("Their sign-in") } footer: {
-                        Text("You make the username and password. \(LoginRules.minPasswordLength) or more characters for the password. They use these under \"I'm an employee\".")
                     }
-                    if let problem { Section { Text(problem).font(.footnote).foregroundStyle(.red) } }
-                }
-                .navigationTitle("Add person")
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
-                    ToolbarItem(placement: .confirmationAction) {
-                        Button("Add") {
-                            problem = model.addTeamMember(name: name, role: role, phone: phone, email: email, username: username, password: password)
-                            if problem == nil {
-                                created = (name.trimmingCharacters(in: .whitespacesAndNewlines), LoginRules.normalizedUsername(username), password)
-                            }
-                        }
-                        .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || username.isEmpty || password.isEmpty)
-                    }
+                    Text("You make the username and password. They use them under \"I'm an employee\". Give them to the person after you save.").font(.footnote).foregroundStyle(.secondary)
+                    if let problem { Label(problem, systemImage: "exclamationmark.triangle.fill").font(.callout).foregroundStyle(.orange) }
                 }
             }
         }
+    }
+
+    private func save() {
+        let cents = Double(rate.replacingOccurrences(of: ",", with: ".").trimmingCharacters(in: .whitespaces)).map { Int(($0 * 100).rounded()) }
+        problem = model.addTeamMember(name: name, role: role, phone: phone, email: email, username: username, password: password, hourlyRate: cents.map { Money(cents: $0) })
+        if problem == nil {
+            created = (name.trimmingCharacters(in: .whitespacesAndNewlines), LoginRules.normalizedUsername(username), password)
+        }
+    }
+
+    private func createdPage(_ c: (name: String, username: String, password: String)) -> some View {
+        VStack(spacing: 18) {
+            HStack {
+                Spacer(); Text("Added").font(.title3.weight(.semibold)); Spacer()
+            }
+            .overlay(alignment: .trailing) { CircleButton(icon: "checkmark", label: "Done") { dismiss() } }
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    SectionLabel(text: "\(c.name) can sign in with")
+                    Card { VStack(alignment: .leading, spacing: 10) {
+                        CapsLabel(text: "Username"); Text(c.username).font(.title2.weight(.semibold))
+                        CapsLabel(text: "Password"); Text(c.password).font(.title2.weight(.semibold)).textSelection(.enabled)
+                    } }
+                    Text("Give these to \(c.name) now. For safety the app keeps only a scrambled copy of the password, so it cannot show it again. You can set a new one any time.")
+                        .font(.callout).foregroundStyle(.secondary)
+                    ShareLink(item: "Sign in to \(model.data.companyName.isEmpty ? "our team" : model.data.companyName) on Ridgeline Ops. Open the app, choose \"I'm an employee\" and enter. Username: \(c.username)  Password: \(c.password)") {
+                        Label("Share sign-in details", systemImage: "square.and.arrow.up").font(.title3.weight(.semibold)).frame(maxWidth: .infinity).padding(.vertical, 16)
+                            .background(Look.pill, in: Capsule())
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+        }
+        .padding(.horizontal, 18).padding(.top, 16)
+        .background(Look.sheet.ignoresSafeArea())
     }
 }
 
@@ -215,6 +298,12 @@ struct MemberDetailView: View {
                     Text(m.role.summary).font(.footnote).foregroundStyle(.secondary)
                 }
                 Section {
+                    Stepper("Hourly pay: \(m.hourlyRate.map { $0.formatted } ?? "not set")", value: Binding(get: { (m.hourlyRate?.cents ?? 0) / 100 }, set: { v in
+                        message = model.edit { try $0.setHourlyRate(v == 0 ? nil : Money(dollars: v), forMember: m.id) }
+                    }), in: 0...500)
+                    .disabled(!canEdit)
+                } header: { Text("Pay") } footer: { Text("Used for the pay-owed total on timesheets.") }
+                Section {
                     ForEach(Permission.allCases, id: \.self) { p in
                         Toggle(p.title, isOn: Binding(get: { m.permissions.contains(p) }, set: { on in
                             message = model.edit { try $0.setPermission(p, allowed: on, forMember: m.id) }
@@ -271,56 +360,141 @@ struct MemberDetailView: View {
 
 // MARK: - Revenue
 
-/// What has come in and what is still owed, plus the invoices, job costs and plans.
+/// Money received: totals, a chart over time, the latest payments, and the invoices, job costs and subscription.
 struct RevenueView: View {
     @Environment(AppModel.self) private var model
+    @State private var period: RevenuePeriod = .thisMonth
 
     var body: some View {
-        let r = RevenueSummary.compute(for: model.data, now: Date())
+        let r = RevenueReport.compute(for: model.data, period: period, now: Date())
         let drafts = model.data.invoices.filter { $0.sentAt == nil && !$0.isVoid }.count
-        List {
-            Section {
-                HStack(spacing: 12) {
-                    StatBox(title: "Paid this month", value: r.paidThisMonth.formatted, tint: .green)
-                    StatBox(title: "Invoiced this month", value: r.invoicedThisMonth.formatted, tint: .blue)
+        ScrollView {
+            VStack(spacing: 14) {
+                HStack(spacing: 14) {
+                    IconTile(icon: "dollarsign.circle.fill", size: 54)
+                    Text("Revenue").font(.largeTitle.bold())
+                    Spacer()
+                    Menu {
+                        ForEach(RevenuePeriod.allCases, id: \.self) { p in Button(p.title) { period = p } }
+                    } label: {
+                        HStack(spacing: 8) { Text(period.title).font(.title3.weight(.medium)); Image(systemName: "chevron.down") }
+                            .foregroundStyle(.primary).padding(.horizontal, 18).padding(.vertical, 12)
+                            .background(Look.card, in: Capsule()).overlay(Capsule().stroke(Look.stroke, lineWidth: 1))
+                    }
+                    .buttonStyle(.plain)
                 }
                 HStack(spacing: 12) {
-                    StatBox(title: "Waiting to be paid", value: r.outstanding.formatted, tint: .orange)
-                    StatBox(title: "Overdue", value: "\(r.overdueCount)", tint: r.overdueCount > 0 ? .red : .gray)
+                    StatCard(title: "Total revenue", value: r.allTime.formatted, footer: "All time", footerColor: .secondary)
+                    StatCard(title: period.title, value: r.periodTotal.formatted,
+                             footer: r.percentChange.map { "\($0 >= 0 ? "\u{2197}" : "\u{2198}") \(String(format: "%.1f", abs($0)))% vs previous period" } ?? "No earlier period to compare",
+                             footerColor: (r.percentChange ?? 0) >= 0 ? .green : .red)
                 }
-            }
-            .listRowInsets(EdgeInsets())
-            .listRowBackground(Color.clear)
-            Section {
-                NavigationLink { InvoicesView().environment(\.embeddedInStack, true) } label: {
-                    HubRow(icon: "doc.text.fill", title: "Invoices", subtitle: drafts > 0 ? "\(drafts) drafts to look at" : "\(model.data.invoices.count) invoices", badge: drafts)
-                }
-                NavigationLink { ReportsView().environment(\.embeddedInStack, true) } label: {
-                    HubRow(icon: "chart.bar.fill", title: "Job costs", subtitle: "Which sites make money", tint: .green)
-                }
-                if model.data.isOwnerSession {
-                    NavigationLink { PricingCalculatorView().environment(\.embeddedInStack, true) } label: {
-                        HubRow(icon: "dollarsign.circle.fill", title: "Plans and pricing", subtitle: "Pro and Max, \(Pricing.trialDays) days free", tint: .purple)
+                Card {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack {
+                            Text("Revenue Over Time").font(.title3.weight(.semibold))
+                            Spacer()
+                            Label("Revenue trend", systemImage: "chart.line.uptrend.xyaxis").font(.callout.weight(.medium)).foregroundStyle(.green)
+                        }
+                        if r.bars.isEmpty {
+                            VStack(spacing: 6) {
+                                Text("No revenue yet").font(.title3.weight(.semibold))
+                                Text("Record a payment on an invoice to see revenue here.").font(.callout).foregroundStyle(.secondary).multilineTextAlignment(.center)
+                            }
+                            .frame(maxWidth: .infinity, minHeight: 220)
+                        } else {
+                            Chart(r.bars) { bar in
+                                BarMark(x: .value("Date", bar.start, unit: period == .thisMonth || period == .lastMonth ? .day : .month),
+                                        y: .value("Dollars", Double(bar.amount.cents) / 100))
+                                    .foregroundStyle(Theme.accent(model.data.profile.accentColor).gradient)
+                            }
+                            .frame(height: 220)
+                        }
                     }
                 }
+                Card {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack {
+                            Text("Recent Revenue").font(.title3.weight(.semibold))
+                            Spacer()
+                            Label("Latest records", systemImage: "receipt").font(.callout).foregroundStyle(.secondary)
+                        }
+                        if r.recent.isEmpty {
+                            Text("No payments recorded yet.").font(.callout).foregroundStyle(.secondary).frame(maxWidth: .infinity, minHeight: 60)
+                        }
+                        ForEach(r.recent) { e in
+                            HStack {
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(e.client.isEmpty ? e.invoiceNumber : e.client).font(.headline)
+                                    Text("\(e.invoiceNumber) · \(DateFormatter.make("MMM d").string(from: e.date))").font(.footnote).foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                                Text(e.amount.formatted).font(.headline).foregroundStyle(.green)
+                            }
+                        }
+                    }
+                }
+                Card(padding: 4) {
+                    VStack(spacing: 0) {
+                        NavigationLink { InvoicesView().environment(\.embeddedInStack, true).circleBack() } label: {
+                            MoreRow(icon: "doc.text.fill", tint: Theme.accent(model.data.profile.accentColor), title: "Invoices", subtitle: drafts > 0 ? "\(drafts) drafts to look at" : "\(model.data.invoices.count) invoices", badge: drafts)
+                        }
+                        Divider().padding(.leading, 70)
+                        NavigationLink { ReportsView().environment(\.embeddedInStack, true).circleBack() } label: {
+                            MoreRow(icon: "chart.bar.fill", tint: .green, title: "Job costs", subtitle: "Which sites make money", badge: 0)
+                        }
+                        if model.data.isOwnerSession {
+                            Divider().padding(.leading, 70)
+                            NavigationLink { SubscriptionView().environment(\.embeddedInStack, true).circleBack() } label: {
+                                MoreRow(icon: "creditcard.fill", tint: .purple, title: "Subscription", subtitle: "Pro and Max, \(Pricing.trialDays) days free", badge: 0)
+                            }
+                        }
+                    }
+                    .buttonStyle(.plain)
+                }
             }
+            .padding(.horizontal, 16).padding(.top, 14)
+            .padding(.bottom, Look.tabBarClearance + 40)
         }
     }
 }
 
-private struct StatBox: View {
+private struct StatCard: View {
     let title: String
     let value: String
-    let tint: Color
+    let footer: String
+    let footerColor: Color
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(title).font(.footnote).foregroundStyle(.secondary)
-            Text(value).font(.system(size: 26, weight: .bold, design: .rounded)).foregroundStyle(tint).minimumScaleFactor(0.6).lineLimit(1)
+        Card {
+            VStack(alignment: .leading, spacing: 8) {
+                CapsLabel(text: title)
+                Text(value).font(.system(size: 32, weight: .bold, design: .rounded)).minimumScaleFactor(0.6).lineLimit(1)
+                Text(footer).font(.callout).foregroundStyle(footerColor)
+            }
+            .frame(minHeight: 96, alignment: .topLeading)
         }
-        .padding(14)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Look.card, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(Look.stroke, lineWidth: 1))
+    }
+}
+
+private struct MoreRow: View {
+    let icon: String
+    let tint: Color
+    let title: String
+    let subtitle: String
+    let badge: Int
+    var body: some View {
+        HStack(spacing: 14) {
+            IconTile(icon: icon, tint: tint, size: 46)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title).font(.headline).foregroundStyle(.primary)
+                Text(subtitle).font(.footnote).foregroundStyle(.secondary)
+            }
+            Spacer()
+            if badge > 0 { Text("\(badge)").font(.footnote.bold()).foregroundStyle(.white).padding(.horizontal, 8).padding(.vertical, 2).background(Color.red, in: Capsule()) }
+            Image(systemName: "chevron.right").foregroundStyle(.secondary)
+        }
+        .padding(12)
+        .contentShape(Rectangle())
     }
 }
 #endif

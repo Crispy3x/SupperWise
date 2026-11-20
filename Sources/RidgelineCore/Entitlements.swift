@@ -39,6 +39,9 @@ public struct Subscription: Equatable, Codable, Sendable {
 
     public static func startTrial(at date: Date) -> Subscription { Subscription(trialStart: date, plan: nil) }
 
+    /// The day the free trial ends. Nil if there never was a trial.
+    public var trialEnd: Date? { trialStart.map { $0.addingTimeInterval(Double(Pricing.trialDays) * 86_400) } }
+
     public func state(now: Date) -> SubscriptionState {
         if let plan { return .active(plan) }
         guard let start = trialStart else { return .expired }

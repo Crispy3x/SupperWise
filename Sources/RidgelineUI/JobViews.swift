@@ -116,98 +116,142 @@ struct JobDetailSheet: View {
     }
 }
 
-/// Create a job, or a reminder or task.
+/// Create a job in three steps (client and job, when, who and notes), or a reminder or task in one.
 struct JobEditorSheet: View {
     @Environment(AppModel.self) private var model
     @Environment(\.dismiss) private var dismiss
     var initialDate: Date = Date()
     var startsAsTask = false
 
+    private enum ClientMode { case none, existing }
+
+    @State private var step = 0
     @State private var title = ""
     @State private var kind: JobKind = .snowPlowing
+    @State private var clientMode: ClientMode = .none
     @State private var customerID: UUID?
     @State private var siteID: UUID?
     @State private var start = Date()
-    @State private var minutes = 60
+    @State private var minutes = 60.0
     @State private var assignees: Set<UUID> = []
     @State private var notes = ""
     @State private var isTask = false
     @State private var problem: String?
     @State private var loaded = false
+    @State private var showNewClient = false
 
+    private var clients: [Customer] { model.data.customers.filter { !$0.isLead } }
     private var sitesForClient: [Site] { model.data.sites.filter { $0.customerID == customerID } }
     private var people: [TeamMember] { model.data.team.filter { $0.status != .disabled } }
+    private var steps: [String] { isTask ? ["Reminder"] : ["Client & Job", "Schedule", "Crew & notes"] }
+    private var canAdvance: Bool { step != 0 || !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
 
     var body: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    Picker("Type", selection: $isTask) {
-                        Text("Job").tag(false)
-                        Text("Reminder or task").tag(true)
-                    }
-                    .pickerStyle(.segmented)
-                    TextField(isTask ? "What to remember" : "Job title, for example Plow and salt", text: $title)
-                    if !isTask {
-                        Picker("Service", selection: $kind) { ForEach(JobKind.allCases, id: \.self) { Text($0.title).tag($0) } }
-                    }
-                }
-                Section("When") {
-                    DatePicker("Starts", selection: $start)
-                    Stepper("Length: \(minutes) min", value: $minutes, in: 5...600, step: 5)
-                }
-                if !isTask {
-                    Section("Where") {
-                        Picker("Client", selection: $customerID) {
-                            Text("No client").tag(UUID?.none)
-                            ForEach(model.data.customers.filter { !$0.isLead }) { Text($0.name).tag(UUID?.some($0.id)) }
-                        }
-                        if customerID != nil {
-                            Picker("Site", selection: $siteID) {
-                                Text("No site").tag(UUID?.none)
-                                ForEach(sitesForClient) { Text($0.address).tag(UUID?.some($0.id)) }
-                            }
-                        }
-                        Text("Only jobs with a site that has a map location go on the route.").font(.footnote).foregroundStyle(.secondary)
-                    }
-                    if !people.isEmpty {
-                        Section("Who does it") {
-                            ForEach(people) { p in
-                                Toggle(p.name, isOn: Binding(get: { assignees.contains(p.id) },
-                                                             set: { on in if on { assignees.insert(p.id) } else { assignees.remove(p.id) } }))
-                            }
-                        }
-                    }
-                }
-                Section("Notes") { TextField("Gate code, special instructions", text: $notes, axis: .vertical).lineLimit(2...5) }
-                if let problem { Section { Text(problem).font(.footnote).foregroundStyle(.red) } }
+        WizardScaffold(title: isTask ? "New Reminder" : "New Job", steps: steps, step: $step, canAdvance: canAdvance, onClose: { dismiss() }, onFinish: save) {
+            if step == 0 {
+                PillChoice(options: [(false, "Job", "briefcase"), (true, "Reminder or task", "checklist")], selection: $isTask)
             }
-            .navigationTitle(isTask ? "New reminder" : "New job")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
-                        problem = model.addJob(title: title, kind: isTask ? .other : kind, customerID: isTask ? nil : customerID,
-                                               siteID: isTask ? nil : siteID, start: start, durationMinutes: minutes,
-                                               assigneeIDs: isTask ? [] : Array(assignees), notes: notes, isTask: isTask)
-                        if problem == nil { dismiss() }
-                    }
-                    .disabled(title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            if isTask {
+                SectionLabel(text: "Reminder")
+                PillField(label: "What to remember", required: true, placeholder: "Call the county about the lot", text: $title)
+                whenSection
+                PillNotes(label: "Notes", placeholder: "Anything to remember", text: $notes)
+            } else {
+                switch step {
+                case 0: clientAndJob
+                case 1: whenSection
+                default: crewAndNotes
                 }
             }
-            .onChange(of: customerID) { siteID = nil }
-            .onAppear {
-                guard !loaded else { return }
-                loaded = true
-                isTask = startsAsTask
-                // The picked day, at a sensible hour if that day has no time yet.
-                let cal = Calendar.current
-                let c = cal.dateComponents([.year, .month, .day], from: initialDate)
-                start = cal.date(bySettingHour: 8, minute: 0, second: 0, of: cal.date(from: c) ?? initialDate) ?? initialDate
-                if cal.isDateInToday(initialDate) { start = max(Date(), start) }
-                if !people.isEmpty, !model.data.isOwnerSession, let me = model.data.currentMember { assignees = [me.id] }
-            }
+            if let problem { Label(problem, systemImage: "exclamationmark.triangle.fill").font(.callout).foregroundStyle(.orange) }
         }
+        .onAppear {
+            guard !loaded else { return }
+            loaded = true
+            isTask = startsAsTask
+            let cal = Calendar.current
+            let c = cal.dateComponents([.year, .month, .day], from: initialDate)
+            start = cal.date(bySettingHour: 8, minute: 0, second: 0, of: cal.date(from: c) ?? initialDate) ?? initialDate
+            if cal.isDateInToday(initialDate) { start = max(Date(), start) }
+            if !model.data.isOwnerSession, let me = model.data.currentMember { assignees = [me.id] }
+        }
+        .onChange(of: isTask) { step = 0 }
+        .onChange(of: customerID) { siteID = sitesForClient.count == 1 ? sitesForClient[0].id : nil }
+        .sheet(isPresented: $showNewClient) {
+            AddCustomerSheet { id in customerID = id; clientMode = .existing }
+        }
+    }
+
+    private var clientAndJob: some View {
+        VStack(alignment: .leading, spacing: 22) {
+            SectionLabel(text: "Client")
+            HStack(spacing: 12) {
+                bigButton("New Client", icon: "person.badge.plus") { showNewClient = true }
+                bigButton("Existing Client", icon: "person.crop.circle.badge.checkmark", on: clientMode == .existing) { clientMode = .existing }
+            }
+            if clientMode == .existing {
+                if clients.isEmpty {
+                    Text("You have no clients yet. Tap New Client.").font(.callout).foregroundStyle(.secondary)
+                } else {
+                    PillMenu(label: "Choose a client", options: [(UUID?.none, "Choose")] + clients.map { (UUID?.some($0.id), $0.name) }, selection: $customerID)
+                    if sitesForClient.count > 1 {
+                        PillMenu(label: "Which address", options: [(UUID?.none, "Choose")] + sitesForClient.map { (UUID?.some($0.id), $0.address) }, selection: $siteID)
+                    } else if let only = sitesForClient.first {
+                        Label(only.address, systemImage: "mappin.circle").font(.callout).foregroundStyle(.secondary)
+                    }
+                }
+            }
+            SectionLabel(text: "Job details")
+            PillField(label: "Job Title", required: true, placeholder: "e.g. Plow and salt", text: $title)
+            PillMenu(label: "Type", options: JobKind.allCases.map { ($0, $0.title) }, selection: $kind)
+            Text("Only jobs at a site with a map location go on the route.").font(.footnote).foregroundStyle(.secondary)
+        }
+    }
+
+    private var whenSection: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            SectionLabel(text: "When")
+            Card(padding: 14) { DatePicker("Starts", selection: $start).font(.title3) }
+            PillStepper(label: "Length", value: $minutes, range: 5...600, step: 5, format: { "\(Int($0)) min" })
+        }
+    }
+
+    private var crewAndNotes: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            if !people.isEmpty {
+                SectionLabel(text: "Who does it")
+                ForEach(people) { p in
+                    let on = assignees.contains(p.id)
+                    Button { if on { assignees.remove(p.id) } else { assignees.insert(p.id) } } label: {
+                        HStack {
+                            Text(p.name).font(.title3).foregroundStyle(.primary)
+                            Spacer()
+                            Image(systemName: on ? "checkmark.circle.fill" : "circle").font(.title2).foregroundStyle(on ? Theme.accent(model.data.profile.accentColor) : Color.secondary)
+                        }
+                        .padding(.horizontal, 22).padding(.vertical, 14).background(Look.field, in: Capsule()).overlay(Capsule().stroke(Look.fieldStroke, lineWidth: 1))
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            PillNotes(label: "Notes", placeholder: "Gate code, special instructions", text: $notes)
+        }
+    }
+
+    private func bigButton(_ title: String, icon: String, on: Bool = false, action: @escaping () -> Void) -> some View {
+        let tint = Theme.accent(model.data.profile.accentColor)
+        return Button(action: action) {
+            HStack(spacing: 8) { Image(systemName: icon); Text(title).font(.title3.weight(.medium)).lineLimit(1).minimumScaleFactor(0.7) }
+                .foregroundStyle(tint).frame(maxWidth: .infinity).padding(.vertical, 18)
+                .background(on ? tint.opacity(0.16) : Look.field, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+                .overlay(RoundedRectangle(cornerRadius: 22, style: .continuous).stroke(on ? tint : Look.fieldStroke, lineWidth: on ? 2 : 1))
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func save() {
+        problem = model.addJob(title: title, kind: isTask ? .other : kind, customerID: isTask ? nil : customerID, siteID: isTask ? nil : siteID,
+                               start: start, durationMinutes: Int(minutes), assigneeIDs: isTask ? [] : Array(assignees), notes: notes, isTask: isTask)
+        if problem == nil { dismiss() }
     }
 }
 #endif

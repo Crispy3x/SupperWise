@@ -36,8 +36,15 @@ enum ShellTab: String, CaseIterable, Identifiable {
 
 /// Screens opened from the menu. They show on their own with a Home button to come back.
 enum ShellScreen: String, Identifiable {
-    case quotes, team, revenue, storm, visits, timeClock, proof, settings, profile
+    case quotes, team, revenue, storm, visits, timeClock, proof, settings, profile, subscription
     var id: String { rawValue }
+    /// Pages keep the Menu bar and the tab bar. The others open on their own with a round back button.
+    var isPage: Bool {
+        switch self {
+        case .quotes, .team, .revenue, .storm, .visits, .timeClock, .proof: return true
+        case .settings, .profile, .subscription: return false
+        }
+    }
     var title: String {
         switch self {
         case .quotes: return "Quotes"
@@ -49,6 +56,7 @@ enum ShellScreen: String, Identifiable {
         case .proof: return "Proof of service"
         case .settings: return "Settings"
         case .profile: return "Profile"
+        case .subscription: return "Subscription"
         }
     }
     var icon: String {
@@ -62,6 +70,7 @@ enum ShellScreen: String, Identifiable {
         case .proof: return "checkmark.seal"
         case .settings: return "gearshape"
         case .profile: return "person.crop.circle"
+        case .subscription: return "creditcard"
         }
     }
 }
@@ -112,6 +121,7 @@ struct MainShell: View {
         if tabs.contains(.clients) { out.append(MenuEntry(target: .tab(.clients), title: "Clients", icon: "person.2")) }
         if model.data.can(.viewTeam) { out.append(MenuEntry(target: .screen(.team), title: "Team", icon: "person.2.badge.gearshape")) }
         if model.data.can(.viewRevenue) { out.append(MenuEntry(target: .screen(.revenue), title: "Revenue", icon: "dollarsign.circle")) }
+        if model.data.isOwnerSession { out.append(MenuEntry(target: .screen(.subscription), title: "Subscription", icon: "creditcard")) }
         if model.data.can(.editJobs) { out.append(MenuEntry(target: .screen(.storm), title: "Storm planner", icon: "cloud.snow")) }
         if model.data.can(.logVisits) { out.append(MenuEntry(target: .screen(.visits), title: "Log visits", icon: "checkmark.circle")) }
         if model.data.can(.useTimeClock) { out.append(MenuEntry(target: .screen(.timeClock), title: "Time clock", icon: "clock")) }
@@ -127,23 +137,25 @@ struct MainShell: View {
             Look.page.ignoresSafeArea()
             VStack(spacing: 0) {
                 StatusBanners()
-                if let screen {
+                if let screen, !screen.isPage {
                     SecondaryScreen(screen: screen) { self.screen = nil }
                 } else {
                     topBar
-                    content
+                    if let screen { PageScreen(screen: screen) } else { content }
                 }
             }
-            if screen == nil {
-                VStack {
+            VStack {
+                Spacer()
+                HStack {
                     Spacer()
-                    HStack {
-                        Spacer()
-                        SparkleButton { showAssistant = true }
-                    }
-                    .padding(.trailing, 20)
-                    FloatingTabBar(tabs: tabs, selection: $tab)
+                    SparkleButton { showAssistant = true }
+                }
+                .padding(.trailing, 20)
+                if screen == nil || screen?.isPage == true {
+                    FloatingTabBar(tabs: tabs, selection: screen == nil ? tab : nil) { picked in screen = nil; tab = picked }
                         .padding(.horizontal, 14).padding(.bottom, 10).padding(.top, 8)
+                } else {
+                    Color.clear.frame(height: 20)
                 }
             }
             if menuOpen {
@@ -267,14 +279,16 @@ struct StatusBanners: View {
 
 struct FloatingTabBar: View {
     let tabs: [ShellTab]
-    @Binding var selection: ShellTab
+    /// The highlighted tab. Nil on a page that is not one of the tabs.
+    let selection: ShellTab?
+    let onSelect: (ShellTab) -> Void
     @Environment(AppModel.self) private var model
 
     var body: some View {
         let tint = Theme.accent(model.data.profile.accentColor)
         HStack(spacing: 4) {
             ForEach(tabs) { t in
-                Button { selection = t } label: {
+                Button { onSelect(t) } label: {
                     HStack(spacing: 8) {
                         Image(systemName: selection == t ? t.selectedIcon : t.icon).font(.system(size: 20, weight: .medium))
                         if selection == t || tabs.count <= 4 {
@@ -402,36 +416,67 @@ private struct SideMenu: View {
     }
 }
 
-// MARK: - A menu screen with its own title bar and a way back
+// MARK: - Screens from the menu
 
+/// A screen that opens on its own: a round back button and a centred title, like Subscription.
 private struct SecondaryScreen: View {
     let screen: ShellScreen
     let onClose: () -> Void
 
     var body: some View {
         NavigationStack {
-            destination
-                .environment(\.embeddedInStack, true)
-                .navigationTitle(screen.title)
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button(action: onClose) { Label("Home", systemImage: "chevron.left") }
-                    }
-                }
+            VStack(spacing: 0) {
+                ScreenTopBar(title: screen.title, onBack: onClose)
+                destination.pageBackground()
+            }
+            .environment(\.embeddedInStack, true)
+            .hideNavBar()
         }
     }
 
     @ViewBuilder private var destination: some View {
         switch screen {
-        case .quotes: QuotesView()
+        case .settings: SettingsView()
+        case .profile: ProfileView()
+        case .subscription: SubscriptionView()
+        default: EmptyView()
+        }
+    }
+}
+
+/// A page from the menu. It keeps the Menu bar and the tab bar, and starts with the same big title the tabs have.
+private struct PageScreen: View {
+    let screen: ShellScreen
+
+    var body: some View {
+        NavigationStack {
+            content
+                .environment(\.embeddedInStack, true)
+                .hideNavBar()
+        }
+    }
+
+    @ViewBuilder private var content: some View {
+        switch screen {
         case .team: TeamView()
         case .revenue: RevenueView()
+        default:
+            VStack(spacing: 0) {
+                ScreenHeader(icon: screen.icon, title: screen.title, trailing: "")
+                    .padding(.horizontal, 16).padding(.top, 14).padding(.bottom, 8)
+                existing.pageBackground().padding(.bottom, Look.tabBarClearance - 40)
+            }
+        }
+    }
+
+    @ViewBuilder private var existing: some View {
+        switch screen {
+        case .quotes: QuotesView()
         case .storm: StormView()
         case .visits: TodayView()
         case .timeClock: TimeClockView()
         case .proof: ProofView()
-        case .settings: SettingsView()
-        case .profile: ProfileView()
+        default: EmptyView()
         }
     }
 }

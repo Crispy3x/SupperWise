@@ -84,8 +84,8 @@ extension AppModel {
     // MARK: team and jobs
 
     @discardableResult
-    public func addTeamMember(name: String, role: TeamRole, phone: String, email: String, username: String, password: String) -> String? {
-        edit { _ = try $0.addTeamMember(name: name, role: role, phone: phone, email: email, username: username, password: password, now: Date()) }
+    public func addTeamMember(name: String, role: TeamRole, phone: String, email: String, username: String, password: String, hourlyRate: Money? = nil) -> String? {
+        edit { _ = try $0.addTeamMember(name: name, role: role, phone: phone, email: email, username: username, password: password, hourlyRate: hourlyRate, now: Date()) }
     }
 
     public func setEmployeePassword(_ password: String, forMember id: UUID) -> String? {

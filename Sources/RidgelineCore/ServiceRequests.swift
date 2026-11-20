@@ -7,6 +7,8 @@ public enum RequestKind: String, Codable, CaseIterable, Sendable {
     case urgent
     /// "Skip me this storm" (away, or will do it themselves).
     case skip
+    /// A kind message for the driver. It changes nothing on the route; the owner reads it and marks it read.
+    case thanks
 }
 
 public enum UrgentReason: String, Codable, CaseIterable, Sendable {
@@ -101,8 +103,8 @@ extension AppData {
             guard let siteID = siteID(forToken: r.token) else { continue }
             guard !serviceRequests.contains(where: { $0.remoteID == r.id }) else { continue }
             guard let kind = RequestKind(rawValue: r.kind) else { continue }
-            let pending = serviceRequests.filter { $0.siteID == siteID && $0.status == .pending }.count
-            guard pending < Self.maxPendingRequestsPerSite else { continue }
+            let pending = serviceRequests.filter { $0.siteID == siteID && $0.status == .pending && $0.kind != .thanks }.count
+            guard kind == .thanks || pending < Self.maxPendingRequestsPerSite else { continue }
             let created = parser.date(from: r.createdAt) ?? plain.date(from: r.createdAt) ?? Date()
             let note = String(r.note?.trimmingCharacters(in: .whitespacesAndNewlines).prefix(Self.maxRequestNoteLength) ?? "")
             serviceRequests.append(ServiceRequest(remoteID: r.id, siteID: siteID, stormID: r.stormId.flatMap(UUID.init(uuidString:)), kind: kind,

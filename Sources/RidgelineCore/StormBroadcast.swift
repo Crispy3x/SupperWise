@@ -73,6 +73,17 @@ public struct BroadcastRecord: Equatable, Codable, Sendable {
     public let sentAt: Date
 }
 
+/// A file sent with an email, for example the invoice as a PDF.
+public struct EmailAttachment: Equatable, Sendable {
+    public let filename: String
+    public let data: Data
+
+    public init(filename: String, data: Data) {
+        self.filename = filename
+        self.data = data
+    }
+}
+
 public struct PlannedMessage: Equatable, Sendable {
     public let siteID: UUID
     public let customerID: UUID
@@ -82,6 +93,7 @@ public struct PlannedMessage: Equatable, Sendable {
     public let body: String
     /// Not before this moment (it moves past quiet hours unless the message is marked urgent).
     public let sendAfter: Date
+    public var attachment: EmailAttachment? = nil
 }
 
 public enum SkipReason: String, Equatable, Sendable {

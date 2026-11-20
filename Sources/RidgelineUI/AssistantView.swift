@@ -9,35 +9,45 @@ struct AssistantView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var draft = ""
     @FocusState private var typing: Bool
+    #if canImport(Speech) && os(iOS)
+    @State private var speech = SpeechInput()
+    #endif
 
     var body: some View {
-        NavigationStack {
+        VStack(spacing: 0) {
+            header
             Group {
                 if !model.data.assistantConsented { ConsentCard() }
                 else if !model.serverConfigured { SetupCard() }
                 else { chat }
             }
-            .background(Look.page)
-            .navigationTitle("Assistant")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Done") { dismiss() } }
-                if model.data.assistantConsented {
-                    ToolbarItem(placement: .primaryAction) {
-                        Menu {
-                            Button("New chat", systemImage: "square.and.pencil") { model.startNewAssistantChat() }.disabled(model.assistantBusy)
-                            Button("Turn off the assistant", systemImage: "power", role: .destructive) { model.turnOffAssistant() }
-                        } label: { Label("Options", systemImage: "ellipsis.circle") }
-                    }
-                }
-            }
-            .task { await model.refreshAssistantStatus() }
         }
+        .background(Look.sheet.ignoresSafeArea())
+        .task { await model.refreshAssistantStatus() }
+    }
+
+    private var header: some View {
+        HStack {
+            Text("Assistant").font(.title3.weight(.medium)).foregroundStyle(.secondary)
+            Spacer()
+            if model.data.assistantConsented {
+                Menu {
+                    Button("Turn off the assistant", systemImage: "power", role: .destructive) { model.turnOffAssistant() }
+                } label: { Image(systemName: "ellipsis").font(.title3).foregroundStyle(.secondary).frame(width: 40, height: 40) }
+                Button { model.startNewAssistantChat() } label: { Image(systemName: "square.and.pencil").font(.title2).foregroundStyle(.secondary).frame(width: 44, height: 44) }
+                    .buttonStyle(.plain).disabled(model.assistantBusy).accessibilityLabel("New chat")
+            }
+            CircleButton(icon: "xmark", label: "Close") { dismiss() }
+        }
+        .padding(.horizontal, 18).padding(.top, 18).padding(.bottom, 6)
     }
 
     private var suggestions: [String] {
-        var s = ["What is on today?", "Plan today's route"]
-        if model.data.can(.viewRevenue) { s.append("Which invoices are overdue?") }
-        if model.data.can(.editJobs) { s.append("Book a job for tomorrow at 8") }
+        var s = ["Today's schedule"]
+        if model.data.can(.viewRevenue) { s.append("Which invoices are overdue?") } else { s.append("Plan today's route") }
+        if model.data.can(.editClients) { s.append("Add a client") }
+        if model.data.can(.editJobs) { s.append("Create a job") }
+        if model.data.can(.viewRevenue) { s.append("Invoice a client") }
         return s
     }
 
@@ -46,26 +56,11 @@ struct AssistantView: View {
             ScrollViewReader { proxy in
                 ScrollView {
                     LazyVStack(spacing: 12) {
-                        if model.assistantLines.isEmpty {
-                            VStack(spacing: 14) {
-                                IconTile(icon: "sparkles", tint: Look.sparkle, size: 64)
-                                Text("What can I help with?").font(.title2.bold())
-                                Text("I can look up jobs, clients and invoices, schedule jobs, add clients and plan your route. I always ask you to tap Send before anything goes to a client.")
-                                    .font(.callout).foregroundStyle(.secondary).multilineTextAlignment(.center)
-                                ForEach(suggestions, id: \.self) { s in
-                                    Button { send(s) } label: {
-                                        Text(s).font(.callout).padding(.horizontal, 14).padding(.vertical, 10)
-                                            .background(Look.card, in: Capsule()).overlay(Capsule().stroke(Look.stroke, lineWidth: 1))
-                                    }
-                                    .buttonStyle(.plain)
-                                }
-                            }
-                            .padding(.top, 30).padding(.horizontal, 20)
-                        }
+                        if model.assistantLines.isEmpty { emptyState }
                         ForEach(model.assistantLines) { line in LineView(line: line).id(line.id) }
                         if model.assistantBusy {
                             HStack(spacing: 8) { ProgressView(); Text("Thinking...").foregroundStyle(.secondary) }
-                                .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 16).id("busy")
+                                .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 16)
                         }
                     }
                     .padding(.vertical, 12)
@@ -78,32 +73,105 @@ struct AssistantView: View {
                 Text(used >= 100 ? "This month's assistant allowance is used up." : "\(used)% of this month's assistant allowance is used.")
                     .font(.footnote).foregroundStyle(used >= 100 ? Color.red : Color.orange).padding(.vertical, 4)
             }
-            HStack(spacing: 10) {
-                TextField("Ask anything...", text: $draft, axis: .vertical)
-                    .lineLimit(1...4)
-                    .focused($typing)
-                    .padding(.horizontal, 16).padding(.vertical, 12)
-                    .background(Look.card, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
-                    .overlay(RoundedRectangle(cornerRadius: 22, style: .continuous).stroke(Look.stroke, lineWidth: 1))
-                    .onSubmit { send(draft) }
-                Button { send(draft) } label: {
-                    Image(systemName: "arrow.up").font(.headline).foregroundStyle(.white).frame(width: 44, height: 44)
-                        .background(Look.sparkle, in: Circle())
-                }
-                .buttonStyle(.plain)
-                .disabled(draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || model.assistantBusy)
-                .accessibilityLabel("Send")
+            #if canImport(Speech) && os(iOS)
+            if let p = speech.problem { Text(p).font(.footnote).foregroundStyle(.orange).padding(.horizontal, 20) }
+            #endif
+            if model.assistantLines.isEmpty {
+                Text(micAvailable ? "Tap the mic and speak, or type below." : "Type below.").font(.title3).foregroundStyle(.secondary).padding(.bottom, 10)
+                FlowChips(items: suggestions) { send($0) }.padding(.horizontal, 16).padding(.bottom, 14)
             }
-            .padding(12)
+            inputBar
         }
+    }
+
+    private var micAvailable: Bool {
+        #if canImport(Speech) && os(iOS)
+        return true
+        #else
+        return false
+        #endif
+    }
+
+    private var emptyState: some View {
+        VStack(spacing: 18) {
+            #if canImport(Speech) && os(iOS)
+            Button { Task { await speech.toggle() } } label: {
+                ZStack {
+                    Circle().fill(Look.sparkle.opacity(speech.isListening ? 0.45 : 0.18)).frame(width: 230, height: 230)
+                    Image(systemName: speech.isListening ? "waveform" : "sparkles").font(.system(size: 64)).foregroundStyle(Color(red: 0.74, green: 0.65, blue: 1))
+                }
+            }
+            .buttonStyle(.plain).accessibilityLabel(speech.isListening ? "Stop listening" : "Tap to talk")
+            Text(speech.isListening ? (speech.transcript.isEmpty ? "Listening..." : speech.transcript) : "Tap to talk").font(.title2).foregroundStyle(.secondary)
+                .multilineTextAlignment(.center).padding(.horizontal, 24)
+            #else
+            ZStack { Circle().fill(Look.sparkle.opacity(0.18)).frame(width: 200, height: 200); Image(systemName: "sparkles").font(.system(size: 64)).foregroundStyle(Color(red: 0.74, green: 0.65, blue: 1)) }
+            Text("What can I help with?").font(.title2).foregroundStyle(.secondary)
+            #endif
+        }
+        .frame(maxWidth: .infinity).padding(.top, 70).padding(.bottom, 20)
+        #if canImport(Speech) && os(iOS)
+        .onChange(of: speech.transcript) { _, new in if speech.isListening { draft = new } }
+        #endif
+    }
+
+    private var inputBar: some View {
+        HStack(spacing: 10) {
+            #if canImport(Speech) && os(iOS)
+            Button { Task { await speech.toggle() } } label: {
+                Image(systemName: speech.isListening ? "stop.circle.fill" : "mic").font(.title2).foregroundStyle(speech.isListening ? Color.red : Color.secondary)
+            }
+            .buttonStyle(.plain).accessibilityLabel(speech.isListening ? "Stop listening" : "Speak")
+            #endif
+            TextField("Type a message...", text: $draft, axis: .vertical)
+                .font(.title3).lineLimit(1...4).focused($typing)
+                .onSubmit { send(draft) }
+            Button { send(draft) } label: {
+                Image(systemName: "arrow.up").font(.headline).foregroundStyle(.white).frame(width: 52, height: 52)
+                    .background(Look.sparkle.opacity(draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? 0.45 : 1), in: Circle())
+            }
+            .buttonStyle(.plain)
+            .disabled(draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || model.assistantBusy)
+            .accessibilityLabel("Send")
+        }
+        .padding(.leading, 22).padding(.trailing, 8).padding(.vertical, 8)
+        .background(Look.field, in: RoundedRectangle(cornerRadius: 34, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 34, style: .continuous).stroke(Look.fieldStroke, lineWidth: 1))
+        .padding(.horizontal, 16).padding(.bottom, 12)
     }
 
     private func send(_ text: String) {
         let t = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !t.isEmpty, !model.assistantBusy else { return }
+        #if canImport(Speech) && os(iOS)
+        speech.stop()
+        #endif
         draft = ""
         Task { await model.askAssistant(t) }
     }
+}
+
+/// Suggestion buttons that wrap onto more than one row.
+private struct FlowChips: View {
+    let items: [String]
+    let pick: (String) -> Void
+    var body: some View {
+        VStack(spacing: 10) {
+            ForEach(rows, id: \.self) { row in
+                HStack(spacing: 10) {
+                    ForEach(row, id: \.self) { item in
+                        Button { pick(item) } label: {
+                            Text(item).font(.title3).foregroundStyle(.primary).lineLimit(1).minimumScaleFactor(0.75)
+                                .padding(.horizontal, 18).padding(.vertical, 12)
+                                .overlay(Capsule().stroke(Look.fieldStroke, lineWidth: 1))
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+            }
+        }
+    }
+    private var rows: [[String]] { stride(from: 0, to: items.count, by: 2).map { Array(items[$0..<min($0 + 2, items.count)]) } }
 }
 
 private struct LineView: View {

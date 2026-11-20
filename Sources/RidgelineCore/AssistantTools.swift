@@ -14,7 +14,7 @@ public struct ToolCall: Equatable, Sendable {
 
 /// Something the assistant prepared that only a person can finish, such as emailing an invoice to a client.
 public struct PendingAction: Identifiable, Equatable, Sendable {
-    public enum Kind: Equatable, Sendable { case sendInvoice(number: String) }
+    public enum Kind: Equatable, Sendable { case sendInvoice(number: String), sendReminders(count: Int), sendSeasonLinks(count: Int) }
     public let id: UUID
     public let kind: Kind
     public let title: String
@@ -58,8 +58,10 @@ extension AppData {
         let token = portalLinks.first { $0.siteID == site.id }?.token
         let portal = (RoutingServerSettings.validatedURL(base) != nil && token != nil) ? "\(base.hasSuffix("/") ? String(base.dropLast()) : base)/c/\(token!)" : nil
         let company = companyName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "Your snow crew" : companyName
-        return .ready(InvoiceMessage.compose(invoice: invoice, customer: customer, site: site, company: company, portalURL: portal,
-                                             howToPay: profile.paymentInstructions, payLink: profile.payLink, calendar: calendar))
+        var message = InvoiceMessage.compose(invoice: invoice, customer: customer, site: site, company: company, portalURL: portal,
+                                             howToPay: profile.paymentInstructions, payLink: profile.payLink, calendar: calendar)
+        if let pdf = invoicePDF(number: invoice.number, calendar: calendar) { message.attachment = EmailAttachment(filename: pdf.filename, data: pdf.data) }
+        return .ready(message)
     }
 }
 
@@ -95,6 +97,20 @@ public enum AssistantTools {
                        inputSchema: schema(["client_name": ("string", "An existing client's name")], required: ["client_name"])), .viewRevenue),
         (AssistantTool(name: "send_invoice", description: "Prepare to email an invoice to the client. The person must confirm in the app before anything is sent, so never say it was sent.",
                        inputSchema: schema(["invoice_number": ("string", "For example INV-0003")], required: ["invoice_number"])), .viewRevenue),
+        (AssistantTool(name: "record_payment", description: "Record a payment received on an invoice (cash, check, card or bank transfer). Leave the amount out to record the full balance.",
+                       inputSchema: schema(["invoice_number": ("string", "For example INV-0003"), "amount": ("number", "Dollars received. Leave out for the whole balance."),
+                                            "method": ("string", "cash, check, card, bankTransfer or other")], required: ["invoice_number"])), .viewRevenue),
+        (AssistantTool(name: "get_revenue", description: "Money received: the total for a period, how it compares with the period before, and the latest payments.",
+                       inputSchema: schema(["period": ("string", "thisMonth, lastMonth, thisYear or allTime. Default thisMonth.")])), .viewRevenue),
+        (AssistantTool(name: "send_reminders", description: "Prepare friendly payment reminders for overdue invoices, to clients who agreed to emails. The person must confirm before anything is sent.",
+                       inputSchema: schema([:])), .viewRevenue),
+        (AssistantTool(name: "list_requests", description: "List client requests and kind messages that are waiting, with their ids.",
+                       inputSchema: schema([:])), .viewRequests),
+        (AssistantTool(name: "answer_request", description: "Answer a waiting client request. Use accept, decline, or read (for a kind message). The client sees the answer on their page.",
+                       inputSchema: schema(["request_id": ("string", "The request id from list_requests"), "decision": ("string", "accept, decline or read"),
+                                            "message": ("string", "A short note the client will see")], required: ["request_id", "decision"])), .answerRequests),
+        (AssistantTool(name: "send_season_links", description: "Prepare the start-of-winter email with each client's private page link (map, arrival time, requests, bills). The person must confirm before anything is sent.",
+                       inputSchema: schema([:])), .editClients),
         (AssistantTool(name: "plan_route", description: "Put one day's jobs in the quickest driving order using Apple Maps drive times. Returns the order and the total driving time.",
                        inputSchema: schema(["date": ("string", "The day as YYYY-MM-DD. Leave out for today.")])), nil),
         (AssistantTool(name: "get_weather", description: "The latest forecast for the yard: snowfall, low temperature, wind and any winter alerts. Says if it has not been loaded.",
@@ -123,6 +139,9 @@ public enum AssistantTools {
         case "update_job_status": return updateStatus(call.input, &data)
         case "list_invoices": return listInvoices(call.input, data, now)
         case "send_invoice": return prepareSend(call.input, data, calendar)
+        case "record_payment": return recordPayment(call.input, &data, now)
+        case "get_revenue": return revenue(call.input, data, now, calendar)
+        case "list_requests": return listRequests(data)
         default: return .hostTool                  // plan_route, get_weather, create_invoice
         }
     }
@@ -275,6 +294,41 @@ public enum AssistantTools {
             "- \(inv.number) | \(data.customers.first { $0.id == inv.customerID }?.name ?? "?") | total \(inv.total.formatted) | balance \(inv.balance.formatted) | due \(f.string(from: inv.dueDate)) | \(inv.sentAt == nil ? "draft" : inv.status(now: now).rawValue)"
         }
         return .text(lines.joined(separator: "\n") + (list.count > 20 ? "\n(\(list.count - 20) more not shown.)" : ""))
+    }
+
+    static func recordPayment(_ input: JSONValue, _ data: inout AppData, _ now: Date) -> ToolOutcome {
+        guard let number = input["invoice_number"]?.string, let i = data.invoices.firstIndex(where: { $0.number.caseInsensitiveCompare(number) == .orderedSame }) else {
+            return .error("There is no invoice \(input["invoice_number"]?.string ?? "like that").")
+        }
+        let inv = data.invoices[i]
+        guard !inv.isVoid else { return .error("Invoice \(inv.number) is void.") }
+        guard inv.balance.cents > 0 else { return .error("Invoice \(inv.number) is already paid in full.") }
+        let cents = input["amount"]?.double.map { Int(($0 * 100).rounded()) } ?? inv.balance.cents
+        guard cents > 0 else { return .error("The amount must be more than zero.") }
+        guard cents <= inv.balance.cents else { return .error("That is more than the balance of \(inv.balance.formatted).") }
+        let method = PaymentMethod(rawValue: input["method"]?.string ?? "other") ?? .other
+        do { try data.invoices[i].record(ManualPayment(amount: Money(cents: cents), date: now, method: method)) } catch { return .error("The payment could not be recorded.") }
+        let left = data.invoices[i].balance
+        return .text("Recorded \(Money(cents: cents).formatted) on \(inv.number) (\(method.rawValue)). " + (left.cents == 0 ? "It is now paid in full." : "\(left.formatted) is still owed."))
+    }
+
+    static func revenue(_ input: JSONValue, _ data: AppData, _ now: Date, _ calendar: Calendar) -> ToolOutcome {
+        let period = RevenuePeriod(rawValue: input["period"]?.string ?? "thisMonth") ?? .thisMonth
+        let r = RevenueReport.compute(for: data, period: period, now: now, calendar: calendar)
+        var lines = ["\(period.title): \(r.periodTotal.formatted) received. All time: \(r.allTime.formatted)."]
+        if let c = r.percentChange { lines.append("Compared with the period before: \(c >= 0 ? "+" : "")\(String(format: "%g", c))%.") }
+        for e in r.recent.prefix(5) { lines.append("- \(DateFormatter.shortDate(e.date)) \(e.invoiceNumber) \(e.client) \(e.amount.formatted)") }
+        return .text(lines.joined(separator: "\n"))
+    }
+
+    static func listRequests(_ data: AppData) -> ToolOutcome {
+        let waiting = data.serviceRequests.filter { $0.status == .pending }.sorted { $0.createdAt < $1.createdAt }
+        if waiting.isEmpty { return .text("Nothing is waiting.") }
+        let lines = waiting.prefix(20).map { r -> String in
+            let place = data.sites.first { $0.id == r.siteID }?.address ?? "?"
+            return "- \(r.kind.rawValue) | \(place)" + (r.note.isEmpty ? "" : " | \"\(r.note.prefix(100))\"") + " | id: \(r.id.uuidString)"
+        }
+        return .text(lines.joined(separator: "\n"))
     }
 
     static func prepareSend(_ input: JSONValue, _ data: AppData, _ calendar: Calendar) -> ToolOutcome {

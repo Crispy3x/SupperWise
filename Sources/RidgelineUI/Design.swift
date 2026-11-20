@@ -195,4 +195,260 @@ extension DateFormatter {
         let f = DateFormatter(); f.dateFormat = format; return f
     }
 }
+
+// MARK: - The newer look: circle buttons, pill fields, step-by-step sheets
+
+extension Look {
+    static let field = Color(light: .white, dark: Color(red: 0.2, green: 0.2, blue: 0.215))
+    static let fieldStroke = Color(light: Color.blue.opacity(0.25), dark: Color(red: 0.24, green: 0.32, blue: 0.5))
+    static let sheet = Color(light: Color(red: 0.97, green: 0.97, blue: 0.985), dark: Color(red: 0.165, green: 0.165, blue: 0.175))
+}
+
+/// A round button with one icon: back, close, next.
+struct CircleButton: View {
+    let icon: String
+    let label: String
+    let action: () -> Void
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: icon).font(.system(size: 20, weight: .semibold)).foregroundStyle(.primary)
+                .frame(width: 50, height: 50).background(Look.pill, in: Circle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(label)
+    }
+}
+
+/// The top bar of a screen that is opened on its own: a round back button and a centred title.
+struct ScreenTopBar: View {
+    let title: String
+    let onBack: () -> Void
+    var body: some View {
+        HStack {
+            CircleButton(icon: "chevron.left", label: "Back", action: onBack)
+            Spacer()
+            Text(title).font(.title3.weight(.semibold)).lineLimit(1)
+            Spacer()
+            Color.clear.frame(width: 50, height: 50)
+        }
+        .padding(.horizontal, 16).padding(.vertical, 12)
+        .background(Look.card.opacity(0.6))
+        .overlay(alignment: .bottom) { Rectangle().fill(Look.stroke).frame(height: 1) }
+    }
+}
+
+/// For a screen pushed inside a navigation stack: hides the system back button and shows the round one instead.
+struct CircleBackModifier: ViewModifier {
+    @Environment(\.dismiss) private var dismiss
+    var action: (() -> Void)?
+    func body(content: Content) -> some View {
+        content
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    CircleButton(icon: "chevron.left", label: "Back") { if let action { action() } else { dismiss() } }
+                }
+            }
+    }
+}
+
+extension View {
+    func circleBack(_ action: (() -> Void)? = nil) -> some View { modifier(CircleBackModifier(action: action)) }
+
+    /// A dark page behind a list or form, so the standard controls sit on the same background as everything else.
+    func pageBackground() -> some View {
+        scrollContentBackground(.hidden).background(Look.page)
+    }
+
+    @ViewBuilder func hideNavBar() -> some View {
+        #if os(iOS)
+        toolbar(.hidden, for: .navigationBar)
+        #else
+        self
+        #endif
+    }
+}
+
+/// A labelled text field with a rounded, pill-shaped box.
+struct PillField: View {
+    enum Kind { case text, phone, email, number }
+    let label: String
+    var optional = false
+    var required = false
+    let placeholder: String
+    @Binding var text: String
+    var kind: Kind = .text
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                Text(label).font(.title3.weight(.medium))
+                if optional { Text("(optional)").font(.title3).foregroundStyle(.secondary) }
+                if required { Text("*").font(.title3) }
+            }
+            TextField(placeholder, text: $text)
+                .font(.title3)
+                .autocorrectionDisabled()
+                #if os(iOS)
+                .keyboardType(kind == .phone ? .phonePad : (kind == .email ? .emailAddress : (kind == .number ? .decimalPad : .default)))
+                .textInputAutocapitalization(kind == .text ? .words : .never)
+                #endif
+                .padding(.horizontal, 22).padding(.vertical, 16)
+                .background(Look.field, in: Capsule())
+                .overlay(Capsule().stroke(Look.fieldStroke, lineWidth: 1))
+        }
+    }
+}
+
+/// A labelled multi-line box for notes.
+struct PillNotes: View {
+    let label: String
+    let placeholder: String
+    @Binding var text: String
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) { Text(label).font(.title3.weight(.medium)); Text("(optional)").font(.title3).foregroundStyle(.secondary) }
+            TextField(placeholder, text: $text, axis: .vertical).font(.title3).lineLimit(3...6)
+                .padding(.horizontal, 22).padding(.vertical, 16)
+                .background(Look.field, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
+                .overlay(RoundedRectangle(cornerRadius: 26, style: .continuous).stroke(Look.fieldStroke, lineWidth: 1))
+        }
+    }
+}
+
+/// A labelled drop-down in a pill.
+struct PillMenu<T: Hashable>: View {
+    let label: String
+    var required = false
+    let options: [(T, String)]
+    @Binding var selection: T
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) { Text(label).font(.title3.weight(.medium)); if required { Text("*").font(.title3) } }
+            Menu {
+                ForEach(Array(options.enumerated()), id: \.offset) { _, o in Button(o.1) { selection = o.0 } }
+            } label: {
+                HStack {
+                    Text(options.first { $0.0 == selection }?.1 ?? "Choose").font(.title3).foregroundStyle(.primary)
+                    Spacer()
+                    Image(systemName: "chevron.down").foregroundStyle(.secondary)
+                }
+                .padding(.horizontal, 22).padding(.vertical, 16)
+                .background(Look.field, in: Capsule())
+                .overlay(Capsule().stroke(Look.fieldStroke, lineWidth: 1))
+            }
+            .buttonStyle(.plain)
+        }
+    }
+}
+
+/// A number with minus and plus buttons, in a pill.
+struct PillStepper: View {
+    let label: String
+    @Binding var value: Double
+    let range: ClosedRange<Double>
+    let step: Double
+    var format: (Double) -> String = { String(format: "%g", $0) }
+
+    var body: some View {
+        HStack {
+            Text(label).font(.title3)
+            Spacer()
+            Button { value = max(range.lowerBound, value - step) } label: { Image(systemName: "minus.circle.fill").font(.title2) }
+                .buttonStyle(.plain).foregroundStyle(.secondary).accessibilityLabel("Less")
+            Text(format(value)).font(.title3.weight(.semibold)).monospacedDigit().frame(minWidth: 56)
+            Button { value = min(range.upperBound, value + step) } label: { Image(systemName: "plus.circle.fill").font(.title2) }
+                .buttonStyle(.plain).foregroundStyle(Color.accentColor).accessibilityLabel("More")
+        }
+        .padding(.horizontal, 22).padding(.vertical, 12)
+        .background(Look.field, in: Capsule())
+        .overlay(Capsule().stroke(Look.fieldStroke, lineWidth: 1))
+    }
+}
+
+/// Two or more choices side by side, one selected, in pills.
+struct PillChoice<T: Hashable>: View {
+    let options: [(value: T, title: String, icon: String?)]
+    @Binding var selection: T
+    @Environment(AppModel.self) private var model
+
+    var body: some View {
+        let tint = Theme.accent(model.data.profile.accentColor)
+        HStack(spacing: 12) {
+            ForEach(Array(options.enumerated()), id: \.offset) { _, o in
+                let on = o.value == selection
+                Button { selection = o.value } label: {
+                    HStack(spacing: 8) {
+                        if let icon = o.icon { Image(systemName: icon) }
+                        Text(o.title).font(.title3.weight(.medium)).lineLimit(1).minimumScaleFactor(0.8)
+                    }
+                    .foregroundStyle(on ? tint : Color.primary)
+                    .frame(maxWidth: .infinity).padding(.vertical, 16)
+                    .background(on ? tint.opacity(0.16) : Look.field, in: Capsule())
+                    .overlay(Capsule().stroke(on ? tint : Look.fieldStroke, lineWidth: on ? 2 : 1))
+                }
+                .buttonStyle(.plain)
+            }
+        }
+    }
+}
+
+struct SectionLabel: View {
+    let text: String
+    @Environment(AppModel.self) private var model
+    var body: some View {
+        Text(text).font(.title2.weight(.semibold)).foregroundStyle(Theme.accent(model.data.profile.accentColor).opacity(0.9))
+    }
+}
+
+/// A small grey capital label, like STATUS or HOURS.
+struct CapsLabel: View {
+    let text: String
+    var body: some View { Text(text.uppercased()).font(.subheadline.weight(.semibold)).tracking(1.2).foregroundStyle(.secondary) }
+}
+
+/// A sheet that walks through a few steps: close or back on the left, next or finish on the right, and a progress bar.
+struct WizardScaffold<Content: View>: View {
+    let title: String
+    let steps: [String]
+    @Binding var step: Int
+    var canAdvance = true
+    let onClose: () -> Void
+    let onFinish: () -> Void
+    @ViewBuilder var content: Content
+    @Environment(AppModel.self) private var model
+
+    private var last: Bool { step >= steps.count - 1 }
+
+    var body: some View {
+        let tint = Theme.accent(model.data.profile.accentColor)
+        VStack(spacing: 14) {
+            HStack {
+                CircleButton(icon: step == 0 ? "xmark" : "chevron.left", label: step == 0 ? "Close" : "Back") { if step == 0 { onClose() } else { step -= 1 } }
+                Spacer()
+                Text(title).font(.title3.weight(.semibold))
+                Spacer()
+                CircleButton(icon: last ? "checkmark" : "arrow.right", label: last ? "Save" : "Next") { if last { onFinish() } else { step += 1 } }
+                    .disabled(!canAdvance).opacity(canAdvance ? 1 : 0.35)
+            }
+            if steps.count > 1 {
+                HStack {
+                    Text("Step \(step + 1) of \(steps.count)").font(.title3).foregroundStyle(.secondary)
+                    Spacer()
+                    Text(steps[min(step, steps.count - 1)]).font(.title3.weight(.medium))
+                }
+                HStack(spacing: 8) {
+                    ForEach(0..<steps.count, id: \.self) { i in Capsule().fill(i <= step ? tint : Look.pill).frame(height: 5) }
+                }
+            }
+            ScrollView {
+                VStack(alignment: .leading, spacing: 22) { content }
+                    .padding(.top, 8).padding(.bottom, 30)
+            }
+        }
+        .padding(.horizontal, 18).padding(.top, 16)
+        .background(Look.sheet.ignoresSafeArea())
+    }
+}
 #endif

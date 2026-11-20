@@ -122,6 +122,9 @@ extension AppModel {
         case "plan_route": return await assistantPlanRoute(call.input)
         case "get_weather": return await assistantWeather()
         case "create_invoice": return assistantCreateInvoice(call.input)
+        case "send_reminders": return assistantPrepareReminders()
+        case "send_season_links": return assistantPrepareSeasonLinks()
+        case "answer_request": return await assistantAnswerRequest(call.input)
         default: return .error("That tool is not available.")
         }
     }
@@ -149,6 +152,76 @@ extension AppModel {
         return .text(contracts.map { createInvoice(for: $0) }.joined(separator: " "))
     }
 
+    private func assistantPrepareReminders() -> ToolOutcome {
+        let plan = reminderPlan()
+        let due = plan.messages.filter { $0.sendAfter <= Date() }
+        if due.isEmpty { return .text(plan.messages.isEmpty ? "No reminders are due." : "Reminders are waiting for quiet hours to end.") }
+        let action = PendingAction(kind: .sendReminders(count: due.count), title: "Send \(due.count) friendly reminder\(due.count == 1 ? "" : "s")?",
+                                   detail: "Only clients who agreed to emails get one, at most three per invoice, a week apart.")
+        return .needsConfirmation(action, "Prepared \(due.count) reminder\(due.count == 1 ? "" : "s"). They have NOT been sent. The owner must tap Send in the app to confirm.")
+    }
+
+    private func assistantPrepareSeasonLinks() -> ToolOutcome {
+        let plan = SeasonWelcome.plan(data: data, now: Date())
+        if !plan.problem.isEmpty { return .error(plan.problem) }
+        if plan.messages.isEmpty { return .text("No one is waiting for a link. Everyone who agreed to emails already has theirs for \(plan.season), or has not agreed yet.") }
+        let action = PendingAction(kind: .sendSeasonLinks(count: plan.messages.count), title: "Email \(plan.messages.count) client\(plan.messages.count == 1 ? "" : "s") their \(plan.season) page link?",
+                                   detail: "Each client gets their private page for the whole season: map, arrival time, requests, bills and a way to say thanks.")
+        return .needsConfirmation(action, "Prepared \(plan.messages.count) season link email\(plan.messages.count == 1 ? "" : "s"). They have NOT been sent. The owner must tap Send in the app to confirm.")
+    }
+
+    private func assistantAnswerRequest(_ input: JSONValue) async -> ToolOutcome {
+        guard let idText = input["request_id"]?.string, let id = UUID(uuidString: idText), let decision = input["decision"]?.string,
+              ["accept", "decline", "read"].contains(decision) else { return .error("Give the request id from list_requests and a decision of accept, decline or read.") }
+        guard data.serviceRequests.contains(where: { $0.id == id && $0.status == .pending }) else { return .error("That request is not waiting any more.") }
+        let note = String((input["message"]?.string ?? "").prefix(200))
+        return .text(await decideRequest(id, accept: decision != "decline", message: note))
+    }
+
+    // MARK: sending the invoice PDF, reminders and season links
+
+    /// Emails the invoice as a PDF, with the owner's pay links, to the client. Only the real result is reported.
+    public func emailInvoice(number: String) async -> String {
+        guard let client = portalClient() else { return "Set up your server in Settings first." }
+        switch data.invoiceEmail(number: number) {
+        case .problem(let why): return why
+        case .ready(let message):
+            await sendInvoiceEmail(message, number: number, client: client)
+            return data.invoices.first { $0.number == number }?.sentAt != nil ? "Invoice \(number) was emailed with its PDF." : "Invoice \(number) could not be emailed. It stays a draft."
+        }
+    }
+
+    /// Puts every client's page online for the winter, so the link works before the first storm.
+    func publishSeasonPages() async -> String? {
+        guard let client = portalClient() else { return "Set up your server in Settings first." }
+        let season = SeasonWelcome.season(for: Date())
+        let name = "Winter \(season)"
+        edit { $0.ensurePortalLinks(now: Date()); if !$0.storms.contains(where: { $0.name == name }) { $0.storms.append(StormEvent(name: name, start: Date(), forecastInches: 0)) } }
+        guard let storm = data.storms.first(where: { $0.name == name }) else { return "Could not set up the winter pages." }
+        do { try await client.publish(portalSnapshot(storm: storm, inches: 0, routeStart: nil, offsets: [:])); return nil }
+        catch { return "Could not put the client pages online. Check your server." }
+    }
+
+    public func seasonLinkPlan() -> SeasonWelcomePlan { SeasonWelcome.plan(data: data, now: Date()) }
+
+    public func sendSeasonLinks() async -> String {
+        guard let client = portalClient() else { return "Set up your server in Settings first." }
+        let plan = seasonLinkPlan()
+        if !plan.problem.isEmpty { return plan.problem }
+        guard !plan.messages.isEmpty else { return "No one is waiting for a link." }
+        if let problem = await publishSeasonPages() { return problem }
+        do {
+            let ok = try await client.sendEmails(plan.messages)
+            let sent = zip(plan.messages, ok).filter { $0.1 }.map { $0.0 }
+            edit { $0.recordSeasonLinks(sent, season: plan.season, at: Date()) }
+            var text = "Sent \(sent.count) page link\(sent.count == 1 ? "" : "s") for \(plan.season)."
+            if sent.count < plan.messages.count { text += " \(plan.messages.count - sent.count) failed and can be tried again." }
+            return text
+        } catch {
+            return "Could not send the links. Nothing was recorded as sent."
+        }
+    }
+
     // MARK: the person's tap
 
     /// The person tapped Send on something the assistant prepared. Only now does anything leave the phone.
@@ -166,17 +239,29 @@ extension AppModel {
             case .ready(let message):
                 await sendInvoiceEmail(message, number: number, client: client)
                 let sent = data.invoices.first { $0.number == number }?.sentAt != nil
-                assistantLines.append(AssistantLine(kind: .note, text: sent ? "Invoice \(number) was emailed." : "Invoice \(number) could not be emailed. It stays a draft."))
+                assistantLines.append(AssistantLine(kind: .note, text: sent ? "Invoice \(number) was emailed with its PDF and pay links." : "Invoice \(number) could not be emailed. It stays a draft."))
                 assistantUpdates.append(sent ? "[Update: the owner tapped Send and invoice \(number) was emailed.]" : "[Update: the owner tapped Send but invoice \(number) could not be emailed.]")
             }
+        case .sendReminders:
+            let result = await sendReminders()
+            assistantLines.append(AssistantLine(kind: .note, text: result))
+            assistantUpdates.append("[Update: the owner tapped Send on the reminders. Result: \(result)]")
+        case .sendSeasonLinks:
+            let result = await sendSeasonLinks()
+            assistantLines.append(AssistantLine(kind: .note, text: result))
+            assistantUpdates.append("[Update: the owner tapped Send on the season links. Result: \(result)]")
         }
     }
 
     public func cancelPending(_ action: PendingAction) {
         removePending(action)
-        if case .sendInvoice(let number) = action.kind {
+        switch action.kind {
+        case .sendInvoice(let number):
             assistantLines.append(AssistantLine(kind: .note, text: "Cancelled. Invoice \(number) was not sent."))
             assistantUpdates.append("[Update: the owner cancelled sending invoice \(number). It was not sent.]")
+        case .sendReminders, .sendSeasonLinks:
+            assistantLines.append(AssistantLine(kind: .note, text: "Cancelled. Nothing was sent."))
+            assistantUpdates.append("[Update: the owner cancelled. Nothing was sent.]")
         }
     }
 

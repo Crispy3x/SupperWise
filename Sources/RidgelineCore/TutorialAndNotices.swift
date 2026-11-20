@@ -54,10 +54,15 @@ public enum Notifications {
                                        detail: "Open Home to see them on the map."))
         }
         if data.can(.answerRequests) {
-            let pending = data.serviceRequests.filter { $0.status == .pending }.count
+            let pending = data.serviceRequests.filter { $0.status == .pending && $0.kind != .thanks }.count
             if pending > 0 {
                 out.append(AppNotification(id: "requests", kind: .request, title: "\(pending) client request\(pending == 1 ? "" : "s")",
                                            detail: "Waiting for your answer."))
+            }
+            let kind = data.serviceRequests.filter { $0.status == .pending && $0.kind == .thanks }.count
+            if kind > 0 {
+                out.append(AppNotification(id: "thanks", kind: .request, title: "\(kind) kind message\(kind == 1 ? "" : "s") for the driver",
+                                           detail: "Clients said thanks. Open Requests to read them."))
             }
         }
         if data.can(.viewRevenue) {

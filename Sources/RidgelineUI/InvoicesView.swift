@@ -7,6 +7,7 @@ struct InvoicesView: View {
     @Environment(AppModel.self) private var model
     @State private var message: String?
     @State private var sendingReminders = false
+    @State private var openedInvoice: String?
 
     var body: some View {
         ScreenStack {
@@ -64,36 +65,18 @@ struct InvoicesView: View {
                 Section("Saved invoices") {
                     if model.data.invoices.isEmpty { Text("No invoices created yet.").foregroundStyle(.secondary) }
                     ForEach(model.data.invoices) { inv in
-                        VStack(alignment: .leading, spacing: 4) {
-                            HStack {
-                                Text(inv.number).font(.headline)
-                                Spacer()
-                                Text(inv.status(now: Date()).rawValue.capitalized).font(.caption).foregroundStyle(.secondary)
-                            }
-                            Text("Total \(inv.total.formatted), paid \(inv.paid.formatted), balance \(inv.balance.formatted)").font(.footnote)
-                            HStack {
-                                if inv.sentAt == nil && !inv.isVoid {
-                                    Button("Mark sent") { message = model.updateInvoice(id: inv.id) { try $0.markSent(at: Date()) } }
+                        Button { openedInvoice = inv.number } label: {
+                            VStack(alignment: .leading, spacing: 4) {
+                                HStack {
+                                    Text(inv.number).font(.headline)
+                                    Spacer()
+                                    Text(inv.isVoid ? "Void" : inv.status(now: Date()).rawValue.capitalized).font(.caption).foregroundStyle(.secondary)
+                                    Image(systemName: "chevron.right").font(.caption).foregroundStyle(.secondary)
                                 }
-                                if inv.balance.cents > 0 && !inv.isVoid {
-                                    Button("Record payment in full") {
-                                        message = model.updateInvoice(id: inv.id) {
-                                            try $0.record(ManualPayment(amount: $0.balance, date: Date(), method: .other))
-                                        }
-                                    }
-                                }
-                            }
-                            .buttonStyle(.bordered)
-                            .font(.footnote)
-                            if inv.balance.cents > 0 && !inv.isVoid, let link = model.data.profile.payLink.flatMap(PayLink.clean), let url = URL(string: link) {
-                                ShareLink(item: url, message: Text("Invoice \(inv.number), balance \(inv.balance.formatted)")) {
-                                    Label("Share pay link", systemImage: "link")
-                                }
-                                .font(.footnote)
-                            } else if inv.balance.cents > 0 && !inv.isVoid {
-                                Text("Add a payment link in Settings to share a Pay now link.").font(.caption).foregroundStyle(.secondary)
+                                Text("\(model.data.customers.first { $0.id == inv.customerID }?.name ?? "Client") · total \(inv.total.formatted), balance \(inv.balance.formatted)").font(.footnote).foregroundStyle(.secondary)
                             }
                         }
+                        .buttonStyle(.plain)
                     }
                     if !model.data.invoices.isEmpty {
                         ShareLink(item: model.invoicesCSV()) { Label("Export all as CSV", systemImage: "square.and.arrow.up") }
@@ -101,11 +84,14 @@ struct InvoicesView: View {
                 }
                 if let message { Section { Text(message).font(.footnote) } }
                 Section {
-                    Text("Late fees are never added automatically. Pay links come from your own payment account (set one in Settings). Mark an invoice paid here once the money arrives.")
+                    Text("Open an invoice to email it to the client as a PDF with your pay links. Late fees are never added automatically. Mark an invoice paid once the money arrives.")
                         .font(.footnote).foregroundStyle(.secondary)
                 }
             }
             .navigationTitle("Invoices")
+            .sheet(isPresented: Binding(get: { openedInvoice != nil }, set: { if !$0 { openedInvoice = nil } })) {
+                if let n = openedInvoice { InvoiceDetailSheet(number: n) }
+            }
         }
     }
 }

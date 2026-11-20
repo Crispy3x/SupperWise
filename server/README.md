@@ -73,3 +73,37 @@ cd server && npm test
 - **Hosting, monitoring and backups are not set up.** Pick a host, store the key as a secret there, and set a budget alert.
 - **In-memory limits and cache** reset on restart and are per server instance. If you run several instances, move them to a shared store.
 - **Token handling.** Tokens are compared in constant time and never logged. Issue one per customer so you can revoke individually (restart with the token removed).
+
+## Client pages, email and the assistant
+
+The same server also serves each client's private page (`/c/<token>`), sends email for the app, and runs the in-app assistant.
+
+### Client pages
+- A client's link lasts the whole winter (`PORTAL_SNAPSHOT_TTL_DAYS`, default 240). Send it once at the start of the season from the app (Clients, Send winter page links).
+- The page shows the status, the arrival window, stops ahead, a live map with the trucks, the weather, bills with a Pay now link, a request form, and a way to say thanks: a kind message for the driver plus your own tip, coffee, donut and lunch links.
+- Trucks appear only for a property waiting for service, only while their position is under 10 minutes old, and positions are rounded to about 10 metres.
+- Map tiles come from OpenStreetMap (the customer's browser asks them directly). The map script itself is served from this server.
+- `PORTAL_DATA_FILE` keeps requests and pages across restarts. Without it everything is lost on a restart.
+
+### Email
+- `RESEND_API_KEY` and `FROM_EMAIL` switch email on. An invoice is sent as a PDF attachment (one PDF per message, at most about 1 MB).
+- `PORTAL_MAX_EMAIL_BODY_BYTES` (default 3000000) is the largest email request. Public pages keep the smaller `PORTAL_MAX_BODY_BYTES`.
+
+### The assistant
+Set `ANTHROPIC_API_KEY` to switch it on. Without it the app shows that the assistant is not set up.
+
+| Variable | Default | What it does |
+|---|---|---|
+| `ANTHROPIC_API_KEY` | none | Your key. It stays on the server. |
+| `AI_MODEL` | `claude-haiku-5-5` | The cheapest current model. Raise it to `claude-sonnet-5-5` or `claude-opus-5-5` if answers are not good enough. No app update needed. |
+| `AI_EFFORT` | `medium` | `low`, `medium` or `high`. |
+| `AI_PLANS` | none | JSON that says what each customer pays, for the spending limit: `{"<owner token>": {"plan": "pro", "crews": 2, "billing": "monthly"}}`. The app cannot change it. |
+| `AI_BUDGET_PERCENT` | 10 | The most a customer's assistant use may cost, as a percent of what they pay after Apple's cut. |
+| `APPLE_FEE_PERCENT` | 30 | Apple's cut. Use 15 if you are in the App Store Small Business Program. |
+| `AI_TRIAL_BUDGET_USD` | 0.50 | Monthly allowance for a token with no paid plan listed (free trials). Set 0 to switch the assistant off for them. |
+| `AI_USAGE_FILE` | none | Keeps each customer's spend across restarts. Set it, or a restart resets the limit. |
+| `AI_DAILY_MESSAGE_CAP` | 200 | Questions per customer per day. |
+| `AI_RATE_LIMIT_PER_MIN` | 20 | Requests per minute per connection. |
+| `AI_PRICE_IN_PER_MTOK`, `AI_PRICE_OUT_PER_MTOK` | built in | Override Claude's prices (dollars per million tokens) if they change. The built-in table is from 2026-11-03. |
+
+Each request holds back the most it could cost before it runs, so requests arriving together cannot go over the limit. The app is told only a percent used, never dollars.

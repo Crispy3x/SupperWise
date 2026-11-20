@@ -238,6 +238,7 @@ struct ClientsTabView: View {
     @State private var query = ""
     @State private var showNewClient = false
     @State private var showNewLead = false
+    @State private var showSeasonLinks = false
 
     private var clients: [Customer] { model.data.customers.filter { !$0.isLead } }
     private var leads: [Customer] { model.data.customers.filter { $0.isLead } }
@@ -259,7 +260,7 @@ struct ClientsTabView: View {
                     VStack(spacing: 14) {
                         ScreenHeader(icon: "person.2.fill", title: "Clients", trailing: "\(clients.count) total · \(shown.count) shown")
                         SearchField(prompt: "Search by name, phone, or email...", text: $query)
-                        NavigationLink { LeadsView() } label: {
+                        NavigationLink { LeadsView().environment(\.embeddedInStack, true).circleBack().pageBackground() } label: {
                             Card(padding: 12) {
                                 HStack(spacing: 14) {
                                     IconTile(icon: "leaf.fill", tint: .teal, size: 48)
@@ -283,7 +284,7 @@ struct ClientsTabView: View {
                             EmptyCard(icon: "magnifyingglass", title: "No matches", message: "Try a different search.")
                         } else {
                             ForEach(shown) { c in
-                                NavigationLink { ClientDetailView(customerID: c.id) } label: {
+                                NavigationLink { ClientDetailView(customerID: c.id).circleBack().pageBackground() } label: {
                                     Card(padding: 12) {
                                         HStack(spacing: 14) {
                                             AvatarView(name: c.name, size: 46)
@@ -301,7 +302,21 @@ struct ClientsTabView: View {
                             }
                         }
                         if model.data.can(.editClients) {
-                            NavigationLink { CustomersView().environment(\.embeddedInStack, true) } label: {
+                            Button { showSeasonLinks = true } label: {
+                                Card(padding: 12) {
+                                    HStack(spacing: 14) {
+                                        IconTile(icon: "paperplane.fill", tint: .purple, size: 48)
+                                        VStack(alignment: .leading, spacing: 2) {
+                                            Text("Send winter page links").font(.headline).foregroundStyle(.primary)
+                                            Text("Each client's private page for the whole season").font(.footnote).foregroundStyle(.secondary)
+                                        }
+                                        Spacer()
+                                        Image(systemName: "chevron.right").foregroundStyle(.secondary)
+                                    }
+                                }
+                            }
+                            .buttonStyle(.plain)
+                            NavigationLink { CustomersView().environment(\.embeddedInStack, true).circleBack().pageBackground() } label: {
                                 Label("Import clients from a spreadsheet (CSV)", systemImage: "square.and.arrow.down").font(.callout)
                             }
                             .padding(.top, 6)
@@ -317,7 +332,9 @@ struct ClientsTabView: View {
                 }
             }
             .background(Look.page)
+            .hideNavBar()
             .sheet(isPresented: $showNewClient) { AddCustomerSheet() }
+            .sheet(isPresented: $showSeasonLinks) { SeasonLinksSheet() }
         }
     }
 }

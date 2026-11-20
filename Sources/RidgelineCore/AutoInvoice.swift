@@ -20,7 +20,7 @@ public enum InvoiceMessage {
         var lines = ["Hello \(customer.name),", "", "Here is your invoice from \(company) for \(site.address).", ""]
         for l in invoice.lines { lines.append("\(l.description): \(l.amount.formatted)") }
         lines.append("")
-        lines.append("Total due: \(invoice.total.formatted) by \(f.string(from: invoice.dueDate)).")
+        lines.append("Total due: \(invoice.total.formatted) by \(f.string(from: invoice.dueDate)). A PDF copy of this invoice is attached.")
         let pay = howToPay.trimmingCharacters(in: .whitespacesAndNewlines)
         if !pay.isEmpty { lines.append("How to pay: \(pay)") }
         if let link = payLink.flatMap(PayLink.clean) { lines.append("Pay online: \(link)") }
@@ -65,8 +65,9 @@ extension AppData {
         let token = portalLinks.first { $0.siteID == site.id }?.token
         let portal = (RoutingServerSettings.validatedURL(base) != nil && token != nil) ? "\(base.hasSuffix("/") ? String(base.dropLast()) : base)/c/\(token!)" : nil
         let company = companyName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "Your snow crew" : companyName
-        let message = InvoiceMessage.compose(invoice: invoice, customer: customer, site: site, company: company, portalURL: portal,
+        var message = InvoiceMessage.compose(invoice: invoice, customer: customer, site: site, company: company, portalURL: portal,
                                              howToPay: profile.paymentInstructions, payLink: profile.payLink, calendar: calendar)
+        if let pdf = invoicePDF(number: number, calendar: calendar) { message.attachment = EmailAttachment(filename: pdf.filename, data: pdf.data) }
         return AutoInvoiceOutcome(invoice: invoice, message: message, note: "Invoice \(number) is ready to email to the client.")
     }
 

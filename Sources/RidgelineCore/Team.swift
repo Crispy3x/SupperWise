@@ -91,9 +91,13 @@ public struct TeamMember: Identifiable, Equatable, Codable, Sendable {
     public var status: MemberStatus
     public var createdAt: Date
     public var joinedAt: Date?
+    /// What this person is paid per hour. Used only for the pay-owed figure on timesheets.
+    public var hourlyRate: Money?
 
     public init(id: UUID = UUID(), name: String, phone: String = "", email: String = "", role: TeamRole,
-                permissions: Set<Permission>? = nil, status: MemberStatus = .invited, createdAt: Date, joinedAt: Date? = nil) {
+                permissions: Set<Permission>? = nil, status: MemberStatus = .invited, createdAt: Date, joinedAt: Date? = nil,
+                hourlyRate: Money? = nil) {
+        self.hourlyRate = hourlyRate
         self.id = id
         self.name = name
         self.phone = phone
@@ -144,7 +148,7 @@ extension AppData {
     /// Nothing is added unless everything is valid, and the password is stored only as a salted hash.
     @discardableResult
     public mutating func addTeamMember<G: RandomNumberGenerator>(name: String, role: TeamRole, phone: String = "", email: String = "",
-                                                                 username: String, password: String, now: Date,
+                                                                 username: String, password: String, hourlyRate: Money? = nil, now: Date,
                                                                  iterations: Int = PasswordHasher.defaultIterations,
                                                                  using generator: inout G) throws -> TeamMember {
         let clean = name.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -153,7 +157,7 @@ extension AppData {
         let user = try LoginRules.checkedUsername(username, existing: logins)
         try LoginRules.checkPassword(password, username: user)
         let member = TeamMember(name: String(clean.prefix(80)), phone: String(phone.prefix(40)), email: String(email.prefix(120)),
-                                role: role, createdAt: now)
+                                role: role, createdAt: now, hourlyRate: hourlyRate.flatMap { $0.cents >= 0 && $0.cents <= 100_000 ? $0 : nil })
         team.append(member)
         logins.append(LoginCredential.make(username: user, password: password, role: .employee, memberID: member.id, now: now, iterations: iterations, using: &generator))
         return member
@@ -161,9 +165,15 @@ extension AppData {
 
     @discardableResult
     public mutating func addTeamMember(name: String, role: TeamRole, phone: String = "", email: String = "",
-                                       username: String, password: String, now: Date) throws -> TeamMember {
+                                       username: String, password: String, hourlyRate: Money? = nil, now: Date) throws -> TeamMember {
         var g = SystemRandomNumberGenerator()
-        return try addTeamMember(name: name, role: role, phone: phone, email: email, username: username, password: password, now: now, using: &g)
+        return try addTeamMember(name: name, role: role, phone: phone, email: email, username: username, password: password,
+                                 hourlyRate: hourlyRate, now: now, using: &g)
+    }
+
+    public mutating func setHourlyRate(_ rate: Money?, forMember id: UUID) throws {
+        guard let i = team.firstIndex(where: { $0.id == id }) else { throw TeamError.notFound }
+        team[i].hourlyRate = rate.flatMap { $0.cents >= 0 && $0.cents <= 100_000 ? $0 : nil }
     }
 
     /// Changing the role resets the permissions to that role's starting set. The owner can then adjust them.

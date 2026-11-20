@@ -6,8 +6,12 @@ import fs from 'node:fs';
 const TOKEN_RE = /^[A-Za-z0-9_-]{22,64}$/;
 const STATUSES = new Set(['planned', 'done', 'skipped', 'notExpected']);
 const KINDS = new Set(['service', 'urgent', 'skip']);
+// Small thank-you buttons. Each goes to the business's own payment link; nothing is paid through this page.
+const GIFTS = [['tipURL', 'tipUrl', 'tip', 'Tip the driver', '\u{1F4B5}'], ['coffeeURL', 'coffeeUrl', 'coffee', 'Send a coffee', '\u2615'],
+  ['donutURL', 'donutUrl', 'donut', 'Buy a donut', '\u{1F369}'], ['lunchURL', 'lunchUrl', 'lunch', 'Buy lunch', '\u{1F96A}']];
+const MAX_THANKS_CHARS = 200;
 const REASONS = new Set(['leavingSoon', 'medical', 'visitorOrDelivery', 'other']);
-const KIND_TEXT = { service: 'Please service my property', urgent: 'I need to get out soon (urgent)', skip: 'Skip my property this storm' };
+const KIND_TEXT = { thanks: 'Message to your driver', service: 'Please service my property', urgent: 'I need to get out soon (urgent)', skip: 'Skip my property this storm' };
 const REASON_TEXT = { leavingSoon: 'I need to leave soon', medical: 'Medical or care visit', visitorOrDelivery: 'Visitor or delivery coming', other: 'Other (explain below)' };
 const STATUS_TEXT = { planned: 'Planned for this storm', done: 'Done', skipped: 'Not serviced this visit', notExpected: 'No service expected yet' };
 const BILL_STATUSES = new Set(['Paid', 'Due', 'Overdue']);
@@ -37,9 +41,10 @@ export function loadPortalConfig(env = process.env) {
     ipLimitPerMinute: num(env.PORTAL_IP_LIMIT_PER_MIN, 120),
     requestsPerTokenPerHour: num(env.PORTAL_REQUESTS_PER_HOUR, 3),
     maxPendingPerToken: num(env.PORTAL_MAX_PENDING, 5),
-    snapshotTtlDays: num(env.PORTAL_SNAPSHOT_TTL_DAYS, 14),
+    snapshotTtlDays: num(env.PORTAL_SNAPSHOT_TTL_DAYS, 240),        // a client's link lasts the whole winter
     requestTtlDays: num(env.PORTAL_REQUEST_TTL_DAYS, 30),
     maxBodyBytes: num(env.PORTAL_MAX_BODY_BYTES, 500_000),
+    maxEmailBodyBytes: num(env.PORTAL_MAX_EMAIL_BODY_BYTES, 3_000_000),     // owner only: an invoice PDF is attached
     trustProxy: env.TRUST_PROXY === '1',
   };
 }
@@ -138,12 +143,12 @@ export function createPortal(config, deps = {}) {
     for (const t of ownerDigests) if (crypto.timingSafeEqual(t, d)) ok = true;
     return ok;
   };
-  const readBody = (req) => new Promise((resolve, reject) => {
+  const readBody = (req, limit = config.maxBodyBytes) => new Promise((resolve, reject) => {
     let size = 0; let tooLarge = false; const chunks = [];
     req.on('data', (c) => {
       if (tooLarge) return;
       size += c.length;
-      if (size > config.maxBodyBytes) { tooLarge = true; reject(Object.assign(new Error('too large'), { status: 413 })); return; }
+      if (size > limit) { tooLarge = true; reject(Object.assign(new Error('too large'), { status: 413 })); return; }
       chunks.push(c);
     });
     req.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
@@ -160,8 +165,8 @@ export function createPortal(config, deps = {}) {
     recent.push(t); ipHits.set(ip, recent);
     return true;
   };
-  async function jsonBody(req, res) {
-    try { return JSON.parse(await readBody(req)); }
+  async function jsonBody(req, res, limit) {
+    try { return JSON.parse(await readBody(req, limit)); }
     catch (e) {
       if (e.status === 413) { res.on('finish', () => req.destroy()); sendJson(res, 413, { error: 'Request too large' }); }
       else sendJson(res, 400, { error: 'Body must be JSON' });
@@ -177,7 +182,7 @@ body{font-family:-apple-system,Helvetica,Arial,sans-serif;margin:0;background:#f
 .status{display:inline-block;padding:.25rem .6rem;border-radius:8px;background:#eaf3fc;color:#1d5fb4;font-weight:600}.done{background:#e3f4ea;color:#1f7a45}.skipped{background:#fde8d2;color:#b8610f}
 label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;padding:.4rem;box-sizing:border-box}button{font:inherit;padding:.6rem 1rem;border:0;border-radius:8px;background:#2f7de1;color:#fff;margin-top:.6rem}
 .small{font-size:.85rem;color:#5b6b7e}table{width:100%;border-collapse:collapse}td{padding:.35rem 0;border-top:1px solid #e3e9f0;vertical-align:top}td.r{text-align:right}
-.pill{font-size:.8rem;font-weight:600;padding:.1rem .45rem;border-radius:6px;background:#eaf3fc;color:#1d5fb4}.pill.paid{background:#e3f4ea;color:#1f7a45}.pill.overdue{background:#fde8d2;color:#b8610f}.paybtn{display:inline-block;margin-top:.35rem;padding:.35rem .8rem;border-radius:8px;background:#1d5fb4;color:#fff;font-weight:600;text-decoration:none}.tipbtn{display:inline-block;margin:.2rem .4rem 0 0;padding:.5rem .9rem;border-radius:999px;background:#fff3d6;color:#7a4b00;font-weight:600;text-decoration:none;border:1px solid #f0d9a0}#map{height:260px;border-radius:10px}.pin-site{display:block;width:18px;height:18px;border-radius:50%;background:#2f7de1;border:3px solid #fff;box-shadow:0 0 0 2px #2f7de1}.pin-truck{display:block;font-size:22px;line-height:26px;text-align:center}</style></head><body${extra.bodyAttrs || ''}><main>${inner}</main>${extra.tail || ''}</body></html>`;
+.pill{font-size:.8rem;font-weight:600;padding:.1rem .45rem;border-radius:6px;background:#eaf3fc;color:#1d5fb4}.pill.paid{background:#e3f4ea;color:#1f7a45}.pill.overdue{background:#fde8d2;color:#b8610f}.paybtn{display:inline-block;margin-top:.35rem;padding:.35rem .8rem;border-radius:8px;background:#1d5fb4;color:#fff;font-weight:600;text-decoration:none}.btn{display:inline-block;margin:.2rem .4rem 0 0;padding:.6rem 1.1rem;border-radius:999px;background:#2f7de1;color:#fff;font-weight:600;text-decoration:none}.btn.alt{background:#eaf3fc;color:#1d5fb4}.tipbtn{display:inline-block;margin:.2rem .4rem 0 0;padding:.5rem .9rem;border-radius:999px;background:#fff3d6;color:#7a4b00;font-weight:600;text-decoration:none;border:1px solid #f0d9a0}#map{height:260px;border-radius:10px}.pin-site{display:block;width:18px;height:18px;border-radius:50%;background:#2f7de1;border:3px solid #fff;box-shadow:0 0 0 2px #2f7de1}.pin-truck{display:block;font-size:22px;line-height:26px;text-align:center}</style></head><body${extra.bodyAttrs || ''}><main>${inner}</main>${extra.tail || ''}</body></html>`;
   }
   const notFound = (res) => sendHtml(res, 404, page('Page not available', '<div class="card"><h1>This page is not available</h1><p>The link may be old or mistyped. Please contact your snow service provider.</p></div>'));
 
@@ -211,6 +216,7 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
     html += `<p><span class="status ${statusClass}" id="status">${escapeHtml(STATUS_TEXT[s.status])}</span></p>`;
     if (s.detail) html += `<p>${escapeHtml(s.detail)}</p>`;
     html += `<p id="eta"${s.eta ? '' : ' style="display:none"'}>${s.eta ? 'Estimated arrival: ' + escapeHtml(s.eta) : ''}</p><p class="small" id="ahead"></p>`;
+    html += `<p>${s.canRequest ? '<a class="btn" href="#ask">Request service</a>' : ''}<a class="btn alt" href="#thanks">Say thanks</a></p>`;
     if (s.summary) html += `<p class="small">${escapeHtml(s.summary)}</p>`;
     html += `<p class="small">Updated ${escapeHtml(new Date(s.updatedAt).toUTCString())}. Forecasts can change.</p></div>`;
     const view = liveView(token);
@@ -220,12 +226,16 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
     if (s.weather && (s.weather.summary || s.weather.alerts.length)) {
       html += `<div class="card"><h2>Weather</h2><p id="wxsummary">${escapeHtml(s.weather.summary)}</p><p class="small" id="wxalerts">${escapeHtml(s.weather.alerts.join(' · '))}</p><p class="small">From the National Weather Service. Forecasts can change.</p></div>`;
     }
-    if (s.tipUrl || s.coffeeUrl) {
-      html += '<div class="card"><h2>Say thanks</h2><p class="small">Optional. It goes straight to the crew or business, never through this page.</p>';
-      if (s.tipUrl) html += `<a class="tipbtn" href="${escapeHtml(s.tipUrl)}" rel="noopener noreferrer">Tip the crew</a>`;
-      if (s.coffeeUrl) html += `<a class="tipbtn" href="${escapeHtml(s.coffeeUrl)}" rel="noopener noreferrer">Buy us a coffee</a>`;
-      html += '</div>';
+    html += `<div class="card" id="thanks"><h2>Say thanks</h2>`;
+    if (s.gifts && s.gifts.length) {
+      html += '<p class="small">Optional. These go straight to the crew or business, never through this page.</p><p>';
+      for (const g of s.gifts) html += `<a class="tipbtn" href="${escapeHtml(g.url)}" rel="noopener noreferrer">${g.emoji} ${escapeHtml(g.label)}</a>`;
+      html += '</p>';
     }
+    html += `<form method="post" action="/c/${escapeHtml(token)}/thanks"><label>Send a kind message to your driver
+<textarea name="message" maxlength="${MAX_THANKS_CHARS}" rows="3" placeholder="Thank you for clearing the drive so early!"></textarea></label>
+<label>Your first name (optional) <input name="from" maxlength="40" style="width:100%;font:inherit;padding:.4rem;box-sizing:border-box"></label>
+<button type="submit">Send message</button></form></div>`;
     if (s.bills && s.bills.length) {
       html += '<div class="card"><h2>Your bills this winter</h2><table>';
       for (const b of s.bills) {
@@ -235,18 +245,20 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
       }
       html += '</table><p class="small">Paying goes through your snow service payment page. We never see your card.</p></div>';
     }
-    if (sentFlag) html += '<div class="card"><p><strong>Request sent.</strong> Your snow service will review it. This page shows their answer.</p></div>';
+    if (sentFlag === 'thanks') html += '<div class="card"><p><strong>Message sent.</strong> Thank you! Your driver will see it.</p></div>';
+    else if (sentFlag) html += '<div class="card"><p><strong>Request sent.</strong> Your snow service will review it. This page shows their answer.</p></div>';
     if (mine.length) {
       html += '<div class="card"><h2>Your requests</h2>';
       for (const r of mine) {
         const what = KIND_TEXT[r.kind] + (r.reason ? ` (${REASON_TEXT[r.reason]})` : '');
-        const answer = r.status === 'pending' ? 'Waiting for an answer' : r.status === 'accepted' ? 'Accepted' : 'Declined';
+        const answer = r.kind === 'thanks' ? (r.status === 'pending' ? 'Sent' : 'Read by the crew')
+          : r.status === 'pending' ? 'Waiting for an answer' : r.status === 'accepted' ? 'Accepted' : 'Declined';
         html += `<p>${escapeHtml(what)}<br><span class="small">${answer}${r.message ? ': ' + escapeHtml(r.message) : ''}</span></p>`;
       }
       html += '</div>';
     }
     if (s.canRequest) {
-      html += `<form class="card" method="post" action="/c/${escapeHtml(token)}/request"><h2>Ask for something</h2>
+      html += `<form class="card" id="ask" method="post" action="/c/${escapeHtml(token)}/request"><h2>Ask for something</h2>
 <label><input type="radio" name="kind" value="service" checked> ${KIND_TEXT.service}</label>
 <label><input type="radio" name="kind" value="urgent"> ${KIND_TEXT.urgent}</label>
 <label><input type="radio" name="kind" value="skip"> ${KIND_TEXT.skip}</label>
@@ -294,8 +306,7 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
     if (!stormId) return sendJson(res, 400, { error: 'storm.id is required' });
     const stormName = cleanText(body.storm.name, 80); const expected = cleanText(body.storm.expected, 120);
     const weather = cleanWeather(body.weather);
-    const tipUrl = cleanPayUrl(body.tips?.tipURL ?? body.tips?.tipUrl);
-    const coffeeUrl = cleanPayUrl(body.tips?.coffeeURL ?? body.tips?.coffeeUrl);
+    const gifts = GIFTS.map(([wire, alt, key, label, emoji]) => ({ key, label, emoji, url: cleanPayUrl(body.tips?.[wire] ?? body.tips?.[alt]) })).filter((g) => g.url);
     const next = [];
     for (const s of body.sites) {
       if (!s || !TOKEN_RE.test(String(s.token)) || !STATUSES.has(s.status)) return sendJson(res, 400, { error: 'each site needs a valid token and status' });
@@ -311,7 +322,7 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
       next.push([s.token, { company, stormId, stormName, expected, label: cleanText(s.label, 120) || 'Your property', status: s.status,
         detail: cleanText(s.detail, 200), eta: cleanText(s.eta, 120), summary: cleanText(s.summary, 160), bills,
         siteLocation: cleanSite(s.siteLocation), stopsAhead: Number.isInteger(s.stopsAhead) && s.stopsAhead >= 0 && s.stopsAhead <= 500 ? s.stopsAhead : null,
-        weather, tipUrl, coffeeUrl,
+        weather, gifts,
         canRequest: s.canRequest === true, updatedAt: now() }]);
     }
     for (const [token, snap] of next) state.snapshots[token] = snap;
@@ -340,9 +351,19 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
   }
 
   // ---- email
+  /** One PDF at most, a plain file name, real base64 that starts like a PDF, and not too big. Anything else is refused. */
+  function cleanAttachments(list) {
+    if (!Array.isArray(list) || list.length !== 1) return null;
+    const a = list[0];
+    if (!a || typeof a.filename !== 'string' || !/^[A-Za-z0-9._-]{1,60}\.pdf$/.test(a.filename)) return null;
+    const content = a.content;
+    if (typeof content !== 'string' || content.length > 1_500_000 || content.length % 4 !== 0 || !/^[A-Za-z0-9+/]+={0,2}$/.test(content) || !content.startsWith('JVBERi0')) return null;
+    return [{ filename: a.filename, content }];
+  }
+
   async function sendEmail(req, res) {
     if (!config.resendKey || !config.fromEmail) return sendJson(res, 503, { error: 'Email is not configured' });
-    const body = await jsonBody(req, res); if (body === undefined) return;
+    const body = await jsonBody(req, res, config.maxEmailBodyBytes); if (body === undefined) return;
     if (!body || !Array.isArray(body.messages) || body.messages.length === 0 || body.messages.length > 100) return sendJson(res, 400, { error: 'messages must be a list of 1 to 100' });
     const day = new Date(now()).toISOString().slice(0, 10);
     const used = emailDaily.get(day) ?? 0;
@@ -355,6 +376,11 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
       if (!m || !isValidEmail(m.to) || !subject || !text) { results.push({ index: i, ok: false, error: 'invalid_message' }); continue; }
       try {
         const payload = { from: config.fromEmail, to: [m.to], subject, text };
+        if (m.attachments !== undefined) {
+          const att = cleanAttachments(m.attachments);
+          if (!att) { results.push({ index: i, ok: false, error: 'invalid_attachment' }); continue; }
+          payload.attachments = att;
+        }
         if (config.replyTo) payload.reply_to = config.replyTo;
         const r = await fetchImpl(config.emailUrl, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${config.resendKey}` }, body: JSON.stringify(payload) });
         if (r.ok) { sent++; results.push({ index: i, ok: true }); } else results.push({ index: i, ok: false, error: 'provider_rejected' });
@@ -363,6 +389,25 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
     emailDaily.set(day, used + sent);
     log(`email batch: ${sent} of ${body.messages.length} sent`);          // counts only: never addresses or text
     sendJson(res, 200, { results });
+  }
+
+  // ---- a kind message for the driver
+  async function postThanks(req, res, token) {
+    let form;
+    try { form = new URLSearchParams(await readBody(req)); }
+    catch (e) { if (e.status === 413) { res.on('finish', () => req.destroy()); return sendHtml(res, 413, page('Too large', '<div class="card"><p>That message was too large.</p></div>'), { connection: 'close' }); } return sendHtml(res, 400, page('Error', '<div class="card"><p>Something went wrong.</p></div>')); }
+    const s = state.snapshots[token];
+    const message = cleanText(form.get('message'), MAX_THANKS_CHARS);
+    if (!message) return sendHtml(res, 400, page('Check your message', `<div class="card"><p>Please write a message first.</p><p><a href="/c/${escapeHtml(token)}#thanks">Go back</a></p></div>`));
+    const from = cleanText(form.get('from'), 40);
+    const t = now();
+    const mine = state.requests.filter((r) => r.token === token && r.kind === 'thanks');
+    if (mine.filter((r) => t - Date.parse(r.createdAt) < 3_600_000).length >= config.requestsPerTokenPerHour) return sendHtml(res, 429, page('Too many messages', '<div class="card"><p>You have sent a few messages already. Thank you! Please try again later.</p></div>'));
+    state.requests.push({ id: crypto.randomBytes(12).toString('hex'), token, kind: 'thanks', reason: '', note: from ? `From ${from}: ${message}` : message,
+      createdAt: new Date(t).toISOString(), stormId: s.stormId, status: 'pending', message: '' });
+    save();
+    res.writeHead(303, { location: `/c/${token}?sent=thanks`, ...SECURITY_HEADERS });
+    res.end();
   }
 
   // ---- client request form
@@ -413,13 +458,14 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
           res.writeHead(200, { 'content-type': 'application/manifest+json', 'content-length': Buffer.byteLength(body), 'cache-control': 'no-store', 'referrer-policy': 'no-referrer' });
           return res.end(body);
         }
-        const m = path.match(/^\/c\/([^/]+)(\/request)?$/);
+        const m = path.match(/^\/c\/([^/]+)(\/request|\/thanks)?$/);
         if (m) {
           if (!ipAllowed(req)) return sendHtml(res, 429, page('Slow down', '<div class="card"><p>Too many requests from your connection. Please try again in a minute.</p></div>'));
           const token = m[1];
           if (!TOKEN_RE.test(token) || !state.snapshots[token]) return notFound(res);        // same answer for wrong, old and malformed links
-          if (!m[2] && req.method === 'GET') return sendHtml(res, 200, renderClientPage(token, url.searchParams.get('sent') === '1'));
-          if (m[2] && req.method === 'POST') return await postClientRequest(req, res, token);
+          if (!m[2] && req.method === 'GET') return sendHtml(res, 200, renderClientPage(token, url.searchParams.get('sent') === 'thanks' ? 'thanks' : url.searchParams.get('sent') === '1'));
+          if (m[2] === '/request' && req.method === 'POST') return await postClientRequest(req, res, token);
+          if (m[2] === '/thanks' && req.method === 'POST') return await postThanks(req, res, token);
           return sendJson(res, 405, { error: 'Method not allowed' });
         }
         if (!isOwner(req)) return sendJson(res, 401, { error: 'Missing or invalid token' });
