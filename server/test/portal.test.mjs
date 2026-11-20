@@ -303,7 +303,7 @@ test('email: provider failures are reported generically; daily cap stops sending
 
 const withMap = (extra = {}) => ({
   weather: { summary: 'Snow, 28 F. About 4 inches by noon.', alerts: ['Winter Storm Warning until 6 PM', 'b', 'c', 'd'] },
-  tips: { tipURL: 'https://venmo.com/ridgeplow', coffeeURL: 'https://cash.app/$ridgeplow', donutURL: 'https://cash.app/$ridgeplow/2' },
+  tips: { venmoURL: 'https://venmo.com/ridgeplow', paypalURL: 'https://paypal.me/ridgeplow', cashappURL: 'https://cash.app/$ridgeplow' },
   sites: [{ token: TOKEN, label: '14 Elm Ave', status: 'planned', canRequest: true, stopsAhead: 3, eta: 'Expected between 7:15 AM and 8:45 AM.',
     siteLocation: { latitude: 44.97812345, longitude: -93.26512345 } }], ...extra });
 
@@ -315,10 +315,15 @@ test('the page shows the map, weather, tip buttons and stops ahead; the map data
   assert.ok(html.includes('Snow, 28 F. About 4 inches by noon.'));
   assert.ok(html.includes('Winter Storm Warning until 6 PM'));
   assert.ok(!html.includes('>d<') || html.split('·').length <= 3);                 // at most three alerts
-  assert.ok(html.includes('Tip the driver') && html.includes('https://venmo.com/ridgeplow'));
-  assert.ok(html.includes('Send a coffee') && html.includes('https://cash.app/$ridgeplow'));
-  assert.ok(html.includes('Buy a donut') && html.includes('https://cash.app/$ridgeplow/2'));
-  assert.ok(!html.includes('Buy lunch'));                                              // only the buttons the owner set up
+  assert.ok(html.includes('Tip the crew') && html.includes('Send a coffee'));
+  assert.ok(html.includes(`/c/${TOKEN}/pay?for=tip`) && html.includes(`/c/${TOKEN}/pay?for=coffee`));
+  assert.ok(!html.includes('donut') && !html.includes('Buy lunch'));
+  assert.ok(!html.includes('https://venmo.com/ridgeplow'));                           // the links are on the pay page, not here
+  for (const kind of ['tip', 'coffee']) {
+    const pay = await (await fetch(`${s.base}/c/${TOKEN}/pay?for=${kind}`)).text();
+    for (const x of ['Venmo', 'PayPal', 'Cash App', 'https://venmo.com/ridgeplow', 'https://paypal.me/ridgeplow', 'https://cash.app/$ridgeplow']) assert.ok(pay.includes(x), x);
+  }
+  assert.equal((await fetch(`${s.base}/c/short/pay`)).status, 404);
   assert.ok(html.includes('Request service') && html.includes('Send a kind message to your driver'));
   assert.ok(html.includes('src="/assets/leaflet.js"') && html.includes('src="/assets/portal.js"'));
   const live = JSON.parse(html.match(/<script type="application\/json" id="live">(.*?)<\/script>/s)[1]);
@@ -329,9 +334,9 @@ test('the page shows the map, weather, tip buttons and stops ahead; the map data
 
 test('tip and coffee links must be safe payment links', async (t) => {
   const s = await boot(); t.after(s.close);
-  await s.publish(withMap().sites, { tips: { tipURL: 'https://evil.example.com/tip', coffeeURL: 'javascript:alert(1)' } });
+  await s.publish(withMap().sites, { tips: { venmoURL: 'https://evil.example.com/tip', paypalURL: 'javascript:alert(1)' } });
   const html = await (await fetch(`${s.base}/c/${TOKEN}`)).text();
-  assert.ok(!html.includes('Tip the driver')); assert.ok(!html.includes('Send a coffee')); assert.ok(!html.includes('evil.example.com'));
+  assert.ok(!html.includes('Tip the crew')); assert.ok(!html.includes('Send a coffee')); assert.ok(!html.includes('evil.example.com'));
   assert.ok(html.includes('Send a kind message to your driver'));                      // the message box does not need any payment link
 });
 

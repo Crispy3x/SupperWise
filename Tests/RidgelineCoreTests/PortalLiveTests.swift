@@ -71,21 +71,21 @@ final class PortalLiveTests: XCTestCase {
     func testTipLinksAreSentOnlyWhenTheyPassTheSafetyCheck() {
         var (d, sites, storm) = world(sites: 1)
         XCTAssertNil(build(d, storm, served: [sites[0].id]).tips)
-        d.profile.tipLink = "https://venmo.com/ridgeplow"
-        d.profile.coffeeLink = "https://evil.example.com/pay"
+        d.profile.venmoLink = "https://venmo.com/ridgeplow"
+        d.profile.paypalLink = "https://evil.example.com/pay"
         let tips = build(d, storm, served: [sites[0].id]).tips
-        XCTAssertEqual(tips?.tipURL, "https://venmo.com/ridgeplow")
-        XCTAssertNil(tips?.coffeeURL)
-        d.profile.tipLink = "http://venmo.com/x"
+        XCTAssertEqual(tips?.venmoURL, "https://venmo.com/ridgeplow")
+        XCTAssertNil(tips?.paypalURL)
+        d.profile.venmoLink = "http://venmo.com/x"
         XCTAssertNil(build(d, storm, served: [sites[0].id]).tips)
     }
 
     func testSnapshotJSONCarriesTheNewFieldsAndNoContactDetails() throws {
         var (d, sites, storm) = world(sites: 1)
-        d.profile.coffeeLink = "https://cash.app/$ridgeplow"
+        d.profile.cashAppLink = "https://cash.app/$ridgeplow"
         let snap = build(d, storm, served: [sites[0].id], offsets: [sites[0].id: 600], weather: PortalWeather(summary: "Snow", alerts: ["Warning"]))
         let json = String(data: try JSONEncoder().encode(snap), encoding: .utf8)!
-        for key in ["siteLocation", "stopsAhead", "weather", "coffeeURL"] { XCTAssertTrue(json.contains(key), key) }
+        for key in ["siteLocation", "stopsAhead", "weather", "cashappURL"] { XCTAssertTrue(json.contains(key), key) }
         XCTAssertFalse(json.contains("Client 0")); XCTAssertFalse(json.contains("@"))             // names and emails never leave the phone
     }
 

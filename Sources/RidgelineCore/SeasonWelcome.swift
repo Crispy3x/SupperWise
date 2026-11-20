@@ -50,7 +50,7 @@ public enum SeasonWelcome {
                 "- see when we are on the way, with a live map and an estimated arrival time",
                 "- ask us to come, skip a storm, or tell us you need to get out soon",
                 "- see your bills and pay them online",
-                "- say thanks to your driver with a message, a coffee or a donut", "",
+                "- say thanks to your driver with a message, a tip or a coffee", "",
                 "The link is only for your property, so please do not share it.", "",
                 company,
                 "You are getting this because you agreed to messages from \(company). To stop them, tell \(company) and they will turn them off.",

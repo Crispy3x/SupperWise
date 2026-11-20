@@ -119,23 +119,22 @@ public struct PortalWeather: Codable, Equatable, Sendable {
 }
 
 public struct PortalTips: Codable, Equatable, Sendable {
-    public let tipURL: String?
-    public let coffeeURL: String?
-    public let donutURL: String?
-    public let lunchURL: String?
+    public let venmoURL: String?
+    public let paypalURL: String?
+    public let cashappURL: String?
 
-    public init(tipURL: String?, coffeeURL: String?, donutURL: String? = nil, lunchURL: String? = nil) {
-        self.tipURL = tipURL
-        self.coffeeURL = coffeeURL
-        self.donutURL = donutURL
-        self.lunchURL = lunchURL
+    public init(venmoURL: String?, paypalURL: String?, cashappURL: String?) {
+        self.venmoURL = venmoURL
+        self.paypalURL = paypalURL
+        self.cashappURL = cashappURL
     }
 
     /// Only links that pass the payment-site check are ever sent.
     public static func make(from profile: BusinessProfile) -> PortalTips? {
-        let tip = profile.tipLink.flatMap(PayLink.clean), coffee = profile.coffeeLink.flatMap(PayLink.clean)
-        let donut = profile.donutLink.flatMap(PayLink.clean), lunch = profile.lunchLink.flatMap(PayLink.clean)
-        return [tip, coffee, donut, lunch].allSatisfy { $0 == nil } ? nil : PortalTips(tipURL: tip, coffeeURL: coffee, donutURL: donut, lunchURL: lunch)
+        guard profile.tippingIsOn else { return nil }
+        let venmo = profile.venmoLink.flatMap(PayLink.clean), paypal = profile.paypalLink.flatMap(PayLink.clean)
+        let cash = profile.cashAppLink.flatMap(PayLink.clean)
+        return [venmo, paypal, cash].allSatisfy { $0 == nil } ? nil : PortalTips(venmoURL: venmo, paypalURL: paypal, cashappURL: cash)
     }
 }
 

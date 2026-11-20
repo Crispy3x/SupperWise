@@ -36,12 +36,12 @@ enum ShellTab: String, CaseIterable, Identifiable {
 
 /// Screens opened from the menu. They show on their own with a Home button to come back.
 enum ShellScreen: String, Identifiable {
-    case quotes, team, revenue, storm, visits, timeClock, proof, settings, profile, subscription
+    case quotes, team, revenue, storm, visits, timeClock, proof, settings, profile, subscription, fieldWork, business
     var id: String { rawValue }
     /// Pages keep the Menu bar and the tab bar. The others open on their own with a round back button.
     var isPage: Bool {
         switch self {
-        case .quotes, .team, .revenue, .storm, .visits, .timeClock, .proof: return true
+        case .quotes, .team, .revenue, .storm, .visits, .timeClock, .proof, .fieldWork, .business: return true
         case .settings, .profile, .subscription: return false
         }
     }
@@ -57,6 +57,8 @@ enum ShellScreen: String, Identifiable {
         case .settings: return "Settings"
         case .profile: return "Profile"
         case .subscription: return "Subscription"
+        case .fieldWork: return "Field work"
+        case .business: return "Business"
         }
     }
     var icon: String {
@@ -71,6 +73,8 @@ enum ShellScreen: String, Identifiable {
         case .settings: return "gearshape"
         case .profile: return "person.crop.circle"
         case .subscription: return "creditcard"
+        case .fieldWork: return "snowflake"
+        case .business: return "briefcase"
         }
     }
 }
@@ -100,6 +104,7 @@ struct MainShell: View {
     @State private var showAssistant = false
     @State private var showTutorial = false
     @State private var tutorialChecked = false
+    @State private var tutorialRequired = false
 
     private var role: SessionRole { model.data.isOwnerSession ? .owner : .employee }
 
@@ -113,20 +118,17 @@ struct MainShell: View {
         }
     }
 
+    /// A short menu: the tab bar already has Home, Calendar, Jobs, Clients and Requests, so the menu only groups the rest.
     private var menuEntries: [MenuEntry] {
         var out: [MenuEntry] = []
-        for t in tabs where t != .clients && t != .requests { out.append(MenuEntry(target: .tab(t), title: t.title, icon: t.icon)) }
-        if tabs.contains(.requests) { out.append(MenuEntry(target: .tab(.requests), title: "Requests", icon: "tray")) }
-        if model.data.can(.viewQuotes) { out.append(MenuEntry(target: .screen(.quotes), title: "Quotes", icon: "doc.text")) }
-        if tabs.contains(.clients) { out.append(MenuEntry(target: .tab(.clients), title: "Clients", icon: "person.2")) }
-        if model.data.can(.viewTeam) { out.append(MenuEntry(target: .screen(.team), title: "Team", icon: "person.2.badge.gearshape")) }
-        if model.data.can(.viewRevenue) { out.append(MenuEntry(target: .screen(.revenue), title: "Revenue", icon: "dollarsign.circle")) }
-        if model.data.isOwnerSession { out.append(MenuEntry(target: .screen(.subscription), title: "Subscription", icon: "creditcard")) }
-        if model.data.can(.editJobs) { out.append(MenuEntry(target: .screen(.storm), title: "Storm planner", icon: "cloud.snow")) }
-        if model.data.can(.logVisits) { out.append(MenuEntry(target: .screen(.visits), title: "Log visits", icon: "checkmark.circle")) }
-        if model.data.can(.useTimeClock) { out.append(MenuEntry(target: .screen(.timeClock), title: "Time clock", icon: "clock")) }
-        if model.data.can(.logVisits) { out.append(MenuEntry(target: .screen(.proof), title: "Proof of service", icon: "checkmark.seal")) }
-        if model.data.can(.manageSettings) { out.append(MenuEntry(target: .screen(.settings), title: "Settings", icon: "gearshape")) }
+        let d = model.data
+        if d.can(.logVisits) || d.can(.useTimeClock) || d.can(.editJobs) {
+            out.append(MenuEntry(target: .screen(.fieldWork), title: "Field work", icon: "snowflake"))
+        }
+        if d.can(.viewQuotes) || d.can(.viewRevenue) || d.can(.viewTeam) {
+            out.append(MenuEntry(target: .screen(.business), title: "Business", icon: "briefcase"))
+        }
+        if d.can(.manageSettings) || d.isOwnerSession { out.append(MenuEntry(target: .screen(.settings), title: "Settings", icon: "gearshape")) }
         return out
     }
 
@@ -165,7 +167,7 @@ struct MainShell: View {
                     .zIndex(2)
             }
             if showTutorial {
-                TutorialView(role: role) { finishTutorial() }.zIndex(3)
+                TutorialView(role: role, required: tutorialRequired) { finishTutorial() }.zIndex(3)
             }
         }
         .animation(.easeInOut(duration: 0.22), value: menuOpen)
@@ -181,7 +183,7 @@ struct MainShell: View {
         .onAppear {
             guard !tutorialChecked else { return }
             tutorialChecked = true
-            if !model.hasSeenTutorial(role) { showTutorial = true }
+            if !model.hasSeenTutorial(role) { tutorialRequired = true; showTutorial = true }
         }
     }
 
@@ -201,7 +203,7 @@ struct MainShell: View {
     @ViewBuilder private var content: some View {
         switch tab {
         case .home:
-            HomeView(startTour: { showTutorial = true }, openScreen: { screen = $0 }, openSmartRoute: { showSmartRoute = true })
+            HomeView(startTour: { tutorialRequired = false; showTutorial = true }, openScreen: { screen = $0 }, openSmartRoute: { showSmartRoute = true })
         case .calendar: CalendarTabView()
         case .jobs: JobsTabView()
         case .clients: ClientsTabView()
@@ -221,6 +223,7 @@ struct MainShell: View {
 
     private func finishTutorial() {
         showTutorial = false
+        tutorialRequired = false
         model.markTutorialSeen(role)
     }
 
@@ -460,6 +463,8 @@ private struct PageScreen: View {
         switch screen {
         case .team: TeamView()
         case .revenue: RevenueView()
+        case .fieldWork: MenuHub(screen: screen, items: fieldItems)
+        case .business: MenuHub(screen: screen, items: businessItems)
         default:
             VStack(spacing: 0) {
                 ScreenHeader(icon: screen.icon, title: screen.title, trailing: "")
@@ -467,6 +472,27 @@ private struct PageScreen: View {
                 existing.pageBackground().padding(.bottom, Look.tabBarClearance - 40)
             }
         }
+    }
+
+    @Environment(AppModel.self) private var model
+
+    private var fieldItems: [HubItem] {
+        let d = model.data
+        var out: [HubItem] = []
+        if d.can(.logVisits) { out.append(HubItem(title: "Log visits", icon: "checkmark.circle", tint: .green, screen: .visits)) }
+        if d.can(.logVisits) { out.append(HubItem(title: "Proof of service", icon: "checkmark.seal", tint: .teal, screen: .proof)) }
+        if d.can(.useTimeClock) { out.append(HubItem(title: "Time clock", icon: "clock", tint: .orange, screen: .timeClock)) }
+        if d.can(.editJobs) { out.append(HubItem(title: "Storm planner", icon: "cloud.snow", tint: .blue, screen: .storm)) }
+        return out
+    }
+
+    private var businessItems: [HubItem] {
+        let d = model.data
+        var out: [HubItem] = []
+        if d.can(.viewQuotes) { out.append(HubItem(title: "Quotes", icon: "doc.text", tint: .indigo, screen: .quotes)) }
+        if d.can(.viewRevenue) { out.append(HubItem(title: "Revenue", icon: "dollarsign.circle", tint: .green, screen: .revenue)) }
+        if d.can(.viewTeam) { out.append(HubItem(title: "Team", icon: "person.2.badge.gearshape", tint: .purple, screen: .team)) }
+        return out
     }
 
     @ViewBuilder private var existing: some View {
@@ -478,6 +504,61 @@ private struct PageScreen: View {
         case .proof: ProofView()
         default: EmptyView()
         }
+    }
+}
+
+struct HubItem: Identifiable {
+    let title: String
+    let icon: String
+    let tint: Color
+    let screen: ShellScreen
+    var id: String { title }
+}
+
+/// A menu entry that groups several screens: a big title and one card per screen, each opening on its own with a round back button.
+private struct MenuHub: View {
+    let screen: ShellScreen
+    let items: [HubItem]
+
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 12) {
+                ScreenHeader(icon: screen.icon, title: screen.title, trailing: "")
+                ForEach(items) { item in
+                    NavigationLink { destination(item.screen) } label: {
+                        Card(padding: 12) {
+                            HStack(spacing: 14) {
+                                IconTile(icon: item.icon, tint: item.tint, size: 48)
+                                Text(item.title).font(.title3.weight(.semibold)).foregroundStyle(.primary)
+                                Spacer()
+                                Image(systemName: "chevron.right").foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding(.horizontal, 16).padding(.top, 14).padding(.bottom, Look.tabBarClearance)
+        }
+        .background(Look.page)
+    }
+
+    @ViewBuilder private func destination(_ s: ShellScreen) -> some View {
+        Group {
+            switch s {
+            case .visits: TodayView()
+            case .proof: ProofView()
+            case .timeClock: TimeClockView()
+            case .storm: StormView()
+            case .quotes: QuotesView()
+            case .revenue: RevenueView()
+            case .team: TeamView()
+            default: EmptyView()
+            }
+        }
+        .environment(\.embeddedInStack, true)
+        .circleBack()
+        .pageBackground()
     }
 }
 

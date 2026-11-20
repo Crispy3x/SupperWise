@@ -6,9 +6,9 @@ import fs from 'node:fs';
 const TOKEN_RE = /^[A-Za-z0-9_-]{22,64}$/;
 const STATUSES = new Set(['planned', 'done', 'skipped', 'notExpected']);
 const KINDS = new Set(['service', 'urgent', 'skip']);
-// Small thank-you buttons. Each goes to the business's own payment link; nothing is paid through this page.
-const GIFTS = [['tipURL', 'tipUrl', 'tip', 'Tip the driver', '\u{1F4B5}'], ['coffeeURL', 'coffeeUrl', 'coffee', 'Send a coffee', '\u2615'],
-  ['donutURL', 'donutUrl', 'donut', 'Buy a donut', '\u{1F369}'], ['lunchURL', 'lunchUrl', 'lunch', 'Buy lunch', '\u{1F96A}']];
+// The crew's own Venmo, PayPal and Cash App links. Tip and coffee buttons lead to a page that lists them; nothing is paid through this server.
+const PAY_APPS = [['venmoURL', 'venmoUrl', 'venmo', 'Venmo'], ['paypalURL', 'paypalUrl', 'paypal', 'PayPal'], ['cashappURL', 'cashAppUrl', 'cashapp', 'Cash App']];
+const PAY_REASONS = { tip: ['Tip the crew', '\u{1F4B5}', 'Thank the crew for clearing your property.'], coffee: ['Send a coffee', '\u2615', 'Buy the crew a coffee on a cold morning.'] };
 const MAX_THANKS_CHARS = 200;
 const REASONS = new Set(['leavingSoon', 'medical', 'visitorOrDelivery', 'other']);
 const KIND_TEXT = { thanks: 'Message to your driver', service: 'Please service my property', urgent: 'I need to get out soon (urgent)', skip: 'Skip my property this storm' };
@@ -227,9 +227,9 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
       html += `<div class="card"><h2>Weather</h2><p id="wxsummary">${escapeHtml(s.weather.summary)}</p><p class="small" id="wxalerts">${escapeHtml(s.weather.alerts.join(' · '))}</p><p class="small">From the National Weather Service. Forecasts can change.</p></div>`;
     }
     html += `<div class="card" id="thanks"><h2>Say thanks</h2>`;
-    if (s.gifts && s.gifts.length) {
-      html += '<p class="small">Optional. These go straight to the crew or business, never through this page.</p><p>';
-      for (const g of s.gifts) html += `<a class="tipbtn" href="${escapeHtml(g.url)}" rel="noopener noreferrer">${g.emoji} ${escapeHtml(g.label)}</a>`;
+    if (s.payApps && s.payApps.length) {
+      html += '<p class="small">Optional. You choose Venmo, PayPal or Cash App on the next page. The money goes straight to the crew.</p><p>';
+      for (const [key, [label, emoji]] of Object.entries(PAY_REASONS)) html += `<a class="tipbtn" href="/c/${escapeHtml(token)}/pay?for=${key}">${emoji} ${escapeHtml(label)}</a>`;
       html += '</p>';
     }
     html += `<form method="post" action="/c/${escapeHtml(token)}/thanks"><label>Send a kind message to your driver
@@ -275,6 +275,15 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
     });
   }
 
+  function renderPayPage(token, reason) {
+    const s = state.snapshots[token];
+    const [label, emoji, line] = PAY_REASONS[reason] || PAY_REASONS.tip;
+    let inner = `<div class="card"><h1>${emoji} ${escapeHtml(label)}</h1><p>${escapeHtml(line)} Pick the app you use. It opens the crew's own page there, and you choose the amount.</p><p>`;
+    for (const a of s.payApps || []) inner += `<a class="btn payapp" href="${escapeHtml(a.url)}" rel="noopener noreferrer">${escapeHtml(a.label)}</a>`;
+    inner += `</p><p class="small">Totally optional. Nothing is charged here, and ${escapeHtml(s.company || 'your snow service')} is not told who tips.</p><p><a href="/c/${escapeHtml(token)}">Back to my page</a></p></div>`;
+    return page(`${label}`, inner, { head: '' });
+  }
+
   // ---- owner API
   /** A truck's position, sent every half minute while its crew shares location. Each truck is added or updated by its label, so
    *  several trucks can share at once; `remove` takes a truck off the map when its crew stops. Kept in memory only. */
@@ -306,7 +315,7 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
     if (!stormId) return sendJson(res, 400, { error: 'storm.id is required' });
     const stormName = cleanText(body.storm.name, 80); const expected = cleanText(body.storm.expected, 120);
     const weather = cleanWeather(body.weather);
-    const gifts = GIFTS.map(([wire, alt, key, label, emoji]) => ({ key, label, emoji, url: cleanPayUrl(body.tips?.[wire] ?? body.tips?.[alt]) })).filter((g) => g.url);
+    const payApps = PAY_APPS.map(([wire, alt, key, label]) => ({ key, label, url: cleanPayUrl(body.tips?.[wire] ?? body.tips?.[alt]) })).filter((g) => g.url);
     const next = [];
     for (const s of body.sites) {
       if (!s || !TOKEN_RE.test(String(s.token)) || !STATUSES.has(s.status)) return sendJson(res, 400, { error: 'each site needs a valid token and status' });
@@ -322,7 +331,7 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
       next.push([s.token, { company, stormId, stormName, expected, label: cleanText(s.label, 120) || 'Your property', status: s.status,
         detail: cleanText(s.detail, 200), eta: cleanText(s.eta, 120), summary: cleanText(s.summary, 160), bills,
         siteLocation: cleanSite(s.siteLocation), stopsAhead: Number.isInteger(s.stopsAhead) && s.stopsAhead >= 0 && s.stopsAhead <= 500 ? s.stopsAhead : null,
-        weather, gifts,
+        weather, payApps,
         canRequest: s.canRequest === true, updatedAt: now() }]);
     }
     for (const [token, snap] of next) state.snapshots[token] = snap;
@@ -458,12 +467,13 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
           res.writeHead(200, { 'content-type': 'application/manifest+json', 'content-length': Buffer.byteLength(body), 'cache-control': 'no-store', 'referrer-policy': 'no-referrer' });
           return res.end(body);
         }
-        const m = path.match(/^\/c\/([^/]+)(\/request|\/thanks)?$/);
+        const m = path.match(/^\/c\/([^/]+)(\/request|\/thanks|\/pay)?$/);
         if (m) {
           if (!ipAllowed(req)) return sendHtml(res, 429, page('Slow down', '<div class="card"><p>Too many requests from your connection. Please try again in a minute.</p></div>'));
           const token = m[1];
           if (!TOKEN_RE.test(token) || !state.snapshots[token]) return notFound(res);        // same answer for wrong, old and malformed links
           if (!m[2] && req.method === 'GET') return sendHtml(res, 200, renderClientPage(token, url.searchParams.get('sent') === 'thanks' ? 'thanks' : url.searchParams.get('sent') === '1'));
+          if (m[2] === '/pay' && req.method === 'GET') return sendHtml(res, 200, renderPayPage(token, url.searchParams.get('for')));
           if (m[2] === '/request' && req.method === 'POST') return await postClientRequest(req, res, token);
           if (m[2] === '/thanks' && req.method === 'POST') return await postThanks(req, res, token);
           return sendJson(res, 405, { error: 'Method not allowed' });

@@ -35,11 +35,14 @@ public struct BusinessProfile: Equatable, Codable, Sendable {
     public var paymentInstructions: String = ""
     /// A payment link from the owner's own account (optional). Stored only if it passes `PayLink.clean`.
     public var payLink: String?
-    /// Optional links on client pages for tipping the crew and buying the business a coffee. Stored only if they pass `PayLink.clean`.
-    public var tipLink: String?
-    public var coffeeLink: String?
-    public var donutLink: String?
-    public var lunchLink: String?
+    /// The crew's own Venmo, PayPal and Cash App links. Clients reach them from the Tip the crew and Send a coffee buttons on their page.
+    /// Stored only if they pass `PayLink.clean`.
+    /// Nil means on. When off, client pages show no tip or coffee buttons.
+    public var tippingEnabled: Bool?
+    public var tippingIsOn: Bool { tippingEnabled ?? true }
+    public var venmoLink: String?
+    public var paypalLink: String?
+    public var cashAppLink: String?
     /// The plan the owner picked at sign-up. It sets how many employees they can add. Nil until they choose.
     public var chosenPlan: PlanTier?
     /// "dark", "light" or "system". Nil means dark, the app's default look.

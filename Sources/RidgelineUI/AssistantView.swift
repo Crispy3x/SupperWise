@@ -22,7 +22,9 @@ struct AssistantView: View {
                 else { chat }
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Look.sheet.ignoresSafeArea())
+        .presentationDetents([.large])
         .task { await model.refreshAssistantStatus() }
     }
 
@@ -262,7 +264,7 @@ private struct SetupCard: View {
         VStack(spacing: 12) {
             IconTile(icon: "server.rack", tint: .orange, size: 64)
             Text("The assistant needs your server").font(.title3.bold())
-            Text("It runs through the server you set up for routing and client pages, so your AI key stays off the phone. Add the server address and access token in Settings, then come back.")
+            Text("It runs through the server you set up for routing and client pages, so your AI key stays off the phone. To turn it on: deploy the server, add your AI key there, then open Menu, Settings and enter the server address and access token. Then come back.")
                 .font(.callout).foregroundStyle(.secondary).multilineTextAlignment(.center)
         }
         .padding(30)

@@ -1,5 +1,8 @@
 #if canImport(SwiftUI)
 import SwiftUI
+#if canImport(UIKit)
+import UIKit
+#endif
 import RidgelineCore
 
 /// One place for the app's look: the accent color the owner picked, a few sizes and two small building blocks.
@@ -40,7 +43,13 @@ struct ScreenStack<Content: View>: View {
     init(@ViewBuilder _ content: () -> Content) { self.content = content() }
 
     var body: some View {
-        if embedded { content } else { NavigationStack { content } }
+        // Every list and form inside gets the app's page color and card-colored rows, so no screen falls back to plain black.
+        Group {
+            if embedded { content } else { NavigationStack { content } }
+        }
+        .scrollContentBackground(.hidden)
+        .background(Look.page.ignoresSafeArea())
+        .onAppear { RowAppearance.apply() }
     }
 }
 
@@ -89,3 +98,13 @@ struct StatusPill: View {
     }
 }
 #endif
+
+
+/// Rows in lists and forms use the card color, like the cards on the rest of the app.
+enum RowAppearance {
+    @MainActor static func apply() {
+        #if canImport(UIKit) && !os(watchOS)
+        UICollectionViewListCell.appearance().backgroundColor = UIColor(Look.card)
+        #endif
+    }
+}

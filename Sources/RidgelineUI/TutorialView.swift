@@ -6,6 +6,8 @@ import RidgelineCore
 struct TutorialView: View {
     @Environment(AppModel.self) private var model
     let role: SessionRole
+    /// First time after sign-up the tutorial has to be completed. A replay from Home can be skipped.
+    var required = false
     let onFinish: () -> Void
     @State private var index = 0
 
@@ -20,7 +22,7 @@ struct TutorialView: View {
                 HStack {
                     Text("Step \(index + 1) of \(steps.count)").font(.footnote).foregroundStyle(.secondary)
                     Spacer()
-                    Button("Skip") { onFinish() }.font(.callout)
+                    if !required { Button("Skip") { onFinish() }.font(.callout) }
                 }
                 IconTile(icon: step.icon, tint: tint, size: 84)
                 Text(step.title).font(.title2.bold()).multilineTextAlignment(.center)
@@ -45,6 +47,8 @@ struct TutorialView: View {
             .background(Look.card, in: RoundedRectangle(cornerRadius: 28, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous).stroke(Look.stroke, lineWidth: 1))
             .padding(24)
+            .shadow(color: .black.opacity(0.35), radius: 30, y: 12)
+            .transition(.scale(scale: 0.92).combined(with: .opacity))
         }
         .transition(.opacity)
         .accessibilityAddTraits(.isModal)

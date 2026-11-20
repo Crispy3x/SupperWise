@@ -126,12 +126,16 @@ final class InvoiceEmailAndSeasonTests: XCTestCase {
         XCTAssertTrue(notes.contains { $0.id == "thanks" }); XCTAssertTrue(notes.contains { $0.id == "requests" })
     }
 
-    func testGiftLinksAreSentOnlyWhenSafe() {
+    func testCrewPayLinksAreSentOnlyWhenSafe() {
         var d = world()
-        d.profile.tipLink = "https://venmo.com/ridgeplow"; d.profile.donutLink = "https://cash.app/$ridgeplow/2"
-        d.profile.lunchLink = "https://evil.example.com/x"
+        d.profile.venmoLink = "https://venmo.com/ridgeplow"; d.profile.cashAppLink = "https://cash.app/$ridgeplow"
+        d.profile.paypalLink = "https://evil.example.com/x"
         let tips = PortalTips.make(from: d.profile)
-        XCTAssertEqual(tips?.tipURL, "https://venmo.com/ridgeplow"); XCTAssertEqual(tips?.donutURL, "https://cash.app/$ridgeplow/2")
-        XCTAssertNil(tips?.lunchURL); XCTAssertNil(tips?.coffeeURL)
+        XCTAssertEqual(tips?.venmoURL, "https://venmo.com/ridgeplow"); XCTAssertEqual(tips?.cashappURL, "https://cash.app/$ridgeplow")
+        XCTAssertNil(tips?.paypalURL)
+        d.profile.tippingEnabled = false
+        XCTAssertNil(PortalTips.make(from: d.profile))                 // switched off: nothing is sent
+        d.profile.tippingEnabled = true
+        XCTAssertNotNil(PortalTips.make(from: d.profile))
     }
 }

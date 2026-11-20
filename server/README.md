@@ -80,7 +80,7 @@ The same server also serves each client's private page (`/c/<token>`), sends ema
 
 ### Client pages
 - A client's link lasts the whole winter (`PORTAL_SNAPSHOT_TTL_DAYS`, default 240). Send it once at the start of the season from the app (Clients, Send winter page links).
-- The page shows the status, the arrival window, stops ahead, a live map with the trucks, the weather, bills with a Pay now link, a request form, and a way to say thanks: a kind message for the driver plus your own tip, coffee, donut and lunch links.
+- The page shows the status, the arrival window, stops ahead, a live map with the trucks, the weather, bills with a Pay now link, a request form, and a way to say thanks: a kind message for the driver plus Tip the crew and Send a coffee buttons. Both open a page with the crew's own Venmo, PayPal and Cash App links.
 - Trucks appear only for a property waiting for service, only while their position is under 10 minutes old, and positions are rounded to about 10 metres.
 - Map tiles come from OpenStreetMap (the customer's browser asks them directly). The map script itself is served from this server.
 - `PORTAL_DATA_FILE` keeps requests and pages across restarts. Without it everything is lost on a restart.
