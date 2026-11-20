@@ -27,9 +27,42 @@ private final class RouteReportBox: @unchecked Sendable { var report: SampledRep
 extension AppModel {
     // MARK: route planning (the Smart route screen and the assistant use the same code)
 
+    /// Finds map locations for client addresses that have none yet, using Apple's geocoder. Returns how many it found.
+    @discardableResult
+    func fillMissingLocations() async -> Int {
+        #if canImport(CoreLocation)
+        var found = 0
+        for site in data.sites where site.latitude == nil || site.longitude == nil {
+            guard let c = await AddressGeocoder.coordinate(for: site.address),
+                  let i = data.sites.firstIndex(where: { $0.id == site.id }) else { continue }
+            data.sites[i].latitude = c.latitude
+            data.sites[i].longitude = c.longitude
+            found += 1
+        }
+        if found > 0 { save() }
+        return found
+        #else
+        return 0
+        #endif
+    }
+
+    /// The first day from `day` (looking a week ahead) that has a job the route can use.
+    func nextRouteDay(from day: Date) -> Date {
+        let cal = Calendar.current
+        for offset in 0..<8 {
+            if let d = cal.date(byAdding: .day, value: offset, to: day), !data.routeStops(on: d).isEmpty { return d }
+        }
+        return day
+    }
+
     func planRoute(on day: Date) async -> (plan: RoutePlanResult?, note: String) {
+        await fillMissingLocations()
         let stops = data.routeStops(on: day)
-        guard !stops.isEmpty else { return (nil, "No jobs with a map location that day.") }
+        guard !stops.isEmpty else {
+            let open = data.jobs(on: day).filter { !$0.isTask && $0.status.isOpen }
+            if open.isEmpty { return (nil, "No jobs scheduled that day. Add a job for a client and it will appear here.") }
+            return (nil, "These jobs need a client site with an address Apple Maps can find. Open the client and check the address.")
+        }
         let start = data.depot ?? stops.first?.coordinate ?? Coordinate(latitude: 0, longitude: 0)
         let box = RouteReportBox()
         let chosen = routePlanner(onReport: { box.report = $0 })

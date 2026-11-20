@@ -191,20 +191,23 @@ struct SmartRouteSheet: View {
     @State private var note = "Planning..."
     @State private var working = true
 
-    private var stops: [Stop] { model.data.routeStops(on: Date()) }
+    @State private var day = Date()
+    private var stops: [Stop] { model.data.routeStops(on: day) }
     private var start: Coordinate { model.data.depot ?? stops.first?.coordinate ?? Coordinate(latitude: 0, longitude: 0) }
 
     var body: some View {
         NavigationStack {
             List {
-                if stops.isEmpty {
+                if working && plan == nil {
+                    Section { HStack { ProgressView(); Text("Finding the quickest order...") } }
+                } else if stops.isEmpty {
                     Section {
-                        Label("No jobs with a map location today.", systemImage: "map").foregroundStyle(.secondary)
-                        Text("Create a job for a client site that has an address on the map, and it will show up here.")
+                        Label("No route yet.", systemImage: "map").foregroundStyle(.secondary)
+                        Text("Create a job for a client with an address, and it will show up here. If you just added one, check the client's address.")
                             .font(.footnote).foregroundStyle(.secondary)
                     }
                 } else if let plan {
-                    Section("Drive in this order") {
+                    Section(Calendar.current.isDateInToday(day) ? "Drive in this order, today" : "Drive in this order, \(day.formatted(.dateTime.weekday(.wide).month().day()))") {
                         ForEach(Array(plan.planned.enumerated()), id: \.offset) { i, p in
                             HStack {
                                 Text("\(i + 1).").monospacedDigit().foregroundStyle(.secondary)
@@ -218,8 +221,6 @@ struct SmartRouteSheet: View {
                     if let first = plan.stops.first, let url = NavigationLinks.appleMaps(to: first.coordinate, from: start) {
                         Section("Go") { Link(destination: url) { Label("Start in Apple Maps", systemImage: "location.fill") } }
                     }
-                } else if working {
-                    Section { HStack { ProgressView(); Text("Finding the quickest order...") } }
                 }
                 Section { Text(note).font(.footnote).foregroundStyle(.secondary) }
             }
@@ -230,8 +231,14 @@ struct SmartRouteSheet: View {
     }
 
     private func run() async {
-        guard !stops.isEmpty else { working = false; return }
-        let result = await model.planRoute(on: Date())
+        await model.fillMissingLocations()
+        day = model.nextRouteDay(from: Date())
+        guard !stops.isEmpty else {
+            note = (await model.planRoute(on: day)).note
+            working = false
+            return
+        }
+        let result = await model.planRoute(on: day)
         if Task.isCancelled { return }
         plan = result.plan
         note = result.note
