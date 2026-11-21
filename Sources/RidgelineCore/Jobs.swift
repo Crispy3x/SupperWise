@@ -43,6 +43,10 @@ public struct Job: Identifiable, Equatable, Codable, Sendable {
     /// True for a reminder or task. These show on the calendar but not in the Jobs list, on the map or in the route.
     public var isTask: Bool
     public var createdAt: Date
+    /// How often the job comes back (see RecurringJobs.swift). Nil means it happens once.
+    public var repeatRule: RepeatRule?
+    /// For a repeating job: visits that are done, skipped or in progress, by day ("2027-01-15"). Other visits are scheduled.
+    public var occurrenceStatuses: [String: JobStatus]?
 
     public init(id: UUID = UUID(), title: String, kind: JobKind = .other, customerID: UUID? = nil, siteID: UUID? = nil,
                 start: Date, durationMinutes: Int = 60, status: JobStatus = .scheduled, assigneeIDs: [UUID] = [],
@@ -96,13 +100,13 @@ extension AppData {
     }
 
     public func jobs(on day: Date, calendar: Calendar = .current) -> [Job] {
-        visibleJobs.filter { calendar.isDate($0.start, inSameDayAs: day) }.sorted { $0.start < $1.start }
+        // Repeating jobs come back as that day's visit: same id, that day's start and status.
+        visibleJobs.compactMap { $0.occurrence(on: day, calendar: calendar) }.sorted { $0.start < $1.start }
     }
 
     /// Days of the month containing `date` that have something scheduled (for the dots on the calendar).
     public func daysWithJobs(inMonthOf date: Date, calendar: Calendar = .current) -> Set<Int> {
-        Set(visibleJobs.filter { calendar.isDate($0.start, equalTo: date, toGranularity: .month) }
-            .map { calendar.component(.day, from: $0.start) })
+        visibleJobs.reduce(into: Set<Int>()) { $0.formUnion($1.occurrenceDays(inMonthOf: date, calendar: calendar)) }
     }
 
     public func customerName(forJob job: Job) -> String {
@@ -145,6 +149,7 @@ public enum CalendarExport {
             lines.append("DTSTAMP:\(stamp)")
             lines.append("DTSTART:\(utc(job.start))")
             lines.append("DTEND:\(utc(end))")
+            if let rule = job.icsRepeatRule() { lines.append("RRULE:\(rule)") }
             lines.append("SUMMARY:\(escape(job.title))")
             let place = data.address(forJob: job)
             if !place.isEmpty { lines.append("LOCATION:\(escape(place))") }

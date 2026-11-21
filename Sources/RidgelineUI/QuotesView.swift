@@ -83,6 +83,7 @@ struct NewQuoteSheet: View {
     @State private var overage = 45
     @State private var validDays = 30
     @State private var notes = ""
+    @State private var areaText = ""
 
     private var terms: ContractTerms {
         switch kind {
@@ -131,6 +132,9 @@ struct NewQuoteSheet: View {
                     }
                     PillField(label: "Service address", required: true, placeholder: "14 Elm Ave, Minneapolis", text: $address)
                 }
+                QuoteMeasureCard(address: address, areaText: $areaText) { dollars in
+                    rate = min(max(dollars, 10), 2000); overage = rate
+                }
                 CardGroup(title: "Price") {
                     PillMenu(label: "Type", options: kindOptions, selection: $kind)
                     if kind == .perPush {
@@ -164,7 +168,8 @@ struct NewQuoteSheet: View {
         _ = model.edit { data in
             let number = InvoiceNumbering.next(existing: data.quotes.map(\.number), prefix: "Q-")
             data.quotes.append(Quote(number: number, customerID: customerID, address: address.trimmingCharacters(in: .whitespacesAndNewlines), season: AppModel.currentSeason(),
-                                     terms: terms, createdAt: Date(), validDays: validDays, notes: notes))
+                                     terms: terms, createdAt: Date(), validDays: validDays,
+                                     notes: PropertyMeasure.notes(notes, addingArea: PropertyMeasure.parseSquareFeet(areaText))))
         }
         dismiss()
     }

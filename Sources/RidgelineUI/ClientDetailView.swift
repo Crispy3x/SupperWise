@@ -15,6 +15,7 @@ struct ClientDetailView: View {
     @State private var agreed = false
     @State private var loaded = false
     @State private var note: String?
+    @State private var measuringSite: Site?
 
     private var customer: Customer? { model.data.customers.first { $0.id == customerID } }
     private var sites: [Site] { model.data.sites.filter { $0.customerID == customerID } }
@@ -107,6 +108,15 @@ struct ClientDetailView: View {
             .padding(.horizontal, 16).padding(.top, 8).padding(.bottom, Look.tabBarClearance)
         }
         .background(Look.page.ignoresSafeArea())
+        .sheet(item: $measuringSite) { site in
+            MeasureSheet(title: "Measure this property", start: site.latitude.flatMap { lat in site.longitude.map { Coordinate(latitude: lat, longitude: $0) } },
+                         address: site.address, useTitle: "Save this area") { m in
+                note = model.edit { data in
+                    guard let i = data.sites.firstIndex(where: { $0.id == site.id }) else { throw OperationError.notFound }
+                    data.sites[i].lawnAreaSqFt = m.squareFeet.rounded()
+                } ?? "Saved. This property is \(PropertyMeasure.describe(squareFeet: m.squareFeet))."
+            }
+        }
         .confirmationDialog("Delete this client?", isPresented: $confirmDelete, titleVisibility: .visible) {
             Button("Delete client, sites and jobs", role: .destructive) {
                 if let problem = model.edit({ try $0.deleteCustomer(customerID) }) { note = problem } else { dismiss() }
@@ -161,6 +171,8 @@ struct ClientDetailView: View {
                     LabeledContent("Paid") { Text(st.paid.formatted) }
                     LabeledContent("Still owed") { Text(st.outstanding.formatted).foregroundStyle(st.outstanding.cents > 0 ? .orange : .secondary) }
                 }
+                if let area = site.lawnAreaSqFt { FactRow(label: "Measured area", value: PropertyMeasure.describe(squareFeet: area)) }
+                SecondaryActionButton(title: site.lawnAreaSqFt == nil ? "Measure this property" : "Measure again", icon: "map") { measuringSite = site }
                 Divider()
                 if let url = pageURL(for: site) {
                     ShareLink(item: url) { Label("Share this client's page link", systemImage: "link") }.font(.subheadline.weight(.semibold))

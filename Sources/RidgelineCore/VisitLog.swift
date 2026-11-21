@@ -54,11 +54,15 @@ public struct VisitRecord: Identifiable, Equatable, Codable, Sendable {
     public var saltPounds: Double
     public var photos: [PhotoRef]
     public var note: String
+    /// What was spread (see ProofPacket.swift). Optional so visits saved before this field still load and hash the same.
+    public var material: MaterialType?
+    /// Amount of `material`, in its unit (pounds, or gallons for liquid brine).
+    public var materialAmount: Double?
 
     public init(id: UUID = UUID(), siteID: UUID, crewMemberName: String, stormID: String, arrival: Date,
                 departure: Date? = nil, geofence: GeofenceStatus = .unknown, status: VisitStatus = .completed,
                 snowDepthInches: Double = 0, weatherNote: String = "", saltPounds: Double = 0,
-                photos: [PhotoRef] = [], note: String = "") {
+                photos: [PhotoRef] = [], note: String = "", material: MaterialType? = nil, materialAmount: Double? = nil) {
         self.id = id
         self.siteID = siteID
         self.crewMemberName = crewMemberName
@@ -72,6 +76,8 @@ public struct VisitRecord: Identifiable, Equatable, Codable, Sendable {
         self.saltPounds = saltPounds
         self.photos = photos
         self.note = note
+        self.material = material
+        self.materialAmount = materialAmount
     }
 
     public var hasBeforePhoto: Bool { photos.contains { $0.kind == .before } }
@@ -160,6 +166,7 @@ public enum DisputePacket {
             if case .skipped(let reason) = r.status { status = "skipped (\(reason))" }
             lines.append("\(f.string(from: r.arrival)) to \(out) | storm \(r.stormID) | \(status)")
             lines.append("  crew: \(r.crewMemberName) | at site (location check): \(r.geofence.rawValue) | depth: \(r.snowDepthInches) in | salt: \(r.saltPounds) lb")
+            if r.material != nil { lines.append("  material: \(r.materialSummary)") }
             if !r.weatherNote.isEmpty { lines.append("  weather: \(r.weatherNote)") }
             lines.append("  photos: \(r.photos.count) (before: \(r.hasBeforePhoto ? "yes" : "no"), after: \(r.hasAfterPhoto ? "yes" : "no"))")
             if !r.note.isEmpty { lines.append("  note: \(r.note)") }

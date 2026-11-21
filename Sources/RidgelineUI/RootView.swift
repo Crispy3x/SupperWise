@@ -36,6 +36,7 @@ public struct RidgelineRootView: View {
             }
         }
         .environment(model)
+        .localReminders(model)
         .tint(Theme.accent(model.data.profile.accentColor))
         .preferredColorScheme(colorScheme)
         .task { await model.checkAppleCredential() }

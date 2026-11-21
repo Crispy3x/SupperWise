@@ -60,6 +60,9 @@ struct PhotoCaptureRow: View {
     let title: String
     let kind: PhotoKind
     @Binding var photos: [PhotoRef]
+    /// Lines burned into the bottom of each photo when it is saved (see PhotoStamper.swift). The fingerprint is
+    /// taken of the stamped file.
+    var stamp: ((Date) -> [String])? = nil
 
     @State private var pickerItem: PhotosPickerItem?
     @State private var showingCamera = false
@@ -111,8 +114,11 @@ struct PhotoCaptureRow: View {
             problem = "There is nowhere to save photos on this device."
             return
         }
+        let capturedAt = Date()
+        // If stamping fails, keep the plain photo rather than lose it.
+        let bytes = stamp.flatMap { stampedPhoto(jpeg, lines: $0(capturedAt)) } ?? jpeg
         do {
-            photos.append(try storage.save(jpeg, kind: kind, capturedAt: Date()))
+            photos.append(try storage.save(bytes, kind: kind, capturedAt: capturedAt))
             problem = nil
         } catch {
             problem = "The photo could not be saved: \(error.localizedDescription)"

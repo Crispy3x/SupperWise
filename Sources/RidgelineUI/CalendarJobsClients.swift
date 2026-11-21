@@ -11,6 +11,7 @@ struct CalendarTabView: View {
     @State private var selected = Date()
     @State private var showEditor = false
     @State private var openedJob: UUID?
+    @State private var openedDay: Date?   // the tapped visit of a repeating job
     @State private var shareURL: URL?
 
     private var cal: Calendar { Calendar.current }
@@ -58,7 +59,7 @@ struct CalendarTabView: View {
                         Text("Nothing scheduled").font(.title3).foregroundStyle(.secondary).frame(maxWidth: .infinity).padding(.vertical, 30)
                             .overlay(RoundedRectangle(cornerRadius: Look.cardCorner, style: .continuous).stroke(style: StrokeStyle(lineWidth: 1, dash: [5])).foregroundStyle(Look.stroke))
                     } else {
-                        ForEach(jobs) { job in JobRow(job: job) { openedJob = job.id } }
+                        ForEach(jobs) { job in JobRow(job: job) { openedDay = job.start; openedJob = job.id } }
                     }
                     if model.data.can(.editJobs) {
                         Button { showEditor = true } label: {
@@ -81,7 +82,7 @@ struct CalendarTabView: View {
         }
         .sheet(isPresented: $showEditor) { JobEditorSheet(initialDate: selected) }
         .sheet(isPresented: Binding(get: { openedJob != nil }, set: { if !$0 { openedJob = nil } })) {
-            if let id = openedJob { JobDetailSheet(jobID: id) }
+            if let id = openedJob { JobDetailSheet(jobID: id, occurrenceDate: openedDay) }
         }
         .task(id: model.data.jobs) { shareURL = model.scheduleFileURL() }
     }

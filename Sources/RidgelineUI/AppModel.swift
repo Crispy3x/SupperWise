@@ -53,7 +53,7 @@ public final class AppModel {
     /// Kept for the life of the app so repeat planning reuses answers for a few minutes, in memory only.
     private let appleETA = CachedETASource(base: MapKitETASource())
     #endif
-    private let store: FileStore?
+    let store: FileStore?   // internal so AppModel+SavedCopies.swift can list the saved copies
     /// Where photos are kept, next to the data file. nil when there is no place to save (previews, tests).
     public let photoStorage: PhotoStorage?
 
@@ -242,11 +242,11 @@ public final class AppModel {
             safetyNote = " No safety copy of your previous data could be made on this device."
         }
         pendingRestore = nil
-        var restored = result.data
+        var restored = DataExport.preparedForDevice(result.data, current: data)   // signs everyone out; keeps this device's owner login
         restored.subscription = data.subscription          // a backup never changes this device's trial or plan
         data = restored
         save()
-        var message = "Restored \(result.customerCount) customers, \(result.siteCount) sites, \(result.invoiceCount) invoices and \(result.visitCount) visits. Settings such as the yard location and drive-time source now come from the backup." + safetyNote
+        var message = "Restored \(result.customerCount) customers, \(result.siteCount) sites, \(result.invoiceCount) invoices and \(result.visitCount) visits. Settings such as the yard location and drive-time source now come from the backup. Sign in again to keep going." + safetyNote
         if !result.visitLogVerified {
             message += " Warning: the proof-of-service log in this backup failed its tamper check, so proof packets will say so."
         }
@@ -335,6 +335,9 @@ public final class AppModel {
             for name in names where name.hasPrefix("before-restore-") || name.contains(".unreadable-") {
                 try? FileManager.default.removeItem(at: folder.appendingPathComponent(name))
             }
+        }
+        if let store {                                       // rolling and daily copies of the data file go too
+            for copy in store.dailyCopyURLs() + [store.backupURL] { try? FileManager.default.removeItem(at: copy) }
         }
         data = data.erasedCopy()
         serverConfigured = false

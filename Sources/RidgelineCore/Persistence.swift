@@ -2,7 +2,7 @@ import Foundation
 
 /// Everything the app stores. Kept as plain values so it is easy to sync later.
 public struct AppData: Equatable, Codable, Sendable {
-    public var schemaVersion: Int = 1
+    public var schemaVersion: Int = SchemaMigrations.currentVersion
     public var companyName: String = ""
     public var customers: [Customer] = []
     public var sites: [Site] = []
@@ -100,7 +100,7 @@ public struct FileStore: Sendable {
     public func load() throws -> AppData {
         guard FileManager.default.fileExists(atPath: url.path) else { return AppData() }
         let data = try Data(contentsOf: url)
-        return try Self.decoder.decode(AppData.self, from: data)
+        return try Self.decoder.decode(AppData.self, from: SchemaMigrations.migrate(data))
     }
 
     public func save(_ appData: AppData) throws {
@@ -115,6 +115,8 @@ public struct FileStore: Sendable {
         public let notice: String?
         /// False when the unreadable file could not be set aside: saving then would overwrite it.
         public let safeToSave: Bool
+        /// The file name of the saved copy that was opened instead, if any.
+        public var restoredCopy: String? = nil
     }
 
     /// Moves an unreadable data file out of the way (kept for recovery) and returns where it went.
@@ -126,13 +128,30 @@ public struct FileStore: Sendable {
         return dest
     }
 
-    /// Loads the data. If the file cannot be read it is set aside, never overwritten, and the app starts empty with a notice.
+    /// Loads the data and keeps rolling copies of it (see SavedCopies.swift). If the file cannot be read it is set aside, never
+    /// overwritten, and the app opens the newest readable copy (data.json.bak, then daily copies), or starts empty, with a notice.
     public func loadOrRecover(now: Date = Date()) -> Recovery {
+        let mainExists = FileManager.default.fileExists(atPath: url.path)
         do {
-            return Recovery(data: try load(), notice: nil, safeToSave: true)
+            let loaded = try load()
+            if mainExists {
+                keepCopies(of: loaded, now: now)
+            } else if let found = firstReadableCopy() {
+                try? save(found.data)
+                return Recovery(data: found.data, notice: "Your data file was missing, so the app opened \(found.copy.describe()).", safeToSave: true, restoredCopy: found.copy.id)
+            }
+            return Recovery(data: loaded, notice: nil, safeToSave: true)
         } catch {
+            let found = firstReadableCopy()
             if let kept = try? moveAsideUnreadable(now: now) {
+                if let found {
+                    try? save(found.data)
+                    return Recovery(data: found.data, notice: "Your saved data could not be read, so the app opened \(found.copy.describe()). The unreadable file was kept as \(kept.lastPathComponent).", safeToSave: true, restoredCopy: found.copy.id)
+                }
                 return Recovery(data: AppData(), notice: "Your saved data could not be read, so the app started empty. The unreadable file was kept as \(kept.lastPathComponent) so it can be recovered.", safeToSave: true)
+            }
+            if let found {
+                return Recovery(data: found.data, notice: "Your saved data could not be read or set aside, so the app is showing \(found.copy.describe()). Changes will not be saved until this is fixed.", safeToSave: false, restoredCopy: found.copy.id)
             }
             return Recovery(data: AppData(), notice: "Your saved data could not be read and could not be set aside. Changes will not be saved until this is fixed.", safeToSave: false)
         }

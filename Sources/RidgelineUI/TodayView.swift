@@ -116,7 +116,10 @@ struct VisitSheet: View {
     @State private var skipped = false
     @State private var reason = ""
     @State private var depth = 3.0
-    @State private var salt = 0.0
+    @State private var material: MaterialType = .none
+    @State private var materialAmount = 0.0
+    @State private var weather = ""
+    @State private var here: Coordinate?
     @State private var beforePhotos: [PhotoRef] = []
     @State private var afterPhotos: [PhotoRef] = []
     @State private var problemPhotos: [PhotoRef] = []
@@ -142,6 +145,21 @@ struct VisitSheet: View {
         case .inside: return "At the site"
         case .outside: return "Not at the site"
         case .unknown: return "Location not checked"
+        }
+    }
+
+    /// What gets burned into each photo when it is saved.
+    private var stampLines: (Date) -> [String] {
+        let address = site.address, coordinate = here, note = weather
+        return { PhotoStamp.lines(capturedAt: $0, address: address, coordinate: coordinate, weatherNote: note) }
+    }
+
+    @ViewBuilder private var materialRows: some View {
+        PillMenu(label: "Material", options: MaterialType.allCases.map { ($0, $0.title) }, selection: $material)
+        if material != MaterialType.none {
+            let unit = material.unit
+            PillStepper(label: unit == .gallons ? "Gallons" : "Pounds", value: $materialAmount, range: 0...5000,
+                        step: unit == .gallons ? 5 : 10, format: { MaterialFormat.amount($0, unit: unit) })
         }
     }
 
@@ -174,21 +192,25 @@ struct VisitSheet: View {
                     if !locationProblem.isEmpty {
                         Text(locationProblem).font(.footnote).foregroundStyle(.secondary)
                     }
+                    PillField(label: "Weather", optional: true, placeholder: "Light snow, 25°F", text: $weather)
                 }
                 if !skipped {
                     CardGroup(title: "Work") {
                         PillStepper(label: "Snow depth", value: $depth, range: 0...36, step: 0.5, format: { String(format: "%.1f in", $0) })
-                        PillStepper(label: "Salt", value: $salt, range: 0...500, step: 10, format: { "\(Int($0)) lb" })
+                        materialRows
                     }
                 }
                 CardGroup(title: skipped ? "Photos of the problem" : "Photos") {
                     if skipped {
-                        PhotoCaptureRow(title: "What blocked the visit", kind: .other, photos: $problemPhotos)
+                        PhotoCaptureRow(title: "What blocked the visit", kind: .other, photos: $problemPhotos, stamp: stampLines)
                     } else {
-                        PhotoCaptureRow(title: "Before", kind: .before, photos: $beforePhotos)
+                        PhotoCaptureRow(title: "Before", kind: .before, photos: $beforePhotos, stamp: stampLines)
                         RowDivider()
-                        PhotoCaptureRow(title: "After", kind: .after, photos: $afterPhotos)
+                        PhotoCaptureRow(title: "After", kind: .after, photos: $afterPhotos, stamp: stampLines)
                     }
+                    Text(here == nil ? "Photos are stamped with the time, address and weather. Check location first to add GPS."
+                                     : "Photos are stamped with the time, address, GPS and weather.")
+                        .font(.footnote).foregroundStyle(.secondary)
                 }
                 CardGroup {
                     PillNotes(label: "Note", placeholder: "Optional note", text: $note)
@@ -213,6 +235,7 @@ struct VisitSheet: View {
         findingLocation = true
         Task {
             let here = await locator.currentLocation()
+            if let here { self.here = here }
             geofence = ArrivalCheck.status(device: here, site: site)
             locationProblem = here == nil ? "Could not get your location. Check the location permission in Settings." : ""
             findingLocation = false
@@ -225,8 +248,12 @@ struct VisitSheet: View {
         let record = VisitRecord(siteID: site.id, crewMemberName: crewName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "Name not entered" : crewName.trimmingCharacters(in: .whitespacesAndNewlines), stormID: stormID, arrival: arrival, departure: now,
                                  geofence: geofence,
                                  status: skipped ? .skipped(reason: reason) : .completed,
-                                 snowDepthInches: skipped ? 0 : depth, saltPounds: skipped ? 0 : salt,
-                                 photos: skipped ? problemPhotos : beforePhotos + afterPhotos, note: note)
+                                 snowDepthInches: skipped ? 0 : depth,
+                                 weatherNote: weather.trimmingCharacters(in: .whitespacesAndNewlines),
+                                 saltPounds: !skipped && material.isSalt ? materialAmount : 0,
+                                 photos: skipped ? problemPhotos : beforePhotos + afterPhotos, note: note,
+                                 material: skipped ? nil : material,
+                                 materialAmount: skipped || material == MaterialType.none ? nil : materialAmount)
         model.record(record)
         dismiss()
     }

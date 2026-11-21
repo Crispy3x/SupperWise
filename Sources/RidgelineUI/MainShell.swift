@@ -259,6 +259,7 @@ struct StatusBanners: View {
                     if !model.savingIsBlocked {
                         Button("Dismiss") { model.dismissLoadNotice() }.font(.footnote).buttonStyle(.bordered)
                     }
+                    if model.data.isOwnerSession { RestoreEarlierCopyButton(compact: true) }   // SavedCopiesSheet.swift
                 }
                 .frame(maxWidth: .infinity).padding(6).background(.red.opacity(0.2))
             }

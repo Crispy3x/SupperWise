@@ -18,19 +18,27 @@ public struct RestoreResult: Equatable, Sendable {
 /// Getting your data out (a full backup and spreadsheets) and back in. Photo files are not part of the backup:
 /// the backup keeps each photo's name and fingerprint, but the pictures themselves stay on the device.
 public enum DataExport {
-    public static let supportedSchemaVersion = 1
+    public static let supportedSchemaVersion = SchemaMigrations.currentVersion
 
     /// Everything, as one JSON file that can be restored.
     public static func backupJSON(_ data: AppData) throws -> Data {
         try FileStore.encoder.encode(data)
     }
 
-    /// Reads a backup. Refuses files that are not a backup or come from a newer version of the app.
+    /// Reads a backup. Refuses files that are not a backup or come from a newer version of the app, and upgrades older ones.
+    /// The saved sign-in is always dropped: a backup never signs anyone in. Before using the data on a device, pass it
+    /// through `preparedForDevice(_:current:)` so logins from someone else's backup are not imported.
     public static func restore(from file: Data) throws -> RestoreResult {
-        guard let data = try? FileStore.decoder.decode(AppData.self, from: file) else { throw BackupError.unreadable }
+        guard var data = try? FileStore.decoder.decode(AppData.self, from: file) else { throw BackupError.unreadable }
         guard data.schemaVersion <= supportedSchemaVersion else {
             throw BackupError.newerVersion(found: data.schemaVersion, supported: supportedSchemaVersion)
         }
+        if data.schemaVersion < supportedSchemaVersion {
+            guard let upgraded = try? SchemaMigrations.migrate(file),
+                  let migrated = try? FileStore.decoder.decode(AppData.self, from: upgraded) else { throw BackupError.unreadable }
+            data = migrated
+        }
+        data.session = nil
         return RestoreResult(data: data, visitLogVerified: data.visitLog.verify())
     }
 

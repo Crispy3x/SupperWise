@@ -31,9 +31,12 @@ struct JobRow: View {
                         let place = model.data.address(forJob: job)
                         Text([timeText, who, place].filter { !$0.isEmpty }.joined(separator: " · "))
                             .font(.footnote).foregroundStyle(.secondary).lineLimit(2)
+                        if let rule = job.repeatRule, rule.repeats {
+                            Label(rule.summary, systemImage: "repeat").font(.footnote).foregroundStyle(.secondary).lineLimit(1)
+                        }
                     }
                     Spacer(minLength: 0)
-                    StatusPill(text: job.isTask ? "Task" : job.status.title, color: job.status.color)
+                    StatusPill(text: job.isTask ? "Task" : (job.repeats && job.status == .cancelled ? "Skipped" : job.status.title), color: job.status.color)
                 }
             }
         }
@@ -47,9 +50,17 @@ struct JobDetailSheet: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
     let jobID: UUID
+    /// For a repeating job: the visit that was tapped. Nil shows the next visit from today.
+    var occurrenceDate: Date? = nil
     @State private var message: String?
 
-    private var job: Job? { model.data.jobs.first { $0.id == jobID } }
+    /// The job, or for a repeating job the one visit this sheet is about (its own date and status).
+    private var job: Job? {
+        guard let series = model.data.jobs.first(where: { $0.id == jobID }) else { return nil }
+        guard series.repeats else { return series }
+        let day = occurrenceDate ?? series.nextOccurrence(onOrAfter: Date()) ?? series.start
+        return series.occurrence(on: day) ?? series
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -67,6 +78,10 @@ struct JobDetailSheet: View {
                         FactRow(label: "Length", value: "\(job.durationMinutes) min")
                         RowDivider()
                         FactRow(label: "Type", value: job.isTask ? "Reminder or task" : job.kind.title)
+                        if let rule = job.repeatRule, rule.repeats {
+                            RowDivider()
+                            Label(rule.fullSummary, systemImage: "repeat").font(.footnote).foregroundStyle(.secondary)
+                        }
                         let who = model.data.customerName(forJob: job)
                         if !who.isEmpty {
                             RowDivider()
@@ -101,12 +116,13 @@ struct JobDetailSheet: View {
                         SecondaryActionButton(title: "Navigate in Apple Maps", icon: "location.fill") { openURL(url) }
                     }
                     if !job.isTask && (model.data.can(.editJobs) || model.data.can(.logVisits)) {
-                        CardGroup(title: "Status") {
+                        CardGroup(title: job.repeats ? "This visit" : "Status", footer: job.repeats ? "Only this visit changes. The others stay scheduled." : nil) {
                             ForEach(Array(JobStatus.allCases.enumerated()), id: \.offset) { index, s in
                                 if index > 0 { RowDivider() }
-                                Button { message = model.setJobStatus(s, id: job.id) } label: {
+                                // For a job that does not repeat this sets the job's own status.
+                                Button { message = model.setOccurrenceStatus(s, id: job.id, on: job.start) } label: {
                                     HStack {
-                                        Text(s.title).font(.title3).foregroundStyle(.primary)
+                                        Text(job.repeats && s == .cancelled ? "Skipped" : s.title).font(.title3).foregroundStyle(.primary)
                                         Spacer()
                                         if job.status == s { Image(systemName: "checkmark").foregroundStyle(s.color) }
                                     }
@@ -117,12 +133,17 @@ struct JobDetailSheet: View {
                         }
                     } else if job.isTask {
                         SecondaryActionButton(title: job.status == .done ? "Mark not done" : "Mark done", icon: job.status == .done ? "arrow.uturn.backward" : "checkmark") {
-                            message = model.setJobStatus(job.status == .done ? .scheduled : .done, id: job.id)
+                            message = model.setOccurrenceStatus(job.status == .done ? .scheduled : .done, id: job.id, on: job.start)
+                        }
+                    }
+                    if model.data.can(.editJobs), let rule = job.repeatRule, rule.repeats {
+                        SecondaryActionButton(title: "Stop repeating after this visit", icon: "stop.circle") {
+                            message = model.setJobRepeat(RepeatRule(frequency: rule.frequency, endDate: job.start), id: job.id)
                         }
                     }
                     if let message { Text(message).font(.footnote).foregroundStyle(.red).frame(maxWidth: .infinity, alignment: .leading) }
                     if model.data.can(.editJobs) {
-                        PrimaryActionButton(title: "Delete", icon: "trash", destructive: true) {
+                        PrimaryActionButton(title: job.repeats ? "Delete all visits" : "Delete", icon: "trash", destructive: true) {
                             message = model.deleteJob(job.id)
                             if message == nil { dismiss() }
                         }
@@ -161,6 +182,9 @@ struct JobEditorSheet: View {
     @State private var problem: String?
     @State private var loaded = false
     @State private var showNewClient = false
+    @State private var repeatFrequency: RepeatFrequency = .never
+    @State private var repeatHasEnd = false
+    @State private var repeatEnd = Date()
 
     private var clients: [Customer] { model.data.customers.filter { !$0.isLead } }
     private var sitesForClient: [Site] { model.data.sites.filter { $0.customerID == customerID } }
@@ -235,6 +259,20 @@ struct JobEditorSheet: View {
             SectionLabel(text: "When")
             Card(padding: 14) { DatePicker("Starts", selection: $start).font(.title3) }
             PillStepper(label: "Length", value: $minutes, range: 5...600, step: 5, format: { "\(Int($0)) min" })
+            PillMenu(label: "Repeat", options: RepeatFrequency.allCases.map { ($0, $0.title) }, selection: $repeatFrequency)
+            if repeatFrequency != .never {
+                PillChoice(options: [(false, "Keeps going", "infinity"), (true, "Ends on a date", "calendar")], selection: $repeatHasEnd)
+                if repeatHasEnd {
+                    Card(padding: 14) { DatePicker("Last visit", selection: $repeatEnd, in: start..., displayedComponents: .date).font(.title3) }
+                }
+                if repeatFrequency == .monthly && Calendar.current.component(.day, from: start) > 28 {
+                    Text("In shorter months it goes on the last day.").font(.footnote).foregroundStyle(.secondary)
+                }
+                Text("Mark each visit done or skipped on its own. The others stay scheduled.").font(.footnote).foregroundStyle(.secondary)
+            }
+        }
+        .onChange(of: repeatHasEnd) {
+            if repeatHasEnd && repeatEnd < start { repeatEnd = Calendar.current.date(byAdding: .month, value: 3, to: start) ?? start }
         }
     }
 
@@ -272,7 +310,8 @@ struct JobEditorSheet: View {
 
     private func save() {
         problem = model.addJob(title: title, kind: isTask ? .other : kind, customerID: isTask ? nil : customerID, siteID: isTask ? nil : siteID,
-                               start: start, durationMinutes: Int(minutes), assigneeIDs: isTask ? [] : Array(assignees), notes: notes, isTask: isTask)
+                               start: start, durationMinutes: Int(minutes), assigneeIDs: isTask ? [] : Array(assignees), notes: notes, isTask: isTask,
+                               repeatRule: repeatFrequency == .never ? nil : RepeatRule(frequency: repeatFrequency, endDate: repeatHasEnd ? repeatEnd : nil))
         if problem == nil { dismiss() }
     }
 }

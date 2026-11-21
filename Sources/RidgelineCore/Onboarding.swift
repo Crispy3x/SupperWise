@@ -47,6 +47,9 @@ public struct BusinessProfile: Equatable, Codable, Sendable {
     public var chosenPlan: PlanTier?
     /// "dark", "light" or "system". Nil means dark, the app's default look.
     public var appearance: String?
+    /// Phone reminders (tomorrow's jobs, overdue invoices, snow coming, trial ending). Nil means off until turned on in Settings.
+    public var remindersEnabled: Bool?
+    public var remindersOn: Bool { remindersEnabled ?? false }
     public var stormMessagesOn: Bool = true
     public var invoiceAutomation: InvoiceAutomation = .draft
     public var accentColor: String = "blue"

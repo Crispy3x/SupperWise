@@ -85,6 +85,8 @@ public struct Site: Identifiable, Equatable, Codable, Sendable {
     public var triggerInches: Double
     /// Standing instructions shown to the crew (gate codes, "don't pile on the lawn").
     public var instructions: String
+    /// Lawn or lot size measured on the satellite map, in square feet. nil until someone measures it.
+    public var lawnAreaSqFt: Double? = nil
 
     public init(id: UUID = UUID(), customerID: UUID, address: String, latitude: Double? = nil,
                 longitude: Double? = nil, priority: Int = 3, triggerInches: Double = 2,

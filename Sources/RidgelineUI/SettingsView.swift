@@ -36,6 +36,7 @@ struct SettingsView: View {
         ScreenStack {
             AppPage(title: "Settings", icon: "gearshape.fill") {
                 accountAndAbout
+                RemindersSettingsCard()
                 tippingAndBusiness
                 yardAndInvoices
                 drivingAndServer
@@ -280,6 +281,7 @@ struct SettingsView: View {
                 .buttonStyle(.plain)
             }
             SecondaryActionButton(title: "Restore from a backup file...", icon: "arrow.down.doc") { showImporter = true }
+            if model.data.isOwnerSession { RestoreEarlierCopyButton() }
             if !dataNote.isEmpty { Text(dataNote).font(.footnote).foregroundStyle(.secondary) }
             if let safety = model.lastSafetyCopy {
                 ShareLink(item: safety) {
