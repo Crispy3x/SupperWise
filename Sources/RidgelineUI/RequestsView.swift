@@ -89,6 +89,7 @@ struct RequestsView: View {
             Text(r.createdAt.formatted(date: .abbreviated, time: .shortened)).font(.caption).foregroundStyle(.secondary)
             if r.kind == .thanks {
                 PrimaryActionButton(title: "Mark read") { accept(r) }.padding(.top, 4)
+                if let cid = model.data.customerID(forRequest: r) { ReviewAskButton(customerID: cid, happyNow: true, onlyWhenSuggested: true) }
             } else {
                 HStack(spacing: 10) {
                     PrimaryActionButton(title: "Accept") { accept(r) }

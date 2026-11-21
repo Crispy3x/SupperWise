@@ -82,6 +82,7 @@ struct ClientDetailView: View {
                             }
                             .font(.footnote)
                         }
+                        ReviewAskButton(customerID: customerID).padding(.top, 4)
                     }
                 }
                 if !upcomingJobs.isEmpty {

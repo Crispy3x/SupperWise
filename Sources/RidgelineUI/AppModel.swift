@@ -65,6 +65,7 @@ public final class AppModel {
         self.loadNotice = recovery?.notice
         self.savingBlocked = !(recovery?.safeToSave ?? true)
         refreshServerFlag()
+        if let run = data.activeStormRun { stormName = run.stormName }   // keep logging under the storm in progress after a restart
         // Every site gets its private page link up front, so a link in a message always matches a saved one.
         let before = data.portalLinks.count
         data.ensurePortalLinks(now: Date())
@@ -604,6 +605,7 @@ public final class AppModel {
     /// the client agreed), then refreshes the client page.
     public func record(_ visit: VisitRecord) {
         data.visitLog.append(visit)
+        data.markStormJobDone(after: visit)   // StormMode.swift
         let outcome = data.autoInvoice(afterVisit: visit, now: Date())
         save()
         if outcome.invoice != nil { notice = outcome.note }

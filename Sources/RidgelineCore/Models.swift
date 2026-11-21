@@ -16,6 +16,8 @@ public struct Customer: Identifiable, Equatable, Codable, Sendable {
     public var optedOutAt: Date?
     /// Someone who has asked about your service but is not a client yet.
     public var isLead: Bool
+    /// When the owner last asked this client for a review (see ReviewRequests.swift). Nil means never.
+    public var reviewAskedAt: Date? = nil
 
     public init(id: UUID = UUID(), name: String, phone: String = "", email: String = "", notes: String = "",
                 emailConsent: Bool = false, smsConsent: Bool = false, consentRecordedAt: Date? = nil,
@@ -34,7 +36,7 @@ public struct Customer: Identifiable, Equatable, Codable, Sendable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, name, phone, email, notes, emailConsent, smsConsent, consentRecordedAt, consentSource, optedOutAt, isLead
+        case id, name, phone, email, notes, emailConsent, smsConsent, consentRecordedAt, consentSource, optedOutAt, isLead, reviewAskedAt
     }
 
     // Older saved files have no consent fields, so they fall back to "no consent".
@@ -51,6 +53,7 @@ public struct Customer: Identifiable, Equatable, Codable, Sendable {
         consentSource = try c.decodeIfPresent(String.self, forKey: .consentSource) ?? ""
         optedOutAt = try c.decodeIfPresent(Date.self, forKey: .optedOutAt)
         isLead = try c.decodeIfPresent(Bool.self, forKey: .isLead) ?? false
+        reviewAskedAt = try c.decodeIfPresent(Date.self, forKey: .reviewAskedAt)
     }
 }
 

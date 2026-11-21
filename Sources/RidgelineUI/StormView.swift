@@ -54,6 +54,7 @@ struct StormView: View {
         let offsets = Dictionary(plan.planned.map { ($0.stop.id, $0.arrivalOffsetSeconds) }, uniquingKeysWith: { first, _ in first })
         ScreenStack {
             AppPage {
+                StormModeSection()   // StormModeViews.swift: start a storm with jobs, progress, finish and bill
                 CardGroup(title: "Forecast (National Weather Service, US)") {
                     if model.data.depot == nil {
                         PillField(label: "Yard latitude", placeholder: "e.g. 44.98", text: $depotLat)
@@ -125,7 +126,11 @@ struct StormView: View {
                 }
                 CardGroup(title: "This storm: \(model.stormName)",
                           footer: "Each storm keeps its own messages, requests and visits. Renaming a storm makes it a new one, so clients could be messaged again.") {
-                    SecondaryActionButton(title: "Start a new storm", icon: "plus.circle") { model.startNewStorm() }
+                    if model.data.activeStormRun == nil {   // during a storm the crew keeps logging under its name
+                        SecondaryActionButton(title: "Start a new storm", icon: "plus.circle") { model.startNewStorm() }
+                    } else {
+                        Text("This storm is in progress. Finish it before starting another.").font(.footnote).foregroundStyle(.secondary)
+                    }
                 }
                 if model.data.profile.stormMessagesOn {
                     CardGroup(title: "Clients",

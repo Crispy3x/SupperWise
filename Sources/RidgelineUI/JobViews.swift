@@ -115,6 +115,7 @@ struct JobDetailSheet: View {
                        let url = NavigationLinks.appleMaps(to: Coordinate(latitude: lat, longitude: lon), from: model.data.depot) {
                         SecondaryActionButton(title: "Navigate in Apple Maps", icon: "location.fill") { openURL(url) }
                     }
+                    ClientTextSection(job: job)   // "On my way" and "Job done" texts (ClientTextViews.swift)
                     if !job.isTask && (model.data.can(.editJobs) || model.data.can(.logVisits)) {
                         CardGroup(title: job.repeats ? "This visit" : "Status", footer: job.repeats ? "Only this visit changes. The others stay scheduled." : nil) {
                             ForEach(Array(JobStatus.allCases.enumerated()), id: \.offset) { index, s in

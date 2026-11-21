@@ -47,6 +47,10 @@ public struct Job: Identifiable, Equatable, Codable, Sendable {
     public var repeatRule: RepeatRule?
     /// For a repeating job: visits that are done, skipped or in progress, by day ("2027-01-15"). Other visits are scheduled.
     public var occurrenceStatuses: [String: JobStatus]?
+    /// Texts sent to the client about this job, like "On my way" (see ClientTexts.swift). Nil when none were sent.
+    public var clientTexts: [ClientTextLogEntry]? = nil
+    /// Automatic arrival and departure times, by day ("2027-01-15"), see AutoCheckIn.swift. Nil when none were saved.
+    public var checkIns: [String: JobCheckIn]? = nil
 
     public init(id: UUID = UUID(), title: String, kind: JobKind = .other, customerID: UUID? = nil, siteID: UUID? = nil,
                 start: Date, durationMinutes: Int = 60, status: JobStatus = .scheduled, assigneeIDs: [UUID] = [],

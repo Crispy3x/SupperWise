@@ -12,6 +12,7 @@ struct InvoicesView: View {
     var body: some View {
         ScreenStack {
             AppPage(title: "Invoices", icon: "doc.text.fill") {
+                InvoicesQuickInvoiceButton()   // QuickInvoiceViews.swift
                 if model.data.contracts.isEmpty {
                     Card { Text("No contracts yet.").foregroundStyle(.secondary) }
                 }

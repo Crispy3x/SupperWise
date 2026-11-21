@@ -55,6 +55,10 @@ public struct BusinessProfile: Equatable, Codable, Sendable {
     public var accentColor: String = "blue"
     /// Whether the client page shows invoice amounts (otherwise only paid or due).
     public var portalShowsAmounts: Bool = true
+    /// Where happy clients leave a review (Google, Yelp, Facebook, Nextdoor). Stored only if it passes `ReviewLink.clean`.
+    public var reviewLink: String?
+    /// Suggest asking for a review after a paid invoice or a thank-you message. Nil means on.
+    public var reviewSuggestionsEnabled: Bool?
     public var onboardingCompletedAt: Date?
     public var skippedSteps: [String] = []
 

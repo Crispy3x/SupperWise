@@ -98,6 +98,7 @@ struct TodayView: View {
                 setupSection
                 CardGroup(title: "Storm") {
                     PillField(label: "Storm name", placeholder: "Storm name", text: stormNameBinding)
+                        .disabled(model.data.activeStormRun != nil)   // Storm mode: visits must match the storm in progress
                 }
                 sitesSection
             }
@@ -112,6 +113,16 @@ struct VisitSheet: View {
     @Environment(\.dismiss) private var dismiss
     let site: Site
     let stormID: String
+
+    /// `arrivedAt` comes from automatic check-in (AutoCheckInViews.swift): the GPS already confirmed the crew was at the site.
+    init(site: Site, stormID: String, arrivedAt: Date? = nil) {
+        self.site = site
+        self.stormID = stormID
+        if let arrivedAt {
+            _arrival = State(initialValue: arrivedAt)
+            _geofence = State(initialValue: .inside)
+        }
+    }
 
     @State private var skipped = false
     @State private var reason = ""

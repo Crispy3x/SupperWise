@@ -28,7 +28,8 @@ struct HomeView: View {
     /// The planned route counts only while it still matches today's jobs.
     private var order: [UUID: Int] {
         let current = Set(model.data.routeStops(on: Date()).map(\.id))
-        guard let plan = model.plannedRoute, Set(plan.stops.map(\.id)) == current, !current.isEmpty else { return [:] }
+        // Subset, not equal: stops marked done along the way (auto check-in) leave the rest of the numbers in place.
+        guard let plan = model.plannedRoute, current.isSubset(of: Set(plan.stops.map(\.id))), !current.isEmpty else { return [:] }
         return Dictionary(uniqueKeysWithValues: plan.stops.enumerated().map { ($0.element.id, $0.offset + 1) })
     }
 
@@ -37,7 +38,7 @@ struct HomeView: View {
         let stops = model.data.routeStops(on: Date())
         let ordered = numbers.isEmpty ? stops : stops.sorted { (numbers[$0.id] ?? 0) < (numbers[$1.id] ?? 0) }
         return ordered.map { s in
-            MapPoint(id: s.id, label: numbers[s.id].map(String.init) ?? s.name,
+            MapPoint(id: s.id, label: model.autoCheckInLabel(numbers[s.id].map(String.init) ?? s.name, for: s.id),   // AutoCheckInViews.swift
                      coordinate: CLLocationCoordinate2D(latitude: s.coordinate.latitude, longitude: s.coordinate.longitude))
         }
     }
@@ -51,8 +52,13 @@ struct HomeView: View {
                 if model.data.isOwnerSession && !model.isHintDismissed("form") && model.data.broadcastSettings.portalBaseURL.isEmpty {
                     BannerRow(icon: "link", title: "Set up your service request form", onClose: nil) { openScreen(.settings) }
                 }
+                HomeInvoiceCard()   // QuickInvoiceViews.swift
+                StormModeSection(onHome: true, openRoute: openSmartRoute)   // StormModeViews.swift
                 JobsMap(points: points, height: 380, onExpand: { showMap = true })
                 if model.serverConfigured && model.data.can(.logVisits) { ShareLocationCard() }
+                #if canImport(CoreLocation)
+                AutoCheckInCard()   // AutoCheckInViews.swift: hides itself when there is nothing to check in to
+                #endif
                 if model.data.can(.editJobs) || model.data.can(.editClients) {
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Quick actions").font(.title2.bold())
@@ -227,6 +233,10 @@ struct SmartRouteSheet: View {
                     if let first = plan.stops.first, let url = NavigationLinks.appleMaps(to: first.coordinate, from: start) {
                         PrimaryActionButton(title: "Start in Apple Maps", icon: "location.fill") { openURL(url) }
                     }
+                    NextStopTextButton(plan: plan, day: day)   // ClientTextViews.swift
+                    #if canImport(CoreLocation)
+                    if Calendar.current.isDateInToday(day) { AutoCheckInCard() }   // AutoCheckInViews.swift
+                    #endif
                 }
                 Text(note).font(.footnote).foregroundStyle(.secondary).frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
             }

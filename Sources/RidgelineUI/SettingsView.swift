@@ -38,6 +38,8 @@ struct SettingsView: View {
                 accountAndAbout
                 RemindersSettingsCard()
                 tippingAndBusiness
+                ReviewSettingsCard()
+                ServicePricesCard()   // QuickInvoiceViews.swift
                 yardAndInvoices
                 drivingAndServer
                 costsAndFees

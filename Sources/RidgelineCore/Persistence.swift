@@ -48,6 +48,12 @@ public struct AppData: Equatable, Codable, Sendable {
     public var assistantConsentAt: Date?
     /// Which clients were sent their season link, so nobody gets it twice in one season.
     public var seasonLinkLog: [SeasonLinkRecord] = []
+    /// Storms started with Storm mode (see StormMode.swift).
+    public var stormRuns: [StormRun] = []
+    /// The owner's services and prices (see PriceList.swift). Nil until edited: the suggested list for the profile's services is used.
+    public var servicePrices: [ServicePrice]? = nil
+    /// Automatic check-in marks a job done when the crew leaves it (see AutoCheckIn.swift). Off: the app asks first.
+    public var autoCheckInMarksDone: Bool = false
 
     public init() {}
 
@@ -88,6 +94,9 @@ public struct AppData: Equatable, Codable, Sendable {
         dismissedHints = try c.decodeIfPresent([String].self, forKey: .dismissedHints) ?? []
         assistantConsentAt = try c.decodeIfPresent(Date.self, forKey: .assistantConsentAt)
         seasonLinkLog = try c.decodeIfPresent([SeasonLinkRecord].self, forKey: .seasonLinkLog) ?? []
+        stormRuns = try c.decodeIfPresent([StormRun].self, forKey: .stormRuns) ?? []
+        servicePrices = try c.decodeIfPresent([ServicePrice].self, forKey: .servicePrices) ?? nil
+        autoCheckInMarksDone = try c.decodeIfPresent(Bool.self, forKey: .autoCheckInMarksDone) ?? false
     }
 }
 

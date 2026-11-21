@@ -95,6 +95,7 @@ struct InvoiceDetailSheet: View {
                         }
                     }
                 }
+                if inv.status(now: Date()) == .paid { ReviewAskButton(customerID: inv.customerID, happyNow: true) }
                 if let message { Text(message).font(.callout).foregroundStyle(.secondary) }
             }
             .padding(.bottom, 30)
