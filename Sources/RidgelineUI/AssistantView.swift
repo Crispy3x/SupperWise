@@ -18,7 +18,7 @@ struct AssistantView: View {
             header
             Group {
                 if !model.data.assistantConsented { ConsentCard() }
-                else if !model.serverConfigured { SetupCard() }
+                else if !model.assistantReady { SetupCard() }
                 else { chat }
             }
         }
@@ -260,14 +260,23 @@ private struct ConsentCard: View {
 }
 
 private struct SetupCard: View {
+    @Environment(AppModel.self) private var model
     var body: some View {
-        VStack(spacing: 12) {
-            IconTile(icon: "server.rack", tint: .orange, size: 64)
-            Text("The assistant needs your server").font(.title3.bold())
-            Text("It runs through the server you set up for routing and client pages, so your AI key stays off the phone. To turn it on: deploy the server, add your AI key there, then open Menu, Settings and enter the server address and access token. Then come back.")
-                .font(.callout).foregroundStyle(.secondary).multilineTextAlignment(.center)
+        ScrollView {
+            VStack(spacing: 14) {
+                IconTile(icon: "sparkles", tint: Look.sparkle, size: 64)
+                Text("Turn on the assistant").font(.title3.bold())
+                if model.data.can(.manageSettings) {
+                    Text("Paste your Anthropic API key and the assistant works right away.")
+                        .font(.callout).foregroundStyle(.secondary).multilineTextAlignment(.center)
+                    Card { AssistantKeyCard() }
+                } else {
+                    Text("Ask the business owner to turn on the assistant in Settings.")
+                        .font(.callout).foregroundStyle(.secondary).multilineTextAlignment(.center)
+                }
+            }
+            .padding(24)
         }
-        .padding(30)
     }
 }
 #endif

@@ -36,6 +36,9 @@ struct SettingsView: View {
         ScreenStack {
             AppPage(title: "Settings", icon: "gearshape.fill") {
                 accountAndAbout
+                if model.data.can(.manageSettings) {
+                    CardGroup(title: "Assistant", footer: "Your own key works without a server. With a server set up, leave this empty and the server's key is used.") { AssistantKeyCard() }
+                }
                 RemindersSettingsCard()
                 tippingAndBusiness
                 ReviewSettingsCard()

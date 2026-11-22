@@ -77,7 +77,7 @@ extension AppModel {
 
     // MARK: the assistant
 
-    func assistantTransport() -> ServerAssistantTransport? {
+    func serverAssistantTransport() -> ServerAssistantTransport? {
         #if canImport(Security)
         guard let url = RoutingServerSettings.validatedURL(data.routingServerURL),
               let token = KeychainStore.load(Self.routingTokenKey), !token.isEmpty else { return nil }
@@ -85,6 +85,48 @@ extension AppModel {
         #else
         return nil
         #endif
+    }
+
+    /// The owner's own Anthropic key wins when set (they chose it on purpose); otherwise the server.
+    func assistantTransport() -> AssistantTransport? {
+        #if canImport(Security)
+        if let key = KeychainStore.load(Self.assistantKeyKey), !key.isEmpty { return DirectAssistantTransport(apiKey: key) }
+        #endif
+        return serverAssistantTransport()
+    }
+
+    /// Whether the assistant can answer on this device: the owner's own key or a server.
+    var assistantReady: Bool { ownAssistantKeySet || serverConfigured }
+
+    /// Saves or clears the owner's own Anthropic key in the Keychain. Returns a note for the screen.
+    @discardableResult
+    func saveAssistantKey(_ raw: String) -> String {
+        let key = raw.trimmingCharacters(in: .whitespacesAndNewlines)
+        #if canImport(Security)
+        if key.isEmpty {
+            _ = KeychainStore.save("", for: Self.assistantKeyKey)
+            refreshServerFlag()
+            return serverConfigured ? "Removed. The assistant uses your server now." : "Removed."
+        }
+        guard DirectAssistantTransport.looksLikeKey(key) else { return "That doesn't look like an Anthropic key. It starts with sk-ant-." }
+        guard KeychainStore.save(key, for: Self.assistantKeyKey) else { return "Could not save the key on this device." }
+        refreshServerFlag()
+        return "Saved. The assistant is on."
+        #else
+        return "Keys can't be saved on this device."
+        #endif
+    }
+
+    /// Sends a tiny test question to check the key works.
+    func testAssistantKey() async -> String {
+        guard let t = assistantTransport() else { return "No key or server set." }
+        do {
+            let reply = try await t.send(messages: [.user("Reply with the single word: ready")], tools: [], context: "")
+            return reply.text.isEmpty ? "Connected." : "Connected. Claude says: \(reply.text.prefix(60))"
+        } catch AssistantError.server(let m) { return m }
+        catch AssistantError.busy(let m) { return m }
+        catch AssistantError.limit(let m) { return m }
+        catch { return "Could not reach Claude. Check your connection." }
     }
 
     public func grantAssistantConsent() { edit { $0.grantAssistantConsent(now: Date()) } }
@@ -100,7 +142,7 @@ extension AppModel {
     }
 
     public func refreshAssistantStatus() async {
-        guard let t = assistantTransport(), let s = try? await t.status() else { return }
+        guard !ownAssistantKeySet, let t = serverAssistantTransport(), let s = try? await t.status() else { return }
         assistantUsedPercent = s.usedPercent
     }
 
@@ -108,7 +150,7 @@ extension AppModel {
         let question = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !question.isEmpty, !assistantBusy, data.assistantConsented else { return }
         guard let transport = assistantTransport() else {
-            assistantLines.append(AssistantLine(kind: .problem, text: "Set up your server in Settings to use the assistant."))
+            assistantLines.append(AssistantLine(kind: .problem, text: "Add your Anthropic key in Settings, Assistant, to use the assistant."))
             return
         }
         assistantLines.append(AssistantLine(kind: .user, text: question))

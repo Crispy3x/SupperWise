@@ -13,6 +13,8 @@ public final class AppModel {
     public var saveError: String?
     /// Whether a server address and token are saved. Kept as a value so screens do not read the Keychain on every redraw.
     public private(set) var serverConfigured = false
+    /// True when the owner pasted their own Anthropic key, so the assistant works without a server.
+    public var ownAssistantKeySet = false
     /// A short message about something that just happened (for example an invoice was created). The user can dismiss it.
     public var notice: String?
     /// True while the owner is looking at the app as an employee would see it.
@@ -327,6 +329,8 @@ public final class AppModel {
         }
         #if canImport(Security)
         KeychainStore.save("", for: Self.routingTokenKey)
+        KeychainStore.save("", for: Self.assistantKeyKey)
+        ownAssistantKeySet = false
         #endif
         #if canImport(MapKit)
         appleETA.clear()
@@ -348,7 +352,12 @@ public final class AppModel {
 
     // MARK: client portal, requests and storm messages
 
-    func refreshServerFlag() { serverConfigured = portalClient() != nil }
+    func refreshServerFlag() {
+        serverConfigured = portalClient() != nil
+        #if canImport(Security)
+        ownAssistantKeySet = !(KeychainStore.load(Self.assistantKeyKey) ?? "").isEmpty
+        #endif
+    }
 
     func portalClient() -> PortalClient? {
         #if canImport(Security)
@@ -514,6 +523,7 @@ public final class AppModel {
     // MARK: routing server
 
     public static let routingTokenKey = "routingToken"
+    public static let assistantKeyKey = "anthropicAPIKey"
 
     /// The planner for the chosen source. `isLive` is false for the offline estimate; `label` names the source for the user.
     /// `onReport` receives what Apple Maps measured for this one planning run.
