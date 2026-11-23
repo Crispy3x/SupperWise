@@ -37,7 +37,7 @@ struct StormModeSection: View {
         }
         .sheet(isPresented: $showStart) { StartStormSheet() }
         .sheet(isPresented: $showFinish) { FinishStormSheet() }
-        .sheet(isPresented: $showRoute) { SmartRouteSheet() }
+        .routePlannerCover(isPresented: $showRoute)   // RoutePlannerView.swift
     }
 }
 

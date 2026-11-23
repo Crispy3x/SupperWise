@@ -20,7 +20,6 @@ struct HomeView: View {
 
     @State private var showNewJob = false
     @State private var showNewClient = false
-    @State private var showMap = false
     @State private var openedJob: UUID?
 
     private var today: [Job] { model.data.jobs(on: Date()) }
@@ -54,7 +53,7 @@ struct HomeView: View {
                 }
                 HomeInvoiceCard()   // QuickInvoiceViews.swift
                 StormModeSection(onHome: true, openRoute: openSmartRoute)   // StormModeViews.swift
-                JobsMap(points: points, height: 380, onExpand: { showMap = true })
+                JobsMap(points: points, height: 380, onExpand: openSmartRoute)   // opens the route planner
                 if model.serverConfigured && model.data.can(.logVisits) { ShareLocationCard() }
                 #if canImport(CoreLocation)
                 AutoCheckInCard()   // AutoCheckInViews.swift: hides itself when there is nothing to check in to
@@ -73,8 +72,8 @@ struct HomeView: View {
                     HStack {
                         Text("Today's jobs").font(.title2.bold())
                         Spacer()
-                        if model.data.routeStops(on: Date()).count > 1 {
-                            Button { openSmartRoute() } label: { Label("Smart route", systemImage: "sparkles") }
+                        if !model.data.plannerStops(on: Date()).isEmpty || model.data.can(.editJobs) {
+                            Button { openSmartRoute() } label: { Label("Plan route", systemImage: "map") }
                                 .buttonStyle(.bordered).tint(Look.sparkle)
                         }
                     }
@@ -93,7 +92,6 @@ struct HomeView: View {
         }
         .sheet(isPresented: $showNewJob) { JobEditorSheet() }
         .sheet(isPresented: $showNewClient) { AddCustomerSheet() }
-        .sheet(isPresented: $showMap) { FullMapSheet(points: points) }
         .sheet(isPresented: Binding(get: { openedJob != nil }, set: { if !$0 { openedJob = nil } })) {
             if let id = openedJob { JobDetailSheet(jobID: id) }
         }
@@ -170,95 +168,6 @@ struct JobsMap: View {
         let span = MKCoordinateSpan(latitudeDelta: max((lats.max()! - lats.min()!) * 1.6, 0.02),
                                     longitudeDelta: max((lons.max()! - lons.min()!) * 1.6, 0.02))
         position = .region(MKCoordinateRegion(center: center, span: span))
-    }
-}
-
-private struct FullMapSheet: View {
-    @Environment(\.dismiss) private var dismiss
-    let points: [MapPoint]
-    var body: some View {
-        NavigationStack {
-            JobsMap(points: points, height: nil)
-                .ignoresSafeArea(edges: .bottom)
-                .navigationTitle("Today's map")
-                .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
-        }
-    }
-}
-
-// MARK: - Smart route
-
-/// Puts today's jobs in the quickest order to drive, using real drive times from Apple Maps on this device.
-/// This is route optimization (nearest stop first, then improved by swapping), not a chat assistant.
-struct SmartRouteSheet: View {
-    @Environment(AppModel.self) private var model
-    @Environment(\.dismiss) private var dismiss
-    @State private var plan: RoutePlanResult?
-    @State private var note = "Planning..."
-    @State private var working = true
-
-    @State private var day = Date()
-    private var stops: [Stop] { model.data.routeStops(on: day) }
-    private var start: Coordinate { model.data.depot ?? stops.first?.coordinate ?? Coordinate(latitude: 0, longitude: 0) }
-
-    @Environment(\.openURL) private var openURL
-
-    var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Text("Smart route").font(.title3.weight(.medium))
-                Spacer()
-                CircleButton(icon: "xmark", label: "Close") { dismiss() }
-            }
-            .padding(.horizontal, 18).padding(.top, 18).padding(.bottom, 6)
-            AppPage(clearTabBar: false) {
-                if working && plan == nil {
-                    Card { HStack(spacing: 12) { ProgressView(); Text("Finding the quickest order...") } }
-                } else if stops.isEmpty {
-                    EmptyCard(icon: "map", title: "No route yet",
-                              message: "Create a job for a client with an address, and it will show up here. If you just added one, check the client's address.")
-                } else if let plan {
-                    CardGroup(title: Calendar.current.isDateInToday(day) ? "Drive in this order, today" : "Drive in this order, \(day.formatted(.dateTime.weekday(.wide).month().day()))") {
-                        ForEach(Array(plan.planned.enumerated()), id: \.offset) { i, p in
-                            HStack {
-                                Text("\(i + 1).").monospacedDigit().foregroundStyle(.secondary)
-                                Text(p.stop.name)
-                                Spacer()
-                                Text("\(Int(p.arrivalOffsetSeconds / 60)) min").foregroundStyle(.secondary).monospacedDigit()
-                            }
-                            RowDivider()
-                        }
-                        FactRow(label: "Total driving", value: "\(Int(plan.totalDriveSeconds / 60)) min")
-                    }
-                    if let first = plan.stops.first, let url = NavigationLinks.appleMaps(to: first.coordinate, from: start) {
-                        PrimaryActionButton(title: "Start in Apple Maps", icon: "location.fill") { openURL(url) }
-                    }
-                    NextStopTextButton(plan: plan, day: day)   // ClientTextViews.swift
-                    #if canImport(CoreLocation)
-                    if Calendar.current.isDateInToday(day) { AutoCheckInCard() }   // AutoCheckInViews.swift
-                    #endif
-                }
-                Text(note).font(.footnote).foregroundStyle(.secondary).frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
-            }
-        }
-        .background(Look.sheet.ignoresSafeArea())
-        .task { await run() }
-    }
-
-    private func run() async {
-        await model.fillMissingLocations()
-        day = model.nextRouteDay(from: Date())
-        guard !stops.isEmpty else {
-            note = (await model.planRoute(on: day)).note
-            working = false
-            return
-        }
-        let result = await model.planRoute(on: day)
-        if Task.isCancelled { return }
-        plan = result.plan
-        note = result.note
-        if let p = result.plan { model.plannedRoute = p }
-        working = false
     }
 }
 

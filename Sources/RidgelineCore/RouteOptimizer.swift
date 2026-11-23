@@ -14,17 +14,21 @@ public struct RoutePlanResult: Equatable, Sendable {
 /// 3. Inside a tier, order to minimise drive time: nearest-next, then 2-opt improvement.
 /// Deadlines are checked and reported, not forced, so the dispatcher decides what to do about late stops.
 public enum RouteOptimizer {
+    /// - Parameter end: where the truck finishes (back at the yard, or another address). When set, the drive there counts
+    ///   toward the cost, so the last tier ends near the finish. Nil keeps the old open-ended route.
     public static func optimize(stops: [Stop], start: Coordinate, frozenPrefix: Int = 0, provider: DriveTimeProvider,
-                                serviceTimeFactor: Double = 1, maxPasses: Int = 50) -> RoutePlanResult {
+                                serviceTimeFactor: Double = 1, maxPasses: Int = 50, end: Coordinate? = nil) -> RoutePlanResult {
         let frozenCount = min(max(frozenPrefix, 0), stops.count)
         var ordered = Array(stops.prefix(frozenCount))
         var here = ordered.last?.coordinate ?? start
         let rest = Array(stops.dropFirst(frozenCount))
 
-        for tier in Set(rest.map(\.priority)).sorted() {
+        let tiers = Set(rest.map(\.priority)).sorted()
+        for (n, tier) in tiers.enumerated() {
             let block = rest.filter { $0.priority == tier }
             let seq = nearestNext(block, from: here, provider: provider)
-            let improved = twoOpt(seq, from: here, provider: provider, maxPasses: maxPasses)
+            // Only the last tier drives on to the finish.
+            let improved = twoOpt(seq, from: here, provider: provider, maxPasses: maxPasses, end: n == tiers.count - 1 ? end : nil)
             ordered += improved
             here = improved.last?.coordinate ?? here
         }
@@ -38,14 +42,15 @@ public enum RouteOptimizer {
         return RoutePlanResult(planned: restored, lateStopIDs: late)
     }
 
-    /// Drive seconds from `start` through `stops` in order.
-    public static func pathCost(start: Coordinate, stops: [Stop], provider: DriveTimeProvider) -> Double {
+    /// Drive seconds from `start` through `stops` in order, plus the drive on to `end` when one is given.
+    public static func pathCost(start: Coordinate, stops: [Stop], provider: DriveTimeProvider, end: Coordinate? = nil) -> Double {
         var cost = 0.0
         var here = start
         for s in stops {
             cost += provider.seconds(from: here, to: s.coordinate)
             here = s.coordinate
         }
+        if let end, !stops.isEmpty { cost += provider.seconds(from: here, to: end) }
         return cost
     }
 
@@ -68,10 +73,11 @@ public enum RouteOptimizer {
     }
 
     /// Reverses segments while that shortens the open path from a fixed start. Never makes a route longer.
-    static func twoOpt(_ seq: [Stop], from start: Coordinate, provider: DriveTimeProvider, maxPasses: Int) -> [Stop] {
-        guard seq.count >= 3 else { return seq }
+    /// With an `end`, the drive to the finish is part of the cost, so even two stops can swap.
+    static func twoOpt(_ seq: [Stop], from start: Coordinate, provider: DriveTimeProvider, maxPasses: Int, end: Coordinate? = nil) -> [Stop] {
+        guard seq.count >= (end == nil ? 3 : 2) else { return seq }
         var best = seq
-        var bestCost = pathCost(start: start, stops: best, provider: provider)
+        var bestCost = pathCost(start: start, stops: best, provider: provider, end: end)
         var pass = 0
         var improved = true
         while improved && pass < maxPasses {
@@ -81,7 +87,7 @@ public enum RouteOptimizer {
                 for j in (i + 1)..<best.count {
                     var candidate = best
                     candidate[i...j].reverse()
-                    let c = pathCost(start: start, stops: candidate, provider: provider)
+                    let c = pathCost(start: start, stops: candidate, provider: provider, end: end)
                     if c < bestCost - 1e-9 {
                         best = candidate
                         bestCost = c
@@ -152,14 +158,23 @@ public struct RoutePlanner: Sendable {
 
     /// - Parameters:
     ///   - observedSpeedFactor: from `SpeedCalibrator.observedFactor`, blended into the model's guess.
+    ///   - end: where the route finishes, if it matters (see `RouteOptimizer.optimize`).
     public func plan(stops: [Stop], start: Coordinate, conditions: WeatherConditions = .clear, frozenPrefix: Int = 0,
-                     observedSpeedFactor: Double? = nil) async -> RoutePlanResult {
-        let points = [start] + stops.map(\.coordinate)
+                     observedSpeedFactor: Double? = nil, end: Coordinate? = nil) async -> RoutePlanResult {
+        var points = [start] + stops.map(\.coordinate)
+        if let end, end != start { points.append(end) }
+        let provider = await driveTimes(for: points, conditions: conditions, observedSpeedFactor: observedSpeedFactor)
+        return RouteOptimizer.optimize(stops: stops, start: start, frozenPrefix: frozenPrefix, provider: provider,
+                                       serviceTimeFactor: model.serviceTimeFactor(conditions), end: end)
+    }
+
+    /// Drive times between `points` (yard first) from the best available source, adjusted for weather. Pairs outside
+    /// `points` fall back to the offline estimate, so the result can also time a route the user reorders by hand.
+    public func driveTimes(for points: [Coordinate], conditions: WeatherConditions = .clear,
+                           observedSpeedFactor: Double? = nil) async -> DriveTimeProvider {
         let matrix = (try? await matrixSource.matrix(for: points))
             ?? DriveTimeMatrix(points: points, seconds: points.map { a in points.map { b in a == b ? 0 : HaversineDriveTime().seconds(from: a, to: b) } })
         let speed = SpeedCalibrator.blend(model: model.speedFactor(conditions), observed: observedSpeedFactor)
-        let provider = StormAdjustedDriveTime(base: MatrixProvider(matrix: matrix), speedFactor: speed)
-        return RouteOptimizer.optimize(stops: stops, start: start, frozenPrefix: frozenPrefix, provider: provider,
-                                       serviceTimeFactor: model.serviceTimeFactor(conditions))
+        return StormAdjustedDriveTime(base: MatrixProvider(matrix: matrix), speedFactor: speed)
     }
 }

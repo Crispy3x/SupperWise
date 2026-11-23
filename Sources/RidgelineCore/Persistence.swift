@@ -54,6 +54,12 @@ public struct AppData: Equatable, Codable, Sendable {
     public var servicePrices: [ServicePrice]? = nil
     /// Automatic check-in marks a job done when the crew leaves it (see AutoCheckIn.swift). Off: the app asks first.
     public var autoCheckInMarksDone: Bool = false
+    /// Where routes start and finish, start time, break and default time per stop (see RoutePlan.swift).
+    public var routeSettings = RouteSettings()
+    /// One-off stops added in the route planner that are not client jobs.
+    public var adHocStops: [AdHocStop] = []
+    /// The driving order per day, optimized or dragged by hand.
+    public var routeOrders: [SavedRouteOrder] = []
 
     public init() {}
 
@@ -97,6 +103,9 @@ public struct AppData: Equatable, Codable, Sendable {
         stormRuns = try c.decodeIfPresent([StormRun].self, forKey: .stormRuns) ?? []
         servicePrices = try c.decodeIfPresent([ServicePrice].self, forKey: .servicePrices) ?? nil
         autoCheckInMarksDone = try c.decodeIfPresent(Bool.self, forKey: .autoCheckInMarksDone) ?? false
+        routeSettings = try c.decodeIfPresent(RouteSettings.self, forKey: .routeSettings) ?? RouteSettings()
+        adHocStops = try c.decodeIfPresent([AdHocStop].self, forKey: .adHocStops) ?? []
+        routeOrders = try c.decodeIfPresent([SavedRouteOrder].self, forKey: .routeOrders) ?? []
     }
 }
 

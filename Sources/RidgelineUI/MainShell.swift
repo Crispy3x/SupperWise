@@ -178,7 +178,7 @@ struct MainShell: View {
                 openFromNotification(kind)
             }
         }
-        .sheet(isPresented: $showSmartRoute) { SmartRouteSheet() }
+        .routePlannerCover(isPresented: $showSmartRoute)   // RoutePlannerView.swift
         .sheet(isPresented: $showAssistant) { AssistantView() }
         .onAppear {
             guard !tutorialChecked else { return }
