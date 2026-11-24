@@ -84,7 +84,7 @@ public struct DirectAssistantTransport: AssistantTransport {
             let text = Self.errorMessage(data) ?? ""
             if text.lowercased().contains("credit") { throw AssistantError.limit("Your Anthropic account is out of credit. Add credit at console.anthropic.com.") }
             if text.lowercased().contains("too long") || text.lowercased().contains("prompt is too long") { throw AssistantError.tooLong }
-            throw AssistantError.server(text.isEmpty ? "The assistant could not answer right now." : text)
+            throw AssistantError.conversation(text.isEmpty ? "The assistant could not answer right now." : text)
         default: throw AssistantError.server(Self.errorMessage(data) ?? "The assistant could not answer right now.")
         }
     }

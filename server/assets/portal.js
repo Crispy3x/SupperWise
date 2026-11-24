@@ -25,8 +25,10 @@
 
   function render(d) {
     text('status', d.statusText);
-    text('eta', d.eta ? 'Estimated arrival: ' + d.eta : '');
+    text('eta', d.eta || '');
+    text('etalabel', d.eta ? 'Estimated arrival' : '');
     show('eta', !!d.eta);
+    show('etalabel', !!d.eta);
     text('ahead', typeof d.stopsAhead === 'number' && d.status === 'planned'
       ? (d.stopsAhead === 0 ? 'You are next.' : d.stopsAhead + (d.stopsAhead === 1 ? ' stop' : ' stops') + ' before yours.') : '');
     if (d.weather) { text('wxsummary', d.weather.summary); text('wxalerts', (d.weather.alerts || []).join(' · ')); }

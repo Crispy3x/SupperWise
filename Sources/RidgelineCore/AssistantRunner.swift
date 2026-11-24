@@ -19,6 +19,14 @@ public struct AssistantTurn: Equatable, Sendable {
 }
 
 public enum AssistantRunner {
+    /// Errors a fresh chat is likely to fix (the conversation itself was turned down, or the answer could not be read).
+    public static func retryInFreshChat(_ e: AssistantError) -> Bool {
+        switch e {
+        case .conversation, .unreadable: return true
+        default: return false
+        }
+    }
+
     public static let maxSteps = 6
     public static let maxMessages = 70
 
@@ -35,6 +43,13 @@ public enum AssistantRunner {
         do {
             for _ in 0..<maxSteps {
                 let reply = try await transport.send(messages: history, tools: tools, context: context)
+                if reply.stopReason == "max_tokens" {
+                    // A cut-off answer can end in the middle of thinking or a tool call; keeping it would break the next question.
+                    history.removeSubrange(startCount...)
+                    let text = reply.text
+                    return AssistantTurn(text: text.isEmpty ? "That one needed more room than I have. Try asking in smaller steps." : text,
+                                         pending: pending, actions: actions, stoppedEarly: true)
+                }
                 history.append(AssistantMessage(role: "assistant", content: reply.content))
                 if reply.stopReason == "refusal" {
                     return AssistantTurn(text: "I can't help with that one. Try asking in a different way.", pending: pending, actions: actions, refused: true)

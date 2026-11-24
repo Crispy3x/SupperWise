@@ -99,6 +99,8 @@ public enum AssistantError: Error, Equatable {
     case server(String)
     case unreadable
     case tooLong
+    /// Claude turned down the conversation as sent (for example a cut-off earlier answer). A fresh chat usually fixes it.
+    case conversation(String)
 }
 
 public protocol AssistantTransport: Sendable {
@@ -147,11 +149,18 @@ public struct ServerAssistantTransport: AssistantTransport {
                   let stop = json["stop_reason"]?.string else { throw AssistantError.unreadable }
             return AssistantReply(content: content, stopReason: stop)
         case 401: throw AssistantError.notAllowed
-        case 503: throw AssistantError.notSwitchedOn
+        case 503:
+            let text = Self.message(from: data) ?? ""
+            if text.contains("busy") { throw AssistantError.busy(text) }
+            throw AssistantError.notSwitchedOn
         case 429:
             let text = Self.message(from: data) ?? "The assistant is busy. Try again in a minute."
             throw text.contains("allowance") || text.contains("limit") ? AssistantError.limit(text) : AssistantError.busy(text)
-        default: throw AssistantError.server(Self.message(from: data) ?? "The assistant could not answer right now.")
+        default:
+            let json = try? JSONDecoder().decode(JSONValue.self, from: data)
+            let text = json?["error"]?.string ?? "The assistant could not answer right now."
+            if json?["conversation"]?.bool == true { throw AssistantError.conversation(json?["reason"]?.string ?? text) }
+            throw AssistantError.server(text)
         }
     }
 

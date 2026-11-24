@@ -187,9 +187,22 @@ extension AppModel {
         let prompt = updates.isEmpty ? question : updates.joined(separator: " ") + "\n\n" + question
         var history = assistantHistory            // a copy, so nothing else is locked while we wait for the answer
         do {
-            let turn = try await AssistantRunner.ask(prompt, history: &history, tools: AssistantTools.definitions(for: data),
+            let turn: AssistantTurn
+            do {
+                turn = try await AssistantRunner.ask(prompt, history: &history, tools: AssistantTools.definitions(for: data),
                                                      context: AssistantContext.make(data: data, now: Date()), transport: transport) { call in
-                await self.runAssistantTool(call)
+                    await self.runAssistantTool(call)
+                }
+            } catch let e as AssistantError where AssistantRunner.retryInFreshChat(e) && !history.isEmpty {
+                // Claude turned down the conversation so far. Ask once more in a fresh chat, with the last few lines as a reminder.
+                history = []
+                let recap = assistantLines.dropLast().suffix(6).filter { $0.kind == .user || $0.kind == .assistant }
+                    .map { ($0.kind == .user ? "Me: " : "You: ") + $0.text }.joined(separator: "\n")
+                let fresh = recap.isEmpty ? prompt : "Earlier in this chat:\n\(recap)\n\nNow: \(prompt)"
+                turn = try await AssistantRunner.ask(fresh, history: &history, tools: AssistantTools.definitions(for: data),
+                                                     context: AssistantContext.make(data: data, now: Date()), transport: transport) { call in
+                    await self.runAssistantTool(call)
+                }
             }
             assistantHistory = history
             assistantLines.append(AssistantLine(kind: .assistant, text: turn.text, actions: turn.actions, pending: turn.pending))
@@ -210,6 +223,7 @@ extension AppModel {
         case .limit(let m), .busy(let m), .server(let m): return m
         case .unreadable: return "The assistant's answer could not be read. Try again."
         case .tooLong: return "This chat is getting long. Start a new chat to keep going."
+        case .conversation: return "The assistant could not answer that. Tap the new-chat button and ask again."
         }
     }
 

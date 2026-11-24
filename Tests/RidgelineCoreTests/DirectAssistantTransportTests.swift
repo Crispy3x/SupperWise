@@ -51,3 +51,21 @@ final class DirectAssistantTransportTests: XCTestCase {
         }
     }
 }
+
+final class AssistantRecoveryTests: XCTestCase {
+    func testFreshChatRetryOnlyForConversationProblems() {
+        XCTAssertTrue(AssistantRunner.retryInFreshChat(.conversation("x")))
+        XCTAssertTrue(AssistantRunner.retryInFreshChat(.unreadable))
+        XCTAssertFalse(AssistantRunner.retryInFreshChat(.busy("x")))
+        XCTAssertFalse(AssistantRunner.retryInFreshChat(.limit("x")))
+    }
+
+    func testServerMarksConversationProblems() async {
+        let fake = FakeClient(status: 502, json: #"{"error":"The assistant could not answer right now.","reason":"bad history","conversation":true}"#)
+        let t = ServerAssistantTransport(baseURL: URL(string: "https://example.com")!, token: "t", client: fake)
+        do { _ = try await t.send(messages: [.user("x")], tools: [], context: ""); XCTFail() } catch {
+            guard case AssistantError.conversation(let m) = error else { return XCTFail("\(error)") }
+            XCTAssertEqual(m, "bad history")
+        }
+    }
+}

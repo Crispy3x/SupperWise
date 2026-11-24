@@ -55,7 +55,7 @@ export function loadAiConfig(env = process.env) {
     apiKey: env.ANTHROPIC_API_KEY || '',
     model: env.AI_MODEL || 'claude-haiku-5-5',          // the cheapest current model. Raise it with AI_MODEL (claude-sonnet-5-5, claude-opus-5-5) if answers are not good enough
     effort: ['low', 'medium', 'high'].includes(env.AI_EFFORT) ? env.AI_EFFORT : 'medium',
-    maxTokens: Math.min(num(env.AI_MAX_TOKENS, 2048), 8192),
+    maxTokens: Math.min(num(env.AI_MAX_TOKENS, 4096), 8192),
     dailyCap: num(env.AI_DAILY_MESSAGE_CAP, 200),
     ipLimitPerMinute: num(env.AI_RATE_LIMIT_PER_MIN, 20),
     maxBodyBytes: num(env.AI_MAX_BODY_BYTES, 300_000),
@@ -267,10 +267,14 @@ export function createAi(config, deps = {}) {
       });
     } catch (e) {
       const status = e && typeof e.status === 'number' ? e.status : 0;
-      log(`assistant upstream error ${status || 'network'}`);          // status only: never log what people asked
+      // Anthropic's own error text describes the request's shape (never what people asked), so it is safe to log and pass on.
+      const reason = clean(e?.error?.error?.message ?? e?.error?.message ?? '', 200);
+      log(`assistant upstream error ${status || 'network'}${reason ? `: ${reason}` : ''}`);
       actual = 0;                                    // a failed call is not billed
       if (status === 429) return sendJson(res, 429, { error: 'The assistant is busy. Try again in a minute.' });
+      if (status === 529 || status === 503) return sendJson(res, 503, { error: 'Claude is busy right now. Try again in a minute.', retry: true });
       if (status === 401 || status === 403) return sendJson(res, 502, { error: 'The assistant is not set up correctly on the server.' });
+      if (status === 400) return sendJson(res, 502, { error: 'The assistant could not answer right now.', reason, conversation: true });
       return sendJson(res, 502, { error: 'The assistant could not answer right now.' });
     } finally {
       const cur = entry(key);

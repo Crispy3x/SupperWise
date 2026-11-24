@@ -176,13 +176,24 @@ export function createPortal(config, deps = {}) {
 
   // ---- the client page
   function page(title, inner, extra = {}) {
-    return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#0d2540"><meta name="apple-mobile-web-app-capable" content="yes"><title>${escapeHtml(title)}</title>${extra.head || ''}<style>
-body{font-family:-apple-system,Helvetica,Arial,sans-serif;margin:0;background:#f4f6f9;color:#14202e}main{max-width:34rem;margin:0 auto;padding:1rem}
-.card{background:#fff;border-radius:12px;padding:1rem;margin:0 0 .8rem}h1{font-size:1.3rem;margin:.2rem 0 .6rem;color:#0d2540}h2{font-size:1rem;margin:0 0 .5rem}
-.status{display:inline-block;padding:.25rem .6rem;border-radius:8px;background:#eaf3fc;color:#1d5fb4;font-weight:600}.done{background:#e3f4ea;color:#1f7a45}.skipped{background:#fde8d2;color:#b8610f}
-label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;padding:.4rem;box-sizing:border-box}button{font:inherit;padding:.6rem 1rem;border:0;border-radius:8px;background:#2f7de1;color:#fff;margin-top:.6rem}
-.small{font-size:.85rem;color:#5b6b7e}table{width:100%;border-collapse:collapse}td{padding:.35rem 0;border-top:1px solid #e3e9f0;vertical-align:top}td.r{text-align:right}
-.pill{font-size:.8rem;font-weight:600;padding:.1rem .45rem;border-radius:6px;background:#eaf3fc;color:#1d5fb4}.pill.paid{background:#e3f4ea;color:#1f7a45}.pill.overdue{background:#fde8d2;color:#b8610f}.paybtn{display:inline-block;margin-top:.35rem;padding:.35rem .8rem;border-radius:8px;background:#1d5fb4;color:#fff;font-weight:600;text-decoration:none}.btn{display:inline-block;margin:.2rem .4rem 0 0;padding:.6rem 1.1rem;border-radius:999px;background:#2f7de1;color:#fff;font-weight:600;text-decoration:none}.btn.alt{background:#eaf3fc;color:#1d5fb4}.tipbtn{display:inline-block;margin:.2rem .4rem 0 0;padding:.5rem .9rem;border-radius:999px;background:#fff3d6;color:#7a4b00;font-weight:600;text-decoration:none;border:1px solid #f0d9a0}#map{height:260px;border-radius:10px}.pin-site{display:block;width:18px;height:18px;border-radius:50%;background:#2f7de1;border:3px solid #fff;box-shadow:0 0 0 2px #2f7de1}.pin-truck{display:block;font-size:22px;line-height:26px;text-align:center}</style></head><body${extra.bodyAttrs || ''}><main>${inner}</main>${extra.tail || ''}</body></html>`;
+    return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#1b1b1d"><meta name="color-scheme" content="dark light"><meta name="apple-mobile-web-app-capable" content="yes"><title>${escapeHtml(title)}</title>${extra.head || ''}<style>
+:root{--page:#1b1b1d;--card:#2b2b2f;--pill:#333337;--text:#f5f5f7;--muted:#a1a1a8;--line:rgba(255,255,255,.08);--accent:#3b82f6;--accent-soft:rgba(59,130,246,.18);--ok:#34c759;--ok-soft:rgba(52,199,89,.18);--warn:#ff9f0a;--warn-soft:rgba(255,159,10,.18);--gift:#3a2f17;--gift-text:#ffd27a;--field:#333337}
+@media (prefers-color-scheme: light){:root{--page:#f2f2f7;--card:#fff;--pill:#e5e5ea;--text:#14202e;--muted:#5b6b7e;--line:rgba(0,0,0,.08);--accent-soft:#eaf3fc;--ok-soft:#e3f4ea;--warn-soft:#fde8d2;--gift:#fff3d6;--gift-text:#7a4b00;--field:#fff}}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Helvetica,Arial,sans-serif;margin:0;background:var(--page);color:var(--text);-webkit-font-smoothing:antialiased}main{max-width:34rem;margin:0 auto;padding:16px 16px 40px}
+a{color:var(--accent)}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;margin:0 0 14px}
+h1{font-size:1.75rem;line-height:1.15;margin:.15rem 0 .5rem;font-weight:800;letter-spacing:-.01em}h2{font-size:1.15rem;margin:0 0 .7rem;font-weight:700}
+.status{display:inline-block;padding:.35rem .8rem;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:.95rem}.done{background:var(--ok-soft);color:var(--ok)}.skipped{background:var(--warn-soft);color:var(--warn)}
+#eta{font-size:1.35rem;font-weight:700;margin:.15rem 0 .2rem}.etalabel{margin:.9rem 0 0;text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:.75rem}
+label{display:block;margin:.6rem 0;font-weight:600}textarea,select,input{width:100%;font:inherit;padding:.8rem 1rem;box-sizing:border-box;border-radius:18px;border:1px solid var(--line);background:var(--field);color:var(--text);margin-top:.35rem}
+button{font:inherit;font-weight:700;padding:.85rem 1.3rem;border:0;border-radius:999px;background:var(--accent);color:#fff;margin-top:.8rem;width:100%}
+.small{font-size:.88rem;color:var(--muted)}table{width:100%;border-collapse:collapse}td{padding:.6rem 0;border-top:1px solid var(--line);vertical-align:top}td.r{text-align:right}
+.pill{font-size:.8rem;font-weight:700;padding:.15rem .55rem;border-radius:999px;background:var(--accent-soft);color:var(--accent)}.pill.paid{background:var(--ok-soft);color:var(--ok)}.pill.overdue{background:var(--warn-soft);color:var(--warn)}
+.paybtn{display:inline-block;margin-top:.45rem;padding:.5rem 1rem;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;text-decoration:none}
+.btn{display:inline-block;box-sizing:border-box;margin:.3rem .4rem 0 0;padding:.8rem 1.3rem;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;text-decoration:none}.btn.alt{background:var(--pill);color:var(--text)}
+.btn.payapp{display:block;width:100%;text-align:center;margin:.6rem 0 0;font-size:1.1rem;padding:1rem}
+.tipbtn{display:inline-block;margin:.3rem .4rem 0 0;padding:.75rem 1.1rem;border-radius:999px;background:var(--gift);color:var(--gift-text);font-weight:700;text-decoration:none}
+#map{height:300px;border-radius:16px;overflow:hidden}.pin-site{display:block;width:18px;height:18px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 0 0 2px var(--accent)}.pin-truck{display:block;font-size:24px;line-height:28px;text-align:center}
+input[type=radio]{width:auto;margin:0 .5rem 0 0}</style></head><body${extra.bodyAttrs || ''}><main>${inner}</main>${extra.tail || ''}</body></html>`;
   }
   const notFound = (res) => sendHtml(res, 404, page('Page not available', '<div class="card"><h1>This page is not available</h1><p>The link may be old or mistyped. Please contact your snow service provider.</p></div>'));
 
@@ -215,7 +226,7 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
     if (s.stormName) html += `<p>${escapeHtml(s.stormName)}${s.expected ? ': ' + escapeHtml(s.expected) : ''}</p>`;
     html += `<p><span class="status ${statusClass}" id="status">${escapeHtml(STATUS_TEXT[s.status])}</span></p>`;
     if (s.detail) html += `<p>${escapeHtml(s.detail)}</p>`;
-    html += `<p id="eta"${s.eta ? '' : ' style="display:none"'}>${s.eta ? 'Estimated arrival: ' + escapeHtml(s.eta) : ''}</p><p class="small" id="ahead"></p>`;
+    html += `<p class="small etalabel" id="etalabel"${s.eta ? '' : ' style="display:none"'}>${s.eta ? 'Estimated arrival' : ''}</p><p id="eta"${s.eta ? '' : ' style="display:none"'}>${s.eta ? escapeHtml(s.eta) : ''}</p><p class="small" id="ahead"></p>`;
     html += `<p>${s.canRequest ? '<a class="btn" href="#ask">Request service</a>' : ''}<a class="btn alt" href="#thanks">Say thanks</a></p>`;
     if (s.summary) html += `<p class="small">${escapeHtml(s.summary)}</p>`;
     html += `<p class="small">Updated ${escapeHtml(new Date(s.updatedAt).toUTCString())}. Forecasts can change.</p></div>`;
@@ -463,7 +474,7 @@ label{display:block;margin:.4rem 0}textarea,select{width:100%;font:inherit;paddi
           if (!TOKEN_RE.test(token) || !state.snapshots[token]) return notFound(res);
           if (sub[2] === 'live.json') return sendJson(res, 200, liveView(token));
           const s = state.snapshots[token];
-          const body = JSON.stringify({ name: `${s.company || 'Snow service'}: ${s.label}`.slice(0, 80), short_name: (s.company || 'Snow update').slice(0, 24), start_url: `/c/${token}`, scope: `/c/${token}`, display: 'standalone', background_color: '#f4f6f9', theme_color: '#0d2540' });
+          const body = JSON.stringify({ name: `${s.company || 'Snow service'}: ${s.label}`.slice(0, 80), short_name: (s.company || 'Snow update').slice(0, 24), start_url: `/c/${token}`, scope: `/c/${token}`, display: 'standalone', background_color: '#1b1b1d', theme_color: '#1b1b1d' });
           res.writeHead(200, { 'content-type': 'application/manifest+json', 'content-length': Buffer.byteLength(body), 'cache-control': 'no-store', 'referrer-policy': 'no-referrer' });
           return res.end(body);
         }
