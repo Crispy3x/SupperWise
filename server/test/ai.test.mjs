@@ -223,3 +223,25 @@ test('spend survives a restart, so restarting the server cannot reset the cap', 
   assert.equal((await status(c)).usedPercent, 0);
   assert.ok(fs.readdirSync(dir).some((f) => f.includes('unreadable')));
 });
+
+test('built-in app tokens reach only the assistant, need a device id, and each phone has its own allowance', async (t) => {
+  const APP = 'app-token-abcdefghijklmnop';
+  const s = await boot({ AI_APP_TOKENS: APP, AI_APP_DEVICE_BUDGET_USD: '1' }); t.after(s.close);
+  const send = (device) => fetch(`${s.base}/v1/ai/chat`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${APP}`, ...(device ? { 'x-ridgeline-device': device } : {}) }, body: JSON.stringify(ok) });
+  assert.equal((await send(null)).status, 401);                                   // no device id
+  assert.equal((await send('short')).status, 401);                                // malformed device id
+  assert.equal((await send('11111111-2222-3333-4444-555555555555')).status, 200);
+  const status = await fetch(`${s.base}/v1/ai/status`, { headers: { authorization: `Bearer ${APP}`, 'x-ridgeline-device': '11111111-2222-3333-4444-555555555555' } });
+  assert.equal(status.status, 200);
+  assert.equal((await status.json()).enabled, true);
+});
+
+test('a phone over its allowance is stopped, and the monthly ceiling for built-in tokens stops everyone', async (t) => {
+  const APP = 'app-token-abcdefghijklmnop';
+  const tiny = await boot({ AI_APP_TOKENS: APP, AI_APP_DEVICE_BUDGET_USD: '0.000001' }); t.after(tiny.close);
+  const send = (base, device) => fetch(`${base}/v1/ai/chat`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${APP}`, 'x-ridgeline-device': device }, body: JSON.stringify(ok) });
+  assert.equal((await send(tiny.base, 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee')).status, 429);
+  const capped = await boot({ AI_APP_TOKENS: APP, AI_APP_MONTHLY_CAP_USD: '0.000001' }); t.after(capped.close);
+  assert.equal((await send(capped.base, 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee')).status, 429);
+  assert.equal(capped.calls.length, 0);                                          // nothing was sent to Anthropic
+});

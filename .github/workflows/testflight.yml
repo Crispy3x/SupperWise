@@ -130,6 +130,10 @@ jobs:
           xcodegen
 
       - name: Archive (signed for the App Store)
+        env:
+          # The built-in assistant server. Both empty is fine: the app then asks the owner for their own key.
+          AI_URL: ${{ secrets.RIDGELINE_AI_SERVER_URL }}
+          AI_TOKEN: ${{ secrets.RIDGELINE_AI_APP_TOKEN }}
         run: |
           set -o pipefail
           # Build number: a UTC timestamp such as 2611191530. It is far above 17 and above every earlier build.
@@ -140,6 +144,7 @@ jobs:
             -project RidgelineOps.xcodeproj -scheme RidgelineOps -configuration Release \
             -destination "generic/platform=iOS" -archivePath "$RUNNER_TEMP/RidgelineOps.xcarchive" \
             CURRENT_PROJECT_VERSION="$BUILD_NUMBER" MARKETING_VERSION=3.0.0 \
+            RIDGELINE_AI_SERVER_URL="$AI_URL" RIDGELINE_AI_APP_TOKEN="$AI_TOKEN" \
             | tee "$RUNNER_TEMP/archive.log" | grep -E "error:|\*\* ARCHIVE (SUCCEEDED|FAILED) \*\*"
 
       - name: Upload to App Store Connect

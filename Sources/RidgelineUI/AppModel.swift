@@ -524,6 +524,7 @@ public final class AppModel {
 
     public static let routingTokenKey = "routingToken"
     public static let assistantKeyKey = "anthropicAPIKey"
+    public static let assistantDeviceKey = "assistantDeviceID"
 
     /// The planner for the chosen source. `isLive` is false for the offline estimate; `label` names the source for the user.
     /// `onReport` receives what Apple Maps measured for this one planning run.

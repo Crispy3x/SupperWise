@@ -44,6 +44,8 @@ targets:
         NSMicrophoneUsageDescription: Ridgeline Ops uses the microphone when you tap to talk to the assistant.
         NSSpeechRecognitionUsageDescription: Ridgeline Ops turns what you say into text for the assistant. It uses on-device recognition when your phone supports it.
         NSCameraUsageDescription: Ridgeline Ops uses the camera to take before and after photos as proof of service.
+        RidgelineAIServerURL: $(RIDGELINE_AI_SERVER_URL)
+        RidgelineAIAppToken: $(RIDGELINE_AI_APP_TOKEN)
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.supperwise.app   # reuses the Supperwise App Store record

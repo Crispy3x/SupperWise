@@ -110,11 +110,14 @@ public struct ServerAssistantTransport: AssistantTransport {
     public let baseURL: URL
     public let token: String
     public let client: HTTPClient
+    /// Sent with the app's built-in token so each phone gets its own allowance on the shared server.
+    public let deviceID: String?
 
-    public init(baseURL: URL, token: String, client: HTTPClient = URLSessionHTTPClient()) {
+    public init(baseURL: URL, token: String, client: HTTPClient = URLSessionHTTPClient(), deviceID: String? = nil) {
         self.baseURL = baseURL
         self.token = token
         self.client = client
+        self.deviceID = deviceID
     }
 
     private func request(_ method: String, _ path: String, body: Data? = nil) -> URLRequest {
@@ -122,6 +125,7 @@ public struct ServerAssistantTransport: AssistantTransport {
         r.httpMethod = method
         r.timeoutInterval = 120                      // a thoughtful answer can take a while
         r.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        if let deviceID { r.setValue(deviceID, forHTTPHeaderField: "X-Ridgeline-Device") }
         if let body {
             r.httpBody = body
             r.setValue("application/json", forHTTPHeaderField: "Content-Type")

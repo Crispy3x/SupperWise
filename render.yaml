@@ -1,0 +1,41 @@
+# One-click server for Ridgeline Ops on Render (render.com > New > Blueprint > pick this repository).
+# It runs the assistant, the client pages and invoice email. You type only ANTHROPIC_API_KEY (and later the email keys);
+# Render makes the two tokens for you.
+services:
+  - type: web
+    name: ridgeline-ops
+    runtime: node
+    rootDir: server
+    plan: starter            # $7/month: stays awake (free plans sleep and the first answer takes about a minute) and allows the disk
+    buildCommand: npm ci --omit=dev
+    startCommand: node index.mjs
+    healthCheckPath: /health
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false          # you paste this in Render; it never goes in the repository
+      - key: API_TOKENS
+        generateValue: true  # the owner token for the app's Settings (client pages, email)
+      - key: AI_APP_TOKENS
+        generateValue: true  # built into the app so the assistant works with no setup; reaches only the assistant
+      - key: AI_MODEL
+        value: claude-haiku-5-5
+      - key: AI_MAX_TOKENS
+        value: "4096"        # room for the assistant to think and use tools in one answer
+      - key: AI_APP_DEVICE_BUDGET_USD
+        value: "1"           # each phone may use up to $1 of AI a month (several hundred questions)
+      - key: AI_APP_MONTHLY_CAP_USD
+        value: "25"          # hard ceiling for all phones together per month
+      - key: TRUST_PROXY
+        value: "1"
+      - key: PORTAL_DATA_FILE
+        value: /data/portal.json
+      - key: AI_USAGE_FILE
+        value: /data/ai-usage.json
+      - key: RESEND_API_KEY
+        sync: false
+      - key: FROM_EMAIL
+        sync: false

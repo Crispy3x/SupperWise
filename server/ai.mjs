@@ -45,6 +45,13 @@ export function loadAiConfig(env = process.env) {
   const num = (v, d) => (v !== undefined && v !== '' && Number.isFinite(Number(v)) ? Number(v) : d);
   return {
     ownerTokens: (env.API_TOKENS || '').split(',').map((t) => t.trim()).filter(Boolean),
+    // Tokens built into the app so the assistant works with no setup. They reach only the assistant, never client data,
+    // and every phone gets its own allowance (by the device id the app sends).
+    appTokens: (env.AI_APP_TOKENS || '').split(',').map((t) => t.trim()).filter(Boolean),
+    // What each phone using a built-in token may spend per month, in dollars.
+    appDeviceBudgetUsd: num(env.AI_APP_DEVICE_BUDGET_USD, 1),
+    // A hard ceiling for everything sent through built-in tokens together, per month, in dollars. 0 means no ceiling.
+    appMonthlyCapUsd: num(env.AI_APP_MONTHLY_CAP_USD, 25),
     apiKey: env.ANTHROPIC_API_KEY || '',
     model: env.AI_MODEL || 'claude-haiku-5-5',          // the cheapest current model. Raise it with AI_MODEL (claude-sonnet-5-5, claude-opus-5-5) if answers are not good enough
     effort: ['low', 'medium', 'high'].includes(env.AI_EFFORT) ? env.AI_EFFORT : 'medium',
@@ -124,6 +131,8 @@ export function createAi(config, deps = {}) {
   const now = deps.now ?? (() => Date.now());
   const log = deps.log ?? ((l) => console.log(l));
   const ownerDigests = config.ownerTokens.map(digest);
+  const appDigests = (config.appTokens || []).map(digest);
+  const DEVICE_RE = /^[A-Za-z0-9-]{16,64}$/;
   const ipHits = new Map();
   const daily = new Map();
   let clientPromise = null;
@@ -164,8 +173,21 @@ export function createAi(config, deps = {}) {
     if (!h.startsWith('Bearer ')) return null;
     const d = digest(h.slice(7));
     for (const t of ownerDigests) if (crypto.timingSafeEqual(t, d)) return { key: d.toString('hex'), token: h.slice(7) };
+    for (const t of appDigests) {
+      if (!crypto.timingSafeEqual(t, d)) continue;
+      const device = String(req.headers['x-ridgeline-device'] || '');
+      if (!DEVICE_RE.test(device)) return null;
+      return { key: `app:${digest(`${h.slice(7)}:${device}`).toString('hex')}`, token: null, app: true };
+    }
     return null;
   };
+  /** Spent plus held back this month through built-in tokens, across every phone. */
+  const appSpentMicros = () => {
+    const m = month(); let total = 0;
+    for (const [k, e] of Object.entries(ledger)) if (k.startsWith('app:') && e.month === m) total += e.spent + e.reserved;
+    return total;
+  };
+  const budgetFor = (who) => (who.app ? Math.round(config.appDeviceBudgetUsd * 1_000_000) : monthlyBudgetMicros(config, who.token));
   const readBody = (req) => new Promise((resolve, reject) => {
     let size = 0; let tooLarge = false; const chunks = [];
     req.on('data', (c) => {
@@ -220,9 +242,13 @@ export function createAi(config, deps = {}) {
 
     // Money: hold back the most this answer could cost, and refuse if the month's allowance cannot cover it.
     // Holding it first means requests that arrive together cannot add up to more than the allowance.
-    const budget = monthlyBudgetMicros(config, who.token);
+    const budget = budgetFor(who);
     const e = entry(key);
     const reserve = costMicros(config, { input_tokens: Math.ceil(JSON.stringify(params).length / 3), output_tokens: config.maxTokens }, { fallbackPossible });
+    if (who.app && config.appMonthlyCapUsd > 0 && appSpentMicros() + reserve > Math.round(config.appMonthlyCapUsd * 1_000_000)) {
+      log('assistant built-in monthly cap reached');
+      return sendJson(res, 429, { error: 'The assistant has reached this month\'s limit. It starts again on the 1st.' });
+    }
     if (e.spent + e.reserved + reserve > budget) {
       return sendJson(res, 429, { error: 'The assistant has used this month\'s allowance. It starts again on the 1st.', usedPercent: Math.min(100, Math.round((e.spent / Math.max(budget, 1)) * 100)) });
     }
@@ -263,7 +289,7 @@ export function createAi(config, deps = {}) {
         if (!withinRate(req)) return sendJson(res, 429, { error: 'Too many requests, slow down' });
         const path = (req.url || '').split('?')[0];
         if (req.method === 'GET' && path === '/v1/ai/status') {
-          const budget = monthlyBudgetMicros(config, who.token); const e = entry(who.key);
+          const budget = budgetFor(who); const e = entry(who.key);
           // Percent only: the app shows how much of the month's allowance is used, not dollar amounts.
           return sendJson(res, 200, { enabled: Boolean(config.apiKey || deps.client), model: config.model, usedPercent: Math.min(100, Math.round(((e.spent + e.reserved) / Math.max(budget, 1)) * 100)) });
         }

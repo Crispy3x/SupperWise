@@ -100,6 +100,9 @@ Set `ANTHROPIC_API_KEY` to switch it on. Without it the app shows that the assis
 | `AI_PLANS` | none | JSON that says what each customer pays, for the spending limit: `{"<owner token>": {"plan": "pro", "crews": 2, "billing": "monthly"}}`. The app cannot change it. |
 | `AI_BUDGET_PERCENT` | 10 | The most a customer's assistant use may cost, as a percent of what they pay after Apple's cut. |
 | `APPLE_FEE_PERCENT` | 30 | Apple's cut. Use 15 if you are in the App Store Small Business Program. |
+| `AI_APP_TOKENS` | (empty) | Tokens built into the app (GitHub secret `RIDGELINE_AI_APP_TOKEN`) so the assistant works with no setup. They reach only the assistant, never client pages or email. The app must send a device id. |
+| `AI_APP_DEVICE_BUDGET_USD` | 1 | Monthly allowance per phone using a built-in token, in dollars. |
+| `AI_APP_MONTHLY_CAP_USD` | 25 | Hard monthly ceiling for all built-in-token use together, in dollars. 0 means none. |
 | `AI_TRIAL_BUDGET_USD` | 0.50 | Monthly allowance for a token with no paid plan listed (free trials). Set 0 to switch the assistant off for them. |
 | `AI_USAGE_FILE` | none | Keeps each customer's spend across restarts. Set it, or a restart resets the limit. |
 | `AI_DAILY_MESSAGE_CAP` | 200 | Questions per customer per day. |

@@ -87,16 +87,42 @@ extension AppModel {
         #endif
     }
 
-    /// The owner's own Anthropic key wins when set (they chose it on purpose); otherwise the server.
+    /// The assistant server built into the app at build time (Info.plist), so it works with no setup.
+    static var builtInAssistant: (url: URL, token: String)? {
+        let info = Bundle.main.infoDictionary ?? [:]
+        guard let raw = info["RidgelineAIServerURL"] as? String, let token = info["RidgelineAIAppToken"] as? String,
+              !token.trimmingCharacters(in: .whitespaces).isEmpty, !token.contains("$("),
+              let url = RoutingServerSettings.validatedURL(raw) else { return nil }
+        return (url, token.trimmingCharacters(in: .whitespaces))
+    }
+
+    /// A random id for this phone, kept in the Keychain. It is not tied to the person; it only splits the allowance.
+    func assistantDeviceID() -> String {
+        #if canImport(Security)
+        if let id = KeychainStore.load(Self.assistantDeviceKey), id.count >= 16 { return id }
+        let id = UUID().uuidString
+        _ = KeychainStore.save(id, for: Self.assistantDeviceKey)
+        return id
+        #else
+        return UUID().uuidString
+        #endif
+    }
+
+    func builtInAssistantTransport() -> ServerAssistantTransport? {
+        guard let b = Self.builtInAssistant else { return nil }
+        return ServerAssistantTransport(baseURL: b.url, token: b.token, deviceID: assistantDeviceID())
+    }
+
+    /// Order: the owner's own Anthropic key (chosen on purpose), then the owner's own server, then the one built into the app.
     func assistantTransport() -> AssistantTransport? {
         #if canImport(Security)
         if let key = KeychainStore.load(Self.assistantKeyKey), !key.isEmpty { return DirectAssistantTransport(apiKey: key) }
         #endif
-        return serverAssistantTransport()
+        return serverAssistantTransport() ?? builtInAssistantTransport()
     }
 
-    /// Whether the assistant can answer on this device: the owner's own key or a server.
-    var assistantReady: Bool { ownAssistantKeySet || serverConfigured }
+    /// Whether the assistant can answer on this device.
+    var assistantReady: Bool { ownAssistantKeySet || serverConfigured || Self.builtInAssistant != nil }
 
     /// Saves or clears the owner's own Anthropic key in the Keychain. Returns a note for the screen.
     @discardableResult
@@ -142,7 +168,7 @@ extension AppModel {
     }
 
     public func refreshAssistantStatus() async {
-        guard !ownAssistantKeySet, let t = serverAssistantTransport(), let s = try? await t.status() else { return }
+        guard !ownAssistantKeySet, let t = serverAssistantTransport() ?? builtInAssistantTransport(), let s = try? await t.status() else { return }
         assistantUsedPercent = s.usedPercent
     }
 
