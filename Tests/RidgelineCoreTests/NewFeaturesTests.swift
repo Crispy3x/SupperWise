@@ -6,14 +6,14 @@ final class SetupChecklistTests: XCTestCase {
         var d = AppData()
         var items = SetupChecklist.items(for: d, serverConfigured: false)
         XCTAssertEqual(SetupChecklist.progress(items).done, 0)
-        XCTAssertEqual(SetupChecklist.progress(items).total, 6)               // the Apple sign-in step is optional and not counted
+        XCTAssertEqual(SetupChecklist.progress(items).total, 4)               // the server, page address and Apple sign-in steps are optional and not counted
         XCTAssertTrue(items.last?.optional ?? false)
         d.customers = [Customer(name: "Pat", email: "p@x.com", emailConsent: true)]
         d.depot = Coordinate(latitude: 45, longitude: -93)
         d.profile.paymentInstructions = "Check"
         d.broadcastSettings.portalBaseURL = "https://portal.example.com"
         items = SetupChecklist.items(for: d, serverConfigured: true)
-        XCTAssertEqual(SetupChecklist.progress(items).done, 6)
+        XCTAssertEqual(SetupChecklist.progress(items).done, 4)
         XCTAssertFalse(items.last!.done)
         try d.signIn(appleUserID: "001.x", displayName: "", email: "", now: Date())
         XCTAssertTrue(SetupChecklist.items(for: d, serverConfigured: true).last!.done)

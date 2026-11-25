@@ -389,7 +389,7 @@ struct RevenueView: View {
             VStack(spacing: 14) {
                 HStack(spacing: 14) {
                     IconTile(icon: "dollarsign.circle.fill", size: 54)
-                    Text("Revenue").font(.largeTitle.bold())
+                    Text("Revenue").font(.largeTitle.bold()).lineLimit(1).minimumScaleFactor(0.6)
                     Spacer()
                     Menu {
                         ForEach(RevenuePeriod.allCases, id: \.self) { p in Button(p.title) { period = p } }
