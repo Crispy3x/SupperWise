@@ -381,9 +381,10 @@ struct PillChoice<T: Hashable>: View {
                 Button { selection = o.value } label: {
                     HStack(spacing: 8) {
                         if let icon = o.icon { Image(systemName: icon) }
-                        Text(o.title).font(.title3.weight(.medium)).lineLimit(1).minimumScaleFactor(0.8)
+                        Text(o.title).font(.title3.weight(.medium)).lineLimit(1).minimumScaleFactor(0.6)
                     }
                     .foregroundStyle(on ? tint : Color.primary)
+                    .padding(.horizontal, 10)
                     .frame(maxWidth: .infinity).padding(.vertical, 16)
                     .background(on ? tint.opacity(0.16) : Look.field, in: Capsule())
                     .overlay(Capsule().stroke(on ? tint : Look.fieldStroke, lineWidth: on ? 2 : 1))

@@ -45,15 +45,30 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                if !model.isHintDismissed("tour") {
-                    BannerRow(icon: "safari", title: "New here? Take a quick tour", onClose: { model.dismissHint("tour") }, action: startTour)
+                HomeSummaryCard(openScreen: openScreen, openRoute: openSmartRoute)   // HomeSummary.swift
+                if model.data.activeStormRun != nil { StormModeSection(onHome: true, openRoute: openSmartRoute) }   // StormModeViews.swift
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack {
+                        Text("Today's jobs").font(.title2.bold())
+                        Spacer()
+                        if !model.data.plannerStops(on: Date()).isEmpty || model.data.can(.editJobs) {
+                            Button { openSmartRoute() } label: {
+                                Label("Plan route", systemImage: "map.fill").font(.callout.weight(.semibold)).foregroundStyle(.white)
+                                    .padding(.horizontal, 14).padding(.vertical, 9).background(Look.sparkle, in: Capsule())
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                    if today.isEmpty {
+                        EmptyCard(icon: "calendar", title: "Nothing today", message: "Schedule a job to see it here.")
+                    } else {
+                        ForEach(today) { job in
+                            JobRow(job: job, routeNumber: order[job.id]) { openedJob = job.id }
+                        }
+                    }
                 }
-                if model.data.isOwnerSession && !model.isHintDismissed("form") && model.data.broadcastSettings.portalBaseURL.isEmpty {
-                    BannerRow(icon: "link", title: "Set up your service request form", onClose: nil) { openScreen(.settings) }
-                }
-                HomeInvoiceCard()   // QuickInvoiceViews.swift
-                StormModeSection(onHome: true, openRoute: openSmartRoute)   // StormModeViews.swift
-                JobsMap(points: points, height: 380, onExpand: openSmartRoute)   // opens the route planner
+                .frame(maxWidth: .infinity, alignment: .leading)
+                JobsMap(points: points, height: 280, onExpand: openSmartRoute)   // opens the route planner
                 if model.serverConfigured && model.data.can(.logVisits) { ShareLocationCard() }
                 #if canImport(CoreLocation)
                 AutoCheckInCard()   // AutoCheckInViews.swift: hides itself when there is nothing to check in to
@@ -68,24 +83,14 @@ struct HomeView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack {
-                        Text("Today's jobs").font(.title2.bold())
-                        Spacer()
-                        if !model.data.plannerStops(on: Date()).isEmpty || model.data.can(.editJobs) {
-                            Button { openSmartRoute() } label: { Label("Plan route", systemImage: "map") }
-                                .buttonStyle(.bordered).tint(Look.sparkle)
-                        }
-                    }
-                    if today.isEmpty {
-                        EmptyCard(icon: "calendar", title: "Nothing today", message: "Schedule a job to see it here.")
-                    } else {
-                        ForEach(today) { job in
-                            JobRow(job: job, routeNumber: order[job.id]) { openedJob = job.id }
-                        }
-                    }
+                HomeInvoiceCard()   // QuickInvoiceViews.swift
+                if model.data.activeStormRun == nil { StormModeSection(onHome: true, openRoute: openSmartRoute) }
+                if !model.isHintDismissed("tour") {
+                    BannerRow(icon: "safari", title: "New here? Take a quick tour", onClose: { model.dismissHint("tour") }, action: startTour)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
+                if model.data.isOwnerSession && !model.isHintDismissed("form") && model.data.broadcastSettings.portalBaseURL.isEmpty {
+                    BannerRow(icon: "link", title: "Set up your service request form", onClose: nil) { openScreen(.settings) }
+                }
             }
             .padding(.horizontal, 16).padding(.top, 14)
             .padding(.bottom, Look.tabBarClearance + 40)

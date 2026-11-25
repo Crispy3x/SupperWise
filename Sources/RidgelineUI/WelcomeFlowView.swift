@@ -40,16 +40,18 @@ struct WelcomeFlowView: View {
                 .frame(maxWidth: 560)
                 .frame(maxWidth: .infinity)
         }
+        .background(Look.page.ignoresSafeArea())
     }
 
     // MARK: pieces
 
     private var intro: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Image(systemName: "snowflake").font(.system(size: 44)).foregroundStyle(.tint)
-            Text("Welcome to Ridgeline Ops").font(.largeTitle.bold())
-            Text("Routes, invoices, client updates and proof of service for snow and landscaping crews. A few quick questions set it up for your business. Only the first is required, and you can change everything later.")
-            SignInSection()
+            IconTile(icon: "snowflake", size: 72)
+            Text("Let's set up your business").font(.largeTitle.bold())
+            Text("A few quick questions and the app is ready: your services, prices and first clients. Only the first one is required. You can change everything later.")
+                .font(.title3).foregroundStyle(.secondary)
+            Card { SignInSection() }
         }
     }
 

@@ -36,12 +36,12 @@ enum ShellTab: String, CaseIterable, Identifiable {
 
 /// Screens opened from the menu. They show on their own with a Home button to come back.
 enum ShellScreen: String, Identifiable {
-    case quotes, team, revenue, storm, visits, timeClock, proof, settings, profile, subscription, fieldWork, business
+    case quotes, team, revenue, storm, visits, timeClock, proof, settings, profile, subscription, fieldWork, business, profit
     var id: String { rawValue }
     /// Pages keep the Menu bar and the tab bar. The others open on their own with a round back button.
     var isPage: Bool {
         switch self {
-        case .quotes, .team, .revenue, .storm, .visits, .timeClock, .proof, .fieldWork, .business: return true
+        case .quotes, .team, .revenue, .storm, .visits, .timeClock, .proof, .fieldWork, .business, .profit: return true
         case .settings, .profile, .subscription: return false
         }
     }
@@ -59,6 +59,7 @@ enum ShellScreen: String, Identifiable {
         case .subscription: return "Subscription"
         case .fieldWork: return "Field work"
         case .business: return "Business"
+        case .profit: return "Profit"
         }
     }
     var icon: String {
@@ -75,6 +76,7 @@ enum ShellScreen: String, Identifiable {
         case .subscription: return "creditcard"
         case .fieldWork: return "snowflake"
         case .business: return "briefcase"
+        case .profit: return "chart.pie"
         }
     }
 }
@@ -148,16 +150,13 @@ struct MainShell: View {
             }
             VStack {
                 Spacer()
-                HStack {
-                    Spacer()
-                    SparkleButton { showAssistant = true }
-                }
-                .padding(.trailing, 20)
+                // The assistant button sits beside the tab bar, so it never covers a button on the page.
                 if screen == nil || screen?.isPage == true {
-                    FloatingTabBar(tabs: tabs, selection: screen == nil ? tab : nil) { picked in screen = nil; tab = picked }
-                        .padding(.horizontal, 14).padding(.bottom, 10).padding(.top, 8)
-                } else {
-                    Color.clear.frame(height: 20)
+                    HStack(spacing: 10) {
+                        FloatingTabBar(tabs: tabs, selection: screen == nil ? tab : nil) { picked in screen = nil; tab = picked }
+                        SparkleButton { showAssistant = true }
+                    }
+                    .padding(.horizontal, 14).padding(.bottom, 10).padding(.top, 8)
                 }
             }
             if menuOpen {
@@ -184,6 +183,20 @@ struct MainShell: View {
             guard !tutorialChecked else { return }
             tutorialChecked = true
             if !model.hasSeenTutorial(role) { tutorialRequired = true; showTutorial = true }
+            applyScreenshotMode()
+        }
+    }
+
+    /// Debug builds only: opens the screen named by the `-uiShot` launch argument (see ScreenshotMode.swift).
+    private func applyScreenshotMode() {
+        guard let shot = ScreenshotMode.shot else { return }
+        switch shot {
+        case "menu": menuOpen = true
+        case "assistant": showAssistant = true
+        case "route": showSmartRoute = true
+        case "notifications": showNotifications = true
+        default:
+            if let t = ShellTab(rawValue: shot) { tab = t } else if let s = ShellScreen(rawValue: shot) { screen = s }
         }
     }
 
@@ -293,14 +306,12 @@ struct FloatingTabBar: View {
         HStack(spacing: 4) {
             ForEach(tabs) { t in
                 Button { onSelect(t) } label: {
-                    HStack(spacing: 8) {
-                        Image(systemName: selection == t ? t.selectedIcon : t.icon).font(.system(size: 20, weight: .medium))
-                        if selection == t || tabs.count <= 4 {
-                            Text(t.title).font(.system(size: 15, weight: .medium)).lineLimit(1).minimumScaleFactor(0.7)
-                        }
+                    VStack(spacing: 3) {
+                        Image(systemName: selection == t ? t.selectedIcon : t.icon).font(.system(size: 19, weight: .medium)).frame(height: 22)
+                        Text(t.title).font(.system(size: 10, weight: .semibold)).lineLimit(1).minimumScaleFactor(0.7)
                     }
                     .foregroundStyle(selection == t ? tint : Color.secondary)
-                    .padding(.horizontal, selection == t ? 14 : 8).padding(.vertical, 12)
+                    .padding(.horizontal, 2).padding(.vertical, 7)
                     .frame(maxWidth: .infinity)
                     .background(selection == t ? tint.opacity(0.18) : Color.clear, in: Capsule())
                 }
@@ -322,12 +333,11 @@ struct SparkleButton: View {
     var body: some View {
         Button(action: action) {
             Image(systemName: "sparkles").font(.system(size: 26, weight: .semibold)).foregroundStyle(.white)
-                .frame(width: 64, height: 64)
+                .frame(width: 58, height: 58)
                 .background(Look.sparkle, in: Circle())
                 .shadow(color: .black.opacity(0.35), radius: 10, y: 4)
         }
         .buttonStyle(.plain)
-        .padding(.bottom, 6)
         .accessibilityLabel("Assistant")
     }
 }
@@ -430,9 +440,10 @@ private struct SecondaryScreen: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                ScreenTopBar(title: screen.title, onBack: onClose)
+                ScreenTopBar(title: screen == .subscription ? screen.title : "", onBack: onClose)
                 destination.pageBackground()
             }
+            .background(Look.page.ignoresSafeArea())
             .environment(\.embeddedInStack, true)
             .hideNavBar()
         }
@@ -455,6 +466,7 @@ private struct PageScreen: View {
     var body: some View {
         NavigationStack {
             content
+                .background(Look.page.ignoresSafeArea())
                 .environment(\.embeddedInStack, true)
                 .hideNavBar()
         }
@@ -466,6 +478,7 @@ private struct PageScreen: View {
         case .revenue: RevenueView()
         case .fieldWork: MenuHub(screen: screen, items: fieldItems)
         case .business: MenuHub(screen: screen, items: businessItems)
+        case .profit: ProfitView()   // ExpensesViews.swift
         default:
             VStack(spacing: 0) {
                 ScreenHeader(icon: screen.icon, title: screen.title, trailing: "")
@@ -492,6 +505,7 @@ private struct PageScreen: View {
         var out: [HubItem] = []
         if d.can(.viewQuotes) { out.append(HubItem(title: "Quotes", icon: "doc.text", tint: .indigo, screen: .quotes)) }
         if d.can(.viewRevenue) { out.append(HubItem(title: "Revenue", icon: "dollarsign.circle", tint: .green, screen: .revenue)) }
+        if d.can(.viewRevenue) { out.append(HubItem(title: "Profit and expenses", icon: "chart.pie", tint: .orange, screen: .profit)) }
         if d.can(.viewTeam) { out.append(HubItem(title: "Team", icon: "person.2.badge.gearshape", tint: .purple, screen: .team)) }
         return out
     }
@@ -554,6 +568,7 @@ private struct MenuHub: View {
             case .quotes: QuotesView()
             case .revenue: RevenueView()
             case .team: TeamView()
+            case .profit: ProfitView()
             default: EmptyView()
             }
         }

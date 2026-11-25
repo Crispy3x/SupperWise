@@ -394,8 +394,8 @@ struct RevenueView: View {
                     Menu {
                         ForEach(RevenuePeriod.allCases, id: \.self) { p in Button(p.title) { period = p } }
                     } label: {
-                        HStack(spacing: 8) { Text(period.title).font(.title3.weight(.medium)); Image(systemName: "chevron.down") }
-                            .foregroundStyle(.primary).padding(.horizontal, 18).padding(.vertical, 12)
+                        HStack(spacing: 8) { Text(period.title).font(.callout.weight(.medium)).lineLimit(1).fixedSize(); Image(systemName: "chevron.down").font(.footnote) }
+                            .foregroundStyle(.primary).padding(.horizontal, 14).padding(.vertical, 10)
                             .background(Look.card, in: Capsule()).overlay(Capsule().stroke(Look.stroke, lineWidth: 1))
                     }
                     .buttonStyle(.plain)

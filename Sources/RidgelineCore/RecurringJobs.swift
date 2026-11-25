@@ -182,6 +182,7 @@ extension AppData {
         guard let i = jobs.firstIndex(where: { $0.id == id }) else { throw OperationError.notFound }
         guard jobs[i].repeats else {
             jobs[i].status = status
+            if status == .done { autoInvoice(afterJobDone: id, on: day, now: Date(), calendar: calendar) }   // JobBilling.swift
             return
         }
         guard jobs[i].occurrenceStart(on: day, calendar: calendar) != nil else { throw OperationError.notFound }
@@ -189,6 +190,7 @@ extension AppData {
         var map = jobs[i].occurrenceStatuses ?? [:]
         map[key] = status == .scheduled ? nil : status
         jobs[i].occurrenceStatuses = map.isEmpty ? nil : map
+        if status == .done { autoInvoice(afterJobDone: id, on: day, now: Date(), calendar: calendar) }   // JobBilling.swift
     }
 
     /// Skips one visit of a repeating job. The rest stay on the schedule.

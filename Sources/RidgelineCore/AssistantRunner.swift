@@ -67,7 +67,7 @@ public enum AssistantRunner {
                     switch outcome {
                     case .text(let t):
                         body = t
-                        if ["create_job", "add_client", "update_job_status", "create_invoice"].contains(call.name) { actions.append(String(t.split(separator: "\n").first ?? "")) }
+                        if ["create_job", "add_client", "update_job_status", "create_invoice", "bill_finished_jobs"].contains(call.name) { actions.append(String(t.split(separator: "\n").first ?? "")) }
                     case .error(let t): body = t; isError = true
                     case .needsConfirmation(let action, let t): body = t; pending.append(action)
                     case .hostTool: body = "That tool is not available right now."; isError = true

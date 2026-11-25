@@ -7,6 +7,8 @@ import RidgelineCore
 struct QuickInvoiceSheet: View {
     @Environment(AppModel.self) private var model
     @Environment(\.dismiss) private var dismiss
+    /// Opens with this client already chosen, for example from the client's profile.
+    var startCustomerID: UUID? = nil
     @State private var customerID: UUID?
     @State private var siteID: UUID?
     @State private var newAddress = ""
@@ -100,6 +102,7 @@ struct QuickInvoiceSheet: View {
         }
         .background(Look.sheet.ignoresSafeArea())
         .onAppear {
+            if customerID == nil, let startCustomerID, model.data.customers.contains(where: { $0.id == startCustomerID }) { customerID = startCustomerID }
             if customerID == nil, model.data.customers.count == 1 { customerID = model.data.customers.first?.id }
             siteID = clientSites.first?.id
         }

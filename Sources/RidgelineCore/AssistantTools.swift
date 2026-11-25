@@ -88,13 +88,16 @@ public enum AssistantTools {
                                             "client_name": ("string", "An existing client's name"), "address": ("string", "Which of the client's addresses, if they have more than one"),
                                             "start": ("string", "When, as YYYY-MM-DD HH:mm in local time (24 hour). A date alone means 8:00 AM."),
                                             "duration_minutes": ("integer", "How long, default 60"), "assignee": ("string", "A team member's name"),
-                                            "notes": ("string", "Extra instructions"), "is_task": ("boolean", "True for a reminder or task with no site")], required: ["title", "start"])), .editJobs),
+                                            "notes": ("string", "Extra instructions"), "is_task": ("boolean", "True for a reminder or task with no site"),
+                                            "price": ("number", "What the job costs in dollars, if the person said. Leave out otherwise.")], required: ["title", "start"])), .editJobs),
         (AssistantTool(name: "update_job_status", description: "Change a job's status. Get the id from get_schedule.",
                        inputSchema: schema(["job_id": ("string", "The job id"), "status": ("string", "scheduled, inProgress, done or cancelled")], required: ["job_id", "status"])), .logVisits),
         (AssistantTool(name: "list_invoices", description: "List invoices with client, total, balance and due date.",
                        inputSchema: schema(["filter": ("string", "unpaid, overdue, draft or all. Default unpaid.")])), .viewRevenue),
         (AssistantTool(name: "create_invoice", description: "Create a draft invoice for a client's storms that have not been billed yet. It is a draft and is not sent.",
                        inputSchema: schema(["client_name": ("string", "An existing client's name")], required: ["client_name"])), .viewRevenue),
+        (AssistantTool(name: "bill_finished_jobs", description: "Create draft invoices for finished jobs that have a price and are not invoiced yet: one invoice per client, one line per visit. They are drafts and are not sent.",
+                       inputSchema: schema(["client_name": ("string", "Bill only this client. Leave out to bill every client with finished work.")])), .viewRevenue),
         (AssistantTool(name: "send_invoice", description: "Prepare to email an invoice to the client. The person must confirm in the app before anything is sent, so never say it was sent.",
                        inputSchema: schema(["invoice_number": ("string", "For example INV-0003")], required: ["invoice_number"])), .viewRevenue),
         (AssistantTool(name: "record_payment", description: "Record a payment received on an invoice (cash, check, card or bank transfer). Leave the amount out to record the full balance.",
@@ -142,6 +145,7 @@ public enum AssistantTools {
         case "record_payment": return recordPayment(call.input, &data, now)
         case "get_revenue": return revenue(call.input, data, now, calendar)
         case "list_requests": return listRequests(data)
+        case "bill_finished_jobs": return billFinishedJobs(call.input, &data, now, calendar)   // JobBilling.swift
         default: return .hostTool                  // plan_route, get_weather, create_invoice
         }
     }
@@ -264,8 +268,9 @@ public enum AssistantTools {
                                       durationMinutes: input["duration_minutes"]?.int ?? 60, assigneeIDs: assignees,
                                       notes: input["notes"]?.string ?? "", isTask: isTask, now: now)
             let place = data.address(forJob: job)
+            let priced = applyPrice(input["price"]?.double, to: job, in: &data)   // JobBilling.swift
             return .text("Created \(isTask ? "task" : "job") \"\(job.title)\" for \(describe(job.start, calendar: calendar))"
-                         + (place.isEmpty ? "" : " at \(place)") + (isTask || siteID != nil ? "" : ". It has no site, so it will not appear on the route") + ". id: \(job.id.uuidString)")
+                         + (place.isEmpty ? "" : " at \(place)") + (isTask || siteID != nil ? "" : ". It has no site, so it will not appear on the route") + ". id: \(job.id.uuidString)" + priced)
         } catch { return .error("The job could not be created.") }
     }
 

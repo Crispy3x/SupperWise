@@ -317,6 +317,7 @@ struct ClientsTabView: View {
                                 }
                             }
                             .buttonStyle(.plain)
+                            ContactsImportButton()      // iPhone and iPad only (ContactsImportView.swift)
                             NavigationLink { CustomersView().environment(\.embeddedInStack, true).circleBack().pageBackground() } label: {
                                 Label("Import clients from a spreadsheet (CSV)", systemImage: "square.and.arrow.down").font(.callout)
                             }

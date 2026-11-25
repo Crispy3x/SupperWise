@@ -8,7 +8,7 @@ import RidgelineCore
 /// The first screen asks whether you own the business or work for it. The choice is saved, so the app stays
 /// signed in until you sign out.
 public struct RidgelineRootView: View {
-    @State private var model = AppModel()
+    @State private var model = AppModel.launch()
 
     public init() {}
 
@@ -27,7 +27,9 @@ public struct RidgelineRootView: View {
 
     public var body: some View {
         Group {
-            if model.data.session == nil {
+            if let shot = ScreenshotMode.shot, ScreenshotMode.standalone.contains(shot), shot != "welcome", shot != "onboarding" {
+                ScreenshotMode.standaloneView(model)
+            } else if model.data.session == nil {
                 WelcomeRoleView()
             } else if model.data.session?.role == .owner && needsOwnerSetup {
                 WelcomeFlowView()

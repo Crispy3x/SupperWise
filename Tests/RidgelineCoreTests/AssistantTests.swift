@@ -71,7 +71,7 @@ final class AssistantTests: XCTestCase {
         var d = world()
         XCTAssertEqual(Set(AssistantTools.definitions(for: d).map(\.name)),
                        ["get_schedule", "list_clients", "add_client", "create_job", "update_job_status", "list_invoices", "create_invoice", "send_invoice", "plan_route", "get_weather",
-                        "record_payment", "get_revenue", "send_reminders", "list_requests", "answer_request", "send_season_links"])
+                        "record_payment", "get_revenue", "send_reminders", "list_requests", "answer_request", "send_season_links", "bill_finished_jobs"])
         XCTAssertLessThanOrEqual(AssistantTools.definitions(for: d).count, 20)
         let crew = try addMember(&d, "Dana")
         d.session = AppSession(role: .employee, memberID: crew.id, startedAt: now)

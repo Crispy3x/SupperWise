@@ -59,7 +59,7 @@ public enum ClientImport {
         header.firstIndex { h in names.contains(h.trimmingCharacters(in: .whitespaces).lowercased()) }
     }
 
-    private static func clean(_ s: String, _ max: Int) -> String {
+    static func clean(_ s: String, _ max: Int) -> String {
         String(s.unicodeScalars.filter { !CharacterSet.controlCharacters.contains($0) }.map(Character.init))
             .trimmingCharacters(in: .whitespacesAndNewlines).prefix(max).description
     }
@@ -96,7 +96,7 @@ public enum ClientImport {
         return ImportReport(clients: out, skipped: skipped, problem: nil)
     }
 
-    private static func key(_ name: String, _ address: String) -> String {
+    static func key(_ name: String, _ address: String) -> String {
         func norm(_ s: String) -> String { s.lowercased().split(whereSeparator: { $0.isWhitespace }).joined(separator: " ") }
         return norm(name) + "|" + norm(address)
     }

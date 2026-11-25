@@ -34,6 +34,7 @@ struct JobRow: View {
                         if let rule = job.repeatRule, rule.repeats {
                             Label(rule.summary, systemImage: "repeat").font(.footnote).foregroundStyle(.secondary).lineLimit(1)
                         }
+                        JobPriceTag(job: job)   // the price, for people who may see money (JobBillingViews.swift)
                     }
                     Spacer(minLength: 0)
                     StatusPill(text: job.isTask ? "Task" : (job.repeats && job.status == .cancelled ? "Skipped" : job.status.title), color: job.status.color)
@@ -137,6 +138,7 @@ struct JobDetailSheet: View {
                             message = model.setOccurrenceStatus(job.status == .done ? .scheduled : .done, id: job.id, on: job.start)
                         }
                     }
+                    JobBillingSection(job: job)   // the price, and the invoice for a finished visit (JobBillingViews.swift)
                     if model.data.can(.editJobs), let rule = job.repeatRule, rule.repeats {
                         SecondaryActionButton(title: "Stop repeating after this visit", icon: "stop.circle") {
                             message = model.setJobRepeat(RepeatRule(frequency: rule.frequency, endDate: job.start), id: job.id)
@@ -160,12 +162,14 @@ struct JobDetailSheet: View {
     }
 }
 
-/// Create a job in three steps (client and job, when, who and notes), or a reminder or task in one.
+/// Create a job in a few steps (client and job, when, price, who and notes), or a reminder or task in one.
 struct JobEditorSheet: View {
     @Environment(AppModel.self) private var model
     @Environment(\.dismiss) private var dismiss
     var initialDate: Date = Date()
     var startsAsTask = false
+    /// Opens with this client already chosen (from the client profile).
+    var startCustomerID: UUID? = nil
 
     private enum ClientMode { case none, existing }
 
@@ -186,17 +190,24 @@ struct JobEditorSheet: View {
     @State private var repeatFrequency: RepeatFrequency = .never
     @State private var repeatHasEnd = false
     @State private var repeatEnd = Date()
+    @State private var priceLines: [JobPriceLine] = []
+    @State private var customPrice = ""
 
     private var clients: [Customer] { model.data.customers.filter { !$0.isLead } }
     private var sitesForClient: [Site] { model.data.sites.filter { $0.customerID == customerID } }
     private var people: [TeamMember] { model.data.team.filter { $0.status != .disabled } }
-    private var steps: [String] { isTask ? ["Reminder"] : ["Client & Job", "Schedule", "Crew & notes"] }
+    /// The Price step is only for people who may see money.
+    private var showsPrice: Bool { model.data.can(.viewRevenue) }
+    private var steps: [String] {
+        if isTask { return ["Reminder"] }
+        return showsPrice ? ["Client & Job", "Schedule", "Price", "Crew & notes"] : ["Client & Job", "Schedule", "Crew & notes"]
+    }
     private var canAdvance: Bool { step != 0 || !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
 
     var body: some View {
         WizardScaffold(title: isTask ? "New Reminder" : "New Job", steps: steps, step: $step, canAdvance: canAdvance, onClose: { dismiss() }, onFinish: save) {
             if step == 0 {
-                PillChoice(options: [(false, "Job", "briefcase"), (true, "Reminder or task", "checklist")], selection: $isTask)
+                PillChoice(options: [(false, "Job", "briefcase"), (true, "Reminder", "checklist")], selection: $isTask)
             }
             if isTask {
                 SectionLabel(text: "Reminder")
@@ -207,7 +218,13 @@ struct JobEditorSheet: View {
                 switch step {
                 case 0: clientAndJob
                 case 1: whenSection
-                default: crewAndNotes
+                default:
+                    if showsPrice && step == 2 {
+                        JobPriceSection(lines: $priceLines, customAmount: $customPrice, jobTitle: title,
+                                        repeats: repeatFrequency != .never, hasClient: customerID != nil)   // JobBillingViews.swift
+                    } else {
+                        crewAndNotes
+                    }
                 }
             }
             if let problem { Label(problem, systemImage: "exclamationmark.triangle.fill").font(.callout).foregroundStyle(.orange) }
@@ -216,6 +233,7 @@ struct JobEditorSheet: View {
             guard !loaded else { return }
             loaded = true
             isTask = startsAsTask
+            if let startCustomerID, model.data.customers.contains(where: { $0.id == startCustomerID }) { customerID = startCustomerID; clientMode = .existing }
             let cal = Calendar.current
             let c = cal.dateComponents([.year, .month, .day], from: initialDate)
             start = cal.date(bySettingHour: 8, minute: 0, second: 0, of: cal.date(from: c) ?? initialDate) ?? initialDate
@@ -312,7 +330,8 @@ struct JobEditorSheet: View {
     private func save() {
         problem = model.addJob(title: title, kind: isTask ? .other : kind, customerID: isTask ? nil : customerID, siteID: isTask ? nil : siteID,
                                start: start, durationMinutes: Int(minutes), assigneeIDs: isTask ? [] : Array(assignees), notes: notes, isTask: isTask,
-                               repeatRule: repeatFrequency == .never ? nil : RepeatRule(frequency: repeatFrequency, endDate: repeatHasEnd ? repeatEnd : nil))
+                               repeatRule: repeatFrequency == .never ? nil : RepeatRule(frequency: repeatFrequency, endDate: repeatHasEnd ? repeatEnd : nil),
+                               priceLines: showsPrice && !isTask ? JobBilling.lines(picked: priceLines, customAmount: customPrice, customName: title) : [])
         if problem == nil { dismiss() }
     }
 }

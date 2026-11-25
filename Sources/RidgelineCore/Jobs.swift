@@ -51,6 +51,10 @@ public struct Job: Identifiable, Equatable, Codable, Sendable {
     public var clientTexts: [ClientTextLogEntry]? = nil
     /// Automatic arrival and departure times, by day ("2027-01-15"), see AutoCheckIn.swift. Nil when none were saved.
     public var checkIns: [String: JobCheckIn]? = nil
+    /// What one visit costs, as lines from the price list (see JobBilling.swift). Nil when the job has no price.
+    public var priceLines: [JobPriceLine]? = nil
+    /// Visits already put on an invoice, by day ("2027-01-15"), with that invoice's id. Nil when none were billed.
+    public var invoicedVisits: [String: UUID]? = nil
 
     public init(id: UUID = UUID(), title: String, kind: JobKind = .other, customerID: UUID? = nil, siteID: UUID? = nil,
                 start: Date, durationMinutes: Int = 60, status: JobStatus = .scheduled, assigneeIDs: [UUID] = [],
@@ -89,6 +93,7 @@ extension AppData {
     public mutating func setJobStatus(_ status: JobStatus, id: UUID) throws {
         guard let i = jobs.firstIndex(where: { $0.id == id }) else { throw OperationError.notFound }
         jobs[i].status = status
+        if status == .done { autoInvoice(afterJobDone: id, on: jobs[i].start, now: Date()) }   // JobBilling.swift
     }
 
     public mutating func deleteJob(_ id: UUID) throws {
