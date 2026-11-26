@@ -29,7 +29,7 @@ struct HomeView: View {
         let current = Set(model.data.routeStops(on: Date()).map(\.id))
         // Subset, not equal: stops marked done along the way (auto check-in) leave the rest of the numbers in place.
         guard let plan = model.plannedRoute, current.isSubset(of: Set(plan.stops.map(\.id))), !current.isEmpty else { return [:] }
-        return Dictionary(uniqueKeysWithValues: plan.stops.enumerated().map { ($0.element.id, $0.offset + 1) })
+        return Dictionary(plan.stops.enumerated().map { ($0.element.id, $0.offset + 1) }, uniquingKeysWith: { first, _ in first })   // never crash on a repeated stop
     }
 
     private var points: [MapPoint] {
@@ -95,6 +95,7 @@ struct HomeView: View {
             .padding(.horizontal, 16).padding(.top, 14)
             .padding(.bottom, Look.tabBarClearance + 40)
         }
+        .defaultScrollAnchor(ScreenshotMode.anchor)
         .sheet(isPresented: $showNewJob) { JobEditorSheet() }
         .sheet(isPresented: $showNewClient) { AddCustomerSheet() }
         .sheet(isPresented: Binding(get: { openedJob != nil }, set: { if !$0 { openedJob = nil } })) {

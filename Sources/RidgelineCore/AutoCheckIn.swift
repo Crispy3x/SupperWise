@@ -294,30 +294,54 @@ extension AppData {
     public mutating func recordArrival(jobID: UUID, at time: Date, calendar: Calendar = .current) throws -> Bool {
         guard let i = jobs.firstIndex(where: { $0.id == jobID }) else { throw OperationError.notFound }
         guard canAutoCheckIn(jobs[i]) else { throw AutoCheckInError.notAllowed }
-        let key = Job.dayKey(time, calendar: calendar)
+        let day = overnightVisitDay(of: jobs[i], at: time, calendar: calendar) ?? time
+        let key = Job.dayKey(day, calendar: calendar)
         var map = jobs[i].checkIns ?? [:]
         guard map[key] == nil else { return false }
         map[key] = JobCheckIn(arrivedAt: time)
         jobs[i].checkIns = map
-        if jobs[i].occurrenceStatus(on: time, calendar: calendar) == .scheduled {
-            try setOccurrenceStatus(.inProgress, id: jobID, on: time, calendar: calendar)
+        if jobs[i].occurrenceStatus(on: day, calendar: calendar) == .scheduled {
+            try setOccurrenceStatus(.inProgress, id: jobID, on: day, calendar: calendar)
         }
         return true
     }
 
+    /// A route that runs past midnight: a repeating job with no visit on the day of `time` but one still open the day
+    /// before is checked in to under that day before. Nil in every other case.
+    func overnightVisitDay(of job: Job, at time: Date, calendar: Calendar) -> Date? {
+        guard job.repeats, job.occurrenceStart(on: time, calendar: calendar) == nil,
+              let eve = calendar.date(byAdding: .day, value: -1, to: time),
+              job.occurrenceStart(on: eve, calendar: calendar) != nil,
+              job.occurrenceStatus(on: eve, calendar: calendar).isOpen else { return nil }
+        return eve
+    }
+
     /// Saves the departure time and, when `markDone` is true, marks the visit done. A second departure keeps the first time.
-    public mutating func recordDeparture(jobID: UUID, at time: Date, markDone: Bool, calendar: Calendar = .current) throws {
+    /// A crew that arrived before midnight and leaves after it is leaving that same visit: the departure goes on the
+    /// arrival's day. Returns the day of the visit that was left, for marking it done later.
+    @discardableResult
+    public mutating func recordDeparture(jobID: UUID, at time: Date, markDone: Bool, calendar: Calendar = .current) throws -> Date {
         guard let i = jobs.firstIndex(where: { $0.id == jobID }) else { throw OperationError.notFound }
         guard canAutoCheckIn(jobs[i]) else { throw AutoCheckInError.notAllowed }
-        let key = Job.dayKey(time, calendar: calendar)
         var map = jobs[i].checkIns ?? [:]
+        var day = time
+        if map[Job.dayKey(time, calendar: calendar)] == nil {
+            if let eve = calendar.date(byAdding: .day, value: -1, to: time),
+               let open = map[Job.dayKey(eve, calendar: calendar)], open.departedAt == nil {
+                day = eve
+            } else if let eve = overnightVisitDay(of: jobs[i], at: time, calendar: calendar) {
+                day = eve
+            }
+        }
+        let key = Job.dayKey(day, calendar: calendar)
         var entry = map[key] ?? JobCheckIn(arrivedAt: time)
         if entry.departedAt == nil { entry.departedAt = max(time, entry.arrivedAt) }
         map[key] = entry
         jobs[i].checkIns = map
-        if markDone && jobs[i].occurrenceStatus(on: time, calendar: calendar).isOpen {
-            try setOccurrenceStatus(.done, id: jobID, on: time, calendar: calendar)
+        if markDone && jobs[i].occurrenceStatus(on: day, calendar: calendar).isOpen {
+            try setOccurrenceStatus(.done, id: jobID, on: day, calendar: calendar)
         }
+        return day
     }
 
     /// The owner's choice: mark a job done as soon as the crew leaves it, or ask first.

@@ -3,7 +3,7 @@ import CoreLocation
 import RidgelineCore
 
 /// One-time "where am I" for checking arrival at a site and for setting the yard location. Asks permission only
-/// when first used, and only while the app is open. Not yet compiled or run: needs Xcode.
+/// when first used, and only while the app is open.
 @MainActor
 public final class LocationFetcher: NSObject, CLLocationManagerDelegate {
     private let manager = CLLocationManager()

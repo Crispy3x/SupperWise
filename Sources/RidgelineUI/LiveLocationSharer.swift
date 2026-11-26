@@ -5,7 +5,8 @@ import Observation
 import RidgelineCore
 
 /// Shares this device's position with clients' pages while the owner or a crew member has it switched on.
-/// It only runs while the app is open, and it sends at most one position every 20 seconds.
+/// It only runs while the app is open. It sends at most one position every 20 seconds, and about one a minute even
+/// when the truck is standing still, so a parked truck does not drop off the client's map.
 @MainActor @Observable
 public final class LiveLocationSharer: NSObject, CLLocationManagerDelegate {
     public private(set) var isSharing = false
@@ -15,12 +16,19 @@ public final class LiveLocationSharer: NSObject, CLLocationManagerDelegate {
     @ObservationIgnored private var label = "Truck"
     @ObservationIgnored private var send: ((PortalTruck) async -> Bool)?
     @ObservationIgnored private var inFlight = false
+    @ObservationIgnored private var heartbeat: Task<Void, Never>?
+
+    /// The name this truck is on the map under right now.
+    public var sharedLabel: String { label }
 
     public override init() {
         super.init()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         manager.distanceFilter = 25
+        #if os(iOS)
+        manager.pausesLocationUpdatesAutomatically = false     // a plow that stops to clear a lot must stay on the map
+        #endif
     }
 
     /// `send` returns true when the server took the position.
@@ -37,11 +45,28 @@ public final class LiveLocationSharer: NSObject, CLLocationManagerDelegate {
         note = "Finding your position..."
         if status == .notDetermined { manager.requestWhenInUseAuthorization() }
         manager.startUpdatingLocation()
+        // New positions only arrive when the truck moves 25 metres, and the server hides a truck it has not heard from
+        // for a few minutes. So when nothing was sent for a while, updates are restarted: that makes the system report
+        // where the truck is now (a fresh fix, not an old one sent again), and a parked truck stays on the map.
+        heartbeat?.cancel()
+        heartbeat = Task { [weak self] in
+            while !Task.isCancelled {
+                try? await Task.sleep(nanoseconds: 60_000_000_000)
+                if Task.isCancelled { return }
+                guard let sharer = self, sharer.isSharing else { return }
+                if Date().timeIntervalSince(sharer.lastSent) >= 50 {
+                    sharer.manager.stopUpdatingLocation()
+                    sharer.manager.startUpdatingLocation()
+                }
+            }
+        }
     }
 
     public func stop() {
         guard isSharing else { return }
         manager.stopUpdatingLocation()
+        heartbeat?.cancel()
+        heartbeat = nil
         isSharing = false
         send = nil
         note = ""

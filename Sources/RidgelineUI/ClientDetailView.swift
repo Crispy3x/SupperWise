@@ -565,6 +565,14 @@ struct ClientDetailView: View {
             FactRow(label: "Messages", value: messagesText(c), valueColor: c.optedOutAt != nil ? Color.orange : Color.primary)
             if canEdit {
                 SecondaryActionButton(title: editingContact ? "Close without saving" : "Edit contact", icon: editingContact ? "chevron.up" : "pencil") {
+                    if !editingContact {
+                        // Open with what is saved now, not with what was typed and abandoned the last time.
+                        name = c.name
+                        phone = c.phone
+                        email = c.email
+                        agreed = c.emailConsent && c.optedOutAt == nil
+                        note = nil
+                    }
                     editingContact.toggle()
                 }
                 if editingContact { contactEditor(c) }
@@ -582,7 +590,7 @@ struct ClientDetailView: View {
         PillField(label: "Email", optional: true, placeholder: "name@email.com", text: $email, kind: .email)
         RowDivider()
         Toggle("Agreed to storm and invoice emails", isOn: $agreed)
-            .disabled(!ContactValidation.isValidEmail(email) || c.optedOutAt != nil)
+            .disabled(!ContactValidation.isValidEmail(email.trimmingCharacters(in: .whitespacesAndNewlines)) || c.optedOutAt != nil)
         if c.optedOutAt != nil {
             Label("This client asked to stop messages.", systemImage: "hand.raised.fill").foregroundStyle(.orange)
         } else if c.emailConsent, let when = c.consentRecordedAt {
@@ -602,6 +610,11 @@ struct ClientDetailView: View {
     }
 
     private func save() {
+        // A phone or email that cannot work is turned down here, not saved and then quietly never used.
+        if let problem = ContactValidation.phoneProblem(phone) ?? ContactValidation.emailProblem(email) {
+            note = problem
+            return
+        }
         let trimmedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
         let emailChanged = trimmedEmail != (customer?.email ?? "")
         let wasConsenting = customer?.emailConsent ?? false
@@ -612,7 +625,7 @@ struct ClientDetailView: View {
         note = model.edit { data in
             guard let i = data.customers.firstIndex(where: { $0.id == customerID }) else { throw OperationError.notFound }
             data.customers[i].name = name.trimmingCharacters(in: .whitespacesAndNewlines)
-            data.customers[i].phone = phone
+            data.customers[i].phone = phone.trimmingCharacters(in: .whitespacesAndNewlines)
             data.customers[i].email = trimmedEmail
             guard !optedOut else { return }                       // a client who asked to stop is never changed here
             if keepConsent != wasConsenting {

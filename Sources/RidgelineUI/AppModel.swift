@@ -266,7 +266,7 @@ public final class AppModel {
         let existing = data.invoices.filter { $0.siteID == site.id }
         let next = InvoicePlanner.nextBilling(terms: contract.terms, visits: visits, existing: existing)
         let number = InvoiceNumbering.next(existing: data.invoices.map(\.number))
-        let invoice = Invoice.fromBilling(next.result, number: number, customerID: site.customerID, siteID: site.id, issueDate: Date())
+        let invoice = Invoice.fromBilling(next.result, number: number, customerID: site.customerID, siteID: site.id, issueDate: Date(), netDays: data.profile.netDays)
         var message = "Nothing new to bill."
         if !invoice.lines.isEmpty {
             data.invoices.append(invoice)
@@ -282,7 +282,7 @@ public final class AppModel {
     public func updateInvoice(id: UUID, _ change: (inout Invoice) throws -> Void) -> String? {
         guard let i = data.invoices.firstIndex(where: { $0.id == id }) else { return "Invoice not found." }
         var copy = data.invoices[i]
-        do { try change(&copy) } catch { return "Could not change the invoice: \(error)" }
+        do { try change(&copy) } catch { return Self.describe(error) }
         data.invoices[i] = copy
         save()
         return nil
@@ -316,6 +316,8 @@ public final class AppModel {
     /// Deletes the account and everything stored on this device: records, photos, the saved server token and safety copies.
     /// The trial or plan stays, because it belongs to the device's Apple account.
     public func deleteAccountAndData() {
+        stopSharing()                                        // no truck position is sent after the account is gone
+        assistantLines = []; assistantHistory = []; assistantUpdates = []
         try? photoStorage?.deleteAll()
         UserDefaults.standard.removeObject(forKey: "crewMemberName")
         let temp = FileManager.default.temporaryDirectory
@@ -570,15 +572,15 @@ public final class AppModel {
             #endif
             save()
             refreshServerFlag()
-            return "Routing server removed."
+            return "Server removed."
         }
         guard RoutingServerSettings.validatedURL(trimmed) != nil else { return "The address must start with https://." }
         let newToken = token.trimmingCharacters(in: .whitespacesAndNewlines)
         #if canImport(Security)
         if newToken.isEmpty {
-            guard hasRoutingToken else { return "Enter the access token." }
+            guard hasRoutingToken else { return "Enter the access code." }
         } else if !KeychainStore.save(newToken, for: Self.routingTokenKey) {
-            return "Could not store the token securely."
+            return "Could not store the access code securely."
         }
         #endif
         data.routingServerURL = trimmed
@@ -645,12 +647,12 @@ public final class AppModel {
         // Adds sample customers only while there are none, and never removes anything else.
         guard data.customers.isEmpty, data.sites.isEmpty, data.contracts.isEmpty else { return }
         var d = data
-        if d.companyName.isEmpty { d.companyName = "Demo Plowing" }
-        if d.depot == nil { d.depot = Coordinate(latitude: 44.9778, longitude: -93.2650) }
+        if d.companyName.isEmpty { d.companyName = AppData.sampleCompanyName }
+        if d.depot == nil { d.depot = AppData.sampleYard }
         if d.crews.isEmpty { d.crews = [Crew(name: "Truck 1")] }
         func add(_ name: String, _ address: String, _ dLat: Double, _ dLon: Double, _ priority: Int,
                  _ trigger: Double, _ terms: ContractTerms) {
-            let c = Customer(name: name, phone: "555-0100")
+            let c = Customer(name: name, phone: AppData.samplePhone)
             let s = Site(customerID: c.id, address: address, latitude: 44.9778 + dLat, longitude: -93.2650 + dLon,
                          priority: priority, triggerInches: trigger,
                          instructions: priority == 1 ? "Clear fire lane first." : "")

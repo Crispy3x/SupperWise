@@ -124,12 +124,21 @@ public struct Invoice: Identifiable, Equatable, Codable, Sendable {
     /// Lines can be edited until the first payment is recorded or the invoice is voided.
     public var isEditable: Bool { !isVoid && payments.isEmpty }
 
-    public func status(now: Date) -> InvoiceStatus {
+    /// True once the due day is over. An invoice that says "due Nov 15" can be paid all of Nov 15, so it is late
+    /// from the start of Nov 16, not from the hour of day it was created.
+    public func isPastDue(now: Date, calendar: Calendar = .current) -> Bool {
+        let dueDay = calendar.startOfDay(for: dueDate)
+        let dayAfter = calendar.date(byAdding: .day, value: 1, to: dueDay) ?? dueDay.addingTimeInterval(86_400)
+        return now >= dayAfter
+    }
+
+    public func status(now: Date, calendar: Calendar = .current) -> InvoiceStatus {
         if isVoid { return .void }
         if balance.cents <= 0 && !lines.isEmpty { return .paid }
-        if !payments.isEmpty { return now > dueDate && balance.cents > 0 ? .overdue : .partiallyPaid }
+        let late = isPastDue(now: now, calendar: calendar)
+        if !payments.isEmpty { return late && balance.cents > 0 ? .overdue : .partiallyPaid }
         if sentAt == nil { return .draft }
-        return now > dueDate ? .overdue : .sent
+        return late ? .overdue : .sent
     }
 
     // MARK: edits
@@ -163,6 +172,8 @@ public struct Invoice: Identifiable, Equatable, Codable, Sendable {
         guard payment.amount.cents > 0 else { throw InvoiceError.invalidAmount }
         guard payment.amount <= balance else { throw InvoiceError.exceedsBalance }
         payments.append(payment)
+        // A client who paid has the bill, so it is no longer a draft waiting to be sent (it would count as one forever).
+        if sentAt == nil { sentAt = payment.date }
     }
 
     public mutating func void() { isVoid = true }
@@ -260,7 +271,9 @@ public enum InvoicePlanner {
                 }
             }
         }
-        let baseAlreadyBilled = active.contains { $0.lines.contains { $0.stormID == nil && !$0.isLateFee } }
+        // Only a seasonal line counts. Other lines with no storm (a Quick invoice, a mowing job at the same address)
+        // must not make the season price look billed, or it could never be invoiced.
+        let baseAlreadyBilled = active.contains { $0.lines.contains { $0.stormID == nil && !$0.isLateFee && isSeasonalLine($0.description) } }
         let earlier = visits.filter { invoicedStormIssue[$0.stormID] != nil }
         let fresh = visits.filter { invoicedStormIssue[$0.stormID] == nil }
         let earlierPushes = SnowBilling.bill(terms: terms, visits: earlier, includeSeasonalBase: false).pushesUsed
@@ -270,5 +283,11 @@ public enum InvoicePlanner {
             return false
         }
         return NextBilling(result: result, heldBack: held)
+    }
+
+    /// The season price lines SnowBilling writes ("Seasonal snow contract", "Seasonal base (includes 8 pushes)"), and a
+    /// season price billed by hand from the price list ("Seasonal driveway").
+    static func isSeasonalLine(_ description: String) -> Bool {
+        description.trimmingCharacters(in: .whitespaces).lowercased().hasPrefix("seasonal")
     }
 }

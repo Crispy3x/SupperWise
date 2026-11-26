@@ -113,12 +113,28 @@ extension AppModel {
         return ServerAssistantTransport(baseURL: b.url, token: b.token, deviceID: assistantDeviceID())
     }
 
+    /// True once the owner's own server has said its assistant is not switched on (a server set up only for client
+    /// pages and email). The assistant built into the app is used instead, until that server says it is on.
+    private static var ownServerHasNoAssistant = false
+    /// Who the chat on screen belongs to, so it is never shown to the next person who signs in on this device.
+    private static var assistantChatPerson: String?
+
     /// Order: the owner's own Anthropic key (chosen on purpose), then the owner's own server, then the one built into the app.
     func assistantTransport() -> AssistantTransport? {
         #if canImport(Security)
         if let key = KeychainStore.load(Self.assistantKeyKey), !key.isEmpty { return DirectAssistantTransport(apiKey: key) }
         #endif
+        if Self.ownServerHasNoAssistant, let builtIn = builtInAssistantTransport() { return builtIn }
         return serverAssistantTransport() ?? builtInAssistantTransport()
+    }
+
+    /// Clears the chat when a different person is signed in than the one who had it. An employee must never open the
+    /// assistant and read the owner's questions about invoices. Called when the assistant opens and before each question.
+    public func keepAssistantChatPrivate() {
+        let person = data.currentMember?.id.uuidString ?? (data.session == nil ? "nobody" : "owner")
+        guard Self.assistantChatPerson != person else { return }
+        if Self.assistantChatPerson != nil, !assistantBusy { assistantLines = []; assistantHistory = []; assistantUpdates = [] }
+        Self.assistantChatPerson = person
     }
 
     /// Whether the assistant can answer on this device.
@@ -149,9 +165,7 @@ extension AppModel {
         do {
             let reply = try await t.send(messages: [.user("Reply with the single word: ready")], tools: [], context: "")
             return reply.text.isEmpty ? "Connected." : "Connected. Claude says: \(reply.text.prefix(60))"
-        } catch AssistantError.server(let m) { return m }
-        catch AssistantError.busy(let m) { return m }
-        catch AssistantError.limit(let m) { return m }
+        } catch let e as AssistantError { return Self.describe(e) }
         catch { return "Could not reach Claude. Check your connection." }
     }
 
@@ -168,62 +182,95 @@ extension AppModel {
     }
 
     public func refreshAssistantStatus() async {
-        guard !ownAssistantKeySet, let t = serverAssistantTransport() ?? builtInAssistantTransport(), let s = try? await t.status() else { return }
+        guard !ownAssistantKeySet else { return }
+        if Self.ownServerHasNoAssistant, let own = serverAssistantTransport(), let s = try? await own.status(), s.enabled {
+            Self.ownServerHasNoAssistant = false          // the owner has since added the key on their server
+        }
+        let chosen = (Self.ownServerHasNoAssistant ? nil : serverAssistantTransport()) ?? builtInAssistantTransport()
+        guard let t = chosen, let s = try? await t.status() else { return }
         assistantUsedPercent = s.usedPercent
     }
 
-    public func askAssistant(_ text: String) async {
+    /// `again` is true only when the same question is asked a second time by the app itself (see the end of this function).
+    public func askAssistant(_ text: String, again: Bool = false) async {
         let question = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !question.isEmpty, !assistantBusy, data.assistantConsented else { return }
+        keepAssistantChatPrivate()
         guard let transport = assistantTransport() else {
             assistantLines.append(AssistantLine(kind: .problem, text: "Add your Anthropic key in Settings, Assistant, to use the assistant."))
             return
         }
-        assistantLines.append(AssistantLine(kind: .user, text: question))
+        if !again { assistantLines.append(AssistantLine(kind: .user, text: question)) }
         assistantBusy = true
         defer { assistantBusy = false }
         let updates = assistantUpdates
         assistantUpdates = []
-        let prompt = updates.isEmpty ? question : updates.joined(separator: " ") + "\n\n" + question
+        // The time and the updates travel with the question. The system prompt (house rules, business name, who is
+        // speaking) and the tool list stay the same for the whole chat: Claude refuses a conversation whose start has changed.
+        let prompt = AssistantContext.question(question, updates: updates, now: Date())
+        let tools = AssistantTools.definitions(for: data)
+        let context = AssistantContext.make(data: data)
+        let before = data
         var history = assistantHistory            // a copy, so nothing else is locked while we wait for the answer
         do {
             let turn: AssistantTurn
             do {
-                turn = try await AssistantRunner.ask(prompt, history: &history, tools: AssistantTools.definitions(for: data),
-                                                     context: AssistantContext.make(data: data, now: Date()), transport: transport) { call in
+                turn = try await AssistantRunner.ask(prompt, history: &history, tools: tools, context: context, transport: transport) { call in
                     await self.runAssistantTool(call)
                 }
-            } catch let e as AssistantError where AssistantRunner.retryInFreshChat(e) && !history.isEmpty {
-                // Claude turned down the conversation so far. Ask once more in a fresh chat, with the last few lines as a reminder.
+            } catch let e as AssistantError where AssistantRunner.retryInFreshChat(e) && !history.isEmpty && data == before {
+                // Claude turned down the conversation so far, or it grew too long. Nothing was changed, so it is safe to ask
+                // once more in a fresh chat, with the last few lines as a reminder. The old conversation is let go either
+                // way: keeping it would only make the next question fail the same way.
                 history = []
+                assistantHistory = []
                 let recap = assistantLines.dropLast().suffix(6).filter { $0.kind == .user || $0.kind == .assistant }
-                    .map { ($0.kind == .user ? "Me: " : "You: ") + $0.text }.joined(separator: "\n")
-                let fresh = recap.isEmpty ? prompt : "Earlier in this chat:\n\(recap)\n\nNow: \(prompt)"
-                turn = try await AssistantRunner.ask(fresh, history: &history, tools: AssistantTools.definitions(for: data),
-                                                     context: AssistantContext.make(data: data, now: Date()), transport: transport) { call in
+                    .map { ($0.kind == .user ? "Me: " : "You: ") + String($0.text.prefix(600)) }.joined(separator: "\n")
+                let fresh = AssistantContext.question(recap.isEmpty ? question : "Earlier in this chat:\n\(recap)\n\nNow: \(question)", updates: updates, now: Date())
+                turn = try await AssistantRunner.ask(fresh, history: &history, tools: tools, context: context, transport: transport) { call in
                     await self.runAssistantTool(call)
+                }
+                if e == .tooLong {
+                    assistantLines.append(AssistantLine(kind: .note, text: "This chat got long, so I started a fresh one and kept the last few messages in mind."))
                 }
             }
             assistantHistory = history
-            assistantLines.append(AssistantLine(kind: .assistant, text: turn.text, actions: turn.actions, pending: turn.pending))
+            var words = turn.text
+            if words.isEmpty, turn.problem != nil { words = "Here is what I got done before the answer was interrupted." }
+            assistantLines.append(AssistantLine(kind: .assistant, text: words.isEmpty ? "Done." : words, actions: turn.actions, pending: turn.pending))
+            if let problem = turn.problem {
+                assistantLines.append(AssistantLine(kind: .problem, text: "What is listed above was done, but the answer was interrupted. \(Self.describe(problem)) Do not ask for the same change again; ask what is left instead."))
+            }
+        } catch AssistantError.notSwitchedOn where !again && !Self.ownServerHasNoAssistant && Self.builtInAssistant != nil {
+            // The owner's own server is there for client pages and email but has no Anthropic key. That used to leave the
+            // assistant dead even though the one built into the app works, so ask the same question there instead.
+            Self.ownServerHasNoAssistant = true
+            assistantUpdates = updates + assistantUpdates
+            assistantBusy = false
+            await askAssistant(question, again: true)
+            return
         } catch let e as AssistantError {
-            if e != .tooLong { assistantUpdates = updates }           // the question was not answered, so keep the updates for next time
+            assistantUpdates = updates + assistantUpdates             // the question was not answered, so keep the updates for next time
             assistantLines.append(AssistantLine(kind: .problem, text: Self.describe(e)))
         } catch {
-            assistantUpdates = updates
-            assistantLines.append(AssistantLine(kind: .problem, text: "Could not reach your server. Check your connection and try again."))
+            assistantUpdates = updates + assistantUpdates
+            assistantLines.append(AssistantLine(kind: .problem, text: "Something went wrong while asking the assistant. Your question was not answered. Try again."))
         }
         await refreshAssistantStatus()
     }
 
     static func describe(_ e: AssistantError) -> String {
         switch e {
-        case .notSignedIn, .notAllowed: return "Your server did not accept the access token. Check it in Settings."
-        case .notSwitchedOn: return "The assistant is not switched on for your server yet."
-        case .limit(let m), .busy(let m), .server(let m): return m
+        case .notSignedIn, .notAllowed:
+            return "The assistant server did not accept this app's access token. If you use your own server, check the token in Settings. Otherwise update the app."
+        case .notSwitchedOn:
+            return "The assistant is not switched on for your server yet (it has no Anthropic key). Add the key on the server, or paste your own key in Settings, Assistant."
+        case .limit(let m), .busy(let m), .server(let m), .network(let m): return m
         case .unreadable: return "The assistant's answer could not be read. Try again."
-        case .tooLong: return "This chat is getting long. Start a new chat to keep going."
-        case .conversation: return "The assistant could not answer that. Tap the new-chat button and ask again."
+        case .tooLong: return "This chat is too long to continue. Tap the new-chat button at the top and ask again."
+        case .conversation(let why):
+            let detail = why.trimmingCharacters(in: .whitespacesAndNewlines)
+            return "The assistant could not continue this chat. Tap the new-chat button at the top and ask again." + (detail.isEmpty ? "" : " (Claude said: \(detail.prefix(160)))")
         }
     }
 
@@ -249,7 +296,9 @@ extension AppModel {
         let result = await planRoute(on: day)
         guard let plan = result.plan else { return .text(result.note) }
         if Calendar.current.isDateInToday(day) { plannedRoute = plan }
-        let lines = plan.planned.enumerated().map { "\($0.offset + 1). \($0.element.stop.name) (about \(Int($0.element.arrivalOffsetSeconds / 60)) min from the start)" }
+        // A long route is listed up to 60 stops, so one answer cannot fill the whole conversation.
+        var lines = plan.planned.prefix(60).enumerated().map { "\($0.offset + 1). \($0.element.stop.name) (about \(Int($0.element.arrivalOffsetSeconds / 60)) min from the start)" }
+        if plan.planned.count > 60 { lines.append("(\(plan.planned.count - 60) more stops are not listed here. The full order is on the Home map.)") }
         return .text(lines.joined(separator: "\n") + "\nTotal driving: about \(Int(plan.totalDriveSeconds / 60)) min. \(result.note) The order is saved on the Home map.")
     }
 
@@ -286,11 +335,28 @@ extension AppModel {
     }
 
     private func assistantAnswerRequest(_ input: JSONValue) async -> ToolOutcome {
-        guard let idText = input["request_id"]?.string, let id = UUID(uuidString: idText), let decision = input["decision"]?.string,
+        guard let idText = input["request_id"]?.string, let id = UUID(uuidString: idText.trimmingCharacters(in: .whitespaces)), let decision = input["decision"]?.string,
               ["accept", "decline", "read"].contains(decision) else { return .error("Give the request id from list_requests and a decision of accept, decline or read.") }
-        guard data.serviceRequests.contains(where: { $0.id == id && $0.status == .pending }) else { return .error("That request is not waiting any more.") }
-        let note = String((input["message"]?.string ?? "").prefix(200))
-        return .text(await decideRequest(id, accept: decision != "decline", message: note))
+        guard let request = data.serviceRequests.first(where: { $0.id == id && $0.status == .pending }) else { return .error("That request is not waiting any more.") }
+        if request.kind == .thanks {
+            // A kind message has nothing to accept or decline: it is marked read, and the client's page only shows that it was read.
+            let result = await decideRequest(id, accept: true, message: "")
+            return .text(result.hasPrefix("Accepted") ? "Marked the message as read." : result)
+        }
+        guard decision != "read" else { return .error("Only a kind message can be marked read. This one is a request: use accept or decline.") }
+        let accept = decision == "accept"
+        var note = String((input["message"]?.string ?? "").trimmingCharacters(in: .whitespacesAndNewlines).prefix(200))
+        if note.isEmpty {                                  // the same words the Requests screen uses
+            if !accept { note = "We can't take this one right now." }
+            else if request.kind == .urgent { note = "You are near the top of our list." }
+            else if request.kind == .skip { note = "We will skip your property this storm." }
+            else { note = "We will come as soon as we can." }
+        }
+        let place = data.sites.first { $0.id == request.siteID }?.address ?? "this client"
+        let action = PendingAction(kind: .answerRequest(id: id, accept: accept, message: note),
+                                   title: "\(accept ? "Accept" : "Decline") the request from \(place)?",
+                                   detail: "The client will see on their page: \"\(note)\"")
+        return .needsConfirmation(action, "Prepared the answer (\(accept ? "accept" : "decline")) for \(place). It has NOT been sent. The person must tap Send in the app to confirm. Tell them it is ready and waiting.")
     }
 
     // MARK: sending the invoice PDF, reminders and season links
@@ -365,6 +431,10 @@ extension AppModel {
             let result = await sendSeasonLinks()
             assistantLines.append(AssistantLine(kind: .note, text: result))
             assistantUpdates.append("[Update: the owner tapped Send on the season links. Result: \(result)]")
+        case .answerRequest(let id, let accept, let message):
+            let result = await decideRequest(id, accept: accept, message: message)
+            assistantLines.append(AssistantLine(kind: .note, text: result))
+            assistantUpdates.append("[Update: the person tapped Send on the answer to a client request. Result: \(result)]")
         }
     }
 
@@ -374,7 +444,7 @@ extension AppModel {
         case .sendInvoice(let number):
             assistantLines.append(AssistantLine(kind: .note, text: "Cancelled. Invoice \(number) was not sent."))
             assistantUpdates.append("[Update: the owner cancelled sending invoice \(number). It was not sent.]")
-        case .sendReminders, .sendSeasonLinks:
+        case .sendReminders, .sendSeasonLinks, .answerRequest:
             assistantLines.append(AssistantLine(kind: .note, text: "Cancelled. Nothing was sent."))
             assistantUpdates.append("[Update: the owner cancelled. Nothing was sent.]")
         }
@@ -399,8 +469,9 @@ extension AppModel {
     public func stopSharing() {
         #if canImport(CoreLocation)
         guard truckSharer.isSharing else { return }
+        // Take the truck off the map under the name it was shared with, even if the name box was edited since.
+        let label = truckSharer.sharedLabel
         truckSharer.stop()
-        let label = sharingLabel.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "Truck" : String(sharingLabel.trimmingCharacters(in: .whitespacesAndNewlines).prefix(24))
         if let client = portalClient() { Task { try? await client.publishTrucks([], remove: [label]) } }
         #endif
     }

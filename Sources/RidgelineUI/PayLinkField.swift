@@ -11,6 +11,7 @@ struct PayLinkField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             TextField(placeholder, text: $link)
+                .textFieldStyle(.roundedBorder)     // the same box as the other welcome fields, so it reads as somewhere to type
                 .autocorrectionDisabled()
 #if os(iOS)
                 .textInputAutocapitalization(.never)

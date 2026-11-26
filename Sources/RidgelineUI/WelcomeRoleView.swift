@@ -100,8 +100,10 @@ struct OwnerAccessView: View {
                             .disabled(email.isEmpty || password.isEmpty)
                             .opacity(email.isEmpty || password.isEmpty ? 0.4 : 1)
                     }
-                    CardGroup(footer: "Passwords cannot be reset by email because your records stay on this device. You can erase this device and start again, then restore a backup file from Settings.") {
-                        SecondaryActionButton(title: "Forgot your password?") { confirmErase = true }
+                } else if model.data.ownerIsProtected {
+                    // Protected by a linked Apple account only. Making a new login here would be a way round it.
+                    CardGroup(title: "Sign in", footer: "This business is protected with Sign in with Apple. Use the Apple button with the same Apple account as before.") {
+                        Label("Use Sign in with Apple below", systemImage: "person.badge.key").font(.title3.weight(.medium))
                     }
                 } else {
                     CardGroup(title: "Create a login", footer: "Your email is your username. Next time, sign in with it and your password.") {
@@ -117,29 +119,37 @@ struct OwnerAccessView: View {
                         .opacity(email.isEmpty || password.isEmpty || confirm.isEmpty ? 0.4 : 1)
                     }
                 }
-                #if canImport(AuthenticationServices)
-                CardGroup(title: "Or use Apple") {
-                    SignInWithAppleButton(.continue, onRequest: { $0.requestedScopes = [.fullName, .email] }, onCompletion: handleApple)
-                        .frame(height: 52)
-                }
-                #endif
-                if !model.data.ownerIsProtected {
-                    CardGroup(footer: "You can add a login later in Profile. Until you do, anyone who opens the app on this device can choose \"I own the business\".") {
-                        SecondaryActionButton(title: "Continue without an account") { submit { model.startOwnerWithoutAccount() } }
-                    }
-                }
+                // Right under the sign-in button, so a wrong password is not answered off the bottom of the screen.
                 if let problem {
                     Label(problem, systemImage: "exclamationmark.triangle.fill").font(.callout).foregroundStyle(.red)
                         .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
                 }
+                #if canImport(AuthenticationServices)
+                // With an email login and no linked Apple account, Apple cannot open this business, so the button is left out.
+                if model.data.account != nil || !hasLogin {
+                    CardGroup(title: !hasLogin && model.data.ownerIsProtected ? "Sign in with Apple" : "Or use Apple") {
+                        SignInWithAppleButton(.continue, onRequest: { $0.requestedScopes = [.fullName, .email] }, onCompletion: handleApple)
+                            .frame(height: 52)
+                    }
+                }
+                #endif
+                if model.data.ownerIsProtected {
+                    CardGroup(footer: "Your records stay on this device only, so nobody can reset the password by email. After 5 wrong tries, wait 5 minutes and try again. If it is really lost, the only way back in is to erase this app's records on this device and start again. A backup file you saved earlier can bring your records back: after erasing, create a new login first, then restore the backup in Settings. Without a backup file, erasing loses your records.") {
+                        SecondaryActionButton(title: hasLogin ? "Forgot your password?" : "Cannot sign in?") { confirmErase = true }
+                    }
+                } else {
+                    CardGroup(footer: "You can add a login later in Profile. Until you do, anyone who opens the app on this device can choose \"I own the business\".") {
+                        SecondaryActionButton(title: "Continue without an account") { submit { model.startOwnerWithoutAccount() } }
+                    }
+                }
             }
         }
         .background(Look.sheet.ignoresSafeArea())
-        .alert("Erase this device?", isPresented: $confirmErase) {
+        .alert("Erase this app's records?", isPresented: $confirmErase) {
             Button("Erase everything", role: .destructive) { model.deleteAccountAndData(); dismiss() }
             Button("Cancel", role: .cancel) {}
         } message: {
-            Text("This removes your clients, jobs, invoices, team and photos from this device. It cannot be undone.")
+            Text("This removes your clients, jobs, invoices, team and photos from this device. It cannot be undone. Only a backup file you saved earlier can bring them back.")
         }
     }
 
@@ -198,7 +208,7 @@ struct EmployeeSignInView: View {
             }
             .padding(.horizontal, 18).padding(.top, 18).padding(.bottom, 6)
             AppPage(clearTabBar: false) {
-                CardGroup(footer: "Your boss made these for you in Menu, Team. What you can see and do in the app was chosen by your boss. Forgot your password? Ask your boss to set a new one.") {
+                CardGroup(footer: "Your boss made these for you in Menu, Business, Team. What you can see and do in the app was chosen by your boss. Forgot your password? Ask your boss to set a new one.") {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Username").font(.title3.weight(.medium))
                         TextField("Username", text: $username)
@@ -224,7 +234,7 @@ struct EmployeeSignInView: View {
                     Label(problem, systemImage: "exclamationmark.triangle.fill").font(.callout).foregroundStyle(.red)
                         .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
                 }
-                Text("For now, employee sign-in works on the device where your boss set up the business. Signing in from your own phone arrives with team sync.")
+                Text("Sign in on the phone, iPad or Mac where your boss set up the business. Your username does not work on other devices.")
                     .font(.footnote).foregroundStyle(.secondary).frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
             }
         }

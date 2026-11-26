@@ -29,6 +29,9 @@ struct ReviewSettingsCard: View {
                         .overlay(Capsule().stroke(Look.fieldStroke, lineWidth: 1))
                     if let problem = ReviewLink.problem(for: draft) {
                         Label(problem, systemImage: "exclamationmark.triangle").font(.footnote).foregroundStyle(.orange)
+                        if model.data.profile.reviewLink != nil {
+                            Text("The link saved before is still in use until this one is fixed or the field is cleared.").font(.footnote).foregroundStyle(.secondary)
+                        }
                     } else if ReviewLink.clean(draft) != nil {
                         Label("Saved. Review requests will include this link.", systemImage: "checkmark.circle").font(.footnote).foregroundStyle(.secondary)
                     } else {
@@ -127,7 +130,7 @@ struct ReviewRequestSheet: View {
             .padding(.horizontal, 18).padding(.top, 18).padding(.bottom, 6)
             AppPage(clearTabBar: false) {
                 if let draft {
-                    CardGroup(title: "Message", footer: "It goes from your own phone or email. No server needed.") {
+                    CardGroup(title: "Message", footer: "It goes from your own phone or email, with no setup needed.") {
                         Text(draft.text).font(.callout).textSelection(.enabled)
                     }
                     #if os(iOS)

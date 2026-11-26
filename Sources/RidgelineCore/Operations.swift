@@ -106,3 +106,41 @@ extension AppData {
         quotes.removeAll { $0.customerID == id }
     }
 }
+
+// MARK: sample clients
+
+extension AppData {
+    /// The made-up clients that "Load sample clients" adds, by name and address. They all share the phone number below.
+    public static let sampleClients: [(name: String, address: String)] = [
+        ("Lakeside Clinic", "100 Lake St"), ("Oak Ridge HOA", "22 Oak Ridge Rd"), ("Pat Miller", "14 Elm Ave"),
+        ("Sam's Auto", "410 Industrial Pkwy"), ("Dana Reyes", "7 Birch Ct"), ("Maple Plaza", "900 Maple Blvd"),
+    ]
+    public static let samplePhone = "555-0100"
+    /// The yard location and business name the sample set fills in when there is none yet.
+    public static let sampleYard = Coordinate(latitude: 44.9778, longitude: -93.2650)
+    public static let sampleCompanyName = "Demo Plowing"
+
+    /// Sample clients still in the list: the same name, phone number and address the sample set uses.
+    public var sampleCustomerIDs: [UUID] {
+        customers.filter { c in
+            c.phone == Self.samplePhone && Self.sampleClients.contains { sample in
+                sample.name == c.name && sites.contains { $0.customerID == c.id && $0.address == sample.address }
+            }
+        }
+        .map(\.id)
+    }
+
+    /// Takes the sample clients out again (with their sites, contracts, jobs and page links), so they never mix with a real
+    /// business. A sample client that was invoiced stays, because invoices are records, and is counted in `kept`.
+    /// The sample yard location and business name go too, unless they were changed.
+    @discardableResult
+    public mutating func removeSampleClients() -> (removed: Int, kept: Int) {
+        var removed = 0, kept = 0
+        for id in sampleCustomerIDs {
+            do { try deleteCustomer(id); removed += 1 } catch { kept += 1 }
+        }
+        if depot == Self.sampleYard { depot = nil }
+        if companyName == Self.sampleCompanyName { companyName = "" }
+        return (removed, kept)
+    }
+}

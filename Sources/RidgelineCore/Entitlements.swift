@@ -1,20 +1,29 @@
 import Foundation
 
+/// What a plan unlocks. This list must match what the app really has and what the subscription screen says, because
+/// App Review compares the two. Subcontractor management, QuickBooks sync and marketing were listed here as Max
+/// features but were never built, so they are gone; put a feature back only together with the code for it.
+///
+/// What Max adds over Pro today, and where it is enforced:
+/// - custom permissions for each person: `rolesAndReports` (the Team screen checks it)
+/// - more employees: `TeamRules.employeeLimit(for:)` (5 on Pro, 25 on Max)
+/// `stormAutomation` is still marked Max but there is no automatic storm dispatch yet, so no screen may advertise it.
+/// Route planning (`routeOptimizer`) is in every plan: no screen has ever locked it and Pro's list offers it.
 public enum Feature: String, CaseIterable, Codable, Sendable {
     // Pro
     case crm, scheduling, quotesAndInvoices, offlineCrewApp, timeClock, proofOfService
-    case snowBilling, basicRouteOrdering, customerNotices
+    case snowBilling, basicRouteOrdering, customerNotices, routeOptimizer
     // Max
-    case routeOptimizer, stormAutomation, subManagement, quickBooksSync, marketing, rolesAndReports
+    case stormAutomation, rolesAndReports
 }
 
 public enum Entitlements {
     public static func requiredTier(for feature: Feature) -> PlanTier {
         switch feature {
         case .crm, .scheduling, .quotesAndInvoices, .offlineCrewApp, .timeClock, .proofOfService,
-             .snowBilling, .basicRouteOrdering, .customerNotices:
+             .snowBilling, .basicRouteOrdering, .customerNotices, .routeOptimizer:
             return .pro
-        case .routeOptimizer, .stormAutomation, .subManagement, .quickBooksSync, .marketing, .rolesAndReports:
+        case .stormAutomation, .rolesAndReports:
             return .max
         }
     }
@@ -26,7 +35,7 @@ public enum SubscriptionState: Equatable, Sendable {
     case expired
 }
 
-/// A subscription is either a 14-day trial (all features unlocked, so owners see the storm and routing tools)
+/// A subscription is either a 14-day trial (all features unlocked, so owners can try custom permissions and a bigger team)
 /// or an active paid plan. After the trial ends with no plan, access is read-only (`expired`).
 public struct Subscription: Equatable, Codable, Sendable {
     public var trialStart: Date?

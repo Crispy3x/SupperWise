@@ -74,6 +74,8 @@ public struct IncomingRequest: Equatable, Codable, Sendable {
     public let note: String?
     public let createdAt: String
     public let stormId: String?
+    /// "pending", "accepted" or "declined" as the server has it. Nil from servers that do not say.
+    public var status: String? = nil
 }
 
 extension AppData {
@@ -102,6 +104,8 @@ extension AppData {
         for r in incoming {
             guard let siteID = siteID(forToken: r.token) else { continue }
             guard !serviceRequests.contains(where: { $0.remoteID == r.id }) else { continue }
+            // Already answered (on another device, or before the app was set up again): it must not come back as waiting.
+            guard r.status == nil || r.status == RequestStatus.pending.rawValue else { continue }
             guard let kind = RequestKind(rawValue: r.kind) else { continue }
             let pending = serviceRequests.filter { $0.siteID == siteID && $0.status == .pending && $0.kind != .thanks }.count
             guard kind == .thanks || pending < Self.maxPendingRequestsPerSite else { continue }

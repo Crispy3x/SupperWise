@@ -167,6 +167,57 @@ final class AssistantTests: XCTestCase {
         guard case .error = run("update_job_status", ["job_id": .string(UUID().uuidString), "status": .string("done")], &d) else { return XCTFail() }
     }
 
+    func testUpdateStatusChangesOnlyOneVisitOfAJobThatRepeats() throws {
+        var d = world()
+        let j = try d.addJob(title: "Mow", start: now, now: now)
+        try d.setJobRepeat(RepeatRule(frequency: .weekly), id: j.id, calendar: utc)
+        let id = JSONValue.string(j.id.uuidString)
+        let nextWeek = now.addingTimeInterval(7 * 86_400), inTwoWeeks = now.addingTimeInterval(14 * 86_400)
+        // Without a date nothing is guessed and nothing changes.
+        XCTAssertEqual(run("update_job_status", ["job_id": id, "status": .string("done")], &d), .error("This job repeats. Give the visit's date."))
+        XCTAssertNil(d.jobs[0].occurrenceStatuses); XCTAssertEqual(d.jobs[0].status, .scheduled)
+        // With the visit's date, only that visit changes. The job as a whole and every other visit stay as they were.
+        guard case .text(let done) = run("update_job_status", ["job_id": id, "status": .string("done"), "date": .string("2027-01-15")], &d) else { return XCTFail() }
+        XCTAssertTrue(done.contains("visit"), done)
+        XCTAssertEqual(d.jobs[0].status, .scheduled)
+        XCTAssertEqual(d.jobs[0].occurrenceStatus(on: now, calendar: utc), .done)
+        XCTAssertEqual(d.jobs[0].occurrenceStatus(on: nextWeek, calendar: utc), .scheduled)
+        // Cancelling skips that one visit, not the whole job.
+        guard case .text(let skipped) = run("update_job_status", ["job_id": id, "status": .string("cancelled"), "date": .string("2027-01-22")], &d) else { return XCTFail() }
+        XCTAssertTrue(skipped.contains("Skipped"), skipped)
+        XCTAssertEqual(d.jobs[0].status, .scheduled)
+        XCTAssertEqual(d.jobs[0].occurrenceStatus(on: nextWeek, calendar: utc), .cancelled)
+        XCTAssertEqual(d.jobs[0].occurrenceStatus(on: inTwoWeeks, calendar: utc), .scheduled)
+        XCTAssertEqual(d.jobs[0].occurrenceStatus(on: now, calendar: utc), .done)
+        // A day with no visit, or something that is not a date, gets the same plain error.
+        for bad in ["2027-01-18", "soon", " "] {
+            XCTAssertEqual(run("update_job_status", ["job_id": id, "status": .string("done"), "date": .string(bad)], &d), .error("This job repeats. Give the visit's date."), bad)
+        }
+        XCTAssertEqual(d.jobs[0].occurrenceStatuses?.count, 2)
+        // A job that happens once needs no date, and a date given anyway is ignored.
+        let once = try d.addJob(title: "Salt", start: now, now: now)
+        guard case .text = run("update_job_status", ["job_id": .string(once.id.uuidString), "status": .string("done"), "date": .string("2030-01-01")], &d) else { return XCTFail() }
+        XCTAssertEqual(d.jobs[1].status, .done)
+        // The schedule tells the assistant which jobs repeat, so it knows to give the day.
+        guard case .text(let list) = run("get_schedule", ["date": .string("2027-01-29")], &d) else { return XCTFail() }
+        XCTAssertTrue(list.contains("(repeats)"), list)
+    }
+
+    func testEveryToolHasASchemaTheAPIAccepts() {
+        let tools = AssistantTools.definitions(for: world())
+        XCTAssertEqual(Set(tools.map(\.name)).count, tools.count)                                    // no name twice
+        for tool in tools {
+            XCTAssertNotNil(tool.name.range(of: "^[a-zA-Z0-9_-]{1,64}$", options: .regularExpression), tool.name)
+            XCTAssertFalse(tool.description.isEmpty, tool.name)
+            XCTAssertEqual(tool.inputSchema["type"]?.string, "object", tool.name)
+            guard case .object(let properties)? = tool.inputSchema["properties"] else { XCTFail(tool.name); continue }
+            for (key, value) in properties {
+                XCTAssertTrue(["string", "integer", "number", "boolean"].contains(value["type"]?.string ?? ""), "\(tool.name).\(key)")
+            }
+            for needed in tool.inputSchema["required"]?.array ?? [] { XCTAssertNotNil(properties[needed.string ?? ""], "\(tool.name) requires an unknown field") }
+        }
+    }
+
     func testAddClientNeverAssumesConsentAndChecksTheEmail() {
         var d = world()
         guard case .error = run("add_client", ["name": .string("Pat Miller")], &d) else { return XCTFail() }     // already a client
@@ -268,6 +319,141 @@ final class AssistantTests: XCTestCase {
         var history: [AssistantMessage] = []
         let turn = try await AssistantRunner.ask("x", history: &history, tools: [], context: "", transport: transport) { _ in .hostTool }
         XCTAssertTrue(turn.refused); XCTAssertFalse(turn.text.isEmpty)
+        XCTAssertTrue(history.isEmpty)                    // an empty refused answer is not kept: it would break the next question
+    }
+
+    // MARK: things that used to make the assistant go quiet
+
+    /// True when the messages are something the API accepts: the two sides take turns, it ends on the person's side,
+    /// nothing is empty, and every tool call is answered at the start of the very next message.
+    private func assertValid(_ messages: [AssistantMessage], file: StaticString = #filePath, line: UInt = #line) {
+        XCTAssertEqual(messages.first?.role, "user", file: file, line: line)
+        XCTAssertEqual(messages.last?.role, "user", file: file, line: line)
+        for (i, m) in messages.enumerated() {
+            XCTAssertFalse(m.content.isEmpty, "message \(i) is empty", file: file, line: line)
+            if i > 0 { XCTAssertNotEqual(m.role, messages[i - 1].role, "two \(m.role) messages in a row at \(i)", file: file, line: line) }
+            for block in m.content where block["type"]?.string == "text" {
+                XCTAssertFalse((block["text"]?.string ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, "empty text in message \(i)", file: file, line: line)
+            }
+            let asked = m.content.compactMap { $0["type"]?.string == "tool_use" ? $0["id"]?.string : nil }
+            guard m.role == "assistant", !asked.isEmpty else { continue }
+            guard i + 1 < messages.count else { XCTFail("tool call with no result", file: file, line: line); continue }
+            let answers = messages[i + 1].content.prefix(asked.count).compactMap { $0["type"]?.string == "tool_result" ? $0["tool_use_id"]?.string : nil }
+            XCTAssertEqual(Set(answers), Set(asked), "tool results must come first in the next message", file: file, line: line)
+            for result in messages[i + 1].content where result["type"]?.string == "tool_result" {
+                XCTAssertFalse((result["content"]?.string ?? "").isEmpty, "empty tool result", file: file, line: line)
+            }
+        }
+    }
+
+    func testAnEmptyAnswerIsNeverKept() async throws {
+        let transport = ScriptedTransport([.success(AssistantReply(content: [], stopReason: "end_turn")),
+                                           .success(AssistantReply(content: [thinking], stopReason: "end_turn")),
+                                           .success(AssistantReply(content: [text("Here you go.")], stopReason: "end_turn"))])
+        var history: [AssistantMessage] = []
+        let first = try await AssistantRunner.ask("x", history: &history, tools: [], context: "", transport: transport) { _ in .hostTool }
+        XCTAssertTrue(first.stoppedEarly); XCTAssertFalse(first.text.isEmpty); XCTAssertTrue(history.isEmpty)
+        let second = try await AssistantRunner.ask("x", history: &history, tools: [], context: "", transport: transport) { _ in .hostTool }
+        XCTAssertTrue(second.stoppedEarly); XCTAssertTrue(history.isEmpty)        // thinking alone is not an answer either
+        let third = try await AssistantRunner.ask("y", history: &history, tools: [], context: "", transport: transport) { _ in .hostTool }
+        XCTAssertEqual(third.text, "Here you go.")
+        assertValid(transport.sent[2])
+        XCTAssertEqual(history.map(\.role), ["user", "assistant"])
+    }
+
+    func testEmptyTextBlocksAreLeftOutButThinkingIsKeptExactly() async throws {
+        let transport = ScriptedTransport([
+            .success(AssistantReply(content: [thinking, text(""), toolUse("a", "get_schedule"), text("  ")], stopReason: "tool_use")),
+            .success(AssistantReply(content: [thinking, text("Nothing today.")], stopReason: "end_turn")),
+        ])
+        var history: [AssistantMessage] = []
+        _ = try await AssistantRunner.ask("x", history: &history, tools: [], context: "", transport: transport) { _ in .text("Nothing is scheduled for that day.") }
+        XCTAssertEqual(history[1].content, [thinking, toolUse("a", "get_schedule")])
+        assertValid(transport.sent[1])
+        // Text that comes before a thinking block is part of what Claude signed, so it is never touched.
+        XCTAssertEqual(AssistantRunner.cleaned([text(""), thinking, text("Hi")]), [text(""), thinking, text("Hi")])
+    }
+
+    func testACutOffAnswerIsDroppedWithAClearMessage() async throws {
+        let transport = ScriptedTransport([.success(AssistantReply(content: [thinking], stopReason: "max_tokens"))])
+        var history = [AssistantMessage.user("earlier"), AssistantMessage(role: "assistant", content: [text("ok")])]
+        let turn = try await AssistantRunner.ask("x", history: &history, tools: [], context: "", transport: transport) { _ in .hostTool }
+        XCTAssertTrue(turn.stoppedEarly); XCTAssertTrue(turn.text.contains("smaller steps"))
+        XCTAssertEqual(history.count, 2)
+    }
+
+    func testAFailureAfterAChangeKeepsTheChangeAndTheNextQuestionStillWorks() async throws {
+        var d = world()
+        let transport = ScriptedTransport([
+            .success(AssistantReply(content: [thinking, toolUse("tu_1", "create_job", ["title": .string("Plow"), "client_name": .string("Pat Miller"), "start": .string("2027-01-16 07:00")])], stopReason: "tool_use")),
+            .failure(AssistantError.busy("Claude is busy right now. Try again in a minute.")),
+            .success(AssistantReply(content: [text("Yes, the plow is booked.")], stopReason: "end_turn")),
+        ])
+        var history: [AssistantMessage] = []
+        let turn = try await AssistantRunner.ask("Book a plow for Pat Miller", history: &history, tools: [], context: "", transport: transport) { call in
+            AssistantTools.execute(call, data: &d, now: now, calendar: utc)
+        }
+        // The job exists, so the turn is reported (with what went wrong) instead of thrown away and asked again.
+        XCTAssertEqual(d.jobs.count, 1)
+        XCTAssertEqual(turn.problem, .busy("Claude is busy right now. Try again in a minute."))
+        XCTAssertEqual(turn.actions.count, 1)
+        XCTAssertEqual(history.map(\.role), ["user", "assistant", "user"])
+        // The next question joins the unanswered tool results, after them, so the two sides still take turns.
+        let next = try await AssistantRunner.ask("Did that work?", history: &history, tools: [], context: "", transport: transport) { _ in .hostTool }
+        XCTAssertEqual(next.text, "Yes, the plow is booked.")
+        let sent = transport.sent[2]
+        assertValid(sent)
+        XCTAssertEqual(sent.map(\.role), ["user", "assistant", "user"])
+        XCTAssertEqual(sent[2].content.first?["type"]?.string, "tool_result")
+        XCTAssertEqual(sent[2].content.last?["text"]?.string, "Did that work?")
+        XCTAssertEqual(d.jobs.count, 1)                                                                   // nothing was done twice
+        XCTAssertEqual(history.map(\.role), ["user", "assistant", "user", "assistant"])
+    }
+
+    func testAConversationClaudeNoLongerAcceptsIsSentOnceMoreWithoutThinking() async throws {
+        let mismatch = "messages.1.content.0: Invalid `signature` in `thinking` block. The block is bound to a different conversation."
+        let transport = ScriptedTransport([.failure(AssistantError.conversation(mismatch)),
+                                           .success(AssistantReply(content: [thinking, text("Two jobs today.")], stopReason: "end_turn"))])
+        var history = [AssistantMessage.user("earlier"), AssistantMessage(role: "assistant", content: [thinking, text("ok")]),
+                       AssistantMessage.user("and"), AssistantMessage(role: "assistant", content: [thinking])]
+        let turn = try await AssistantRunner.ask("What is on today?", history: &history, tools: [], context: "", transport: transport) { _ in .hostTool }
+        XCTAssertEqual(turn.text, "Two jobs today.")
+        XCTAssertEqual(transport.sent.count, 2)
+        XCTAssertTrue(transport.sent[0].contains { $0.content.contains(thinking) })
+        XCTAssertFalse(transport.sent[1].contains { $0.content.contains(thinking) })                       // the old thinking is gone
+        XCTAssertEqual(transport.sent[1][1].content, [text("ok")])                                          // the words stay
+        assertValid(transport.sent[1])
+        XCTAssertEqual(history.last?.content, [thinking, text("Two jobs today.")])                          // new thinking is kept as usual
+        // Any other refusal of the conversation is passed up (the screen then starts a fresh chat).
+        let other = ScriptedTransport([.failure(AssistantError.conversation("messages: roles must alternate"))])
+        do { _ = try await AssistantRunner.ask("x", history: &history, tools: [], context: "", transport: other) { _ in .hostTool }; XCTFail() }
+        catch { XCTAssertEqual(error as? AssistantError, .conversation("messages: roles must alternate")) }
+        XCTAssertEqual(other.sent.count, 1)
+    }
+
+    func testToolResultsAreNeverEmptyAndLongOnesAreCut() async throws {
+        let transport = ScriptedTransport([
+            .success(AssistantReply(content: [toolUse("a", "get_schedule"), toolUse("b", "list_clients"), .object(["type": .string("tool_use"), "id": .string("c")])], stopReason: "tool_use")),
+            .success(AssistantReply(content: [text("ok")], stopReason: "end_turn")),
+        ])
+        var history: [AssistantMessage] = []
+        _ = try await AssistantRunner.ask("x", history: &history, tools: [], context: "", transport: transport) { call in
+            call.name == "get_schedule" ? .text("") : .text(String(repeating: "line\n", count: 5000))
+        }
+        let results = transport.sent[1].last!.content
+        assertValid(transport.sent[1])                                                                     // the nameless call got an answer too
+        XCTAssertEqual(results.count, 3)
+        for r in results {
+            let body = r["content"]?.string ?? ""
+            XCTAssertFalse(body.isEmpty)
+            XCTAssertLessThan(body.count, AssistantRunner.maxToolResultCharacters + 300)
+        }
+        XCTAssertTrue(results.contains { $0["tool_use_id"]?.string == "c" && $0["is_error"]?.bool == true })
+    }
+
+    func testAQuestionAlwaysFitsWhatTheServerAccepts() {
+        // The server refuses more than 80 messages (older ones) and the runner refuses to start at maxMessages.
+        XCTAssertLessThanOrEqual(AssistantRunner.maxMessages - 1 + 1 + 2 * AssistantRunner.maxSteps, 80)
     }
 
     func testALoopingAssistantIsStopped() async throws {
@@ -275,8 +461,24 @@ final class AssistantTests: XCTestCase {
         let transport = ScriptedTransport(Array(repeating: .success(again), count: 10))
         var history: [AssistantMessage] = []
         let turn = try await AssistantRunner.ask("x", history: &history, tools: [], context: "", transport: transport) { _ in .text("ok") }
+        var ran = 0
         XCTAssertTrue(turn.stoppedEarly)
         XCTAssertEqual(transport.sent.count, AssistantRunner.maxSteps)
+        XCTAssertTrue(turn.text.contains("ran out of steps"))                                             // said plainly, never silent
+        // The assistant is warned before its last step, and nothing is run after the limit.
+        let warned = transport.sent[AssistantRunner.maxSteps - 1].last!.content
+        XCTAssertEqual(warned.first?["type"]?.string, "tool_result")                                      // results first, then the note
+        XCTAssertTrue(warned.last?["text"]?.string?.contains("one step is left") ?? false)
+        let again2 = AssistantReply(content: [toolUse("a", "create_job")], stopReason: "tool_use")
+        let looping = ScriptedTransport(Array(repeating: .success(again2), count: 10))
+        var h2: [AssistantMessage] = []
+        _ = try await AssistantRunner.ask("x", history: &h2, tools: [], context: "", transport: looping) { _ in ran += 1; return .error("no") }
+        XCTAssertEqual(ran, AssistantRunner.maxSteps - 1)
+        XCTAssertEqual(h2.last?.content.first?["is_error"]?.bool, true)
+        // What is left behind is still a conversation the API accepts once the next question is added.
+        let after = ScriptedTransport([.success(AssistantReply(content: [text("ok")], stopReason: "end_turn"))])
+        _ = try await AssistantRunner.ask("continue", history: &h2, tools: [], context: "", transport: after) { _ in .hostTool }
+        assertValid(after.sent[0])
     }
 
     func testAFailedQuestionLeavesNoHalfFinishedTurn() async {
@@ -298,12 +500,32 @@ final class AssistantTests: XCTestCase {
 
     func testContextHasNoClientDetails() throws {
         var d = world()
-        let ctx = AssistantContext.make(data: d, now: now, calendar: utc)
-        XCTAssertTrue(ctx.contains("Ridge Plow")); XCTAssertTrue(ctx.contains("Friday, January 15, 2027")); XCTAssertTrue(ctx.contains("business owner"))
+        let ctx = AssistantContext.make(data: d)
+        XCTAssertTrue(ctx.contains("Ridge Plow")); XCTAssertTrue(ctx.contains("business owner"))
         for secret in ["Pat Miller", "pat@example.com", "612", "Elm"] { XCTAssertFalse(ctx.contains(secret)) }
         let m = try addMember(&d, "Dana")
         d.session = AppSession(role: .employee, memberID: m.id, startedAt: now)
-        XCTAssertTrue(AssistantContext.make(data: d, now: now, calendar: utc).contains("Crew member"))
+        XCTAssertTrue(AssistantContext.make(data: d).contains("Crew member"))
+    }
+
+    func testTheTimeTravelsWithTheQuestionSoTheSystemPromptNeverChanges() throws {
+        // Claude refuses a conversation whose system prompt changed after it answered, so nothing in it may depend on the clock.
+        let ctx = AssistantContext.make(data: world())
+        for clock in ["2027", "January", "Friday", "AM", "PM", "Now:"] { XCTAssertFalse(ctx.contains(clock), clock) }
+        let q = AssistantContext.question("What is on tomorrow?", updates: ["[Update: the owner tapped Send and invoice INV-7 was emailed.]"], now: now, calendar: utc)
+        XCTAssertEqual(q, "[Now: Friday, January 15, 2027, 8:00 AM (\(utc.timeZone.identifier))]\n[Update: the owner tapped Send and invoice INV-7 was emailed.]\nWhat is on tomorrow?")
+        XCTAssertTrue(AssistantPrompt.system.contains("square brackets"))                                  // and the assistant is told what that line is
+        // The same conversation is always sent as the same bytes, for the server and for a direct key.
+        let messages = [AssistantMessage.user(q), AssistantMessage(role: "assistant", content: [thinking, toolUse("a", "create_job", ["title": .string("Plow"), "price": .number(45.5), "duration_minutes": .number(60)])])]
+        let tools = AssistantTools.definitions(for: world())
+        let server = ServerAssistantTransport(baseURL: URL(string: "https://example.com")!, token: "t", client: ScriptedHTTP())
+        XCTAssertEqual(try server.body(messages: messages, tools: tools, context: ctx), try server.body(messages: messages, tools: tools, context: ctx))
+        let direct = DirectAssistantTransport(apiKey: "sk-ant-test-0123456789abc", client: ScriptedHTTP())
+        let one = try direct.body(messages: messages, tools: tools, context: ctx), two = try direct.body(messages: messages, tools: tools, context: ctx)
+        XCTAssertEqual(one, two)
+        let sent = try JSONDecoder().decode(JSONValue.self, from: one)
+        XCTAssertEqual(sent["system"]?.string, AssistantPrompt.withContext(ctx))
+        XCTAssertEqual(sent["messages"]?.array?.last?["content"]?.array?.first, thinking)
     }
 
     // MARK: the server
@@ -334,10 +556,35 @@ final class AssistantTests: XCTestCase {
         XCTAssertEqual(a, .limit("The assistant has used this month's allowance. It starts again on the 1st."))
         let b = await fail(429, #"{"error":"The assistant is busy. Try again in a minute."}"#)
         XCTAssertEqual(b, .busy("The assistant is busy. Try again in a minute."))
-        let c1 = await fail(503, "{}"); XCTAssertEqual(c1, .notSwitchedOn)
+        let c1 = await fail(503, #"{"error":"The assistant is not switched on for this server."}"#); XCTAssertEqual(c1, .notSwitchedOn)
+        // A 503 that is not ours (the host is waking the server up) is "try again", never "not switched on".
+        let c0 = await fail(503, "<html>Service Unavailable</html>")
+        guard case .busy(let waking)? = c0 else { return XCTFail("\(String(describing: c0))") }
+        XCTAssertTrue(waking.contains("minute"))
+        let c5 = await fail(502, "<html>Bad Gateway</html>")
+        guard case .busy? = c5 else { return XCTFail("\(String(describing: c5))") }
+        let c6 = await fail(413, #"{"error":"Request too large"}"#); XCTAssertEqual(c6, .tooLong)
+        let c7 = await fail(400, #"{"error":"messages must be a list of 1 to 120","tooLong":true}"#); XCTAssertEqual(c7, .tooLong)
+        let c8 = await fail(400, #"{"error":"message content must be text or a list of blocks","conversation":true}"#)
+        XCTAssertEqual(c8, .conversation("message content must be text or a list of blocks"))
+        let c9 = await fail(404, #"{"error":"Not found"}"#)
+        guard case .server(let missing)? = c9 else { return XCTFail("\(String(describing: c9))") }
+        XCTAssertTrue(missing.contains("no assistant"))
         let c2 = await fail(401, "{}"); XCTAssertEqual(c2, .notAllowed)
         let c3 = await fail(502, #"{"error":"The assistant could not answer right now."}"#); XCTAssertEqual(c3, .server("The assistant could not answer right now."))
         let c4 = await fail(200, "not json"); XCTAssertEqual(c4, .unreadable)
+    }
+
+    func testAFailedConnectionSaysWhatHappened() async {
+        func fail(_ code: URLError.Code) async -> String {
+            do { _ = try await DirectAssistantTransport(apiKey: "sk-ant-test-0123456789abc", client: Offline(code: code)).send(messages: [.user("x")], tools: [], context: ""); return "" }
+            catch { if case AssistantError.network(let m) = error { return m }; return "wrong error: \(error)" }
+        }
+        let offline = await fail(.notConnectedToInternet), slow = await fail(.timedOut)
+        XCTAssertTrue(offline.contains("offline"), offline)
+        XCTAssertTrue(slow.contains("too long"), slow)
+        do { _ = try await ServerAssistantTransport(baseURL: URL(string: "https://example.com")!, token: "t", client: Offline(code: .cannotFindHost)).send(messages: [.user("x")], tools: [], context: ""); XCTFail() }
+        catch { guard case AssistantError.network(let m) = error else { return XCTFail("\(error)") }; XCTAssertTrue(m.contains("assistant server"), m) }
     }
 
     func testStatusReportsAPercentNotDollars() async throws {
@@ -416,6 +663,12 @@ final class AssistantTests: XCTestCase {
         XCTAssertFalse(d.assistantConsented)
         XCTAssertFalse(d.erasedCopy().assistantConsented)
     }
+}
+
+/// A connection that fails before any answer arrives.
+private struct Offline: HTTPClient, @unchecked Sendable {
+    let code: URLError.Code
+    func send(_ request: URLRequest) async throws -> (data: Data, status: Int) { throw URLError(code) }
 }
 
 /// Lets a test reuse one scripted answer for a fresh transport.

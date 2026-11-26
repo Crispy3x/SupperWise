@@ -67,7 +67,8 @@ public enum LocalReminderPlanner {
 
     /// Open jobs (not tasks) this person should be reminded about: everything for the owner, only their own for an employee.
     static func remindableJobs(_ data: AppData) -> [Job] {
-        let open = data.jobs.filter { !$0.isTask && $0.status.isOpen }
+        // A repeating job keeps each visit's status by day, so it counts unless the whole job was cancelled.
+        let open = data.jobs.filter { !$0.isTask && ($0.repeats ? $0.status != .cancelled : $0.status.isOpen) }
         if data.isOwnerSession { return open }
         guard let me = data.currentMember, me.status != .disabled else { return [] }
         return open.filter { $0.assigneeIDs.contains(me.id) }
@@ -84,7 +85,9 @@ public enum LocalReminderPlanner {
                   let eve = calendar.date(byAdding: .day, value: -1, to: day),
                   let fire = calendar.date(bySettingHour: eveningHour, minute: 0, second: 0, of: eve),
                   fire > now else { continue }
-            let onDay = jobs.filter { calendar.isDate($0.start, inSameDayAs: day) }.sorted { ($0.start, $0.title) < ($1.start, $1.title) }
+            // A repeating job counts on every day it has a visit that is still open, not only on its first day.
+            let onDay = jobs.compactMap { $0.occurrence(on: day, calendar: calendar) }.filter { $0.status.isOpen }
+                .sorted { ($0.start, $0.title) < ($1.start, $1.title) }
             guard let first = onDay.first else { continue }
             let count = onDay.count
             let jobsWord = count == 1 ? "job" : "\(count) jobs"

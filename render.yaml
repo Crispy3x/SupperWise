@@ -24,7 +24,7 @@ services:
       - key: AI_MODEL
         value: claude-haiku-5-5
       - key: AI_MAX_TOKENS
-        value: "4096"        # room for the assistant to think and use tools in one answer
+        value: "16000"       # room for the assistant to think and use tools in one answer
       - key: AI_APP_DEVICE_BUDGET_USD
         value: "1"           # each phone may use up to $1 of AI a month (several hundred questions)
       - key: AI_APP_MONTHLY_CAP_USD

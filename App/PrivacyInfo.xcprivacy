@@ -68,9 +68,10 @@
                 <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
             </array>
         </dict>
+        <!-- Invoice numbers and amounts: sent to the assistant when it looks them up, and shown on client pages. -->
         <dict>
             <key>NSPrivacyCollectedDataType</key>
-            <string>NSPrivacyCollectedDataTypePhotosorVideos</string>
+            <string>NSPrivacyCollectedDataTypeOtherFinancialInfo</string>
             <key>NSPrivacyCollectedDataTypeLinked</key>
             <false/>
             <key>NSPrivacyCollectedDataTypeTracking</key>
@@ -80,16 +81,40 @@
                 <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
             </array>
         </dict>
+        <!-- The random id the app makes for the built-in assistant server, used only to give each device its own allowance. -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypeDeviceID</string>
+            <key>NSPrivacyCollectedDataTypeLinked</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypeTracking</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+            </array>
+        </dict>
+        <!-- Not listed on purpose: photos (proof and receipt photos stay on the device), contacts (picked with the system
+             picker and kept on the device), expenses, and audio (speech is turned into text by the system). -->
     </array>
     <key>NSPrivacyAccessedAPITypes</key>
     <array>
         <dict>
-            <!-- @AppStorage stores the crew member name in UserDefaults. -->
+            <!-- @AppStorage stores the crew member name in UserDefaults (the app's own settings only). -->
             <key>NSPrivacyAccessedAPIType</key>
             <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
             <key>NSPrivacyAccessedAPITypeReasons</key>
             <array>
                 <string>CA92.1</string>
+            </array>
+        </dict>
+        <dict>
+            <!-- SavedCopies.swift reads and keeps the modification date of the app's own safety copies of its data file. -->
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>C617.1</string>
             </array>
         </dict>
     </array>

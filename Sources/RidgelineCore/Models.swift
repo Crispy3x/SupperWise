@@ -73,6 +73,22 @@ public enum ContactValidation {
         let digits = text.filter(\.isNumber)
         return digits.count >= 10 && digits.count <= 15
     }
+
+    /// For a field where the email is optional: nil when it is empty or could work, otherwise what to tell the person.
+    public static func emailProblem(_ text: String) -> String? {
+        let t = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        return t.isEmpty || isValidEmail(t) ? nil : "That email address does not look right. Fix it or leave it empty."
+    }
+
+    /// For a field where the phone is optional: nil when it is empty or looks like a number someone could call
+    /// (7 to 15 digits, with the usual punctuation or an extension), otherwise what to tell the person.
+    public static func phoneProblem(_ text: String) -> String? {
+        let t = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        if t.isEmpty { return nil }
+        let digits = t.filter(\.isNumber).count
+        let oddLetters = t.contains { $0.isLetter && !"extEXT".contains($0) }
+        return (7...15).contains(digits) && !oddLetters ? nil : "That phone number does not look right. Use 7 to 15 digits, or leave it empty."
+    }
 }
 
 /// A place a crew services (a driveway, a lot, a set of walks).

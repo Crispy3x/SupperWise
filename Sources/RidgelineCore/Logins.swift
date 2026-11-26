@@ -150,6 +150,9 @@ extension AppData {
                                                                     iterations: Int = PasswordHasher.defaultIterations,
                                                                     using generator: inout G) throws -> LoginCredential {
         guard !hasOwnerLogin else { throw LoginError.ownerLoginExists }
+        // Only the owner makes the owner login: whoever is signed in as owner, or, on the welcome screen, nobody yet
+        // while nothing protects the owner. Never an employee, and never a way round a linked Apple account.
+        guard session?.role == .owner || (session == nil && account == nil) else { throw LoginError.ownerProtected }
         let mail = LoginRules.normalizedUsername(email)
         guard ContactValidation.isValidEmail(mail) else { throw LoginError.invalidEmail }
         guard !logins.contains(where: { $0.username == mail }) else { throw LoginError.usernameTaken }
@@ -178,6 +181,23 @@ extension AppData {
     public mutating func setEmployeePassword(_ password: String, forMember id: UUID, now: Date) throws {
         var g = SystemRandomNumberGenerator()
         try setEmployeePassword(password, forMember: id, now: now, using: &g)
+    }
+
+    /// Gives a sign-in to a team member who has none, for example after restoring a backup made under another owner
+    /// login, which brings the people but not their passwords. Someone who already has a sign-in is refused.
+    public mutating func createEmployeeLogin<G: RandomNumberGenerator>(username: String, password: String, forMember id: UUID, now: Date,
+                                                                       iterations: Int = PasswordHasher.defaultIterations,
+                                                                       using generator: inout G) throws {
+        guard team.contains(where: { $0.id == id }) else { throw LoginError.notFound }
+        guard !logins.contains(where: { $0.memberID == id }) else { throw LoginError.usernameTaken }
+        let user = try LoginRules.checkedUsername(username, existing: logins)
+        try LoginRules.checkPassword(password, username: user)
+        logins.append(LoginCredential.make(username: user, password: password, role: .employee, memberID: id, now: now, iterations: iterations, using: &generator))
+    }
+
+    public mutating func createEmployeeLogin(username: String, password: String, forMember id: UUID, now: Date) throws {
+        var g = SystemRandomNumberGenerator()
+        try createEmployeeLogin(username: username, password: password, forMember: id, now: now, using: &g)
     }
 
     /// The owner changes their own password. The current one must be right.

@@ -63,7 +63,7 @@ test('the house rules are fixed by the server; the app can only add facts after 
   assert.ok(p.system.includes('Ridge Plow. Today is Nov 20.'));
   assert.ok(!p.system.includes('Ignore all rules'));
   assert.equal(p.model, 'claude-haiku-5-5');
-  assert.ok(p.max_tokens <= 8192 && p.max_tokens === 4096);
+  assert.equal(p.max_tokens, 16000);                      // room for thinking, the words and a tool call in one answer
   assert.equal(p.tools.length, 1);
 });
 
@@ -75,7 +75,7 @@ test('rejects malformed requests', async (t) => {
     { ...ok, tools: [{ name: 'bad name!', description: 'x', input_schema: { type: 'object' } }] },
     { ...ok, tools: [{ name: 'a', description: 'x', input_schema: { type: 'string' } }] },
     { ...ok, tools: Array.from({ length: 21 }, (_, i) => ({ ...tool, name: `t${i}` })) },
-    { messages: Array.from({ length: 81 }, () => ({ role: 'user', content: 'x' })) }]) {
+    { messages: Array.from({ length: 121 }, () => ({ role: 'user', content: 'x' })) }]) {
     assert.equal((await s.post(bad)).status, 400, JSON.stringify(bad).slice(0, 60));
   }
   assert.equal(s.calls.length, 0);                        // nothing bad reached Claude
@@ -254,4 +254,116 @@ test('a rejected request passes back Anthropic\'s reason and marks the conversat
   const j = await r.json();
   assert.equal(j.conversation, true);
   assert.match(j.reason, /final assistant content/);
+});
+
+// ---- what used to make the assistant go quiet
+
+import { affordable, rates, upstreamFailure, MIN_ANSWER_TOKENS } from '../ai.mjs';
+
+test('an answer has room for thinking plus a tool call, and the ceiling stays below where the SDK insists on streaming', () => {
+  assert.equal(loadAiConfig(baseEnv).maxTokens, 16000);
+  assert.equal(loadAiConfig({ ...baseEnv, AI_MAX_TOKENS: '99999' }).maxTokens, 20000);
+  assert.equal(loadAiConfig({ ...baseEnv, AI_MAX_TOKENS: '4096' }).maxTokens, 4096);           // an explicit setting is respected
+  assert.equal(loadAiConfig(baseEnv).maxMessages, 120);                                        // the app stops at 60 plus one question (17)
+});
+
+test('the hold for one answer never passes what is left of the allowance, whatever the model', () => {
+  for (const model of ['claude-haiku-5-5', 'claude-sonnet-5-5', 'claude-opus-5-5', 'mystery-model']) {
+    for (const fallbackPossible of [false, true]) {
+      const cfg = { ...loadAiConfig(baseEnv), model };
+      for (const input of [50, 1000, 30_000, 70_000, 150_000]) {
+        for (const room of [0, 500, 2000, 9_999, 60_000, 500_000, 5_000_000]) {
+          const h = affordable(cfg, input, room, { fallbackPossible });
+          if (!h.maxTokens) { assert.equal(h.reserve, 0); continue; }
+          assert.ok(h.reserve <= room, `${model} ${input} ${room}: held ${h.reserve}`);
+          assert.ok(h.maxTokens >= MIN_ANSWER_TOKENS && h.maxTokens <= cfg.maxTokens);
+          // The most the answer can really cost (the estimate is the worst case for the input) is covered by what was held.
+          assert.ok(costMicros(cfg, { input_tokens: input, output_tokens: h.maxTokens }, { fallbackPossible }) <= h.reserve, `${model} ${input} ${room}`);
+        }
+      }
+    }
+  }
+  const haiku = loadAiConfig(baseEnv);
+  assert.deepEqual(affordable(haiku, 1000, 10_000), { maxTokens: 16000, reserve: 100 + 8000 });
+  assert.deepEqual(affordable(haiku, 1000, 2000), { maxTokens: 3800, reserve: 2000 });       // less room, a shorter answer, never over
+  assert.equal(affordable(haiku, 1000, 1100).maxTokens, 0);                                  // not enough for a useful answer: refused
+  assert.deepEqual(rates(haiku, 150_000), [0.5, 2.5]);
+  assert.equal(affordable(haiku, 80_000, 1_000_000).reserve, 80_000 * 0.5 + 16000 * 2.5);    // near the long-prompt line: held at the long-prompt price
+});
+
+test('near the end of the allowance the answer gets less room instead of being refused, and never more than is left', async (t) => {
+  const s = await boot({ AI_TRIAL_BUDGET_USD: '0.002', AI_DAILY_MESSAGE_CAP: '99' }, { client: undefined }); t.after(s.close);
+  assert.equal((await s.post(ok)).status, 200);
+  const asked = s.calls[0].max_tokens;
+  assert.ok(asked >= MIN_ANSWER_TOKENS && asked < 4000, `asked for ${asked}`);
+  assert.ok(asked * 0.5 <= 2000);                                                            // 2,000 micro-dollars is all there is
+});
+
+test('a broken or over-long conversation is marked so the app can start a fresh chat by itself', async (t) => {
+  const cfg = loadAiConfig(baseEnv);
+  assert.equal(validateChat({ messages: [{ role: 'user', content: 'hi' }, { role: 'assistant', content: [] }, { role: 'user', content: 'again' }] }, cfg).conversation, true);
+  assert.equal(validateChat({ messages: [{ role: 'user', content: 'hi' }, { role: 'assistant', content: [{ type: 'text', text: 'x' }] }] }, cfg).conversation, true);
+  assert.equal(validateChat({ messages: Array.from({ length: 121 }, () => ({ role: 'user', content: 'x' })) }, cfg).tooLong, true);
+  assert.equal(validateChat({ ...ok, tools: 'nope' }, cfg).conversation, undefined);         // not the conversation's fault
+  const s = await boot(); t.after(s.close);
+  const r = await s.post({ messages: [{ role: 'user', content: 'hi' }, { role: 'assistant', content: [] }, { role: 'user', content: 'again' }] });
+  assert.equal(r.status, 400);
+  const j = await r.json();
+  assert.equal(j.conversation, true);
+  assert.match(j.reason, /message content/);
+  const long = await s.post({ messages: Array.from({ length: 121 }, () => ({ role: 'user', content: 'x' })) });
+  assert.equal((await long.json()).tooLong, true);
+});
+
+test('every kind of block Claude sends comes back through unchanged, and the question may follow tool results in one message', async (t) => {
+  const messages = [
+    { role: 'user', content: [{ type: 'text', text: '[Now: Friday, November 20, 2026, 8:00 AM (America/Chicago)]\nBook a plow' }] },
+    { role: 'assistant', content: [{ type: 'thinking', thinking: '', signature: 'sig-1' }, { type: 'redacted_thinking', data: 'abc' }, { type: 'text', text: 'On it.' },
+      { type: 'tool_use', id: 'tu_1', name: 'get_today', input: { date: '2026-11-21', n: 2.5 } }, { type: 'some_future_block', value: { nested: [1, 2] } }] },
+    { role: 'user', content: [{ type: 'tool_result', tool_use_id: 'tu_1', content: 'ok', is_error: true }, { type: 'text', text: '[From the app: one step is left]' }, { type: 'text', text: 'and then?' }] },
+  ];
+  const s = await boot(); t.after(s.close);
+  assert.equal((await s.post({ messages, tools: [tool], context: 'Business: Ridge Plow.' })).status, 200);
+  assert.deepEqual(s.calls[0].messages, messages);                                           // nothing added, removed or reordered
+  assert.equal(JSON.stringify(s.calls[0].messages), JSON.stringify(messages));
+  // Asked again with one more turn, everything before it (system prompt, tools, earlier messages) is byte for byte the same.
+  const more = [...messages, { role: 'assistant', content: [{ type: 'text', text: 'Done.' }] }, { role: 'user', content: [{ type: 'text', text: 'thanks' }] }];
+  await s.post({ messages: more, tools: [tool], context: 'Business: Ridge Plow.' });
+  assert.equal(s.calls[1].system, s.calls[0].system);
+  assert.equal(JSON.stringify(s.calls[1].tools), JSON.stringify(s.calls[0].tools));
+  assert.equal(JSON.stringify(s.calls[1].messages.slice(0, 3)), JSON.stringify(s.calls[0].messages));
+  assert.ok(!/\d{4}|AM|PM/.test(SYSTEM_PROMPT));                                             // no clock in the house rules
+});
+
+test('each upstream failure gets its own plain message, and none of Claude\'s text leaks except its reason for refusing a chat', async (t) => {
+  const err = (status, message, name) => Object.assign(new Error('secret sk-ant-xyz'), status ? { status } : {}, message ? { error: { error: { message } } } : {}, name ? { name } : {});
+  const f = (...a) => upstreamFailure(err(...a));
+  assert.deepEqual([f(400, 'prompt is too long: 1200000 tokens > 1000000 maximum').status, f(400, 'prompt is too long').body.tooLong], [413, true]);
+  assert.equal(f(413, 'Request exceeds the maximum allowed number of bytes').body.tooLong, true);
+  assert.match(f(400, 'Your credit balance is too low to access the Anthropic API').body.error, /credit/);
+  assert.equal(f(400, 'Your credit balance is too low').body.conversation, undefined);        // a fresh chat would not help
+  const bound = f(400, 'messages.3.content.0: Invalid `signature` in `thinking` block. The block is bound to a different conversation.');
+  assert.equal(bound.body.conversation, true);
+  assert.match(bound.body.reason, /thinking/);                                               // the app reads this and resends without thinking blocks
+  assert.match(f(404, 'model: claude-haiku-9').body.error, /AI_MODEL/);
+  assert.equal(f(0, '', 'APIConnectionTimeoutError').status, 504);
+  assert.match(f(0, '', 'APIConnectionTimeoutError').body.error, /too long/);
+  assert.match(f(0).body.error, /could not reach Claude/);
+  assert.match(f(500).body.error, /problem on its side/);
+  const texts = [[400, 'x'], [400, 'prompt is too long'], [401], [403], [404], [413], [429], [500], [503], [529], [0]].map((a) => JSON.stringify(f(...a).body));
+  assert.equal(new Set(texts.filter((x) => x.includes('could not answer right now'))).size, 0); // never the old catch-all
+  for (const x of texts) assert.ok(!x.includes('secret') && !x.includes('sk-ant'));
+  const client = { beta: { messages: { create: async () => { throw err(400, 'prompt is too long'); } } } };
+  const s = await boot({}, { client }); t.after(s.close);
+  const r = await s.post(ok);
+  assert.equal(r.status, 413);
+  assert.equal((await r.json()).tooLong, true);
+});
+
+test('the house rules are word for word the same in the app, so both ways of reaching Claude behave alike', () => {
+  const file = new URL('../../Sources/RidgelineCore/DirectAssistantTransport.swift', import.meta.url);
+  if (!fs.existsSync(file)) return;                                                          // the server folder deployed on its own
+  const swift = fs.readFileSync(file, 'utf8');
+  for (const line of SYSTEM_PROMPT.split('\n')) assert.ok(swift.includes(`"${line}",`), `missing from the app: ${line.slice(0, 60)}`);
+  assert.equal(SYSTEM_PROMPT.split('\n').length, (swift.split('public static let system = [')[1].split('].joined')[0].match(/^\s+"/gm) || []).length);
 });

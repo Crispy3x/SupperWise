@@ -11,6 +11,7 @@ struct JobPriceTag: View {
     private var text: String {
         let price = job.priceTotal.formatted
         guard job.status == .done else { return price }
+        if model.data.isBilledBySnowContract(job) { return "\(price) · Snow contract" }   // a storm job the contract bills: never "Ready to bill"
         if let invoice = model.data.invoice(forJobVisit: job.id, on: job.start) { return "\(price) · Invoice \(invoice.number)" }
         return "\(price) · Ready to bill"
     }
@@ -242,7 +243,8 @@ struct JobBillingSection: View {
 
     @ViewBuilder private var priceCard: some View {
         let invoice = model.data.invoice(forJobVisit: job.id, on: job.start)
-        CardGroup(title: "Price", footer: footer(invoiced: invoice != nil)) {
+        let onContract = model.data.isBilledBySnowContract(job)
+        CardGroup(title: "Price", footer: onContract ? nil : footer(invoiced: invoice != nil)) {
             ForEach(job.priceLines ?? []) { line in
                 FactRow(label: line.label, value: line.total.formatted)
             }
@@ -255,7 +257,13 @@ struct JobBillingSection: View {
                                 title: "Invoice \(invoice.number)", detail: "\(statusText(invoice)) · \(invoice.total.formatted)")
                 }
                 .buttonStyle(.plain)
+            } else if onContract {
+                Label(JobBillingError.billedBySnowContract.message, systemImage: "info.circle").font(.callout).foregroundStyle(.secondary)
             } else if job.status == .done {
+                if model.data.mayDoubleBillSnowContract(job, visitStart: job.start) {
+                    Label("A visit was logged at this address the same day, and it has a snow contract. Check the contract's invoice first so this work is not billed twice.", systemImage: "exclamationmark.triangle")
+                        .font(.callout).foregroundStyle(.orange)
+                }
                 PrimaryActionButton(title: "Create invoice", icon: "doc.badge.plus") { createInvoice() }
             }
             if canEdit && (job.repeats || invoice == nil) {
@@ -327,6 +335,18 @@ struct ReadyToBillCard: View {
     }
 
     private func clientRow(_ client: ClientUninvoicedWork) -> some View {
+        let overlaps = client.snowContractOverlaps
+        let which = overlaps == 1 ? "1 job is" : "\(overlaps) jobs are"
+        return VStack(alignment: .leading, spacing: 8) {
+            clientLine(client)
+            if overlaps > 0 {
+                Label("\(which) at an address with a snow contract where a visit was logged the same day. Check the contract does not bill the same work.", systemImage: "exclamationmark.triangle")
+                    .font(.footnote).foregroundStyle(.orange)
+            }
+        }
+    }
+
+    private func clientLine(_ client: ClientUninvoicedWork) -> some View {
         HStack(spacing: 12) {
             VStack(alignment: .leading, spacing: 2) {
                 Text(client.customerName).font(.title3.weight(.semibold)).foregroundStyle(.primary)
@@ -347,7 +367,7 @@ struct ReadyToBillCard: View {
     private func invoiceOne(_ client: ClientUninvoicedWork) {
         let result = model.billFinishedWork(forClient: client.customerID)
         if let made = result.invoices.first {
-            note = "Draft invoice \(made.number) created for \(client.customerName): \(made.total.formatted)."
+            note = (["Draft invoice \(made.number) created for \(client.customerName): \(made.total.formatted)."] + result.warnings).joined(separator: " ")
             openedInvoice = made.number
         } else {
             note = result.summary

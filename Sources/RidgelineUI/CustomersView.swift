@@ -12,7 +12,7 @@ struct CustomersView: View {
 
     var body: some View {
         ScreenStack {
-            AppPage(title: "Customers", icon: "person.2.fill") {
+            AppPage(title: "Import clients", icon: "person.2.fill") {
                 Menu {
                     Button("Add one client") { showingAdd = true }
                     Button("Import from a spreadsheet (CSV)") { showingImporter = true }
@@ -23,9 +23,12 @@ struct CustomersView: View {
                 }
                 .buttonStyle(.plain)
                 if model.data.sites.isEmpty {
-                    EmptyCard(icon: "person.2", title: "No customers yet", message: "Add one, or load demo data to try the app.")
-                    if model.data.customers.isEmpty && model.data.contracts.isEmpty {
-                        SecondaryActionButton(title: "Load demo data (adds sample customers)") { model.loadDemoData() }
+                    EmptyCard(icon: "person.2", title: "No clients with an address yet", message: "Add one, or import a spreadsheet saved as CSV with Name and Address columns.")
+                    // Sample clients are the owner's call only, and only while the list is empty. They are removed on the Clients tab.
+                    if model.data.customers.isEmpty && model.data.contracts.isEmpty && model.data.isOwnerSession {
+                        SecondaryActionButton(title: "Load sample clients to try the app") { model.loadDemoData() }
+                        Text("Sample clients are made up. Remove them all with one tap on the Clients tab.")
+                            .font(.footnote).foregroundStyle(.secondary)
                     }
                 }
                 ForEach(model.data.sites) { site in

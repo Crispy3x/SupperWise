@@ -30,7 +30,7 @@ struct ProofView: View {
                             .foregroundStyle(verified ? Color.green : Color.red)
                     }
                     if proofs.isEmpty {
-                        EmptyCard(icon: "doc.text.magnifyingglass", title: "No visits yet", message: "Visits logged on the Crew tab show up here as proof packets.")
+                        EmptyCard(icon: "doc.text.magnifyingglass", title: "No visits yet", message: "Visits logged under Field work, Log visits show up here as proof packets.")
                     } else {
                         ForEach(Array(proofs.reversed())) { proof in VisitProofCard(proof: proof) }
                     }

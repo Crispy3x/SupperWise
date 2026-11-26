@@ -14,7 +14,11 @@ public struct ToolCall: Equatable, Sendable {
 
 /// Something the assistant prepared that only a person can finish, such as emailing an invoice to a client.
 public struct PendingAction: Identifiable, Equatable, Sendable {
-    public enum Kind: Equatable, Sendable { case sendInvoice(number: String), sendReminders(count: Int), sendSeasonLinks(count: Int) }
+    public enum Kind: Equatable, Sendable {
+        case sendInvoice(number: String), sendReminders(count: Int), sendSeasonLinks(count: Int)
+        /// An answer to a client's request. The client sees it on their page, so it waits for a tap like every other send.
+        case answerRequest(id: UUID, accept: Bool, message: String)
+    }
     public let id: UUID
     public let kind: Kind
     public let title: String
@@ -76,7 +80,7 @@ public enum AssistantTools {
     }
 
     private static let all: [(tool: AssistantTool, needs: Permission?)] = [
-        (AssistantTool(name: "get_schedule", description: "List the jobs and tasks scheduled for one day, with their ids.",
+        (AssistantTool(name: "get_schedule", description: "List the jobs and tasks scheduled for one day, with their ids. A job marked (repeats) comes back on other days with the same id.",
                        inputSchema: schema(["date": ("string", "The day as YYYY-MM-DD. Leave out for today.")])), nil),
         (AssistantTool(name: "list_clients", description: "Find clients by name or address. Returns names, addresses and whether they are leads. Contact details are not included.",
                        inputSchema: schema(["query": ("string", "Part of a name or address. Leave out to list the first few.")])), .viewClients),
@@ -90,8 +94,9 @@ public enum AssistantTools {
                                             "duration_minutes": ("integer", "How long, default 60"), "assignee": ("string", "A team member's name"),
                                             "notes": ("string", "Extra instructions"), "is_task": ("boolean", "True for a reminder or task with no site"),
                                             "price": ("number", "What the job costs in dollars, if the person said. Leave out otherwise.")], required: ["title", "start"])), .editJobs),
-        (AssistantTool(name: "update_job_status", description: "Change a job's status. Get the id from get_schedule.",
-                       inputSchema: schema(["job_id": ("string", "The job id"), "status": ("string", "scheduled, inProgress, done or cancelled")], required: ["job_id", "status"])), .logVisits),
+        (AssistantTool(name: "update_job_status", description: "Change the status of one visit of a job. Get the id and the day from get_schedule. For a job that repeats, only the visit on that day changes (cancelled skips just that visit); every other visit stays as it is.",
+                       inputSchema: schema(["job_id": ("string", "The job id"), "status": ("string", "scheduled, inProgress, done or cancelled"),
+                                            "date": ("string", "The day of the visit as YYYY-MM-DD, as get_schedule shows it. Needed for a job that repeats; not used for other jobs.")], required: ["job_id", "status"])), .logVisits),
         (AssistantTool(name: "list_invoices", description: "List invoices with client, total, balance and due date.",
                        inputSchema: schema(["filter": ("string", "unpaid, overdue, draft or all. Default unpaid.")])), .viewRevenue),
         (AssistantTool(name: "create_invoice", description: "Create a draft invoice for a client's storms that have not been billed yet. It is a draft and is not sent.",
@@ -109,7 +114,7 @@ public enum AssistantTools {
                        inputSchema: schema([:])), .viewRevenue),
         (AssistantTool(name: "list_requests", description: "List client requests and kind messages that are waiting, with their ids.",
                        inputSchema: schema([:])), .viewRequests),
-        (AssistantTool(name: "answer_request", description: "Answer a waiting client request. Use accept, decline, or read (for a kind message). The client sees the answer on their page.",
+        (AssistantTool(name: "answer_request", description: "Prepare an answer to a waiting client request: accept or decline, with a short note. The client sees the answer on their page, so the person must confirm in the app first; never say it was answered. Use read only for a kind message (thanks): that marks it read at once.",
                        inputSchema: schema(["request_id": ("string", "The request id from list_requests"), "decision": ("string", "accept, decline or read"),
                                             "message": ("string", "A short note the client will see")], required: ["request_id", "decision"])), .answerRequests),
         (AssistantTool(name: "send_season_links", description: "Prepare the start-of-winter email with each client's private page link (map, arrival time, requests, bills). The person must confirm before anything is sent.",
@@ -139,14 +144,14 @@ public enum AssistantTools {
         case "list_clients": return listClients(call.input, data)
         case "add_client": return addClient(call.input, &data, now)
         case "create_job": return createJob(call.input, &data, now, calendar)
-        case "update_job_status": return updateStatus(call.input, &data)
+        case "update_job_status": return updateStatus(call.input, &data, now, calendar)
         case "list_invoices": return listInvoices(call.input, data, now)
         case "send_invoice": return prepareSend(call.input, data, calendar)
         case "record_payment": return recordPayment(call.input, &data, now)
         case "get_revenue": return revenue(call.input, data, now, calendar)
         case "list_requests": return listRequests(data)
         case "bill_finished_jobs": return billFinishedJobs(call.input, &data, now, calendar)   // JobBilling.swift
-        default: return .hostTool                  // plan_route, get_weather, create_invoice
+        default: return .hostTool                  // plan_route, get_weather, create_invoice, send_reminders, send_season_links, answer_request
         }
     }
 
@@ -189,10 +194,10 @@ public enum AssistantTools {
         let lines = jobs.prefix(30).map { j -> String in
             let who = data.customerName(forJob: j), place = data.address(forJob: j)
             let people = data.team.filter { j.assigneeIDs.contains($0.id) }.map(\.name).joined(separator: ", ")
-            return "- \(describe(j.start, calendar: calendar)) | \(j.title)\(j.isTask ? " (task)" : "") | \(j.status.rawValue)"
+            return "- \(describe(j.start, calendar: calendar)) | \(j.title)\(j.isTask ? " (task)" : "")\(j.repeats ? " (repeats)" : "") | \(j.status.rawValue)"
                 + (who.isEmpty ? "" : " | client: \(who)") + (place.isEmpty ? "" : " | \(place)") + (people.isEmpty ? "" : " | team: \(people)") + " | id: \(j.id.uuidString)"
         }
-        return .text(lines.joined(separator: "\n"))
+        return .text(lines.joined(separator: "\n") + (jobs.count > 30 ? "\n(\(jobs.count - 30) more not shown.)" : ""))
     }
 
     static func listClients(_ input: JSONValue, _ data: AppData) -> ToolOutcome {
@@ -274,12 +279,31 @@ public enum AssistantTools {
         } catch { return .error("The job could not be created.") }
     }
 
-    static func updateStatus(_ input: JSONValue, _ data: inout AppData) -> ToolOutcome {
-        guard let idText = input["job_id"]?.string, let id = UUID(uuidString: idText), let raw = input["status"]?.string, let status = JobStatus(rawValue: raw) else {
+    static let repeatsNeedsDate = "This job repeats. Give the visit's date."
+
+    /// Changes one visit. A job that repeats is never changed as a whole: only the visit on the given day, using the
+    /// same per-visit code as the Jobs screen (`setOccurrenceStatus` in RecurringJobs.swift).
+    static func updateStatus(_ input: JSONValue, _ data: inout AppData, _ now: Date, _ calendar: Calendar) -> ToolOutcome {
+        guard let idText = input["job_id"]?.string, let id = UUID(uuidString: idText.trimmingCharacters(in: .whitespaces)),
+              let raw = input["status"]?.string, let status = JobStatus(rawValue: raw) else {
             return .error("Give the job id from get_schedule and a status of scheduled, inProgress, done or cancelled.")
         }
-        guard data.visibleJobs.contains(where: { $0.id == id }) else { return .error("That job was not found.") }
-        do { try data.setJobStatus(status, id: id); return .text("Marked it \(status.title.lowercased()).") } catch { return .error("That job was not found.") }
+        guard let job = data.visibleJobs.first(where: { $0.id == id }) else { return .error("That job was not found.") }
+        guard job.repeats else {
+            // Happens once: the job itself changes. Its own day is passed on, so an automatic invoice is dated correctly.
+            do { try data.setOccurrenceStatus(status, id: id, on: job.start, calendar: calendar) } catch { return .error("That job was not found.") }
+            return .text("Marked \"\(job.title)\" \(status.title.lowercased()).")
+        }
+        // A job that repeats is never guessed at: without a day that really has a visit, nothing changes.
+        let dateText = (input["date"]?.string ?? "").trimmingCharacters(in: .whitespaces)
+        guard !dateText.isEmpty, let wanted = Self.day(from: dateText, now: now, calendar: calendar),
+              let visit = job.occurrenceStart(on: wanted, calendar: calendar) else {
+            return .error(repeatsNeedsDate)
+        }
+        do { try data.setOccurrenceStatus(status, id: id, on: visit, calendar: calendar) } catch { return .error("That visit was not found.") }
+        let when = describe(visit, calendar: calendar)
+        if status == .cancelled { return .text("Skipped the \(when) visit of \"\(job.title)\". Its other visits stay on the schedule.") }
+        return .text("Marked the \(when) visit of \"\(job.title)\" \(status.title.lowercased()). Its other visits are unchanged.")
     }
 
     static func listInvoices(_ input: JSONValue, _ data: AppData, _ now: Date) -> ToolOutcome {

@@ -28,7 +28,7 @@ public enum SeasonWelcome {
         let season = season(for: now, calendar: calendar)
         let base = data.broadcastSettings.portalBaseURL.trimmingCharacters(in: .whitespacesAndNewlines)
         guard RoutingServerSettings.validatedURL(base) != nil else {
-            return SeasonWelcomePlan(season: season, messages: [], skipped: [], problem: "Add your client page address in Settings first. It is the address of your server.")
+            return SeasonWelcomePlan(season: season, messages: [], skipped: [], problem: "Add your client page address first, in Settings under Invoices and client messages. It is the web address your clients open.")
         }
         let root = base.hasSuffix("/") ? String(base.dropLast()) : base
         let company = data.companyName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "Your snow crew" : data.companyName.trimmingCharacters(in: .whitespacesAndNewlines)

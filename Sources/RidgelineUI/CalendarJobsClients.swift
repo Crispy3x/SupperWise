@@ -155,8 +155,10 @@ struct JobsTabView: View {
     @State private var filter: JobFilter = .all
     @State private var showEditor = false
     @State private var openedJob: UUID?
+    @State private var openedDay: Date?   // the listed visit of a repeating job
 
-    private var allJobs: [Job] { model.data.visibleJobs.filter { !$0.isTask } }
+    /// A repeating job is listed once, as its next open visit: that visit's date and status, not the first date.
+    private var allJobs: [Job] { model.data.jobListEntries(now: Date()) }
 
     private func matches(_ job: Job) -> Bool {
         let q = query.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
@@ -213,7 +215,7 @@ struct JobsTabView: View {
                     } else if shown.isEmpty {
                         EmptyCard(icon: "magnifyingglass", title: "No matches", message: "Try a different search or filter.")
                     } else {
-                        ForEach(shown) { job in JobRow(job: job, showDate: true) { openedJob = job.id } }
+                        ForEach(shown) { job in JobRow(job: job, showDate: true) { openedDay = job.start; openedJob = job.id } }
                     }
                 }
                 .padding(.horizontal, 16).padding(.top, 14).padding(.bottom, 20)
@@ -227,7 +229,7 @@ struct JobsTabView: View {
         }
         .sheet(isPresented: $showEditor) { JobEditorSheet() }
         .sheet(isPresented: Binding(get: { openedJob != nil }, set: { if !$0 { openedJob = nil } })) {
-            if let id = openedJob { JobDetailSheet(jobID: id) }
+            if let id = openedJob { JobDetailSheet(jobID: id, occurrenceDate: openedDay) }
         }
     }
 }
@@ -240,21 +242,31 @@ struct ClientsTabView: View {
     @State private var showNewClient = false
     @State private var showNewLead = false
     @State private var showSeasonLinks = false
+    @State private var sampleNote: String?
 
     private var clients: [Customer] { model.data.customers.filter { !$0.isLead } }
     private var leads: [Customer] { model.data.customers.filter { $0.isLead } }
 
-    private func addresses(_ c: Customer) -> [String] { model.data.sites.filter { $0.customerID == c.id }.map(\.address) }
+    /// Every client's addresses, gathered once per redraw. Looking them up client by client went through all the sites
+    /// for each row, which crawled with a long imported list.
+    private var addressBook: [UUID: [String]] {
+        var book: [UUID: [String]] = [:]
+        for site in model.data.sites { book[site.customerID, default: []].append(site.address) }
+        return book
+    }
 
-    private var shown: [Customer] {
+    private func matches(_ book: [UUID: [String]]) -> [Customer] {
         let q = query.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         let list = q.isEmpty ? clients : clients.filter { c in
-            ([c.name, c.phone, c.email] + addresses(c)).contains { $0.lowercased().contains(q) }
+            ([c.name, c.phone, c.email] + (book[c.id] ?? [])).contains { $0.lowercased().contains(q) }
         }
         return list.sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
     }
 
     var body: some View {
+        let book = addressBook
+        let shown = matches(book)
+        let sampleCount = model.data.isOwnerSession ? model.data.sampleCustomerIDs.count : 0
         NavigationStack {
             VStack(spacing: 0) {
                 ScrollView {
@@ -276,10 +288,29 @@ struct ClientsTabView: View {
                             }
                         }
                         .buttonStyle(.plain)
+                        if sampleCount > 0 {
+                            // Sample clients must never stay mixed in with a real business, so there is one tap to take them out.
+                            Card(padding: 12) {
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Label("\(sampleCount) sample client\(sampleCount == 1 ? " is" : "s are") in your list. They are made up, for trying the app.", systemImage: "info.circle")
+                                        .font(.callout)
+                                    SecondaryActionButton(title: "Remove the sample clients", icon: "trash") {
+                                        var kept = 0
+                                        model.edit { kept = $0.removeSampleClients().kept }
+                                        sampleNote = kept > 0 ? "\(kept) sample client\(kept == 1 ? " has" : "s have") invoices, which are records, so \(kept == 1 ? "it stays" : "they stay"). Void the invoices or keep them." : nil
+                                    }
+                                }
+                            }
+                        }
+                        if let sampleNote {
+                            Text(sampleNote).font(.footnote).foregroundStyle(.secondary).frame(maxWidth: .infinity, alignment: .leading)
+                        }
                         if clients.isEmpty {
                             EmptyCard(icon: "person.2", title: "No clients yet", message: "Add your first client to get started.")
                             if model.data.customers.isEmpty && model.data.contracts.isEmpty && model.data.isOwnerSession {
                                 Button("Load sample clients to try the app") { model.loadDemoData() }.buttonStyle(.bordered)
+                                Text("Sample clients are made up. Remove them all with one tap here before you add real ones.")
+                                    .font(.footnote).foregroundStyle(.secondary).multilineTextAlignment(.center)
                             }
                         } else if shown.isEmpty {
                             EmptyCard(icon: "magnifyingglass", title: "No matches", message: "Try a different search.")
@@ -291,7 +322,7 @@ struct ClientsTabView: View {
                                             AvatarView(name: c.name, size: 46)
                                             VStack(alignment: .leading, spacing: 2) {
                                                 Text(c.name).font(.headline).foregroundStyle(.primary)
-                                                Text(([addresses(c).first, c.phone.isEmpty ? nil : c.phone].compactMap { $0 }).joined(separator: " · "))
+                                                Text(([book[c.id]?.first, c.phone.isEmpty ? nil : c.phone].compactMap { $0 }).joined(separator: " · "))
                                                     .font(.footnote).foregroundStyle(.secondary).lineLimit(1)
                                             }
                                             Spacer()
@@ -345,23 +376,30 @@ struct ClientsTabView: View {
 struct LeadsView: View {
     @Environment(AppModel.self) private var model
     @State private var showNew = false
+    @State private var problem: String?
     private var leads: [Customer] { model.data.customers.filter { $0.isLead } }
+    /// Seeing clients is not enough to add, convert or remove a lead: that needs "Add and change clients".
+    private var canEdit: Bool { model.data.can(.editClients) }
 
     var body: some View {
         AppPage(title: "Leads", icon: "leaf.fill", trailing: "\(leads.count) total") {
-            SecondaryActionButton(title: "Add lead", icon: "plus") { showNew = true }
+            if canEdit { SecondaryActionButton(title: "Add lead", icon: "plus") { showNew = true } }
             if leads.isEmpty {
-                EmptyCard(icon: "leaf", title: "No leads yet", message: "Add someone who has asked about your service.")
+                EmptyCard(icon: "leaf", title: "No leads yet", message: canEdit ? "Add someone who has asked about your service." : "People who ask about your service show up here.")
             }
+            if let problem { Text(problem).font(.footnote).foregroundStyle(.red).frame(maxWidth: .infinity, alignment: .leading) }
             ForEach(leads) { lead in
                 Card {
                     VStack(alignment: .leading, spacing: 10) {
                         Text(lead.name).font(.headline)
                         if !lead.phone.isEmpty || !lead.email.isEmpty { Text([lead.phone, lead.email].filter { !$0.isEmpty }.joined(separator: " \u{B7} ")).font(.footnote).foregroundStyle(.secondary) }
                         if !lead.notes.isEmpty { Text(lead.notes).font(.footnote) }
-                        HStack(spacing: 12) {
-                            PrimaryActionButton(title: "Make a client") { model.edit { d in if let i = d.customers.firstIndex(where: { $0.id == lead.id }) { d.customers[i].isLead = false } } }
-                            SecondaryActionButton(title: "Remove", icon: "trash") { model.edit { d in d.customers.removeAll { $0.id == lead.id } } }
+                        if canEdit {
+                            HStack(spacing: 12) {
+                                PrimaryActionButton(title: "Make a client") { model.edit { d in if let i = d.customers.firstIndex(where: { $0.id == lead.id }) { d.customers[i].isLead = false } } }
+                                // Removes the lead with any site, quote or job made for them, so nothing is left without a client.
+                                SecondaryActionButton(title: "Remove", icon: "trash") { problem = model.edit { try $0.deleteCustomer(lead.id) } }
+                            }
                         }
                     }
                 }

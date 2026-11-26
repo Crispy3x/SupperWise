@@ -14,6 +14,9 @@ struct SettingsView: View {
     @State private var serverNote = ""
     @State private var locationNote = ""
     @State private var findingLocation = false
+    @State private var yardAddress = ""
+    @State private var nameDraft = ""
+    @State private var nameLoaded = false
     #if canImport(CoreLocation)
     @State private var locator = LocationFetcher()
     #endif
@@ -61,11 +64,16 @@ struct SettingsView: View {
             }
             .alert("Replace the data on this device?",
                    isPresented: Binding(get: { model.pendingRestore != nil }, set: { _ in })) {
-                Button("Replace", role: .destructive) { dataNote = model.applyPendingRestore() }
+                Button("Replace", role: .destructive) {
+                    let message = model.applyPendingRestore()
+                    dataNote = message
+                    if model.data.session == nil { model.notice = message }   // this screen closes when everyone is signed out, so say it after sign-in
+                }
                 Button("Cancel", role: .cancel) { model.pendingRestore = nil }
             } message: {
                 if let r = model.pendingRestore {
-                    Text("This backup has \(r.customerCount) customers, \(r.siteCount) sites, \(r.invoiceCount) invoices and \(r.visitCount) visits. It replaces the data on this device, including settings. A safety copy of your current data is saved first if possible.")
+                    let signIn = DataExport.signInWarning(backup: r.data, device: model.data) ?? "Everyone signs in again after."
+                    Text("This backup has \(r.customerCount) clients, \(r.siteCount) properties, \(r.invoiceCount) invoices and \(r.visitCount) visits. It replaces the data on this device, including settings. A safety copy of your current data is saved first if possible. \(signIn)")
                 }
             }
             .onAppear { serverAddress = model.data.routingServerURL }
@@ -131,8 +139,19 @@ struct SettingsView: View {
             PillMenu(label: "Color",
                      options: AppData.accentColors.map { ($0, $0.capitalized) },
                      selection: binding({ model.data.profile.accentColor }, { model.data.profile.accentColor = $0 }))
-            PillField(label: "Business name", placeholder: "Shown to customers",
-                      text: binding({ model.data.companyName }, { model.data.companyName = $0 }))
+            PillField(label: "Business name", placeholder: "Shown to clients", text: $nameDraft)
+                .onAppear {
+                    if !nameLoaded { nameDraft = model.data.companyName; nameLoaded = true }
+                }
+                .onChange(of: nameDraft) { _, new in
+                    // An empty name is never saved: it is printed on every message and invoice.
+                    let clean = String(new.trimmingCharacters(in: .whitespacesAndNewlines).prefix(80))
+                    if !clean.isEmpty, clean != model.data.companyName { model.data.companyName = clean; model.save() }
+                }
+            if nameLoaded && nameDraft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                Label("Type your business name. Clients see it on messages and invoices, so the last saved name stays until you do.",
+                      systemImage: "exclamationmark.triangle").font(.footnote).foregroundStyle(.orange)
+            }
         }
     }
 
@@ -159,11 +178,28 @@ struct SettingsView: View {
                 }
             }
             .disabled(findingLocation)
+            // Not at the yard, or location is switched off for the app: the address works too.
+            PillField(label: "Or type the yard address", placeholder: "500 Shop Rd, Minneapolis", text: $yardAddress)
+            SecondaryActionButton(title: findingLocation ? "Finding..." : "Use this address", icon: "mappin.and.ellipse") {
+                let typed = yardAddress
+                findingLocation = true
+                Task {
+                    if let found = await AddressGeocoder.coordinate(for: typed) {
+                        model.setDepot(latitude: found.latitude, longitude: found.longitude)
+                        locationNote = "Yard location saved."
+                    } else {
+                        locationNote = "Could not find that address. Check the spelling, or try again when you have signal."
+                    }
+                    findingLocation = false
+                }
+            }
+            .disabled(findingLocation || yardAddress.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            .opacity(findingLocation || yardAddress.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? 0.4 : 1)
             #endif
             if !locationNote.isEmpty { Text(locationNote).font(.footnote).foregroundStyle(.secondary) }
         }
         CardGroup(title: "Invoices and client messages",
-                  footer: "Messages and client pages need your server (below) and clients who agreed to messages. Storm messages wait out quiet hours unless you mark them urgent.") {
+                  footer: "Messages and client pages need clients who agreed to messages and your own server, set up once under Advanced below. Storm messages wait out quiet hours unless you mark them urgent.") {
             invoiceTerms
             RowDivider()
             clientMessages
@@ -192,8 +228,13 @@ struct SettingsView: View {
                isOn: binding({ model.data.profile.portalShowsAmounts }, { model.data.profile.portalShowsAmounts = $0 }))
         SettingsEntry(label: "Client page address", placeholder: "https://...",
                       text: binding({ model.data.broadcastSettings.portalBaseURL }, { model.data.broadcastSettings.portalBaseURL = $0 }))
+        if !model.data.broadcastSettings.portalBaseURL.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+           RoutingServerSettings.validatedURL(model.data.broadcastSettings.portalBaseURL) == nil {
+            Label("That address will not work, so clients get no page link. Use the full web address, starting with https://",
+                  systemImage: "exclamationmark.triangle").font(.footnote).foregroundStyle(.orange)
+        }
         if !model.data.routingServerURL.isEmpty && model.data.broadcastSettings.portalBaseURL.isEmpty {
-            SecondaryActionButton(title: "Use my server's address", icon: "link") {
+            SecondaryActionButton(title: "Use the same address as my server", icon: "link") {
                 model.data.broadcastSettings.portalBaseURL = model.data.routingServerURL
                 model.save()
             }
@@ -208,32 +249,39 @@ struct SettingsView: View {
 
     // MARK: - Drive times and routing server
 
+    /// What the saved server is used for right now, in plain words.
+    private var serverStatus: String {
+        if model.data.routingProvider != .server {
+            return model.serverConfigured
+                ? "Saved. Client pages and emails use this server. Drive times use it only when \"My own server\" is chosen above."
+                : "Not set up. Client pages and emails to clients stay off until it is."
+        }
+        if model.data.routingServerURL.isEmpty { return "Not set, so routes use an offline estimate of drive times." }
+        return model.hasRoutingToken
+            ? "Using live traffic from your server. If it cannot be reached, the offline estimate is used."
+            : "Address saved but there is no access code yet, so the offline estimate is used."
+    }
+
     @ViewBuilder private var drivingAndServer: some View {
         CardGroup(title: "Drive times",
                   footer: "Apple Maps needs no key or setup. Apple answers one leg at a time and may slow requests down, so Ridgeline measures the most important legs and estimates the rest. Answers are kept in memory for 10 minutes only, because Apple's terms limit how long its map data may be stored.") {
             PillMenu(label: "Source",
                      options: [(RoutingProvider.appleMaps, "Apple Maps on this device"),
-                               (RoutingProvider.server, "My routing server (Google)"),
+                               (RoutingProvider.server, "My own server (live traffic)"),
                                (RoutingProvider.offline, "Offline estimate")],
                      selection: binding({ model.data.routingProvider }, { model.setRoutingProvider($0) }))
         }
-        CardGroup(title: "Routing server (only used if chosen above)") {
-            SettingsEntry(label: "Routing server address", placeholder: "https://...", text: $serverAddress)
-            SettingsEntry(label: "Access token",
-                          placeholder: model.hasRoutingToken ? "Token saved (leave blank to keep it)" : "Access token",
+        CardGroup(title: "Advanced: your own server",
+                  footer: "Optional. Most of the app works without it. Client pages, emails to clients and live-traffic drive times run through a small server of your own that someone technical sets up once. They give you its web address and its access code (also called a token).") {
+            SettingsEntry(label: "Server address", optional: true, placeholder: "https://...", text: $serverAddress)
+            SettingsEntry(label: "Access code",
+                          placeholder: model.hasRoutingToken ? "Saved (leave blank to keep it)" : "Access code (token)",
                           text: $serverToken, secret: true)
-            SecondaryActionButton(title: "Save routing server", icon: "externaldrive.badge.checkmark") {
+            SecondaryActionButton(title: "Save server", icon: "externaldrive.badge.checkmark") {
                 serverNote = model.saveRoutingServer(address: serverAddress, token: serverToken)
                 serverToken = ""
             }
-            Text(model.data.routingProvider != .server
-                 ? "Only used when \"My routing server\" is chosen above."
-                 : (model.data.routingServerURL.isEmpty
-                    ? "Not set, so routes use an offline estimate of drive times."
-                    : (model.hasRoutingToken
-                       ? "Using live traffic from your routing server. If it cannot be reached, the offline estimate is used."
-                       : "Address saved but there is no token yet, so the offline estimate is used.")))
-                .font(.footnote).foregroundStyle(.secondary)
+            Text(serverStatus).font(.footnote).foregroundStyle(.secondary)
             if !serverNote.isEmpty { Text(serverNote).font(.footnote).foregroundStyle(.secondary) }
         }
     }
@@ -265,6 +313,8 @@ struct SettingsView: View {
     // MARK: - Your data and plan
 
     @ViewBuilder private var dataAndPlan: some View {
+        // Backups hold every record and the sign-in hashes, and a restore replaces everything, so both are the owner's alone.
+        if model.data.isOwnerSession {
         CardGroup(title: "Your data",
                   footer: "The backup holds all your records. Photo files are not included: they stay on this device. Restoring replaces the data on this device, after saving a safety copy of what is there now.") {
             SecondaryActionButton(title: "Prepare a backup and spreadsheets", icon: "archivebox") {
@@ -286,7 +336,7 @@ struct SettingsView: View {
                 .buttonStyle(.plain)
             }
             SecondaryActionButton(title: "Restore from a backup file...", icon: "arrow.down.doc") { showImporter = true }
-            if model.data.isOwnerSession { RestoreEarlierCopyButton() }
+            RestoreEarlierCopyButton()
             if !dataNote.isEmpty { Text(dataNote).font(.footnote).foregroundStyle(.secondary) }
             if let safety = model.lastSafetyCopy {
                 ShareLink(item: safety) {
@@ -295,12 +345,13 @@ struct SettingsView: View {
                 .buttonStyle(.plain)
             }
         }
-        CardGroup(title: "Plan", footer: "Buying a plan is not connected yet in this build.") {
+        CardGroup(title: "Plan", footer: "Pick or change your plan under Subscription and plan, at the top of Settings.") {
             switch model.subscriptionState {
             case .trial(let days): Text("Free trial, \(days) day\(days == 1 ? "" : "s") left. All features unlocked.")
             case .active(let tier): Text("Plan: \(tier == .pro ? "Pro" : "Max")")
-            case .expired: Text("Trial ended. Nothing is locked in this build.")
+            case .expired: Text("Your free trial ended. Pick a plan to keep every feature.")
             }
+        }
         }
         if let error = model.saveError {
             Card { Text(error).font(.footnote).foregroundStyle(.red) }
@@ -366,6 +417,9 @@ private struct SettingsLinkEntry: View {
             SettingsEntry(label: label, optional: true, placeholder: placeholder, text: $draft)
             if let problem = PayLink.problem(for: draft) {
                 Label(problem, systemImage: "exclamationmark.triangle").font(.footnote).foregroundStyle(.orange)
+                if model.data.profile[keyPath: keyPath] != nil {
+                    Text("The link saved before is still in use until this one is fixed or the field is cleared.").font(.footnote).foregroundStyle(.secondary)
+                }
             } else if PayLink.clean(draft) != nil {
                 Label(goodNote, systemImage: "checkmark.circle").font(.footnote).foregroundStyle(.secondary)
             } else {

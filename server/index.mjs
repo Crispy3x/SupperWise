@@ -11,4 +11,5 @@ if (!config.googleKey) console.warn('GOOGLE_MAPS_API_KEY is not set: drive-time 
 if (!portalConfig.resendKey || !portalConfig.fromEmail) console.warn('RESEND_API_KEY or FROM_EMAIL is not set: sending email returns 503.');
 if (!portalConfig.dataFile) console.warn('PORTAL_DATA_FILE is not set: client requests are kept in memory and lost on restart.');
 if (!aiConfig.apiKey) console.warn('ANTHROPIC_API_KEY is not set: the in-app assistant is off (the app shows it as not set up).');
+else if (aiConfig.maxTokens < 8000) console.warn(`AI_MAX_TOKENS is ${aiConfig.maxTokens}: answers that need thinking plus a tool call are often cut off below 8000. Remove the setting or use 16000.`);
 createFullServer(config, portalConfig, {}, aiConfig).listen(config.port, () => console.log(`Ridgeline server listening on ${config.port}`));

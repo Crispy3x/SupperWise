@@ -106,7 +106,7 @@ struct WelcomeFlowView: View {
             if !homeNote.isEmpty { Text(homeNote).font(.footnote).foregroundStyle(.secondary) }
         case .team:
             Stepper("\(answers.crewCount) crew\(answers.crewCount == 1 ? "" : "s") or truck\(answers.crewCount == 1 ? "" : "s")", value: $answers.crewCount, in: 1...50)
-            Text("Pricing is per crew. Office staff are always free.").font(.footnote).foregroundStyle(.secondary)
+            Text("This sets up your trucks for routes and storms. Employees never pay.").font(.footnote).foregroundStyle(.secondary)
         case .plan:
             PlanChoiceCards(selection: $answers.plan, crews: answers.crewCount)
         case .importClients:
@@ -127,7 +127,7 @@ struct WelcomeFlowView: View {
             }
             .pickerStyle(.segmented)
             Text(answers.invoiceAutomation.explanation).font(.footnote).foregroundStyle(.secondary)
-            Text("Messages need a server and clients who agreed to them. You set those up in Settings.").font(.footnote).foregroundStyle(.secondary)
+            Text("Messages only go to clients who agreed to them, and need a one-time setup under Advanced in Settings. Until then nothing is sent.").font(.footnote).foregroundStyle(.secondary)
         case .branding:
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 52))], spacing: 14) {
                 ForEach(AppData.accentColors, id: \.self) { name in
@@ -146,6 +146,9 @@ struct WelcomeFlowView: View {
         HStack {
             if step >= 0 {
                 Button("Back") { step -= 1; problem = nil }.buttonStyle(.bordered)
+            } else {
+                // Tapped "I own the business" by mistake: back to the first screen without answering the questions.
+                Button("Not the owner?") { model.signOutOfApp() }.buttonStyle(.borderless)
             }
             Spacer()
             if step >= 0 && !steps[step].required {
@@ -174,11 +177,20 @@ struct WelcomeFlowView: View {
             problem = "Enter your business name to continue."
             return
         }
+        // A link that fails the check is thrown away when the answers are saved, so say so here and not never.
+        if steps[step].id == .payment && PayLink.problem(for: answers.payLink) != nil {
+            problem = "Fix the payment link, or clear it, to continue."
+            return
+        }
+        let answered = steps[step].id
+        answers.skippedSteps.removeAll { $0 == answered }           // answered after all (came back to it)
         if step == steps.count - 1 { finish() } else { step += 1 }
     }
 
     private func skip() {
-        answers.skippedSteps.append(steps[step].id)
+        problem = nil
+        if steps[step].id == .payment && PayLink.problem(for: answers.payLink) != nil { answers.payLink = "" }
+        if !answers.skippedSteps.contains(steps[step].id) { answers.skippedSteps.append(steps[step].id) }
         if step == steps.count - 1 { finish() } else { step += 1 }
     }
 
@@ -195,9 +207,9 @@ struct PlanChoiceCards: View {
     var body: some View {
         VStack(spacing: 12) {
             card(.pro, name: "Pro", blurb: "Everything to run a crew: clients, jobs, quotes, invoices, time clock and proof of service.",
-                 points: ["Up to \(TeamRules.employeeLimit(for: .pro)) employees", "Smart route planning", "Client pages and storm messages"])
+                 points: ["Up to \(TeamRules.employeeLimit(for: .pro)) employees", "Route planning with Apple Maps", "Client pages and storm messages"])
             card(.max, name: "Max", blurb: "For bigger operations that want more control.",
-                 points: ["Up to \(TeamRules.employeeLimit(for: .max)) employees", "Roles with custom permissions", "Storm automation and subcontractor tools"])
+                 points: ["Up to \(TeamRules.employeeLimit(for: .max)) employees", "Roles with custom permissions"])
             Text("Free for \(Pricing.trialDays) days with everything unlocked. You pay for the plan. Your employees never pay.")
                 .font(.footnote).foregroundStyle(.secondary)
         }
@@ -210,7 +222,6 @@ struct PlanChoiceCards: View {
                 HStack {
                     Text(name).font(.title3.bold())
                     Spacer()
-                    Text("\(Pricing.monthly(tier, crews: crews).formatted) per month").font(.callout.bold())
                     Image(systemName: chosen ? "checkmark.circle.fill" : "circle").foregroundStyle(chosen ? Color.accentColor : Color.secondary)
                 }
                 Text(blurb).font(.footnote).foregroundStyle(.secondary)

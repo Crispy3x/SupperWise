@@ -36,6 +36,11 @@ struct SeasonLinksSheet: View {
                     if !plan.problem.isEmpty {
                         Label(plan.problem, systemImage: "exclamationmark.triangle.fill").font(.callout).foregroundStyle(.orange)
                     } else {
+                        if !model.serverConfigured {
+                            // Said up front, not only after tapping Send.
+                            Label("Emails go out through your own server, which is not set up yet. Add it in Settings, under Advanced.", systemImage: "exclamationmark.triangle.fill")
+                                .font(.callout).foregroundStyle(.orange)
+                        }
                         Card {
                             VStack(alignment: .leading, spacing: 8) {
                                 CapsLabel(text: "Ready to send")
@@ -51,9 +56,9 @@ struct SeasonLinksSheet: View {
                         Button { confirming = true } label: {
                             Label(working ? "Sending..." : "Email \(plan.messages.count) link\(plan.messages.count == 1 ? "" : "s")", systemImage: "paperplane.fill")
                                 .font(.title3.weight(.semibold)).foregroundStyle(.white).frame(maxWidth: .infinity).padding(.vertical, 18)
-                                .background(Theme.accent(model.data.profile.accentColor).opacity(plan.messages.isEmpty ? 0.4 : 1), in: Capsule())
+                                .background(Theme.accent(model.data.profile.accentColor).opacity(plan.messages.isEmpty || !model.serverConfigured ? 0.4 : 1), in: Capsule())
                         }
-                        .buttonStyle(.plain).disabled(plan.messages.isEmpty || working)
+                        .buttonStyle(.plain).disabled(plan.messages.isEmpty || working || !model.serverConfigured)
                         .alert("Email \(plan.messages.count) client\(plan.messages.count == 1 ? "" : "s")?", isPresented: $confirming) {
                             Button("Send") { working = true; Task { result = await model.sendSeasonLinks(); working = false } }
                             Button("Cancel", role: .cancel) {}

@@ -25,6 +25,37 @@ final class InvoicingTests: XCTestCase {
         XCTAssertEqual(inv.balance, .zero)
     }
 
+    func testAnInvoiceIsOverdueOnlyOnceItsDueDayIsOver() throws {
+        var utc = Calendar(identifier: .gregorian); utc.timeZone = TimeZone(identifier: "UTC")!
+        var west = Calendar(identifier: .gregorian); west.timeZone = TimeZone(identifier: "America/Los_Angeles")!
+        // Due "on receipt": t0 is 08:00 UTC on Jan 15, which is midnight in Los Angeles.
+        var inv = Invoice(number: "INV-0009", customerID: UUID(), siteID: UUID(), issueDate: t0, dueDate: t0,
+                          lines: [InvoiceLineItem(description: "Push", amount: Money(dollars: 60))])
+        try inv.markSent(at: t0)
+        XCTAssertEqual(inv.status(now: t0 + 60, calendar: utc), .sent)               // a minute later is not late
+        XCTAssertEqual(inv.status(now: t0 + 15 * 3600, calendar: utc), .sent)        // 23:00 on the due day
+        XCTAssertEqual(inv.status(now: t0 + 16 * 3600, calendar: utc), .overdue)     // the next day has begun
+        XCTAssertEqual(inv.status(now: t0 + 16 * 3600, calendar: west), .sent)       // still Jan 15 for an owner out west
+        XCTAssertEqual(inv.status(now: t0 + 24 * 3600, calendar: west), .overdue)
+        try inv.record(ManualPayment(amount: Money(dollars: 10), date: t0, method: .cash))
+        XCTAssertEqual(inv.status(now: t0 + 15 * 3600, calendar: utc), .partiallyPaid)
+        XCTAssertEqual(inv.status(now: t0 + 16 * 3600, calendar: utc), .overdue)
+    }
+
+    func testAPaymentOnAnUnsentInvoiceEndsItsDraftState() throws {
+        // Paid in cash on the spot and never emailed: it must not sit under "drafts to send" forever.
+        var cash = invoice()
+        XCTAssertNil(cash.sentAt)
+        try cash.record(ManualPayment(amount: Money(dollars: 150), date: t0 + day, method: .cash))
+        XCTAssertEqual(cash.sentAt, t0 + day)
+        XCTAssertEqual(cash.status(now: t0 + day), .paid)
+        // An invoice that was really sent keeps its own date.
+        var sent = invoice()
+        try sent.markSent(at: t0)
+        try sent.record(ManualPayment(amount: Money(dollars: 1), date: t0 + day, method: .cash))
+        XCTAssertEqual(sent.sentAt, t0)
+    }
+
     func testEditingAllowedUntilFirstPayment() throws {
         var inv = invoice()
         let id = inv.lines[0].id
@@ -189,6 +220,20 @@ final class InvoicePlannerTests: XCTestCase {
         let first = issue(terms, visits: [visit("S1", 0)], existing: [], on: 1)
         XCTAssertEqual(first.total, Money(dollars: 900))
         XCTAssertEqual(InvoicePlanner.nextBilling(terms: terms, visits: [visit("S1", 0), visit("S2", 4)], existing: [first]).result.total, .zero)
+    }
+
+    func testOtherWorkAtTheAddressDoesNotBlockTheSeasonalBase() {
+        let terms = ContractTerms.seasonal(total: Money(dollars: 900))
+        func billedByHand(_ description: String, _ dollars: Int) -> Invoice {
+            Invoice(number: "INV-1", customerID: UUID(), siteID: UUID(), issueDate: t0, dueDate: t0 + 14 * day,
+                    lines: [InvoiceLineItem(description: description, amount: Money(dollars: dollars))])
+        }
+        // A mowing job or Quick invoice has no storm either, but it is not the season price.
+        let afterMowing = InvoicePlanner.nextBilling(terms: terms, visits: [visit("S1", 1)], existing: [billedByHand("Lawn mow", 40)])
+        XCTAssertEqual(afterMowing.result.total, Money(dollars: 900))
+        // The season billed by hand from the price list still counts, so it is not billed twice.
+        let afterSeason = InvoicePlanner.nextBilling(terms: terms, visits: [visit("S1", 1)], existing: [billedByHand("Seasonal driveway", 450)])
+        XCTAssertEqual(afterSeason.result.total, .zero)
     }
 
     func testHybridCapCountsEarlierInvoicedPushes() {

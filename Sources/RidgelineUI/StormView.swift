@@ -62,6 +62,9 @@ struct StormView: View {
                         SecondaryActionButton(title: "Save yard location", icon: "mappin.and.ellipse") {
                             if let la = Double(depotLat), let lo = Double(depotLon), (-90...90).contains(la), (-180...180).contains(lo) {
                                 model.setDepot(latitude: la, longitude: lo)
+                                model.weatherStatus = nil
+                            } else {
+                                model.weatherStatus = "Enter the yard's latitude and longitude as numbers, for example 44.98 and -93.27."
                             }
                         }
                     } else {
@@ -165,9 +168,6 @@ struct StormView: View {
                             Text("\(s.address) triggers at \(s.triggerInches, specifier: "%.1f") in")
                         }
                     }
-                }
-                if !model.canUse(.stormAutomation) {
-                    Card { Text("Storm automation (weather-triggered dispatch) is part of the Max plan.").font(.footnote) }
                 }
             }
             .sheet(isPresented: $showingMessage) { StormMessageSheet(inches: inches, routeStart: routeStart, offsets: offsets) }

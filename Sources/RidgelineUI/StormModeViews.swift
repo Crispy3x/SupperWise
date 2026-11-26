@@ -311,7 +311,7 @@ struct FinishStormSheet: View {
             }
             if !s.sitesNotVisited.isEmpty {
                 let n = s.sitesNotVisited.count
-                Text("\(n) site\(n == 1 ? " has" : "s have") no visit logged. \(n == 1 ? "Its job stays" : "Their jobs stay") on the schedule.")
+                Text("\(n) site\(n == 1 ? " has" : "s have") no visit logged. Finishing takes \(n == 1 ? "its job" : "their jobs") off the schedule.")
                     .font(.footnote).foregroundStyle(.orange)
             }
         }

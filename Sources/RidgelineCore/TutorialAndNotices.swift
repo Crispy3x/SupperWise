@@ -15,11 +15,11 @@ public enum Tutorials {
         case .owner:
             return [
                 TutorialStep(id: "route", icon: "map.fill", title: "Your route, planned for you",
-                             body: "Today's jobs appear on the map on Home. Tap Smart route and they are put in the fastest order by drive time, using Apple Maps."),
+                             body: "Today's jobs appear on the map on Home. Tap Plan route and they are put in the fastest order by drive time, using Apple Maps."),
                 TutorialStep(id: "clients", icon: "person.crop.circle.badge.plus", title: "Add clients and jobs",
                              body: "Use New Client and New Job on Home. Clients can also ask for service from their own private page, and it lands in Requests."),
                 TutorialStep(id: "team", icon: "person.2.fill", title: "Build your team",
-                             body: "Open the menu and choose Team. Add people, give each a username and password and a role, and choose what they can see. Pro includes up to \(TeamRules.employeeLimit(for: .pro)) employees and Max up to \(TeamRules.employeeLimit(for: .max))."),
+                             body: "Open the menu, choose Business, then Team. Add people, give each a username and password and a role, and choose what they can see. Pro includes up to \(TeamRules.employeeLimit(for: .pro)) employees and Max up to \(TeamRules.employeeLimit(for: .max))."),
                 TutorialStep(id: "trial", icon: "gift.fill", title: "\(Pricing.trialDays) days free",
                              body: "Everything is unlocked for \(Pricing.trialDays) days. Pick Pro or Max before the trial ends. You pay for the plan. Your employees never pay."),
             ]
@@ -71,7 +71,7 @@ public enum Notifications {
                 out.append(AppNotification(id: "overdue", kind: .invoice, title: "\(overdue) overdue invoice\(overdue == 1 ? "" : "s")",
                                            detail: "Past their due date."))
             }
-            let drafts = data.invoices.filter { $0.sentAt == nil && !$0.isVoid }.count
+            let drafts = data.invoices.filter { $0.status(now: now) == .draft }.count
             if drafts > 0 {
                 out.append(AppNotification(id: "drafts", kind: .invoice, title: "\(drafts) draft invoice\(drafts == 1 ? "" : "s")",
                                            detail: "Look them over and send."))

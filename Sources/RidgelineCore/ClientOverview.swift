@@ -75,11 +75,13 @@ public struct ClientOverview: Equatable, Sendable {
 public enum ClientProfileError: Error, Equatable, Sendable {
     case emptyAddress
     case duplicateAddress
+    case propertyHasRecords
 
     public var message: String {
         switch self {
         case .emptyAddress: return "Type the address first."
         case .duplicateAddress: return "This client already has that address."
+        case .propertyHasRecords: return "This property has invoices or logged visits, which are your records, so it stays. Change its address instead."
         }
     }
 }
@@ -319,6 +321,20 @@ extension AppData {
             sites[i].latitude = nil
             sites[i].longitude = nil
         }
+    }
+
+    /// Removes a property added by mistake, with its contract, page link, requests and jobs. A property that has
+    /// invoices or logged visits stays, because those are records.
+    public mutating func deleteSite(_ id: UUID) throws {
+        guard sites.contains(where: { $0.id == id }) else { throw OperationError.notFound }
+        guard !invoices.contains(where: { $0.siteID == id }), !visitLog.entries.contains(where: { $0.record.siteID == id }) else {
+            throw ClientProfileError.propertyHasRecords
+        }
+        sites.removeAll { $0.id == id }
+        contracts.removeAll { $0.siteID == id }
+        portalLinks.removeAll { $0.siteID == id }
+        serviceRequests.removeAll { $0.siteID == id }
+        jobs.removeAll { $0.siteID == id }
     }
 
     /// Saves the standing instructions the crew sees at a property (gate code, where to pile snow).

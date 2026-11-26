@@ -49,6 +49,9 @@ public struct UninvoicedVisit: Identifiable, Equatable, Sendable {
     public let siteID: UUID?
     public let lines: [JobPriceLine]
     public let total: Money
+    /// True when the address has a snow contract and a visit was logged there the same day, so the contract may
+    /// bill the same work. The owner is warned before and after invoicing it.
+    public var mayDoubleBillSnowContract: Bool = false
 
     public var id: String { jobID.uuidString + "|" + dayKey }
 }
@@ -61,12 +64,16 @@ public struct ClientUninvoicedWork: Identifiable, Equatable, Sendable {
 
     public var id: UUID { customerID }
     public var total: Money { visits.reduce(Money.zero) { $0 + $1.total } }
+    /// How many of these visits the snow contract may also bill (see `UninvoicedVisit.mayDoubleBillSnowContract`).
+    public var snowContractOverlaps: Int { visits.filter(\.mayDoubleBillSnowContract).count }
 }
 
 /// What batch billing did: the draft invoices it made, and a plain sentence for each client it could not bill.
 public struct JobBillingResult: Equatable, Sendable {
     public var invoices: [Invoice] = []
     public var problems: [String] = []
+    /// A plain sentence for each draft that may bill work the snow contract also bills.
+    public var warnings: [String] = []
 
     public init() {}
 
@@ -80,7 +87,7 @@ public struct JobBillingResult: Equatable, Sendable {
         } else {
             parts.append("\(invoices.count) draft invoice\(invoices.count == 1 ? "" : "s") created for \(total.formatted).")
         }
-        return (parts + problems).joined(separator: " ")
+        return (parts + problems + warnings).joined(separator: " ")
     }
 }
 
@@ -93,10 +100,13 @@ public enum JobBillingError: Error, Equatable {
     case alreadyInvoiced(String)
     /// Carries the client's name.
     case noAddress(String)
+    /// A Storm mode job at an address with a snow contract: the contract bills that visit.
+    case billedBySnowContract
 
     /// A plain sentence for the owner.
     public var message: String {
         switch self {
+        case .billedBySnowContract: return "This storm visit is billed by the snow contract for this address, so it is not invoiced again here."
         case .jobNotFound: return "This job no longer exists."
         case .noPrice: return "This job has no price yet. Add a price first."
         case .noClient: return "This job has no client, so there is nobody to invoice."
@@ -221,6 +231,43 @@ extension AppData {
         return invoices.first { !$0.isVoid && ids.contains($0.id) }
     }
 
+    /// True for a job Storm mode made at an address that has a snow contract. The contract bills that visit (after the
+    /// visit is logged, or when the storm is finished), so job billing leaves it alone and the work is never billed twice.
+    public func isBilledBySnowContract(_ job: Job) -> Bool {
+        guard let siteID = job.siteID, contracts.contains(where: { $0.siteID == siteID }) else { return false }
+        return stormRuns.contains { $0.jobIDs.contains(job.id) }
+    }
+
+    /// True when a job's visit is at an address with a snow contract and a completed visit was logged there the same
+    /// day, so the contract may bill the same work. Lawn jobs are left out: a snow contract never covers them.
+    public func mayDoubleBillSnowContract(_ job: Job, visitStart: Date, calendar: Calendar = .current) -> Bool {
+        guard job.kind != .lawnCare, let siteID = job.siteID, contracts.contains(where: { $0.siteID == siteID }) else { return false }
+        return visitLog.entries.contains { entry in
+            entry.record.siteID == siteID && entry.record.status == .completed
+                && calendar.isDate(entry.record.arrival, inSameDayAs: visitStart)
+        }
+    }
+
+    /// Numbers of the standing invoices that bill a priced job at this address for a visit on this day. The snow
+    /// contract's automatic invoice uses it to warn that the same work may be billed twice.
+    func jobInvoiceNumbers(atSite siteID: UUID, on day: Date, calendar: Calendar = .current) -> [String] {
+        let key = Job.dayKey(day, calendar: calendar)
+        var numbers: [String] = []
+        for job in jobs where job.siteID == siteID && !job.isTask && job.kind != .lawnCare {
+            guard let map = job.invoicedVisits else { continue }
+            var ids: [UUID] = []
+            if job.repeats {
+                if let id = map[key] { ids = [id] }
+            } else if Job.dayKey(job.start, calendar: calendar) == key {
+                ids = Array(map.values)
+            }
+            for invoice in invoices where !invoice.isVoid && ids.contains(invoice.id) && !numbers.contains(invoice.number) {
+                numbers.append(invoice.number)
+            }
+        }
+        return numbers
+    }
+
     /// Finished visits that have a price and are not on an invoice yet, grouped by client (clients by name, visits
     /// oldest first). Reminders, jobs with no price and jobs with no client are left out. `through` is the last day
     /// to include; nil takes everything.
@@ -230,6 +277,7 @@ extension AppData {
         var byClient: [UUID: [UninvoicedVisit]] = [:]
         for job in jobs where !job.isTask && job.hasPrice {
             guard let customerID = billingCustomerID(forJob: job) else { continue }
+            if isBilledBySnowContract(job) { continue }   // a Storm mode job: the address's snow contract bills it
             let lines = JobBilling.clean(job.priceLines ?? [])
             let siteID = job.siteID.flatMap { (id: UUID) -> UUID? in
                 sites.contains(where: { $0.id == id && $0.customerID == customerID }) ? id : nil
@@ -239,7 +287,8 @@ extension AppData {
                 if let lastDay, calendar.startOfDay(for: visit.start) > lastDay { continue }
                 byClient[customerID, default: []].append(
                     UninvoicedVisit(jobID: job.id, dayKey: visit.key, start: visit.start, title: job.title, siteID: siteID,
-                                    lines: lines, total: lines.reduce(Money.zero) { $0 + $1.total }))
+                                    lines: lines, total: lines.reduce(Money.zero) { $0 + $1.total },
+                                    mayDoubleBillSnowContract: mayDoubleBillSnowContract(job, visitStart: visit.start, calendar: calendar)))
             }
         }
         let groups = byClient.compactMap { (entry) -> ClientUninvoicedWork? in
@@ -260,6 +309,7 @@ extension AppData {
         guard let job = jobs.first(where: { $0.id == jobID }) else { throw JobBillingError.jobNotFound }
         guard !job.isTask, job.hasPrice else { throw JobBillingError.noPrice }
         guard let customerID = billingCustomerID(forJob: job) else { throw JobBillingError.noClient }
+        guard !isBilledBySnowContract(job) else { throw JobBillingError.billedBySnowContract }
         let key = Job.dayKey(job.repeats ? day : job.start, calendar: calendar)
         guard let visit = JobBilling.doneVisits(of: job, calendar: calendar).first(where: { $0.key == key }) else { throw JobBillingError.notDone }
         if let existing = invoice(forJobVisit: jobID, on: visit.start, calendar: calendar) { throw JobBillingError.alreadyInvoiced(existing.number) }
@@ -295,6 +345,10 @@ extension AppData {
                 let invoice = try jobInvoice(customerID: work.customerID, siteID: siteID, picks: picks, note: "", now: now)
                 for visit in work.visits { markInvoiced(jobID: visit.jobID, dayKey: visit.dayKey, invoiceID: invoice.id) }
                 result.invoices.append(invoice)
+                let overlaps = work.snowContractOverlaps
+                if overlaps > 0 {
+                    result.warnings.append("Check \(invoice.number) for \(work.customerName) before you send it: \(overlaps) visit\(overlaps == 1 ? " is" : "s are") at an address with a snow contract where a visit was logged the same day, so the contract may bill the same work.")
+                }
             } catch let error as JobBillingError {
                 result.problems.append(error.message)
             } catch {
@@ -309,6 +363,12 @@ extension AppData {
     @discardableResult
     public mutating func autoInvoice(afterJobDone jobID: UUID, on day: Date, now: Date, calendar: Calendar = .current) -> Invoice? {
         guard profile.invoiceAutomation != .off else { return nil }
+        // Nothing automatic when the address's snow contract may bill the same visit: it waits under Ready to bill,
+        // with a warning, for the owner to decide.
+        if let job = jobs.first(where: { $0.id == jobID }) {
+            let start = job.repeats ? (job.occurrenceStart(on: day, calendar: calendar) ?? day) : job.start
+            if mayDoubleBillSnowContract(job, visitStart: start, calendar: calendar) { return nil }
+        }
         return try? createInvoice(forJobVisit: jobID, on: day, now: now, calendar: calendar)
     }
 
@@ -365,6 +425,7 @@ extension AssistantTools {
             lines.append("- \(invoice.number) | \(who) | \(invoice.total.formatted) | \(invoice.lines.count) visit\(invoice.lines.count == 1 ? "" : "s")")
         }
         lines.append(contentsOf: result.problems.map { "Not billed: \($0)" })
+        lines.append(contentsOf: result.warnings)
         return .text(lines.joined(separator: "\n"))
     }
 }

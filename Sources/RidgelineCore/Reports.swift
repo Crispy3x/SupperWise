@@ -50,7 +50,7 @@ public struct TimesheetReport: Equatable, Sendable {
     public var missingRates: [String] { rows.filter { $0.rate == nil && $0.hours > 0 }.map(\.name) }
 
     public static func compute(for data: AppData, interval: DateInterval, now: Date) -> TimesheetReport {
-        let mine = data.timeEntries.filter { interval.contains($0.start) }.sorted { $0.start > $1.start }
+        let mine = data.timeEntries.filter { $0.start >= interval.start && $0.start < interval.end }.sorted { $0.start > $1.start }   // the end is the next period's start
         // One row per person, whatever capitals they typed their name with.
         var order: [String] = [], shown: [String: String] = [:], hours: [String: Double] = [:]
         for e in mine {
@@ -136,13 +136,15 @@ public struct RevenueReport: Equatable, Sendable {
             for p in inv.payments { all.append(RevenueEntry(id: p.id, date: p.date, invoiceNumber: inv.number, client: who, amount: p.amount)) }
         }
         func total(_ list: [RevenueEntry]) -> Money { list.reduce(.zero) { $0 + $1.amount } }
+        // The start counts and the end does not, so a payment at midnight on the 1st is in one month, not two.
+        func within(_ span: DateInterval, _ date: Date) -> Bool { date >= span.start && date < span.end }
         let spans = period.intervals(now: now, calendar: calendar)
-        let inPeriod = spans.current.map { s in all.filter { s.contains($0.date) } } ?? all
+        let inPeriod = spans.current.map { s in all.filter { within(s, $0.date) } } ?? all
         let monthSpan = calendar.dateInterval(of: .month, for: now)
-        let thisMonth = monthSpan.map { s in total(all.filter { s.contains($0.date) }) } ?? .zero
+        let thisMonth = monthSpan.map { s in total(all.filter { within(s, $0.date) }) } ?? .zero
         var change: Double?
         if let prev = spans.previous {
-            let before = total(all.filter { prev.contains($0.date) })
+            let before = total(all.filter { within(prev, $0.date) })
             if before.cents > 0 { change = (Double(total(inPeriod).cents - before.cents) / Double(before.cents) * 100 * 10).rounded() / 10 }
             else if total(inPeriod).cents == 0 { change = 0 }
         }

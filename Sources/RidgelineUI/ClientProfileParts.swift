@@ -288,6 +288,17 @@ struct PropertyEditorSheet: View {
     @State private var working = false
     @State private var problem: String?
     @State private var lookup: Task<Void, Never>?
+    @State private var confirmRemove = false
+
+    private func remove() {
+        guard let existing = site else { return }
+        if let failure = model.editProfile({ try $0.deleteSite(existing.id) }) {
+            problem = failure
+            return
+        }
+        onSaved("Property removed.")
+        dismiss()
+    }
 
     private var canSave: Bool { !working && !address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
 
@@ -315,10 +326,20 @@ struct PropertyEditorSheet: View {
                 }
                 PrimaryActionButton(title: working ? "Looking up the address..." : "Save", icon: working ? nil : "checkmark") { save() }
                     .disabled(!canSave).opacity(canSave ? 1 : 0.4)
+                if site != nil {
+                    // A property added by mistake could be changed but never taken off the client.
+                    Button("Remove this property", role: .destructive) { confirmRemove = true }
+                        .font(.callout).padding(.top, 4).disabled(working)
+                }
             }
         }
         .background(Look.sheet.ignoresSafeArea())
         .interactiveDismissDisabled(working)
+        .confirmationDialog("Remove this property?", isPresented: $confirmRemove, titleVisibility: .visible) {
+            Button("Remove property", role: .destructive) { remove() }
+        } message: {
+            Text("Its contract, page link, requests and jobs are removed too. A property with invoices or logged visits cannot be removed.")
+        }
         .onAppear {
             guard !loaded else { return }
             loaded = true

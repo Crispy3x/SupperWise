@@ -10,7 +10,10 @@ struct QuotesView: View {
     var body: some View {
         ScreenStack {
             AppPage {
-                PrimaryActionButton(title: "New quote", icon: "plus") { showingNew = true }
+                // "See quotes" alone only looks: making, accepting (which creates a contract) and declining need "Create quotes".
+                if model.data.can(.editQuotes) {
+                    PrimaryActionButton(title: "New quote", icon: "plus") { showingNew = true }
+                }
                 if model.data.quotes.isEmpty {
                     EmptyCard(icon: "doc.text", title: "No quotes yet", message: "Add one to send a price to a customer.")
                 }
@@ -37,7 +40,7 @@ struct QuotesView: View {
                 Text(model.data.customers.first { $0.id == quote.customerID }?.name ?? "Unknown customer").font(.headline)
                 Text(quote.address).font(.subheadline)
                 Text(quote.terms.summary).font(.footnote).foregroundStyle(.secondary)
-                if [.draft, .sent].contains(status) {
+                if [.draft, .sent].contains(status) && model.data.can(.editQuotes) {
                     RowDivider()
                     PrimaryActionButton(title: "Accept") {
                         message = model.edit { data in _ = try data.acceptQuote(id: quote.id, now: Date()) }

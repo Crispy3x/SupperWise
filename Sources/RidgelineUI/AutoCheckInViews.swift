@@ -50,6 +50,8 @@ final class AutoCheckInController: NSObject, CLLocationManagerDelegate {
     var draft: AutoVisitDraft?
     /// A job the crew left while "mark done when the crew leaves" is off: waiting for a yes or a not yet.
     var askDone: CheckInStop?
+    /// The day of the visit `askDone` is about. Not always today: a visit started before midnight belongs to the day before.
+    private(set) var askDoneDay = Date()
 
     @ObservationIgnored private var tracker: ArrivalTracker?
     @ObservationIgnored private let manager = CLLocationManager()
@@ -163,12 +165,16 @@ final class AutoCheckInController: NSObject, CLLocationManagerDelegate {
         case .departed(let id, let at):
             guard let stop = tracker?.stop(id) else { return }
             let markDone = model.data.autoCheckInMarksDone
-            if let problem = model.edit({ try $0.recordDeparture(jobID: id, at: at, markDone: markDone) }) {
+            var visitDay = at
+            if let problem = model.edit({ visitDay = try $0.recordDeparture(jobID: id, at: at, markDone: markDone) }) {
                 note = problem
                 return
             }
-            let stillOpen = model.data.jobs.first(where: { $0.id == id })?.occurrenceStatus(on: at).isOpen ?? false
-            if !markDone && stillOpen { askDone = stop }
+            let stillOpen = model.data.jobs.first(where: { $0.id == id })?.occurrenceStatus(on: visitDay).isOpen ?? false
+            if !markDone && stillOpen {
+                askDone = stop
+                askDoneDay = visitDay
+            }
             banner = CheckInText.left(stop.name)
             refreshStops()
             publish()
@@ -255,7 +261,7 @@ struct AutoCheckInCard: View {
             .onChange(of: model.data.jobs) { checkIn.refreshStops() }
             .sheet(item: $visit, onDismiss: { checkIn.clearDraftIfLogged(in: model.data) }) { draft in
                 if let site = model.data.sites.first(where: { $0.id == draft.siteID }) {
-                    VisitSheet(site: site, stormID: model.stormName, arrivedAt: draft.arrivedAt)   // TodayView.swift
+                    VisitSheet(site: site, stormID: model.visitStormName, arrivedAt: draft.arrivedAt)   // TodayView.swift
                 }
             }
         }
@@ -291,7 +297,8 @@ struct AutoCheckInCard: View {
         CardGroup(title: "You left \(stop.name)") {
             Text("Mark this job done?").font(.headline)
             PrimaryActionButton(title: "Mark done", icon: "checkmark") {
-                if let problem = model.setOccurrenceStatus(.done, id: stop.id, on: Date()) { model.notice = problem }
+                // The visit's own day, so a repeating job left after midnight (or answered later) marks the right visit.
+                if let problem = model.setOccurrenceStatus(.done, id: stop.id, on: checkIn.askDoneDay) { model.notice = problem }
                 checkIn.askDone = nil
             }
             SecondaryActionButton(title: "Not yet") { checkIn.askDone = nil }

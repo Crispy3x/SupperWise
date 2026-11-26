@@ -24,13 +24,17 @@ struct AddCustomerSheet: View {
     @State private var coordinate: Coordinate?
     @State private var locationNote = ""
     @State private var searching = false
+    @State private var saving = false
 
     private var fullName: String { [first, last].map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }.joined(separator: " ") }
+    private var cleanEmail: String { email.trimmingCharacters(in: .whitespacesAndNewlines) }
+    /// What is wrong with the optional phone or email, if anything. A typed one has to be usable.
+    private var contactProblem: String? { ContactValidation.phoneProblem(phone) ?? ContactValidation.emailProblem(email) }
     private var canAdvance: Bool {
         switch step {
-        case 0: return !first.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        case 0: return !first.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && contactProblem == nil
         case 1: return !address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-        default: return true
+        default: return !saving
         }
     }
 
@@ -39,10 +43,11 @@ struct AddCustomerSheet: View {
             switch step {
             case 0:
                 SectionLabel(text: "Contact basics")
-                PillField(label: "First Name", placeholder: "Jane", text: $first)
+                PillField(label: "First Name", required: true, placeholder: "Jane", text: $first)
                 PillField(label: "Last Name", optional: true, placeholder: "Doe", text: $last)
-                PillField(label: "Phone Number", placeholder: "(555) 555-1234", text: $phone, kind: .phone)
-                PillField(label: "Email", placeholder: "jane@company.com", text: $email, kind: .email)
+                PillField(label: "Phone Number", optional: true, placeholder: "(555) 555-1234", text: $phone, kind: .phone)
+                PillField(label: "Email", optional: true, placeholder: "jane@company.com", text: $email, kind: .email)
+                if let contactProblem { Label(contactProblem, systemImage: "exclamationmark.triangle.fill").font(.callout).foregroundStyle(.orange) }
             case 1:
                 SectionLabel(text: "Where we plow")
                 PillField(label: "Service address", required: true, placeholder: "14 Elm Ave, Minneapolis", text: $address)
@@ -63,10 +68,10 @@ struct AddCustomerSheet: View {
                 if seasonal { PillStepper(label: "Season price", value: $season, range: 50...50_000, step: 50, format: { "$\(Int($0))" }) }
                 else { PillStepper(label: "Price per push", value: $rate, range: 10...1000, step: 5, format: { "$\(Int($0))" }) }
                 SectionLabel(text: "Messages")
-                Button { if ContactValidation.isValidEmail(email) { agreed.toggle() } } label: {
+                Button { if ContactValidation.isValidEmail(cleanEmail) { agreed.toggle() } } label: {
                     HStack(spacing: 14) {
-                        Image(systemName: agreed && ContactValidation.isValidEmail(email) ? "checkmark.circle.fill" : "circle").font(.title2)
-                            .foregroundStyle(agreed && ContactValidation.isValidEmail(email) ? Theme.accent(model.data.profile.accentColor) : Color.secondary)
+                        Image(systemName: agreed && ContactValidation.isValidEmail(cleanEmail) ? "checkmark.circle.fill" : "circle").font(.title2)
+                            .foregroundStyle(agreed && ContactValidation.isValidEmail(cleanEmail) ? Theme.accent(model.data.profile.accentColor) : Color.secondary)
                         Text("This client agreed to storm updates, invoices and their page link by email").font(.title3).foregroundStyle(.primary).multilineTextAlignment(.leading)
                     }
                     .padding(16).frame(maxWidth: .infinity, alignment: .leading)
@@ -74,10 +79,12 @@ struct AddCustomerSheet: View {
                     .overlay(RoundedRectangle(cornerRadius: 22, style: .continuous).stroke(Look.fieldStroke, lineWidth: 1))
                 }
                 .buttonStyle(.plain)
-                Text(ContactValidation.isValidEmail(email) ? "Only tick this if they said yes. They can always ask you to stop." : "Add a valid email on step 1 to turn this on. Nobody is emailed without it.")
+                Text(ContactValidation.isValidEmail(cleanEmail) ? "Only tick this if they said yes. They can always ask you to stop." : "Add a valid email on step 1 to turn this on. Nobody is emailed without it.")
                     .font(.footnote).foregroundStyle(.secondary)
+                if saving { Label("Finding the address on the map...", systemImage: "mappin.and.ellipse").font(.callout).foregroundStyle(.secondary) }
             }
         }
+        .interactiveDismissDisabled(saving)
         .onAppear { trigger = model.data.profile.defaultTriggerInches; seasonal = model.data.profile.defaultSnowBilling == .seasonal }
         .onChange(of: address) { coordinate = nil; locationNote = "" }          // a map location belongs to the address it was found for
     }
@@ -97,8 +104,29 @@ struct AddCustomerSheet: View {
     #endif
 
     private func save() {
-        let id = model.addCustomerWithSite(name: fullName, phone: phone, email: email, emailConsent: agreed, address: address, priority: Int(priority),
-                                           triggerInches: trigger, perPushRate: Money(dollars: Int(rate)), seasonPrice: seasonal ? Money(dollars: Int(season)) : nil, coordinate: coordinate)
+        guard !saving else { return }
+        #if canImport(CoreLocation)
+        if coordinate == nil {
+            // Nobody has to tap "Find map location" first: without a map location the property is left off every route.
+            saving = true
+            let looked = address
+            Task { @MainActor in
+                let found = await AddressGeocoder.coordinate(for: looked)
+                saving = false
+                guard looked == address else { return }       // the address was changed meanwhile, so nothing is saved yet
+                finish(at: found)
+            }
+            return
+        }
+        #endif
+        finish(at: coordinate)
+    }
+
+    private func finish(at place: Coordinate?) {
+        let clean: (String) -> String = { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+        // Trimmed, so a stray space cannot make a good email look invalid and quietly drop the client's consent.
+        let id = model.addCustomerWithSite(name: fullName, phone: clean(phone), email: clean(email), emailConsent: agreed, address: clean(address), priority: Int(priority),
+                                           triggerInches: trigger, perPushRate: Money(dollars: Int(rate)), seasonPrice: seasonal ? Money(dollars: Int(season)) : nil, coordinate: place)
         onCreated?(id)
         dismiss()
     }

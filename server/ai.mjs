@@ -39,7 +39,15 @@ export const SYSTEM_PROMPT = [
   'If a tool says the person is not allowed to do something, say so plainly and do not try another way around it.',
   'Ask one short question when a request is unclear or could match more than one client or job. Keep answers brief and plain, with no markdown headings.',
   'Routes are ordered by drive time only. You are not a weather or safety authority: for road conditions or safety, tell people to use their own judgement.',
+  'Each message from the person starts with a line in square brackets that the app adds: the current date and time. Use it to turn words like today, tomorrow or Friday into dates. Lines that start with [Update: are also from the app and say what the person tapped since your last answer.',
 ].join('\n');
+// The same lines are in the app (Sources/RidgelineCore/DirectAssistantTransport.swift); a test checks they match.
+// This text and the tool list must not change in the middle of a chat: Claude ties its thinking to the conversation so far and
+// answers 400 when the system prompt, the tools or an earlier message is different from when it last answered. That is why the
+// time is not in here (the app puts it in front of each question) and why nothing below edits what the app sent.
+
+/** The fewest answer tokens worth asking for. Below this an answer with thinking is almost always cut off, which costs money for nothing. */
+export const MIN_ANSWER_TOKENS = 2048;
 
 export function loadAiConfig(env = process.env) {
   const num = (v, d) => (v !== undefined && v !== '' && Number.isFinite(Number(v)) ? Number(v) : d);
@@ -55,11 +63,15 @@ export function loadAiConfig(env = process.env) {
     apiKey: env.ANTHROPIC_API_KEY || '',
     model: env.AI_MODEL || 'claude-haiku-5-5',          // the cheapest current model. Raise it with AI_MODEL (claude-sonnet-5-5, claude-opus-5-5) if answers are not good enough
     effort: ['low', 'medium', 'high'].includes(env.AI_EFFORT) ? env.AI_EFFORT : 'medium',
-    maxTokens: Math.min(num(env.AI_MAX_TOKENS, 4096), 8192),
-    dailyCap: num(env.AI_DAILY_MESSAGE_CAP, 200),
-    ipLimitPerMinute: num(env.AI_RATE_LIMIT_PER_MIN, 20),
-    maxBodyBytes: num(env.AI_MAX_BODY_BYTES, 300_000),
-    maxMessages: num(env.AI_MAX_MESSAGES, 80),
+    // Room for one answer: thinking, the words and a tool call all come out of this. 4096 was too little (answers were cut off
+    // and the app had to drop them). 16000 is Anthropic's suggested size for answers that are not streamed; above about 21,000
+    // the SDK insists on streaming, so 20000 is the ceiling. The spend cap below still holds: see `chat`.
+    maxTokens: Math.max(1, Math.min(Math.floor(num(env.AI_MAX_TOKENS, 16000)), 20000)),
+    dailyCap: num(env.AI_DAILY_MESSAGE_CAP, 400),
+    // One question is up to 8 requests (one per tool step) plus a status check, so 20 a minute ran out after two quick questions.
+    ipLimitPerMinute: num(env.AI_RATE_LIMIT_PER_MIN, 60),
+    maxBodyBytes: num(env.AI_MAX_BODY_BYTES, 400_000),
+    maxMessages: num(env.AI_MAX_MESSAGES, 120),
     maxTools: 20,
     trustProxy: env.TRUST_PROXY === '1',
     // Spend cap: a share of what each customer pays, after Apple's cut. 30% is Apple's standard rate (the safe assumption);
@@ -90,31 +102,59 @@ export function monthlyBudgetMicros(config, token) {
   return Math.floor(Math.round(gross * 100) * (100 - config.appleFeePercent) * config.budgetPercent);
 }
 
-/** Cost of one answer in micro-dollars, rounded up. Cached tokens are counted at the full input price (slightly high, never low). */
-export function costMicros(config, usage, { fallbackPossible = false } = {}) {
-  const inTok = (usage?.input_tokens || 0) + (usage?.cache_read_input_tokens || 0) + (usage?.cache_creation_input_tokens || 0);
-  const outTok = usage?.output_tokens || 0;
+/** Dollars per million tokens [input, output] for a request with this many input tokens. */
+export function rates(config, inTok, { fallbackPossible = false } = {}) {
   let [pin, pout] = fallbackPossible ? SAFE_PRICE : (PRICES[config.model] || SAFE_PRICE);
   const tier = !fallbackPossible && PRICES[config.model]?.[2];
   if (tier && inTok > tier.overInput) { pin = tier.inHigh; pout = tier.outHigh; }
   if (config.priceIn !== undefined && Number.isFinite(config.priceIn)) pin = config.priceIn;
   if (config.priceOut !== undefined && Number.isFinite(config.priceOut)) pout = config.priceOut;
+  return [pin, pout];
+}
+
+/** Cost of one answer in micro-dollars, rounded up. Cached tokens are counted at the full input price (slightly high, never low). */
+export function costMicros(config, usage, { fallbackPossible = false } = {}) {
+  const inTok = (usage?.input_tokens || 0) + (usage?.cache_read_input_tokens || 0) + (usage?.cache_creation_input_tokens || 0);
+  const outTok = usage?.output_tokens || 0;
+  const [pin, pout] = rates(config, inTok, { fallbackPossible });
   return Math.ceil(inTok * pin + outTok * pout);        // dollars per million tokens equals micro-dollars per token
+}
+
+/**
+ * How many answer tokens this request may use, and what to hold back for it, so the month's allowance can never be passed.
+ * `room` is what is left of the allowance in micro-dollars. The input is priced from a deliberately high estimate (and at the
+ * long-prompt price when the estimate is anywhere near that line); whatever is left after it buys the answer, up to the usual
+ * maximum. Returns { maxTokens: 0 } when there is not room for a useful answer.
+ */
+export function affordable(config, inputTokens, room, { fallbackPossible = false } = {}) {
+  const [pin, pout] = rates(config, Math.ceil(inputTokens * 1.5), { fallbackPossible });
+  const inputHold = Math.ceil(inputTokens * pin);
+  const left = room - inputHold;
+  const canBuy = pout > 0 ? Math.floor(left / pout) : config.maxTokens;
+  const maxTokens = Math.min(config.maxTokens, canBuy);
+  if (left <= 0 || maxTokens < Math.min(MIN_ANSWER_TOKENS, config.maxTokens)) return { maxTokens: 0, reserve: 0 };
+  return { maxTokens, reserve: inputHold + Math.ceil(maxTokens * pout) };
 }
 
 const clean = (v, max) => (typeof v === 'string' ? v.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, ' ').trim().slice(0, max) : '');
 
-/** Checks the shape of what the app sent. Returns { error } or { messages, tools, context }. */
+/**
+ * Checks the shape of what the app sent. Returns { error } or { messages, tools, context }.
+ * A problem with the conversation itself is marked `conversation` (a fresh chat fixes it) or `tooLong`, so the app can recover
+ * by itself instead of showing the same error for every question. Blocks are only checked for having a type: thinking,
+ * redacted_thinking, tool_use, tool_result and anything newer pass through untouched, as Claude needs them back unchanged.
+ */
 export function validateChat(body, config) {
   if (!body || typeof body !== 'object') return { error: 'Body must be JSON' };
   const { messages, tools } = body;
-  if (!Array.isArray(messages) || messages.length === 0 || messages.length > config.maxMessages) return { error: `messages must be a list of 1 to ${config.maxMessages}` };
+  if (!Array.isArray(messages) || messages.length === 0) return { error: 'messages must be a list' };
+  if (messages.length > config.maxMessages) return { error: `messages must be a list of 1 to ${config.maxMessages}`, tooLong: true };
   for (const m of messages) {
-    if (!m || !ROLES.has(m.role)) return { error: 'each message needs a role of user or assistant' };
-    if (typeof m.content === 'string') { if (!m.content.trim()) return { error: 'messages cannot be empty' }; continue; }
-    if (!Array.isArray(m.content) || m.content.length === 0 || m.content.some((b) => !b || typeof b !== 'object' || typeof b.type !== 'string')) return { error: 'message content must be text or a list of blocks' };
+    if (!m || !ROLES.has(m.role)) return { error: 'each message needs a role of user or assistant', conversation: true };
+    if (typeof m.content === 'string') { if (!m.content.trim()) return { error: 'messages cannot be empty', conversation: true }; continue; }
+    if (!Array.isArray(m.content) || m.content.length === 0 || m.content.some((b) => !b || typeof b !== 'object' || typeof b.type !== 'string')) return { error: 'message content must be text or a list of blocks', conversation: true };
   }
-  if (messages[messages.length - 1].role !== 'user') return { error: 'the last message must be from the user' };
+  if (messages[messages.length - 1].role !== 'user') return { error: 'the last message must be from the user', conversation: true };
   let cleanTools;
   if (tools !== undefined) {
     if (!Array.isArray(tools) || tools.length > config.maxTools) return { error: `tools must be a list of at most ${config.maxTools}` };
@@ -125,6 +165,27 @@ export function validateChat(body, config) {
     }
   }
   return { messages, tools: cleanTools, context: clean(body.context, 2000) };
+}
+
+/** What to tell the app when Claude answers with an error. Nothing from Claude is passed on except its reason for refusing a conversation. */
+export function upstreamFailure(e) {
+  const status = e && typeof e.status === 'number' ? e.status : 0;
+  // Anthropic's own error text describes the request's shape (never what people asked), so it is safe to log and pass on.
+  const reason = clean(e?.error?.error?.message ?? e?.error?.message ?? '', 300);
+  const low = reason.toLowerCase();
+  const timedOut = !status && /timeout|timed out/i.test(`${e?.name || ''} ${e?.constructor?.name || ''}`);
+  let out;
+  if (status === 429) out = [429, { error: 'The assistant is busy. Try again in a minute.' }];
+  else if (status === 529 || status === 503) out = [503, { error: 'Claude is busy right now. Try again in a minute.', retry: true }];
+  else if (status === 401 || status === 403) out = [502, { error: 'The assistant is not set up correctly on the server (Anthropic did not accept its key).' }];
+  else if (status === 404) out = [502, { error: 'The assistant is not set up correctly on the server (Anthropic does not know the model in AI_MODEL).' }];
+  else if (status === 413 || (status === 400 && /too long|too large|context window/.test(low))) out = [413, { error: 'This chat is too long for the assistant. Start a new chat.', tooLong: true }];
+  else if (status === 400 && /credit|billing/.test(low)) out = [502, { error: 'The assistant is out of credit on the server. Its owner needs to add credit at console.anthropic.com.' }];
+  else if (status === 400) out = [502, { error: 'Claude did not accept this chat. Start a new chat and ask again.', reason, conversation: true }];
+  else if (status >= 500) out = [502, { error: 'Claude had a problem on its side. Try again in a minute.', retry: true }];
+  else if (timedOut) out = [504, { error: 'Claude took too long to answer. Try again, or ask for one thing at a time.' }];
+  else out = [502, { error: 'The server could not reach Claude. Try again in a minute.' }];
+  return { status: out[0], body: out[1], log: `assistant upstream error ${status || (timedOut ? 'timeout' : 'network')}${reason ? `: ${reason}` : ''}` };
 }
 
 export function createAi(config, deps = {}) {
@@ -158,7 +219,8 @@ export function createAi(config, deps = {}) {
   /** The SDK is loaded only when the assistant is switched on, so servers that do not use it never need it installed. */
   function getClient() {
     if (deps.client) return Promise.resolve(deps.client);
-    if (!clientPromise) clientPromise = import('@anthropic-ai/sdk').then((m) => new (m.default ?? m.Anthropic)({ apiKey: config.apiKey, maxRetries: 1, timeout: 120_000 }));
+    // 90 seconds and one retry is at most about three minutes. The app waits 200 seconds, so it always hears the real reason.
+    if (!clientPromise) clientPromise = import('@anthropic-ai/sdk').then((m) => new (m.default ?? m.Anthropic)({ apiKey: config.apiKey, maxRetries: 1, timeout: 90_000 }));
     return clientPromise;
   }
 
@@ -208,6 +270,7 @@ export function createAi(config, deps = {}) {
     const recent = (ipHits.get(ip) ?? []).filter((x) => t - x < 60_000);
     if (recent.length >= config.ipLimitPerMinute) return false;
     recent.push(t); ipHits.set(ip, recent);
+    if (ipHits.size > 5000) for (const [k, v] of ipHits) if (t - v[v.length - 1] >= 60_000) ipHits.delete(k);   // never grow without bound
     return true;
   };
   const day = () => Math.floor(now() / DAY);
@@ -221,13 +284,14 @@ export function createAi(config, deps = {}) {
       return sendJson(res, 400, { error: 'Body must be JSON' });
     }
     const v = validateChat(body, config);
-    if (v.error) return sendJson(res, 400, { error: v.error });
+    if (v.error) return sendJson(res, 400, { error: v.error, ...(v.conversation ? { conversation: true, reason: v.error } : {}), ...(v.tooLong ? { tooLong: true } : {}) });
 
     const used = daily.get(key);
     const today = day();
     const count = used && used.day === today ? used.count : 0;
     if (count >= config.dailyCap) return sendJson(res, 429, { error: 'The assistant has reached its limit for today. It resets at midnight UTC.' });
     daily.set(key, { day: today, count: count + 1 });
+    if (daily.size > 5000) for (const [k, u] of daily) if (u.day !== today) daily.delete(k);
 
     const params = {
       model: config.model,
@@ -242,16 +306,23 @@ export function createAi(config, deps = {}) {
 
     // Money: hold back the most this answer could cost, and refuse if the month's allowance cannot cover it.
     // Holding it first means requests that arrive together cannot add up to more than the allowance.
+    // When the allowance is nearly used, the answer is given less room rather than refused, down to MIN_ANSWER_TOKENS.
     const budget = budgetFor(who);
     const e = entry(key);
-    const reserve = costMicros(config, { input_tokens: Math.ceil(JSON.stringify(params).length / 3), output_tokens: config.maxTokens }, { fallbackPossible });
-    if (who.app && config.appMonthlyCapUsd > 0 && appSpentMicros() + reserve > Math.round(config.appMonthlyCapUsd * 1_000_000)) {
-      log('assistant built-in monthly cap reached');
-      return sendJson(res, 429, { error: 'The assistant has reached this month\'s limit. It starts again on the 1st.' });
-    }
-    if (e.spent + e.reserved + reserve > budget) {
+    const inputEstimate = Math.ceil(JSON.stringify(params).length / 3);       // high on purpose: real text is nearer 4 characters a token
+    const room = budget - e.spent - e.reserved;
+    const appRoom = who.app && config.appMonthlyCapUsd > 0 ? Math.round(config.appMonthlyCapUsd * 1_000_000) - appSpentMicros() : Infinity;
+    const hold = affordable(config, inputEstimate, Math.min(room, appRoom), { fallbackPossible });
+    if (!hold.maxTokens) {
+      if (affordable(config, inputEstimate, room, { fallbackPossible }).maxTokens) {
+        // This phone still has allowance; it is the ceiling for all built-in tokens together that is used up.
+        log('assistant built-in monthly cap reached');
+        return sendJson(res, 429, { error: 'The assistant has reached this month\'s limit. It starts again on the 1st.' });
+      }
       return sendJson(res, 429, { error: 'The assistant has used this month\'s allowance. It starts again on the 1st.', usedPercent: Math.min(100, Math.round((e.spent / Math.max(budget, 1)) * 100)) });
     }
+    params.max_tokens = hold.maxTokens;
+    const reserve = hold.reserve;
     e.reserved += reserve;
     let actual = null;
 
@@ -266,16 +337,10 @@ export function createAi(config, deps = {}) {
         usage: msg.usage ? { input_tokens: msg.usage.input_tokens, output_tokens: msg.usage.output_tokens } : undefined,
       });
     } catch (e) {
-      const status = e && typeof e.status === 'number' ? e.status : 0;
-      // Anthropic's own error text describes the request's shape (never what people asked), so it is safe to log and pass on.
-      const reason = clean(e?.error?.error?.message ?? e?.error?.message ?? '', 200);
-      log(`assistant upstream error ${status || 'network'}${reason ? `: ${reason}` : ''}`);
+      const failure = upstreamFailure(e);
+      log(failure.log);
       actual = 0;                                    // a failed call is not billed
-      if (status === 429) return sendJson(res, 429, { error: 'The assistant is busy. Try again in a minute.' });
-      if (status === 529 || status === 503) return sendJson(res, 503, { error: 'Claude is busy right now. Try again in a minute.', retry: true });
-      if (status === 401 || status === 403) return sendJson(res, 502, { error: 'The assistant is not set up correctly on the server.' });
-      if (status === 400) return sendJson(res, 502, { error: 'The assistant could not answer right now.', reason, conversation: true });
-      return sendJson(res, 502, { error: 'The assistant could not answer right now.' });
+      return sendJson(res, failure.status, failure.body);
     } finally {
       const cur = entry(key);
       cur.reserved = Math.max(0, cur.reserved - reserve);

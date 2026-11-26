@@ -9,9 +9,20 @@ struct TodayView: View {
 
     private var stormNameBinding: Binding<String> { Binding(get: { model.stormName }, set: { model.stormName = $0 }) }
 
-    private var pendingRequests: Int { model.data.serviceRequests.filter { $0.status == .pending && $0.kind != .thanks }.count }
-    private var drafts: Int { model.data.invoices.filter { $0.sentAt == nil && !$0.isVoid }.count }
-    private var overdue: Int { model.data.invoices.filter { $0.status(now: Date()) == .overdue }.count }
+    // An employee only sees (and can only open) what their permissions allow: requests need "See client requests",
+    // invoices need "See revenue and invoices".
+    private var pendingRequests: Int {
+        guard model.data.can(.viewRequests) else { return 0 }
+        return model.data.serviceRequests.filter { $0.status == .pending && $0.kind != .thanks }.count
+    }
+    private var drafts: Int {
+        guard model.data.can(.viewRevenue) else { return 0 }
+        return model.data.invoices.filter { $0.status(now: Date()) == .draft }.count
+    }
+    private var overdue: Int {
+        guard model.data.can(.viewRevenue) else { return 0 }
+        return model.data.invoices.filter { $0.status(now: Date()) == .overdue }.count
+    }
 
     @ViewBuilder private var attentionSection: some View {
         if pendingRequests + drafts + overdue > 0 {
@@ -44,7 +55,7 @@ struct TodayView: View {
         let items = SetupChecklist.items(for: model.data, serverConfigured: model.serverConfigured)
         let progress = SetupChecklist.progress(items)
         let remaining = items.filter { !$0.done }
-        if progress.done < progress.total {
+        if model.data.isOwnerSession && progress.done < progress.total {   // setup is the owner's job, not the crew's
             CardGroup(title: "Finish setup: \(progress.done) of \(progress.total)") {
                 ProgressView(value: Double(progress.done), total: Double(max(progress.total, 1)))
                 ForEach(remaining) { item in
@@ -66,7 +77,7 @@ struct TodayView: View {
         } else {
             CardGroup(title: "Sites") {
                 ForEach(Array(sites.enumerated()), id: \.element.id) { index, site in
-                    let visits = model.data.visitLog.records(forSite: site.id).filter { $0.stormID == model.stormName }
+                    let visits = model.data.visitLog.records(forSite: site.id).filter { $0.stormID == model.visitStormName }
                     if index > 0 { RowDivider() }
                     Button { selected = site } label: {
                         HStack(spacing: 12) {
@@ -103,7 +114,7 @@ struct TodayView: View {
                 sitesSection
             }
             .navigationTitle("Crew")
-            .sheet(item: $selected) { site in VisitSheet(site: site, stormID: model.stormName) }
+            .sheet(item: $selected) { site in VisitSheet(site: site, stormID: model.visitStormName) }   // AppModel+StormMode.swift
         }
     }
 }
@@ -189,7 +200,12 @@ struct VisitSheet: View {
                     if skipped { PillField(label: "Reason", required: true, placeholder: "Why the visit was skipped", text: $reason) }
                 }
                 CardGroup(title: "Who and where") {
-                    PillField(label: "Your name", placeholder: "Name", text: $crewName)
+                    // A signed-in employee is on the proof record under their own name; only the owner types one.
+                    if let member = model.data.currentMember {
+                        FactRow(label: "Name", value: member.name)
+                    } else {
+                        PillField(label: "Your name", placeholder: "Name", text: $crewName)
+                    }
                     FactRow(label: "Arrival", value: locationText)
                     #if canImport(CoreLocation)
                     SecondaryActionButton(title: findingLocation ? "Finding..." : "Check location", icon: "location") { checkLocation() }
@@ -226,16 +242,16 @@ struct VisitSheet: View {
                 CardGroup {
                     PillNotes(label: "Note", placeholder: "Optional note", text: $note)
                 }
-                CardGroup(title: "Message to customer", footer: "Preview only, messages are not sent yet.") {
-                    Text(preview).font(.footnote)
+                CardGroup(title: "Note for the customer", footer: "A suggested note you can copy. Saving the visit does not send it. To text the client, open the job and tap Job done.") {
+                    Text(preview).font(.footnote).textSelection(.enabled)
                     if !skipped && afterPhotos.isEmpty {
                         Text("No after photo yet. The proof of service is stronger with one.")
                             .font(.footnote).foregroundStyle(.orange)
                     }
                 }
                 PrimaryActionButton(title: "Save", icon: "checkmark") { save() }
-                    .disabled(skipped && reason.isEmpty)
-                    .opacity(skipped && reason.isEmpty ? 0.5 : 1)
+                    .disabled(skipped && reason.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                    .opacity(skipped && reason.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? 0.5 : 1)
             }
         }
         .background(Look.sheet.ignoresSafeArea())
@@ -256,9 +272,10 @@ struct VisitSheet: View {
 
     private func save() {
         let now = Date()
-        let record = VisitRecord(siteID: site.id, crewMemberName: crewName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "Name not entered" : crewName.trimmingCharacters(in: .whitespacesAndNewlines), stormID: stormID, arrival: arrival, departure: now,
+        let who = (model.data.currentMember?.name ?? crewName).trimmingCharacters(in: .whitespacesAndNewlines)
+        let record = VisitRecord(siteID: site.id, crewMemberName: who.isEmpty ? "Name not entered" : who, stormID: stormID, arrival: arrival, departure: max(now, arrival),
                                  geofence: geofence,
-                                 status: skipped ? .skipped(reason: reason) : .completed,
+                                 status: skipped ? .skipped(reason: reason.trimmingCharacters(in: .whitespacesAndNewlines)) : .completed,
                                  snowDepthInches: skipped ? 0 : depth,
                                  weatherNote: weather.trimmingCharacters(in: .whitespacesAndNewlines),
                                  saltPounds: !skipped && material.isSalt ? materialAmount : 0,

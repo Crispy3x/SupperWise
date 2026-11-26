@@ -105,12 +105,21 @@ extension AppData {
     public var visibleJobs: [Job] {
         if can(.viewAllJobs) { return jobs }
         guard let id = currentMember?.id else { return [] }
-        return jobs.filter { $0.assigneeIDs.contains(id) }
+        // A storm's jobs are not assigned to anyone, so every crew member who logs visits sees them while the storm runs.
+        let stormJobs: Set<UUID> = can(.logVisits) ? Set(activeStormRun?.jobIDs ?? []) : []
+        return jobs.filter { $0.assigneeIDs.contains(id) || ($0.assigneeIDs.isEmpty && stormJobs.contains($0.id)) }
     }
 
     public func jobs(on day: Date, calendar: Calendar = .current) -> [Job] {
         // Repeating jobs come back as that day's visit: same id, that day's start and status.
-        visibleJobs.compactMap { $0.occurrence(on: day, calendar: calendar) }.sorted { $0.start < $1.start }
+        var out = visibleJobs.compactMap { $0.occurrence(on: day, calendar: calendar) }
+        // A storm that runs past midnight: its jobs that are still open stay on the list (and the route) the next day.
+        if let run = activeStormRun, let eve = calendar.date(byAdding: .day, value: -1, to: day) {
+            out += visibleJobs.filter { job in
+                run.jobIDs.contains(job.id) && !job.repeats && job.status.isOpen && calendar.isDate(job.start, inSameDayAs: eve)
+            }
+        }
+        return out.sorted { $0.start < $1.start }
     }
 
     /// Days of the month containing `date` that have something scheduled (for the dots on the calendar).
@@ -143,7 +152,7 @@ extension AppData {
 
 /// Shares the schedule as a standard calendar file (.ics) that Apple Calendar, Google Calendar and Outlook all open.
 public enum CalendarExport {
-    public static func ics(jobs: [Job], data: AppData, company: String, now: Date) -> String {
+    public static func ics(jobs: [Job], data: AppData, company: String, now: Date, calendar: Calendar = .current) -> String {
         let stamp = utc(now)
         var lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Ridgeline Ops//Schedule//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH"]
         for job in jobs.sorted(by: { $0.start < $1.start }) {
@@ -156,9 +165,17 @@ public enum CalendarExport {
             lines.append("BEGIN:VEVENT")
             lines.append("UID:\(job.id.uuidString.lowercased())@ridgelineops")
             lines.append("DTSTAMP:\(stamp)")
-            lines.append("DTSTART:\(utc(job.start))")
-            lines.append("DTEND:\(utc(end))")
-            if let rule = job.icsRepeatRule() { lines.append("RRULE:\(rule)") }
+            if job.repeats, let zone = zoneName(calendar) {
+                // A repeating job keeps its clock time all year, so its start is written as local time with the time
+                // zone. Written in UTC, every visit after the clocks change would show an hour off.
+                lines.append("DTSTART;TZID=\(zone):\(local(job.start, calendar))")
+                lines.append("DTEND;TZID=\(zone):\(local(end, calendar))")
+            } else {
+                lines.append("DTSTART:\(utc(job.start))")
+                lines.append("DTEND:\(utc(end))")
+            }
+            if let rule = job.icsRepeatRule(calendar: calendar) { lines.append("RRULE:\(rule)") }
+            if job.status == .cancelled { lines.append("STATUS:CANCELLED") }
             lines.append("SUMMARY:\(escape(job.title))")
             let place = data.address(forJob: job)
             if !place.isEmpty { lines.append("LOCATION:\(escape(place))") }
@@ -174,6 +191,20 @@ public enum CalendarExport {
         f.locale = Locale(identifier: "en_US_POSIX")
         f.timeZone = TimeZone(identifier: "UTC")
         f.dateFormat = "yyyyMMdd'T'HHmmss'Z'"
+        return f.string(from: date)
+    }
+
+    /// The calendar's time zone as a name calendar apps know, like "America/Chicago". Nil for UTC and fixed offsets.
+    static func zoneName(_ calendar: Calendar) -> String? {
+        let id = calendar.timeZone.identifier
+        return id.contains("/") ? id : nil
+    }
+
+    static func local(_ date: Date, _ calendar: Calendar) -> String {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "en_US_POSIX")
+        f.timeZone = calendar.timeZone
+        f.dateFormat = "yyyyMMdd'T'HHmmss"
         return f.string(from: date)
     }
 

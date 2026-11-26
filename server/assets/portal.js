@@ -25,6 +25,10 @@
 
   function render(d) {
     text('status', d.statusText);
+    // The colour follows the status too, so a visit that was just finished turns green without a reload.
+    var pill = document.getElementById('status');
+    if (pill) pill.className = 'status' + (d.status === 'done' ? ' done' : d.status === 'skipped' ? ' skipped' : '');
+    if (d.updatedAt) { var when = new Date(d.updatedAt); if (!isNaN(when.getTime())) text('updated', when.toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })); }
     text('eta', d.eta || '');
     text('etalabel', d.eta ? 'Estimated arrival' : '');
     show('eta', !!d.eta);
@@ -33,15 +37,18 @@
       ? (d.stopsAhead === 0 ? 'You are next.' : d.stopsAhead + (d.stopsAhead === 1 ? ' stop' : ' stops') + ' before yours.') : '');
     if (d.weather) { text('wxsummary', d.weather.summary); text('wxalerts', (d.weather.alerts || []).join(' · ')); }
     ensureMap(d);
-    if (!map) return;
+    if (!map || !d.site) return;
     trucks.forEach(function (m) { map.removeLayer(m); });
     trucks = (d.trucks || []).map(function (t) {
       return L.marker([t.latitude, t.longitude], {
         icon: L.divIcon({ className: 'pin', html: '<span class="pin-truck">🚚</span>', iconSize: [26, 26] }), title: t.label
       }).addTo(map);
     });
-    text('mapnote', trucks.length ? (d.trucks.length === 1 ? d.trucks[0].label : d.trucks.length + ' trucks') + ' on the map. Positions are approximate.'
-      : 'The truck shows here once it is on its way to you.');
+    // A position that has not been refreshed for a while is said to be old, not shown as if it were live.
+    var oldest = (d.trucks || []).reduce(function (m, t) { return Math.max(m, t.ageSeconds || 0); }, 0);
+    var seen = oldest >= 90 ? ' Last seen about ' + Math.round(oldest / 60) + ' min ago.' : '';
+    text('mapnote', trucks.length ? (d.trucks.length === 1 ? d.trucks[0].label : d.trucks.length + ' trucks') + ' on the map. Positions are approximate.' + seen
+      : (d.status === 'planned' ? 'The truck shows here once it is on its way to you.' : ''));
     var pts = [[d.site.latitude, d.site.longitude]].concat((d.trucks || []).map(function (t) { return [t.latitude, t.longitude]; }));
     if (pts.length > 1) map.fitBounds(pts, { padding: [30, 30], maxZoom: 16 });
   }

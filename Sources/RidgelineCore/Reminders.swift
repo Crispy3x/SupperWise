@@ -29,7 +29,7 @@ public enum ReminderPlanner {
         var messages: [PlannedMessage] = []
         var numbers: [String] = []
         for inv in data.invoices.sorted(by: { $0.dueDate < $1.dueDate }) {
-            guard !inv.isVoid, inv.sentAt != nil, inv.status(now: now) == .overdue, inv.balance.cents > 0 else { continue }
+            guard !inv.isVoid, inv.sentAt != nil, inv.status(now: now, calendar: calendar) == .overdue, inv.balance.cents > 0 else { continue }
             guard let customer = data.customers.first(where: { $0.id == inv.customerID }),
                   customer.optedOutAt == nil, customer.emailConsent, ContactValidation.isValidEmail(customer.email),
                   let site = data.sites.first(where: { $0.id == inv.siteID }) else { continue }

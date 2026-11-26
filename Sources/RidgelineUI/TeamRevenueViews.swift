@@ -120,9 +120,22 @@ struct AddMemberSheet: View {
     /// After saving: what to hand to the new person. The password exists only here, never in the saved data.
     @State private var created: (name: String, username: String, password: String)?
 
+    /// What is wrong with the optional phone, email or pay on the first step, if anything.
+    private var personProblem: String? {
+        // Said on the first step, not after the name, role, username and password have all been typed.
+        if model.data.employeeCount >= model.data.employeeLimit {
+            return "Your plan allows up to \(model.data.employeeLimit) employees. "
+                + (model.data.seatPlan == .max ? "Switch someone off before adding another." : "Switch someone off, or move up to the Max plan, before adding another.")
+        }
+        if let p = ContactValidation.phoneProblem(phone) { return p }
+        if let p = ContactValidation.emailProblem(email) { return p }
+        if TeamRules.hourlyRate(typed: rate) == .invalid { return "Hourly pay must be a plain amount up to $1,000, like 20 or 22.50. Or leave it empty." }
+        return nil
+    }
+
     private var canAdvance: Bool {
         switch step {
-        case 0: return !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        case 0: return !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && personProblem == nil
         case 2: return !username.isEmpty && !password.isEmpty
         default: return true
         }
@@ -139,6 +152,7 @@ struct AddMemberSheet: View {
                     PillField(label: "Email", optional: true, placeholder: "dana@company.com", text: $email, kind: .email)
                     PillField(label: "Hourly pay", optional: true, placeholder: "20", text: $rate, kind: .number)
                     Text("Pay is only used for the pay-owed total on timesheets.").font(.footnote).foregroundStyle(.secondary)
+                    if let personProblem { Label(personProblem, systemImage: "exclamationmark.triangle.fill").font(.callout).foregroundStyle(.orange) }
                 case 1:
                     SectionLabel(text: "Their role")
                     ForEach(TeamRole.allCases, id: \.self) { r in
@@ -186,8 +200,11 @@ struct AddMemberSheet: View {
     }
 
     private func save() {
-        let cents = Double(rate.replacingOccurrences(of: ",", with: ".").trimmingCharacters(in: .whitespaces)).map { Int(($0 * 100).rounded()) }
-        problem = model.addTeamMember(name: name, role: role, phone: phone, email: email, username: username, password: password, hourlyRate: cents.map { Money(cents: $0) })
+        // Read by the tested rule: typing "inf" or a huge number used to crash the whole-number conversion here.
+        var pay: Money?
+        if case .rate(let typed) = TeamRules.hourlyRate(typed: rate) { pay = typed }
+        problem = model.addTeamMember(name: name, role: role, phone: phone.trimmingCharacters(in: .whitespacesAndNewlines),
+                                      email: email.trimmingCharacters(in: .whitespacesAndNewlines), username: username, password: password, hourlyRate: pay)
         if problem == nil {
             created = (name.trimmingCharacters(in: .whitespacesAndNewlines), LoginRules.normalizedUsername(username), password)
         }
@@ -226,11 +243,14 @@ struct ResetPasswordSheet: View {
     @Environment(AppModel.self) private var model
     @Environment(\.dismiss) private var dismiss
     let memberID: UUID
+    @State private var username = ""
     @State private var password = ""
     @State private var problem: String?
     @State private var done: String?
 
     private var member: TeamMember? { model.data.team.first { $0.id == memberID } }
+    /// False for someone who came back from a backup without a sign-in: they get a username here too.
+    private var hasLogin: Bool { model.data.username(forMember: memberID) != nil }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -255,6 +275,9 @@ struct ResetPasswordSheet: View {
                     .buttonStyle(.plain)
                 } else {
                     CardGroup(footer: "\(LoginRules.minPasswordLength) or more characters. This also lifts a lock from too many wrong tries.") {
+                        if !hasLogin {
+                            PillField(label: "Username", required: true, placeholder: "dana", text: $username, kind: .email)
+                        }
                         VStack(alignment: .leading, spacing: 10) {
                             Text("New password").font(.title3.weight(.medium))
                             HStack(spacing: 10) {
@@ -274,11 +297,16 @@ struct ResetPasswordSheet: View {
                             }
                         }
                         PrimaryActionButton(title: "Save") {
-                            problem = model.setEmployeePassword(password, forMember: memberID)
+                            if hasLogin {
+                                problem = model.setEmployeePassword(password, forMember: memberID)
+                            } else {
+                                let name = username, secret = password
+                                problem = model.edit { try $0.createEmployeeLogin(username: name, password: secret, forMember: memberID, now: Date()) }
+                            }
                             if problem == nil { done = password }
                         }
-                        .disabled(password.isEmpty)
-                        .opacity(password.isEmpty ? 0.4 : 1)
+                        .disabled(password.isEmpty || (!hasLogin && username.isEmpty))
+                        .opacity(password.isEmpty || (!hasLogin && username.isEmpty) ? 0.4 : 1)
                     }
                     if let problem {
                         Text(problem).font(.footnote).foregroundStyle(.red).frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
@@ -317,11 +345,13 @@ struct MemberDetailView: View {
                     .disabled(!canEdit)
                     Text(m.role.summary).font(.footnote).foregroundStyle(.secondary)
                 }
-                CardGroup(title: "Pay", footer: "Used for the pay-owed total on timesheets.") {
-                    PillStepper(label: "Hourly pay", value: Binding(get: { Double((m.hourlyRate?.cents ?? 0) / 100) }, set: { v in
-                        message = model.edit { try $0.setHourlyRate(Int(v) == 0 ? nil : Money(dollars: Int(v)), forMember: m.id) }
-                    }), range: 0...500, step: 1, format: { $0 == 0 ? "not set" : Money(dollars: Int($0)).formatted })
-                    .disabled(!canEdit)
+                // What someone is paid is between them and whoever manages the team, so other employees never see it.
+                if canEdit {
+                    CardGroup(title: "Pay", footer: "Used for the pay-owed total on timesheets.") {
+                        PillStepper(label: "Hourly pay", value: Binding(get: { Double((m.hourlyRate?.cents ?? 0) / 100) }, set: { v in
+                            message = model.edit { try $0.setHourlyRate(Int(v) == 0 ? nil : Money(dollars: Int(v)), forMember: m.id) }
+                        }), range: 0...500, step: 1, format: { $0 == 0 ? "not set" : Money(dollars: Int($0)).formatted })
+                    }
                 }
                 CardGroup(title: "What they can see and do",
                           footer: (canEdit && !canCustomize) ? "Choosing permissions one by one is part of the Max plan. Roles above work on every plan." : nil) {
@@ -334,14 +364,20 @@ struct MemberDetailView: View {
                     }
                 }
                 CardGroup(title: "Sign-in",
-                          footer: m.status == .invited ? "Has not signed in yet." : "Joined \(m.joinedAt.map { DateFormatter.make("MMM d").string(from: $0) } ?? "").") {
-                    FactRow(label: "Username", value: model.data.username(forMember: m.id) ?? "")
-                    if canEdit {
+                          footer: m.joinedAt.map { "First signed in \(DateFormatter.make("MMM d, yyyy").string(from: $0))." } ?? "Has not signed in yet.") {
+                    if !canEdit {
+                        FactRow(label: "Access", value: m.status == .disabled ? "Switched off" : "On")
+                    } else if let username = model.data.username(forMember: m.id) {
+                        FactRow(label: "Username", value: username)
                         RowDivider()
                         SecondaryActionButton(title: "Set a new password") { resetting = true }
+                    } else {
+                        // Someone restored from a backup made under another owner login comes back without a sign-in.
+                        Text("\(m.name) has no username and password yet, so they cannot sign in.").foregroundStyle(.secondary)
+                        SecondaryActionButton(title: "Make a username and password") { resetting = true }
                     }
                 }
-                if canEdit && m.status != .disabled {
+                if canEdit && model.data.isOwnerSession && m.status != .disabled {
                     CardGroup(footer: "See exactly what this person sees. Nothing changes for them.") {
                         SecondaryActionButton(title: "Preview the app as \(m.name)") {
                             model.previewAsEmployee(m.id)
@@ -384,7 +420,8 @@ struct RevenueView: View {
 
     var body: some View {
         let r = RevenueReport.compute(for: model.data, period: period, now: Date())
-        let drafts = model.data.invoices.filter { $0.sentAt == nil && !$0.isVoid }.count
+        // Real drafts only: an invoice paid on the spot and never emailed is not waiting to be sent.
+        let drafts = model.data.invoices.filter { $0.status(now: Date()) == .draft }.count
         ScrollView {
             VStack(spacing: 14) {
                 HStack(spacing: 14) {
@@ -454,7 +491,7 @@ struct RevenueView: View {
                 Card(padding: 4) {
                     VStack(spacing: 0) {
                         NavigationLink { InvoicesView().environment(\.embeddedInStack, true).circleBack() } label: {
-                            MoreRow(icon: "doc.text.fill", tint: Theme.accent(model.data.profile.accentColor), title: "Invoices", subtitle: drafts > 0 ? "\(drafts) drafts to look at" : "\(model.data.invoices.count) invoices", badge: drafts)
+                            MoreRow(icon: "doc.text.fill", tint: Theme.accent(model.data.profile.accentColor), title: "Invoices", subtitle: drafts > 0 ? "\(drafts) draft\(drafts == 1 ? "" : "s") to look at" : "\(model.data.invoices.count) invoice\(model.data.invoices.count == 1 ? "" : "s")", badge: drafts)
                         }
                         Divider().padding(.leading, 70)
                         NavigationLink { ReportsView().environment(\.embeddedInStack, true).circleBack() } label: {

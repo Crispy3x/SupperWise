@@ -47,7 +47,10 @@ final class PurchaseStore {
         defer { purchasing = false }
         do {
             switch try await product.purchase() {
-            case .success(let result): await handle(result); message = "Thank you. Your plan is active."
+            case .success(let result):
+                // Only a purchase Apple has signed counts. Anything else is not treated as a plan.
+                message = await handle(result) ? "Thank you. Your plan is active."
+                                               : "Apple could not confirm this purchase. If you were charged, tap Restore purchases."
             case .pending: message = "Waiting for approval from the Apple ID owner."
             case .userCancelled: break
             @unknown default: break
@@ -61,26 +64,31 @@ final class PurchaseStore {
         message = nil
         do {
             try await AppStore.sync()
-            await refreshEntitlements()
-            message = "Checked your Apple ID for plans."
+            let plan = await refreshEntitlements()
+            message = plan == nil ? "No active plan was found for this Apple ID." : "Your \(plan == .max ? "Max" : "Pro") plan is restored."
         } catch {
             message = "Could not reach the App Store. Try again."
         }
     }
 
-    private func handle(_ result: VerificationResult<StoreKit.Transaction>) async {
-        guard case .verified(let transaction) = result else { return }
+    @discardableResult
+    private func handle(_ result: VerificationResult<StoreKit.Transaction>) async -> Bool {
+        guard case .verified(let transaction) = result else { return false }
         await transaction.finish()
         await refreshEntitlements()
+        return true
     }
 
-    func refreshEntitlements() async {
+    /// Tells the app the best plan Apple says is active, and returns it.
+    @discardableResult
+    func refreshEntitlements() async -> PlanTier? {
         var best: PlanTier?
         for await result in StoreKit.Transaction.currentEntitlements {
             guard case .verified(let t) = result, t.revocationDate == nil, let plan = StoreProducts.plan(for: t.productID) else { continue }
             if plan.tier == .max || best == nil { best = plan.tier }
         }
         onEntitlement?(best)
+        return best
     }
 }
 #endif

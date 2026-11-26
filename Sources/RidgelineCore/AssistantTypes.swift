@@ -101,6 +101,30 @@ public enum AssistantError: Error, Equatable {
     case tooLong
     /// Claude turned down the conversation as sent (for example a cut-off earlier answer). A fresh chat usually fixes it.
     case conversation(String)
+    /// The request never got an answer: offline, timed out, or the server could not be found. Carries a plain sentence.
+    case network(String)
+}
+
+extension AssistantError {
+    /// A plain sentence for a request that failed on the way. `service` is who was being asked, for example "Claude".
+    static func connectionProblem(_ error: Error, service: String) -> AssistantError {
+        if let known = error as? AssistantError { return known }
+        guard let code = (error as? URLError)?.code else { return .network("Could not reach \(service). Check your connection and try again.") }
+        switch code {
+        case .timedOut:
+            return .network("\(service) took too long to answer. Try again, or ask for one thing at a time.")
+        case .notConnectedToInternet, .networkConnectionLost:
+            return .network("This device is offline. Connect to the internet and ask again.")
+        case .cannotFindHost, .cannotConnectToHost, .dnsLookupFailed:
+            return .network("Could not find \(service). Check your connection, then try again in a minute.")
+        case .secureConnectionFailed:
+            return .network("Could not make a secure connection to \(service). Try again in a minute.")
+        case .cancelled:
+            return .network("The question was cancelled before it was answered.")
+        default:
+            return .network("Could not reach \(service). Check your connection and try again.")
+        }
+    }
 }
 
 public protocol AssistantTransport: Sendable {
@@ -125,7 +149,7 @@ public struct ServerAssistantTransport: AssistantTransport {
     private func request(_ method: String, _ path: String, body: Data? = nil) -> URLRequest {
         var r = URLRequest(url: baseURL.appendingPathComponent(path))
         r.httpMethod = method
-        r.timeoutInterval = 120                      // a thoughtful answer can take a while
+        r.timeoutInterval = method == "GET" ? 20 : 200    // a thoughtful answer can take a while; the server gives up before this
         r.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         if let deviceID { r.setValue(deviceID, forHTTPHeaderField: "X-Ridgeline-Device") }
         if let body {
@@ -135,32 +159,44 @@ public struct ServerAssistantTransport: AssistantTransport {
         return r
     }
 
-    private static func message(from data: Data) -> String? {
-        (try? JSONDecoder().decode([String: JSONValue].self, from: data))?["error"]?.string
+    /// The request body. Keys are written in a fixed order so the same conversation is always sent as the same bytes.
+    func body(messages: [AssistantMessage], tools: [AssistantTool], context: String) throws -> Data {
+        let body = JSONValue.object(["messages": .array(try messages.map { try JSONDecoder().decode(JSONValue.self, from: JSONEncoder().encode($0)) }),
+                                     "tools": .array(tools.map(\.wire)), "context": .string(context)])
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.sortedKeys]
+        return try encoder.encode(body)
     }
 
     public func send(messages: [AssistantMessage], tools: [AssistantTool], context: String) async throws -> AssistantReply {
-        let body = JSONValue.object(["messages": .array(try messages.map { try JSONDecoder().decode(JSONValue.self, from: JSONEncoder().encode($0)) }),
-                                     "tools": .array(tools.map(\.wire)), "context": .string(context)])
-        let (data, status) = try await client.send(request("POST", "v1/ai/chat", body: try JSONEncoder().encode(body)))
+        let outgoing = request("POST", "v1/ai/chat", body: try body(messages: messages, tools: tools, context: context))
+        let answer: (data: Data, status: Int)
+        do { answer = try await client.send(outgoing) } catch { throw AssistantError.connectionProblem(error, service: "the assistant server") }
+        let data = answer.data, status = answer.status
+        let json = try? JSONDecoder().decode(JSONValue.self, from: data)
+        let said = json?["error"]?.string ?? ""
         switch status {
         case 200:
-            guard let json = try? JSONDecoder().decode(JSONValue.self, from: data), let content = json["content"]?.array,
-                  let stop = json["stop_reason"]?.string else { throw AssistantError.unreadable }
+            guard let content = json?["content"]?.array, let stop = json?["stop_reason"]?.string else { throw AssistantError.unreadable }
             return AssistantReply(content: content, stopReason: stop)
         case 401: throw AssistantError.notAllowed
+        case 404: throw AssistantError.server("This server has no assistant. Check the server address in Settings, or update the server.")
+        case 413: throw AssistantError.tooLong
         case 503:
-            let text = Self.message(from: data) ?? ""
-            if text.contains("busy") { throw AssistantError.busy(text) }
-            throw AssistantError.notSwitchedOn
+            if said.contains("switched on") { throw AssistantError.notSwitchedOn }
+            throw AssistantError.busy(said.isEmpty ? "The assistant server is starting up or busy. Try again in a minute." : said)
         case 429:
-            let text = Self.message(from: data) ?? "The assistant is busy. Try again in a minute."
+            let text = said.isEmpty ? "The assistant is busy. Try again in a minute." : said
             throw text.contains("allowance") || text.contains("limit") ? AssistantError.limit(text) : AssistantError.busy(text)
         default:
-            let json = try? JSONDecoder().decode(JSONValue.self, from: data)
-            let text = json?["error"]?.string ?? "The assistant could not answer right now."
-            if json?["conversation"]?.bool == true { throw AssistantError.conversation(json?["reason"]?.string ?? text) }
-            throw AssistantError.server(text)
+            if json?["tooLong"]?.bool == true { throw AssistantError.tooLong }
+            if json?["conversation"]?.bool == true { throw AssistantError.conversation(json?["reason"]?.string ?? said) }
+            if said.isEmpty {
+                // No message of ours came back, so the answer is from the host in front of the server (asleep, restarting or overloaded).
+                if status >= 500 { throw AssistantError.busy("The assistant server is not answering (error \(status)). It may be starting up. Try again in a minute.") }
+                throw AssistantError.server("The assistant server gave an answer the app did not expect (error \(status)). Check the server address in Settings.")
+            }
+            throw AssistantError.server(said)
         }
     }
 

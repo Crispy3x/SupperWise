@@ -253,17 +253,21 @@ final class StormModeTests: XCTestCase {
         XCTAssertFalse(d.invoices[0].lines.contains { $0.stormID == "Nov 2" })   // only this storm
     }
 
-    func testFinishEndsTheStormAndLeavesUnvisitedJobsOpen() throws {
-        var d = business([(1, 3, perPush), (1, 3, perPush)])
+    func testFinishEndsTheStormAndClosesJobsAtSitesNobodyServiced() throws {
+        var d = business([(1, 3, perPush), (1, 3, perPush), (1, 3, perPush)])
         try d.startStorm(baseName: stormName, expectedInches: 3, siteIDs: d.sites.map(\.id), now: t0)
         d.visitLog.append(visit(d.sites[0], depth: 7))
+        d.visitLog.append(visit(d.sites[2], status: .skipped(reason: "Gate locked")))
         let end = t0.addingTimeInterval(10_000)
         try d.finishStorm(now: end)
 
         XCTAssertNil(d.activeStormRun)
         XCTAssertEqual(d.stormRuns.last?.finishedAt, end)
         XCTAssertEqual(d.jobs.first { $0.siteID == d.sites[0].id }?.status, .done)
-        XCTAssertEqual(d.jobs.first { $0.siteID == d.sites[1].id }?.status, .scheduled)
+        // No visit, or only a skipped one: the storm is over, so the job no longer waits on the schedule or the route.
+        XCTAssertEqual(d.jobs.first { $0.siteID == d.sites[1].id }?.status, .cancelled)
+        XCTAssertEqual(d.jobs.first { $0.siteID == d.sites[2].id }?.status, .cancelled)
+        XCTAssertTrue(d.routeStops(on: t0).isEmpty)
         XCTAssertEqual(d.storms.first?.actualInches, 7)
         XCTAssertThrowsError(try d.finishStorm(now: end)) { XCTAssertEqual($0 as? StormModeError, .noActiveStorm) }
     }

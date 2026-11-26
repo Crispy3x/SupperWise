@@ -29,6 +29,10 @@ public enum DataExport {
     /// The saved sign-in is always dropped: a backup never signs anyone in. Before using the data on a device, pass it
     /// through `preparedForDevice(_:current:)` so logins from someone else's backup are not imported.
     public static func restore(from file: Data) throws -> RestoreResult {
+        // Every field has a default, so any JSON object at all would read as an empty backup and offer to replace
+        // everything with nothing. A real backup names its version, or at least the business or its clients.
+        guard let object = (try? JSONSerialization.jsonObject(with: file)) as? [String: Any],
+              object["schemaVersion"] != nil || object["customers"] != nil || object["companyName"] != nil else { throw BackupError.unreadable }
         guard var data = try? FileStore.decoder.decode(AppData.self, from: file) else { throw BackupError.unreadable }
         guard data.schemaVersion <= supportedSchemaVersion else {
             throw BackupError.newerVersion(found: data.schemaVersion, supported: supportedSchemaVersion)

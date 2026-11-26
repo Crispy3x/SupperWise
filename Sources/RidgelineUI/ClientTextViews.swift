@@ -170,7 +170,10 @@ struct ClientTextSection: View {
         !job.isTask && job.status != .cancelled && (model.data.can(.editJobs) || model.data.can(.logVisits))
             && model.data.clientTextCustomer(for: job) != nil
     }
-    private var isToday: Bool { Calendar.current.isDateInToday(job.start) }
+    /// Today's visit, or a storm job from last night that is still on today's list.
+    private var isToday: Bool {
+        Calendar.current.isDateInToday(job.start) || (!job.repeats && model.data.jobs(on: Date()).contains { $0.id == job.id })
+    }
     private var hasAfterPhoto: Bool {
         ClientTextLauncher.canAttachPhoto && model.data.latestAfterPhoto(siteID: job.siteID, on: Date()) != nil
     }

@@ -210,7 +210,8 @@ final class EntitlementAndStoreTests: XCTestCase {
     func testProAndMaxGating() {
         let pro = Subscription(plan: .pro)
         XCTAssertTrue(pro.canUse(.snowBilling, now: t0))
-        XCTAssertFalse(pro.canUse(.routeOptimizer, now: t0))
+        XCTAssertTrue(pro.canUse(.routeOptimizer, now: t0))            // route planning is in every plan, as the plan screen says
+        XCTAssertFalse(pro.canUse(.rolesAndReports, now: t0))          // custom permissions are what Max adds
         XCTAssertFalse(pro.canUse(.stormAutomation, now: t0))
         let max = Subscription(plan: .max)
         for f in Feature.allCases { XCTAssertTrue(max.canUse(f, now: t0)) }

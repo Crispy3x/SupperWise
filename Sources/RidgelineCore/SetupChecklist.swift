@@ -18,7 +18,7 @@ public enum SetupChecklist {
             SetupItem(id: "yard", title: "Set your yard location", detail: "Routes start here and the forecast is for this spot.", done: d.depot != nil, optional: false),
             SetupItem(id: "pay", title: "Say how clients should pay you", detail: "It goes on every invoice.", done: !d.profile.paymentInstructions.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || d.profile.payLink != nil, optional: false),
             SetupItem(id: "consent", title: "Record who agreed to messages", detail: "Open a client and turn on emails only if they said yes.", done: d.customers.contains { $0.emailConsent && $0.optedOutAt == nil }, optional: false),
-            SetupItem(id: "server", title: "Turn on client pages and email", detail: "Lets clients see your truck, ask for service and get invoices by email. Needs a small server; Settings has the steps.", done: serverConfigured, optional: true),
+            SetupItem(id: "server", title: "Turn on client pages and email", detail: "Lets clients see your truck, ask for service and get invoices by email. Needs your own server, set up once by someone technical. Its address goes in Settings, under Advanced.", done: serverConfigured, optional: true),
             SetupItem(id: "page", title: "Set your client page address", detail: "The web address clients open. Settings, Invoices and client messages.", done: portalOK, optional: true),
             SetupItem(id: "signin", title: "Sign in with Apple", detail: "Optional. Your records stay on this device either way.", done: d.account != nil, optional: true),
         ]

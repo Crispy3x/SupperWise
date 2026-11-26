@@ -193,6 +193,35 @@ final class AutoInvoiceTests: XCTestCase {
         XCTAssertEqual(d.invoices[1].number, "INV-0002")
     }
 
+    func testAReturnTripUpdatesTheUnsentDraftInsteadOfBeingLost() throws {
+        var (d, s) = world(mode: .draft, terms: .perPush(rate: Money(dollars: 50), counting: .perVisit))
+        let r1 = visit(&d, s, storm: "S1", day: 0)
+        XCTAssertEqual(d.autoInvoice(afterVisit: r1, now: t0, calendar: utc).invoice?.total, Money(dollars: 50))
+        let r2 = visit(&d, s, storm: "S1", day: 0.1)                                           // every visit is a push
+        let again = d.autoInvoice(afterVisit: r2, now: t0 + 8_640, calendar: utc)
+        XCTAssertEqual(again.invoice?.number, "INV-0001")                                      // the same draft, not a second invoice
+        XCTAssertTrue(again.note.contains("updated"))
+        XCTAssertEqual(d.invoices.count, 1)
+        XCTAssertEqual(d.invoices[0].total, Money(dollars: 100))
+        XCTAssertEqual(d.invoices[0].lines.count, 1)
+        // Once the invoice has gone to the client it is never changed.
+        try d.markInvoiceSent(number: "INV-0001", at: t0 + 9_000)
+        let r3 = visit(&d, s, storm: "S1", day: 0.2)
+        XCTAssertNil(d.autoInvoice(afterVisit: r3, now: t0 + 17_280, calendar: utc).invoice)
+        XCTAssertEqual(d.invoices[0].total, Money(dollars: 100))
+    }
+
+    func testTheEmailAsksForTheBalanceOnceSomethingIsPaid() throws {
+        var (d, s) = world(mode: .draft)
+        let r = visit(&d, s, storm: "S1", day: 0)
+        _ = d.autoInvoice(afterVisit: r, now: t0, calendar: utc)
+        try d.invoices[0].record(ManualPayment(amount: Money(dollars: 20), date: t0, method: .cash))
+        guard case .ready(let m) = d.invoiceEmail(number: "INV-0001", calendar: utc) else { return XCTFail("expected an email") }
+        XCTAssertTrue(m.body.contains("Balance due: $40.00 by Jan 29, 2027 (total $60.00, paid so far $20.00)."))
+        XCTAssertFalse(m.body.contains("Total due"))
+        XCTAssertTrue(m.subject.contains("$40.00")); XCTAssertFalse(m.subject.contains("$60.00"))
+    }
+
     func testSeasonalContractsAreNotBilledAtStopCompletion() {
         var (d, s) = world(mode: .send, terms: .seasonal(total: Money(dollars: 900)))
         let r = visit(&d, s, storm: "S1", day: 0)

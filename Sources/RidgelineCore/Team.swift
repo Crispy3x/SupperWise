@@ -135,6 +135,27 @@ public enum TeamRules {
         case .max: return 25
         }
     }
+
+    /// What a typed hourly pay means.
+    public enum TypedRate: Equatable, Sendable {
+        /// Nothing typed, or zero: no pay rate.
+        case empty
+        case rate(Money)
+        /// Not a plain amount from $0 to $1,000.
+        case invalid
+    }
+
+    /// Reads hourly pay as typed: "20", "22.50", "22,50" or "$20". Anything else, such as letters, "inf" or a huge number,
+    /// is `invalid` and never reaches a whole-number conversion that could crash.
+    public static func hourlyRate(typed text: String) -> TypedRate {
+        var t = text.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: ",", with: ".")
+        if t.hasPrefix("$") { t = String(t.dropFirst()).trimmingCharacters(in: .whitespaces) }
+        if t.isEmpty { return .empty }
+        guard t.allSatisfy({ $0.isASCII && ($0.isNumber || $0 == ".") }), let value = Double(t), value.isFinite,
+              value >= 0, value <= 1000 else { return .invalid }
+        let cents = Int((value * 100).rounded())
+        return cents == 0 ? .empty : .rate(Money(cents: cents))
+    }
 }
 
 extension AppData {

@@ -31,6 +31,13 @@ extension AppModel {
         return result
     }
 
+    /// The storm name visits are logged under. A name the crew emptied falls back to today's date, so a visit is
+    /// never saved (and later billed) under a blank storm.
+    var visitStormName: String {
+        // Otherwise the name exactly as typed: storms, messages and client pages are matched on it.
+        stormName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? Date().formatted(.dateTime.month(.abbreviated).day()) : stormName
+    }
+
     static func stormProblem(_ error: StormModeError) -> String {
         switch error {
         case .stormAlreadyActive: return "A storm is already in progress. Finish it first."

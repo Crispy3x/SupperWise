@@ -25,7 +25,13 @@ public enum PayLink {
     public static func problem(for raw: String) -> String? {
         let text = raw.trimmingCharacters(in: .whitespacesAndNewlines)
         if text.isEmpty || clean(text) != nil { return nil }
+        if text.count > 500 { return "That link is too long. Copy the short payment link instead." }
+        if text.contains(where: { $0.isWhitespace || $0.isNewline }) { return "Take the spaces out of the link." }
         if !text.lowercased().hasPrefix("https://") { return "The link must start with https://" }
+        // A payment site we accept, turned down for something else in the link.
+        if let host = URLComponents(string: text)?.host?.lowercased(), allowedHosts.contains(where: { host == $0 || host.hasSuffix("." + $0) }) {
+            return "Copy the plain link from the payment site, without sign-in details, a port or a # part."
+        }
         return "That site is not on the list of payment sites we accept (Stripe, Square, PayPal, Venmo, Cash App, QuickBooks, Wave)."
     }
 }

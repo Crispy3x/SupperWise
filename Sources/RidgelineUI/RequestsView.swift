@@ -54,7 +54,9 @@ struct RequestsView: View {
                                     HStack {
                                         Text(address(r)).font(.headline)
                                         Spacer()
-                                        StatusPill(text: r.status == .accepted ? "Accepted" : "Declined", color: r.status == .accepted ? .green : .gray)
+                                        // A kind message was read, not accepted.
+                                        StatusPill(text: r.kind == .thanks ? "Read" : (r.status == .accepted ? "Accepted" : "Declined"),
+                                                   color: r.kind == .thanks || r.status == .accepted ? .green : .gray)
                                     }
                                     Text(r.kind.title).font(.footnote).foregroundStyle(.secondary)
                                 }
@@ -105,7 +107,11 @@ struct RequestsView: View {
 
     private func accept(_ r: ServiceRequest) {
         let text = r.kind == .thanks ? "" : r.kind == .urgent ? "You are near the top of our list." : (r.kind == .skip ? "We will skip your property this storm." : "We will come as soon as we can.")
-        Task { note = await model.decideRequest(r.id, accept: true, message: text) }
+        Task {
+            let result = await model.decideRequest(r.id, accept: true, message: text)
+            // Marking a kind message read is not "accepting" it, so the note under the button says what really happened.
+            note = r.kind == .thanks && result.hasPrefix("Accepted") ? "Marked read. The client's page shows the crew read it." : result
+        }
     }
 }
 #endif

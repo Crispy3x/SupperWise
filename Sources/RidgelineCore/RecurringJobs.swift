@@ -126,6 +126,48 @@ extension Job {
         return c
     }
 
+    /// The last visit on or before `day` (never past the end date), or nil when the job has not started by then.
+    public func lastOccurrence(onOrBefore day: Date, calendar: Calendar = .current) -> Date? {
+        let first = calendar.startOfDay(for: start)
+        var target = calendar.startOfDay(for: day)
+        guard target >= first else { return nil }
+        guard let rule = repeatRule, rule.repeats else { return start }
+        if let end = rule.endDate { target = min(target, calendar.startOfDay(for: end)) }
+        guard target >= first else { return nil }
+        if let weeks = rule.frequency.weeks {
+            let days = max(0, calendar.dateComponents([.day], from: first, to: target).day ?? 0)
+            let step = 7 * weeks
+            return calendar.date(byAdding: .day, value: days / step * step, to: start)
+        }
+        let months = max(0, Job.monthsBetween(start, target, calendar: calendar) ?? 0)
+        for m in [months, max(months - 1, 0)] {
+            if let c = calendar.date(byAdding: .month, value: m, to: start), calendar.startOfDay(for: c) <= target { return c }
+        }
+        return start
+    }
+
+    /// The job as one row in the Jobs list. A job that happens once is itself. A repeating job is its next visit from
+    /// today that is still open (that visit's date and status), so the list never shows only the first date. When
+    /// nothing open is ahead (the job ended, or it was cancelled as a whole) it is the latest visit, with its status.
+    public func listVisit(now: Date, calendar: Calendar = .current) -> Job {
+        guard repeats else { return self }
+        if status != .cancelled {
+            var cursor = now
+            for _ in 0..<60 {
+                guard let at = nextOccurrence(onOrAfter: cursor, calendar: calendar) else { break }
+                if let visit = occurrence(on: at, calendar: calendar), visit.status.isOpen { return visit }
+                guard let dayAfter = calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: at)) else { break }
+                cursor = dayAfter
+            }
+        }
+        if let last = lastOccurrence(onOrBefore: repeatRule?.endDate ?? now, calendar: calendar),
+           let visit = occurrence(on: last, calendar: calendar) {
+            return visit
+        }
+        // Not started yet and nothing open ahead: the first visit, with its own status.
+        return occurrence(on: start, calendar: calendar) ?? self
+    }
+
     /// The repeat line for a calendar file, like "FREQ=WEEKLY;INTERVAL=2;UNTIL=20270301T235959Z". Nil when the job happens once.
     /// A monthly job on the 31st uses the last day of each month, as the app does.
     public func icsRepeatRule(calendar: Calendar = .current) -> String? {
@@ -163,6 +205,11 @@ extension Job {
 }
 
 extension AppData {
+    /// The Jobs list: every job this person may see (no reminders or tasks), each repeating job as its next open visit.
+    public func jobListEntries(now: Date, calendar: Calendar = .current) -> [Job] {
+        visibleJobs.filter { !$0.isTask }.map { $0.listVisit(now: now, calendar: calendar) }
+    }
+
     /// Sets or clears how often a job repeats. An end date before the first visit ends it after that first visit.
     public mutating func setJobRepeat(_ rule: RepeatRule?, id: UUID, calendar: Calendar = .current) throws {
         guard let i = jobs.firstIndex(where: { $0.id == id }) else { throw OperationError.notFound }

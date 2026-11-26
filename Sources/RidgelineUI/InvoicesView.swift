@@ -9,15 +9,35 @@ struct InvoicesView: View {
     @State private var sendingReminders = false
     @State private var openedInvoice: String?
 
+    /// One contract per address: the newest, which is the one every invoice is built from. An older contract for the
+    /// same address (last season's, or a quote accepted twice) must not offer to bill the storms again at its old price.
+    private var currentContracts: [SnowContract] {
+        model.data.contracts.filter { contract in
+            model.data.contracts.last(where: { $0.siteID == contract.siteID })?.id == contract.id
+        }
+    }
+
     var body: some View {
         ScreenStack {
+            // Crew can reach this screen from the visit log's "Needs your attention" rows, so it checks for itself.
+            if model.data.can(.viewRevenue) {
+                page
+            } else {
+                AppPage(title: "Invoices", icon: "doc.text.fill") {
+                    EmptyCard(icon: "lock.fill", title: "Not available", message: "Ask the owner to let you see revenue and invoices.")
+                }
+            }
+        }
+    }
+
+    private var page: some View {
             AppPage(title: "Invoices", icon: "doc.text.fill") {
                 InvoicesQuickInvoiceButton()   // QuickInvoiceViews.swift
                 ReadyToBillCard()              // finished jobs waiting for an invoice (JobBillingViews.swift)
                 if model.data.contracts.isEmpty {
                     Card { Text("No contracts yet.").foregroundStyle(.secondary) }
                 }
-                ForEach(model.data.contracts) { contract in
+                ForEach(currentContracts) { contract in
                     if let site = model.data.sites.first(where: { $0.id == contract.siteID }) {
                         contractCard(contract, site: site)
                     }
@@ -46,7 +66,6 @@ struct InvoicesView: View {
             .sheet(isPresented: Binding(get: { openedInvoice != nil }, set: { if !$0 { openedInvoice = nil } })) {
                 if let n = openedInvoice { InvoiceDetailSheet(number: n) }
             }
-        }
     }
 
     @ViewBuilder private func contractCard(_ contract: SnowContract, site: Site) -> some View {
@@ -89,7 +108,7 @@ struct InvoicesView: View {
                             VStack(alignment: .leading, spacing: 4) {
                                 HStack(spacing: 8) {
                                     Text(inv.number).font(.title3.weight(.semibold)).foregroundStyle(.primary)
-                                    StatusPill(text: inv.isVoid ? "Void" : inv.status(now: Date()).rawValue.capitalized, color: inv.isVoid ? .gray : .accentColor)
+                                    StatusPill(text: AccountingExport.statusTitle(inv.status(now: Date())), color: inv.isVoid ? .gray : .accentColor)
                                 }
                                 Text("\(model.data.customers.first { $0.id == inv.customerID }?.name ?? "Client") · total \(inv.total.formatted), balance \(inv.balance.formatted)")
                                     .font(.footnote).foregroundStyle(.secondary)
@@ -104,7 +123,8 @@ struct InvoicesView: View {
             }
             if !model.data.invoices.isEmpty {
                 RowDivider()
-                ShareLink(item: model.invoicesCSV()) {
+                // A real .csv file (ExpensesViews.swift), not the spreadsheet pasted as text into a message.
+                ShareLink(item: CSVFile(name: "invoices.csv", text: model.invoicesCSV()), preview: SharePreview("invoices.csv")) {
                     Label("Export all as CSV", systemImage: "square.and.arrow.up")
                         .font(.title3.weight(.medium)).foregroundStyle(.primary)
                         .frame(maxWidth: .infinity).padding(.vertical, 14)

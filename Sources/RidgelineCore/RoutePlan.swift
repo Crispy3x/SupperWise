@@ -311,8 +311,22 @@ extension AppData {
     /// Saves the order for `day`. `optimized` is false when the user dragged stops by hand.
     public mutating func setRouteOrder(_ ids: [UUID], on day: Date, optimized: Bool, calendar: Calendar = .current) {
         let key = Job.dayKey(day, calendar: calendar)
+        // The order is shared by everyone, but an employee who sees only their own stops orders only those. Their stops
+        // take the places they already held, and every stop they cannot see keeps its place.
+        var mine = Set<UUID>()
+        let fresh = ids.filter { mine.insert($0).inserted }
+        var next = fresh.makeIterator()
+        var merged: [UUID] = []
+        for old in routeOrders.first(where: { $0.day == key })?.stopIDs ?? [] {
+            if !mine.contains(old) {
+                merged.append(old)
+            } else if let id = next.next() {
+                merged.append(id)
+            }
+        }
+        while let id = next.next() { merged.append(id) }
         routeOrders.removeAll { $0.day == key }
-        routeOrders.append(SavedRouteOrder(day: key, stopIDs: ids, optimized: optimized))
+        routeOrders.append(SavedRouteOrder(day: key, stopIDs: merged, optimized: optimized))
     }
 
     @discardableResult

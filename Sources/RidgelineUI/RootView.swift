@@ -17,6 +17,17 @@ public struct RidgelineRootView: View {
         model.data.profile.onboardingCompletedAt == nil && model.data.customers.isEmpty && model.loadNotice == nil
     }
 
+    /// The app only locks when a plan can actually be bought. Until the plans are on sale, an ended trial locks nothing.
+    private var trialOverAndPlansOnSale: Bool {
+        #if canImport(StoreKit)
+        guard ScreenshotMode.shot == nil, model.purchases.isAvailable else { return false }
+        if case .expired = model.subscriptionState { return true }
+        return false
+        #else
+        return false
+        #endif
+    }
+
     private var colorScheme: ColorScheme? {
         switch model.data.profile.appearance {
         case "light": return .light
@@ -33,6 +44,8 @@ public struct RidgelineRootView: View {
                 WelcomeRoleView()
             } else if model.data.session?.role == .owner && needsOwnerSetup {
                 WelcomeFlowView()
+            } else if trialOverAndPlansOnSale {
+                PaywallGate()
             } else {
                 MainShell()
             }
@@ -40,6 +53,7 @@ public struct RidgelineRootView: View {
         .environment(model)
         .localReminders(model)
         .tint(Theme.accent(model.data.profile.accentColor))
+        .buttonBorderShape(.capsule)                         // the few system-style buttons match the app's rounded look
         .preferredColorScheme(colorScheme)
         .task { await model.checkAppleCredential() }
         #if canImport(StoreKit)

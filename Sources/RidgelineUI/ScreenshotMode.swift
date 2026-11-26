@@ -14,9 +14,18 @@ enum ScreenshotMode {
         #endif
     }
     static var light: Bool { UserDefaults.standard.bool(forKey: "uiLight") }
+    /// `-uiAnchor 0.5` starts scrolling pages half-way down, `1` at the bottom, so long pages can be photographed in parts.
+    static var anchor: UnitPoint? {
+        #if DEBUG
+        let y = UserDefaults.standard.double(forKey: "uiAnchor")
+        return y > 0 ? UnitPoint(x: 0.5, y: min(y, 1)) : nil
+        #else
+        return nil
+        #endif
+    }
 
     /// Screens shown on their own, outside the main shell.
-    static let standalone: Set<String> = ["welcome", "onboarding", "clientDetail", "invoices", "quickInvoice", "jobEditor"]
+    static let standalone: Set<String> = ["welcome", "onboarding", "clientDetail", "invoices", "quickInvoice", "jobEditor", "jobDetail", "invoiceDetail", "stormStart", "addMember", "paywall"]
 
     @MainActor static func prepare(_ model: AppModel) {
         guard let shot else { return }
@@ -59,6 +68,15 @@ enum ScreenshotMode {
             }
         }
         model.data = d
+        if shot == "assistant" {
+            model.ownAssistantKeySet = true
+            model.assistantLines = [
+                AssistantLine(kind: .user, text: "What's on for today?"),
+                AssistantLine(kind: .assistant, text: "You have 4 jobs today. Plow and salt at Lakeside Clinic is done. Next is Plow driveway at Oak Ridge HOA at 8:15 AM, then Pat Miller at 9:00 and Sam's Auto at 10:30."),
+                AssistantLine(kind: .user, text: "Invoice Pat Miller for a driveway push"),
+                AssistantLine(kind: .assistant, text: "Done. I made a draft invoice for Pat Miller: Driveway push, $45.00. Tap it in Invoices to send.", actions: ["Created invoice INV-0004 for Pat Miller"]),
+            ]
+        }
     }
 
     @MainActor @ViewBuilder static func standaloneView(_ model: AppModel) -> some View {
@@ -68,6 +86,13 @@ enum ScreenshotMode {
         case "invoices": NavigationStack { InvoicesView().environment(\.embeddedInStack, true) }
         case "quickInvoice": QuickInvoiceSheet()
         case "jobEditor": JobEditorSheet()
+        case "jobDetail":
+            if let j = model.data.jobs.first(where: { !$0.isTask && $0.status == .scheduled }) { JobDetailSheet(jobID: j.id) }
+        case "invoiceDetail":
+            if let inv = model.data.invoices.last { InvoiceDetailSheet(number: inv.number) }
+        case "stormStart": StartStormSheet()
+        case "addMember": AddMemberSheet()
+        case "paywall": PaywallGate()
         default: EmptyView()
         }
     }

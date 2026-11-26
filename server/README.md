@@ -46,6 +46,7 @@ Run by the same server. Owner endpoints use the same `API_TOKENS` bearer token.
 - `POST /v1/portal/decisions`: accept or decline a request, with a message the client sees.
 - `POST /v1/send/email`: up to 100 messages per call, sent through the email provider.
 - `GET /c/<token>` and `POST /c/<token>/request`: the client's page and request form (public, no login).
+- `GET /privacy`, `GET /support`, `GET /terms`: the public pages for the App Store listing (see below).
 
 | Variable | Default | What it does |
 |---|---|---|
@@ -57,6 +58,7 @@ Run by the same server. Owner endpoints use the same `API_TOKENS` bearer token.
 | `PORTAL_REQUESTS_PER_HOUR` | 3 | Requests one client page may send per hour. |
 | `PORTAL_MAX_PENDING` | 5 | Unanswered requests one page may hold. |
 | `PORTAL_IP_LIMIT_PER_MIN` | 120 | Client page loads per connection per minute. Set `TRUST_PROXY=1` only behind a proxy that sets `X-Forwarded-For` honestly. |
+| `SUPPORT_EMAIL` | none | The address shown on `/support` (and as the contact on `/privacy`). Left out of both pages when unset or not a plain email address. |
 
 Privacy: the server never stores phone numbers, email addresses or customer names. Email addresses and message text pass through to the provider and are not logged (only counts). Unreadable data files are set aside, never overwritten.
 
@@ -64,7 +66,7 @@ Privacy: the server never stores phone numbers, email addresses or customer name
 ```
 cd server && npm test
 ```
-30 tests (16 routing, 14 portal) against stand-ins for Google and the email provider (no real key, no real calls): auth, validation, request splitting, caching and expiry, rate and daily caps, missing routes, upstream failure without leaking the key, oversized bodies.
+`node --test test/*.test.mjs` runs four files against stand-ins for Google, the email provider and Claude (no real key, no real calls): routing (`server.test.mjs`), client pages and email (`portal.test.mjs`), the assistant (`ai.test.mjs`) and the public pages plus the pre-launch fixes (`pages.test.mjs`). Two of them also read the app's Swift sources when the whole repository is there, to check that the privacy policy and the assistant's house rules are word for word the same in the app and on the server.
 
 ## Before you rely on it
 - **Not run against real Google yet.** The request and response shapes follow Google's documented Routes API, but they have only been exercised against a stand-in. Test with a real key and a small matrix first.
@@ -81,7 +83,9 @@ The same server also serves each client's private page (`/c/<token>`), sends ema
 ### Client pages
 - A client's link lasts the whole winter (`PORTAL_SNAPSHOT_TTL_DAYS`, default 240). Send it once at the start of the season from the app (Clients, Send winter page links).
 - The page shows the status, the arrival window, stops ahead, a live map with the trucks, the weather, bills with a Pay now link, a request form, and a way to say thanks: a kind message for the driver plus Tip the crew and Send a coffee buttons. Both open a page with the crew's own Venmo, PayPal and Cash App links.
-- Trucks appear only for a property waiting for service, only while their position is under 10 minutes old, and positions are rounded to about 10 metres.
+- Trucks appear only for a property waiting for service, only while their position is under 4 minutes old, and positions are rounded to about 10 metres. The app sends a position about once a minute while it is sharing (also when the truck stands still), and the page says "last seen about N min ago" when a position has not been refreshed for a while. Sharing only runs while the app is open on the phone.
+- A thank-you message never counts against the request limit, and a mistyped page address (or one with a trailing slash) gets the plain "not available" page.
+- `GET /v1/portal/requests` returns the newest 200 requests, oldest first, each with its `status`; with `?since=` it returns the first 200 after that moment.
 - Map tiles come from OpenStreetMap (the customer's browser asks them directly). The map script itself is served from this server.
 - `PORTAL_DATA_FILE` keeps requests and pages across restarts. Without it everything is lost on a restart.
 
@@ -89,14 +93,33 @@ The same server also serves each client's private page (`/c/<token>`), sends ema
 - `RESEND_API_KEY` and `FROM_EMAIL` switch email on. An invoice is sent as a PDF attachment (one PDF per message, at most about 1 MB).
 - `PORTAL_MAX_EMAIL_BODY_BYTES` (default 3000000) is the largest email request. Public pages keep the smaller `PORTAL_MAX_BODY_BYTES`.
 
+### Public pages for the App Store listing
+Three pages need no token and hold no client data. They use the same dark card style as the client page, and search engines may index them (client pages stay `noindex`).
+
+| Page | What it is | Where it goes in App Store Connect |
+|---|---|---|
+| `GET /privacy` | The privacy policy: the same text as `LegalText.privacy` in the app. | Privacy Policy URL |
+| `GET /support` | How to get help, cancel or change a plan, restore a purchase, and delete the account and data. Shows `SUPPORT_EMAIL` when it is set. | Support URL |
+| `GET /terms` | Says the app is licensed under Apple's standard EULA and links to `https://www.apple.com/legal/internet-services/itunes/dev/stdeula/`. | Only if you want your own Terms link; the app itself links straight to Apple's EULA. |
+
+The policy text lives in `legal.mjs` (`PRIVACY`) and in the app (`Sources/RidgelineCore/LegalText.swift`). Change both together: `test/pages.test.mjs` fails if they differ by a single character. A trailing slash and a query string are accepted; anything but GET or HEAD gets 405.
+
 ### The assistant
-Set `ANTHROPIC_API_KEY` to switch it on. Without it the app shows that the assistant is not set up.
+Set `ANTHROPIC_API_KEY` to switch it on. Without it the app uses the assistant built into the app if there is one, and otherwise shows that the assistant is not set up.
+
+How a chat stays working (read this before changing `ai.mjs` or the app's `AssistantRunner`):
+- Claude ties its thinking to the conversation so far. If the system prompt, the tool list or any earlier message is different from when it last answered, it answers 400. So the house rules and tool list are the same for a whole chat, the current time travels in front of each question (never in the system prompt), and neither the app nor this server edits earlier messages. If Claude still refuses a chat for that reason, the app sends it once more without the old thinking blocks; for any other refusal it starts a fresh chat by itself.
+- One answer has room for thinking, the words and a tool call (`AI_MAX_TOKENS`, default 16000). 4096 was too little: answers were cut off and dropped.
+- Every failure has its own plain message. The app never shows a bare "could not answer right now".
 
 | Variable | Default | What it does |
 |---|---|---|
 | `ANTHROPIC_API_KEY` | none | Your key. It stays on the server. |
 | `AI_MODEL` | `claude-haiku-5-5` | The cheapest current model. Raise it to `claude-sonnet-5-5` or `claude-opus-5-5` if answers are not good enough. No app update needed. |
 | `AI_EFFORT` | `medium` | `low`, `medium` or `high`. |
+| `AI_MAX_TOKENS` | 16000 | Room for one answer (thinking, words and a tool call together), at most 20000. Leave it unset. Below about 8000, answers get cut off; the server warns at start. |
+| `AI_MAX_MESSAGES` | 120 | Most messages in one chat. The app starts a fresh chat by itself well before this. |
+| `AI_MAX_BODY_BYTES` | 400000 | Largest request. A chat that reaches it gets "too long" and the app starts a fresh one. |
 | `AI_PLANS` | none | JSON that says what each customer pays, for the spending limit: `{"<owner token>": {"plan": "pro", "crews": 2, "billing": "monthly"}}`. The app cannot change it. |
 | `AI_BUDGET_PERCENT` | 10 | The most a customer's assistant use may cost, as a percent of what they pay after Apple's cut. |
 | `APPLE_FEE_PERCENT` | 30 | Apple's cut. Use 15 if you are in the App Store Small Business Program. |
@@ -105,8 +128,8 @@ Set `ANTHROPIC_API_KEY` to switch it on. Without it the app shows that the assis
 | `AI_APP_MONTHLY_CAP_USD` | 25 | Hard monthly ceiling for all built-in-token use together, in dollars. 0 means none. |
 | `AI_TRIAL_BUDGET_USD` | 0.50 | Monthly allowance for a token with no paid plan listed (free trials). Set 0 to switch the assistant off for them. |
 | `AI_USAGE_FILE` | none | Keeps each customer's spend across restarts. Set it, or a restart resets the limit. |
-| `AI_DAILY_MESSAGE_CAP` | 200 | Questions per customer per day. |
-| `AI_RATE_LIMIT_PER_MIN` | 20 | Requests per minute per connection. |
+| `AI_DAILY_MESSAGE_CAP` | 400 | Requests per customer per day. One question is one request per tool step, up to 8. |
+| `AI_RATE_LIMIT_PER_MIN` | 60 | Requests per minute per connection (one question is up to 8, plus a status check). |
 | `AI_PRICE_IN_PER_MTOK`, `AI_PRICE_OUT_PER_MTOK` | built in | Override Claude's prices (dollars per million tokens) if they change. The built-in table is from 2026-11-03. |
 
-Each request holds back the most it could cost before it runs, so requests arriving together cannot go over the limit. The app is told only a percent used, never dollars.
+Each request holds back the most it could cost before it runs, so requests arriving together cannot go over the limit. The hold is the input (estimated high, and at the long-prompt price when it is anywhere near 100,000 tokens) plus `max_tokens` at the output price. When less than a full answer's worth of allowance is left, the answer is given less room (`max_tokens` is lowered to what the allowance still covers) instead of being refused; below 2,048 tokens it is refused, because a shorter answer is nearly always cut off. A dearer model therefore gets shorter answers near the end of the month, never a bigger bill. The app is told only a percent used, never dollars.

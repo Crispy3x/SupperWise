@@ -252,7 +252,8 @@ extension AppData {
     }
 
     /// Ends the active storm: adds up the visits, makes draft invoices, marks visited sites' jobs done and saves the deepest
-    /// snow logged as the storm's actual snowfall. Jobs at sites nobody visited stay open.
+    /// snow logged as the storm's actual snowfall. Storm jobs at sites nobody serviced are cancelled, so a finished storm
+    /// leaves nothing open on the schedule or the route.
     @discardableResult
     public mutating func finishStorm(now: Date) throws -> StormFinishResult {
         guard let index = stormRuns.lastIndex(where: { $0.isActive }) else { throw StormModeError.noActiveStorm }
@@ -261,7 +262,7 @@ extension AppData {
         let outcome = billStorm(named: run.stormName, now: now)
         let serviced = Set(visitLog.entries.map(\.record).filter { $0.stormID == run.stormName && $0.status == .completed }.map(\.siteID))
         for i in jobs.indices where run.jobIDs.contains(jobs[i].id) && jobs[i].status.isOpen {
-            if let site = jobs[i].siteID, serviced.contains(site) { jobs[i].status = .done }
+            if let site = jobs[i].siteID, serviced.contains(site) { jobs[i].status = .done } else { jobs[i].status = .cancelled }
         }
         if let deepest = summary.deepestInches, let s = storms.firstIndex(where: { $0.id == run.stormID }) {
             storms[s].actualInches = deepest

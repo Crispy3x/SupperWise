@@ -34,6 +34,7 @@ struct ContactsImportView: View {
     /// Price per push for everyone added, in dollars. Zero means no price yet.
     @State private var rate = 0.0
     @State private var working = false
+    @State private var stopRequested = false
     @State private var progress = 0
     @State private var notOnMap = 0
     @State private var result: String?
@@ -122,6 +123,9 @@ struct ContactsImportView: View {
                 Text("Finding addresses on the map: \(progress) of \(count)").font(.callout).foregroundStyle(.secondary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            // A long list takes minutes and the sheet cannot be closed meanwhile, so there has to be a way to stop.
+            SecondaryActionButton(title: stopRequested ? "Stopping..." : "Stop here and keep the ones added", icon: "stop.fill") { stopRequested = true }
+                .disabled(stopRequested).opacity(stopRequested ? 0.4 : 1)
         }
         PrimaryActionButton(title: working ? "Adding..." : "Add \(count) client\(count == 1 ? "" : "s")", icon: "checkmark") { runImport(plan) }
             .disabled(working || count == 0).opacity(working || count == 0 ? 0.4 : 1)
@@ -155,12 +159,14 @@ struct ContactsImportView: View {
     private func runImport(_ plan: ContactImportPlan) {
         guard !working else { return }
         working = true
+        stopRequested = false
         progress = 0
         notOnMap = 0
         let price = Money(dollars: Int(rate))
         Task {
             var added = 0
             for client in plan.clients {
+                if stopRequested { break }
                 var coordinate: Coordinate?
                 #if canImport(CoreLocation)
                 if !client.address.isEmpty {

@@ -22,6 +22,9 @@ struct InvoiceDetailSheet: View {
     @State private var message: String?
     @State private var confirming = false
     @State private var working = false
+    @State private var confirmingVoid = false
+    @State private var showingPart = false
+    @State private var partAmount = ""
 
     private var invoice: Invoice? { model.data.invoices.first { $0.number == number } }
 
@@ -48,7 +51,7 @@ struct InvoiceDetailSheet: View {
             VStack(alignment: .leading, spacing: 16) {
                 Card {
                     VStack(alignment: .leading, spacing: 10) {
-                        HStack { Text(client?.name ?? "Client").font(.title2.bold()); Spacer(); StatusPill(text: inv.isVoid ? "Void" : inv.status(now: Date()).rawValue.capitalized, color: inv.isVoid ? .gray : .blue) }
+                        HStack { Text(client?.name ?? "Client").font(.title2.bold()); Spacer(); StatusPill(text: AccountingExport.statusTitle(inv.status(now: Date())), color: inv.isVoid ? .gray : .blue).fixedSize() }
                         if !place.isEmpty { Text(place).font(.callout).foregroundStyle(.secondary) }
                         Divider()
                         ForEach(inv.lines) { l in HStack(alignment: .top) { Text(l.description).font(.callout); Spacer(); Text(l.amount.formatted).font(.callout.monospacedDigit()) } }
@@ -94,8 +97,50 @@ struct InvoiceDetailSheet: View {
                             message = model.updateInvoice(id: inv.id) { try $0.record(ManualPayment(amount: $0.balance, date: Date(), method: .other)) }
                         }
                     }
+                    // A client who pays part now and the rest later.
+                    if showingPart {
+                        HStack(spacing: 10) {
+                            TextField("Amount received", text: $partAmount)
+                                #if os(iOS)
+                                .keyboardType(.decimalPad)
+                                #endif
+                                .font(.title3).padding(.horizontal, 18).padding(.vertical, 12)
+                                .background(Look.field, in: Capsule()).overlay(Capsule().stroke(Look.fieldStroke, lineWidth: 1))
+                            smallButton("Save") {
+                                let typed = partAmount.replacingOccurrences(of: "$", with: "").replacingOccurrences(of: ",", with: ".").trimmingCharacters(in: .whitespaces)
+                                guard let dollars = Double(typed), dollars > 0, dollars < 1_000_000 else { message = "Enter the amount you received, for example 40."; return }
+                                let amount = Money(cents: Int((dollars * 100).rounded()))
+                                message = model.updateInvoice(id: inv.id) { try $0.record(ManualPayment(amount: amount, date: Date(), method: .other)) }
+                                    ?? "Recorded \(amount.formatted)."
+                                partAmount = ""; showingPart = false
+                            }
+                        }
+                    } else {
+                        Button("Record a part payment") { showingPart = true }.font(.callout.weight(.semibold))
+                    }
+                }
+                // A paid invoice can still be shared, for a client who asks for a copy or a receipt.
+                if !inv.isVoid && inv.balance.cents <= 0, let pdf = model.data.invoicePDF(number: inv.number) {
+                    ShareLink(item: InvoiceFile(name: pdf.filename, data: pdf.data), preview: SharePreview(pdf.filename)) {
+                        Label("Share the PDF", systemImage: "square.and.arrow.up").font(.title3.weight(.semibold)).frame(maxWidth: .infinity).padding(.vertical, 16)
+                            .background(Look.pill, in: Capsule())
+                    }
+                    .buttonStyle(.plain)
                 }
                 if inv.status(now: Date()) == .paid { ReviewAskButton(customerID: inv.customerID, happyNow: true) }
+                // The only way to take back an invoice made by mistake (or made twice). It stays on record, marked void.
+                if !inv.isVoid {
+                    Button { confirmingVoid = true } label: {
+                        Text("Void this invoice").font(.callout.weight(.semibold)).foregroundStyle(.red).frame(maxWidth: .infinity).padding(.vertical, 12)
+                    }
+                    .buttonStyle(.plain)
+                    .confirmationDialog("Void invoice \(inv.number)?", isPresented: $confirmingVoid, titleVisibility: .visible) {
+                        Button("Void invoice", role: .destructive) { message = model.updateInvoice(id: inv.id) { $0.void() } }
+                        Button("Keep it", role: .cancel) {}
+                    } message: {
+                        Text("It stays in your records marked void and no longer counts as owed or as income. The jobs or storms on it can be invoiced again.")
+                    }
+                }
                 if let message { Text(message).font(.callout).foregroundStyle(.secondary) }
             }
             .padding(.bottom, 30)

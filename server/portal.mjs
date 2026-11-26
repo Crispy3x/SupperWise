@@ -2,6 +2,7 @@
 // Zero dependencies. Stores no phone numbers or email addresses: only a page token, the address label, a status and requests.
 import crypto from 'node:crypto';
 import fs from 'node:fs';
+import { PRIVACY, TERMS_URL, cleanSupportEmail, privacySections, supportSections } from './legal.mjs';
 
 const TOKEN_RE = /^[A-Za-z0-9_-]{22,64}$/;
 const STATUSES = new Set(['planned', 'done', 'skipped', 'notExpected']);
@@ -46,6 +47,8 @@ export function loadPortalConfig(env = process.env) {
     maxBodyBytes: num(env.PORTAL_MAX_BODY_BYTES, 500_000),
     maxEmailBodyBytes: num(env.PORTAL_MAX_EMAIL_BODY_BYTES, 3_000_000),     // owner only: an invoice PDF is attached
     trustProxy: env.TRUST_PROXY === '1',
+    // Shown on the public /support page. Left out of the page when unset or not an email address.
+    supportEmail: cleanSupportEmail(env.SUPPORT_EMAIL),
   };
 }
 
@@ -70,7 +73,11 @@ export function isValidEmail(t) {
 }
 
 const ASSET_TYPES = { 'leaflet.js': 'text/javascript; charset=utf-8', 'leaflet.css': 'text/css; charset=utf-8', 'portal.js': 'text/javascript; charset=utf-8' };
-const TRUCK_FRESH_MS = 10 * 60_000;       // a truck position older than this is not shown
+// A truck position older than this is not shown. The app sends one about every minute while it is sharing (even standing
+// still), so four minutes allows a few missed sends and no more: a phone that was locked or lost signal must not leave a truck
+// parked on the client's map at a place it left long ago.
+const TRUCK_FRESH_MS = 4 * 60_000;
+const PUBLIC_PAGES = new Set(['/privacy', '/support', '/terms']);
 const MAX_TRUCKS = 10;
 
 const SECURITY_HEADERS = {
@@ -78,6 +85,7 @@ const SECURITY_HEADERS = {
   'X-Content-Type-Options': 'nosniff',
   'Referrer-Policy': 'no-referrer',            // the page address contains the token: never pass it on
   'X-Robots-Tag': 'noindex',
+  'Strict-Transport-Security': 'max-age=31536000',     // ignored on plain http (local testing), honoured behind https
   // Scripts only from this server. Map tiles are the one outside request (OpenStreetMap), and only images.
   'Content-Security-Policy': "default-src 'none'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src https://tile.openstreetmap.org data:; connect-src 'self'; manifest-src 'self'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'",
 };
@@ -128,7 +136,7 @@ export function createPortal(config, deps = {}) {
   // ---- helpers
   const sendJson = (res, status, obj) => {
     const body = JSON.stringify(obj);
-    res.writeHead(status, { 'content-type': 'application/json', 'content-length': Buffer.byteLength(body), 'cache-control': 'no-store' });
+    res.writeHead(status, { 'content-type': 'application/json', 'content-length': Buffer.byteLength(body), 'cache-control': 'no-store', 'x-content-type-options': 'nosniff' });
     res.end(body);
   };
   const sendHtml = (res, status, html, extra = {}) => {
@@ -163,6 +171,7 @@ export function createPortal(config, deps = {}) {
     const recent = (ipHits.get(ip) ?? []).filter((x) => t - x < 60_000);
     if (recent.length >= config.ipLimitPerMinute) return false;
     recent.push(t); ipHits.set(ip, recent);
+    if (ipHits.size > 5000) for (const [k, v] of ipHits) if (t - v[v.length - 1] >= 60_000) ipHits.delete(k);   // never grow without bound
     return true;
   };
   async function jsonBody(req, res, limit) {
@@ -176,7 +185,7 @@ export function createPortal(config, deps = {}) {
 
   // ---- the client page
   function page(title, inner, extra = {}) {
-    return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#1b1b1d"><meta name="color-scheme" content="dark light"><meta name="apple-mobile-web-app-capable" content="yes"><title>${escapeHtml(title)}</title>${extra.head || ''}<style>
+    return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">${extra.listed ? '' : '<meta name="robots" content="noindex">'}<meta name="theme-color" content="#1b1b1d"><meta name="color-scheme" content="dark light"><meta name="apple-mobile-web-app-capable" content="yes"><title>${escapeHtml(title)}</title>${extra.head || ''}<style>
 :root{--page:#1b1b1d;--card:#2b2b2f;--pill:#333337;--text:#f5f5f7;--muted:#a1a1a8;--line:rgba(255,255,255,.08);--accent:#3b82f6;--accent-soft:rgba(59,130,246,.18);--ok:#34c759;--ok-soft:rgba(52,199,89,.18);--warn:#ff9f0a;--warn-soft:rgba(255,159,10,.18);--gift:#3a2f17;--gift-text:#ffd27a;--field:#333337}
 @media (prefers-color-scheme: light){:root{--page:#f2f2f7;--card:#fff;--pill:#e5e5ea;--text:#14202e;--muted:#5b6b7e;--line:rgba(0,0,0,.08);--accent-soft:#eaf3fc;--ok-soft:#e3f4ea;--warn-soft:#fde8d2;--gift:#fff3d6;--gift-text:#7a4b00;--field:#fff}}
 body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Helvetica,Arial,sans-serif;margin:0;background:var(--page);color:var(--text);-webkit-font-smoothing:antialiased}main{max-width:34rem;margin:0 auto;padding:16px 16px 40px}
@@ -193,7 +202,8 @@ button{font:inherit;font-weight:700;padding:.85rem 1.3rem;border:0;border-radius
 .btn.payapp{display:block;width:100%;text-align:center;margin:.6rem 0 0;font-size:1.1rem;padding:1rem}
 .tipbtn{display:inline-block;margin:.3rem .4rem 0 0;padding:.75rem 1.1rem;border-radius:999px;background:var(--gift);color:var(--gift-text);font-weight:700;text-decoration:none}
 #map{height:300px;border-radius:16px;overflow:hidden}.pin-site{display:block;width:18px;height:18px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 0 0 2px var(--accent)}.pin-truck{display:block;font-size:24px;line-height:28px;text-align:center}
-input[type=radio]{width:auto;margin:0 .5rem 0 0}</style></head><body${extra.bodyAttrs || ''}><main>${inner}</main>${extra.tail || ''}</body></html>`;
+input[type=radio]{width:auto;margin:0 .5rem 0 0}
+.doc p,.doc li{line-height:1.5}.doc ul{padding-left:1.2rem;margin:.2rem 0}.doc li{margin:.45rem 0}.doc h2{margin-top:1.3rem}.doc h2:first-of-type{margin-top:.4rem}.nav{text-align:center}.nav a{margin:0 .5rem}</style></head><body${extra.bodyAttrs || ''}><main>${inner}</main>${extra.tail || ''}</body></html>`;
   }
   const notFound = (res) => sendHtml(res, 404, page('Page not available', '<div class="card"><h1>This page is not available</h1><p>The link may be old or mistyped. Please contact your snow service provider.</p></div>'));
 
@@ -209,10 +219,12 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}</style></head><body${extra.body
     const s = state.snapshots[token];
     const t = now();
     const live = [...trucks.values()].filter((x) => t - x.updatedAt <= TRUCK_FRESH_MS);
+    const age = (x) => Math.max(0, Math.round((t - x.updatedAt) / 1000));
     return {
       status: s.status, statusText: STATUS_TEXT[s.status], eta: s.eta || '', stopsAhead: Number.isInteger(s.stopsAhead) ? s.stopsAhead : null,
       site: s.siteLocation || null,
-      trucks: s.status === 'planned' ? live.map((x) => ({ label: x.label, latitude: x.latitude, longitude: x.longitude })) : [],
+      // ageSeconds lets the page say "seen 2 min ago" instead of showing an old position as if it were live.
+      trucks: s.status === 'planned' ? live.map((x) => ({ label: x.label, latitude: x.latitude, longitude: x.longitude, ageSeconds: age(x) })) : [],
       weather: s.weather || null, updatedAt: s.updatedAt,
     };
   }
@@ -229,7 +241,8 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}</style></head><body${extra.body
     html += `<p class="small etalabel" id="etalabel"${s.eta ? '' : ' style="display:none"'}>${s.eta ? 'Estimated arrival' : ''}</p><p id="eta"${s.eta ? '' : ' style="display:none"'}>${s.eta ? escapeHtml(s.eta) : ''}</p><p class="small" id="ahead"></p>`;
     html += `<p>${s.canRequest ? '<a class="btn" href="#ask">Request service</a>' : ''}<a class="btn alt" href="#thanks">Say thanks</a></p>`;
     if (s.summary) html += `<p class="small">${escapeHtml(s.summary)}</p>`;
-    html += `<p class="small">Updated ${escapeHtml(new Date(s.updatedAt).toUTCString())}. Forecasts can change.</p></div>`;
+    // The script rewrites the time in the reader's own time zone; without scripts it stays in UTC, and says so.
+    html += `<p class="small">Updated <span id="updated">${escapeHtml(new Date(s.updatedAt).toUTCString())}</span>. Forecasts can change.</p></div>`;
     const view = liveView(token);
     if (view.site && assets.has('leaflet.js')) {
       html += '<div class="card"><h2>Where is the truck?</h2><div id="map" role="img" aria-label="Map showing your property and the truck"></div><p class="small" id="mapnote"></p></div>';
@@ -295,6 +308,34 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}</style></head><body${extra.body
     return page(`${label}`, inner, { head: '' });
   }
 
+  // ---- public pages for the App Store listing: no token, no client data, safe to index
+  const pageNav = '<p class="small nav"><a href="/privacy">Privacy</a><a href="/support">Support</a><a href="/terms">Terms of use</a></p>';
+  function renderPublicPage(path) {
+    if (path === '/privacy') {
+      const { title, sections } = privacySections(PRIVACY);
+      let inner = `<div class="card doc"><h1>${escapeHtml(title)}</h1>`;
+      for (const sec of sections) {
+        inner += `<h2>${escapeHtml(sec.heading)}</h2>`;
+        for (const p of sec.paragraphs) inner += `<p>${escapeHtml(p)}</p>`;
+        if (sec.bullets.length) inner += `<ul>${sec.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join('')}</ul>`;
+      }
+      if (config.supportEmail) inner += `<h2>Contact</h2><p>Questions about privacy: <a href="mailto:${escapeHtml(config.supportEmail)}">${escapeHtml(config.supportEmail)}</a></p>`;
+      return page('Privacy Policy: Ridgeline Ops', `${inner}</div>${pageNav}`, { listed: true });
+    }
+    if (path === '/support') {
+      let inner = '<div class="card doc"><p class="small">Ridgeline Ops</p><h1>Support</h1>';
+      for (const [heading, lines] of supportSections(config.supportEmail)) inner += `<h2>${escapeHtml(heading)}</h2>${lines.map((l) => `<p>${escapeHtml(l)}</p>`).join('')}`;
+      if (config.supportEmail) inner += `<p><a class="btn" href="mailto:${escapeHtml(config.supportEmail)}">Email support</a></p>`;
+      return page('Support: Ridgeline Ops', `${inner}</div>${pageNav}`, { listed: true });
+    }
+    const inner = `<div class="card doc"><p class="small">Ridgeline Ops</p><h1>Terms of use</h1>
+<p>Ridgeline Ops is licensed to you under Apple's standard Licensed Application End User License Agreement (EULA). There are no other terms.</p>
+<p><a class="btn" href="${TERMS_URL}" rel="noopener noreferrer">Read Apple's standard EULA</a></p>
+<p class="small">${TERMS_URL}</p>
+<p>Plans are subscriptions bought with your Apple ID. They renew until you cancel in Settings on your iPhone, at least 24 hours before the renewal date. See <a href="/support">Support</a> for how to cancel or restore a plan, and <a href="/privacy">Privacy</a> for what the app does with your data.</p></div>`;
+    return page('Terms of use: Ridgeline Ops', `${inner}${pageNav}`, { listed: true });
+  }
+
   // ---- owner API
   /** A truck's position, sent every half minute while its crew shares location. Each truck is added or updated by its label, so
    *  several trucks can share at once; `remove` takes a truck off the map when its crew stops. Kept in memory only. */
@@ -308,8 +349,9 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}</style></head><body${extra.body
       if (!validCoord(x)) return sendJson(res, 400, { error: 'each truck needs a valid latitude and longitude' });
       incoming.push({ label: cleanText(x.label, 24) || 'Truck', latitude: round(x.latitude, 4), longitude: round(x.longitude, 4), updatedAt: now() });
     }
-    for (const label of body.remove || []) trucks.delete(cleanText(label, 24));
+    for (const label of body.remove || []) trucks.delete(cleanText(label, 24) || 'Truck');
     for (const x of incoming) trucks.set(x.label, x);
+    for (const x of [...trucks.values()]) if (now() - x.updatedAt > TRUCK_FRESH_MS) trucks.delete(x.label);   // stale ones are gone for good
     if (trucks.size > MAX_TRUCKS) {                          // never grow without bound: drop the stalest
       const stale = [...trucks.values()].sort((a, b) => a.updatedAt - b.updatedAt).slice(0, trucks.size - MAX_TRUCKS);
       for (const x of stale) trucks.delete(x.label);
@@ -354,8 +396,12 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}</style></head><body${extra.body
     const since = url.searchParams.get('since');
     let sinceMs = 0;
     if (since) { sinceMs = Date.parse(since); if (!Number.isFinite(sinceMs)) return sendJson(res, 400, { error: 'since must be an ISO date' }); }
-    const out = state.requests.filter((r) => Date.parse(r.createdAt) > sinceMs).sort((a, b) => a.createdAt.localeCompare(b.createdAt)).slice(0, 200)
-      .map((r) => ({ id: r.id, token: r.token, kind: r.kind, reason: r.reason || null, note: r.note, createdAt: r.createdAt, stormId: r.stormId }));
+    // Oldest first. With `since` the caller is paging forward, so it gets the first 200 after that moment. Without it the caller
+    // wants what is current, so it gets the newest 200: the oldest 200 would hide every new request once 200 had piled up.
+    // `status` lets the app leave out requests that were already answered (from another device, or before a reinstall).
+    const all = state.requests.filter((r) => Date.parse(r.createdAt) > sinceMs).sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+    const out = (since ? all.slice(0, 200) : all.slice(-200))
+      .map((r) => ({ id: r.id, token: r.token, kind: r.kind, reason: r.reason || null, note: r.note, createdAt: r.createdAt, stormId: r.stormId, status: r.status }));
     sendJson(res, 200, { requests: out });
   }
 
@@ -442,7 +488,8 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}</style></head><body${extra.body
     if (!KINDS.has(kind)) return bad('Please choose what you would like to ask for.');
     if (kind === 'urgent' && !REASONS.has(reason)) return bad('For an urgent request, please choose a reason.');
     const t = now();
-    const mine = state.requests.filter((r) => r.token === token);
+    // Kind messages have their own limit (postThanks). Counting them here meant three thank-yous blocked an urgent request for an hour.
+    const mine = state.requests.filter((r) => r.token === token && r.kind !== 'thanks');
     if (mine.filter((r) => t - Date.parse(r.createdAt) < 3_600_000).length >= config.requestsPerTokenPerHour) return sendHtml(res, 429, page('Too many requests', '<div class="card"><p>You have already sent several requests. Please wait, or contact your snow service directly.</p></div>'));
     if (mine.filter((r) => r.status === 'pending').length >= config.maxPendingPerToken) return sendHtml(res, 429, page('Too many requests', '<div class="card"><p>You already have requests waiting for an answer.</p></div>'));
     state.requests.push({ id: crypto.randomBytes(12).toString('hex'), token, kind, reason: kind === 'urgent' ? reason : '', note: cleanText(form.get('note'), 500),
@@ -454,11 +501,23 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}</style></head><body${extra.body
 
   return {
     /** True for the paths this module owns, so another handler can take everything else. */
-    matches(rawUrl) { const p = (rawUrl || '').split('?')[0]; return p.startsWith('/c/') || p.startsWith('/assets/') || p.startsWith('/v1/portal/') || p.startsWith('/v1/send/'); },
+    matches(rawUrl) {
+      const p = (rawUrl || '').split('?')[0];
+      return p.startsWith('/c/') || p.startsWith('/assets/') || p.startsWith('/v1/portal/') || p.startsWith('/v1/send/') || PUBLIC_PAGES.has(p.replace(/\/+$/, ''));
+    },
     async handle(req, res) {
-      const url = new URL(req.url, 'http://localhost');
-      const path = url.pathname;
+      let url;
+      try { url = new URL(req.url, 'http://localhost'); } catch { return notFound(res); }
+      const path = url.pathname.length > 1 ? url.pathname.replace(/\/+$/, '') : url.pathname;      // "/c/<token>/" is the same page as "/c/<token>"
       try {
+        if (PUBLIC_PAGES.has(path)) {
+          if (req.method !== 'GET' && req.method !== 'HEAD') return sendJson(res, 405, { error: 'Method not allowed' });
+          if (!ipAllowed(req)) return sendHtml(res, 429, page('Slow down', '<div class="card"><p>Too many requests from your connection. Please try again in a minute.</p></div>'));
+          // Not private, so it may be cached and found by search (the client pages stay no-store and noindex).
+          const html = renderPublicPage(path);
+          res.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'content-length': Buffer.byteLength(html), ...SECURITY_HEADERS, 'Cache-Control': 'public, max-age=300', 'X-Robots-Tag': 'all' });
+          return res.end(req.method === 'HEAD' ? undefined : html);
+        }
         if (path.startsWith('/assets/')) {
           const name = path.slice('/assets/'.length);
           const asset = req.method === 'GET' && /^[a-z.]+$/.test(name) ? assets.get(name) : null;      // only the listed files, never a path
@@ -489,6 +548,8 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}</style></head><body${extra.body
           if (m[2] === '/thanks' && req.method === 'POST') return await postThanks(req, res, token);
           return sendJson(res, 405, { error: 'Method not allowed' });
         }
+        // Anything else under /c/ is a mistyped client link: show the plain page, not the owner API's "invalid token".
+        if (path.startsWith('/c/') || path === '/c') return notFound(res);
         if (!isOwner(req)) return sendJson(res, 401, { error: 'Missing or invalid token' });
         if (req.method === 'PUT' && path === '/v1/portal/snapshot') return await putSnapshot(req, res);
         if (req.method === 'PUT' && path === '/v1/portal/trucks') return await putTrucks(req, res);

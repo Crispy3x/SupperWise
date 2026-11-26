@@ -172,9 +172,9 @@ public struct FileStore: Sendable {
                 return Recovery(data: AppData(), notice: "Your saved data could not be read, so the app started empty. The unreadable file was kept as \(kept.lastPathComponent) so it can be recovered.", safeToSave: true)
             }
             if let found {
-                return Recovery(data: found.data, notice: "Your saved data could not be read or set aside, so the app is showing \(found.copy.describe()). Changes will not be saved until this is fixed.", safeToSave: false, restoredCopy: found.copy.id)
+                return Recovery(data: found.data, notice: "Your saved data could not be read or set aside, so the app is showing \(found.copy.describe()). Changes are not being saved. Close the app and open it again. If this message comes back, share a backup from Settings, delete the account and data in Profile, then restore the backup.", safeToSave: false, restoredCopy: found.copy.id)
             }
-            return Recovery(data: AppData(), notice: "Your saved data could not be read and could not be set aside. Changes will not be saved until this is fixed.", safeToSave: false)
+            return Recovery(data: AppData(), notice: "Your saved data could not be read and could not be set aside. Changes are not being saved. Close the app and open it again. If this message comes back, delete the account and data in Profile to start again.", safeToSave: false)
         }
     }
 

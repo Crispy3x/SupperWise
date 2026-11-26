@@ -115,6 +115,20 @@ final class ReportsTests: XCTestCase {
         XCTAssertEqual(empty.allTime.cents, 0); XCTAssertEqual(empty.percentChange, 0); XCTAssertTrue(empty.bars.isEmpty); XCTAssertTrue(empty.recent.isEmpty)
     }
 
+    func testAPaymentAtMidnightOnTheFirstBelongsToOneMonthOnly() throws {
+        var d = AppData()
+        let c = Customer(name: "Pat Miller"); d.customers = [c]
+        var inv = Invoice(number: "INV-1", customerID: c.id, siteID: UUID(), issueDate: day(2026, 12, 1), dueDate: day(2027, 3, 1),
+                          lines: [InvoiceLineItem(description: "x", amount: Money(cents: 50_000))])
+        try inv.record(ManualPayment(amount: Money(cents: 7_000), date: day(2027, 2, 1, 0), method: .cash))
+        d.invoices = [inv]
+        let january = RevenueReport.compute(for: d, period: .thisMonth, now: now, calendar: utc)
+        XCTAssertEqual(january.periodTotal.cents, 0); XCTAssertEqual(january.thisMonth.cents, 0)
+        let february = RevenueReport.compute(for: d, period: .thisMonth, now: day(2027, 2, 10), calendar: utc)
+        XCTAssertEqual(february.periodTotal.cents, 7_000)
+        XCTAssertNil(february.percentChange)                                              // and it is not counted as January's as well
+    }
+
     func testTheTrialEndsFourteenDaysAfterItStarts() {
         let s = Subscription.startTrial(at: now)
         XCTAssertEqual(s.trialEnd, now.addingTimeInterval(14 * 86_400))

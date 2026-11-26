@@ -357,6 +357,70 @@ final class JobBillingTests: XCTestCase {
         XCTAssertEqual(plain.invoices.count, 1)
     }
 
+    // MARK: never billed twice with the snow contract
+
+    func testAStormJobAtAnAddressWithASnowContractIsNotBilledAsAJob() throws {
+        var (d, pat, sam) = world(automation: .draft)
+        d.contracts = [SnowContract(siteID: d.sites[0].id, season: "2026-27", terms: .perPush(rate: Money(dollars: 55)))]
+        let run = try d.startStorm(baseName: "Nov 21", expectedInches: 3, siteIDs: d.sites.map(\.id), now: day(2026, 11, 21))
+        for id in run.jobIDs { try d.setJobPrice(mow(55), id: id) }                    // someone put a price on both storm jobs
+        for site in d.sites {
+            d.visitLog.append(VisitRecord(siteID: site.id, crewMemberName: "Sam", stormID: run.stormName, arrival: day(2026, 11, 21, 10)))
+        }
+        _ = try d.finishStorm(now: day(2026, 11, 21, 15))
+        // Pat has a contract, so the storm is on the contract's invoice and nowhere else. Sam has none: the priced job is the bill.
+        XCTAssertEqual(d.invoices.filter { $0.customerID == pat.id }.map(\.total), [Money(dollars: 55)])
+        XCTAssertEqual(d.uninvoicedWork(calendar: utc).map(\.customerName), ["Sam Lee"])
+        let patsJob = try XCTUnwrap(d.jobs.first { $0.siteID == d.sites[0].id })
+        XCTAssertTrue(d.isBilledBySnowContract(patsJob))
+        XCTAssertThrowsError(try d.createInvoice(forJobVisit: patsJob.id, on: patsJob.start, now: now, calendar: utc)) {
+            XCTAssertEqual($0 as? JobBillingError, .billedBySnowContract)
+        }
+        XCTAssertEqual(d.createInvoices(now: now, calendar: utc).invoices.map(\.customerID), [sam.id])
+        XCTAssertEqual(d.invoices.filter { $0.customerID == pat.id }.count, 1)
+    }
+
+    func testAPricedSnowJobOnADayWithALoggedVisitIsWarnedAboutNotDraftedAutomatically() throws {
+        var (d, pat, _) = world(automation: .draft)
+        let site = d.sites[0]
+        d.contracts = [SnowContract(siteID: site.id, season: "2026-27", terms: .perPush(rate: Money(dollars: 55)))]
+        // The crew logged the visit and the contract drafted its invoice.
+        let logged = VisitRecord(siteID: site.id, crewMemberName: "Sam", stormID: "Nov 21", arrival: day(2026, 11, 21, 7))
+        d.visitLog.append(logged)
+        XCTAssertEqual(d.autoInvoice(afterVisit: logged, now: day(2026, 11, 21, 8), calendar: utc).invoice?.total, Money(dollars: 55))
+        // A priced plow job there the same day is not drafted by itself: it waits, flagged, for the owner.
+        let plow = try d.addJob(title: "Plow driveway", kind: .snowPlowing, customerID: pat.id, siteID: site.id, start: day(2026, 11, 21), now: now)
+        try d.setJobPrice(mow(55), id: plow.id)
+        try d.setOccurrenceStatus(.done, id: plow.id, on: plow.start, calendar: utc)
+        XCTAssertEqual(d.invoices.count, 1)
+        XCTAssertEqual(d.uninvoicedWork(calendar: utc).first?.snowContractOverlaps, 1)
+        // A mowing job the same day is not snow work: drafted as usual.
+        let lawn = try addJob(&d, "Mow", client: pat, start: day(2026, 11, 21), lines: mow(), done: true)
+        XCTAssertNotNil(d.invoice(forJobVisit: lawn.id, on: lawn.start, calendar: utc))
+        // The owner can still bill the plow job (it may be extra work), and is told to check.
+        let result = d.createInvoices(now: now, calendar: utc)
+        XCTAssertEqual(result.invoices.count, 1)
+        XCTAssertEqual(result.warnings.count, 1)
+        XCTAssertTrue(result.summary.contains("snow contract"))
+    }
+
+    func testTheContractInvoiceWarnsWhenAJobThatDayIsAlreadyInvoiced() throws {
+        var (d, pat, _) = world(automation: .send)
+        d.customers[0].email = "pat@example.com"; d.customers[0].emailConsent = true
+        let site = d.sites[0]
+        d.contracts = [SnowContract(siteID: site.id, season: "2026-27", terms: .perPush(rate: Money(dollars: 55)))]
+        let plow = try d.addJob(title: "Plow driveway", kind: .snowPlowing, customerID: pat.id, siteID: site.id, start: day(2026, 11, 21), now: now)
+        try d.setJobPrice(mow(55), id: plow.id)
+        try d.setOccurrenceStatus(.done, id: plow.id, on: plow.start, calendar: utc)   // no visit logged yet: drafted as a job
+        XCTAssertEqual(d.invoices.map(\.number), ["INV-0001"])
+        let logged = VisitRecord(siteID: site.id, crewMemberName: "Sam", stormID: "Nov 21", arrival: day(2026, 11, 21, 10))
+        d.visitLog.append(logged)
+        let out = d.autoInvoice(afterVisit: logged, now: day(2026, 11, 21, 11), calendar: utc)
+        XCTAssertEqual(out.invoice?.number, "INV-0002")
+        XCTAssertTrue(out.note.contains("INV-0001")); XCTAssertTrue(out.note.contains("billed twice"))
+        XCTAssertNil(out.message)                                                      // never emailed by itself while in doubt
+    }
+
     // MARK: saved files
 
     func testOldSavedFilesStillLoadAndNewFieldsRoundTrip() throws {

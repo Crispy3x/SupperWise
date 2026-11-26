@@ -549,7 +549,17 @@ private struct RoutePlannerPanel: View {
             return
         }
         finishAdding()
-        if site.latitude == nil || site.longitude == nil { Task { await model.fillMissingLocations() } }
+        if site.latitude == nil || site.longitude == nil {
+            // The job is saved, but only a site with a map location is a stop. Say so instead of showing nothing.
+            let siteID = site.id
+            let place = site.address.isEmpty ? "that site" : site.address
+            Task {
+                await model.fillMissingLocations()
+                if let s = model.data.sites.first(where: { $0.id == siteID }), s.latitude == nil || s.longitude == nil {
+                    note = "The job at \(place) was added, but the address was not found on the map, so it is not on the route. Check the address in the client's details."
+                }
+            }
+        }
     }
 
     /// Any other address: a one-off stop for this day.

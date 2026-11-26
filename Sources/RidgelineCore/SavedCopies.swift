@@ -239,6 +239,21 @@ extension DataExport {
         return compared
     }
 
+    /// What to warn about before restoring onto a device that has no owner login or Apple account of its own: the backup's
+    /// owner sign-in comes with it, everyone is signed out, and getting back in then needs that sign-in. Someone who forgot
+    /// it would be locked out again. Nil when this device keeps its own owner sign-in, or the backup has none.
+    public static func signInWarning(backup: AppData, device: AppData) -> String? {
+        guard !device.ownerIsProtected else { return nil }
+        let wayOut = "If you cannot, cancel, create a login in Profile first and then restore. Your new login is kept."
+        if let email = backup.ownerEmail {
+            return "This backup has its own owner login (\(email)). After restoring you sign in with that email and its password. \(wayOut)"
+        }
+        if backup.account != nil {
+            return "This backup is linked to an Apple account. After restoring you sign in with that Apple account. \(wayOut)"
+        }
+        return nil
+    }
+
     /// Makes restored data safe to use on this device.
     /// - Nobody stays signed in: whoever uses the app next signs in again.
     /// - If this device already has an owner, the owner's login and Apple account stay exactly as they are here, so the

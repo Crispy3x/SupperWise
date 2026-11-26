@@ -38,6 +38,7 @@ struct JobRow: View {
                     }
                     Spacer(minLength: 0)
                     StatusPill(text: job.isTask ? "Task" : (job.repeats && job.status == .cancelled ? "Skipped" : job.status.title), color: job.status.color)
+                        .fixedSize()   // a long title shortens; the status never wraps or gets cut
                 }
             }
         }
@@ -59,7 +60,8 @@ struct JobDetailSheet: View {
     private var job: Job? {
         guard let series = model.data.jobs.first(where: { $0.id == jobID }) else { return nil }
         guard series.repeats else { return series }
-        let day = occurrenceDate ?? series.nextOccurrence(onOrAfter: Date()) ?? series.start
+        // A repeating job that has ended shows its last visit, not its first.
+        let day = occurrenceDate ?? series.nextOccurrence(onOrAfter: Date()) ?? series.lastOccurrence(onOrBefore: Date()) ?? series.start
         return series.occurrence(on: day) ?? series
     }
 
@@ -113,7 +115,8 @@ struct JobDetailSheet: View {
                     }
                     if let site = model.data.sites.first(where: { $0.id == job.siteID }),
                        let lat = site.latitude, let lon = site.longitude,
-                       let url = NavigationLinks.appleMaps(to: Coordinate(latitude: lat, longitude: lon), from: model.data.depot) {
+                       // No start point: Apple Maps then routes from where the crew is now, not from the yard.
+                       let url = NavigationLinks.appleMaps(to: Coordinate(latitude: lat, longitude: lon)) {
                         SecondaryActionButton(title: "Navigate in Apple Maps", icon: "location.fill") { openURL(url) }
                     }
                     ClientTextSection(job: job)   // "On my way" and "Job done" texts (ClientTextViews.swift)
@@ -133,7 +136,7 @@ struct JobDetailSheet: View {
                                 .buttonStyle(.plain)
                             }
                         }
-                    } else if job.isTask {
+                    } else if job.isTask && (model.data.can(.editJobs) || model.data.can(.logVisits)) {
                         SecondaryActionButton(title: job.status == .done ? "Mark not done" : "Mark done", icon: job.status == .done ? "arrow.uturn.backward" : "checkmark") {
                             message = model.setOccurrenceStatus(job.status == .done ? .scheduled : .done, id: job.id, on: job.start)
                         }

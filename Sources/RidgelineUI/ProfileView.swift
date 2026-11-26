@@ -23,13 +23,41 @@ struct ProfileView: View {
     }
 
     var body: some View {
+        // The login, Apple account, settings and delete button belong to the owner. An employee only sees who they are.
+        if model.data.isOwnerSession { ownerPage } else { employeePage }
+    }
+
+    @ViewBuilder private var employeePage: some View {
+        AppPage(title: "Profile", icon: "person.crop.circle.fill") {
+            if let me = model.data.currentMember {
+                Card {
+                    HStack(spacing: 14) {
+                        AvatarView(name: me.name, size: 64)
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(me.name).font(.title3.bold())
+                            Text("\(me.role.title) at \(business)").font(.footnote).foregroundStyle(.secondary)
+                        }
+                    }
+                }
+                CardGroup(title: "How you sign in",
+                          footer: "Your boss made your username and password. Forgot the password? Ask your boss to set a new one.") {
+                    FactRow(label: "Username", value: model.data.username(forMember: me.id) ?? "None")
+                }
+            } else {
+                EmptyCard(icon: "person.crop.circle.badge.xmark", title: "Not on the team",
+                          message: "Sign out, then ask your boss to add you again.")
+            }
+        }
+    }
+
+    private var ownerPage: some View {
         AppPage(title: "Profile", icon: "person.crop.circle.fill") {
             Card {
                 HStack(spacing: 14) {
                     AvatarView(name: model.data.account?.displayName.isEmpty == false ? model.data.account!.displayName : business, size: 64)
                     VStack(alignment: .leading, spacing: 3) {
                         Text(business).font(.title3.bold())
-                        Text(model.data.account?.email.isEmpty == false ? model.data.account!.email : (model.data.account == nil ? "Not signed in" : "Signed in with Apple"))
+                        Text(model.data.account?.email.isEmpty == false ? model.data.account!.email : (model.data.account == nil ? (model.data.ownerEmail ?? "No login yet") : "Signed in with Apple"))
                             .font(.footnote).foregroundStyle(.secondary)
                     }
                 }
@@ -55,7 +83,7 @@ struct ProfileView: View {
                 RowDivider()
                 FactRow(label: "Plan", value: planText)
             }
-            CardGroup(footer: "Removes everything stored on this device: clients, invoices, visits, photos and the saved server token. Back up your data first in Settings. Backups you saved or shared elsewhere are not removed. On your server, client pages are removed 14 days after their last update and requests after 30 days (unless you changed your server's settings). To also remove Apple sign-in for this app, use Settings > your name > Sign in with Apple on your iPhone.") {
+            CardGroup(footer: "Removes everything stored on this device: clients, invoices, visits, photos, saved copies and saved access codes. Back up your data first in Settings. Backups you saved or shared elsewhere are not removed. If you set up client pages, the pages already published come down 14 days after their last update and requests after 30 days. To also remove Apple sign-in for this app, use Settings > your name > Sign in with Apple on your iPhone.") {
                 PrimaryActionButton(title: "Delete my account and data", icon: "trash", destructive: true) { confirmDelete = true }
             }
         }

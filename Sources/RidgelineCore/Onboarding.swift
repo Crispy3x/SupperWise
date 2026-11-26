@@ -93,7 +93,7 @@ public enum Onboarding {
         OnboardingStep(id: .homeBase, title: "Home base", question: "Where do your trucks start?",
                        why: "Routes start here, and the weather forecast is for this spot.", required: false),
         OnboardingStep(id: .team, title: "Your crews", question: "How many crews or trucks do you run?",
-                       why: "We set up your crews. Price is per crew.", required: false),
+                       why: "We set up your trucks for routes and storms.", required: false),
         OnboardingStep(id: .plan, title: "Your plan", question: "Which plan fits your business?",
                        why: "Free for 14 days with everything unlocked. You pay for the plan. Your employees never pay.", required: false),
         OnboardingStep(id: .importClients, title: "Your clients list", question: "Do you have clients to bring in?",

@@ -77,13 +77,15 @@ struct TimesheetsView: View {
                             }
                         }
                     }
-                    NavigationLink { TimeClockView().environment(\.embeddedInStack, true).circleBack().pageBackground() } label: {
-                        Label("Clock in or out", systemImage: "clock.badge.checkmark").font(.title3.weight(.semibold)).frame(maxWidth: .infinity).padding(.vertical, 16)
-                            .background(Look.pill, in: Capsule())
+                    if model.data.can(.useTimeClock) {   // seeing the team's hours does not by itself allow punching the clock
+                        NavigationLink { TimeClockView().environment(\.embeddedInStack, true).circleBack().pageBackground() } label: {
+                            Label("Clock in or out", systemImage: "clock.badge.checkmark").font(.title3.weight(.semibold)).frame(maxWidth: .infinity).padding(.vertical, 16)
+                                .background(Look.pill, in: Capsule())
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
                 }
-                .padding(.horizontal, 16).padding(.top, 14).padding(.bottom, 100)
+                .padding(.horizontal, 16).padding(.top, 14).padding(.bottom, Look.tabBarClearance + 16)   // clear of the floating tab bar
             }
         }
         .background(Look.page)
@@ -123,14 +125,21 @@ struct SubscriptionView: View {
         }
     }
 
+    /// Only what the app really does today. The Max line is exactly what the code unlocks for Max and not for Pro:
+    /// custom permissions (Feature.rolesAndReports), next to the higher employee limit (TeamRules.employeeLimit).
+    /// Anything that needs the owner's own server says so.
     private var features: [String] {
-        var f = ["Client and lead management", "Jobs, calendar and scheduling", "Smart route planning with Apple Maps",
-                 "Quotes and invoices, emailed as a PDF with your pay links", "Client page with live truck map and arrival time",
-                 "Client requests, thank-you messages and tips", "Time clock and timesheets", "Proof of service for every visit",
-                 "AI assistant for invoices, jobs and routes", "Employees never pay: up to \(TeamRules.employeeLimit(for: tier)) on this plan"]
-        if tier == .max { f += ["Custom permissions for each person", "Storm automation and subcontractor tools"] }
+        var f = ["Client and lead management", "Jobs, calendar and scheduling", "Route planning with Apple Maps drive times",
+                 "Quotes and invoices as a PDF with your pay links", "Expenses, receipts and profit reports",
+                 "Time clock and timesheets", "Proof of service photos for every visit",
+                 "AI assistant for invoices, jobs and routes",
+                 "With your own Ridgeline server: client pages with a live truck map, arrival times, requests, thank-you messages and tips, and invoices sent by email",
+                 "Employees never pay: up to \(TeamRules.employeeLimit(for: tier)) on this plan"]
+        if tier == .max { f += ["Custom permissions for each person"] }
         return f
     }
+
+    private var planName: String { "Ridgeline Ops \(tier == .max ? "Max" : "Pro")" }
 
     var body: some View {
         let tint = Theme.accent(model.data.profile.accentColor)
@@ -180,17 +189,24 @@ struct SubscriptionView: View {
         #if canImport(StoreKit)
         let store = model.purchases
         if let product = store.product(tier, annual: annual) {
-            let trial = model.data.subscription.plan == nil
+            let state = model.subscriptionState
             VStack(spacing: 8) {
+                // The name, length and full price of the subscription, as Apple asks for next to the button.
+                Text("\(planName), \(annual ? "1 year" : "1 month")").font(.headline)
                 Text(product.displayPrice).font(.system(size: 48, weight: .bold, design: .rounded)).minimumScaleFactor(0.6).lineLimit(1)
-                Text(annual ? "per year, per crew" : "per month, per crew").font(.title3).foregroundStyle(.secondary)
+                // One price for the business: the App Store product is not multiplied by crews or employees.
+                Text(annual ? "per year" : "per month").font(.title3).foregroundStyle(.secondary)
                 if annual, let monthly = store.product(tier, annual: false) {
                     let ratio = NSDecimalNumber(decimal: product.price / (monthly.price * 12)).doubleValue
                     let save = Int((1 - ratio) * 100 + 0.5)
                     if save > 0 { Text("Save about \(save)% compared with monthly").font(.callout).foregroundStyle(.green) }
                 }
-                if trial {
+                // Said only while the trial really is running (it used to show after the trial had ended too).
+                if case .trial = state {
                     Text("Your \(Pricing.trialDays)-day free trial is running. You can subscribe at any time; billing starts when you subscribe.")
+                        .font(.footnote).foregroundStyle(.secondary).multilineTextAlignment(.center)
+                } else if case .expired = state {
+                    Text("Your free trial has ended. Billing starts when you subscribe.")
                         .font(.footnote).foregroundStyle(.secondary).multilineTextAlignment(.center)
                 }
                 Button { Task { await store.purchase(product) } } label: {
@@ -199,7 +215,7 @@ struct SubscriptionView: View {
                         .background(Theme.accent(model.data.profile.accentColor), in: Capsule())
                 }
                 .buttonStyle(.plain).disabled(store.purchasing)
-                Text("\(product.displayPrice) \(annual ? "per year" : "per month"), charged to your Apple ID. It renews on its own until you cancel in Settings on your iPhone, at least 24 hours before the renewal date.")
+                Text("\(planName): \(product.displayPrice) \(annual ? "per year" : "per month"), charged to your Apple ID when you confirm. It renews on its own at the same price until you cancel in Settings on your iPhone (your name, Subscriptions), at least 24 hours before the renewal date.")
                     .font(.caption).foregroundStyle(.secondary).multilineTextAlignment(.center)
             }
             .frame(maxWidth: .infinity)
@@ -207,7 +223,8 @@ struct SubscriptionView: View {
             HStack { ProgressView(); Text("Loading plans...") }.frame(maxWidth: .infinity)
         } else {
             VStack(spacing: 8) {
-                Text(store.loadFailed ? "Could not load plans. Check your connection and try again." : "Plans are not available yet. Everything stays unlocked while you try the app.")
+                Text(store.loadFailed ? "Could not load plans from the App Store. Check your connection and try again."
+                                      : "Plans are not available from the App Store right now. Nothing in the app is locked in the meantime.")
                     .font(.callout).foregroundStyle(.secondary).multilineTextAlignment(.center)
                 Button("Try again") { Task { await store.load() } }.font(.callout.weight(.semibold))
             }

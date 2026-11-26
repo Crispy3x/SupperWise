@@ -472,6 +472,7 @@ struct AppPage<Content: View>: View {
             .frame(maxWidth: 720)
             .frame(maxWidth: .infinity)
         }
+        .defaultScrollAnchor(ScreenshotMode.anchor)   // nil in normal use; debug screenshots can start part-way down a page
         .scrollDismissesKeyboard(.interactively)
         .background(Look.page.ignoresSafeArea())
     }

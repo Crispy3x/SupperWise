@@ -25,7 +25,7 @@ struct AssistantView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Look.sheet.ignoresSafeArea())
         .presentationDetents([.large])
-        .task { await model.refreshAssistantStatus() }
+        .task { model.keepAssistantChatPrivate(); await model.refreshAssistantStatus() }
     }
 
     private var header: some View {
@@ -84,6 +84,10 @@ struct AssistantView: View {
             }
             inputBar
         }
+        // On the whole chat, not only the empty first screen: the mic in the message bar must keep working after the first question.
+        #if canImport(Speech) && os(iOS)
+        .onChange(of: speech.transcript) { _, new in if speech.isListening { draft = new } }
+        #endif
     }
 
     private var micAvailable: Bool {
@@ -112,9 +116,6 @@ struct AssistantView: View {
             #endif
         }
         .frame(maxWidth: .infinity).padding(.top, 70).padding(.bottom, 20)
-        #if canImport(Speech) && os(iOS)
-        .onChange(of: speech.transcript) { _, new in if speech.isListening { draft = new } }
-        #endif
     }
 
     private var inputBar: some View {
@@ -242,7 +243,7 @@ private struct ConsentCard: View {
                 Text("The assistant is an AI service (Anthropic's Claude). To answer, it needs two things to leave your phone:")
                 Label("What you type to it", systemImage: "text.bubble")
                 Label("Details it looks up to help: job titles and times, client names and addresses, invoice numbers and amounts, team member names", systemImage: "list.bullet.rectangle")
-                Text("These go through your own server to Anthropic, which writes the reply. Client phone numbers and email addresses are never sent, and the app never sends anything to a client until you tap Send.")
+                Text("These are sent to Anthropic, which writes the reply: straight from this device if you saved your own Anthropic key, otherwise through your server or the Ridgeline Ops assistant server, which pass them on and keep none of it. Client phone numbers and email addresses are never sent, and the app never sends anything to a client until you tap Send.")
                     .font(.callout).foregroundStyle(.secondary)
                 Text("You can turn the assistant off at any time from the menu in this screen.").font(.callout).foregroundStyle(.secondary)
                 Button { model.grantAssistantConsent() } label: {

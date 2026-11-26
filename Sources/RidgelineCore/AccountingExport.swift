@@ -50,6 +50,8 @@ public enum AccountingExport {
     /// The lines of an invoice are joined into one description.
     public static func invoicesCSV(_ data: AppData, in range: DateInterval? = nil, now: Date, timeZone: TimeZone = .current) -> String {
         let day = AccountingCSV.dayFormatter(timeZone)
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = timeZone                              // "Overdue" follows the same days the date columns show
         let names = clientNames(data)
         let rows = data.invoices
             .filter { !$0.isVoid && AccountingCSV.contains(range, $0.issueDate) }
@@ -61,7 +63,7 @@ public enum AccountingExport {
                         AccountingCSV.plain(day.string(from: inv.dueDate)), AccountingCSV.text(names[inv.customerID] ?? ""),
                         AccountingCSV.text(description), AccountingCSV.plain(AccountingCSV.amount(inv.total)),
                         AccountingCSV.plain(AccountingCSV.amount(inv.paid)), AccountingCSV.plain(AccountingCSV.amount(inv.balance)),
-                        AccountingCSV.text(statusTitle(inv.status(now: now)))]
+                        AccountingCSV.text(statusTitle(inv.status(now: now, calendar: calendar)))]
             }
         return AccountingCSV.file(header: invoiceColumns, rows: rows)
     }
