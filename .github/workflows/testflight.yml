@@ -134,6 +134,9 @@ jobs:
           # The built-in assistant server. Both empty is fine: the app then asks the owner for their own key.
           AI_URL: ${{ secrets.RIDGELINE_AI_SERVER_URL }}
           AI_TOKEN: ${{ secrets.RIDGELINE_AI_APP_TOKEN }}
+          # Team sync (employee logins on their own phones). Both empty is fine: the app then works on one device.
+          SB_URL: ${{ secrets.RIDGELINE_SUPABASE_URL }}
+          SB_KEY: ${{ secrets.RIDGELINE_SUPABASE_ANON_KEY }}
         run: |
           set -o pipefail
           # Build number: a UTC timestamp such as 2611191530. It is far above 17 and above every earlier build.
@@ -145,6 +148,7 @@ jobs:
             -destination "generic/platform=iOS" -archivePath "$RUNNER_TEMP/RidgelineOps.xcarchive" \
             CURRENT_PROJECT_VERSION="$BUILD_NUMBER" MARKETING_VERSION=3.0.0 \
             RIDGELINE_AI_SERVER_URL="$AI_URL" RIDGELINE_AI_APP_TOKEN="$AI_TOKEN" \
+            RIDGELINE_SUPABASE_URL="$SB_URL" RIDGELINE_SUPABASE_ANON_KEY="$SB_KEY" \
             | tee "$RUNNER_TEMP/archive.log" | grep -E "error:|\*\* ARCHIVE (SUCCEEDED|FAILED) \*\*"
 
       - name: Upload to App Store Connect

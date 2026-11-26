@@ -46,6 +46,8 @@ targets:
         NSCameraUsageDescription: Ridgeline Ops uses the camera to take before and after photos as proof of service and photos of receipts for your expenses.
         RidgelineAIServerURL: $(RIDGELINE_AI_SERVER_URL)
         RidgelineAIAppToken: $(RIDGELINE_AI_APP_TOKEN)
+        RidgelineSupabaseURL: $(RIDGELINE_SUPABASE_URL)
+        RidgelineSupabaseAnonKey: $(RIDGELINE_SUPABASE_ANON_KEY)
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.supperwise.app   # reuses the Supperwise App Store record
