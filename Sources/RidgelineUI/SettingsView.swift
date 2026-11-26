@@ -39,6 +39,7 @@ struct SettingsView: View {
         ScreenStack {
             AppPage(title: "Settings", icon: "gearshape.fill") {
                 accountAndAbout
+                TeamSyncCard()        // TeamSyncViews.swift: hidden when team sync is off
                 RemindersSettingsCard()
                 tippingAndBusiness
                 ReviewSettingsCard()

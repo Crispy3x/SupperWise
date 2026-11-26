@@ -20,7 +20,7 @@ public struct RidgelineRootView: View {
     /// The app only locks when a plan can actually be bought. Until the plans are on sale, an ended trial locks nothing.
     private var trialOverAndPlansOnSale: Bool {
         #if canImport(StoreKit)
-        guard ScreenshotMode.shot == nil, model.purchases.isAvailable else { return false }
+        guard ScreenshotMode.shot == nil, model.purchases.isAvailable, model.data.isOwnerSession else { return false }   // employees never pay
         if case .expired = model.subscriptionState { return true }
         return false
         #else
@@ -52,6 +52,7 @@ public struct RidgelineRootView: View {
         }
         .environment(model)
         .localReminders(model)
+        .teamSync(model)                                     // AppModel+TeamSync.swift: does nothing when team sync is off
         .tint(Theme.accent(model.data.profile.accentColor))
         .buttonBorderShape(.capsule)                         // the few system-style buttons match the app's rounded look
         .preferredColorScheme(colorScheme)

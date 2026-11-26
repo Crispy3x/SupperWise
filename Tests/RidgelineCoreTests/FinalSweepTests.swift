@@ -28,3 +28,14 @@ final class FinalSweepTests: XCTestCase {
         XCTAssertTrue(report.rows.isEmpty)
     }
 }
+
+final class JSONValueNumberTests: XCTestCase {
+    func testWholeNumbersRoundTripIntoIntFields() throws {
+        struct Pay: Codable, Equatable { let cents: Int }
+        let value = try JSONDecoder().decode(JSONValue.self, from: Data(#"{"cents":2200}"#.utf8))
+        let back = try JSONDecoder().decode(Pay.self, from: JSONEncoder().encode(value))
+        XCTAssertEqual(back, Pay(cents: 2200))
+        let half = try JSONDecoder().decode(JSONValue.self, from: Data(#"1.5"#.utf8))
+        XCTAssertEqual(String(decoding: try JSONEncoder().encode(half), as: UTF8.self), "1.5")
+    }
+}

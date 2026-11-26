@@ -99,9 +99,15 @@ public struct VisitLogEntry: Equatable, Codable, Sendable {
     public var record: VisitRecord
     public var previousHash: String
     public var hash: String
+    /// True for a visit recorded on another phone and received through team sync. It is not part of this phone's chain:
+    /// its hash covers the record alone, so it is checked on its own. Nil for visits logged here (and in older files).
+    public var synced: Bool? = nil
 }
 
 /// Append-only, hash-chained log. Editing or removing any earlier entry breaks `verify()`.
+/// With team sync, visits from other phones are added with `appendSynced`: each carries a hash of its own record
+/// (previous hash = genesis) instead of joining this phone's chain, so honest merged logs verify and an edited record
+/// is still caught. Visits logged on this phone keep forming one chain, skipping over the synced ones.
 /// This makes the log tamper-evident for insurance and claim disputes; it is not a legal guarantee on its own.
 public struct VisitLog: Equatable, Codable, Sendable {
     public private(set) var entries: [VisitLogEntry] = []
@@ -110,13 +116,27 @@ public struct VisitLog: Equatable, Codable, Sendable {
     public init() {}
 
     public mutating func append(_ record: VisitRecord) {
-        let previous = entries.last?.hash ?? Self.genesisHash
+        let previous = entries.last(where: { $0.synced != true })?.hash ?? Self.genesisHash
         entries.append(VisitLogEntry(record: record, previousHash: previous, hash: Self.hash(record, previous: previous)))
+    }
+
+    /// Adds a visit recorded on another phone (team sync). A visit already in the log is not added again or changed.
+    @discardableResult
+    public mutating func appendSynced(_ record: VisitRecord) -> Bool {
+        guard !entries.contains(where: { $0.record.id == record.id }) else { return false }
+        entries.append(VisitLogEntry(record: record, previousHash: Self.genesisHash,
+                                     hash: Self.hash(record, previous: Self.genesisHash), synced: true))
+        return true
     }
 
     public func verify() -> Bool {
         var previous = Self.genesisHash
         for e in entries {
+            if e.synced == true {
+                // From another phone: its own hash must still match its record.
+                if e.previousHash != Self.genesisHash || e.hash != Self.hash(e.record, previous: Self.genesisHash) { return false }
+                continue
+            }
             if e.previousHash != previous { return false }
             if e.hash != Self.hash(e.record, previous: previous) { return false }
             previous = e.hash

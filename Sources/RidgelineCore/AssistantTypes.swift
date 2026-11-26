@@ -29,7 +29,9 @@ public indirect enum JSONValue: Codable, Equatable, Sendable {
         switch self {
         case .null: try c.encodeNil()
         case .bool(let b): try c.encode(b)
-        case .number(let n): try c.encode(n)
+        case .number(let n):
+            // Whole numbers go out as integers ("2200", not "2200.0"), so they decode back into Int fields on every platform.
+            if n.rounded() == n, abs(n) < 9_007_199_254_740_992 { try c.encode(Int64(n)) } else { try c.encode(n) }
         case .string(let s): try c.encode(s)
         case .array(let a): try c.encode(a)
         case .object(let o): try c.encode(o)

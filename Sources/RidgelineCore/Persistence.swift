@@ -62,6 +62,8 @@ public struct AppData: Equatable, Codable, Sendable {
     public var adHocStops: [AdHocStop] = []
     /// The driving order per day, optimized or dragged by hand.
     public var routeOrders: [SavedRouteOrder] = []
+    /// Team sync link and what was last synced (see TeamSync.swift). Nil when team sync is off: the app works as before.
+    public var teamSync: TeamSyncState? = nil
 
     public init() {}
 
@@ -109,6 +111,7 @@ public struct AppData: Equatable, Codable, Sendable {
         routeSettings = try c.decodeIfPresent(RouteSettings.self, forKey: .routeSettings) ?? RouteSettings()
         adHocStops = try c.decodeIfPresent([AdHocStop].self, forKey: .adHocStops) ?? []
         routeOrders = try c.decodeIfPresent([SavedRouteOrder].self, forKey: .routeOrders) ?? []
+        teamSync = try c.decodeIfPresent(TeamSyncState.self, forKey: .teamSync)
     }
 }
 

@@ -29,7 +29,9 @@ struct WelcomeRoleView: View {
                         ownerSheet = true
                     }
                     RoleCard(icon: "person.fill", title: "I'm an employee",
-                             message: "Sign in with the username and password your boss made for you, on the device your boss set up. Always free for you.") {
+                             message: model.teamSyncAvailable
+                                ? "Sign in with the username and password your boss made for you. Always free for you."
+                                : "Sign in with the username and password your boss made for you, on the device your boss set up. Always free for you.") {
                         employeeSheet = true
                     }
                     Text("You stay signed in on this device until you sign out.")
@@ -96,7 +98,10 @@ struct OwnerAccessView: View {
                     CardGroup(title: "Sign in") {
                         emailField
                         WelcomeSecureField(label: "Password", placeholder: "Password", text: $password)
-                        PrimaryActionButton(title: "Sign in") { submit { model.signIn(username: email, password: password, expecting: .owner) } }
+                        PrimaryActionButton(title: "Sign in") {
+                            submit { model.signIn(username: email, password: password, expecting: .owner) }
+                            if problem == nil { model.resumeTeamSync(email: email, password: password) }   // AppModel+TeamSync.swift
+                        }
                             .disabled(email.isEmpty || password.isEmpty)
                             .opacity(email.isEmpty || password.isEmpty ? 0.4 : 1)
                     }
@@ -196,8 +201,9 @@ struct EmployeeSignInView: View {
     @State private var username = ""
     @State private var password = ""
     @State private var problem: String?
+    @State private var signingIn = false
 
-    private var canSignIn: Bool { !username.isEmpty && !password.isEmpty }
+    private var canSignIn: Bool { !username.isEmpty && !password.isEmpty && !signingIn }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -223,9 +229,21 @@ struct EmployeeSignInView: View {
                             .overlay(Capsule().stroke(Look.fieldStroke, lineWidth: 1))
                     }
                     WelcomeSecureField(label: "Password", placeholder: "Password", text: $password)
-                    PrimaryActionButton(title: "Sign in") {
-                        problem = model.signIn(username: username, password: password, expecting: .employee)
-                        if problem == nil { dismiss() }
+                    PrimaryActionButton(title: signingIn ? "Signing in…" : "Sign in") {
+                        if model.usesCloudSignIn(for: username) {
+                            // No login for this name on this phone: their own phone, through team sync (AppModel+TeamSync.swift).
+                            signingIn = true
+                            problem = nil
+                            let name = username, secret = password
+                            Task { @MainActor in
+                                problem = await model.signInEmployeeWithCloud(username: name, password: secret)
+                                signingIn = false
+                                if problem == nil { dismiss() }
+                            }
+                        } else {
+                            problem = model.signIn(username: username, password: password, expecting: .employee)
+                            if problem == nil { dismiss() }
+                        }
                     }
                     .disabled(!canSignIn)
                     .opacity(canSignIn ? 1 : 0.4)
@@ -234,7 +252,9 @@ struct EmployeeSignInView: View {
                     Label(problem, systemImage: "exclamationmark.triangle.fill").font(.callout).foregroundStyle(.red)
                         .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
                 }
-                Text("Sign in on the phone, iPad or Mac where your boss set up the business. Your username does not work on other devices.")
+                Text(model.teamSyncAvailable
+                     ? "You can sign in on your own phone. You need a connection the first time."
+                     : "Sign in on the phone, iPad or Mac where your boss set up the business. Your username does not work on other devices.")
                     .font(.footnote).foregroundStyle(.secondary).frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
             }
         }

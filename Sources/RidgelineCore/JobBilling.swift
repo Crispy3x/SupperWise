@@ -409,7 +409,7 @@ extension AssistantTools {
     /// Draft invoices for finished, priced visits that are not invoiced yet: one per client. Nothing is sent.
     static func billFinishedJobs(_ input: JSONValue, _ data: inout AppData, _ now: Date, _ calendar: Calendar) -> ToolOutcome {
         var only: Customer?
-        if let name = input["client_name"]?.string, !name.trimmingCharacters(in: .whitespaces).isEmpty {
+        if let name = input["client_name"]?.string, !name.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty {
             let (found, problem) = client(named: name, in: data)
             guard let found else { return .error(problem ?? "No such client.") }
             only = found

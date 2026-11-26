@@ -50,6 +50,7 @@ extension AppModel {
         stopSharing()
         assistantLines = []; assistantHistory = []; assistantUpdates = []
         previewingEmployee = false
+        teamSyncSignOut()                                    // AppModel+TeamSync.swift
         edit { $0.session = nil }
     }
 

@@ -264,6 +264,7 @@ extension DataExport {
     public static func preparedForDevice(_ backup: AppData, current: AppData) -> AppData {
         var out = backup
         out.session = nil
+        out.teamSync = current.teamSync?.resetForRestore()   // this device's team link stays; the backup's is not used
         guard let same = sameOwner(backup: backup, device: current) else { return out }
         out.account = current.account
         let ownerLogins = current.logins.filter { $0.role == .owner }

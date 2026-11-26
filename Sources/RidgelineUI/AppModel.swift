@@ -19,6 +19,8 @@ public final class AppModel {
     public var notice: String?
     /// True while the owner is looking at the app as an employee would see it.
     public var previewingEmployee = false
+    /// Team sync's in-memory state (AppModel+TeamSync.swift).
+    public let teamSyncRuntime = TeamSyncRuntime()
     /// The last route worked out for today's jobs, shown as numbers on the Home map. It is checked against today's jobs before use.
     public var plannedRoute: RoutePlanResult?
     /// The assistant chat on screen, the conversation as the AI service needs it, and what is happening now.
@@ -145,6 +147,7 @@ public final class AppModel {
         do {
             try store?.save(data)
             saveError = nil
+            teamSyncDidSave()                                // AppModel+TeamSync.swift: sync about 5 seconds later
         } catch {
             saveError = "Could not save: \(error.localizedDescription)"
         }
@@ -317,6 +320,7 @@ public final class AppModel {
     /// The trial or plan stays, because it belongs to the device's Apple account.
     public func deleteAccountAndData() {
         stopSharing()                                        // no truck position is sent after the account is gone
+        teamSyncForget()                                     // signs out of team sync; the business in the cloud is left alone
         assistantLines = []; assistantHistory = []; assistantUpdates = []
         try? photoStorage?.deleteAll()
         UserDefaults.standard.removeObject(forKey: "crewMemberName")

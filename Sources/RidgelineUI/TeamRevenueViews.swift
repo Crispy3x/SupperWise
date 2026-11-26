@@ -19,6 +19,7 @@ struct TeamView: View {
             ScrollView {
                 VStack(spacing: 14) {
                     ScreenHeader(icon: "person.2.fill", title: "Team", trailing: "\(model.data.team.count) member\(model.data.team.count == 1 ? "" : "s")")
+                    TeamSyncCard()                           // TeamSyncViews.swift: hidden when team sync is off
                     NavigationLink { TimesheetsView().environment(\.embeddedInStack, true).circleBack() } label: {
                         TeamRowCard(icon: "clock", tint: .green, title: "Timesheets", badge: 0, chevron: "chevron.right")
                     }
@@ -119,6 +120,8 @@ struct AddMemberSheet: View {
     @State private var problem: String?
     /// After saving: what to hand to the new person. The password exists only here, never in the saved data.
     @State private var created: (name: String, username: String, password: String)?
+    /// True while their own-phone login is being made in the cloud (team sync on).
+    @State private var cloudBusy = false
 
     /// What is wrong with the optional phone, email or pay on the first step, if anything.
     private var personProblem: String? {
@@ -193,6 +196,7 @@ struct AddMemberSheet: View {
                         }
                     }
                     Text("You make the username and password. They use them under \"I'm an employee\". Give them to the person after you save.").font(.footnote).foregroundStyle(.secondary)
+                    if cloudBusy { ProgressView("Making their login…").font(.callout) }
                     if let problem { Label(problem, systemImage: "exclamationmark.triangle.fill").font(.callout).foregroundStyle(.orange) }
                 }
             }
@@ -203,6 +207,21 @@ struct AddMemberSheet: View {
         // Read by the tested rule: typing "inf" or a huge number used to crash the whole-number conversion here.
         var pay: Money?
         if case .rate(let typed) = TeamRules.hourlyRate(typed: rate) { pay = typed }
+        if model.teamCloudManagesLogins {
+            // Team sync on: also make their login for their own phone (AppModel+TeamSync.swift). Nothing is kept if that fails.
+            guard !cloudBusy else { return }
+            cloudBusy = true
+            problem = nil
+            let who = name.trimmingCharacters(in: .whitespacesAndNewlines), r = role, user = username, secret = password
+            let ph = phone.trimmingCharacters(in: .whitespacesAndNewlines), mail = email.trimmingCharacters(in: .whitespacesAndNewlines)
+            let hourly = pay
+            Task { @MainActor in
+                problem = await model.addTeamMemberWithCloud(name: who, role: r, phone: ph, email: mail, username: user, password: secret, hourlyRate: hourly)
+                cloudBusy = false
+                if problem == nil { created = (who, LoginRules.normalizedUsername(user), secret) }
+            }
+            return
+        }
         problem = model.addTeamMember(name: name, role: role, phone: phone.trimmingCharacters(in: .whitespacesAndNewlines),
                                       email: email.trimmingCharacters(in: .whitespacesAndNewlines), username: username, password: password, hourlyRate: pay)
         if problem == nil {
@@ -267,6 +286,9 @@ struct ResetPasswordSheet: View {
                         RowDivider()
                         FactRow(label: "New password", value: done)
                     }
+                    if let problem {
+                        Text(problem).font(.footnote).foregroundStyle(.orange).frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 6)
+                    }
                     ShareLink(item: "Your new Ridgeline Ops password: \(done)") {
                         Label("Share", systemImage: "square.and.arrow.up").font(.title3.weight(.medium)).foregroundStyle(.primary)
                             .frame(maxWidth: .infinity).padding(.vertical, 14)
@@ -303,7 +325,16 @@ struct ResetPasswordSheet: View {
                                 let name = username, secret = password
                                 problem = model.edit { try $0.createEmployeeLogin(username: name, password: secret, forMember: memberID, now: Date()) }
                             }
-                            if problem == nil { done = password }
+                            if problem == nil, model.teamCloudManagesLogins {
+                                // Their own-phone login gets the same password (AppModel+TeamSync.swift).
+                                let secret = password
+                                Task { @MainActor in
+                                    problem = await model.setCloudPassword(secret, forMember: memberID)
+                                    done = secret
+                                }
+                            } else if problem == nil {
+                                done = password
+                            }
                         }
                         .disabled(password.isEmpty || (!hasLogin && username.isEmpty))
                         .opacity(password.isEmpty || (!hasLogin && username.isEmpty) ? 0.4 : 1)
@@ -399,8 +430,16 @@ struct MemberDetailView: View {
             .sheet(isPresented: $resetting) { ResetPasswordSheet(memberID: m.id) }
             .confirmationDialog("Remove \(m.name)?", isPresented: $confirmRemove, titleVisibility: .visible) {
                 Button("Remove", role: .destructive) {
-                    message = model.edit { try $0.removeTeamMember(m.id) }
-                    if message == nil { dismiss() }
+                    if model.teamCloudManagesLogins {
+                        // Their own-phone login goes first (AppModel+TeamSync.swift).
+                        Task { @MainActor in
+                            message = await model.removeTeamMemberWithCloud(m.id)
+                            if message == nil { dismiss() }
+                        }
+                    } else {
+                        message = model.edit { try $0.removeTeamMember(m.id) }
+                        if message == nil { dismiss() }
+                    }
                 }
             } message: { Text("Their jobs become unassigned.") }
         } else {

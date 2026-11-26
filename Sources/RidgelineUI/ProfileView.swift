@@ -41,8 +41,10 @@ struct ProfileView: View {
                 }
                 CardGroup(title: "How you sign in",
                           footer: "Your boss made your username and password. Forgot the password? Ask your boss to set a new one.") {
-                    FactRow(label: "Username", value: model.data.username(forMember: me.id) ?? "None")
+                    FactRow(label: "Username", value: model.data.username(forMember: me.id)
+                            ?? model.data.teamSync.flatMap { $0.isOwner ? nil : $0.login } ?? "None")
                 }
+                EmployeeTeamSyncCard()        // TeamSyncViews.swift
             } else {
                 EmptyCard(icon: "person.crop.circle.badge.xmark", title: "Not on the team",
                           message: "Sign out, then ask your boss to add you again.")
@@ -83,7 +85,7 @@ struct ProfileView: View {
                 RowDivider()
                 FactRow(label: "Plan", value: planText)
             }
-            CardGroup(footer: "Removes everything stored on this device: clients, invoices, visits, photos, saved copies and saved access codes. Back up your data first in Settings. Backups you saved or shared elsewhere are not removed. If you set up client pages, the pages already published come down 14 days after their last update and requests after 30 days. To also remove Apple sign-in for this app, use Settings > your name > Sign in with Apple on your iPhone.") {
+            CardGroup(footer: (model.teamSyncOn && model.data.isOwnerSession ? "With team logins on, this also deletes your team account online, with the business, its records and every employee login. " : "") + "Removes everything stored on this device: clients, invoices, visits, photos, saved copies and saved access codes. Back up your data first in Settings. Backups you saved or shared elsewhere are not removed. If you set up client pages, the pages already published come down 14 days after their last update and requests after 30 days. To also remove Apple sign-in for this app, use Settings > your name > Sign in with Apple on your iPhone.") {
                 PrimaryActionButton(title: "Delete my account and data", icon: "trash", destructive: true) { confirmDelete = true }
             }
         }
