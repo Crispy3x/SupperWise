@@ -41,7 +41,8 @@ public enum SeasonWelcome {
             guard ContactValidation.isValidEmail(customer.email) else { skip(.noValidContact); continue }
             guard let link = data.portalLinks.first(where: { $0.siteID == site.id }) else { skip(.noPortalLink); continue }
             guard !data.seasonLinkLog.contains(where: { $0.siteID == site.id && $0.season == season }) else { skip(.alreadySent); continue }
-            let url = "\(root)/c/\(link.token)"
+            // The owner's own website page when one is saved (EmbedSnippets), otherwise the server page.
+            let url = EmbedSnippets.clientLink(websitePage: data.profile.websiteTrackingPage, token: link.token) ?? "\(root)/c/\(link.token)"
             let body = [
                 "Hello \(customer.name),", "",
                 "\(company) will be clearing snow at \(site.address) this winter. This is your private page for the whole season. Bookmark it, or add it to your phone's home screen:", "",

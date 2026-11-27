@@ -66,7 +66,7 @@ Privacy: the server never stores phone numbers, email addresses or customer name
 ```
 cd server && npm test
 ```
-`node --test test/*.test.mjs` runs four files against stand-ins for Google, the email provider and Claude (no real key, no real calls): routing (`server.test.mjs`), client pages and email (`portal.test.mjs`), the assistant (`ai.test.mjs`) and the public pages plus the pre-launch fixes (`pages.test.mjs`). Two of them also read the app's Swift sources when the whole repository is there, to check that the privacy policy and the assistant's house rules are word for word the same in the app and on the server.
+`node --test test/*.test.mjs` runs five files against stand-ins for Google, the email provider and Claude (no real key, no real calls): routing (`server.test.mjs`), client pages and email (`portal.test.mjs`), the assistant (`ai.test.mjs`) the public pages plus the pre-launch fixes (`pages.test.mjs`) and the website widget (`embed.test.mjs`). Two of them also read the app's Swift sources when the whole repository is there, to check that the privacy policy and the assistant's house rules are word for word the same in the app and on the server.
 
 ## Before you rely on it
 - **Not run against real Google yet.** The request and response shapes follow Google's documented Routes API, but they have only been exercised against a stand-in. Test with a real key and a small matrix first.
@@ -133,3 +133,33 @@ How a chat stays working (read this before changing `ai.mjs` or the app's `Assis
 | `AI_PRICE_IN_PER_MTOK`, `AI_PRICE_OUT_PER_MTOK` | built in | Override Claude's prices (dollars per million tokens) if they change. The built-in table is from 2026-11-03. |
 
 Each request holds back the most it could cost before it runs, so requests arriving together cannot go over the limit. The hold is the input (estimated high, and at the long-prompt price when it is anywhere near 100,000 tokens) plus `max_tokens` at the output price. When less than a full answer's worth of allowance is left, the answer is given less room (`max_tokens` is lowered to what the allowance still covers) instead of being refused; below 2,048 tokens it is refused, because a shorter answer is nearly always cut off. A dearer model therefore gets shorter answers near the end of the month, never a bigger bill. The app is told only a percent used, never dollars.
+
+## Embed on your website
+
+A "Track your plow" box for a page on your own website (Wix, Squarespace, WordPress, GoDaddy, Shopify). The app shows the exact text to copy in Settings, under "Put it on your website".
+
+Paste this where the box should appear (use your server's address):
+```html
+<div data-ridgeline></div>
+<script src="https://YOUR-SERVER/embed.js" async></script>
+```
+- `data-mode="tracker"` (the default) asks for the client's property code and then shows their status, arrival time, stops before theirs, the live truck map, the weather, Tip the crew and Send a coffee, and Request service. Those buttons open the client's own page in a new tab.
+- `<div data-ridgeline data-mode="tips"></div>` is a box for everyone, with no client data: your business name, Tip the crew and Send a coffee with the crew's pay apps and, while a storm is on, "Crews are out: 12 of 30 stops done" (counts only, never addresses). It uses the most recent snapshot the app published.
+- The script only adds an iframe from this server and sets its height when the page inside says how tall it is (it checks the message comes from this server and from its own frame). It loads nothing from anyone else. The map inside the frame loads tiles from OpenStreetMap, like the client page.
+
+If your site builder removes scripts, paste a plain iframe instead (no automatic height, and no `?code=` pass-through):
+```html
+<iframe src="https://YOUR-SERVER/embed/tracker" title="Track your service" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:640px;border:0"></iframe>
+```
+For the tips box use `/embed/tips` and `height:320px`.
+
+**Linking clients to your own page.** A client's code is the part after `/c/` in their season link. If your tracking page is `https://yourwebsite.com/track`, a client's link can be `https://yourwebsite.com/track?code=THEIRCODE`: the script passes the code to the box, so it opens straight on their property. In the app, save that page in Settings ("Your website's tracking page") and the season emails and the Share page link on a client's profile use it instead of the server page. The code then sits in your website's address bar, so your website's own analytics can see it; it is still only that client's page. Some builders (Wix "Embed HTML", for example) run pasted code inside their own frame, where the script cannot read your page's address: there clients type or paste their code (a whole season link works too).
+
+**Who may frame it.** Only `/embed/*` pages may be shown inside another site; every other page keeps `frame-ancestors 'none'`. No cookies are used, and every page sends `X-Content-Type-Options: nosniff` and `Referrer-Policy: no-referrer`.
+
+| Variable | Default | What it does |
+|---|---|---|
+| `EMBED_ORIGINS` | none (any site) | Space-separated websites allowed to show the widget, for example `https://ridgeplow.com https://www.ridgeplow.com`. Unset means any site may frame it: easy to set up, and the widget shows nothing private without a valid code, but anyone could put your tips box or code form on their own page. Set it once your site works. Wix, Squarespace and Shopify may show the box from their own domains (for example `https://yoursite.wixsite.com` or a `filesusr.com` frame on Wix), so add those too if the box goes blank. Entries that are not plain origins are ignored with a warning at start. |
+| `PUBLIC_URL` | none | This server's public address, for example `https://plow.example.com`. Optional: `embed.js` otherwise uses the address it was loaded from. |
+
+Wrong, old and malformed codes all get the same "We could not find that code" with the same status, and the box counts against `PORTAL_IP_LIMIT_PER_MIN` like client pages.

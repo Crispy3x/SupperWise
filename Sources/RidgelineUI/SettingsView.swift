@@ -42,6 +42,7 @@ struct SettingsView: View {
                 TeamSyncCard()        // TeamSyncViews.swift: hidden when team sync is off
                 RemindersSettingsCard()
                 tippingAndBusiness
+                EmbedSettingsCard()   // EmbedSettingsCard.swift: only for someone who may change settings
                 ReviewSettingsCard()
                 ServicePricesCard()   // QuickInvoiceViews.swift
                 yardAndInvoices

@@ -59,6 +59,10 @@ public struct BusinessProfile: Equatable, Codable, Sendable {
     public var reviewLink: String?
     /// Suggest asking for a review after a paid invoice or a thank-you message. Nil means on.
     public var reviewSuggestionsEnabled: Bool?
+    /// The owner's own website page with the "Track your service" box (Settings, Put it on your website), for example
+    /// https://ridgeplow.com/track. When set, season emails and Share page link send https://.../track?code=<token>.
+    /// Stored only if it passes `EmbedSnippets.cleanWebsitePage`. Nil means links go to the server page.
+    public var websiteTrackingPage: String?
     public var onboardingCompletedAt: Date?
     public var skippedSteps: [String] = []
 

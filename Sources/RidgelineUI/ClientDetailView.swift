@@ -91,6 +91,8 @@ struct ClientDetailView: View {
         let base = model.data.broadcastSettings.portalBaseURL.trimmingCharacters(in: .whitespacesAndNewlines)
         guard RoutingServerSettings.validatedURL(base) != nil,
               let token = model.data.portalLinks.first(where: { $0.siteID == site.id })?.token else { return nil }
+        // The owner's own website page (Settings, Put it on your website) when one is saved; the server page otherwise.
+        if let own = EmbedSnippets.clientLink(websitePage: model.data.profile.websiteTrackingPage, token: token) { return own }
         return (base.hasSuffix("/") ? String(base.dropLast()) : base) + "/c/" + token
     }
 

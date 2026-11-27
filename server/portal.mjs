@@ -3,6 +3,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import { PRIVACY, TERMS_URL, cleanSupportEmail, privacySections, supportSections } from './legal.mjs';
+import { createEmbed, parseEmbedOrigins, cleanPublicUrl } from './embed.mjs';
 
 const TOKEN_RE = /^[A-Za-z0-9_-]{22,64}$/;
 const STATUSES = new Set(['planned', 'done', 'skipped', 'notExpected']);
@@ -49,6 +50,10 @@ export function loadPortalConfig(env = process.env) {
     trustProxy: env.TRUST_PROXY === '1',
     // Shown on the public /support page. Left out of the page when unset or not an email address.
     supportEmail: cleanSupportEmail(env.SUPPORT_EMAIL),
+    // Websites allowed to show the /embed/* widget in a frame. Unset: any website (see embed.mjs and the README).
+    embedOrigins: parseEmbedOrigins(env.EMBED_ORIGINS).origins,
+    embedOriginsInvalid: parseEmbedOrigins(env.EMBED_ORIGINS).invalid,
+    publicUrl: cleanPublicUrl(env.PUBLIC_URL),
   };
 }
 
@@ -72,7 +77,7 @@ export function isValidEmail(t) {
   return d.includes('.') && !d.startsWith('.') && !d.endsWith('.') && !d.includes('..');
 }
 
-const ASSET_TYPES = { 'leaflet.js': 'text/javascript; charset=utf-8', 'leaflet.css': 'text/css; charset=utf-8', 'portal.js': 'text/javascript; charset=utf-8' };
+const ASSET_TYPES = { 'leaflet.js': 'text/javascript; charset=utf-8', 'leaflet.css': 'text/css; charset=utf-8', 'portal.js': 'text/javascript; charset=utf-8', 'frame.js': 'text/javascript; charset=utf-8' };
 // A truck position older than this is not shown. The app sends one about every minute while it is sharing (even standing
 // still), so four minutes allows a few missed sends and no more: a phone that was locked or lost signal must not leave a truck
 // parked on the client's map at a place it left long ago.
@@ -203,7 +208,8 @@ button{font:inherit;font-weight:700;padding:.85rem 1.3rem;border:0;border-radius
 .tipbtn{display:inline-block;margin:.3rem .4rem 0 0;padding:.75rem 1.1rem;border-radius:999px;background:var(--gift);color:var(--gift-text);font-weight:700;text-decoration:none}
 #map{height:300px;border-radius:16px;overflow:hidden}.pin-site{display:block;width:18px;height:18px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 0 0 2px var(--accent)}.pin-truck{display:block;font-size:24px;line-height:28px;text-align:center}
 input[type=radio]{width:auto;margin:0 .5rem 0 0}
-.doc p,.doc li{line-height:1.5}.doc ul{padding-left:1.2rem;margin:.2rem 0}.doc li{margin:.45rem 0}.doc h2{margin-top:1.3rem}.doc h2:first-of-type{margin-top:.4rem}.nav{text-align:center}.nav a{margin:0 .5rem}</style></head><body${extra.bodyAttrs || ''}><main>${inner}</main>${extra.tail || ''}</body></html>`;
+.doc p,.doc li{line-height:1.5}.doc ul{padding-left:1.2rem;margin:.2rem 0}.doc li{margin:.45rem 0}.doc h2{margin-top:1.3rem}.doc h2:first-of-type{margin-top:.4rem}.nav{text-align:center}.nav a{margin:0 .5rem}
+.embed main{max-width:none;padding:8px}.embed .card{margin:0 0 10px;padding:16px}.embed h1{font-size:1.35rem}.embed #map{height:220px}.err{color:var(--warn);font-weight:600}</style></head><body${extra.bodyAttrs || ''}><main>${inner}</main>${extra.tail || ''}</body></html>`;
   }
   const notFound = (res) => sendHtml(res, 404, page('Page not available', '<div class="card"><h1>This page is not available</h1><p>The link may be old or mistyped. Please contact your snow service provider.</p></div>'));
 
@@ -308,6 +314,9 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}
     return page(`${label}`, inner, { head: '' });
   }
 
+  const embed = createEmbed({ config, getState: () => state, page, escapeHtml, jsonForScript, liveView, ipAllowed, now, securityHeaders: SECURITY_HEADERS,
+    statusText: STATUS_TEXT, payReasons: PAY_REASONS, hasMap: () => assets.has('leaflet.js') });
+
   // ---- public pages for the App Store listing: no token, no client data, safe to index
   const pageNav = '<p class="small nav"><a href="/privacy">Privacy</a><a href="/support">Support</a><a href="/terms">Terms of use</a></p>';
   function renderPublicPage(path) {
@@ -388,6 +397,9 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}
         canRequest: s.canRequest === true, updatedAt: now() }]);
     }
     for (const [token, snap] of next) state.snapshots[token] = snap;
+    // What the public tips widget (/embed/tips) may show: no addresses, no tokens, counts only.
+    state.public = { company, payApps, stormName, planned: next.filter(([, x]) => x.status === 'planned').length,
+      done: next.filter(([, x]) => x.status === 'done').length, updatedAt: now() };
     save();
     sendJson(res, 200, { stored: next.length });
   }
@@ -503,7 +515,7 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}
     /** True for the paths this module owns, so another handler can take everything else. */
     matches(rawUrl) {
       const p = (rawUrl || '').split('?')[0];
-      return p.startsWith('/c/') || p.startsWith('/assets/') || p.startsWith('/v1/portal/') || p.startsWith('/v1/send/') || PUBLIC_PAGES.has(p.replace(/\/+$/, ''));
+      return p.startsWith('/c/') || p.startsWith('/assets/') || p.startsWith('/v1/portal/') || p.startsWith('/v1/send/') || p === '/embed.js' || p.startsWith('/embed/') || PUBLIC_PAGES.has(p.replace(/\/+$/, ''));
     },
     async handle(req, res) {
       let url;
@@ -518,6 +530,7 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}
           res.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'content-length': Buffer.byteLength(html), ...SECURITY_HEADERS, 'Cache-Control': 'public, max-age=300', 'X-Robots-Tag': 'all' });
           return res.end(req.method === 'HEAD' ? undefined : html);
         }
+        if (embed.matches(path)) return embed.handle(req, res, path, url);
         if (path.startsWith('/assets/')) {
           const name = path.slice('/assets/'.length);
           const asset = req.method === 'GET' && /^[a-z.]+$/.test(name) ? assets.get(name) : null;      // only the listed files, never a path

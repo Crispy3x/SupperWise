@@ -103,6 +103,13 @@ final class InvoiceEmailAndSeasonTests: XCTestCase {
         XCTAssertEqual(next.messages.count, 1)
     }
 
+    func testSeasonLinkPointsToTheOwnersWebsitePageWhenSaved() {
+        var d = world(); d.profile.websiteTrackingPage = "https://ridgeplow.com/track"
+        let m = SeasonWelcome.plan(data: d, now: now).messages[0]
+        XCTAssertTrue(m.body.contains("https://ridgeplow.com/track?code=\(d.portalLinks.first { $0.siteID == m.siteID }!.token)"))
+        XCTAssertFalse(m.body.contains("/c/"))
+    }
+
     func testNoPageAddressMeansNothingToSend() {
         var d = world(); d.broadcastSettings.portalBaseURL = ""
         let plan = SeasonWelcome.plan(data: d, now: now)
