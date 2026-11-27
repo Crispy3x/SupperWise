@@ -39,10 +39,16 @@ public struct PortalSiteSnapshot: Codable, Equatable, Sendable {
     public let siteLocation: Coordinate?
     /// How many stops come before this one on the route. Nil when there is no route.
     public let stopsAhead: Int?
+    /// Website tracker sign-in: SHA-256 of "<salt>|<last name>|<house number>", lowercase hex. Never the name itself.
+    public let lookup: String?
+    /// SHA-256 of "<salt>|<last name>", for servers set to sign in with the last name only.
+    public let lookupName: String?
 
     public init(token: String, label: String, status: PortalStatus, detail: String, canRequest: Bool,
                 eta: String = "", summary: String = "", bills: [PortalBill] = [],
-                siteLocation: Coordinate? = nil, stopsAhead: Int? = nil) {
+                siteLocation: Coordinate? = nil, stopsAhead: Int? = nil, lookup: String? = nil, lookupName: String? = nil) {
+        self.lookup = lookup
+        self.lookupName = lookupName
         self.siteLocation = siteLocation
         self.stopsAhead = stopsAhead
         self.token = token
@@ -73,7 +79,7 @@ public enum ArrivalWindow {
 }
 
 /// What the phone tells the portal server to show clients. It holds an address label, a status and a sentence per
-/// page: no phone numbers, no email addresses and no customer names.
+/// page: no phone numbers, no email addresses and no customer names (the tracker sign-in sends salted hashes only).
 public struct PortalSnapshot: Codable, Equatable, Sendable {
     public let company: String
     public let storm: PortalStormInfo
@@ -82,8 +88,15 @@ public struct PortalSnapshot: Codable, Equatable, Sendable {
     public let weather: PortalWeather?
     /// The owner's own tip and coffee links. Money goes straight to them, never through this app or the server.
     public let tips: PortalTips?
+    /// The business's random salt for the sign-in hashes (`lookup`, `lookupName`). Nil until one is made.
+    public let lookupSalt: String?
+    /// The owner's review link (checked with ReviewLink), for "Leave us a review" on the website tracker. Nil hides it.
+    public let reviewURL: String?
 
-    public init(company: String, storm: PortalStormInfo, sites: [PortalSiteSnapshot], weather: PortalWeather? = nil, tips: PortalTips? = nil) {
+    public init(company: String, storm: PortalStormInfo, sites: [PortalSiteSnapshot], weather: PortalWeather? = nil, tips: PortalTips? = nil,
+                lookupSalt: String? = nil, reviewURL: String? = nil) {
+        self.lookupSalt = lookupSalt
+        self.reviewURL = reviewURL
         self.company = company
         self.storm = storm
         self.sites = sites
@@ -198,14 +211,20 @@ public enum PortalSnapshotBuilder {
             }
             var ahead: Int?
             if status == .planned, let mine = arrivalOffsets[site.id] { ahead = arrivalOffsets.values.filter { $0 < mine }.count }
+            // Sign-in by last name on the owner's website: hashes only, the name stays on the phone.
+            let lastName = PortalLookup.lastName(for: customer)
             sites.append(PortalSiteSnapshot(token: link.token, label: site.address, status: status, detail: detail, canRequest: status != .done,
                                             eta: eta, summary: winterSummary(site: site, data: data, now: now),
                                             bills: bills(for: site, data: data, now: now, timeZone: timeZone),
-                                            siteLocation: place, stopsAhead: ahead))
+                                            siteLocation: place, stopsAhead: ahead,
+                                            lookup: PortalLookup.lookup(salt: data.portalLookupSalt, lastName: lastName, houseNumber: PortalLookup.houseNumber(site.address)),
+                                            lookupName: PortalLookup.lookupName(salt: data.portalLookupSalt, lastName: lastName)))
         }
         return PortalSnapshot(company: company.isEmpty ? "Your snow crew" : company,
                               storm: PortalStormInfo(id: storm.id.uuidString, name: storm.name, expected: SnowEstimateText.describe(forecastInches: forecastInches)),
-                              sites: sites, weather: weather, tips: PortalTips.make(from: data.profile))
+                              sites: sites, weather: weather, tips: PortalTips.make(from: data.profile),
+                              lookupSalt: PortalLookup.isSalt(data.portalLookupSalt) ? data.portalLookupSalt : nil,
+                              reviewURL: data.profile.reviewLink.flatMap(ReviewLink.clean))
     }
 }
 

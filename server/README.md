@@ -60,13 +60,13 @@ Run by the same server. Owner endpoints use the same `API_TOKENS` bearer token.
 | `PORTAL_IP_LIMIT_PER_MIN` | 120 | Client page loads per connection per minute. Set `TRUST_PROXY=1` only behind a proxy that sets `X-Forwarded-For` honestly. |
 | `SUPPORT_EMAIL` | none | The address shown on `/support` (and as the contact on `/privacy`). Left out of both pages when unset or not a plain email address. |
 
-Privacy: the server never stores phone numbers, email addresses or customer names. Email addresses and message text pass through to the provider and are not logged (only counts). Unreadable data files are set aside, never overwritten.
+Privacy: the server never stores phone numbers, email addresses or customer names (the website tracker sign-in keeps only salted hashes, see "Signing in with a last name"). Email addresses and message text pass through to the provider and are not logged (only counts). Unreadable data files are set aside, never overwritten.
 
 ## Tests
 ```
 cd server && npm test
 ```
-`node --test test/*.test.mjs` runs five files against stand-ins for Google, the email provider and Claude (no real key, no real calls): routing (`server.test.mjs`), client pages and email (`portal.test.mjs`), the assistant (`ai.test.mjs`) the public pages plus the pre-launch fixes (`pages.test.mjs`) and the website widget (`embed.test.mjs`). Two of them also read the app's Swift sources when the whole repository is there, to check that the privacy policy and the assistant's house rules are word for word the same in the app and on the server.
+`node --test test/*.test.mjs` runs six files against stand-ins for Google, the email provider and Claude (no real key, no real calls): routing (`server.test.mjs`), client pages and email (`portal.test.mjs`), the assistant (`ai.test.mjs`) the public pages plus the pre-launch fixes (`pages.test.mjs`) the website widget (`embed.test.mjs`) and its last-name sign-in (`lookup.test.mjs`). Two of them also read the app's Swift sources when the whole repository is there, to check that the privacy policy and the assistant's house rules are word for word the same in the app and on the server.
 
 ## Before you rely on it
 - **Not run against real Google yet.** The request and response shapes follow Google's documented Routes API, but they have only been exercised against a stand-in. Test with a real key and a small matrix first.
@@ -143,7 +143,7 @@ Paste this where the box should appear (use your server's address):
 <div data-ridgeline></div>
 <script src="https://YOUR-SERVER/embed.js" async></script>
 ```
-- `data-mode="tracker"` (the default) asks for the client's property code and then shows their status, arrival time, stops before theirs, the live truck map, the weather, Tip the crew and Send a coffee, and Request service. Those buttons open the client's own page in a new tab.
+- `data-mode="tracker"` (the default) shows your business name and asks the client for their **last name and house number** (see "Signing in" below). It then shows their status, the arrival time (big), "N stops before your house" or "You're next", the live truck map, the weather, Tip the driver and Send a coffee (the crew's Venmo, PayPal and Cash App page, in a new tab), Leave us a review (only when the app sent a valid review link), "Leave a note for the driver" (the client page's thanks form, answered inside the box), and a small Request service link that opens the client's own page in a new tab.
 - `<div data-ridgeline data-mode="tips"></div>` is a box for everyone, with no client data: your business name, Tip the crew and Send a coffee with the crew's pay apps and, while a storm is on, "Crews are out: 12 of 30 stops done" (counts only, never addresses). It uses the most recent snapshot the app published.
 - The script only adds an iframe from this server and sets its height when the page inside says how tall it is (it checks the message comes from this server and from its own frame). It loads nothing from anyone else. The map inside the frame loads tiles from OpenStreetMap, like the client page.
 
@@ -155,11 +155,27 @@ For the tips box use `/embed/tips` and `height:320px`.
 
 **Linking clients to your own page.** A client's code is the part after `/c/` in their season link. If your tracking page is `https://yourwebsite.com/track`, a client's link can be `https://yourwebsite.com/track?code=THEIRCODE`: the script passes the code to the box, so it opens straight on their property. In the app, save that page in Settings ("Your website's tracking page") and the season emails and the Share page link on a client's profile use it instead of the server page. The code then sits in your website's address bar, so your website's own analytics can see it; it is still only that client's page. Some builders (Wix "Embed HTML", for example) run pasted code inside their own frame, where the script cannot read your page's address: there clients type or paste their code (a whole season link works too).
 
+### Signing in with a last name
+Clients type the last name on their account and their house number, then press "Find my service". The form is a POST, and a match redirects to `/embed/tracker?code=<their code>`, so a refresh keeps the view and the name never appears in an address. `/embed/tracker?code=` keeps working for season-email links, and the box still has a "Have a private link?" field.
+
+**The server never sees names.** For every property the app sends two hashes: `lookup` = SHA-256 of `"<salt>|<last name>|<house number>"` and `lookupName` = SHA-256 of `"<salt>|<last name>"`, plus `lookupSalt` (a random 32-character value made once per business and kept in the app's data). The last name is the last word of the client's name, lowercase, letters only, accents folded and apostrophes and hyphens removed ("O'Neil" becomes `oneil`, "José García" `garcia`, "Smith-Jones" `smithjones`). For a business client such as "Lakeside Clinic" that would be `clinic`, so the owner can type the name to use in "Name for their tracker (optional)" on the client's profile; when set it wins (used whole, so "Van Dyke" works). The house number is the leading digits of the site address ("14B Elm Ave" gives `14`). The server hashes what the visitor typed the same way (both the whole entry and its last word, so "José García" and "Garcia" both work) and compares in constant time. It never stores or logs what was typed. Only the most recent publish counts, so a client who was removed or asked to stop is not found by name. Two properties with the same last name and house number cannot be told apart and get the failure message: give one of them a different "Name for their tracker".
+
+Someone with access to the server's data file could still try common last names and house numbers against the hashes (the salt is stored next to them). The hashes keep names out of the file and the logs; they do not make a stolen data file harmless.
+
+**Why both fields by default (`PORTAL_LOOKUP`).** A last name alone is not a secret: neighbours, delivery drivers and anyone with a phone book know it. With last name only, anyone could type a stranger's surname and see when the plow reaches that house, roughly where it is on the map, and whether the property was serviced. Asking for the house number as well means a visitor has to know who lives at which number. `PORTAL_LOOKUP=lastname` switches to last name only, for owners who accept that trade-off (for example a small rural route where everyone knows each other): one match signs straight in, and when more than one property matches, the box asks for the house number. The server warns at start when it is set.
+
+**Guessing is slowed down.** Every try counts, found or not: at most `PORTAL_LOOKUP_PER_IP` per connection and `PORTAL_LOOKUP_GLOBAL` for the whole server per `PORTAL_LOOKUP_WINDOW_MIN` minutes (on top of `PORTAL_IP_LIMIT_PER_MIN`). Every failure (wrong number, unknown name, empty or malformed form) gets the same page and status: "We couldn't find your service. Check the spelling of your last name and your house number." Each answer takes at least `PORTAL_LOOKUP_MIN_MS`, and the same hashing work is done whether or not anything matches.
+
 **Who may frame it.** Only `/embed/*` pages may be shown inside another site; every other page keeps `frame-ancestors 'none'`. No cookies are used, and every page sends `X-Content-Type-Options: nosniff` and `Referrer-Policy: no-referrer`.
 
 | Variable | Default | What it does |
 |---|---|---|
 | `EMBED_ORIGINS` | none (any site) | Space-separated websites allowed to show the widget, for example `https://ridgeplow.com https://www.ridgeplow.com`. Unset means any site may frame it: easy to set up, and the widget shows nothing private without a valid code, but anyone could put your tips box or code form on their own page. Set it once your site works. Wix, Squarespace and Shopify may show the box from their own domains (for example `https://yoursite.wixsite.com` or a `filesusr.com` frame on Wix), so add those too if the box goes blank. Entries that are not plain origins are ignored with a warning at start. |
 | `PUBLIC_URL` | none | This server's public address, for example `https://plow.example.com`. Optional: `embed.js` otherwise uses the address it was loaded from. |
+| `PORTAL_LOOKUP` | both | Unset: clients sign in with last name **and** house number. `lastname`: last name only, house number asked only when several properties match (see the trade-off above). |
+| `PORTAL_LOOKUP_PER_IP` | 10 | Sign-in tries per connection per window. |
+| `PORTAL_LOOKUP_GLOBAL` | 300 | Sign-in tries for the whole server per window. |
+| `PORTAL_LOOKUP_WINDOW_MIN` | 10 | The window, in minutes. |
+| `PORTAL_LOOKUP_MIN_MS` | 250 | Every sign-in answer takes at least this long, found or not. |
 
-Wrong, old and malformed codes all get the same "We could not find that code" with the same status, and the box counts against `PORTAL_IP_LIMIT_PER_MIN` like client pages.
+Wrong, old and malformed codes all get the same "We could not find that code" with the same status, and the box counts against `PORTAL_IP_LIMIT_PER_MIN` like client pages. The review button links to the app's review link only when it is https on a known review site (Google, Yelp, Facebook, Nextdoor), the same list the app uses.

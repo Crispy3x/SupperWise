@@ -65,6 +65,7 @@ struct ClientDetailView: View {
     @State private var name = ""
     @State private var phone = ""
     @State private var email = ""
+    @State private var trackerName = ""
     @State private var agreed = false
     @State private var loaded = false
     @State private var editingContact = false
@@ -572,6 +573,7 @@ struct ClientDetailView: View {
                         name = c.name
                         phone = c.phone
                         email = c.email
+                        trackerName = c.portalLastName
                         agreed = c.emailConsent && c.optedOutAt == nil
                         note = nil
                     }
@@ -590,6 +592,9 @@ struct ClientDetailView: View {
         PillField(label: "Name", placeholder: "Client name", text: $name)
         PillField(label: "Phone", optional: true, placeholder: "Phone number", text: $phone, kind: .phone)
         PillField(label: "Email", optional: true, placeholder: "name@email.com", text: $email, kind: .email)
+        PillField(label: "Name for their tracker", optional: true, placeholder: "Last name they sign in with", text: $trackerName)
+        Text("They sign in to the tracker on your website with this and their house number. Leave it empty to use the last word of their name.")
+            .font(.footnote).foregroundStyle(.secondary)
         RowDivider()
         Toggle("Agreed to storm and invoice emails", isOn: $agreed)
             .disabled(!ContactValidation.isValidEmail(email.trimmingCharacters(in: .whitespacesAndNewlines)) || c.optedOutAt != nil)
@@ -629,6 +634,7 @@ struct ClientDetailView: View {
             data.customers[i].name = name.trimmingCharacters(in: .whitespacesAndNewlines)
             data.customers[i].phone = phone.trimmingCharacters(in: .whitespacesAndNewlines)
             data.customers[i].email = trimmedEmail
+            data.customers[i].portalLastName = trackerName.trimmingCharacters(in: .whitespacesAndNewlines)
             guard !optedOut else { return }                       // a client who asked to stop is never changed here
             if keepConsent != wasConsenting {
                 try data.recordConsent(customerID: customerID, email: keepConsent, sms: false,

@@ -33,8 +33,11 @@
     text('etalabel', d.eta ? 'Estimated arrival' : '');
     show('eta', !!d.eta);
     show('etalabel', !!d.eta);
+    // The website tracker (/embed/tracker) says "before your house"; the client page keeps its own words.
+    var embed = document.body.className.indexOf('embed') >= 0;
     text('ahead', typeof d.stopsAhead === 'number' && d.status === 'planned'
-      ? (d.stopsAhead === 0 ? 'You are next.' : d.stopsAhead + (d.stopsAhead === 1 ? ' stop' : ' stops') + ' before yours.') : '');
+      ? (d.stopsAhead === 0 ? (embed ? "You're next." : 'You are next.')
+        : d.stopsAhead + (d.stopsAhead === 1 ? ' stop' : ' stops') + (embed ? ' before your house.' : ' before yours.')) : '');
     if (d.weather) { text('wxsummary', d.weather.summary); text('wxalerts', (d.weather.alerts || []).join(' · ')); }
     ensureMap(d);
     if (!map || !d.site) return;

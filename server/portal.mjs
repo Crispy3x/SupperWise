@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import { PRIVACY, TERMS_URL, cleanSupportEmail, privacySections, supportSections } from './legal.mjs';
 import { createEmbed, parseEmbedOrigins, cleanPublicUrl } from './embed.mjs';
+import { SALT_RE, HASH_RE, cleanReviewUrl } from './lookup.mjs';
 
 const TOKEN_RE = /^[A-Za-z0-9_-]{22,64}$/;
 const STATUSES = new Set(['planned', 'done', 'skipped', 'notExpected']);
@@ -54,6 +55,12 @@ export function loadPortalConfig(env = process.env) {
     embedOrigins: parseEmbedOrigins(env.EMBED_ORIGINS).origins,
     embedOriginsInvalid: parseEmbedOrigins(env.EMBED_ORIGINS).invalid,
     publicUrl: cleanPublicUrl(env.PUBLIC_URL),
+    // Website tracker sign-in (lookup.mjs). Default: last name AND house number. "lastname": last name only (see the README).
+    lookupMode: env.PORTAL_LOOKUP === 'lastname' ? 'lastname' : 'both',
+    lookupPerIp: num(env.PORTAL_LOOKUP_PER_IP, 10),               // tries per connection per window
+    lookupGlobal: num(env.PORTAL_LOOKUP_GLOBAL, 300),             // tries for the whole server per window
+    lookupWindowMinutes: num(env.PORTAL_LOOKUP_WINDOW_MIN, 10),
+    lookupMinMs: num(env.PORTAL_LOOKUP_MIN_MS, 250),              // every answer takes at least this long
   };
 }
 
@@ -314,7 +321,7 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}
     return page(`${label}`, inner, { head: '' });
   }
 
-  const embed = createEmbed({ config, getState: () => state, page, escapeHtml, jsonForScript, liveView, ipAllowed, now, securityHeaders: SECURITY_HEADERS,
+  const embed = createEmbed({ config, getState: () => state, page, escapeHtml, jsonForScript, liveView, ipAllowed, now, readBody, clientIp, securityHeaders: SECURITY_HEADERS,
     statusText: STATUS_TEXT, payReasons: PAY_REASONS, hasMap: () => assets.has('leaflet.js') });
 
   // ---- public pages for the App Store listing: no token, no client data, safe to index
@@ -378,6 +385,12 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}
     const stormName = cleanText(body.storm.name, 80); const expected = cleanText(body.storm.expected, 120);
     const weather = cleanWeather(body.weather);
     const payApps = PAY_APPS.map(([wire, alt, key, label]) => ({ key, label, url: cleanPayUrl(body.tips?.[wire] ?? body.tips?.[alt]) })).filter((g) => g.url);
+    // Website tracker sign-in: the business's random salt and, per site, hashes only (never a name or house number).
+    const lookupSalt = typeof body.lookupSalt === 'string' && SALT_RE.test(body.lookupSalt) ? body.lookupSalt : '';
+    const hash = (v) => (lookupSalt && typeof v === 'string' && HASH_RE.test(v) ? v : '');
+    const reviewURL = cleanReviewUrl(body.reviewURL);
+    const publishedAt = Math.max(now(), (state.lastPublishedAt || 0) + 1);      // strictly increasing: tells the latest publish apart
+    state.lastPublishedAt = publishedAt;
     const next = [];
     for (const s of body.sites) {
       if (!s || !TOKEN_RE.test(String(s.token)) || !STATUSES.has(s.status)) return sendJson(res, 400, { error: 'each site needs a valid token and status' });
@@ -393,7 +406,7 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}
       next.push([s.token, { company, stormId, stormName, expected, label: cleanText(s.label, 120) || 'Your property', status: s.status,
         detail: cleanText(s.detail, 200), eta: cleanText(s.eta, 120), summary: cleanText(s.summary, 160), bills,
         siteLocation: cleanSite(s.siteLocation), stopsAhead: Number.isInteger(s.stopsAhead) && s.stopsAhead >= 0 && s.stopsAhead <= 500 ? s.stopsAhead : null,
-        weather, payApps,
+        weather, payApps, reviewURL, lookupSalt, lookup: hash(s.lookup), lookupName: hash(s.lookupName), publishedAt,
         canRequest: s.canRequest === true, updatedAt: now() }]);
     }
     for (const [token, snap] of next) state.snapshots[token] = snap;
@@ -476,14 +489,20 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}
     catch (e) { if (e.status === 413) { res.on('finish', () => req.destroy()); return sendHtml(res, 413, page('Too large', '<div class="card"><p>That message was too large.</p></div>'), { connection: 'close' }); } return sendHtml(res, 400, page('Error', '<div class="card"><p>Something went wrong.</p></div>')); }
     const s = state.snapshots[token];
     const message = cleanText(form.get('message'), MAX_THANKS_CHARS);
+    // Sent from the website tracker (/embed/tracker): answer back inside the frame, where /c/ pages cannot be shown.
+    const back = (flag) => { res.writeHead(303, { location: `/embed/tracker?code=${token}&sent=${flag}`, ...SECURITY_HEADERS }); res.end(); };
+    const fromEmbed = form.get('back') === 'embed';
+    if (!message && fromEmbed) return back('empty');
     if (!message) return sendHtml(res, 400, page('Check your message', `<div class="card"><p>Please write a message first.</p><p><a href="/c/${escapeHtml(token)}#thanks">Go back</a></p></div>`));
     const from = cleanText(form.get('from'), 40);
     const t = now();
     const mine = state.requests.filter((r) => r.token === token && r.kind === 'thanks');
+    if (fromEmbed && mine.filter((r) => t - Date.parse(r.createdAt) < 3_600_000).length >= config.requestsPerTokenPerHour) return back('limit');
     if (mine.filter((r) => t - Date.parse(r.createdAt) < 3_600_000).length >= config.requestsPerTokenPerHour) return sendHtml(res, 429, page('Too many messages', '<div class="card"><p>You have sent a few messages already. Thank you! Please try again later.</p></div>'));
     state.requests.push({ id: crypto.randomBytes(12).toString('hex'), token, kind: 'thanks', reason: '', note: from ? `From ${from}: ${message}` : message,
       createdAt: new Date(t).toISOString(), stormId: s.stormId, status: 'pending', message: '' });
     save();
+    if (fromEmbed) return back('thanks');
     res.writeHead(303, { location: `/c/${token}?sent=thanks`, ...SECURITY_HEADERS });
     res.end();
   }
@@ -530,7 +549,7 @@ input[type=radio]{width:auto;margin:0 .5rem 0 0}
           res.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'content-length': Buffer.byteLength(html), ...SECURITY_HEADERS, 'Cache-Control': 'public, max-age=300', 'X-Robots-Tag': 'all' });
           return res.end(req.method === 'HEAD' ? undefined : html);
         }
-        if (embed.matches(path)) return embed.handle(req, res, path, url);
+        if (embed.matches(path)) return await embed.handle(req, res, path, url);
         if (path.startsWith('/assets/')) {
           const name = path.slice('/assets/'.length);
           const asset = req.method === 'GET' && /^[a-z.]+$/.test(name) ? assets.get(name) : null;      // only the listed files, never a path

@@ -18,6 +18,10 @@ public struct Customer: Identifiable, Equatable, Codable, Sendable {
     public var isLead: Bool
     /// When the owner last asked this client for a review (see ReviewRequests.swift). Nil means never.
     public var reviewAskedAt: Date? = nil
+    /// The name this client types to sign in to the tracker on the owner's website ("Name for their tracker").
+    /// Empty: the last word of `name` is used. Set it for business clients ("Lakeside Clinic") or names like "Van Dyke".
+    /// Only a salted hash of it ever leaves the phone (see PortalLookup.swift).
+    public var portalLastName: String = ""
 
     public init(id: UUID = UUID(), name: String, phone: String = "", email: String = "", notes: String = "",
                 emailConsent: Bool = false, smsConsent: Bool = false, consentRecordedAt: Date? = nil,
@@ -36,7 +40,7 @@ public struct Customer: Identifiable, Equatable, Codable, Sendable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, name, phone, email, notes, emailConsent, smsConsent, consentRecordedAt, consentSource, optedOutAt, isLead, reviewAskedAt
+        case id, name, phone, email, notes, emailConsent, smsConsent, consentRecordedAt, consentSource, optedOutAt, isLead, reviewAskedAt, portalLastName
     }
 
     // Older saved files have no consent fields, so they fall back to "no consent".
@@ -54,6 +58,7 @@ public struct Customer: Identifiable, Equatable, Codable, Sendable {
         optedOutAt = try c.decodeIfPresent(Date.self, forKey: .optedOutAt)
         isLead = try c.decodeIfPresent(Bool.self, forKey: .isLead) ?? false
         reviewAskedAt = try c.decodeIfPresent(Date.self, forKey: .reviewAskedAt)
+        portalLastName = try c.decodeIfPresent(String.self, forKey: .portalLastName) ?? ""
     }
 }
 

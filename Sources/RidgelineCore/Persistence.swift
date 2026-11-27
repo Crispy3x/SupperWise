@@ -64,6 +64,8 @@ public struct AppData: Equatable, Codable, Sendable {
     public var routeOrders: [SavedRouteOrder] = []
     /// Team sync link and what was last synced (see TeamSync.swift). Nil when team sync is off: the app works as before.
     public var teamSync: TeamSyncState? = nil
+    /// Random value made once (32 hex characters) for the website tracker sign-in hashes (see PortalLookup.swift). Empty until first publish.
+    public var portalLookupSalt: String = ""
 
     public init() {}
 
@@ -112,6 +114,7 @@ public struct AppData: Equatable, Codable, Sendable {
         adHocStops = try c.decodeIfPresent([AdHocStop].self, forKey: .adHocStops) ?? []
         routeOrders = try c.decodeIfPresent([SavedRouteOrder].self, forKey: .routeOrders) ?? []
         teamSync = try c.decodeIfPresent(TeamSyncState.self, forKey: .teamSync)
+        portalLookupSalt = try c.decodeIfPresent(String.self, forKey: .portalLookupSalt) ?? ""
     }
 }
 

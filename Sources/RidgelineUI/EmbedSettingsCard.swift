@@ -25,7 +25,9 @@ struct EmbedSettingsCard: View {
                 if let tracker = EmbedSnippets.script(portalBaseURL: base, mode: .tracker),
                    let tips = EmbedSnippets.script(portalBaseURL: base, mode: .tips),
                    let frame = EmbedSnippets.iframe(portalBaseURL: base, mode: .tracker) {
-                    Text("Clients can follow the plow from your own website. Paste one of these into a page there; the tracker asks for the client's code, and the tips box lets anyone tip the crew.")
+                    Text("Clients can follow the plow from your own website. Paste one of these into a page there; the tips box lets anyone tip the crew.")
+                        .font(.callout).foregroundStyle(.secondary)
+                    Text("Clients sign in with their last name and house number. For a business client, set \"Name for their tracker\" on their profile.")
                         .font(.callout).foregroundStyle(.secondary)
                     snippet(title: "Tracker", text: tracker)
                     snippet(title: "Tips only", text: tips)

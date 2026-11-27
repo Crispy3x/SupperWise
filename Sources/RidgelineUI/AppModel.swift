@@ -447,6 +447,8 @@ public final class AppModel {
     }
 
     func portalSnapshot(storm: StormEvent, inches: Double, routeStart: Date?, offsets: [UUID: Double]) -> PortalSnapshot {
+        // The website tracker sign-in needs the business's salt; it is made once and saved before the first publish.
+        if !PortalLookup.isSalt(data.portalLookupSalt) { edit { $0.ensurePortalLookupSalt() } }
         let served = Set(DispatchRules.effectiveSites(sites: data.sites, inches: inches, stormID: storm.id, requests: data.serviceRequests).map(\.id))
         return PortalSnapshotBuilder.build(data: data, storm: storm, forecastInches: inches, servedSiteIDs: served,
                                            visitStormName: storm.name, routeStart: routeStart, arrivalOffsets: offsets,

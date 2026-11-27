@@ -81,15 +81,18 @@ test('embed.js puts an iframe in the host page, passes ?code= through, and resiz
   assert.equal(made[0].attrs.src, `${s.base}/embed/tracker`);
 });
 
-test('the tracker without a code shows only the form, and no client data', async (t) => {
+test('the tracker without a code shows only the sign-in form and the business name, and no client data', async (t) => {
   const s = await boot(); t.after(s.close);
   await s.publish([mapped], { weather, tips: TIPS });
   for (const q of ['', '?code=', '?code=%20']) {
     const res = await fetch(`${s.base}/embed/tracker${q}`);
     assert.equal(res.status, 200);
     const html = await res.text();
-    assert.ok(html.includes('Track your service') && html.includes('Your property code') && html.includes('>Show<'));
-    for (const x of ['14 Elm Ave', 'Ridge Plow', TOKEN, 'Planned for this storm', 'venmo', 'id="live"']) assert.ok(!html.includes(x), x);
+    assert.ok(html.includes('Track your service') && html.includes('<h1 class="biz">Ridge Plow</h1>') && html.includes('Powered by Ridgeline Ops'));
+    assert.ok(html.includes('name="lastName"') && html.includes('name="houseNumber"') && html.includes('>Find my service<'));
+    assert.ok(html.includes('Use the last name on your account and your house number.'));
+    assert.ok(html.includes('name="code"') && html.includes('>Show<'));              // a private link still works
+    for (const x of ['14 Elm Ave', TOKEN, 'Planned for this storm', 'venmo', 'id="live"']) assert.ok(!html.includes(x), x);
     assert.ok(html.includes('src="/assets/frame.js"'));
   }
 });
@@ -100,7 +103,7 @@ test('the tracker with a valid code shows status, arrival, stops ahead, the map 
   const res = await fetch(`${s.base}/embed/tracker?code=${TOKEN}`);
   assert.equal(res.status, 200);
   const html = await res.text();
-  for (const x of ['14 Elm Ave', 'Planned for this storm', 'Estimated arrival', 'Expected between 7:15 AM and 8:45 AM.', '3 stops before yours.',
+  for (const x of ['14 Elm Ave', 'Planned for this storm', 'Estimated arrival', 'Expected between 7:15 AM and 8:45 AM.', '3 stops before your house.',
     'Snow, 28 F.', 'Winter Storm Warning until 6 PM', 'id="map"']) assert.ok(html.includes(x), x);
   assert.ok(html.includes(`href="/c/${TOKEN}/pay?for=tip" target="_blank" rel="noopener"`));
   assert.ok(html.includes(`href="/c/${TOKEN}/pay?for=coffee" target="_blank" rel="noopener"`));
@@ -207,9 +210,10 @@ test('the company name is escaped in every widget', async (t) => {
   assert.ok((await (await fetch(`${s.base}/embed/tracker?code=${TOKEN}`)).text()).includes('&lt;img src=x'));
 });
 
-test('embed pages answer only GET and HEAD', async (t) => {
+test('embed pages answer only GET and HEAD (and POST for the tracker sign-in)', async (t) => {
   const s = await boot(); t.after(s.close);
-  assert.equal((await fetch(`${s.base}/embed/tracker`, { method: 'POST' })).status, 405);
+  assert.equal((await fetch(`${s.base}/embed/tips`, { method: 'POST' })).status, 405);
+  assert.equal((await fetch(`${s.base}/embed/tracker?code=x`, { method: 'PUT' })).status, 405);
   assert.equal((await fetch(`${s.base}/embed.js`, { method: 'HEAD' })).status, 200);
   assert.equal((await fetch(`${s.base}/embed/nothing`)).status, 404);
 });
