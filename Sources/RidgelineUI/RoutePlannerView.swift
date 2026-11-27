@@ -121,7 +121,7 @@ struct RoutePlannerView: View {
     @State private var day = Date()
     @State private var loaded = false
     @State private var sheet: PlannerSheet?
-    @State private var detent: PresentationDetent = .medium
+    @State private var detent: PresentationDetent = ScreenshotMode.routeDetent
     @State private var note: String?
     /// Drive times from the last Optimize. Until then, the offline estimate.
     @State private var provider: any DriveTimeProvider = HaversineDriveTime()
@@ -632,6 +632,7 @@ private struct RoutePlannerPanel: View {
         }
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
+        .defaultScrollAnchor(ScreenshotMode.anchor)
         #if os(iOS)
         .environment(\.editMode, $editMode)
         #endif

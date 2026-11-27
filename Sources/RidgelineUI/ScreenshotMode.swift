@@ -24,6 +24,44 @@ enum ScreenshotMode {
         #endif
     }
 
+    /// The route planner's panel height for the route pictures: mostly map, the usual half, or the full stop list.
+    static var routeDetent: PresentationDetent {
+        switch shot {
+        case "routeMap": return .height(220)
+        case "routeList": return .large
+        default: return .medium
+        }
+    }
+
+    /// A full morning of residential stops for the route pictures, already put in the best order.
+    static func addRouteDay(_ d: inout AppData, today: Date, at: (Int, Int, Int) -> Date) {
+        let homes: [(String, String, Double, Double)] = [
+            ("Chris Walker", "18 Juniper Ln", 0.022, 0.018), ("Megan Hart", "305 Cedar Ave", 0.026, 0.004),
+            ("Tom Nguyen", "42 Hawthorne Dr", 0.034, -0.008), ("Lisa Romero", "9 Aspen Way", 0.012, -0.036),
+            ("Ben Carter", "77 Willow St", -0.004, -0.042), ("Ava Brooks", "260 Summit Ave", -0.016, -0.018),
+            ("Ryan Patel", "15 Lakeview Ter", -0.026, 0.006), ("Grace Kim", "88 River Rd", -0.030, 0.026),
+            ("Jake Olson", "131 Prairie Ct", -0.012, 0.052), ("Nora Fields", "6 Elmwood Pl", 0.006, 0.048),
+            ("Eli Turner", "402 Pine St", 0.044, 0.036), ("Zoe Martin", "51 Spruce Rd", 0.050, -0.020),
+            ("Owen Price", "23 Ridge Ct", 0.002, 0.024), ("Mia Lopez", "70 Harbor Ln", -0.036, -0.032),
+        ]
+        for (i, h) in homes.enumerated() {
+            let c = Customer(name: h.0, phone: AppData.samplePhone)
+            let s = Site(customerID: c.id, address: h.1, latitude: AppData.sampleYard.latitude + h.2,
+                         longitude: AppData.sampleYard.longitude + h.3, priority: 3, triggerInches: 2)
+            d.customers.append(c)
+            d.sites.append(s)
+            _ = try? d.addJob(title: i % 4 == 3 ? "Plow and salt" : "Plow driveway", kind: .snowPlowing, customerID: c.id,
+                              siteID: s.id, start: at(0, 11, i * 15), durationMinutes: 15, now: Date())
+        }
+        d.routeSettings.defaultBreak = RouteBreak(minutes: 30, afterHours: 3)
+        let stops = d.plannerStops(on: today)
+        guard let start = d.routeStartCoordinate ?? stops.first?.coordinate else { return }
+        let plan = RouteDayPlanner.optimize(stops: stops, start: start, end: d.routeFinishCoordinate(start: start),
+                                            startTime: d.routeStartTime(on: today), breakRule: d.routeSettings.defaultBreak,
+                                            provider: HaversineDriveTime())
+        d.setRouteOrder(plan.stops.map(\.stop.id), on: today, optimized: true)
+    }
+
     /// Screens shown on their own, outside the main shell.
     static let standalone: Set<String> = ["welcome", "onboarding", "clientDetail", "invoices", "quickInvoice", "jobEditor", "jobDetail", "invoiceDetail", "stormStart", "addMember", "paywall"]
 
@@ -57,6 +95,7 @@ enum ScreenshotMode {
                               durationMinutes: 45, now: Date())
         }
         if let first = d.jobs.first { try? d.setJobStatus(.done, id: first.id) }
+        if shot.hasPrefix("route") { addRouteDay(&d, today: today, at: at) }
         _ = try? d.addJob(title: "Order more salt", start: at(0, 15), isTask: true, now: Date())
         let prices = d.priceList
         for (i, c) in d.customers.prefix(3).enumerated() where !prices.isEmpty {

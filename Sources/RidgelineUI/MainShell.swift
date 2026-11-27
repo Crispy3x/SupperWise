@@ -193,7 +193,7 @@ struct MainShell: View {
         switch shot {
         case "menu": menuOpen = true
         case "assistant": showAssistant = true
-        case "route": showSmartRoute = true
+        case "route", "routeMap", "routeList": showSmartRoute = true
         case "notifications": showNotifications = true
         default:
             if let t = ShellTab(rawValue: shot) { tab = t } else if let s = ShellScreen(rawValue: shot) { screen = s }
